@@ -100,7 +100,7 @@ const MemberList = () => {
 
   return (
     <section className="bg-[#EDF0FE] py-20">
-      <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 ">
+      <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0">
         <p className="text-[#5AC0BE]">Steering Committee Members</p>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-2">
           <h2 className="text-4xl md:text-[2.875rem] font-azonix text-[#000222] leading-snug">
@@ -117,15 +117,15 @@ const MemberList = () => {
         {speakers.map((speaker, index) => (
           <div
             key={index}
-            className="bg-white group hover:border-2 border-[#4461EF] rounded-2xl overflow-hidden shadow hover:shadow-lg transition p-5.5"
+            className="bg-white group hover:border-2 active:border-2 focus:border-2 border-[#4461EF] rounded-2xl overflow-hidden shadow hover:shadow-lg  active:shadow-lg  focus:shadow-lg  transition p-5.5"
           >
             <div className="w-full object-cover rounded-2xl overflow-hidden relative">
               <img
                 src={speaker.image}
                 alt={speaker.name}
-                className="w-full object-cover rounded-2xl group-hover:scale-[1.1]"
+                className="w-full object-cover rounded-2xl group-hover:scale-[1.1] group-focus:scale-[1.1] group-active:scale-[1.1] "
               />
-              <div className="absolute bottom-5 hidden group-hover:flex items-center gap-2 mx-auto w-full left-0 right-0 justify-center">
+              <div className="absolute bottom-5 hidden group-hover:flex group-active:flex group-focus:flex items-center gap-2 mx-auto w-full left-0 right-0 justify-center">
                 {socials.map((social,i) => (
                   <CircularLink key={i} href={social.link} target="_blank" className="block p-2 min-w-[38px]">
                     {social.icon}

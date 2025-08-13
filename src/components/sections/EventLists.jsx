@@ -1,5 +1,6 @@
 import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
+import SpeakerTag from "../cards/SpeakerTag";
 
 const EventLists = () => {
   const events = [
@@ -82,7 +83,7 @@ const EventLists = () => {
           <h2 className="text-2xl sm:text-[2.875rem] leading-tight font-bold text-white mb-4 md:max-w-xl">
             Explore Upcoming Events with Industry Expert
           </h2>
-          <div className="flex flex-wrap sm:flex-row items-start gap-3 ">
+          <div className="flex flex-wrap items-start gap-3 ">
             {tags.map((tag) => (
               <div
                 key={tag}
@@ -100,10 +101,10 @@ const EventLists = () => {
         {events.map((event) => (
           <div
             key={event.id}
-            className="border-2 sm:p-7 pb-2 border-[#FFFFFF10] rounded-3xl overflow-hidden flex flex-col sm:flex-row"
+            className="border-2 md:p-7 pb-2 border-[#FFFFFF10] rounded-3xl overflow-hidden flex flex-col md:flex-row"
           >
             {/* Image */}
-            <div className="sm:w-2/5 sm:rounded-3xl overflow-hidden">
+            <div className="md:w-2/5 md:rounded-3xl overflow-hidden">
               <img
                 src={event.image}
                 alt={event.title}
@@ -112,8 +113,8 @@ const EventLists = () => {
             </div>
 
             {/* Content */}
-            <div className="sm:w-3/5 p-2 sm:p-6 flex flex-col gap-9 items-end sm:items-start">
-              <div className="border-b border-[#FFFFFF10] pb-9">
+            <div className="md:w-3/5 p-2 sm:p-6 flex flex-col gap-9 items-end sm:items-start">
+              <div className="border-b border-[#FFFFFF10] pb-9 w-full">
                 <div className="flex items-center gap-1 sm:gap-4 text-sm text-white mb-3 bg-[#ffffff10] w-fit px-2 sm:px-10 py-1 sm:py-3 rounded-sm sm:rounded-full">
                   <span>{event.date}</span>
                   <span className="border-s ps-1 sm:ps-4 border-[#ffffff30]">
@@ -137,51 +138,14 @@ const EventLists = () => {
 
                   <span className="">{event.location}</span>
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3.5">
                   {event.speakers.map((speaker, i) => (
-                    <div
+                    <SpeakerTag
                       key={i}
-                      className="flex items-center gap-2.5 bg-[#1e2e42] text-gray-300 px-2.5 py-2.5 rounded-full text-xs"
-                    >
-                      <div className="w-10 aspect-square rounded-full overflow-hidden border-2 border-[#FFFFFF30]">
-                        <img
-                          className="w-full h-full object-cover"
-                          src={speaker.image}
-                          alt={speaker.name}
-                        />
-                      </div>
-                      <div>
-                        <span className="text-lg">{speaker.name}</span>
-                        <div className="flex items-center gap-1 text-xs text-[#FFFFFF80]">
-                          {speaker.role.toLowerCase() == "moderator" && (
-                            <svg
-                              width="18"
-                              height="17"
-                              viewBox="0 0 18 17"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <rect
-                                x="1.08008"
-                                y="0.38501"
-                                width="16"
-                                height="16"
-                                rx="8"
-                                fill="#5AC0BE"
-                              />
-                              <path
-                                d="M12.0317 7.58813C12.0317 9.20186 10.7103 10.51 9.0803 10.51M9.0803 10.51C7.45029 10.51 6.12891 9.20186 6.12891 7.58813M9.0803 10.51V12.635M9.0803 12.635H6.93383M9.0803 12.635H11.2268M9.0803 8.91626C8.33939 8.91626 7.73875 8.32163 7.73875 7.58813V5.46313C7.73875 4.72963 8.33939 4.13501 9.0803 4.13501C9.8212 4.13501 10.4218 4.72963 10.4218 5.46313V7.58813C10.4218 8.32163 9.8212 8.91626 9.0803 8.91626Z"
-                                stroke="white"
-                                strokeWidth="0.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          )}
-                          <span className="">{speaker.role}</span>
-                        </div>
-                      </div>
-                    </div>
+                      image={speaker.image}
+                      name={speaker.name}
+                      role={speaker.role}
+                    />
                   ))}
                 </div>
               </div>

@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 
-const HomeBanner = ({ banner }) => {
+const TitleBlock = ({ title }) => {
   const remainingTime = {
     days: 9,
     hours: 3,
@@ -60,19 +61,14 @@ const HomeBanner = ({ banner }) => {
       label: "Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
     },
   ];
-
   return (
     <section
       id="home-banner"
-      className="bg-[url('/images/home_banner.png')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
+      className="relative bg-[url('/images/backgrounds/header_title_bg.png')] bg-[top_center] bg-cover bg-no-repeat py-9 pt-38 text-white"
     >
-      {banner && (
-        <div className="flex justify-end mb-30">
-          <img src="/images/banner_title.png" alt="" />
-        </div>
-      )}
-      <div className="container mx-auto px-5 sm:px-0">
-        <div className="flex flex-col md:flex-row gap-10 items-center justify-between">
+      <div className="absolute z-1 inset-0 bg-gradient-to-r from-[#00000035] via-[#131f5442] to-[#1a1d2720] opacity-77"></div>
+      <div className="container z-10 relative mx-auto px-5 sm:px-0">
+        <div className="flex flex-col lg:flex-row gap-10 items-center justify-between">
           <div className="flex-2 flex flex-col gap-5 font-gilroy-med">
             <PrimaryButton className="gap-1 px-3 w-fit">
               <svg
@@ -110,17 +106,16 @@ const HomeBanner = ({ banner }) => {
               Get Ticket
             </PrimaryButton>
             <h4 className="font-azonix md:text-[2.5rem] leading-[2.5rem]">
-              INTERNATIONAL AEROSPACE MEDICINE{" "}
-              <span className="text-[#5AC0BE]">CONFERENCE 2025</span>
+              {title}
             </h4>
-            <div className="flex flex-col md:flex-row gap-x-10 gap-y-4">
+            <div className="flex flex-col lg:flex-row gap-x-10 gap-y-4">
               {tags.map(({ icon, label }, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 py-1 px-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit"
+                  className="flex items-center gap-2 py-1 px-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit"
                 >
                   {icon}
-                  <span className="md:text-nowrap">{label}</span>
+                  <span className="lg:text-nowrap">{label}</span>
                 </div>
               ))}
             </div>
@@ -134,16 +129,16 @@ const HomeBanner = ({ banner }) => {
                   Time is running out Book your ticket.
                 </div>
               </div>
-              <div className="flex md:flex-row items-stretch gap-3 2xl:gap-10">
+              <div className="flex lg:flex-row items-stretch gap-3 2xl:gap-10">
                 {Object.entries(remainingTime).map(([key, value]) => (
                   <div
                     key={key}
                     className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-[#ffffff08]"
                   >
-                    <h5 className="text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
+                    <h5 className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
                       {String(value).padStart(2, "0")}
                     </h5>
-                    <p className="text-xs lg:text-lg capitalize">{key}</p>
+                    <p className="text-xs lg:text-sm 2xl:text-lg capitalize">{key}</p>
                   </div>
                 ))}
               </div>
@@ -155,4 +150,4 @@ const HomeBanner = ({ banner }) => {
   );
 };
 
-export default HomeBanner;
+export default TitleBlock;

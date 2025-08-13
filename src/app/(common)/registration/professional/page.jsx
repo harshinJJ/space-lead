@@ -4,7 +4,7 @@ import React from 'react'
 export default function Registration() {
   return (
     <main>
-      {/*  Pass selection */}
+      {/* registration form */}
       <Marquee />
     </main>
   )

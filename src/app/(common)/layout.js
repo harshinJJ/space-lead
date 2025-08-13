@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Open_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Open_Sans,Raleway,Poppins } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
@@ -16,6 +16,16 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
 });
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "SpaceLead",
@@ -24,7 +34,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} antialiased`}>
         <Header/>
         {children}
         <Footer/>

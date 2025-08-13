@@ -6,23 +6,23 @@
 }
 
 @font-face {
-  font-family: 'Azonix';
-  src: url('../../public/fonts/Azonix.woff2') format('woff2');
-  font-weight: 400; 
+  font-family: "Azonix";
+  src: url("../../public/fonts/Azonix.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Gilroy-Medium';
-  src: url('../../public/fonts/Gilroy-Medium.woff2') format('woff2');
-  font-weight: 400; 
+  font-family: "Gilroy-Medium";
+  src: url("../../public/fonts/Gilroy-Medium.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Gilroy-Bold';
-  src: url('../../public/fonts/Gilroy-Bold.woff2') format('woff2');
-  font-weight: 400; 
+  font-family: "Gilroy-Bold";
+  src: url("../../public/fonts/Gilroy-Bold.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -31,21 +31,45 @@
   --breakpoint-3xl: 1728px;
   --breakpoint-4xl: 1920px;
 
-  --container-3xl: 1593px;
-  --container-4xl: 1800px;
-
-  --color-primary:#131F54;
-  --color-secondary:#5AC0BE;
+  --color-primary: #131f54;
+  --color-secondary: #5ac0be;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-open-sans: var(--font-open-sans);
-  --font-azonix: 'Azonix', sans-serif;
-  --font-gilroy-med: 'Gilroy-Medium', sans-serif;
-  --font-gilroy-bold: 'Gilroy-Bold', sans-serif;
+  --font-raleway: var(--font-raleway);
+  --font-poppins: var(--font-poppins);
+  --font-azonix: "Azonix", sans-serif;
+  --font-gilroy-med: "Gilroy-Medium", sans-serif;
+  --font-gilroy-bold: "Gilroy-Bold", sans-serif;
 }
+
+@layer utilities {
+  @media (width >= 108rem) {
+    .container {
+      max-width: 99.5625rem;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 15s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+}
+/* Custom container for 1728px breakpoint */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -54,12 +78,12 @@
   }
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   /* color: var(--foreground); */
-  font-family: 'Gilroy-Medium', Arial, Helvetica, sans-serif;
+  font-family: "Gilroy-Medium", Arial, Helvetica, sans-serif;
 }
