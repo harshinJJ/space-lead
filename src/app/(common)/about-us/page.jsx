@@ -4,12 +4,15 @@ import SponsorsBlock from "@/components/sections/Sponsors";
 import VideoPreview from "@/components/sections/VideoPreview";
 import WhyAttend from "@/components/sections/WhyAttend";
 import React from "react";
+import LatestInfo from "./components/LatestInfo";
 
 const About = () => {
   return (
     <main>
       <AboutInfo />
-      <WhyAttend>{/* sub component */}</WhyAttend>
+      <WhyAttend>
+        <LatestInfo/>
+      </WhyAttend>
       <Marquee />
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}

@@ -78,7 +78,7 @@ const EventLists = () => {
     <div className="container mx-auto px-5 md:px-10 rounded-4xl bg-[#1C192D70] py-16 text-white">
       {/* Heading */}
       <div className="mb-10 font-open-sans">
-        <p className="text-teal-400  tracking-wide font-light">Event Lists</p>
+        <p className="text-secondary  tracking-wide font-light">Event Lists</p>
         <div className="flex flex-col md:flex-row justify-between">
           <h2 className="text-2xl sm:text-[2.875rem] leading-tight font-bold text-white mb-4 md:max-w-xl">
             Explore Upcoming Events with Industry Expert

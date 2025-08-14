@@ -2,8 +2,8 @@ import React from "react";
 
 const WhyAttend = ({ children }) => {
   return (
-    <section className="bg-[url('/images/backgrounds/why_attend_bg.png')] bg-[top_center] bg-cover py-10 sm:py-20 px-5 sm:px-0">
-      <div className="container mx-auto px-5 md:ps-19 rounded-t-4xl bg-gradient-to-b from-[#5AC0BE] via-[#5AC0BE80] via-[40%] to-transparent to-[50%] pt-16 text-white">
+    <section className="bg-[url('/images/backgrounds/why_attend_bg.png')] bg-[top_center] bg-cover py-10 sm:py-20 px-1 sm:px-0">
+      <div className="container mx-auto px-2 sm:px-5 md:ps-19 rounded-t-4xl bg-gradient-to-b from-[#5AC0BE] via-[#5AC0BE80] via-[40%] to-transparent to-[50%] pt-16 text-white">
         <div className="w-full p-2 md:p-3 bg-[#EEEEEE] mb-5" />
         <div className="mb-10 flex flex-col lg:flex-row gap-3.5">
           <div className="font-azonix flex-1">

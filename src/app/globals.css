@@ -87,3 +87,14 @@ body {
   /* color: var(--foreground); */
   font-family: "Gilroy-Medium", Arial, Helvetica, sans-serif;
 }
+
+/* Prevent height jumps */
+.swiper {
+  height: 100%; /* or a fixed px value */
+}
+
+/* Prevent wrapper flicker during reflows */
+.swiper-wrapper {
+  will-change: transform;
+  backface-visibility: hidden;
+}

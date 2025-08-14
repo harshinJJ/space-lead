@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import PrimaryButton, { PrimaryLink } from "../buttons/PrimaryButton";
 import SpeakerTag from "../cards/SpeakerTag";
+import AgendaCard from "../cards/AgendaCard";
 
 const eventsData = {
   day1: [
@@ -126,7 +127,6 @@ export default function EventAgenda() {
   const [activeDay, setActiveDay] = useState("day1");
 
   return (
-    <section className="bg-[url('/images/backgrounds/event_agenda_bg.png')] bg-[#1c192d] bg-center bg-cover py-33">
       <div className="container mx-auto text-white px-4 lg:px-38">
         <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-15">
           <div className="flex flex-col justify-between gap-3">
@@ -164,7 +164,8 @@ export default function EventAgenda() {
               key={idx}
               className="bg-[#FFFFFF14] rounded-4xl p-7.5 flex flex-col gap-4"
             >
-              <div className="bg-gradient-to-r from-[#FFFFFF14] to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6">
+              <AgendaCard event={event}/>
+              {/* <div className="bg-gradient-to-r from-[#FFFFFF14] to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6">
                 <img
                   src={event.image}
                   alt={event.title}
@@ -208,7 +209,7 @@ export default function EventAgenda() {
                   </div>
                   <p className="mt-5 lg:max-w-17/20">{event.description}</p>
                 </div>
-              </div>
+              </div> */}
               {/* Speakers */}
               <div className="flex flex-wrap gap-2.5">
                 {event.speakers.map((speaker, i) => (
@@ -248,6 +249,5 @@ export default function EventAgenda() {
           </PrimaryLink>
         </div>
       </div>
-    </section>
   );
 }

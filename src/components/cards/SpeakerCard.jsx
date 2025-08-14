@@ -1,17 +1,7 @@
 import React from "react";
-import { PrimaryLink } from "../buttons/PrimaryButton";
 import { CircularLink } from "../buttons/CircularButton";
-import SpeakerCard from "../cards/SpeakerCard";
 
-const MemberList = ({
-  speakers = [],
-  navComponent,
-  link,
-  linkLabel = "View Full Line-Up",
-  title,
-  label,
-  selectAction,
-}) => {
+const SpeakerCard = ({speaker={},selectAction}) => {
   const socials = [
     {
       label: "facebook",
@@ -82,83 +72,43 @@ const MemberList = ({
       ),
     },
   ];
-
   return (
-    speakers.length > 0 && (
-      <section className="bg-[#EDF0FE] py-20">
-        <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-8">
-          {label && <p className="text-[#5AC0BE]">{label}</p>}
-          <div
-            className={`flex flex-col md:flex-row md:items-center md:justify-between ${
-              link || navComponent ? "md:justify-between" : "md:justify-center"
-            } mt-2`}
-          >
-            {title && (
-              <h2
-                className={`text-4xl md:text-[2.875rem] font-azonix text-[#000222] leading-snug ${
-                  link || navComponent ? "max-w-[25ch]" : ""
-                }`}
-              >
-                {title}
-              </h2>
-            )}
-            {navComponent
-              ? navComponent
-              : link && (
-                  <PrimaryLink href="/speakers" className="px-5 py-3.5 ">
-                    {linkLabel}
-                  </PrimaryLink>
-                )}
-          </div>
-        </div>
-
-        {/* Speaker Cards */}
-        <div className="container mx-auto px-5 sm:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 mb-5 xl:px-8">
-          {speakers.map((speaker, index) => (
-            <SpeakerCard key={index} speaker={speaker} selectAction={selectAction}  />
-            // <div
-            //   key={index}
-            //   className="bg-white group hover:border-2 active:border-2 focus:border-2 border-[#4461EF] rounded-2xl overflow-hidden shadow hover:shadow-lg  active:shadow-lg  focus:shadow-lg  transition p-5.5"
-            // >
-            //   <div
-            //     {...(selectAction
-            //       ? { onClick: () => selectAction(speaker) }
-            //       : {})}
-            //     className="w-full object-cover rounded-2xl overflow-hidden relative"
-            //   >
-            //     <img
-            //       src={speaker.image}
-            //       alt={speaker.name}
-            //       className="w-full object-cover rounded-2xl group-hover:scale-[1.1] group-focus:scale-[1.1] group-active:scale-[1.1] "
-            //     />
-            //     <div className="absolute bottom-5 hidden group-hover:flex group-active:flex group-focus:flex items-center gap-2 mx-auto w-full left-0 right-0 justify-center">
-            //       {socials.map((social, i) => (
-            //         <CircularLink
-            //           key={i}
-            //           href={social.link}
-            //           target="_blank"
-            //           className="block p-2 min-w-[38px]"
-            //         >
-            //           {social.icon}
-            //         </CircularLink>
-            //       ))}
-            //     </div>
-            //   </div>
-            //   <div className="p-4 text-center">
-            //     <h3 className="text-lg font-semibold font-gilroy-bold text-[#000]">
-            //       {speaker.name}
-            //     </h3>
-            //     <p className="text-sm text-gray-600">{speaker.title}</p>
-            //     <button className="mt-3 bg-[#7F529F] text-[#ffffff] leading-normal text-sm px-7 py-1.5 rounded-full">
-            //       SPEAKER
-            //     </button>
-            //   </div>
-            // </div>
+    <div
+      className="bg-white group hover:border-2 active:border-2 focus:border-2 border-[#4461EF] rounded-2xl overflow-hidden shadow hover:shadow-lg  active:shadow-lg  focus:shadow-lg  transition p-5.5"
+    >
+      <div
+        {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
+        className="w-full object-cover rounded-2xl overflow-hidden relative"
+      >
+        <img
+          src={speaker?.image||"/images/user_placeholder.jpeg"}
+          alt={speaker?.name||"speaker"}
+          className="w-full object-cover rounded-2xl group-hover:scale-[1.1] group-focus:scale-[1.1] group-active:scale-[1.1] "
+        />
+        <div className="absolute bottom-5 hidden group-hover:flex group-active:flex group-focus:flex items-center gap-2 mx-auto w-full left-0 right-0 justify-center">
+          {socials.map((social, i) => (
+            <CircularLink
+              key={i}
+              href={social.link}
+              target="_blank"
+              className="block p-2 min-w-[38px]"
+            >
+              {social.icon}
+            </CircularLink>
           ))}
         </div>
-      </section>
-    )
+      </div>
+      <div className="p-4 text-center">
+        <h3 className="text-lg font-semibold font-gilroy-bold text-[#000]">
+          {speaker?.name}
+        </h3>
+        <p className="text-sm text-gray-600">{speaker.title}</p>
+        <button className="mt-3 bg-[#7F529F] text-[#ffffff] leading-normal text-sm px-7 py-1.5 rounded-full">
+          SPEAKER
+        </button>
+      </div>
+    </div>
   );
 };
 
-export default MemberList;
+export default SpeakerCard;

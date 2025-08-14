@@ -121,7 +121,7 @@ export const SponsorList = () => {
             {sponsors.map((sponsor, idx) => (
               <SwiperSlide key={idx}>
                 {/* <div className="flex items-center justify-center bg-white shadow rounded-xl py-4 px-6 hover:shadow-md transition"> */}
-                <div className="box-border flex flex-row justify-center items-center p-[26px] w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0">
+                <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0">
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
@@ -146,14 +146,14 @@ export const SponsorList = () => {
             }}
             speed={3000} // control smoothness
             breakpoints={{
-              640: { slidesPerView: 3 },
+              640: { slidesPerView: 1 },
               768: { slidesPerView: 4 },
               1024: { slidesPerView: 7 },
             }}
           >
             {sponsors.map((sponsor, idx) => (
               <SwiperSlide key={idx}>
-                <div className="box-border flex flex-row justify-center items-center p-[26px] w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
+                <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
