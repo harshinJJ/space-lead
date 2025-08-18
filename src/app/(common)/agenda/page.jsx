@@ -10,7 +10,7 @@ export default function Agenda() {
       <section className=" bg-[#1c192d] bg-center bg-cover py-20">
         <EventAgenda />
       </section>
-      <Marquee />
+      {/* <Marquee /> */}
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}

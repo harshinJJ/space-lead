@@ -5,7 +5,7 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="bg-[url('/images/backgrounds/video_preview_bg.png')] bg-cover bg-center py-10 sm:py-20 px-5 sm:px-0">
+    <section className="bg-[url('/images/backgrounds/video_preview_bg.png')] bg-cover bg-center py-10 lg:pt-23 lg:pb-16.75 px-5 sm:px-0">
       <div className="container mx-auto flex justify-center items-center w-full relative rounded-xl overflow-hidden p-2">
         <div className="relative w-full aspect-video md:aspect-[21/9] max-w-[89rem] rounded-xl overflow-hidden">
           {!isPlaying && !embedUrl ? (

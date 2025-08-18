@@ -5,7 +5,7 @@ export default function ProfessionalRegistration() {
   return (
     <main>
       <RegistrationBlock type="professional" />
-      <Marquee/>
+      {/* <Marquee/> */}
     </main>
   );
 }

@@ -10,7 +10,7 @@ export default function ContactUs() {
       {/* map pending */}
       <ContactForm />
       <ContactInfo />
-      <Marquee />
+      {/* <Marquee /> */}
     </main>
   );
 }

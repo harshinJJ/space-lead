@@ -70,7 +70,7 @@ const TitleBlock = ({ title }) => {
       <div className="container z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col lg:flex-row gap-10 items-center justify-between">
           <div className="flex-2 flex flex-col gap-5 font-gilroy-med">
-            <PrimaryButton className="gap-1 px-3 w-fit">
+            <PrimaryButton className="gap-1 px-3 pe-4.75 w-fit">
               <svg
                 width="22"
                 height="22"
@@ -109,7 +109,7 @@ const TitleBlock = ({ title }) => {
               {title}
             </h4>
             <div className="flex flex-col lg:flex-row gap-x-10 gap-y-4">
-              {tags.map(({ icon, label }, i) => (
+              {/* {tags.map(({ icon, label }, i) => (
                 <div
                   key={i}
                   className="flex items-center gap-2 py-1 px-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit"
@@ -117,7 +117,19 @@ const TitleBlock = ({ title }) => {
                   {icon}
                   <span className="lg:text-nowrap">{label}</span>
                 </div>
-              ))}
+              ))} */}{" "}
+              <div className="flex items-center py-1 px-4.5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit">
+                {tags[0].icon}
+                <span className="md:text-nowrap text-lg text-[#90D3D0]">
+                  {tags[0].label}
+                </span>
+              </div>
+              <div className="flex items-center py-1 ps-2.5 pe-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit">
+                {tags[1].icon}
+                <span className="md:text-nowrap text-[#90D3D0]">
+                  {tags[1].label}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -138,7 +150,9 @@ const TitleBlock = ({ title }) => {
                     <h5 className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
                       {String(value).padStart(2, "0")}
                     </h5>
-                    <p className="text-xs lg:text-sm 2xl:text-lg capitalize">{key}</p>
+                    <p className="text-xs lg:text-sm 2xl:text-lg capitalize">
+                      {key}
+                    </p>
                   </div>
                 ))}
               </div>

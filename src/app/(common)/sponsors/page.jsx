@@ -40,7 +40,7 @@ export default function Sponsors() {
       <SponsorBlock sponsors={sponsors} label={"Our Sponsors"} title={"Gold Sponsored"} />
       <SponsorBlock sponsors={sponsors.slice(10)} 
       containerClass={"bg-[#FBFCFE] lg:pb-31.75 lg:pt-24"} title={"Our Sponsored Company"} />
-      <Marquee />
+      {/* <Marquee /> */}
     </main>
   );
 }

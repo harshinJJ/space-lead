@@ -43,7 +43,7 @@ export default function Home() {
       <WhyAttend>
         <EventLists />
       </WhyAttend>
-      <Marquee />
+      {/* <Marquee /> */}
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         // embedUrl={"https://www.youtube.com/embed/sample"}

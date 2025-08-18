@@ -7,7 +7,7 @@ export default function Registration() {
   return (
     <main >
       <PassSelector/>
-      <Marquee/>
+      {/* <Marquee/> */}
     </main>
   );
 }

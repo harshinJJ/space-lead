@@ -13,7 +13,7 @@ const About = () => {
       <WhyAttend>
         <LatestInfo/>
       </WhyAttend>
-      <Marquee />
+      {/* <Marquee /> */}
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}

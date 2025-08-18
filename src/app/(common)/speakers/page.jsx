@@ -12,7 +12,7 @@ export default function Speakers() {
     <main>
       {/* speakers block pending */}
       <MemberPreview/>
-      <Marquee />
+      {/* <Marquee /> */}
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}

@@ -5,7 +5,7 @@ export default function Exhibitor() {
   return (
     <main>
       <ExhibitorBlock/>
-      <Marquee />
+      {/* <Marquee /> */}
     </main>
   );
 }

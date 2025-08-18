@@ -72,9 +72,9 @@ const HomeBanner = ({ banner }) => {
         </div>
       )}
       <div className="container mx-auto px-5 sm:px-0">
-        <div className="flex flex-col md:flex-row gap-10 items-center justify-between">
+        <div className="flex flex-col md:flex-row gap-10 items-end justify-between">
           <div className="flex-2 flex flex-col gap-5 font-gilroy-med">
-            <PrimaryButton className="gap-1 px-3 w-fit">
+            <PrimaryButton className="gap-1 px-3 pe-4.75 w-fit">
               <svg
                 width="22"
                 height="22"
@@ -107,22 +107,27 @@ const HomeBanner = ({ banner }) => {
                   strokeLinejoin="round"
                 />
               </svg>
-              Get Ticket
+              <span>Register Now</span>
             </PrimaryButton>
-            <h4 className="font-azonix md:text-[2.5rem] leading-[2.5rem]">
+            <h4 className="font-azonix md:text-[2.5rem] tracking-[-1.6px] leading-[2.5rem]">
               INTERNATIONAL AEROSPACE MEDICINE{" "}
               <span className="text-[#5AC0BE]">CONFERENCE 2025</span>
             </h4>
             <div className="flex flex-col md:flex-row gap-x-10 gap-y-4">
-              {tags.map(({ icon, label }, i) => (
+              {/* {tags.map(({ icon, label }, i) => ( */}
                 <div
-                  key={i}
-                  className="flex items-center gap-2 py-1 px-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit"
+                  className="flex items-center py-1 px-4.5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit"
                 >
-                  {icon}
-                  <span className="md:text-nowrap">{label}</span>
+                  {tags[0].icon}
+                  <span className="md:text-nowrap text-lg text-[#90D3D0]">{tags[0].label}</span>
                 </div>
-              ))}
+                <div
+                  className="flex items-center py-1 ps-2.5 pe-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit"
+                >
+                  {tags[1].icon}
+                  <span className="md:text-nowrap text-[#90D3D0]">{tags[1].label}</span>
+                </div>
+              {/* ))} */}
             </div>
           </div>
 

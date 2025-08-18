@@ -21,10 +21,18 @@ const Header = () => {
     { title: "Register Now", url: "/registration", type: "button" },
   ];
 
-  const pageLinks=[
+  const pageLinks = [
     ...navLinks,
-    { title: "Student Registration", url: "/registration/student", type: "link" },
-    { title: "Professional Registration", url: "/registration/professional", type: "link" },
+    {
+      title: "Student Registration",
+      url: "/registration/student",
+      type: "link",
+    },
+    {
+      title: "Professional Registration",
+      url: "/registration/professional",
+      type: "link",
+    },
   ];
 
   useEffect(() => {
@@ -62,7 +70,7 @@ const Header = () => {
         } transition-all duration-300 ease-in-out`}
       >
         <div
-          className={`py-2 lg:py-9 w-full container mx-auto left-0 right-0 top-0 px-5 sm:px-0`}
+          className={`py-2 w-full container mx-auto left-0 right-0 top-0 px-5 sm:px-0 ${hasScrolled?"lg:py-9":"lg:py-14"}`}
         >
           <nav
             aria-label="Main Navigation"
@@ -100,7 +108,7 @@ const Header = () => {
                 )}
               </svg>
             </button>
-            <ul className="hidden lg:flex flex-col md:flex-row items-center justify-between gap-11 py-2.5 ps-8.5 pe-4.5 rounded-full md:bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
+            <ul className="hidden lg:flex flex-col md:flex-row items-center justify-between gap-11.5 py-2.5 ps-8.5 pe-4.5 rounded-full md:bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
               {navLinks.map((link, i) => (
                 <li key={i}>
                   {link.type == "button" ? (
@@ -109,9 +117,7 @@ const Header = () => {
                     </PrimaryLink>
                   ) : (
                     <Link
-                      className={`relative 
-                       
-                      `}
+                      className={`relative text-sm`}
                       href={link.url || "#"}
                     >
                       {link.title}

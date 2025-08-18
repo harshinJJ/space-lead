@@ -34,7 +34,7 @@ export default function SponsorsBlock() {
 export const SponsorContent = () => {
   return (
     <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5">
-      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-8 md:gap-20">
+      <div className="container lg:px-12.75 mx-auto flex flex-col lg:flex-row items-start gap-8 md:gap-20">
         {/* Image */}
         <div className="w-full lg:w-1/2 lg:max-w-[44rem] flex justify-center">
           <img
@@ -52,7 +52,7 @@ export const SponsorContent = () => {
           <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-raleway mb-14">
             Why sponsor
           </h2>
-          <p className="font-poppins text-lg leading-[150%] lg:max-w-9/10 mb-10">
+          <p className="font-poppins text-lg leading-[150%]  mb-10">
             Sponsoring the Space Lead ’25 Conference positions your organization
             at the forefront of space innovation. Engage with top-level
             decision-makers, policymakers, and global disruptors. Build
@@ -62,7 +62,7 @@ export const SponsorContent = () => {
           </p>
           <PrimaryDualTextLink
             href="#"
-            className="px-7.5 py-6"
+            className="px-7.5 py-6 text-lg tracking-[1px] [&span]:font-[600]"
             initialText="View All Sponsors"
             hoverText="Join The Event"
           />

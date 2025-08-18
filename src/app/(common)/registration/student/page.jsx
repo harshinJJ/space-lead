@@ -5,7 +5,7 @@ export default function StudentRegistration() {
   return (
     <main>
       <RegistrationBlock type="student"/>
-      <Marquee/>
+      {/* <Marquee/> */}
     </main>
   );
 }
