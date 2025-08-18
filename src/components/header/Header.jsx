@@ -21,6 +21,12 @@ const Header = () => {
     { title: "Register Now", url: "/registration", type: "button" },
   ];
 
+  const pageLinks=[
+    ...navLinks,
+    { title: "Student Registration", url: "/registration/student", type: "link" },
+    { title: "Professional Registration", url: "/registration/professional", type: "link" },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       if (pathname == "/") {
@@ -47,7 +53,7 @@ const Header = () => {
   };
 
   const activeLinkTitle =
-    navLinks.find((link) => link.url === pathname)?.title || "";
+    pageLinks.find((link) => link.url === pathname)?.title || "";
   return (
     <header className="text-white ">
       <section

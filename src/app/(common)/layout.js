@@ -1,4 +1,13 @@
-import { Geist, Geist_Mono, Open_Sans,Raleway,Poppins } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Open_Sans,
+  Raleway,
+  Poppins,
+  Inter,
+  Encode_Sans_Semi_Condensed,
+  Outfit,
+} from "next/font/google";
 import "../globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
@@ -27,6 +36,23 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const encodeSans = Encode_Sans_Semi_Condensed({
+  variable: "--font-encode-sans-semi-condensed",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "SpaceLead",
 };
@@ -34,10 +60,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} antialiased`}>
-        <Header/>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} ${inter.variable} ${encodeSans.variable} ${outfit.variable} antialiased`}
+      >
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

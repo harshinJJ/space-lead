@@ -2,15 +2,29 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-const PassSelectionCard = ({ type, icon, onClick }) => (
-  <div
-    className="flex flex-col items-center justify-center bg-gradient-to-br from-cyan-500/60 to-purple-700/60 rounded-xl shadow-lg p-6 w-full max-w-xs cursor-pointer hover:scale-105 transition-transform duration-200"
-    onClick={onClick}
-  >
-    <div className="mb-4">{icon}</div>
-    <h2 className="text-white text-xl font-bold mb-2">{type} Pass</h2>
-    <button className="bg-teal-400 text-white px-4 py-2 rounded-full text-sm font-semibold mt-2 hover:bg-teal-500">CLICK HERE</button>
-  </div>
-);
+const PassSelectionCard = ({ type, icon, onClick, gradient = "secondary" }) => {
+  const gradientBg =
+    gradient === "primary"
+      ? "bg-gradient-to-b from-[#7F529F75] to-[#2E1D3975]"
+      : "bg-gradient-to-b from-[#5AC0BE75] to-[#2A5A5975]"
+  return (
+    <div
+      className={`flex w-full md:w-fit font-inter flex-col border-1 border-white backdrop-blur-[1.85px] items-center justify-center ${gradientBg} rounded-4xl shadow-lg py-13.5 md:px-22 px-10 w-fit cursor-pointer hover:scale-105 transition-transform duration-200`}
+      onClick={onClick}
+    >
+      <div className="flex flex-col items-center justify-center md:max-w-[163px] w-full text-center] ">
+        <div className="mb-4 aspect-square h-auto bg-white rounded-full flex items-center justify-center border-4 border-[#00000030] xl:max-w-18 p-2.5 max-w-16 ">
+          {icon}
+        </div>
+        <h2 className="text-white text-2xl mb-2 whitespace-nowrap">
+          {type} Pass
+        </h2>
+        <button className="bg-[#00BAB3] w-full xl:min-w-[163px] text-white px-4 py-[0.90625rem] rounded-full text-sm  mt-2 hover:bg-teal-600">
+          CLICK HERE
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default PassSelectionCard;

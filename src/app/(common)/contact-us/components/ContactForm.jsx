@@ -1,14 +1,21 @@
-"use client"
+"use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-}
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
-    <section className="bg-white px-5 sm:px-0 lg:py-32.75 py-20 w-full">
+    <section className="bg-white bg-[url('/images/backgrounds/contact_form_bg.png')] bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 lg:py-32.75 py-20 w-full">
       <div className="container mx-auto">
         <p className="text-secondary text-2xl">Get Started</p>
         <div className="flex justify-between items-center lg:pe-69.5 mb-8">
@@ -99,25 +106,35 @@ const handleSubmit = (e) => {
             </a>
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           <div className="grid grid-cols-1 text-2xl md:grid-cols-3 gap-6">
             <div>
-              <label className="block font-medium ">
-                Your Name
-              </label>
+              <label className="block font-medium ">Your Name</label>
               <input
                 type="text"
+                maxLength={100}
+                {...register("name", { required: "Name is required" })}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
+              {errors.name && (
+                <p className="text-red-500 text-lg">{errors.name.message}</p>
+              )}
             </div>
             <div>
-              <label className="block font-medium ">
-                Email Address
-              </label>
+              <label className="block font-medium ">Email Address</label>
               <input
                 type="email"
+                maxLength={100}
+                {...register("email", {
+                  required: "Email is required",
+                  validate: (value) =>
+                    /^\S+@\S+\.\S+$/.test(value) || "Email is invalid",
+                })}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
+              {errors.email && (
+                <p className="text-red-500 text-lg">{errors.email.message}</p>
+              )}
             </div>
             <div>
               <label className="block font-medium ">
@@ -125,18 +142,36 @@ const handleSubmit = (e) => {
               </label>
               <input
                 type="tel"
+                {...register("phone", {
+                  validate: (value) =>
+                    !value ||
+                    /^\+?\d+$/.test(value) ||
+                    "Phone number is invalid",
+                })}
+                maxLength={15}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
+              {errors.phone && (
+                <p className="text-red-500 text-lg">{errors.phone.message}</p>
+              )}
             </div>
           </div>
           <div>
-            <label className="block text-2xl ">
-              Message
-            </label>
+            <label className="block text-2xl ">Message</label>
             <textarea
               rows={4}
+              {...register("message", {
+                required: "Message is required",
+                maxLength: {
+                  value: 1000,
+                  message: "Message cannot exceed 1000 characters",
+                },
+              })}
               className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent resize-none"
             />
+            {errors.message && (
+              <p className="text-red-500 text-lg">{errors.message.message}</p>
+            )}
           </div>
           <div className="flex items-center justify-between mt-6">
             <PrimaryButton className="w-fit  px-7.5 py-[1.0625rem] items-center gap-2 ">

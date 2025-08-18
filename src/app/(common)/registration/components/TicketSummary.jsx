@@ -2,8 +2,8 @@
 import React from "react";
 
 const TicketSummary = ({ price = "SAR.1,369.00" }) => (
-  <div className="bg-gradient-to-br from-purple-700/10 to-cyan-500/10 rounded-xl p-4 mt-4 w-full max-w-md mx-auto shadow">
-    <h3 className="text-lg font-bold text-purple-700 mb-2">Your Ticket Summary</h3>
+  <div className="bg-gradient-to-b from-[#F4E4FF] to-[#5AC0BE] rounded-[1.25rem] py-5 px-6 mt-5 w-full  mx-auto">
+    <h3 className="text-lg font-bold mb-2">Your Ticket Summary</h3>
     <div className="flex justify-between items-center mb-2">
       <span className="font-semibold">SPACE LEAD 2025</span>
       <span className="text-teal-500 font-bold">{price}</span>
