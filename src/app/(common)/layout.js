@@ -7,6 +7,7 @@ import {
   Inter,
   Encode_Sans_Semi_Condensed,
   Outfit,
+  DM_Sans,
 } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/header/Header";
@@ -53,6 +54,11 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "SpaceLead",
 };
@@ -61,7 +67,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} ${inter.variable} ${encodeSans.variable} ${outfit.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} ${inter.variable} ${encodeSans.variable} ${outfit.variable} ${dmSans.variable} antialiased`}
       >
         <Header />
         {children}

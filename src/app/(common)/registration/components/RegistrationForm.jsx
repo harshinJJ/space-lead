@@ -6,28 +6,23 @@ import TicketSummary from "./TicketSummary";
 import FormInput from "@/components/common/FormInput";
 import Label from "@/components/common/Label";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import PhoneInput from "@/components/common/PhoneInput";
 
 const titles = ["Mr.", "Ms.", "Dr.", "Prof."];
 
-export default function RegistrationForm({
-  type,
-  paid,
-  onChange,
-  session = "",
-  defaultValues = {},
-}) {
+export default function RegistrationForm({ type, paid, session = {},onSuccess }) {
   const {
     control,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ defaultValues });
+  } = useForm();
 
-  // Watch all fields for live badge update
   const formData = watch();
 
   const onSubmit = (data) => {
-    console.log(data);
+    onSuccess&&onSuccess(true);
+    window?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -85,6 +80,7 @@ export default function RegistrationForm({
                     name="firstName"
                     control={control}
                     rules={{ required: "First name is required" }}
+                    defaultValue={""}
                     render={({ field }) => (
                       <FormInput {...field} placeholder="First name" />
                     )}
@@ -103,6 +99,7 @@ export default function RegistrationForm({
                   name="lastName"
                   control={control}
                   rules={{ required: "Last name is required" }}
+                  defaultValue={""}
                   render={({ field }) => (
                     <FormInput {...field} placeholder="Last name" />
                   )}
@@ -119,16 +116,18 @@ export default function RegistrationForm({
                 <Controller
                   name="phone"
                   control={control}
+                  defaultValue={""}
                   rules={{
                     required: "Phone number is required",
                     pattern: {
                       value: /^\+\d{1,3}\d{7,}$/,
                       message:
-                        "Enter a valid phone number with country code (e.g. +966...)",
+                        "Enter a valid phone number ",
                     },
                   }}
                   render={({ field }) => (
-                    <FormInput {...field} placeholder="Phone number" />
+                    // <FormInput {...field} placeholder="Phone number" />
+                    <PhoneInput {...field} placeholder="Phone number" />
                   )}
                 />
                 {errors.phone && (
@@ -142,6 +141,7 @@ export default function RegistrationForm({
                 <Label required={true}>Email</Label>
                 <Controller
                   name="email"
+                  defaultValue={""}
                   control={control}
                   rules={{
                     required: "Email is required",
@@ -168,6 +168,7 @@ export default function RegistrationForm({
                     <Label required={true}>Institution Name</Label>
                     <Controller
                       name="institution"
+                      defaultValue={""}
                       control={control}
                       rules={{ required: "Institution name is required" }}
                       render={({ field }) => (
@@ -184,6 +185,7 @@ export default function RegistrationForm({
                     <Label required={true}>Student ID</Label>
                     <Controller
                       name="studentId"
+                      defaultValue={""}
                       control={control}
                       rules={{ required: "Student ID is required" }}
                       render={({ field }) => (
@@ -206,6 +208,7 @@ export default function RegistrationForm({
                     <Label required={true}>Job Title</Label>
                     <Controller
                       name="jobTitle"
+                      defaultValue={""}
                       control={control}
                       rules={{ required: "Job title is required" }}
                       render={({ field }) => (
@@ -222,6 +225,7 @@ export default function RegistrationForm({
                     <Label required={true}>Company Name*</Label>
                     <Controller
                       name="company"
+                      defaultValue={""}
                       control={control}
                       rules={{ required: "Company name is required" }}
                       render={({ field }) => (
@@ -239,7 +243,7 @@ export default function RegistrationForm({
 
               <PrimaryButton
                 type="submit"
-                className="gap-2.5 text-lg col-span-2 w-fit px-7.5"
+                className="gap-2.5 text-lg col-span-2 w-fit px-7.5 font-dm-sans font-light tracking-[1px]"
               >
                 <span>Complete Your Registration </span>
 
@@ -258,16 +262,20 @@ export default function RegistrationForm({
               </PrimaryButton>
             </form>
           </div>
-          {session === "workshop" && <TicketSummary />}
+          {session?.price > 0 && (
+            <TicketSummary price={session.price} currency={session.currency} />
+          )}
         </div>
         <div className="w-full md:w-80 lg:w-86.5 flex-shrink-0 flex flex-col items-center justify-start">
           <BadgePreview
             name={
-              formData.firstName
+              (formData.firstName||formData.lastName)
                 ? `${formData.firstName} ${formData.lastName || ""}`
                 : undefined
             }
-            category="STUDENT"
+            category={type}
+            title={formData.jobTitle || ""}
+            organisation={formData.company || ""}
             badgeId={formData.studentId}
           />
         </div>

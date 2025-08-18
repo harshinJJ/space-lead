@@ -32,7 +32,7 @@ const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
           key={session.key}
           session={session}
           isSelected={selected === session.key}
-          onSelect={() => onSelect(session.key)}
+          onSelect={() => onSelect(session)}
         />
       ))}
     </div>

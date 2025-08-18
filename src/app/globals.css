@@ -26,6 +26,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "Gilroy-Black";
+  src: url("../../public/fonts/Gilroy-Black.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme inline {
   --breakpoint-3xl: 1728px;
@@ -44,9 +51,11 @@
   --font-inter: var(--font-inter);
   --font-encode-sans-semi-condensed: var(--font-encode-sans-semi-condensed);
   --font-outfit: var(--font-outfit);
+  --font-dm-sans: var(--font-dm-sans);
   --font-azonix: "Azonix", sans-serif;
   --font-gilroy-med: "Gilroy-Medium", sans-serif;
   --font-gilroy-bold: "Gilroy-Bold", sans-serif;
+  --font-gilroy-black: "Gilroy-Black", sans-serif;
 }
 
 @layer utilities {
