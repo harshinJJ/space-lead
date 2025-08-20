@@ -35,8 +35,9 @@
 }
 
 @theme inline {
-  --breakpoint-3xl: 1728px;
-  --breakpoint-4xl: 1920px;
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 108rem;
+  /* --breakpoint-4xl: 1920px; */
 
   --color-primary: #131f54;
   --color-secondary: #5ac0be;
@@ -56,12 +57,42 @@
   --font-gilroy-med: "Gilroy-Medium", sans-serif;
   --font-gilroy-bold: "Gilroy-Bold", sans-serif;
   --font-gilroy-black: "Gilroy-Black", sans-serif;
+
+  --animate-float: float-up-down 1s ease-in-out infinite;
 }
 
 @layer utilities {
+  .container-fluid {
+    width: 100%;
+    max-width: 99.5625rem;
+    padding-left: clamp(1rem, 5vw, 2rem);
+    padding-right: clamp(1rem, 5vw, 2rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (width >= 40rem) {
+    .container-fluid {
+      width: 80%;
+    }
+  }
   @media (width >= 108rem) {
     .container {
       max-width: 99.5625rem;
+    }
+    .container-fluid {
+      width: 100%;
+    }
+  }
+
+  @keyframes float-up-down {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
     }
   }
 

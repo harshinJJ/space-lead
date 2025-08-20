@@ -113,9 +113,11 @@ export const SponsorList = () => {
             }}
             speed={3000} // control smoothness
             breakpoints={{
-              640: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 7 },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
+              1280: { slidesPerView: 5 },
+              1400: { slidesPerView: 6 },
             }}
           >
             {sponsors.map((sponsor, idx) => (
@@ -146,9 +148,11 @@ export const SponsorList = () => {
             }}
             speed={3000} // control smoothness
             breakpoints={{
-              640: { slidesPerView: 1 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 7 },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
+              1280: { slidesPerView: 5 },
+              1400: { slidesPerView: 6 },
             }}
           >
             {sponsors.map((sponsor, idx) => (

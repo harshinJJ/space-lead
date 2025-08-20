@@ -171,18 +171,18 @@ const AboutInfo = () => {
   return (
     <section
       id="about"
-      className=" bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 md:pt-32.5 pb-20 md:pb-33"
+      className=" bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33"
     >
-      <div className="container mx-auto px-5 sm:px-0 flex flex-col xl:flex-row gap-5 md:gap-10 2xl:gap-32.5 md:ps-24.5">
+      <div className="container mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 xl:gap-14.75 xl:ps-24.5 lg:ps-15">
         {/* image */}
-        <div className="flex flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative">
-          
+        <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42%] xl:pe-18">
           <img
-            className="md:max-w-[90%]"
+            className="md:max-w-[90%] max-w-[80%]"
             src="/images/about_section_img.png"
             alt=""
-          /><div className="md:absolute md:left-0 max-w-[25ch] transform lg:translate-x-[38%]  xl:translate-x-[-38%] rounded-[2rem] text-white bg-linear-to-t from-[#7F529F] to-[#000000] opacity-90 p-10 flex flex-col gap-5">
-            <div className="bg-[#5AC0BE] aspect-square w-18.5 rounded-full flex items-center justify-center">
+          />
+          <div className="absolute right-0 bottom-0 md:bottom-[unset] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[25ch] md:max-w-[22ch] max-w-[20ch] transform md:translate-x-[38%] lg:translate-x-[-25%] md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-[#7F529F] to-[#000000] opacity-90 xl:p-10 p-6 flex flex-col gap-5">
+            <div className="bg-[#5AC0BE] aspect-square xl:w-18.5 w-15 rounded-full flex items-center justify-center">
               <svg
                 width="27"
                 height="26"
@@ -206,28 +206,36 @@ const AboutInfo = () => {
         </div>
 
         {/* content */}
-        <div className=" text-lg flex-3 flex flex-col gap-7.5 px-5 md:px-0">
-          <h5 className="text-[#5AC0BE]">{data.name}</h5>
-          <h3 className="text-[#131F54] md:max-w-[90%] 2xl:leading-[3rem] uppercase font-azonix lg:text-3xl 2xl:text-[2.5rem]">
+        <div className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
+          <h5 className="text-[#5AC0BE]  xl:text-lg text-base">{data.name}</h5>
+          <h3 className="text-[#131F54] lg:max-w-[90%] 2xl:leading-[3rem] uppercase font-azonix text-lg md:text-2xl xl:text-3xl 2xl:text-[2.5rem]">
             {data.title}
           </h3>
-          <p className="text-[#737373] xl:max-w-[80%]">{data.description}</p>
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-10 xl:gap-21 ">
+          <p className="text-[#737373] xl:max-w-[80%] xl:text-lg text-base">
+            {data.description}
+          </p>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 lg:gap-10 2xl:gap-21.25 py-5 lg:py-0">
             {data.vision.map((vision, i) => (
               <div
-                className="flex flex-col lg:flex-row items-center gap-2 xl:gap-6"
+                className="flex flex-col xs:flex-row items-center gap-2 xl:gap-6"
                 key={i}
               >
                 <div className="bg-[#5AC0BE] aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-18.5 rounded-full flex items-center justify-center">
                   <div className="lg:scale-75 2xl:scale-100">{vision.icon}</div>
                 </div>
-                <p className="max-w-[30ch] xl:min-w-[24ch] text-center lg:text-start break-words">
+                <p
+                  className={`${
+                    vision.label.length > 50
+                      ? "2xl:max-w-[30ch] 2xl:min-w-[24ch]"
+                      : ""
+                  } text-lg 2xl:text-lg lg:text-sm text-center xs:text-start break-words`}
+                >
                   {vision.label}
                 </p>
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
+          <div className="hidden xl:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
             <div className="flex flex-col justify-center">
               <p className="text-secondary uppercase text-xs leading-[2.5rem]">
                 Features
@@ -259,6 +267,35 @@ const AboutInfo = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="px-10 sm:px-0  container mt-10  mx-auto xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
+        <div className="flex flex-col justify-center">
+          <p className="text-secondary uppercase text-xs leading-[2.5rem]">
+            Features
+          </p>
+          <h4 className="text-[#131F54] font-azonix text-2xl">Our Feature</h4>
+        </div>
+        {data.features.map((feature, i) => (
+          <div
+            key={i}
+            className="group flex items-center gap-2.5 border border-[#F4F4F4] px-2.5 py-5 bg-white hover:bg-secondary focus:bg-secondary active:bg-secondary transition-all duration-700"
+          >
+            <div className="">
+              {/* {feature.icon} */}
+              {React.cloneElement(feature.icon, {
+                className:
+                  "text-secondary group-hover:text-white group-focus:text-white group-active:text-white transition-colors duration-700",
+                // stroke: "currentColor",
+              })}
+            </div>
+            <div className="">
+              <h5 className="text-primary text-sm">{feature.title}</h5>
+              <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-xs leading-4.5">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

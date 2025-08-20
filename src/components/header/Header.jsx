@@ -65,22 +65,22 @@ const Header = () => {
   return (
     <header className="text-white ">
       <section
-        className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] via-primary to-[#0a1316]  lg:bg-none ${
-          hasScrolled ? " lg:bg-[#00000080]" : ""
+        className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] via-primary to-[#0a1316]  xl:bg-none ${
+          hasScrolled ? " xl:bg-[#00000080]" : ""
         } transition-all duration-300 ease-in-out`}
       >
         <div
-          className={`py-2 w-full container mx-auto left-0 right-0 top-0 px-5 sm:px-0 ${hasScrolled?"lg:py-9":"lg:py-14"}`}
+          className={`py-2 w-full container mx-auto left-0 right-0 top-0 px-5 sm:px-0 ${hasScrolled?"xl:py-9":"xl:py-14"}`}
         >
           <nav
             aria-label="Main Navigation"
-            className="flex relative flex-col lg:flex-row justify-between items-center"
+            className="flex relative flex-col xl:flex-row justify-between items-center"
           >
             <a href="/" className="logo">
               <img src="/logo.png" alt="" />
             </a>
             <button
-              className=" absolute left-0 mx-auto top-0 bottom-0 lg:hidden focus:outline-none"
+              className=" absolute left-0 mx-auto top-0 bottom-0 xl:hidden focus:outline-none"
               onClick={toggleMenu}
               aria-label="Toggle Menu"
             >
@@ -108,7 +108,7 @@ const Header = () => {
                 )}
               </svg>
             </button>
-            <ul className="hidden lg:flex flex-col md:flex-row items-center justify-between gap-11.5 py-2.5 ps-8.5 pe-4.5 rounded-full md:bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
+            <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between gap-11.5 py-2.5 ps-8.5 pe-4.5 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
               {navLinks.map((link, i) => (
                 <li key={i}>
                   {link.type == "button" ? (
@@ -133,7 +133,7 @@ const Header = () => {
         </div>
       </section>
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-[#0a1316] z-40 lg:hidden transform ${
+        className={`fixed top-0 left-0 w-full h-full bg-[#0a1316] z-40 xl:hidden transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >

@@ -1,10 +1,11 @@
 import React from "react";
 import { CircularLink } from "../buttons/CircularButton";
 
-const SpeakerCard = ({speaker={},selectAction}) => {
+const SpeakerCard = ({ speaker = {}, selectAction }) => {
   const socials = [
     {
       label: "facebook",
+      activeClass: "hover:!bg-[#1877F2]",
       icon: (
         <svg
           width="10"
@@ -22,23 +23,37 @@ const SpeakerCard = ({speaker={},selectAction}) => {
     },
     {
       label: "twitter",
+      activeClass:"hover:!bg-[#000000]",
       icon: (
         <svg
-          width="16"
-          height="17"
-          viewBox="0 0 16 17"
-          fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          className="bi bi-twitter-x"
+          viewBox="0 0 16 16"
         >
-          <path
-            d="M15.0353 4.47349C14.6365 5.05683 14.1543 5.55385 13.5889 5.96456C13.5948 6.0479 13.5978 6.1729 13.5978 6.33956C13.5978 7.11337 13.4847 7.8857 13.2585 8.65653C13.0323 9.42736 12.6886 10.1669 12.2273 10.8753C11.766 11.5836 11.2168 12.2101 10.5799 12.7547C9.94303 13.2994 9.17518 13.7339 8.27637 14.0583C7.37756 14.3827 6.41625 14.5449 5.39244 14.5449C3.77934 14.5449 2.30315 14.1134 0.963867 13.2503C1.1722 13.2741 1.40434 13.286 1.6603 13.286C2.99958 13.286 4.19303 12.8753 5.24065 12.0539C4.61565 12.0419 4.05613 11.85 3.56208 11.478C3.06803 11.1059 2.72875 10.6312 2.54422 10.0539C2.74065 10.0836 2.9222 10.0985 3.08887 10.0985C3.34482 10.0985 3.5978 10.0658 3.8478 10.0003C3.18113 9.86337 2.62905 9.53153 2.19155 9.00474C1.75405 8.47796 1.5353 7.86635 1.5353 7.16992V7.13421C1.94006 7.3604 2.37458 7.48242 2.83887 7.50028C2.44601 7.23837 2.13351 6.89611 1.90137 6.47349C1.66922 6.05087 1.55315 5.59254 1.55315 5.09849C1.55315 4.57468 1.68411 4.08956 1.94601 3.64314C2.66625 4.53004 3.54274 5.23986 4.57547 5.7726C5.60821 6.30534 6.71387 6.60147 7.89244 6.66099C7.84482 6.4348 7.82101 6.21456 7.82101 6.00028C7.82101 5.20266 8.10226 4.5226 8.66476 3.9601C9.22726 3.3976 9.90732 3.11635 10.7049 3.11635C11.5383 3.11635 12.2407 3.41992 12.8121 4.02706C13.4609 3.90206 14.071 3.66992 14.6424 3.33064C14.4222 4.01516 13.9996 4.54492 13.3746 4.91992C13.9282 4.8604 14.4817 4.71159 15.0353 4.47349Z"
-            fill="white"
-          />
+          <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
         </svg>
       ),
+      // icon: (
+      //   <svg
+      //     width="16"
+      //     height="17"
+      //     viewBox="0 0 16 17"
+      //     fill="none"
+      //     xmlns="http://www.w3.org/2000/svg"
+      //   >
+      //     <path
+      //       d="M15.0353 4.47349C14.6365 5.05683 14.1543 5.55385 13.5889 5.96456C13.5948 6.0479 13.5978 6.1729 13.5978 6.33956C13.5978 7.11337 13.4847 7.8857 13.2585 8.65653C13.0323 9.42736 12.6886 10.1669 12.2273 10.8753C11.766 11.5836 11.2168 12.2101 10.5799 12.7547C9.94303 13.2994 9.17518 13.7339 8.27637 14.0583C7.37756 14.3827 6.41625 14.5449 5.39244 14.5449C3.77934 14.5449 2.30315 14.1134 0.963867 13.2503C1.1722 13.2741 1.40434 13.286 1.6603 13.286C2.99958 13.286 4.19303 12.8753 5.24065 12.0539C4.61565 12.0419 4.05613 11.85 3.56208 11.478C3.06803 11.1059 2.72875 10.6312 2.54422 10.0539C2.74065 10.0836 2.9222 10.0985 3.08887 10.0985C3.34482 10.0985 3.5978 10.0658 3.8478 10.0003C3.18113 9.86337 2.62905 9.53153 2.19155 9.00474C1.75405 8.47796 1.5353 7.86635 1.5353 7.16992V7.13421C1.94006 7.3604 2.37458 7.48242 2.83887 7.50028C2.44601 7.23837 2.13351 6.89611 1.90137 6.47349C1.66922 6.05087 1.55315 5.59254 1.55315 5.09849C1.55315 4.57468 1.68411 4.08956 1.94601 3.64314C2.66625 4.53004 3.54274 5.23986 4.57547 5.7726C5.60821 6.30534 6.71387 6.60147 7.89244 6.66099C7.84482 6.4348 7.82101 6.21456 7.82101 6.00028C7.82101 5.20266 8.10226 4.5226 8.66476 3.9601C9.22726 3.3976 9.90732 3.11635 10.7049 3.11635C11.5383 3.11635 12.2407 3.41992 12.8121 4.02706C13.4609 3.90206 14.071 3.66992 14.6424 3.33064C14.4222 4.01516 13.9996 4.54492 13.3746 4.91992C13.9282 4.8604 14.4817 4.71159 15.0353 4.47349Z"
+      //       fill="white"
+      //     />
+      //   </svg>
+      // ),
     },
     {
       label: "instagram",
+      activeClass: "bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7]",
       icon: (
         <svg
           width="14"
@@ -56,6 +71,7 @@ const SpeakerCard = ({speaker={},selectAction}) => {
     },
     {
       label: "linkedin",
+      activeClass: "hover:!bg-[#0a66c2]",
       icon: (
         <svg
           width="14"
@@ -73,16 +89,14 @@ const SpeakerCard = ({speaker={},selectAction}) => {
     },
   ];
   return (
-    <div
-      className="bg-white group hover:border-2 active:border-2 focus:border-2 border-[#4461EF] rounded-2xl overflow-hidden shadow hover:shadow-lg  active:shadow-lg  focus:shadow-lg  transition p-5.5"
-    >
+    <div className="bg-white group hover:border-2 active:border-2 focus:border-2 border-[#4461EF] rounded-2xl overflow-hidden shadow hover:shadow-lg  active:shadow-lg  focus:shadow-lg  transition p-5.5">
       <div
         {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
         className="w-full object-cover rounded-2xl overflow-hidden relative"
       >
         <img
-          src={speaker?.image||"/images/user_placeholder.jpeg"}
-          alt={speaker?.name||"speaker"}
+          src={speaker?.image || "/images/user_placeholder.jpeg"}
+          alt={speaker?.name || "speaker"}
           className="w-full object-cover rounded-2xl group-hover:scale-[1.1] group-focus:scale-[1.1] group-active:scale-[1.1] "
         />
         <div className="absolute bottom-5 hidden group-hover:flex group-active:flex group-focus:flex items-center gap-2 mx-auto w-full left-0 right-0 justify-center">
@@ -91,7 +105,7 @@ const SpeakerCard = ({speaker={},selectAction}) => {
               key={i}
               href={social.link}
               target="_blank"
-              className="block p-2 min-w-[38px]"
+              className={`block p-2 min-w-[38px] ${social.activeClass}`}
             >
               {social.icon}
             </CircularLink>

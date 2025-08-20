@@ -1,5 +1,6 @@
 import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
+import ScrollBottom from "../common/ScrollBottom";
 
 const HomeBanner = ({ banner }) => {
   const remainingTime = {
@@ -72,8 +73,8 @@ const HomeBanner = ({ banner }) => {
         </div>
       )}
       <div className="container mx-auto px-5 sm:px-0">
-        <div className="flex flex-col md:flex-row gap-10 items-end justify-between">
-          <div className="flex-2 flex flex-col gap-5 font-gilroy-med">
+        <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
+          <div className="w-full flex flex-col gap-5 md:max-w-[45%] font-gilroy-med">
             <PrimaryButton className="gap-1 px-3 pe-4.75 w-fit">
               <svg
                 width="22"
@@ -109,33 +110,36 @@ const HomeBanner = ({ banner }) => {
               </svg>
               <span>Register Now</span>
             </PrimaryButton>
-            <h4 className="font-azonix md:text-[2.5rem] tracking-[-1.6px] leading-[2.5rem]">
+            <h4 className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[-1.6px] 2xl:leading-[2.5rem]">
               INTERNATIONAL AEROSPACE MEDICINE{" "}
               <span className="text-[#5AC0BE]">CONFERENCE 2025</span>
             </h4>
-            <div className="flex flex-col md:flex-row gap-x-10 gap-y-4">
+            <div className="flex flex-col lg:flex-row xl:gap-x-10 gap-2 gap-y-4">
               {/* {tags.map(({ icon, label }, i) => ( */}
-                <div
-                  className="flex items-center py-1 px-4.5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit"
-                >
+              <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit">
+                <div className="flex items-center justify-center">
                   {tags[0].icon}
-                  <span className="md:text-nowrap text-lg text-[#90D3D0]">{tags[0].label}</span>
                 </div>
-                <div
-                  className="flex items-center py-1 ps-2.5 pe-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full md:w-fit"
-                >
+                <span className="lg:text-nowrap 2xl:text-lg lg:text-sm text-xs text-[#90D3D0]">
+                  {tags[0].label}
+                </span>
+              </div>
+              <div className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit">
+                <div className="flex items-center justify-center">
                   {tags[1].icon}
-                  <span className="md:text-nowrap text-[#90D3D0]">{tags[1].label}</span>
                 </div>
+                <span className="lg:text-nowrap 2xl:text-base  text-xs text-[#90D3D0]">
+                  {tags[1].label}
+                </span>
+              </div>
               {/* ))} */}
             </div>
           </div>
 
-          <div className="flex-4 flex justify-between font-gilroy-med">
-            <div></div>
-            <div className="flex flex-col gap-6.5">
+          <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
+            <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">
-                <div className="flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-fit">
+                <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
                   Time is running out Book your ticket.
                 </div>
               </div>
@@ -154,6 +158,9 @@ const HomeBanner = ({ banner }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="relative w-full flex justify-center items-center">
+          <ScrollBottom className="absolute mx-auto top-0 bottom-0 left-0 right-0 transform 2xl:-translate-y-[100%] translate-y-[50%] animate-float" />
         </div>
       </div>
     </section>

@@ -86,16 +86,16 @@ const MemberList = ({
   return (
     speakers.length > 0 && (
       <section className="bg-[#EDF0FE] py-20">
-        <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-8">
+        <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0 xl:px-8">
           {label && <p className="text-[#5AC0BE]">{label}</p>}
           <div
-            className={`flex flex-col md:flex-row md:items-center md:justify-between ${
+            className={`flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-7.5 ${
               link || navComponent ? "md:justify-between" : "md:justify-center"
             } mt-2`}
           >
             {title && (
               <h2
-                className={`text-4xl md:text-[2.875rem] font-azonix text-[#000222] leading-snug ${
+                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix text-[#000222] 2xl:leading-snug ${
                   link || navComponent ? "max-w-[25ch]" : ""
                 }`}
               >
@@ -105,7 +105,7 @@ const MemberList = ({
             {navComponent
               ? navComponent
               : link && (
-                  <PrimaryLink href="/speakers" className="px-5 py-3.5 ">
+                  <PrimaryLink href="/speakers" className="px-5 py-3.5 text-sm lg:text-lg">
                     {linkLabel}
                   </PrimaryLink>
                 )}

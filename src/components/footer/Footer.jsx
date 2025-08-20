@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import ScrollTop from "../common/ScrollTop";
 
 const Footer = () => {
   const quickLinks = [
@@ -11,13 +12,109 @@ const Footer = () => {
     { title: "Contact Us", url: "/contact-us" },
     { title: "Speakers", url: "/speakers" },
   ];
+
+  const contactLinks = [
+    {
+      url: "mailto:spacelead@alfaisal.edu",
+      title: "spacelead@alfaisal.edu",
+      icon: (
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <mask id="path-1-inside-1_195_4162" fill="white">
+            <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" />
+          </mask>
+          <path
+            d="M20 40V39C9.50659 39 1 30.4934 1 20H0H-1C-1 31.598 8.40202 41 20 41V40ZM40 20H39C39 30.4934 30.4934 39 20 39V40V41C31.598 41 41 31.598 41 20H40ZM20 0V1C30.4934 1 39 9.50659 39 20H40H41C41 8.40202 31.598 -1 20 -1V0ZM20 0V-1C8.40202 -1 -1 8.40202 -1 20H0H1C1 9.50659 9.50659 1 20 1V0Z"
+            fill="#CCCCCC"
+            fillOpacity="0.2"
+            mask="url(#path-1-inside-1_195_4162)"
+          />
+          <path
+            d="M11.3333 14.5833L18.8517 19.2823C19.5542 19.7214 20.4458 19.7214 21.1483 19.2823L28.6667 14.5833M12.4167 26.5H27.5833C28.78 26.5 29.75 25.53 29.75 24.3333V15.6667C29.75 14.47 28.78 13.5 27.5833 13.5H12.4167C11.22 13.5 10.25 14.47 10.25 15.6667V24.3333C10.25 25.53 11.22 26.5 12.4167 26.5Z"
+            stroke="white"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
+    {
+      url: "tel:+9660112157777",
+      title: "+966 11 215 7777",
+      icon: (
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <mask id="path-1-inside-1_195_4169" fill="white">
+            <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" />
+          </mask>
+          <path
+            d="M20 40V39C9.50659 39 1 30.4934 1 20H0H-1C-1 31.598 8.40202 41 20 41V40ZM40 20H39C39 30.4934 30.4934 39 20 39V40V41C31.598 41 41 31.598 41 20H40ZM20 0V1C30.4934 1 39 9.50659 39 20H40H41C41 8.40202 31.598 -1 20 -1V0ZM20 0V-1C8.40202 -1 -1 8.40202 -1 20H0H1C1 9.50659 9.50659 1 20 1V0Z"
+            fill="#CCCCCC"
+            fillOpacity="0.2"
+            mask="url(#path-1-inside-1_195_4169)"
+          />
+          <path
+            d="M28.3096 25.2748C28.3096 25.5748 28.243 25.8832 28.1013 26.1832C27.9596 26.4832 27.7763 26.7665 27.5346 27.0332C27.1263 27.4832 26.6763 27.8082 26.168 28.0165C25.668 28.2248 25.1263 28.3332 24.543 28.3332C23.693 28.3332 22.7846 28.1332 21.8263 27.7248C20.868 27.3165 19.9096 26.7665 18.9596 26.0748C18.0013 25.3748 17.093 24.5998 16.2263 23.7415C15.368 22.8748 14.593 21.9665 13.9013 21.0165C13.218 20.0665 12.668 19.1165 12.268 18.1748C11.868 17.2248 11.668 16.3165 11.668 15.4498C11.668 14.8832 11.768 14.3415 11.968 13.8415C12.168 13.3332 12.4846 12.8665 12.9263 12.4498C13.4596 11.9248 14.043 11.6665 14.6596 11.6665C14.893 11.6665 15.1263 11.7165 15.3346 11.8165C15.5513 11.9165 15.743 12.0665 15.893 12.2832L17.8263 15.0082C17.9763 15.2165 18.0846 15.4082 18.1596 15.5915C18.2346 15.7665 18.2763 15.9415 18.2763 16.0998C18.2763 16.2998 18.218 16.4998 18.1013 16.6915C17.993 16.8832 17.8346 17.0832 17.6346 17.2832L17.0013 17.9415C16.9096 18.0332 16.868 18.1415 16.868 18.2748C16.868 18.3415 16.8763 18.3998 16.893 18.4665C16.918 18.5332 16.943 18.5832 16.9596 18.6332C17.1096 18.9082 17.368 19.2665 17.7346 19.6998C18.1096 20.1332 18.5096 20.5748 18.943 21.0165C19.393 21.4582 19.8263 21.8665 20.268 22.2415C20.7013 22.6082 21.0596 22.8582 21.343 23.0082C21.3846 23.0248 21.4346 23.0498 21.493 23.0748C21.5596 23.0998 21.6263 23.1082 21.7013 23.1082C21.843 23.1082 21.9513 23.0582 22.043 22.9665L22.6763 22.3415C22.8846 22.1332 23.0846 21.9748 23.2763 21.8748C23.468 21.7582 23.6596 21.6998 23.868 21.6998C24.0263 21.6998 24.193 21.7332 24.3763 21.8082C24.5596 21.8832 24.7513 21.9915 24.9596 22.1332L27.718 24.0915C27.9346 24.2415 28.0846 24.4165 28.1763 24.6248C28.2596 24.8332 28.3096 25.0415 28.3096 25.2748Z"
+            stroke="white"
+            strokeMiterlimit="10"
+          />
+        </svg>
+      ),
+    },
+    {
+      url: "https://www.google.com/maps",
+      title: "Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
+      icon: (
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <mask id="path-1-inside-1_195_4175" fill="white">
+            <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" />
+          </mask>
+          <path
+            d="M20 40V39C9.50659 39 1 30.4934 1 20H0H-1C-1 31.598 8.40202 41 20 41V40ZM40 20H39C39 30.4934 30.4934 39 20 39V40V41C31.598 41 41 31.598 41 20H40ZM20 0V1C30.4934 1 39 9.50659 39 20H40H41C41 8.40202 31.598 -1 20 -1V0ZM20 0V-1C8.40202 -1 -1 8.40202 -1 20H0H1C1 9.50659 9.50659 1 20 1V0Z"
+            fill="#CCCCCC"
+            fillOpacity="0.2"
+            mask="url(#path-1-inside-1_195_4175)"
+          />
+          <path
+            d="M20 31.25C24.375 26.75 28.75 22.7205 28.75 17.75C28.75 12.7794 24.8325 8.75 20 8.75C15.1675 8.75 11.25 12.7794 11.25 17.75C11.25 22.7205 15.625 26.75 20 31.25Z"
+            stroke="white"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M20 20C21.3807 20 22.5 18.8807 22.5 17.5C22.5 16.1193 21.3807 15 20 15C18.6193 15 17.5 16.1193 17.5 17.5C17.5 18.8807 18.6193 20 20 20Z"
+            stroke="white"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
+  ];
   return (
     <footer className="bg-[url('/images/footer_bg.png')] bg-cover bg-center bg-no-repeat text-white">
       <nav
         aria-label="Footer Navigation"
-        className="container 2xl:max-w-[80rem] mx-auto px-5 sm:px-0 pt-8"
+        className="container  mx-auto px-5 lg:px-36.25 pt-8"
       >
-        <section className="border-b border-[#CCCCCC33] flex items-center justify-between py-3.5">
+        <section className=" relative border-b border-[#CCCCCC33] flex items-center justify-between py-3.5">
+          <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
           <img src="/logo.png" alt="" />
           <ul className="flex items-center gap-10">
             <li>
@@ -78,10 +175,10 @@ const Footer = () => {
             </li>
           </ul>
         </section>
-        <section className="py-10 border-b border-[#CCCCCC33] flex flex-col md:flex-row justify-between">
-          <div className="w-full flex flex-col gap-10">
+        <section className="py-10 border-b border-[#CCCCCC33] flex flex-col gap-y-10 xs:flex-row justify-between">
+          <div className="w-full flex flex-col sm:gap-10 gap-5">
             <h4 className="text-[1.5rem] font-medium">Quick Links</h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-12.5 w-fit">
+            <ul className="grid grid-cols-1 xs:text-sm sm:text-base sm:grid-cols-2 gap-y-2 gap-x-12.5 w-fit">
               {quickLinks.map((link, i) => (
                 <li key={i}>
                   <Link href={link.url}>{link.title}</Link>
@@ -89,117 +186,26 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div className="w-full flex flex-col gap-10">
+          <div className="w-full flex flex-col sm:gap-10 gap-5">
             <h4 className="text-[1.5rem] font-medium">Contact</h4>
-            <ul className="grid gap-2 grid-cols-1 md:grid-cols-2">
-              <li>
-                <a
-                  className="flex items-center gap-2.5"
-                  href="mailto:spacelead@alfaisal.edu"
-                >
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+            <ul className="grid gap-2 grid-cols-1 xl:grid-cols-2 xs:text-sm sm:text-base">
+              {contactLinks.map((info, i) => (
+                <li key={i}>
+                  <a
+                    className="flex items-center gap-2.5"
+                    href={info.url}
+                    target="_blank"
                   >
-                    <mask id="path-1-inside-1_195_4162" fill="white">
-                      <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" />
-                    </mask>
-                    <path
-                      d="M20 40V39C9.50659 39 1 30.4934 1 20H0H-1C-1 31.598 8.40202 41 20 41V40ZM40 20H39C39 30.4934 30.4934 39 20 39V40V41C31.598 41 41 31.598 41 20H40ZM20 0V1C30.4934 1 39 9.50659 39 20H40H41C41 8.40202 31.598 -1 20 -1V0ZM20 0V-1C8.40202 -1 -1 8.40202 -1 20H0H1C1 9.50659 9.50659 1 20 1V0Z"
-                      fill="#CCCCCC"
-                      fillOpacity="0.2"
-                      mask="url(#path-1-inside-1_195_4162)"
-                    />
-                    <path
-                      d="M11.3333 14.5833L18.8517 19.2823C19.5542 19.7214 20.4458 19.7214 21.1483 19.2823L28.6667 14.5833M12.4167 26.5H27.5833C28.78 26.5 29.75 25.53 29.75 24.3333V15.6667C29.75 14.47 28.78 13.5 27.5833 13.5H12.4167C11.22 13.5 10.25 14.47 10.25 15.6667V24.3333C10.25 25.53 11.22 26.5 12.4167 26.5Z"
-                      stroke="white"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <span>spacelead@alfaisal.edu</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  className="flex items-center gap-2.5"
-                  href="tel:+966 011 215 7777"
-                >
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <mask id="path-1-inside-1_195_4169" fill="white">
-                      <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" />
-                    </mask>
-                    <path
-                      d="M20 40V39C9.50659 39 1 30.4934 1 20H0H-1C-1 31.598 8.40202 41 20 41V40ZM40 20H39C39 30.4934 30.4934 39 20 39V40V41C31.598 41 41 31.598 41 20H40ZM20 0V1C30.4934 1 39 9.50659 39 20H40H41C41 8.40202 31.598 -1 20 -1V0ZM20 0V-1C8.40202 -1 -1 8.40202 -1 20H0H1C1 9.50659 9.50659 1 20 1V0Z"
-                      fill="#CCCCCC"
-                      fillOpacity="0.2"
-                      mask="url(#path-1-inside-1_195_4169)"
-                    />
-                    <path
-                      d="M28.3096 25.2748C28.3096 25.5748 28.243 25.8832 28.1013 26.1832C27.9596 26.4832 27.7763 26.7665 27.5346 27.0332C27.1263 27.4832 26.6763 27.8082 26.168 28.0165C25.668 28.2248 25.1263 28.3332 24.543 28.3332C23.693 28.3332 22.7846 28.1332 21.8263 27.7248C20.868 27.3165 19.9096 26.7665 18.9596 26.0748C18.0013 25.3748 17.093 24.5998 16.2263 23.7415C15.368 22.8748 14.593 21.9665 13.9013 21.0165C13.218 20.0665 12.668 19.1165 12.268 18.1748C11.868 17.2248 11.668 16.3165 11.668 15.4498C11.668 14.8832 11.768 14.3415 11.968 13.8415C12.168 13.3332 12.4846 12.8665 12.9263 12.4498C13.4596 11.9248 14.043 11.6665 14.6596 11.6665C14.893 11.6665 15.1263 11.7165 15.3346 11.8165C15.5513 11.9165 15.743 12.0665 15.893 12.2832L17.8263 15.0082C17.9763 15.2165 18.0846 15.4082 18.1596 15.5915C18.2346 15.7665 18.2763 15.9415 18.2763 16.0998C18.2763 16.2998 18.218 16.4998 18.1013 16.6915C17.993 16.8832 17.8346 17.0832 17.6346 17.2832L17.0013 17.9415C16.9096 18.0332 16.868 18.1415 16.868 18.2748C16.868 18.3415 16.8763 18.3998 16.893 18.4665C16.918 18.5332 16.943 18.5832 16.9596 18.6332C17.1096 18.9082 17.368 19.2665 17.7346 19.6998C18.1096 20.1332 18.5096 20.5748 18.943 21.0165C19.393 21.4582 19.8263 21.8665 20.268 22.2415C20.7013 22.6082 21.0596 22.8582 21.343 23.0082C21.3846 23.0248 21.4346 23.0498 21.493 23.0748C21.5596 23.0998 21.6263 23.1082 21.7013 23.1082C21.843 23.1082 21.9513 23.0582 22.043 22.9665L22.6763 22.3415C22.8846 22.1332 23.0846 21.9748 23.2763 21.8748C23.468 21.7582 23.6596 21.6998 23.868 21.6998C24.0263 21.6998 24.193 21.7332 24.3763 21.8082C24.5596 21.8832 24.7513 21.9915 24.9596 22.1332L27.718 24.0915C27.9346 24.2415 28.0846 24.4165 28.1763 24.6248C28.2596 24.8332 28.3096 25.0415 28.3096 25.2748Z"
-                      stroke="white"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                  <span>+966 011 215 7777</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  className="flex items-center gap-2.5"
-                  href="https://www.google.com/maps"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <mask id="path-1-inside-1_195_4175" fill="white">
-                      <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" />
-                    </mask>
-                    <path
-                      d="M20 40V39C9.50659 39 1 30.4934 1 20H0H-1C-1 31.598 8.40202 41 20 41V40ZM40 20H39C39 30.4934 30.4934 39 20 39V40V41C31.598 41 41 31.598 41 20H40ZM20 0V1C30.4934 1 39 9.50659 39 20H40H41C41 8.40202 31.598 -1 20 -1V0ZM20 0V-1C8.40202 -1 -1 8.40202 -1 20H0H1C1 9.50659 9.50659 1 20 1V0Z"
-                      fill="#CCCCCC"
-                      fillOpacity="0.2"
-                      mask="url(#path-1-inside-1_195_4175)"
-                    />
-                    <path
-                      d="M20 31.25C24.375 26.75 28.75 22.7205 28.75 17.75C28.75 12.7794 24.8325 8.75 20 8.75C15.1675 8.75 11.25 12.7794 11.25 17.75C11.25 22.7205 15.625 26.75 20 31.25Z"
-                      stroke="white"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M20 20C21.3807 20 22.5 18.8807 22.5 17.5C22.5 16.1193 21.3807 15 20 15C18.6193 15 17.5 16.1193 17.5 17.5C17.5 18.8807 18.6193 20 20 20Z"
-                      stroke="white"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <span>
-                    Alfaisal University, Riyadh- Kingdom of Saudi Arabia
-                  </span>
-                </a>
-              </li>
+                  <div>{info.icon}</div>
+                  <span>{info.title}</span></a>
+                  </li>
+              ))}
             </ul>
           </div>
         </section>
-        <section className="py-10 flex flex-col md:flex-row items-center justify-between">
+        <section className="py-10 flex flex-col-reverse gap-2 md:flex-row items-center justify-between">
           <p>&copy; Space Lead 2025 | All Rights Reserved</p>
-          <ul className="flex flex-wrap gap-x-11 items-center place-content-center">
+          <ul className="flex flex-wrap gap-5 lg:gap-x-11 items-center place-content-center">
             <li>
               <a href="#">Terms & Condition</a>
             </li>

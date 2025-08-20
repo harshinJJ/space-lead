@@ -75,19 +75,19 @@ const EventLists = () => {
   ];
   const tags = ["Business", "Marketing", "Design"];
   return (
-    <div className="container mx-auto px-5 md:px-10 rounded-4xl bg-[#1C192D70] py-16 text-white">
+    <div className="container mx-auto px-5 lg:px-10 rounded-4xl bg-[#1C192D70] lg:py-16 py-6 text-white">
       {/* Heading */}
       <div className="mb-10 font-open-sans">
         <p className="text-secondary  tracking-wide font-light">Event Lists</p>
-        <div className="flex flex-col md:flex-row justify-between">
-          <h2 className="text-2xl sm:text-[2.875rem] leading-tight font-bold text-white mb-4 md:max-w-xl">
+        <div className="flex flex-col lg:flex-row justify-between">
+          <h2 className="text-2xl xs:text-3xl 2xl:text-[2.875rem] lg:text-4xl leading-tight font-bold text-white mb-4 lg:max-w-2xl">
             Explore Upcoming Events with Industry Expert
           </h2>
-          <div className="flex flex-wrap items-start gap-3 ">
+          <div className="flex flex-wrap items-start justify-center gap-3 ">
             {tags.map((tag) => (
               <div
                 key={tag}
-                className="flex-1 text-center bg-secondary text-[#1C192D] px-8 py-2 rounded-full text-lg "
+                className="flex-1 text-center bg-secondary text-[#1C192D] px-4 xl:px-8 py-2 rounded-full text-base xl:text-lg "
               >
                 {tag}
               </div>
@@ -101,10 +101,10 @@ const EventLists = () => {
         {events.map((event) => (
           <div
             key={event.id}
-            className="border-2 md:p-7 pb-2 border-[#FFFFFF10] rounded-3xl overflow-hidden flex flex-col md:flex-row"
+            className="border-2 lg:p-7 pb-2 border-[#FFFFFF10] rounded-3xl overflow-hidden flex flex-col lg:flex-row"
           >
             {/* Image */}
-            <div className="md:w-2/5 md:rounded-3xl overflow-hidden">
+            <div className="lg:w-2/5 md:rounded-3xl overflow-hidden">
               <img
                 src={event.image}
                 alt={event.title}
@@ -113,7 +113,7 @@ const EventLists = () => {
             </div>
 
             {/* Content */}
-            <div className="md:w-3/5 p-2 sm:p-6 flex flex-col gap-9 items-end sm:items-start">
+            <div className="lg:w-3/5 p-2 sm:p-6 flex flex-col gap-9 items-end sm:items-start">
               <div className="border-b border-[#FFFFFF10] pb-9 w-full">
                 <div className="flex items-center gap-1 sm:gap-4 text-sm text-white mb-3 bg-[#ffffff10] w-fit px-2 sm:px-10 py-1 sm:py-3 rounded-sm sm:rounded-full">
                   <span>{event.date}</span>

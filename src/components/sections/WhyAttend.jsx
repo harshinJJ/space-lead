@@ -5,7 +5,7 @@ const WhyAttend = ({ children }) => {
     <section className="bg-[url('/images/backgrounds/why_attend_bg.png')] bg-[top_center] bg-cover py-10 sm:py-20 px-1 sm:px-0">
       <div className="container mx-auto px-2 sm:px-0 md:ps-19 rounded-t-4xl bg-gradient-to-b from-[#5AC0BE] via-[#5AC0BE80] via-[40%] to-transparent to-[50%] pt-22.5 text-white">
         <div className="w-full p-2 md:p-3 bg-[#EEEEEE] mb-5" />
-        <div className="mb-10 flex flex-col lg:flex-row gap-3.5">
+        <div className="mb-10 flex flex-col justify-between lg:flex-row gap-3.5">
           <div className="font-azonix flex-1">
             <p className="text-[#7F529F] uppercase tracking-wide text-lg md:text-2xl font-semibold">
               Why Attend?
@@ -14,7 +14,7 @@ const WhyAttend = ({ children }) => {
               Explore the Features <br /> of Health Beyond Earth
             </h2>
           </div>
-          <div className="flex-1 lg:min-w-200 flex flex-col gap-3 lg:gap-6.5">
+          <div className="flex-1 w-full flex flex-col gap-3 lg:gap-6.5">
             <div className="w-full p-2 md:p-3 bg-linear-to-r from-[#EEEEEE] to-[#7F529F]" />
 
             <div className="w-full p-2 md:p-3 bg-[#EEEEEE]" />
