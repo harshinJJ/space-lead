@@ -2,15 +2,40 @@
 import React from "react";
 
 const ScrollTop = ({ className = "" }) => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const scrollToTop = (duration = 3000) => {
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
+    const start = window.pageYOffset;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime) => {
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      // Smooth easing
+      const easeInOutCubic =
+        progress < 0.5
+          ? 4 * progress ** 3
+          : (progress - 1) * (2 * progress - 2) ** 2 + 1;
+
+      // Calculate where to scroll
+      const val = start + (0 - start) * easeInOutCubic;
+      window.scrollTo(0, val);
+
+      // Continue animation until done
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    // Start the animation
+    requestAnimationFrame(animateScroll);
   };
   return (
     <button
-      onClick={scrollToTop}
+      onClick={()=>scrollToTop()}
       className={`cursor-pointer w-fit aspect-square z-50 bg-[#5AC0BE] p-0.5 bg-gradient-to-r overflow-hidden from-[#5AC0BE] to-[#7F529F] rounded-full transition-colors duration-300 ${className}`}
     >
       <div className="w-full h-full flex items-center justify-center bg-[#302e40] xl:p-6 p-4 aspect-square overflow-hidden rounded-full">

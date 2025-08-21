@@ -8,6 +8,8 @@ import {
   Encode_Sans_Semi_Condensed,
   Outfit,
   DM_Sans,
+  Orbitron,
+  Figtree,
 } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/header/Header";
@@ -61,6 +63,16 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+});
+
+const figtree = Figtree({
+  variable: "--font-figtree",
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "SpaceLead",
 };
@@ -69,7 +81,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} ${inter.variable} ${encodeSans.variable} ${outfit.variable} ${dmSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} ${inter.variable} ${encodeSans.variable} ${outfit.variable} ${dmSans.variable} ${orbitron.variable} ${figtree.variable} antialiased`}
       >
         <Header />
         <GsapProvider>{children}</GsapProvider>

@@ -104,7 +104,7 @@ const EventLists = () => {
             className="border-2 lg:p-7 pb-2 border-[#FFFFFF10] rounded-3xl overflow-hidden flex flex-col lg:flex-row"
           >
             {/* Image */}
-            <div className="lg:w-2/5 md:rounded-3xl overflow-hidden">
+            <div className="lg:w-2/5 lg:rounded-3xl overflow-hidden">
               <img
                 src={event.image}
                 alt={event.title}

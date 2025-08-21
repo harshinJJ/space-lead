@@ -9,49 +9,88 @@ import Marquee from "@/components/sections/Marquee";
 import VideoPreview from "@/components/sections/VideoPreview";
 import EventAgenda from "@/components/sections/EventAgenda";
 import SponsorsBlock from "@/components/sections/Sponsors";
+import SpeakerSlider from "@/components/sections/SpeakerSlider";
+import MemberSlider from "@/components/sections/MemberSlider";
 
-  const speakers = [
-    {
-      name: "Dr. Maha Bint Mishari AlSaud",
-      title: "Chairperson",
-      image: "/images/speaker1.png",
-    },
-    {
-      name: "Prof. Charles Elachi",
-      title: "President",
-      image: "/images/speaker2.png",
-    },
-    {
-      name: "Dr. Majid AlBahkali",
-      title: "General Manager",
-      image: "/images/speaker3.png",
-    },
-    {
-      name: "Dr. Esam AlBanyan",
-      title: "Vice President Health Sector",
-      image: "/images/speaker4.png",
-    },
-  ];
+const speakers = [
+  {
+    name: "Dr. Maha Bint Mishari AlSaud",
+    title: "Chairperson",
+    image: "/images/speakers/speaker1.png",
+  },
+  {
+    name: "Prof. Charles Elachi",
+    title: "President",
+    image: "/images/speakers/speaker2.png",
+  },
+  {
+    name: "Dr. Majid AlBahkali",
+    title: "General Manager",
+    image: "/images/speakers/speaker3.png",
+  },
+  {
+    name: "Dr. Esam AlBanyan",
+    title: "Vice President ",
+    image: "/images/speakers/speaker1.png",
+  },
+  {
+    name: "Dr. Maha Bint Mishari AlSaud",
+    title: "Chairperson",
+    image: "/images/speakers/speaker1.png",
+  },
+  {
+    name: "Prof. Charles Elachi",
+    title: "President",
+    image: "/images/speakers/speaker2.png",
+  },
+  {
+    name: "Dr. Majid AlBahkali",
+    title: "General Manager",
+    image: "/images/speakers/speaker3.png",
+  },
+  {
+    name: "Dr. Esam AlBanyan",
+    title: "Vice President ",
+    image: "/images/speakers/speaker1.png",
+  },
+];
 export default function Home() {
   return (
     <main
     // className="container mx-auto px-5 sm:px-0"
     >
       <HomeBanner banner={"/images/banner_title.png"} />
-      <AboutInfo />
-      <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} />
+      <AboutInfo showStats={true} />
+      {/* <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} /> */}
+      <section className="bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[center]">
+        <MemberSlider
+          className="!bg-transparent"
+          theme="dark"
+          title={"Scientific Committee Members"}
+          speakers={speakers}
+          link={"#"}
+        />
+      </section>
+      <MemberSlider
+        className="bg-white"
+        title={"Scientific Committee Members"}
+        speakers={speakers}
+        link={"#"}
+      />
       <WhyAttend>
-        <EventLists />
+        {/* <EventLists /> */}
+        <EventAgenda className=" bg-[#1C192D80]  px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
       </WhyAttend>
+      <SpeakerSlider />
       {/* <Marquee /> */}
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         // embedUrl={"https://www.youtube.com/embed/sample"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <section className="bg-[url('/images/backgrounds/event_agenda_bg.png')] bg-[#1c192d] bg-center bg-cover py-33">
+      {/* <section className="bg-[url('/images/backgrounds/event_agenda_bg.png')] bg-[#1c192d] bg-center bg-cover py-33">
         <EventAgenda />
-      </section>
+      </section> */}
       <SponsorsBlock />
     </main>
   );

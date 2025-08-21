@@ -34,9 +34,9 @@ export default function SponsorsBlock() {
 export const SponsorContent = () => {
   return (
     <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5">
-      <div className="container lg:px-12.75 mx-auto flex flex-col lg:flex-row items-start gap-8 md:gap-20">
+      <div className="container px-5 lg:px-12.75 mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
         {/* Image */}
-        <div className="w-full lg:w-1/2 lg:max-w-[44rem] flex justify-center">
+        <div className="w-full xl:w-1/2 xl:max-w-[44rem] flex justify-center">
           <img
             src="/images/sponsor_content_img.png" // replace with your actual image path
             alt="Astronaut looking at space"
@@ -45,14 +45,14 @@ export const SponsorContent = () => {
         </div>
 
         {/* Content */}
-        <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col items-center lg:items-start">
+        <div className="w-full xl:w-1/2 text-center xl:text-left flex flex-col items-center xl:items-start">
           <p className="text-secondary text-lg mb-4 leading-[100%] font-open-sans">
             Our Sponsors
           </p>
-          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-raleway mb-14">
+          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-raleway lg:mb-14 mb-7">
             Why sponsor
           </h2>
-          <p className="font-poppins text-lg leading-[150%]  mb-10">
+          <p className="font-poppins sm:text-lg leading-[150%]  mb-10">
             Sponsoring the Space Lead ’25 Conference positions your organization
             at the forefront of space innovation. Engage with top-level
             decision-makers, policymakers, and global disruptors. Build
@@ -76,17 +76,17 @@ export const SponsorList = () => {
   return (
     <section className="w-full relative py-12 lg:py-20 lg:pb-30 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
                 {/* Left & right edge gradients */}
-        <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-50 lg:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
-        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 lg:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
+        <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
+        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
 
-      <div className="container mx-auto text-center">
+      <div className="container px-5 mx-auto lg:px-12.75 text-center">
         <p className="text-secondary font-open-sans text-lg mb-2">
           Our Sponsors
         </p>
         <h2 className="text-2xl font-raleway lg:text-[2.875rem] font-bold text-gray-900 mb-4">
           Sponsorship opportunities
         </h2>
-        <p className="lg:max-w-[68.5rem] text-start leading-[1.875rem] text-lg mx-auto text-[#303030] mb-10 ">
+        <p className="lg:max-w-[68.5rem] xl:text-start leading-[1.875rem] text-lg mx-auto text-[#303030] mb-10 ">
           The Space Lead ’25 Conference offers curated sponsorship opportunities
           designed to deliver strategic value and measurable impact. Gain
           exclusive visibility, immersive branding experiences, and tailored

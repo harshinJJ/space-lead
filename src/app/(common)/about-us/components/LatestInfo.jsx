@@ -2,6 +2,7 @@ import React from "react";
 import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import CircularButton from "@/components/buttons/CircularButton";
 import TestimonialsSlider from "./Testimonials";
+import StatsCard from "@/components/cards/StatsCard";
 
 const LatestInfo = () => {
   const points = [
@@ -12,7 +13,6 @@ const LatestInfo = () => {
     "Graduate students in STEM and advanced engineering",
     "Investors in the space sector",
   ];
-
 
   return (
     <section className="container mx-auto px-5 md:px-10 rounded-4xl bg-[#1C192DB8] py-15 text-white">
@@ -70,7 +70,10 @@ const LatestInfo = () => {
         </div>
 
         {/* Stats */}
-        <div className="rounded-[1.25rem] bg-gradient-to-r px-2.5 py-6.25 from-[#5AC0BE] to-[#7F529F] xl:mt-25 md:mt-10 mt-5 flex flex-col lg:flex-row justify-around text-center">
+        <div className="pt-10 lg:py-25 lg:pb-12.5">
+          <StatsCard />
+        </div>
+        {/* <div className="rounded-[1.25rem] bg-gradient-to-r px-2.5 py-6.25 from-[#5AC0BE] to-[#7F529F] xl:mt-25 md:mt-10 mt-5 flex flex-col lg:flex-row justify-around text-center">
           <div className="">
             <p className="text-4xl lg:text-6xl xl:text-[6.25rem] align-bottom text-center font-azonix text-primary">
               90
@@ -95,33 +98,33 @@ const LatestInfo = () => {
             </p>
             <p className="text-lg lg:text-2xl xl:text-[2rem]">Sessions</p>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Testimonials */}
-<div className="lg:max-w-[1593px] w-full mx-auto lg:px-4 lg:ps-15 py-16 flex flex-col lg:flex-row gap-3 gap-y-10 items-start">
-  {/* Image */}
-  <div className="relative flex flex-col lg:flex-row gap-5 w-full lg:w-1/2 flex-shrink-0">
-    <img
-      src="/images/testimonial_img.png"
-      alt="Speaker"
-      className="rounded-lg w-full xl:max-w-[33.5rem] h-full object-cover"
-    />
-    <div className="lg:absolute lg:max-w-[25ch] w-auto text-center font-open-sans flex flex-col items-center lg:gap-19.5 gap-5 bottom-0 lg:translate-x-[-50%] transform lg:translate-y-[-30%] left-0 bg-gradient-to-b from-[#7F529F50] to-[#2E1D3950] backdrop-blur-[24px]  text-white rounded-2xl p-10">
-      <p className="text-6xl">6k+</p>
-      <p className="">Trusted Customers also Satisfied</p>
-    </div>
-  </div>
+      <div className="lg:max-w-[1593px] w-full mx-auto lg:px-4 lg:ps-15 py-16 flex flex-col lg:flex-row gap-3 gap-y-10 items-start">
+        {/* Image */}
+        <div className="relative flex flex-col lg:flex-row gap-5 w-full lg:w-1/2 flex-shrink-0">
+          <img
+            src="/images/testimonial_img.png"
+            alt="Speaker"
+            className="rounded-lg w-full xl:max-w-[33.5rem] h-full object-cover"
+          />
+          <div className="lg:absolute lg:max-w-[25ch] w-auto text-center font-open-sans flex flex-col items-center lg:gap-19.5 gap-5 bottom-0 lg:translate-x-[-50%] transform lg:translate-y-[-30%] left-0 bg-gradient-to-b from-[#7F529F50] to-[#2E1D3950] backdrop-blur-[24px]  text-white rounded-2xl p-10">
+            <p className="text-6xl">6k+</p>
+            <p className="">Trusted Customers also Satisfied</p>
+          </div>
+        </div>
 
-  {/* Testimonial Card */}
-  <div className="w-full lg:w-1/2 flex flex-col justify-start">
-    <p className="text-[#7F529F] font-open-sans mb-5">Testimonials</p>
-    <h3 className="xl:text-[2.875rem] lg:text-4xl md:text-2xl text-xl font-bold xl:mb-15 mb-10 font-raleway">
-      Discover Clients Feedback <br /> About our Events
-    </h3>
-    <TestimonialsSlider />
-  </div>
-</div>
+        {/* Testimonial Card */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-start">
+          <p className="text-[#7F529F] font-open-sans mb-5">Testimonials</p>
+          <h3 className="xl:text-[2.875rem] lg:text-4xl md:text-2xl text-xl font-bold xl:mb-15 mb-10 font-raleway">
+            Discover Clients Feedback <br /> About our Events
+          </h3>
+          <TestimonialsSlider />
+        </div>
+      </div>
     </section>
   );
 };

@@ -123,11 +123,11 @@ const tabs = [
   { id: "day3", label: "Day 03", date: "11 Nov 2025" },
 ];
 
-export default function EventAgenda() {
+export default function EventAgenda({className=""}) {
   const [activeDay, setActiveDay] = useState("day1");
 
   return (
-      <div className="container mx-auto text-white px-4 xl:px-38 sm:px-15">
+      <div className={`container mx-auto text-white ${className}`}>
         <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-15">
           <div className="flex flex-col justify-between gap-3">
             <h2 className="uppercase xl:text-lg w-fit bg-gradient-to-r from-[#5AC0BE] to-[#7F529F] bg-clip-text text-transparent">

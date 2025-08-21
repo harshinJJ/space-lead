@@ -7,8 +7,8 @@ import React from "react";
 export default function Agenda() {
   return (
     <main>
-      <section className=" bg-[#1c192d] bg-center bg-cover py-20">
-        <EventAgenda />
+      <section className=" bg-[#1c192d] bg-center bg-cover py-20 ">
+        <EventAgenda className=" px-4 xl:px-38 sm:px-15" />
       </section>
       {/* <Marquee /> */}
       <VideoPreview

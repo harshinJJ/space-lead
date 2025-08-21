@@ -160,7 +160,7 @@ const HomeBanner = ({ banner }) => {
           </div>
         </div>
         <div className="relative w-full flex justify-center items-center">
-          <ScrollBottom className="absolute mx-auto top-0 bottom-0 left-0 right-0 transform 2xl:-translate-y-[100%] translate-y-[50%] animate-float" />
+          <ScrollBottom className="absolute mx-auto top-0 bottom-0 left-0 right-0 transform xl:-translate-y-[100%] lg:translate-y-[50%] md:-translate-y-[100%] translate-y-[50%] animate-float" />
         </div>
       </div>
     </section>
