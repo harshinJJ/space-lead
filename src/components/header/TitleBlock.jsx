@@ -66,7 +66,7 @@ const TitleBlock = ({ title }) => {
       id="home-banner"
       className="relative bg-[url('/images/backgrounds/header_title_bg.png')] bg-[top_center] bg-cover bg-no-repeat py-9 pt-38 text-white"
     >
-      <div className="absolute z-1 inset-0 bg-gradient-to-r from-[#00000035] via-[#131f5442] to-[#1a1d2720] opacity-77"></div>
+      <div className="absolute z-1 inset-0 bg-gradient-to-r from-black/20 via-tertiary/25 to-[#1a1d2720] opacity-77"></div>
       <div className="container z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
           <div className="w-full flex flex-col gap-5 md:max-w-[45%] font-gilroy-med">
@@ -112,13 +112,13 @@ const TitleBlock = ({ title }) => {
               {/* {tags.map(({ icon, label }, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 py-1 px-5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit"
+                  className="flex items-center gap-2 py-1 px-5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit"
                 >
                   {icon}
                   <span className="lg:text-nowrap">{label}</span>
                 </div>
               ))} */}{" "}
-              <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit">
+              <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
                 <div className="flex items-center justify-center">
                   {tags[0].icon}
                 </div>
@@ -126,7 +126,7 @@ const TitleBlock = ({ title }) => {
                   {tags[0].label}
                 </span>
               </div>
-              <div className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit">
+              <div className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
                 <div className="flex items-center justify-center">
                   {tags[1].icon}
                 </div>
@@ -140,7 +140,7 @@ const TitleBlock = ({ title }) => {
           <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">
-                <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
+                <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7">
                   Time is running out Book your ticket.
                 </div>
               </div>
@@ -148,7 +148,7 @@ const TitleBlock = ({ title }) => {
                 {Object.entries(remainingTime).map(([key, value]) => (
                   <div
                     key={key}
-                    className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-[#ffffff08]"
+                    className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-white/3"
                   >
                     <h5 className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
                       {String(value).padStart(2, "0")}

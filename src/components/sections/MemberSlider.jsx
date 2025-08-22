@@ -95,7 +95,7 @@ const MemberSlider = ({
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
         <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0 xl:px-8">
-          {label && <p className="text-[#5AC0BE]">{label}</p>}
+          {label && <p className="text-secondary">{label}</p>}
           <div
             className={`flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-7.5 ${
               link || navComponent ? "md:justify-between" : "md:justify-center"
@@ -144,7 +144,7 @@ const MemberSlider = ({
             {speakers.map((speaker, index) => (
               <SwiperSlide
                 key={index}
-                className={`${cardSize=="sm"?"":"!w-[320px] !h-auto"} lg:!max-w-2/5 flex items-stretch`}
+                className={`${cardSize=="sm"?"!w-[260px] !h-auto":"!w-[320px] !h-auto"} lg:!max-w-2/5 flex items-stretch`}
               >
                 <SpeakerCard
                   speaker={speaker}

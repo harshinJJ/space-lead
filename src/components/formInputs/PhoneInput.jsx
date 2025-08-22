@@ -219,7 +219,7 @@ const PhoneInputs = ({
         {label}
       </label>
       <PhoneInput
-
+        limitMaxLength={15}
         defaultCountry={country}
         international
         countries={allowedCountries}

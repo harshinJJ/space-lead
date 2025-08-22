@@ -199,6 +199,7 @@ const MemberPreview = () => {
   const handleActiveSpeaker = (speaker) => {
     setActiveSpeaker(speaker);
     setActiveTab(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -206,7 +207,7 @@ const MemberPreview = () => {
       {activeSpeaker && (
         <section className="bg-[#EDF0FE] pt-20">
           <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-8">
-            <p className="text-[#5AC0BE]">Steering Committee Members</p>
+            <p className="text-secondary">Steering Committee Members</p>
             <div
               className={`flex flex-col md:flex-row md:items-center md:justify-between mt-2`}
             >
@@ -224,7 +225,7 @@ const MemberPreview = () => {
           </div>
 
           <div className="container w-full mx-auto flex flex-col lg:flex-row xl:gap-8.75 gap-5 xl:px-8">
-            <div className="">
+            <div className="lg:w-1/4">
               <SpeakerCard speaker={activeSpeaker} />
             </div>
             <div className="flex-3/4">

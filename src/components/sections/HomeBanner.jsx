@@ -112,11 +112,11 @@ const HomeBanner = ({ banner }) => {
             </PrimaryButton>
             <h4 className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[-1.6px] 2xl:leading-[2.5rem]">
               INTERNATIONAL AEROSPACE MEDICINE{" "}
-              <span className="text-[#5AC0BE]">CONFERENCE 2025</span>
+              <span className="text-secondary">CONFERENCE 2025</span>
             </h4>
             <div className="flex flex-col lg:flex-row xl:gap-x-10 gap-2 gap-y-4">
               {/* {tags.map(({ icon, label }, i) => ( */}
-              <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit">
+              <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
                 <div className="flex items-center justify-center">
                   {tags[0].icon}
                 </div>
@@ -124,7 +124,7 @@ const HomeBanner = ({ banner }) => {
                   {tags[0].label}
                 </span>
               </div>
-              <div className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12] w-full lg:w-fit">
+              <div className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
                 <div className="flex items-center justify-center">
                   {tags[1].icon}
                 </div>
@@ -139,7 +139,7 @@ const HomeBanner = ({ banner }) => {
           <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">
-                <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
+                <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7">
                   Time is running out Book your ticket.
                 </div>
               </div>
@@ -147,7 +147,7 @@ const HomeBanner = ({ banner }) => {
                 {Object.entries(remainingTime).map(([key, value]) => (
                   <div
                     key={key}
-                    className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-[#ffffff08]"
+                    className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-white/3"
                   >
                     <h5 className="text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
                       {String(value).padStart(2, "0")}

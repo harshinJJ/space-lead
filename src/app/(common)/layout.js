@@ -84,9 +84,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${openSans.variable} ${raleway.variable} ${poppins.variable} ${inter.variable} ${encodeSans.variable} ${outfit.variable} ${dmSans.variable} ${orbitron.variable} ${figtree.variable} antialiased`}
       >
         <Header />
-        <GsapProvider>{children}</GsapProvider>
-        <RegisterBtn />
+        <GsapProvider>
+          {children}
         <Footer />
+          </GsapProvider>
+        <RegisterBtn />
       </body>
     </html>
   );

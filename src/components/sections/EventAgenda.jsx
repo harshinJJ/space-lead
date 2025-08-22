@@ -130,7 +130,7 @@ export default function EventAgenda({className=""}) {
       <div className={`container mx-auto text-white ${className}`}>
         <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-15">
           <div className="flex flex-col justify-between gap-3">
-            <h2 className="uppercase xl:text-lg w-fit bg-gradient-to-r from-[#5AC0BE] to-[#7F529F] bg-clip-text text-transparent">
+            <h2 className="uppercase xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               Event Agenda
             </h2>
             <h1 className="uppercase font-azonix text-2xl md:text-3xl 2xl:text-5xl font-bold">
@@ -146,7 +146,7 @@ export default function EventAgenda({className=""}) {
                 onClick={() => setActiveDay(day.id)}
                 className={`px-5 2xl:px-8 2xl:py-2 lg:!py-1 rounded-full flex-col relative ${
                   activeDay === day.id
-                    ? "after:content-[''] after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-14 after:border-transparent after:border-t-[#5AC0BE]"
+                    ? "after:content-[''] after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-14 after:border-transparent after:border-t-secondary"
                     : " from-transparent to-transparent border border-[#CCCCCC33]"
                 }`}
               >
@@ -162,10 +162,10 @@ export default function EventAgenda({className=""}) {
           {eventsData[activeDay].map((event, idx) => (
             <div
               key={idx}
-              className="bg-[#FFFFFF14] rounded-4xl p-7.5 flex flex-col gap-4"
+              className="bg-white/8 rounded-4xl p-7.5 flex flex-col gap-4"
             >
               <AgendaCard event={event}/>
-              {/* <div className="bg-gradient-to-r from-[#FFFFFF14] to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6">
+              {/* <div className="bg-gradient-to-r from-white/8 to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6">
                 <img
                   src={event.image}
                   alt={event.title}

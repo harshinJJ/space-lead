@@ -30,7 +30,7 @@ const CategoryList = () => (
           // className="bg-white rounded-xl shadow-md p-6 w-full max-w-xs flex flex-col items-center"
           className="bg-[#F2F5FE] font-poppins  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-center"
         >
-          <span className={`${cat.type === "Free" ? "bg-[#7F529F30] text-[#7F529F]" : "bg-[#0b993a50] text-[#1e611e]"} text-xs leading-[1.5] rounded-full px-4.75 mb-3`}>{cat.type}</span>
+          <span className={`${cat.type === "Free" ? "bg-primary/19 text-primary" : "bg-[#0b993a50] text-[#1e611e]"} text-xs leading-[1.5] rounded-full px-4.75 mb-3`}>{cat.type}</span>
           <span className="text-2xl text-[#111111CC] mb-4">{cat.name}</span>
 
           <PrimaryLink href={cat.link} className="w-fit group px-6 py-1 items-center gap-2 transition-all duration-300">

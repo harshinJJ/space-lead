@@ -4,11 +4,11 @@ import React from "react";
 const getGradientBg = (theme) => {
   switch (theme) {
     case "primary":
-      return "bg-gradient-to-b from-[#7F529F] to-[#2E1D39] border-[#7F529F]";
+      return "bg-gradient-to-b from-primary to-[#2E1D39] border-primary";
     case "secondary":
-      return "bg-gradient-to-b from-[#5AC0BE] to-[#2A5A59] border-[#5AC0BE]";
+      return "bg-gradient-to-b from-secondary to-[#2A5A59] border-secondary";
     default:
-      return "bg-gradient-to-b from-[#5AC0BE] to-[#2A5A59] border-[#5AC0BE]";
+      return "bg-gradient-to-b from-secondary to-[#2A5A59] border-secondary";
   }
 };
 
@@ -145,9 +145,9 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
         `}
             ></span>
           </span>
-          <span className="text-white text-3xl ms-2">{session.name}</span>
+          <span className="text-white text-xl md:text-3xl ms-2">{session.name}</span>
         </div>
-        <span className={`text-white text-5xl`}>
+        <span className={`text-white text-2xl md:text-5xl`}>
           {session.price
             ? `${session.currency}.${session.price.toFixed(2)}`
             : "Free"}

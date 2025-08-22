@@ -30,7 +30,7 @@ const SpeakerCard = ({
     },
     {
       label: "twitter",
-      activeClass: "hover:!bg-[#000000]",
+      activeClass: "hover:!bg-black",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -82,6 +82,7 @@ const SpeakerCard = ({
       ),
     },
   ];
+  const labelClass = textSize === "sm" ? "2xl:text-base xl:text-sm" : "text-base";
   const titleClass =
     textSize === "sm"
       ? ` md:text-[1.375rem] text-lg leading-[1.5] tracking-[-1.5%]`
@@ -92,7 +93,7 @@ const SpeakerCard = ({
       className={`group relative p-8 py-15 ${textSize=="sm"?"pb-2.5":"pb-19.25"} w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl`}
     >
       <div className=" font-dm-sans group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-10 flex flex-col gap-5 md:gap-7.5 w-full h-full justify-start">
-        <span style={{ color: color }} className={` font-semibold text-base`}>
+        <span style={{ color: color }} className={` font-semibold  ${labelClass} `}>
           {speaker?.name}
         </span>
         <h3 className={`text-white ${titleClass} mb-2`}>
@@ -143,7 +144,7 @@ const SpeakerCardOld = ({ speaker = {}, selectAction }) => {
     },
     {
       label: "twitter",
-      activeClass: "hover:!bg-[#000000]",
+      activeClass: "hover:!bg-black",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -220,11 +221,11 @@ const SpeakerCardOld = ({ speaker = {}, selectAction }) => {
         </div>
       </div>
       <div className="p-4 text-center">
-        <h3 className="text-lg font-semibold font-gilroy-bold text-[#000]">
+        <h3 className="text-lg font-semibold font-gilroy-bold text-black">
           {speaker?.name}
         </h3>
         <p className="text-sm text-gray-600">{speaker.title}</p>
-        <button className="mt-3 bg-[#7F529F] text-[#ffffff] leading-normal text-sm px-7 py-1.5 rounded-full">
+        <button className="mt-3 bg-primary text-white leading-normal text-sm px-7 py-1.5 rounded-full">
           SPEAKER
         </button>
       </div>

@@ -10,9 +10,10 @@ const MemberList = ({
   linkLabel = "View Full Line-Up",
   title,
   label,
-  theme="light",
+  theme = "light",
   selectAction,
-  className=""
+  className = "",
+  cardSize = "lg",
 }) => {
   const socials = [
     {
@@ -85,11 +86,15 @@ const MemberList = ({
     },
   ];
 
+  const containerClass =
+    cardSize == "sm"
+      ? "!flex flex-wrap justify-center  [&>div]:p-2.5 [&>div]:sm:flex-1/5 [&>div]:w-full [&>div]:sm:w-auto [&>div]:sm:max-w-1/2 [&>div]:md:max-w-1/4 [&>div]:lg:max-w-1/5"
+      : " gap-6 sm:grid-cols-2 lg:grid-cols-4";
   return (
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
         <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0 xl:px-8">
-          {label && <p className="text-[#5AC0BE]">{label}</p>}
+          {label && <p className="text-secondary">{label}</p>}
           <div
             className={`flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-7.5 ${
               link || navComponent ? "md:justify-between" : "md:justify-center"
@@ -97,7 +102,9 @@ const MemberList = ({
           >
             {title && (
               <h2
-                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix ${theme=="dark"?"text-white":"text-[#000222]"} 2xl:leading-snug ${
+                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix ${
+                  theme == "dark" ? "text-white" : "text-[#000222]"
+                } 2xl:leading-snug ${
                   link || navComponent ? "max-w-[25ch]" : ""
                 }`}
               >
@@ -118,13 +125,17 @@ const MemberList = ({
         </div>
 
         {/* Speaker Cards */}
-        <div className="container mx-auto px-5 sm:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 mb-5 xl:px-8">
+        <div
+          className={`container mx-auto px-5 sm:px-0 grid grid-cols-1 ${containerClass} mt-10 mb-5 xl:px-8`}
+        >
           {speakers.map((speaker, index) => (
-            <SpeakerCard
-              key={index}
-              speaker={speaker}
-              selectAction={selectAction}
-            />
+            <div key={index} className="">
+              <SpeakerCard
+                speaker={speaker}
+                selectAction={selectAction}
+                textSize={cardSize}
+              />
+            </div>
           ))}
         </div>
       </section>

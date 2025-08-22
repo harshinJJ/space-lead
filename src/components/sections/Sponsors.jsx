@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import { PrimaryDualTextLink, PrimaryLink } from "../buttons/PrimaryButton";
 import FAQ from "./FAQ";
+import Image from "next/image";
 
 const sponsors = [
   { name: "Datab", logo: "/images/logos/sponsor1.png" },
@@ -33,16 +34,22 @@ export default function SponsorsBlock({ hasFaq = false }) {
   );
 }
 
-export const SponsorContent = () => {
+export const SponsorContent = ({ imageAlign = "right" }) => {
   return (
     <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5">
-      <div className="container px-5 lg:px-12.75 mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
+      <div
+        className={`container px-4 mx-auto flex flex-col items-stretch ${
+          imageAlign === "right" ? "xl:flex-row-reverse" : " xl:flex-row"
+        } items-start gap-8 md:gap-20`}
+      >
         {/* Image */}
-        <div className="w-full xl:w-1/2 xl:max-w-[44rem] flex justify-center">
-          <img
+        <div className="relative w-full xl:w-1/2 ">
+          <Image
             src="/images/sponsor_content_img.png" // replace with your actual image path
             alt="Astronaut looking at space"
-            className="w-full  rounded-2xl object-cover"
+            className="w-full h-full xl:absolute rounded-2xl object-cover"
+            width={775}
+            height={387}
           />
         </div>
 
@@ -74,9 +81,9 @@ export const SponsorContent = () => {
   );
 };
 
-export const SponsorList = () => {
+export const SponsorList = ({showSlides=true}) => {
   return (
-    <section className="w-full relative py-12 lg:py-20 lg:pb-30 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
+    <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
       {/* Left & right edge gradients */}
       <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
       <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
@@ -88,7 +95,7 @@ export const SponsorList = () => {
         <h2 className="text-2xl font-raleway lg:text-[2.875rem] font-bold text-gray-900 mb-4">
           Sponsorship opportunities
         </h2>
-        <p className="lg:max-w-[68.5rem] xl:text-start leading-[1.875rem] text-lg mx-auto text-[#303030] mb-10 ">
+        <p className={`lg:max-w-[68.5rem] leading-[1.875rem] text-lg mx-auto text-[#303030] ${!showSlides?"mb-0":""} mb-10 `}>
           The Space Lead ’25 Conference offers curated sponsorship opportunities
           designed to deliver strategic value and measurable impact. Gain
           exclusive visibility, immersive branding experiences, and tailored
@@ -98,7 +105,7 @@ export const SponsorList = () => {
           ecosystem engagement, choose your tier and lead the conversation.
         </p>
       </div>
-      <div className="relative mx-auto ">
+      {showSlides&&<div className="relative mx-auto lg:pb-10 ">
         {/* Swiper for logos */}
         <div className="py-3">
           <Swiper
@@ -165,7 +172,7 @@ export const SponsorList = () => {
             }}
           >
             {sponsors.map((sponsor, idx) => (
-              <SwiperSlide  className="3xl:!w-[248px]" key={idx}>
+              <SwiperSlide className="3xl:!w-[248px]" key={idx}>
                 <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
                   <img
                     src={sponsor.logo}
@@ -176,6 +183,47 @@ export const SponsorList = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+      </div>}
+    </section>
+  );
+};
+
+export const SponsorContentRight = () => {
+  return (
+    <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5">
+      <div className="container px-5 lg:px-12.75 mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
+        {/* Image */}
+        <div className="w-full xl:w-1/2 xl:max-w-[44rem] flex justify-center">
+          <img
+            src="/images/sponsor_content_img.png" // replace with your actual image path
+            alt="Astronaut looking at space"
+            className="w-full  rounded-2xl object-cover"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="w-full xl:w-1/2 text-center xl:text-left flex flex-col items-center xl:items-start">
+          <p className="text-secondary text-lg mb-4 leading-[100%] font-open-sans">
+            Our Sponsors
+          </p>
+          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-raleway lg:mb-14 mb-7">
+            Why sponsor
+          </h2>
+          <p className="font-poppins sm:text-lg leading-[150%]  mb-10">
+            Sponsoring the Space Lead ’25 Conference positions your organization
+            at the forefront of space innovation. Engage with top-level
+            decision-makers, policymakers, and global disruptors. Build
+            credibility, amplify visibility, expand your network, and forge
+            lasting partnerships through a high-impact platform designed for
+            those shaping the next era of space.
+          </p>
+          <PrimaryDualTextLink
+            href="#"
+            className="px-7.5 py-6 text-lg tracking-[1px] [&span]:font-[600]"
+            initialText="View All Sponsors"
+            hoverText="Join The Event"
+          />
         </div>
       </div>
     </section>

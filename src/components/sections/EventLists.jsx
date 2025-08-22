@@ -101,7 +101,7 @@ const EventLists = () => {
         {events.map((event) => (
           <div
             key={event.id}
-            className="border-2 lg:p-7 pb-2 border-[#FFFFFF10] rounded-3xl overflow-hidden flex flex-col lg:flex-row"
+            className="border-2 lg:p-7 pb-2 border-white/6 rounded-3xl overflow-hidden flex flex-col lg:flex-row"
           >
             {/* Image */}
             <div className="lg:w-2/5 lg:rounded-3xl overflow-hidden">
@@ -114,15 +114,15 @@ const EventLists = () => {
 
             {/* Content */}
             <div className="lg:w-3/5 p-2 sm:p-6 flex flex-col gap-9 items-end sm:items-start">
-              <div className="border-b border-[#FFFFFF10] pb-9 w-full">
-                <div className="flex items-center gap-1 sm:gap-4 text-sm text-white mb-3 bg-[#ffffff10] w-fit px-2 sm:px-10 py-1 sm:py-3 rounded-sm sm:rounded-full">
+              <div className="border-b border-white/6 pb-9 w-full">
+                <div className="flex items-center gap-1 sm:gap-4 text-sm text-white mb-3 bg-white/6 w-fit px-2 sm:px-10 py-1 sm:py-3 rounded-sm sm:rounded-full">
                   <span>{event.date}</span>
-                  <span className="border-s ps-1 sm:ps-4 border-[#ffffff30]">
+                  <span className="border-s ps-1 sm:ps-4 border-white/19">
                     {event.time}
                   </span>
                 </div>
                 <h3 className="text-lg sm:text-3xl  text-white mb-2">{event.title}</h3>
-                <p className="text-[#FFFFFF80] text-sm leading-7 mb-4 flex items-center gap-1 sm:gap-2">
+                <p className="text-white/50 text-sm leading-7 mb-4 flex items-center gap-1 sm:gap-2">
                   <svg
                     width="10"
                     height="13"

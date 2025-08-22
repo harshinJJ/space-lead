@@ -8,8 +8,8 @@ export default function ContactUs() {
     <main>
       {/* contact form pending  */}
       {/* map pending */}
-      <ContactForm />
       <ContactInfo />
+      <ContactForm />
       {/* <Marquee /> */}
     </main>
   );

@@ -54,13 +54,13 @@ const LatestInfo = () => {
 
           {/* Date Cards */}
           <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-end w-full lg:w-auto gap-4 lg:gap-0">
-            <div className="relative transform  lg:translate-x-[1.625rem] bg-gradient-to-b from-[#5AC0BE] to-[#2A5A59] rounded-4xl px-6.5 py-10.25 text-center shadow-lg">
-              <p className="text-6xl xl:text-[6.25rem] font-azonix text-primary">
+            <div className="relative transform  lg:translate-x-[1.625rem] bg-gradient-to-b from-secondary to-[#2A5A59] rounded-4xl px-6.5 py-10.25 text-center shadow-lg">
+              <p className="text-6xl xl:text-[6.25rem] font-azonix text-tertiary">
                 14
               </p>
               <p className="text-xl xl:text-[2rem]">JULY-2025</p>
             </div>
-            <div className=" relative transform lg:translate-y-[33%] bg-gradient-to-b from-[#7F529F] to-[#2E1D39] rounded-4xl px-6.5 py-10.25 text-center shadow-lg">
+            <div className=" relative transform lg:translate-y-[33%] bg-gradient-to-b from-primary to-[#2E1D39] rounded-4xl px-6.5 py-10.25 text-center shadow-lg">
               <p className="text-6xl xl:text-[6.25rem] font-azonix text-secondary">
                 15
               </p>
@@ -73,32 +73,6 @@ const LatestInfo = () => {
         <div className="pt-10 lg:py-25 lg:pb-12.5">
           <StatsCard />
         </div>
-        {/* <div className="rounded-[1.25rem] bg-gradient-to-r px-2.5 py-6.25 from-[#5AC0BE] to-[#7F529F] xl:mt-25 md:mt-10 mt-5 flex flex-col lg:flex-row justify-around text-center">
-          <div className="">
-            <p className="text-4xl lg:text-6xl xl:text-[6.25rem] align-bottom text-center font-azonix text-primary">
-              90
-            </p>
-            <p className="text-lg lg:text-2xl xl:text-[2rem]">Speakers</p>
-          </div>
-          <div className="">
-            <p className="text-4xl lg:text-6xl xl:text-[6.25rem] align-bottom text-center font-azonix text-primary">
-              18
-            </p>
-            <p className="text-lg lg:text-2xl xl:text-[2rem]">Sponsors</p>
-          </div>
-          <div className="">
-            <p className="text-4xl lg:text-6xl xl:text-[6.25rem] align-bottom text-center font-azonix text-primary">
-              5000
-            </p>
-            <p className="text-lg lg:text-2xl xl:text-[2rem]">Tickets</p>
-          </div>
-          <div className="">
-            <p className="text-4xl lg:text-6xl xl:text-[6.25rem] align-bottom text-center font-azonix text-primary">
-              09
-            </p>
-            <p className="text-lg lg:text-2xl xl:text-[2rem]">Sessions</p>
-          </div>
-        </div> */}
       </div>
 
       {/* Testimonials */}
@@ -110,7 +84,7 @@ const LatestInfo = () => {
             alt="Speaker"
             className="rounded-lg w-full xl:max-w-[33.5rem] h-full object-cover"
           />
-          <div className="lg:absolute lg:max-w-[25ch] w-auto text-center font-open-sans flex flex-col items-center lg:gap-19.5 gap-5 bottom-0 lg:translate-x-[-50%] transform lg:translate-y-[-30%] left-0 bg-gradient-to-b from-[#7F529F50] to-[#2E1D3950] backdrop-blur-[24px]  text-white rounded-2xl p-10">
+          <div className="lg:absolute lg:max-w-[25ch] w-auto text-center font-open-sans flex flex-col items-center lg:gap-19.5 gap-5 bottom-0 lg:translate-x-[-50%] transform lg:translate-y-[-30%] left-0 bg-gradient-to-b from-primary/31 to-[#2E1D3950] backdrop-blur-[24px]  text-white rounded-2xl p-10">
             <p className="text-6xl">6k+</p>
             <p className="">Trusted Customers also Satisfied</p>
           </div>
@@ -118,7 +92,7 @@ const LatestInfo = () => {
 
         {/* Testimonial Card */}
         <div className="w-full lg:w-1/2 flex flex-col justify-start">
-          <p className="text-[#7F529F] font-open-sans mb-5">Testimonials</p>
+          <p className="text-primary font-open-sans mb-5">Testimonials</p>
           <h3 className="xl:text-[2.875rem] lg:text-4xl md:text-2xl text-xl font-bold xl:mb-15 mb-10 font-raleway">
             Discover Clients Feedback <br /> About our Events
           </h3>

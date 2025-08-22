@@ -12,21 +12,29 @@ const About = () => {
   return (
     <main>
       <AboutInfo />
-
+      <section className="bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[center]">
+        <MemberList
+          className="bg-transparent"
+          title={"Steering Committee Members"}
+          speakers={[...speakerList, speakerList[0]]}
+          theme="dark"
+          cardSize="sm"
+        />
+      </section>
       <MemberList
         className="bg-white"
         title={"Scientific Committee Members"}
         speakers={speakerList}
       />
       <WhyAttend>
-        <LatestInfo/>
+        <LatestInfo />
       </WhyAttend>
       {/* <Marquee /> */}
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <SponsorsBlock />
+      <SponsorsBlock hasFaq={true} />
     </main>
   );
 };

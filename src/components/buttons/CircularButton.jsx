@@ -5,7 +5,7 @@ const CircularButton = ({ children, className = "", ...props }) => {
   return (
     <button
       {...props}
-      className={`text-white flex justify-center items-center aspect-square bg-[#5AC0BE] hover:bg-[#505A7B] rounded-full ${className}`}
+      className={`text-white flex justify-center items-center aspect-square bg-secondary hover:bg-[#505A7B] rounded-full ${className}`}
     >
       {children}
     </button>
@@ -21,7 +21,7 @@ export const CircularLink = ({
     <Link
       {...props}
       href={href}
-      className={`text-white flex justify-center items-center aspect-square bg-[#5AC0BE] hover:bg-[#505A7B] rounded-full ${className}`}
+      className={`text-white flex justify-center items-center aspect-square bg-secondary hover:bg-[#505A7B] rounded-full ${className}`}
     >
       {children}
     </Link>

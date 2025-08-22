@@ -6,16 +6,16 @@ const TicketSummary = ({ price = 0, currency = "SAR" }) => {
   const vat = price * 0.15 + 205; // VAT calculation
   const totalPrice = price + vat;
   return (
-    <div className="text-[#000000B2] text-[0.625rem]  bg-gradient-to-b from-[#F4E4FF] to-[#5AC0BE] rounded-[1.25rem] py-5 px-6 mt-5 w-full  mx-auto">
+    <div className="text-black-b2 text-[0.625rem]  bg-gradient-to-b from-[#F4E4FF] to-secondary rounded-[1.25rem] py-5 px-6 mt-5 w-full  mx-auto">
       <h3 className="text-sm text-black mb-4.5">Your Ticket Summary</h3>
-      <div className="border border-[#5AC0BE] p-2.5 mb-4.5">
+      <div className="border border-secondary p-2.5 mb-4.5">
         <div className="flex justify-between items-center mb-2">
           <span className="text-xs">SPACE LEAD 2025</span>
           <span className="text-secondary text-[1.25rem] font-gilroy-black">
             {currency} {formatCurrency(price)}
           </span>
         </div>
-        <div className=" text-[#000000B2]">
+        <div className=" text-black-b2">
           <div className=" mb-2.75">Early Bird Ticket</div>
           <div className="">Monday, 09th November</div>
           <div className="">08:00 AM to 04:00 PM</div>
@@ -25,7 +25,7 @@ const TicketSummary = ({ price = 0, currency = "SAR" }) => {
           <p>Al Kifah Saudi Arabia</p>
         </div>
       </div>
-      <div className="border border-[#5AC0BE] p-2.5 flex flex-col gap-1.5 ">
+      <div className="border border-secondary p-2.5 flex flex-col gap-1.5 ">
         <div className="flex justify-between items-center">
           <span>Sub-total</span>
           <span className="text-[#101010] text-xs">

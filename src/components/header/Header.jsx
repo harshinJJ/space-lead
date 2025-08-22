@@ -63,8 +63,8 @@ const Header = () => {
     pageLinks.find((link) => link.url === pathname)?.title || "";
   return (
     <header className="text-white ">
-      <section
-        className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] via-primary to-[#0a1316]  xl:bg-none ${
+      <div
+        className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] via-tertiary to-[#0a1316]  xl:bg-none ${
           hasScrolled ? " xl:bg-[#21162c]/98" : ""
         } transition-all duration-300 ease-in-out`}
       >
@@ -107,7 +107,7 @@ const Header = () => {
                 )}
               </svg>
             </button>
-            <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between gap-11.5 py-2.5 ps-8.5 pe-4.5 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-[#FFFFFF12]">
+            <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between gap-11.5 py-2.5 ps-8.5 pe-4.5 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-white/7">
               {navLinks.map((link, i) => (
                 <li key={i}>
                   {link.type == "button" ? (
@@ -121,7 +121,7 @@ const Header = () => {
                     >
                       {link.title}
                       {pathname === link.url && (
-                        <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-[#5AC0BE] to-[#7F529F]"></span>
+                        <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-secondary to-primary"></span>
                       )}
                     </Link>
                   )}
@@ -130,7 +130,7 @@ const Header = () => {
             </ul>
           </nav>
         </div>
-      </section>
+      </div>
       <div
         className={`fixed top-0 left-0 w-full h-full bg-[#0a1316] z-40 xl:hidden transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -157,7 +157,7 @@ const Header = () => {
                 >
                   {link.title}
                   {pathname === link.url && (
-                    <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-[#5AC0BE] to-[#7F529F]"></span>
+                    <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-secondary to-primary"></span>
                   )}
                 </Link>
               )}

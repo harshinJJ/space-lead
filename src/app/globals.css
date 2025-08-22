@@ -39,11 +39,14 @@
   --breakpoint-3xl: 108rem;
   /* --breakpoint-4xl: 1920px; */
 
-  --color-primary: #131f54;
-  --color-secondary: #5ac0be;
+  --color-primary: #7F529F;
+  --color-secondary: #5AC0BE;
+  --color-tertiary: #131F54;
+  --color-black-b2: #000000B2;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-open-sans: var(--font-open-sans);

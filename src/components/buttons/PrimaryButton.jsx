@@ -5,7 +5,7 @@ const PrimaryButton = ({ children, className = "", ...props }) => {
   return (
     <button
       {...props}
-      className={`cursor-pointer text-white flex justify-center items-center py-2 px-3 bg-linear-to-r from-[#5AC0BE] to-[#7F529F] hover:from-[#469796] hover:to-[#674281] rounded-full ${className}`}
+      className={`cursor-pointer text-white flex justify-center items-center py-2 px-3 bg-linear-to-r from-secondary to-primary hover:from-[#469796] hover:to-[#674281] rounded-full ${className}`}
     >
       {children}
     </button>
@@ -21,7 +21,7 @@ export const PrimaryLink = ({
     <Link
       {...props}
       href={href}
-      className={`cursor-pointer text-white flex justify-center items-center py-2 px-3 bg-linear-to-r from-[#5AC0BE] to-[#7F529F] hover:from-[#469796] hover:to-[#674281] rounded-full ${className}`}
+      className={`cursor-pointer text-white flex justify-center items-center py-2 px-3 bg-linear-to-r from-secondary to-primary hover:from-[#469796] hover:to-[#674281] rounded-full ${className}`}
     >
       {children}
     </Link>
@@ -38,7 +38,7 @@ export const PrimaryDualTextLink = ({
     <Link
       {...props}
       href={href}
-      className={`text-white flex justify-center bg-linear-to-r from-[#5AC0BE] to-[#7F529F] rounded-full w-fit group px-7.5 py-4.25 items-center gap-2 hover:from-[#B20D5D] hover:to-[#4A0AB4] transition-all duration-300 ${className}`}
+      className={`text-white flex justify-center bg-linear-to-r from-secondary to-primary rounded-full w-fit group px-7.5 py-4.25 items-center gap-2 hover:from-[#B20D5D] hover:to-[#4A0AB4] transition-all duration-300 ${className}`}
     >
       <span className="leading-[100%] text-lg group-hover:hidden">
               {initialText}

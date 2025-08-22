@@ -8,7 +8,7 @@ const stats = [
 ];
 
 const StatsCard = () => (
-  <div className="flex flex-col sm:flex-row rounded-[1.25rem] md:px-13.75 bg-gradient-to-r from-[#5AC0BE] to-[#7F529F] px-0 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
+  <div className="flex flex-col sm:flex-row rounded-[1.25rem] md:px-13.75 bg-gradient-to-r from-secondary to-primary px-0 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
     {stats.map((item, idx) => (
       <div
         key={item.label}
@@ -30,10 +30,10 @@ const StatsCard = () => (
 const StatsCardOld = () => {
 
   return (
-    <div className="rounded-[1.25rem] bg-gradient-to-r px-2.5 py-6.25 from-[#5AC0BE] to-[#7F529F] xl:mt-25 md:mt-10 mt-5 flex flex-col lg:flex-row justify-around text-center">
+    <div className="rounded-[1.25rem] bg-gradient-to-r px-2.5 py-6.25 from-secondary to-primary xl:mt-25 md:mt-10 mt-5 flex flex-col lg:flex-row justify-around text-center">
       {stats.map((item) => (
         <div className="" key={item.label}>
-          <p className="text-4xl lg:text-6xl xl:text-[6.25rem] align-bottom text-center font-azonix text-primary">
+          <p className="text-4xl lg:text-6xl xl:text-[6.25rem] align-bottom text-center font-azonix text-tertiary">
             {item.value}
           </p>
           <p className="text-lg lg:text-2xl xl:text-[2rem]">{item.label}</p>

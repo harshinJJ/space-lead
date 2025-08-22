@@ -2,7 +2,7 @@ import React from 'react'
 
 const AgendaCard = ({event,containerClass}) => {
   return (
-    <div className={`bg-gradient-to-r from-[#FFFFFF14] to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6 ${containerClass}`}>
+    <div className={`bg-gradient-to-r from-white/8 to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6 ${containerClass}`}>
                 <img
                   src={event.image}
                   alt={event.title}

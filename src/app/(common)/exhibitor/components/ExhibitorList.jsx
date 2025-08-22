@@ -191,7 +191,7 @@ const ExhibitorList = () => (
               </defs>
             </svg>
 
-            <span className=" text-[#7F529F] leading-[0.8] text-[2rem]">
+            <span className=" text-primary leading-[0.8] text-[2rem]">
               {item.code}
             </span>
           </div>
@@ -214,7 +214,7 @@ const ExhibitorList = () => (
               />
             </svg>
 
-            <span className="font-light text-[#000000B2] leading-1.5">
+            <span className="font-light text-black-b2 leading-1.5">
               {item.email}
             </span>
           </div>

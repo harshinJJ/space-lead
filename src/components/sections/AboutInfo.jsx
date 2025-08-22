@@ -183,8 +183,8 @@ const AboutInfo = ({className=""}) => {
             src="/images/about_section_img.png"
             alt=""
           />
-          <div className="absolute right-0 bottom-0 md:bottom-[unset] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[25ch] md:max-w-[22ch] max-w-[20ch] transform md:translate-x-[38%] lg:translate-x-[-25%] md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-[#7F529F] to-[#000000] opacity-90 xl:p-10 p-6 flex flex-col gap-5">
-            <div className="bg-[#5AC0BE] aspect-square xl:w-18.5 w-15 rounded-full flex items-center justify-center">
+          <div className="absolute right-0 bottom-0 md:bottom-[unset] md:top-[2rem] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[25ch] md:max-w-[22ch] max-w-[20ch] transform md:translate-x-[38%] lg:translate-x-[-25%] md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-primary to-black opacity-90 xl:p-10 p-6 flex flex-col gap-5">
+            <div className="bg-secondary aspect-square xl:w-18.5 w-15 rounded-full flex items-center justify-center">
               <svg
                 width="27"
                 height="26"
@@ -209,8 +209,8 @@ const AboutInfo = ({className=""}) => {
 
         {/* content */}
         <div className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
-          <h5 className="text-[#5AC0BE]  xl:text-lg text-base">{data.name}</h5>
-          <h3 className="text-[#131F54] lg:max-w-[90%] 2xl:leading-[3rem] uppercase font-azonix text-lg md:text-2xl xl:text-3xl 2xl:text-[2.5rem]">
+          <h5 className="text-secondary  xl:text-lg text-base">{data.name}</h5>
+          <h3 className="text-tertiary lg:max-w-[90%] 2xl:leading-[3rem] uppercase font-azonix text-lg md:text-2xl xl:text-3xl 2xl:text-[2.5rem]">
             {data.title}
           </h3>
           <p className="text-[#737373] xl:max-w-[80%] xl:text-lg text-base">
@@ -222,7 +222,7 @@ const AboutInfo = ({className=""}) => {
                 className="flex flex-col xs:flex-row items-center gap-2 xl:gap-6"
                 key={i}
               >
-                <div className="bg-[#5AC0BE] aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-18.5 rounded-full flex items-center justify-center">
+                <div className="bg-secondary aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-18.5 rounded-full flex items-center justify-center">
                   <div className="lg:scale-75 2xl:scale-100">{vision.icon}</div>
                 </div>
                 <p
@@ -242,7 +242,7 @@ const AboutInfo = ({className=""}) => {
               <p className="text-secondary uppercase text-xs leading-[2.5rem]">
                 Features
               </p>
-              <h4 className="text-[#131F54] font-azonix text-2xl">
+              <h4 className="text-tertiary font-azonix text-2xl">
                 Our Feature
               </h4>
             </div>
@@ -260,7 +260,7 @@ const AboutInfo = ({className=""}) => {
                   })}
                 </div>
                 <div className="">
-                  <h5 className="text-primary text-sm">{feature.title}</h5>
+                  <h5 className="text-tertiary text-sm">{feature.title}</h5>
                   <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-xs leading-4.5">
                     {feature.description}
                   </p>
@@ -275,7 +275,7 @@ const AboutInfo = ({className=""}) => {
           <p className="text-secondary uppercase text-xs leading-[2.5rem]">
             Features
           </p>
-          <h4 className="text-[#131F54] font-azonix text-2xl">Our Feature</h4>
+          <h4 className="text-tertiary font-azonix text-2xl">Our Feature</h4>
         </div>
         {data.features.map((feature, i) => (
           <div
@@ -291,7 +291,7 @@ const AboutInfo = ({className=""}) => {
               })}
             </div>
             <div className="">
-              <h5 className="text-primary text-sm">{feature.title}</h5>
+              <h5 className="text-tertiary text-sm">{feature.title}</h5>
               <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-xs leading-4.5">
                 {feature.description}
               </p>

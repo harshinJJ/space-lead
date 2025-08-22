@@ -1,7 +1,7 @@
 const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
   return (
     <section
-      className={`w-full relative py-12 lg:py-20 lg:pb-30 bg-[url('/images/backgrounds/sponsor_bg_transparant.png')] bg-[center_2rem] bg-contain bg-no-repeat bg-[#EDF0FE] ${containerClass}`}
+      className={`w-full relative py-12 lg:py-20 lg:pb-30 bg-contain bg-no-repeat bg-[#EDF0FE] ${containerClass}`}
     >
       <div className="container mx-auto text-center">
         {label && (

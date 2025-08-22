@@ -67,7 +67,7 @@ const TestimonialsSlider = () => {
       >
         {testimonials.map((t, idx) => (
           <SwiperSlide key={idx}>
-            <div className="bg-[#7F529F30] xl:p-10.5 lg:p-9 p-5 rounded-[1.25rem] relative">
+            <div className="bg-primary/19 xl:p-10.5 lg:p-9 p-5 rounded-[1.25rem] relative">
               <div className="flex items-center justify-between mb-5">
                 <div id="rating" className="flex items-center mb-4">
                   <div className="flex items-center gap-1">
@@ -116,7 +116,7 @@ const TestimonialsSlider = () => {
           <div
             className={`flex items-center gap-5  p-[0.65625rem] sm:pe-9 rounded-full text-xs `}
           >
-            <div className="w-17.5 aspect-square rounded-full overflow-hidden border-1 border-[#FFFFFF30]">
+            <div className="w-17.5 aspect-square rounded-full overflow-hidden border-1 border-white/19">
               <img
                 className="w-full h-full object-cover"
                 src={testimonials[activeIndex]?.img||"/images/user_placeholder.jpeg"}
@@ -134,7 +134,7 @@ const TestimonialsSlider = () => {
           <div className="flex lg:relative gap-2 items-center">
             <CircularButton
               ref={prevRef}
-              className="p-3.5 bg-[#7F529F] hover:bg-[#ffffff] text-white hover:text-[#7F529F] transition-colors duration-300"
+              className="p-3.5 bg-primary hover:bg-white text-white hover:text-primary transition-colors duration-300"
             >
               <svg
                 width="20"
@@ -151,7 +151,7 @@ const TestimonialsSlider = () => {
             </CircularButton>
             <CircularButton
               ref={nextRef}
-              className="p-3.5 bg-[#7F529F] hover:bg-[#ffffff] text-white hover:text-[#7F529F] transition-colors duration-300"
+              className="p-3.5 bg-primary hover:bg-white text-white hover:text-primary transition-colors duration-300"
             >
               <svg
                 width="20"

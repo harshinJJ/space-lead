@@ -36,7 +36,7 @@ const ScrollTop = ({ className = "" }) => {
   return (
     <button
       onClick={()=>scrollToTop()}
-      className={`cursor-pointer w-fit aspect-square z-50 bg-[#5AC0BE] p-0.5 bg-gradient-to-r overflow-hidden from-[#5AC0BE] to-[#7F529F] rounded-full transition-colors duration-300 ${className}`}
+      className={`cursor-pointer w-fit aspect-square z-50 bg-secondary p-0.5 bg-gradient-to-r overflow-hidden from-secondary to-primary rounded-full transition-colors duration-300 ${className}`}
     >
       <div className="w-full h-full flex items-center justify-center bg-[#302e40] xl:p-6 p-4 aspect-square overflow-hidden rounded-full">
         <svg

@@ -42,9 +42,9 @@ export default function RegistrationForm({
       <p className="uppercase text-lg text-center">
         Please enter your information
       </p>
-      <div className="flex flex-col md:flex-row gap-5 xl:gap-10 2xl:gap-22.5 w-full  text-[#000000] bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25">
+      <div className="flex flex-col md:flex-row gap-5 xl:gap-10 2xl:gap-22.5 w-full  text-black bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25">
         <div className="flex-1">
-          <div className="bg-white/10  text-[#000000B2] rounded-xl mb-4">
+          <div className="bg-white/10  text-black-b2 rounded-xl mb-4">
             <p className="font-encode-sans-semi-condensed font-light text-sm text-[#31313B] mb-1">
               Please enter your details below, Fields marked with a * are
               mandatory.

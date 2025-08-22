@@ -8,7 +8,7 @@ const SpeakerAbout = ({ speaker }) => {
       </div>
 
       <div className="mt-4">
-        <p className="mb-2.5 text-lg text-[#000000]">
+        <p className="mb-2.5 text-lg text-black">
           Fast facts about {speaker.name}
         </p>
         <ul className=" space-y-3">
