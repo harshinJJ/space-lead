@@ -3,7 +3,12 @@ import React from "react";
 import { CircularLink } from "../buttons/CircularButton";
 import Link from "next/link";
 
-const SpeakerCard = ({ speaker = {}, selectAction, color = "#4DE3ED",font="lg" }) => {
+const SpeakerCard = ({
+  speaker = {},
+  selectAction,
+  color = "#4DE3ED",
+  textSize = "lg",
+}) => {
   const socials = [
     {
       label: "facebook",
@@ -77,23 +82,24 @@ const SpeakerCard = ({ speaker = {}, selectAction, color = "#4DE3ED",font="lg" }
       ),
     },
   ];
+  const titleClass =
+    textSize === "sm"
+      ? ` md:text-[1.375rem] text-lg leading-[1.5] tracking-[-1.5%]`
+      : `lg:text-[2.5rem] md:text-2xl text-xl font-dm-sans font-semibold leading-[1.1] tracking-[-1.5%]`;
   return (
     <div
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
-      className="group relative p-8 py-15 pb-19.25 w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl"
+      className={`group relative p-8 py-15 ${textSize=="sm"?"pb-2.5":"pb-19.25"} w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl`}
     >
       <div className=" font-dm-sans group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-10 flex flex-col gap-5 md:gap-7.5 w-full h-full justify-start">
-        <span
-          style={{ color: color }}
-          className={` font-semibold text-base`}
-        >
+        <span style={{ color: color }} className={` font-semibold text-base`}>
           {speaker?.name}
         </span>
-        <h3 className="text-white text-[2.5rem] font-dm-sans font-semibold leading-[1.1] tracking-[-1.5%] mb-2">
+        <h3 className={`text-white ${titleClass} mb-2`}>
           {speaker?.title}
         </h3>
       </div>
-      <div className=" group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-30 flex flex-col gap-15 w-full h-full justify-end">
+      <div className={` group-hover:scale-[1.2] transition-all duration-700 ${textSize=="sm"?" origin-bottom-left ":" origin-top-left "} relative z-30 flex flex-col gap-15 w-full h-full justify-end`}>
         <span className="text-white text-base font-semibold ">
           {speaker?.program || "Live Event"}
         </span>

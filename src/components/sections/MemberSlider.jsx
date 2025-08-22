@@ -17,7 +17,8 @@ const MemberSlider = ({
   label,
   theme="light",
   selectAction,
-  className=""
+  className="",
+  cardSize="lg",
 }) => {
   const socials = [
     {
@@ -128,17 +129,27 @@ const MemberSlider = ({
             modules={[FreeMode]}
             freeMode={true}
             spaceBetween={24}
-            slidesPerView={6}
+            slidesPerView={cardSize=="sm"? 1.2 : "auto"}
+            breakpoints={{
+              480: { slidesPerView: cardSize=="sm" ? 1.8 : "auto" },
+              640: { slidesPerView: cardSize=="sm" ? 2.8 : "auto" },
+              768: { slidesPerView: cardSize=="sm" ? 3 : "auto" },
+              1024: { slidesPerView: cardSize=="sm" ? 4 : "auto" },
+              1280: { slidesPerView: cardSize=="sm" ? 5 : "auto" },
+              1400: { slidesPerView: cardSize=="sm" ? 5.8 : "auto" },
+            }}
+
             className="w-full"
           >
             {speakers.map((speaker, index) => (
               <SwiperSlide
                 key={index}
-                className="!w-[320px] !h-auto flex items-stretch"
+                className={`${cardSize=="sm"?"":"!w-[320px] !h-auto"} lg:!max-w-2/5 flex items-stretch`}
               >
                 <SpeakerCard
                   speaker={speaker}
                   selectAction={selectAction}
+                  textSize={cardSize}
                 />
               </SwiperSlide>
             ))}

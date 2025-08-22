@@ -2,8 +2,7 @@
 import React from "react";
 
 const BadgePreview = ({ name, category, badgeId,title,organisation }) => (
-  <div className="w-full px-4.5">
-    <div className="bg-white  bg-gradient-to-r from-[#5AC0BE80] to-[#7F529F80] rounded-[1.25rem] shadow-lg p-2.5 flex flex-col items-center w-full max-w-xs overflow-hidden">
+    <div className=" bg-white  bg-gradient-to-r from-[#5AC0BE80] to-[#7F529F80] rounded-[1.25rem] shadow-lg p-2.5 flex flex-col items-center justify-end w-full max-w-xs overflow-hidden">
       <div className="bg-white uppercase rounded-[1.25rem] overflow-hidden flex flex-col items-center w-full max-w-xs">
         <div
           className={`w-full cursor-pointer font-azonix text-lg leading-[1.6] text-white text-center py-4 px-3 bg-linear-to-r from-[#5AC0BE] to-[#7F529F] `}
@@ -44,7 +43,6 @@ const BadgePreview = ({ name, category, badgeId,title,organisation }) => (
         </div>
       </div>
     </div>
-  </div>
 );
 
 export default BadgePreview;

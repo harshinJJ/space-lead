@@ -4,6 +4,7 @@ import { FreeMode, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { PrimaryDualTextLink, PrimaryLink } from "../buttons/PrimaryButton";
+import FAQ from "./FAQ";
 
 const sponsors = [
   { name: "Datab", logo: "/images/logos/sponsor1.png" },
@@ -22,10 +23,11 @@ const sponsors = [
   { name: "Templar", logo: "/images/logos/sponsor7.png" },
 ];
 
-export default function SponsorsBlock() {
+export default function SponsorsBlock({ hasFaq = false }) {
   return (
     <>
       <SponsorContent />
+      {hasFaq && <FAQ />}
       <SponsorList />
     </>
   );
@@ -75,9 +77,9 @@ export const SponsorContent = () => {
 export const SponsorList = () => {
   return (
     <section className="w-full relative py-12 lg:py-20 lg:pb-30 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
-                {/* Left & right edge gradients */}
-        <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
-        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
+      {/* Left & right edge gradients */}
+      <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
+      <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
 
       <div className="container px-5 mx-auto lg:px-12.75 text-center">
         <p className="text-secondary font-open-sans text-lg mb-2">
@@ -97,7 +99,6 @@ export const SponsorList = () => {
         </p>
       </div>
       <div className="relative mx-auto ">
-
         {/* Swiper for logos */}
         <div className="py-3">
           <Swiper
@@ -111,17 +112,21 @@ export const SponsorList = () => {
               disableOnInteraction: false,
               reverseDirection: false, // first swiper normal
             }}
+            className="!w-full"
             speed={3000} // control smoothness
             breakpoints={{
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 4 },
-              1280: { slidesPerView: 5 },
-              1400: { slidesPerView: 6 },
+              640: { slidesPerView: 2, spaceBetween: 40 },
+              768: { slidesPerView: 3, spaceBetween: 40 },
+              1024: { slidesPerView: 4, spaceBetween: 10 },
+              1280: { slidesPerView: 5, spaceBetween: 10 },
+              1400: { slidesPerView: 5, spaceBetween: 40 },
+              1536: { slidesPerView: 6, spaceBetween: 40 },
+              1728: { slidesPerView: 6, spaceBetween: 40 },
+              1920: { slidesPerView: "auto", spaceBetween: 20 },
             }}
           >
             {sponsors.map((sponsor, idx) => (
-              <SwiperSlide key={idx}>
+              <SwiperSlide className="3xl:!w-[248px]" key={idx}>
                 {/* <div className="flex items-center justify-center bg-white shadow rounded-xl py-4 px-6 hover:shadow-md transition"> */}
                 <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0">
                   <img
@@ -146,17 +151,21 @@ export const SponsorList = () => {
               disableOnInteraction: false,
               reverseDirection: true, // first swiper normal
             }}
+            className="!w-full"
             speed={3000} // control smoothness
             breakpoints={{
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 4 },
-              1280: { slidesPerView: 5 },
-              1400: { slidesPerView: 6 },
+              640: { slidesPerView: 2, spaceBetween: 40 },
+              768: { slidesPerView: 3, spaceBetween: 40 },
+              1024: { slidesPerView: 4, spaceBetween: 10 },
+              1280: { slidesPerView: 5, spaceBetween: 10 },
+              1400: { slidesPerView: 5, spaceBetween: 40 },
+              1536: { slidesPerView: 6, spaceBetween: 40 },
+              1728: { slidesPerView: 6, spaceBetween: 40 },
+              1920: { slidesPerView: "auto", spaceBetween: 20 },
             }}
           >
             {sponsors.map((sponsor, idx) => (
-              <SwiperSlide key={idx}>
+              <SwiperSlide  className="3xl:!w-[248px]" key={idx}>
                 <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
                   <img
                     src={sponsor.logo}

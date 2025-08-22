@@ -11,6 +11,7 @@ import EventAgenda from "@/components/sections/EventAgenda";
 import SponsorsBlock from "@/components/sections/Sponsors";
 import SpeakerSlider from "@/components/sections/SpeakerSlider";
 import MemberSlider from "@/components/sections/MemberSlider";
+import StatsCard from "@/components/cards/StatsCard";
 
 const speakers = [
   {
@@ -60,15 +61,21 @@ export default function Home() {
     // className="container mx-auto px-5 sm:px-0"
     >
       <HomeBanner banner={"/images/banner_title.png"} />
-      <AboutInfo showStats={true} />
+      <AboutInfo className="xl:pb-42" />
       {/* <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} /> */}
       <section className="bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[center]">
+        <div className="container z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
+          <div className="md:absolute mx-auto left-0 right-0 px-5 lg:px-40 xl:px-70 -translate-y-1/2 top-0 w-full">
+            <StatsCard />
+          </div>
+        </div>
         <MemberSlider
           className="!bg-transparent"
           theme="dark"
-          title={"Scientific Committee Members"}
+          title={"Steering Committee Members"}
           speakers={speakers}
           link={"#"}
+          cardSize="sm"
         />
       </section>
       <MemberSlider
@@ -91,7 +98,7 @@ export default function Home() {
       {/* <section className="bg-[url('/images/backgrounds/event_agenda_bg.png')] bg-[#1c192d] bg-center bg-cover py-33">
         <EventAgenda />
       </section> */}
-      <SponsorsBlock />
+      <SponsorsBlock hasFaq={true} />
     </main>
   );
 }

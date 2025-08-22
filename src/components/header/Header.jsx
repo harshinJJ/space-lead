@@ -65,7 +65,7 @@ const Header = () => {
     <header className="text-white ">
       <section
         className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] via-primary to-[#0a1316]  xl:bg-none ${
-          hasScrolled ? " xl:bg-[#00000080]" : ""
+          hasScrolled ? " xl:bg-[#21162c]/98" : ""
         } transition-all duration-300 ease-in-out`}
       >
         <div

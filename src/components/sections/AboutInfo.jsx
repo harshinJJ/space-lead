@@ -1,7 +1,7 @@
 import React from "react";
 import StatsCard from "../cards/StatsCard";
 
-const AboutInfo = ({ showStats = false }) => {
+const AboutInfo = ({className=""}) => {
   const data = {
     name: "About Us",
     title: "Bringing together pioneer industry experts",
@@ -172,15 +172,9 @@ const AboutInfo = ({ showStats = false }) => {
   return (
     <section
       id="about"
-      className=" bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33"
+      className={` bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33 ${className}`}
     >
-      {showStats && (
-        <div className="container z-1 relative mx-auto w-full mb-5 lg:mb-9.5">
-          <div className="md:absolute mx-auto left-0 right-0 px-5 lg:px-40 xl:px-70 bottom-0 w-full">
-            <StatsCard />
-          </div>
-        </div>
-      )}
+
       <div className="container mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 xl:gap-14.75 xl:ps-24.5 lg:ps-15">
         {/* image */}
         <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42%] xl:pe-18">

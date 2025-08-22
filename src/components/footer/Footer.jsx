@@ -111,7 +111,7 @@ const Footer = () => {
     <footer className="bg-[url('/images/footer_bg.png')] bg-cover bg-center bg-no-repeat text-white">
       <nav
         aria-label="Footer Navigation"
-        className="container  mx-auto px-5 lg:px-36.25 pt-8"
+        className="container  mx-auto px-5 lg:px-18.75 pt-8"
       >
         <section className=" relative border-b border-[#CCCCCC33] flex items-center justify-between py-3.5">
           <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
@@ -203,7 +203,7 @@ const Footer = () => {
             </ul>
           </div>
         </section>
-        <section className="py-10 flex flex-col-reverse gap-2 md:flex-row items-center justify-between">
+        <div className="py-10 flex flex-col-reverse gap-2 md:flex-row items-center justify-between">
           <p>&copy; Space Lead 2025 | All Rights Reserved</p>
           <ul className="flex flex-wrap gap-5 lg:gap-x-11 items-center place-content-center">
             <li>
@@ -216,7 +216,7 @@ const Footer = () => {
               <a href="#">Cookie Policy</a>
             </li>
           </ul>
-        </section>
+        </div>
       </nav>
     </footer>
   );

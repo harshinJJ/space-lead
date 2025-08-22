@@ -3,14 +3,26 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import BadgePreview from "./BadgePreview";
 import TicketSummary from "./TicketSummary";
-import FormInput from "@/components/common/FormInput";
+import FormInput from "@/components/formInputs/FormInput";
 import Label from "@/components/common/Label";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import PhoneInput from "@/components/common/PhoneInput";
+import PhoneInput from "@/components/formInputs/PhoneInput";
+import Select from "react-select";
+import FormSelect from "@/components/formInputs/FormSelect";
 
-const titles = ["Mr.", "Ms.", "Dr.", "Prof."];
+const titles = [
+  { label: "Mr.", value: "mr" },
+  { label: "Ms.", value: "ms" },
+  { label: "Dr.", value: "dr" },
+  { label: "Prof.", value: "prof" },
+];
 
-export default function RegistrationForm({ type, paid, session = {},onSuccess }) {
+export default function RegistrationForm({
+  type,
+  paid,
+  session = {},
+  onSuccess,
+}) {
   const {
     control,
     handleSubmit,
@@ -21,7 +33,7 @@ export default function RegistrationForm({ type, paid, session = {},onSuccess })
   const formData = watch();
 
   const onSubmit = (data) => {
-    onSuccess&&onSuccess(true);
+    onSuccess && onSuccess(true);
     window?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -30,7 +42,7 @@ export default function RegistrationForm({ type, paid, session = {},onSuccess })
       <p className="uppercase text-lg text-center">
         Please enter your information
       </p>
-      <div className="flex flex-col md:flex-row gap-22.5 w-full  text-[#000000] bg-white rounded-3xl p-5 lg:px-14 lg:pt-6 lg:pb-12.25">
+      <div className="flex flex-col md:flex-row gap-5 xl:gap-10 2xl:gap-22.5 w-full  text-[#000000] bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25">
         <div className="flex-1">
           <div className="bg-white/10  text-[#000000B2] rounded-xl mb-4">
             <p className="font-encode-sans-semi-condensed font-light text-sm text-[#31313B] mb-1">
@@ -43,7 +55,7 @@ export default function RegistrationForm({ type, paid, session = {},onSuccess })
             </div>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-6"
+              className="w-full grid grid-cols-1 md:grid-cols-2 [&>div]:col-span-2 [&>div]:xl:col-span-1 gap-4 gap-y-6"
             >
               <div className="flex items-start gap-4">
                 {/* Title */}
@@ -55,16 +67,11 @@ export default function RegistrationForm({ type, paid, session = {},onSuccess })
                     rules={{ required: "Title is required" }}
                     defaultValue={titles[0]}
                     render={({ field }) => (
-                      <select
+                      <FormSelect
+                        instanceId={"title-select"}
                         {...field}
-                        className="bg-[#F6F6F6] text-xs w-full py-3 px-3.5 rounded-lg"
-                      >
-                        {titles.map((t) => (
-                          <option key={t} value={t}>
-                            {t}
-                          </option>
-                        ))}
-                      </select>
+                        options={titles}
+                      />
                     )}
                   />
                   {errors.title && (
@@ -73,7 +80,7 @@ export default function RegistrationForm({ type, paid, session = {},onSuccess })
                     </span>
                   )}
                 </div>
-                <div>
+                <div className="w-full">
                   {/* First Name */}
                   <Label required={true}>First Name</Label>
                   <Controller
@@ -121,8 +128,7 @@ export default function RegistrationForm({ type, paid, session = {},onSuccess })
                     required: "Phone number is required",
                     pattern: {
                       value: /^\+\d{1,3}\d{7,}$/,
-                      message:
-                        "Enter a valid phone number ",
+                      message: "Enter a valid phone number ",
                     },
                   }}
                   render={({ field }) => (
@@ -266,10 +272,10 @@ export default function RegistrationForm({ type, paid, session = {},onSuccess })
             <TicketSummary price={session.price} currency={session.currency} />
           )}
         </div>
-        <div className="w-full md:w-80 lg:w-86.5 flex-shrink-0 flex flex-col items-center justify-start">
+        <div className="w-full md:w-80 lg:w-86.5 flex-shrink-0 flex flex-col items-center justify-start xl:px-4.5">
           <BadgePreview
             name={
-              (formData.firstName||formData.lastName)
+              formData.firstName || formData.lastName
                 ? `${formData.firstName} ${formData.lastName || ""}`
                 : undefined
             }

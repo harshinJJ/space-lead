@@ -25,7 +25,9 @@ const getTagBg = (theme) => {
 
 const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
   <>
-    <p className="text-secondary text-2xl text-center">Which session you wish to attend?</p>
+    <p className="text-secondary text-2xl text-center">
+      Which session you wish to attend?
+    </p>
     <div className="gap-5 grid grid-cols-1 md:grid-cols-2 w-full">
       {sessions.map((session) => (
         <SessionCard
@@ -54,7 +56,7 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
         <svg
           width="176"
           height="87"
-          className="absolute top-0 right-0 transform -translate-x-[75%]"
+          className="absolute top-0 aspect-2/1 h-auto w-[32%] right-0 transform -translate-x-[50%]"
           viewBox="0 0 176 87"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +84,7 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
         <svg
           width="177"
           height="88"
-          className="absolute top-0 right-0 transform -translate-x-[75%]"
+          className="absolute top-0 right-0 aspect-2/1 h-auto w-[32%] transform -translate-x-[75%]"
           viewBox="0 0 177 88"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -120,8 +122,38 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
           </div>
         </div>
       )}
-      <div className="flex flex-col lg:gap-10 gap-5">
+      {/* <div className="relative flex flex-col lg:gap-10 gap-5"> */}
+      <label className="relative flex flex-col lg:gap-10 gap-5 cursor-pointer">
         <div className="flex items-center gap-2.5">
+          <input
+            type="radio"
+            checked={isSelected}
+            onChange={onSelect}
+            className="sr-only peer"
+          />
+          <span
+            className={`
+        w-6.25 h-6.25 rounded-full border-1 border-white flex items-center justify-center
+        peer-checked:border-white peer-checked:bg-transparent
+        transition-all duration-200
+      `}
+          >
+            <span
+              className={`
+          w-3.25 h-3.25 rounded-full
+          ${isSelected ? "border-2 border-white bg-white" : ""}
+        `}
+            ></span>
+          </span>
+          <span className="text-white text-3xl ms-2">{session.name}</span>
+        </div>
+        <span className={`text-white text-5xl`}>
+          {session.price
+            ? `${session.currency}.${session.price.toFixed(2)}`
+            : "Free"}
+        </span>
+      </label>
+      {/* <div className="flex items-center gap-2.5">
           <input
             className="text-white"
             type="radio"
@@ -131,12 +163,11 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
           <span className="text-white text-3xl">{session.name}</span>
         </div>
         <span className={`text-white text-5xl`}>
-          {/* {session.tag}{" "} */}
           {session.price
             ? `${session.currency}.${session.price.toFixed(2)}`
             : "Free"}
-        </span>
-      </div>
+        </span> */}
+      {/* </div> */}
     </div>
   );
 };

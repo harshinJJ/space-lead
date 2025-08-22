@@ -14,7 +14,7 @@ const About = () => {
       <AboutInfo />
 
       <MemberList
-      className="bg-white"
+        className="bg-white"
         title={"Scientific Committee Members"}
         speakers={speakerList}
       />
