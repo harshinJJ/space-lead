@@ -3,6 +3,9 @@ import React from "react";
 import SponsorBlock from "./components/SponsorBlock";
 import { SponsorContentRight, SponsorList } from "@/components/sections/Sponsors";
 
+export const metadata={
+  title:"Sponsors"
+}
 const sponsors = [
   { name: "Datab", logo: "/images/logos/sponsor1.png" },
   { name: "Novolex", logo: "/images/logos/sponsor2.png" },

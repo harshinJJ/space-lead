@@ -36,9 +36,9 @@ export default function SponsorsBlock({ hasFaq = false }) {
 
 export const SponsorContent = ({ imageAlign = "right" }) => {
   return (
-    <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5">
+    <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5 px-5">
       <div
-        className={`container px-4 mx-auto flex flex-col items-stretch ${
+        className={`container mx-auto flex flex-col items-stretch ${
           imageAlign === "right" ? "xl:flex-row-reverse" : " xl:flex-row"
         } items-start gap-8 md:gap-20`}
       >

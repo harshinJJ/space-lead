@@ -70,20 +70,21 @@
 @layer utilities {
   .container-fluid {
     width: 100%;
-    max-width: 99.5625rem;
-    padding-left: clamp(1rem, 5vw, 2rem);
-    padding-right: clamp(1rem, 5vw, 2rem);
+    max-width: 98rem;
+    /* padding-left: clamp(1rem, 5vw, 2rem);
+    padding-right: clamp(1rem, 5vw, 2rem); */
     margin-left: auto;
     margin-right: auto;
   }
   @media (width >= 40rem) {
     .container-fluid {
-      width: 80%;
+      width: 90%;
     }
   }
   @media (width >= 108rem) {
     .container {
-      max-width: 99.5625rem;
+      /* max-width: 99.5625rem; */
+      max-width: 98rem;
     }
     .container-fluid {
       width: 100%;
@@ -187,4 +188,9 @@ body {
   filter: brightness(1);
   z-index: 10;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+button{
+  cursor: pointer;
 }

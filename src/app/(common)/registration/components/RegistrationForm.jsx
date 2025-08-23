@@ -9,6 +9,15 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import PhoneInput from "@/components/formInputs/PhoneInput";
 import Select from "react-select";
 import FormSelect from "@/components/formInputs/FormSelect";
+import Error from "@/components/common/Error";
+import { useFormik } from "formik";
+import useValidation from "@/hooks/useValidation";
+import dynamic from "next/dynamic";
+// import FileUplodCroper from "@/components/formInputs/FileUploader";
+const FileUplodCroper = dynamic(
+  () => import("@/components/formInputs/FileUploader"),
+  { ssr: false }
+);
 
 const titles = [
   { label: "Mr.", value: "mr" },
@@ -23,20 +32,39 @@ export default function RegistrationForm({
   session = {},
   onSuccess,
 }) {
+  const { registerFormSchema } = useValidation({ type: type });
   const {
-    control,
+    values: formData,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
     handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+    setFieldValue,
+    setFieldTouched,
+    validateField,
+  } = useFormik({
+    initialValues: {
+      title: titles[0],
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      institution: "",
+      studentId: "",
+      jobTitle: "",
+      company: "",
+      isOldFile: ""
+    },
+    validationSchema: registerFormSchema,
+    onSubmit: (data) => {
+      onSuccess && onSuccess(true);
+      window?.scrollTo({ top: 0, behavior: "smooth" });
+    },
+  });
 
-  const formData = watch();
-
-  const onSubmit = (data) => {
-    onSuccess && onSuccess(true);
-    window?.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+  // const formData = watch();
+  console.log("errors", errors);
   return (
     <>
       <p className="uppercase text-lg text-center">
@@ -54,117 +82,74 @@ export default function RegistrationForm({
               entered first, e.g. +966*
             </div>
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit}
               className="w-full grid grid-cols-1 md:grid-cols-2 [&>div]:col-span-2 [&>div]:xl:col-span-1 gap-4 gap-y-6"
             >
               <div className="flex items-start gap-4">
                 {/* Title */}
                 <div>
                   <Label required={true}>Title</Label>
-                  <Controller
+
+                  <FormSelect
+                    instanceId={"title-select"}
                     name="title"
-                    control={control}
-                    rules={{ required: "Title is required" }}
-                    defaultValue={titles[0]}
-                    render={({ field }) => (
-                      <FormSelect
-                        instanceId={"title-select"}
-                        {...field}
-                        options={titles}
-                      />
-                    )}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={formData.title}
+                    options={titles}
                   />
-                  {errors.title && (
-                    <span className="text-red-500 text-xs">
-                      {errors.title.message}
-                    </span>
-                  )}
+                  {touched.title && <Error message={errors?.title} />}
                 </div>
                 <div className="w-full">
                   {/* First Name */}
                   <Label required={true}>First Name</Label>
-                  <Controller
+
+                  <FormInput
                     name="firstName"
-                    control={control}
-                    rules={{ required: "First name is required" }}
-                    defaultValue={""}
-                    render={({ field }) => (
-                      <FormInput {...field} placeholder="First name" />
-                    )}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={formData.firstName}
+                    placeholder="First name"
                   />
-                  {errors.firstName && (
-                    <span className="text-red-500 text-xs">
-                      {errors.firstName.message}
-                    </span>
-                  )}
+                  {touched.firstName && <Error message={errors?.firstName} />}
                 </div>
               </div>
               {/* Last Name */}
               <div>
                 <Label required={true}>Last Name</Label>
-                <Controller
+                <FormInput
                   name="lastName"
-                  control={control}
-                  rules={{ required: "Last name is required" }}
-                  defaultValue={""}
-                  render={({ field }) => (
-                    <FormInput {...field} placeholder="Last name" />
-                  )}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={formData.lastName}
+                  placeholder="Last name"
                 />
-                {errors.lastName && (
-                  <span className="text-red-500 text-xs">
-                    {errors.lastName.message}
-                  </span>
-                )}
+                {touched.lastName && <Error message={errors?.lastName} />}
               </div>
               {/* Phone */}
               <div>
                 <Label required={true}>Phone No.</Label>
-                <Controller
+                <PhoneInput
                   name="phone"
-                  control={control}
-                  defaultValue={""}
-                  rules={{
-                    required: "Phone number is required",
-                    pattern: {
-                      value: /^\+\d{1,3}\d{7,}$/,
-                      message: "Enter a valid phone number ",
-                    },
-                  }}
-                  render={({ field }) => (
-                    // <FormInput {...field} placeholder="Phone number" />
-                    <PhoneInput {...field} placeholder="Phone number" />
-                  )}
+                  // onChange={handleChange}
+                  onChange={(val) => setFieldValue("phone", val)}
+                  onBlur={handleBlur}
+                  value={formData.phone}
+                  placeholder="Phone number"
                 />
-                {errors.phone && (
-                  <span className="text-red-500 text-xs">
-                    {errors.phone.message}
-                  </span>
-                )}
+                {touched.phone && <Error message={errors?.phone} />}
               </div>
               {/* Email */}
               <div>
                 <Label required={true}>Email</Label>
-                <Controller
+                <FormInput
                   name="email"
-                  defaultValue={""}
-                  control={control}
-                  rules={{
-                    required: "Email is required",
-                    pattern: {
-                      value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-                      message: "Enter a valid email address",
-                    },
-                  }}
-                  render={({ field }) => (
-                    <FormInput {...field} placeholder="Email" />
-                  )}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={formData.email}
+                  placeholder="Email"
                 />
-                {errors.email && (
-                  <span className="text-red-500 text-xs">
-                    {errors.email.message}
-                  </span>
-                )}
+                {touched.email && <Error message={errors?.email} />}
               </div>
 
               {/* Institution Name (Student only) */}
@@ -172,37 +157,43 @@ export default function RegistrationForm({
                 <>
                   <div>
                     <Label required={true}>Institution Name</Label>
-                    <Controller
+                    <FormInput
                       name="institution"
-                      defaultValue={""}
-                      control={control}
-                      rules={{ required: "Institution name is required" }}
-                      render={({ field }) => (
-                        <FormInput {...field} placeholder="Institution name" />
-                      )}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={formData.institution}
+                      placeholder="Institution name"
                     />
-                    {errors.institution && (
-                      <span className="text-red-500 text-xs">
-                        {errors.institution.message}
-                      </span>
+                    {touched.institution && (
+                      <Error message={errors?.institution} />
                     )}
                   </div>
                   <div>
                     <Label required={true}>Student ID</Label>
-                    <Controller
+                    {/* <FormInput
                       name="studentId"
-                      defaultValue={""}
-                      control={control}
-                      rules={{ required: "Student ID is required" }}
-                      render={({ field }) => (
-                        <FormInput {...field} placeholder="Student ID" />
-                      )}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={formData.studentId}
+                      placeholder="Student ID"
+                    /> */}
+                    <FileUplodCroper
+                      defaultImage={
+                        formData.studentId
+                          ? URL.createObjectURL(formData.studentId)
+                          : formData.isOldFile
+                      }
+                      onCropDone={async (val) => {
+                        setFieldValue("studentId", val);
+                        if (val) {
+                          await setFieldTouched("studentId", true);
+                          await validateField("studentId");
+                        } else {
+                          setFieldValue("isOldFile", "");
+                        }
+                      }}
                     />
-                    {errors.studentId && (
-                      <span className="text-red-500 text-xs">
-                        {errors.studentId.message}
-                      </span>
-                    )}
+                    {touched.studentId && <Error message={errors?.studentId} />}
                   </div>
                 </>
               )}
@@ -212,37 +203,25 @@ export default function RegistrationForm({
                 <>
                   <div>
                     <Label required={true}>Job Title</Label>
-                    <Controller
+                    <FormInput
                       name="jobTitle"
-                      defaultValue={""}
-                      control={control}
-                      rules={{ required: "Job title is required" }}
-                      render={({ field }) => (
-                        <FormInput {...field} placeholder="Job title" />
-                      )}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={formData.jobTitle}
+                      placeholder="Job title"
                     />
-                    {errors.jobTitle && (
-                      <span className="text-red-500 text-xs">
-                        {errors.jobTitle.message}
-                      </span>
-                    )}
+                    {touched.jobTitle && <Error message={errors?.jobTitle} />}
                   </div>
                   <div>
                     <Label required={true}>Company Name*</Label>
-                    <Controller
+                    <FormInput
                       name="company"
-                      defaultValue={""}
-                      control={control}
-                      rules={{ required: "Company name is required" }}
-                      render={({ field }) => (
-                        <FormInput {...field} placeholder="Company name" />
-                      )}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={formData.company}
+                      placeholder="Company name"
                     />
-                    {errors.company && (
-                      <span className="text-red-500 text-xs">
-                        {errors.company.message}
-                      </span>
-                    )}
+                    {touched.company && <Error message={errors?.company} />}
                   </div>
                 </>
               )}
@@ -282,7 +261,7 @@ export default function RegistrationForm({
             category={type}
             title={formData.jobTitle || ""}
             organisation={formData.company || ""}
-            badgeId={formData.studentId}
+            badgeId={"Badgeid"}
           />
         </div>
       </div>

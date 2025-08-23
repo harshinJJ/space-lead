@@ -15,7 +15,7 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
 
   return (
     <section className="bg-[url('/images/backgrounds/whocanattend_bg.gif')] bg-cover bg-center py-10 lg:py-34 px-5 sm:px-0">
-      <div className="container mx-auto flex justify-center items-center w-full relative rounded-xl overflow-hidden p-2 px-5 xl:px-19 md:px-10">
+      <div className="container mx-auto flex justify-center items-center w-full relative rounded-xl overflow-hidden p-2 px-5 xl:px-15.75 md:px-10">
         <div className="relative w-full flex justify-between items-center xl:gap-28 md:10 gap-5 rounded-xl overflow-hidden">
           <div className="relative w-full max-w-[52.5rem] aspect-video rounded-xl overflow-hidden">
             {!isPlaying && !embedUrl ? (

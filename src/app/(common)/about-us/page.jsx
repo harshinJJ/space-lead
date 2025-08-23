@@ -8,6 +8,9 @@ import LatestInfo from "./components/LatestInfo";
 import { speakerList } from "@/data/speakers";
 import MemberList from "@/components/sections/MemberList";
 
+export const metadata = {
+  title: "About Us",
+};
 const About = () => {
   return (
     <main>

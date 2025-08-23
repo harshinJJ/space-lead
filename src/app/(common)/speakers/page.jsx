@@ -6,7 +6,9 @@ import MemberList from "@/components/sections/MemberList";
 import { PrimaryDualTextLink } from "@/components/buttons/PrimaryButton";
 import MemberPreview from "./components/MemberPreview";
 
-
+export const metadata={
+  title:"Speakers"
+}
 export default function Speakers() {
   return (
     <main>

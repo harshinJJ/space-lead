@@ -1,21 +1,71 @@
 "use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import React from "react";
+import Modal from "@/components/common/Modal";
+import { useFormik } from "formik";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import * as Yup from "yup";
 
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name cannot exceed 50 characters")
+    .required("Name is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  phone: Yup.string()
+    .matches(/^\+?\d+$/, "Phone number is invalid")
+    .min(10, "Phone number must be at least 10 digits")
+    .max(15, "Phone number cannot be more than 15 digits")
+    .required("Phone number is required"),
+  message: Yup.string()
+    .min(20, "Message must be at least 20 characters")
+    .max(500, "Message cannot be more than 500 characters")
+    .required("Message is required"),
+});
 const ContactForm = () => {
+  const [showSuccess, setShowSuccess] = useState(false);
   const {
-    register,
     handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+    values,
+    errors,
+    handleChange,
+    handleBlur,
+    touched,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+    validationSchema,
+    validateOnChange: true, // Disable validation on field change
+    validateOnBlur: true,
+    onSubmit: (values) => {
+      setShowSuccess(true);
+      resetForm();
+    },
+  });
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
   return (
     <section className="bg-white bg-[url('/images/backgrounds/contact_form_bg.png')] bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 lg:py-32.75 py-20 w-full">
+      <Modal
+        // timer={5000}
+        isOpen={showSuccess}
+        onClose={() => setShowSuccess(false)}
+      >
+        <div className="text-center">
+          <h3 className="text-xl font-semibold text-green-600">
+            🎉 Message Sent!
+          </h3>
+          <p className="text-gray-600 mt-2">
+            Thank you for reaching out. We’ll get back to you soon.
+          </p>
+        </div>
+      </Modal>
       <div className="container mx-auto">
         <p className="text-secondary text-2xl">Get Started</p>
         <div className="flex justify-between items-center lg:pe-69.5 mb-8">
@@ -106,18 +156,21 @@ const ContactForm = () => {
             </a>
           </div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-8">
           <div className="grid grid-cols-1 text-2xl md:grid-cols-3 gap-6">
             <div>
               <label className="block font-medium ">Your Name</label>
               <input
                 type="text"
                 maxLength={100}
-                {...register("name", { required: "Name is required" })}
+                name="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
-              {errors.name && (
-                <p className="text-red-500 text-lg">{errors.name.message}</p>
+              {errors.name && touched.name && (
+                <p className="text-red-500 text-lg">{errors.name}</p>
               )}
             </div>
             <div>
@@ -125,15 +178,14 @@ const ContactForm = () => {
               <input
                 type="email"
                 maxLength={100}
-                {...register("email", {
-                  required: "Email is required",
-                  validate: (value) =>
-                    /^\S+@\S+\.\S+$/.test(value) || "Email is invalid",
-                })}
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
-              {errors.email && (
-                <p className="text-red-500 text-lg">{errors.email.message}</p>
+              {errors.email && touched.email && (
+                <p className="text-red-500 text-lg">{errors.email}</p>
               )}
             </div>
             <div>
@@ -142,39 +194,37 @@ const ContactForm = () => {
               </label>
               <input
                 type="tel"
-                {...register("phone", {
-                  validate: (value) =>
-                    !value ||
-                    /^\+?\d+$/.test(value) ||
-                    "Phone number is invalid",
-                })}
+                name="phone"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.phone}
                 maxLength={15}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
-              {errors.phone && (
-                <p className="text-red-500 text-lg">{errors.phone.message}</p>
+              {errors.phone && touched.phone && (
+                <p className="text-red-500 text-lg">{errors.phone}</p>
               )}
             </div>
           </div>
           <div>
             <label className="block text-2xl ">Message</label>
             <textarea
-              rows={4}
-              {...register("message", {
-                required: "Message is required",
-                maxLength: {
-                  value: 1000,
-                  message: "Message cannot exceed 1000 characters",
-                },
-              })}
-              className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent resize-none"
+              rows={3}
+              name="message"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.message}
+              className="w-full border-b text-2xl border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent resize-none"
             />
-            {errors.message && (
-              <p className="text-red-500 text-lg">{errors.message.message}</p>
+            {errors.message && touched.message && (
+              <p className="text-red-500 text-lg">{errors.message}</p>
             )}
           </div>
           <div className="flex items-center justify-between mt-6">
-            <PrimaryButton className="w-fit  px-7.5 py-[1.0625rem] items-center gap-2 ">
+            <PrimaryButton
+              type="submit"
+              className="w-fit  px-7.5 py-[1.0625rem] items-center gap-2 "
+            >
               <span className="leading-[100%] text-lg ">
                 Leave us a Message
               </span>

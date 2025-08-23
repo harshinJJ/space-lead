@@ -168,7 +168,7 @@ const PhoneInputs = ({
   onChange,
   placeholder,
   pointerEvents,
-  country = "NG",
+  country = "SA",
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);

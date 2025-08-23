@@ -3,7 +3,7 @@ import React from "react";
 const WhyAttend = ({ children }) => {
   return (
     <section className="bg-[url('/images/backgrounds/why_attend_bg.png')] bg-[top_center] bg-[#1C192D] bg-cover bg-no-repeat py-10 sm:py-20 px-1 sm:px-0">
-      <div className="container mx-auto px-2 lg:ps-19 xs:px-8 lg:pe-0 rounded-t-4xl bg-gradient-to-b from-secondary via-secondary/50 via-[40%] to-transparent to-[50%] pt-22.5 text-white">
+      <div className="container mx-auto px-2 lg:ps-15.75 xs:px-8 lg:pe-0 rounded-t-4xl bg-gradient-to-b from-secondary via-secondary/50 via-[40%] to-transparent to-[50%] pt-22.5 text-white">
         <div className="w-full p-2 md:p-3 bg-[#EEEEEE] mb-5" />
         <div className="mb-10 flex flex-col justify-between lg:flex-row gap-3.5">
           <div className="font-azonix flex-1">
@@ -30,7 +30,7 @@ const WhyAttend = ({ children }) => {
             </div>
           </div>
         </div>
-        <div className="lg:pe-19 ">{children}</div>
+        <div className="lg:pe-15.75 ">{children}</div>
       </div>
     </section>
   );

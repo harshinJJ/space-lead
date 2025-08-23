@@ -19,7 +19,7 @@ const PassSelectionCard = ({ type, icon, onClick, gradient = "secondary" }) => {
         <h2 className="text-white text-2xl mb-2 whitespace-nowrap">
           {type} Pass
         </h2>
-        <button className="bg-[#00BAB3] w-full xl:min-w-[163px] text-white px-4 py-[0.90625rem] rounded-full text-sm  mt-2 hover:bg-teal-600">
+        <button className={`${gradient === "primary" ? "bg-primary hover:bg-primary/70" : "bg-secondary hover:bg-secondary/70"} transition-all duration-500 w-full xl:min-w-[163px] text-white px-4 py-[0.90625rem] rounded-full text-sm  mt-2 `}>
           CLICK HERE
         </button>
       </div>

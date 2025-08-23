@@ -47,7 +47,7 @@ const ContactInfoOld = () => {
 const ContactInfo = () => {
   return (
     <section className="w-full bg-[#EDF0FE] font-sans px-5">
-      <div className="container flex flex-col lg:flex-row w-full mx-auto lg:py-20 py-10 gap-10 xl:items-end justify-between">
+      <div className="container flex flex-col xl:flex-row w-full mx-auto lg:py-20 py-10 gap-10 xl:items-end justify-between">
         {/* Left Side */}
         <div className="flex flex-col justify-between flex-1 lg:gap-15 gap-5 xl:max-w-[45%]">
           <div>
@@ -60,7 +60,7 @@ const ContactInfo = () => {
               TO ASSIST YOU
             </h3>
           </div>
-          <div className="flex flex-col md:flex-row gap-5 lg:text-[1.375rem] text-lg">
+          <div className="flex flex-col md:flex-row gap-5 2xl:text-[1.375rem]  text-lg">
             {/* Email */}
             <div className="p-8 ps-0 pb-0 flex flex-col gap-6 w-full min-w-3/5">
               <p className="text-secondary relative  after:block after:w-7 after:h-[3px] after:bg-black after:mt-5">
@@ -72,7 +72,7 @@ const ContactInfo = () => {
               </p>
             </div>
             {/* Number */}
-            <div className="p-8 ps-0 lg:ps-8 flex flex-col gap-6 w-full">
+            <div className="p-8 ps-0 2xl:ps-8 flex flex-col gap-6 w-full">
               <p className="text-secondary relative  after:block after:w-7 after:h-[3px] after:bg-black after:mt-5">
                 Number
               </p>
@@ -81,12 +81,13 @@ const ContactInfo = () => {
           </div>
         </div>
         {/* Right Side */}
-        <div className="flex-1 lg:w-auto w-full flex items-center justify-end relative px-0 ">
+        <div className="flex-1 w-full flex items-center justify-center xl:justify-end relative px-0 xl:max-w-1/2 2xl:max-w-full">
             {/* Logo and Conference text */}
             <svg
               width="773"
               height="292"
               viewBox="0 0 773 292"
+              className="w-full xl:w-auto h-auto"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >

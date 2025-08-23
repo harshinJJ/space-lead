@@ -38,7 +38,7 @@ export const PrimaryDualTextLink = ({
     <Link
       {...props}
       href={href}
-      className={`text-white flex justify-center bg-linear-to-r from-secondary to-primary rounded-full w-fit group px-7.5 py-4.25 items-center gap-2 hover:from-[#B20D5D] hover:to-[#4A0AB4] transition-all duration-300 ${className}`}
+      className={`text-white flex justify-center bg-linear-to-r from-secondary to-primary rounded-full w-fit group px-7.5 py-4.25 items-center gap-2 hover:from-[#B20D5D] hover:to-[#4A0AB4] transition-all duration-500 ${className}`}
     >
       <span className="leading-[100%] text-lg group-hover:hidden">
               {initialText}
