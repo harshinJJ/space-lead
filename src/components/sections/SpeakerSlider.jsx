@@ -80,8 +80,8 @@ const SpeakerSlider = ({ className }) => {
   const swiperRef = useRef(null);
   return (
     <section className={`bg-[#191A2A] py-20 relative ${className}`}>
-      <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col px-5 xl:px-15.75 md:px-10">
-        <div className="flex items-center justify-between mb-2.5">
+      <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col px-5 xl:px-15.75 md:px-10">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-2.5">
           <h2 className="text-white text-6xl font-medium tracking-wide font-orbitron">
             Speakers
           </h2>
@@ -134,7 +134,7 @@ const SpeakerSlider = ({ className }) => {
                   640: { slidesPerView: 3 },
                 }}
                 centeredSlides={true}
-                className="speaker-swiper-container lg:max-w-200 w-full h-115 "
+                className="speaker-swiper-container lg:max-w-200 !w-full h-115 "
               >
                 {cards.map((card, id) => (
                   <SwiperSlide

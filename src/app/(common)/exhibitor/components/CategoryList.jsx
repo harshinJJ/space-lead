@@ -16,7 +16,7 @@ const categories = [
 ];
 
 const CategoryList = () => (
-  <section className="container mx-auto w-full py-10 px-5 lg:px-6.75">
+  <section className="container-fluid mx-auto w-full py-10 px-5 sm:px-0">
     <div className="text-center mb-2  text-secondary font-open-sans font-semibold">
       Our Category
     </div>

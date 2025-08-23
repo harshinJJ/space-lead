@@ -5,7 +5,7 @@ const exhibitors = Array(8).fill({
 });
 
 const ExhibitorList = () => (
-  <section className="container mx-auto w-full py-10 px-5 lg:px-6.75">
+  <section className="container-fluid mx-auto w-full py-10 px-5 sm:px-0">
     <p className="text-secondary text-center tracking-wide font-light mb-5">
       Our Exhibitor
     </p>

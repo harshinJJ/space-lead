@@ -248,7 +248,7 @@ const MemberPreview = () => {
     <>
       {activeSpeaker && (
         <section id="speaker-preview" className="bg-[#EDF0FE] pt-20">
-          <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-8 mb-15">
+          <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-15.75 mb-15">
             <p className="text-secondary">The Speakers Line-Up</p>
             <div
               className={`flex flex-col gap-5 sm:flex-row md:items-start md:justify-between mt-2`}
@@ -262,12 +262,12 @@ const MemberPreview = () => {
               <PrimaryDualTextLink
               className="mt-2.5"
                 initialText={"Buy Ticket"}
-                hoverText={"Join The Event"}
+                // hoverText={"Join The Event"}
               />
             </div>
           </div>
 
-          <div className="container w-full mx-auto flex flex-col items-center lg:items-start lg:flex-row xl:gap-8.75 gap-5 xl:px-8 px-5">
+          <div className="container-fluid w-full mx-auto flex flex-col items-center lg:items-start lg:flex-row xl:gap-8.75 gap-5 xl:px-15.75 px-5">
             <div className="xl:w-1/4 lg:w-2/5 sm:max-w-3/4 md:1/2 w-full">
               <SpeakerCard speaker={activeSpeaker} showBtn={true} />
             </div>
@@ -308,7 +308,7 @@ const MemberPreview = () => {
           !activeSpeaker && (
             <PrimaryDualTextLink
               initialText={"Buy Ticket"}
-              hoverText={"Join The Event"}
+              // hoverText={"Join The Event"}
             />
           )
         }

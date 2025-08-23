@@ -151,7 +151,7 @@ const EventLists = () => {
               </div>
 
               {/* Button */}
-              <PrimaryLink className="w-fit group px-6 py-5 items-center gap-2 hover:from-[#B20D5D] hover:to-[#4A0AB4] transition-all duration-300">
+              <PrimaryLink className="w-fit group px-6 py-5 items-center gap-2 btn-gradient transition-all duration-300">
                 <span className="leading-[100%] text-lg group-hover:hidden">View Details</span>
                 <span className="leading-[100%] text-lg group-hover:block hidden">Join The Event</span>
                 <svg

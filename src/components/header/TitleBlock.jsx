@@ -1,7 +1,11 @@
 "use client";
 import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
-
+import dynamic from "next/dynamic";
+const TimerBlock = dynamic(
+  () => import("@/components/common/TimerBlock"),
+  { ssr: false }
+);
 const TitleBlock = ({ title }) => {
   const remainingTime = {
     days: 9,
@@ -67,7 +71,7 @@ const TitleBlock = ({ title }) => {
       className="relative bg-[url('/images/backgrounds/header_title_bg.png')] bg-[top_center] bg-cover bg-no-repeat py-9 pt-38 text-white"
     >
       <div className="absolute z-1 inset-0 bg-gradient-to-r from-black/20 via-tertiary/25 to-[#1a1d2720] opacity-77"></div>
-      <div className="container z-10 relative mx-auto px-5 sm:px-0">
+      <div className="container-fluid z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
           <div className="w-full flex flex-col gap-5 md:max-w-[45%] font-gilroy-med">
             <PrimaryButton className="gap-1 px-3 pe-4.75 w-fit">
@@ -109,15 +113,6 @@ const TitleBlock = ({ title }) => {
               {title}
             </h4>
             <div className="flex flex-col lg:flex-row xl:gap-x-10 gap-2 gap-y-4">
-              {/* {tags.map(({ icon, label }, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 py-1 px-5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit"
-                >
-                  {icon}
-                  <span className="lg:text-nowrap">{label}</span>
-                </div>
-              ))} */}{" "}
               <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
                 <div className="flex items-center justify-center">
                   {tags[0].icon}
@@ -136,8 +131,8 @@ const TitleBlock = ({ title }) => {
               </div>
             </div>
           </div>
-
-          <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
+          <TimerBlock eventDate="2025-08-30"/>
+          {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">
                 <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7">
@@ -160,7 +155,7 @@ const TitleBlock = ({ title }) => {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

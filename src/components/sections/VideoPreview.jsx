@@ -15,9 +15,9 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
 
   return (
     <section className="bg-[url('/images/backgrounds/whocanattend_bg.gif')] bg-cover bg-center py-10 lg:py-34 px-5 sm:px-0">
-      <div className="container mx-auto flex justify-center items-center w-full relative rounded-xl overflow-hidden p-2 px-5 xl:px-15.75 md:px-10">
-        <div className="relative w-full flex justify-between items-center xl:gap-28 md:10 gap-5 rounded-xl overflow-hidden">
-          <div className="relative w-full max-w-[52.5rem] aspect-video rounded-xl overflow-hidden">
+      <div className="container-fluid mx-auto flex justify-center items-center w-full relative rounded-xl overflow-hidden p-2 px-5 xl:px-15.75 md:px-10">
+        <div className="relative w-full flex flex-col lg:flex-row justify-between items-center xl:gap-28 md:10 gap-5 rounded-xl overflow-hidden">
+          <div className="relative w-full lg:max-w-3/5 xl:max-w-[52.5rem] aspect-video rounded-xl overflow-hidden">
             {!isPlaying && !embedUrl ? (
               <div
                 className="relative w-full h-full cursor-pointer group"
@@ -31,10 +31,11 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
                 />
 
                 {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition">
-                  <div className="flex items-center justify-center max-w-1/6 md:max-w-full">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition duration-500">
+                  <div className="flex items-center justify-center w-full max-w-1/7 2xl:max-w-27.5">
                     <svg
                       width="110"
+                      className="!w-full !h-auto"
                       height="110"
                       viewBox="0 0 110 110"
                       fill="none"
@@ -111,7 +112,7 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
             )}
           </div>
 
-          <div className="min-w-122.5 font-raleway ">
+          <div className="xl:min-w-122.5 w-full xl:w-auto font-raleway ">
             <h3 className="font-bold xl:text-[2.5rem] leading-[1.3] md:text-3xl text-lg mb-5 text-white">Who can attend?</h3>
             <ul className="flex flex-col gap-2.5">
               {points.map((point, index) => (

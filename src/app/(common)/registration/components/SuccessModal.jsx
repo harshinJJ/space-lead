@@ -25,8 +25,8 @@ const SuccessModal = ({ onContinue }) => (
             y2="94.7381"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#7DC053" />
-            <stop offset="1" stop-color="#63B330" />
+            <stop stopColor="#7DC053" />
+            <stop offset="1" stopColor="#63B330" />
           </linearGradient>
         </defs>
       </svg>

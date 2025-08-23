@@ -10,8 +10,8 @@ import "./PhoneInputs.css";
 import metadata from "@/../public/assets/json/phone-metadata.json";
 
 import defaultLabels from "react-phone-number-input/locale/en.json";
-import acFlag from "@/../public/assets/img/ac.png";
-import taFlag from "@/../public/assets/img/tr.png";
+
+
 
 // Custom Country Select Component
 const CustomCountrySelect = ({
@@ -80,9 +80,9 @@ const CustomCountrySelect = ({
               className="flag-icon"
               src={
                 selectedOption.value.toLowerCase() === "ac"
-                  ? acFlag
+                  ? "/assets/img/ac.png"
                   : selectedOption.value.toLowerCase() === "ta"
-                  ? taFlag
+                  ? "/assets/img/tr.png"
                   : `https://flagcdn.com/w40/${selectedOption.value.toLowerCase()}.png`
               }
               alt={`${selectedOption.value} flag`}
@@ -132,9 +132,9 @@ const CustomCountrySelect = ({
                   className="flag-icon"
                   src={
                     option.value.toLowerCase() === "ac"
-                      ? acFlag
+                      ? "/assets/img/ac.png"
                       : option.value.toLowerCase() === "ta"
-                      ? taFlag
+                      ? "/assets/img/tr.png"
                       : `https://flagcdn.com/w40/${option.value.toLowerCase()}.png`
                   }
                   alt={`${option.value} flag`}

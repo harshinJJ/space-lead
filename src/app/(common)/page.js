@@ -57,15 +57,13 @@ const speakers = [
 ];
 export default function Home() {
   return (
-    <main
-    // className="container mx-auto px-5 sm:px-0"
-    >
+    <main>
       <HomeBanner banner={"/images/banner_title.png"} />
       <AboutInfo className="xl:pb-42" />
       {/* <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} /> */}
       <section className="bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[center]">
-        <div className="container z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
-          <div className="md:absolute mx-auto left-0 right-0 px-5 lg:px-40 xl:px-70 -translate-y-1/2 top-0 w-full">
+        <div className="container-fluid z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
+          <div className="md:absolute mx-auto left-0 right-0 px-5 md:px-0 -translate-y-1/2 max-w-252.5 top-0 w-full">
             <StatsCard />
           </div>
         </div>
@@ -86,18 +84,14 @@ export default function Home() {
       />
       <WhyAttend>
         {/* <EventLists /> */}
-        <EventAgenda className=" bg-[#1C192D80]  px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
+        <EventAgenda className="!w-full bg-[#1C192D80]  px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
       </WhyAttend>
       <SpeakerSlider />
-      {/* <Marquee /> */}
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         // embedUrl={"https://www.youtube.com/embed/sample"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      {/* <section className="bg-[url('/images/backgrounds/event_agenda_bg.png')] bg-[#1c192d] bg-center bg-cover py-33">
-        <EventAgenda />
-      </section> */}
       <SponsorsBlock hasFaq={true} />
     </main>
   );

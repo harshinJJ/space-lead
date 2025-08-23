@@ -1,9 +1,7 @@
 import React from "react";
 import Marquee from "@/components/sections/Marquee";
-import SponsorsBlock, { SponsorList } from "@/components/sections/Sponsors";
+import { SponsorList } from "@/components/sections/Sponsors";
 import VideoPreview from "@/components/sections/VideoPreview";
-import MemberList from "@/components/sections/MemberList";
-import { PrimaryDualTextLink } from "@/components/buttons/PrimaryButton";
 import MemberPreview from "./components/MemberPreview";
 
 export const metadata={

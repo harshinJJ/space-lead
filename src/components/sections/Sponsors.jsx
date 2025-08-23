@@ -38,23 +38,23 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
   return (
     <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5 px-5">
       <div
-        className={`container mx-auto flex flex-col items-stretch ${
-          imageAlign === "right" ? "xl:flex-row-reverse" : " xl:flex-row"
+        className={`container-fluid mx-auto flex flex-col items-stretch ${
+          imageAlign === "right" ? "lg:flex-row-reverse" : " lg:flex-row"
         } items-start gap-8 md:gap-20`}
       >
         {/* Image */}
-        <div className="relative w-full xl:w-1/2 ">
+        <div className="relative w-full lg:w-1/2 ">
           <Image
             src="/images/sponsor_content_img.png" // replace with your actual image path
             alt="Astronaut looking at space"
-            className="w-full h-full xl:absolute rounded-2xl object-cover"
+            className="w-full h-full lg:absolute rounded-2xl object-cover"
             width={775}
             height={387}
           />
         </div>
 
         {/* Content */}
-        <div className="w-full xl:w-1/2 text-center xl:text-left flex flex-col items-center xl:items-start">
+        <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col items-center lg:items-start">
           <p className="text-secondary text-lg mb-4 leading-[100%] font-open-sans">
             Our Sponsors
           </p>
@@ -73,7 +73,7 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
             href="#"
             className="px-7.5 py-6 text-lg tracking-[1px] [&span]:font-[600]"
             initialText="View All Sponsors"
-            hoverText="Join The Event"
+            // hoverText="Join The Event"
           />
         </div>
       </div>
@@ -88,7 +88,7 @@ export const SponsorList = ({showSlides=true}) => {
       <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
       <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
 
-      <div className="container px-5 mx-auto lg:px-12.75 text-center">
+      <div className="container-fluid px-5 mx-auto lg:px-12.75 text-center">
         <p className="text-secondary font-open-sans text-lg mb-2">
           Our Sponsors
         </p>
@@ -191,8 +191,8 @@ export const SponsorList = ({showSlides=true}) => {
 
 export const SponsorContentRight = () => {
   return (
-    <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5">
-      <div className="container px-5 lg:px-12.75 mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
+    <section className="w-full bg-white pt-10 md:pt-25 px-5 pb-10 md:pb-30.5">
+      <div className="container-fluid mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
         {/* Image */}
         <div className="w-full xl:w-1/2 xl:max-w-[44rem] flex justify-center">
           <img
@@ -222,7 +222,7 @@ export const SponsorContentRight = () => {
             href="#"
             className="px-7.5 py-6 text-lg tracking-[1px] [&span]:font-[600]"
             initialText="View All Sponsors"
-            hoverText="Join The Event"
+            // hoverText="Join The Event"
           />
         </div>
       </div>

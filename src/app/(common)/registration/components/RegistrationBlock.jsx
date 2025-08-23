@@ -25,7 +25,6 @@ const sessionList = [
 ];
 export default function RegistrationBlock({ type = "" }) {
   const [session, setSession] = useState(sessionList[0]);
-  const [formData, setFormData] = useState({});
   const [success, setSuccess] = useState(false);
 
   return (

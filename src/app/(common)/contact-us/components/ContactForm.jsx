@@ -17,8 +17,7 @@ const validationSchema = Yup.object({
   phone: Yup.string()
     .matches(/^\+?\d+$/, "Phone number is invalid")
     .min(10, "Phone number must be at least 10 digits")
-    .max(15, "Phone number cannot be more than 15 digits")
-    .required("Phone number is required"),
+    .max(15, "Phone number cannot be more than 15 digits"),
   message: Yup.string()
     .min(20, "Message must be at least 20 characters")
     .max(500, "Message cannot be more than 500 characters")
@@ -53,27 +52,57 @@ const ContactForm = () => {
   return (
     <section className="bg-white bg-[url('/images/backgrounds/contact_form_bg.png')] bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 lg:py-32.75 py-20 w-full">
       <Modal
-        // timer={5000}
+        timer={3000}
         isOpen={showSuccess}
         onClose={() => setShowSuccess(false)}
       >
-        <div className="text-center">
-          <h3 className="text-xl font-semibold text-green-600">
-            🎉 Message Sent!
-          </h3>
-          <p className="text-gray-600 mt-2">
-            Thank you for reaching out. We’ll get back to you soon.
-          </p>
+        {" "}
+        <div className="flex flex-col items-center justify-center rounded-xl mx-auto mt-12">
+            <div className="bg-[#23A26D1F] rounded-full p-3 mb-4">
+              <svg
+                width="95"
+                height="95"
+                viewBox="0 0 95 95"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M47.5833 0.571411C21.6404 0.571411 0.5 21.7118 0.5 47.6547C0.5 73.5977 21.6404 94.7381 47.5833 94.7381C73.5263 94.7381 94.6667 73.5977 94.6667 47.6547C94.6667 21.7118 73.5263 0.571411 47.5833 0.571411ZM70.0892 36.8256L43.3929 63.5218C42.7337 64.181 41.8392 64.5577 40.8975 64.5577C39.9558 64.5577 39.0613 64.181 38.4021 63.5218L25.0775 50.1972C23.7121 48.8318 23.7121 46.5718 25.0775 45.2064C26.4429 43.841 28.7029 43.841 30.0683 45.2064L40.8975 56.0356L65.0983 31.8347C66.4638 30.4693 68.7238 30.4693 70.0892 31.8347C71.4546 33.2002 71.4546 35.4131 70.0892 36.8256Z"
+                  fill="url(#paint0_linear_117_15006)"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_117_15006"
+                    x1="47.5833"
+                    y1="0.571411"
+                    x2="47.5833"
+                    y2="94.7381"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#7DC053" />
+                    <stop offset="1" stopColor="#63B330" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          <div className="text-center">
+            <h2 className="text-[2rem] text-[#78B6BA] mb-2">
+              Message Sent Successfully
+            </h2>
+            <p className="text-[#22222280] tracking-[-2%] mb-4">
+              Thank you for reaching out. We’ll get back to you soon.
+            </p>
+          </div>
         </div>
       </Modal>
-      <div className="container mx-auto">
+      <div className="container-fluid mx-auto">
         <p className="text-secondary text-2xl">Get Started</p>
-        <div className="flex justify-between items-center lg:pe-69.5 mb-8">
-          <h2 className="font-azonix text-2xl md:text-3xl lg:text-[2.5rem] lg:max-w-[25ch] mb-8 leading-tight text-gray-900">
+        <div className="flex justify-between items-center xl:pe-69.5 mb-8">
+          <h2 className="font-azonix text-2xl md:text-3xl lg:text-[2.5rem] max-w-3/4 lg:max-w-[25ch] mb-8 leading-tight text-gray-900">
             GET IN TOUCH WITH US. WE'RE HERE TO ASSIST YOU.
           </h2>
 
-          <div className="hidden md:flex flex-col gap-6">
+          <div className="flex flex-col gap-3 lg:gap-6">
             <a
               href="#"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
@@ -157,7 +186,7 @@ const ContactForm = () => {
           </div>
         </div>
         <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid grid-cols-1 text-2xl md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 text-2xl sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div>
               <label className="block font-medium ">Your Name</label>
               <input
@@ -188,7 +217,7 @@ const ContactForm = () => {
                 <p className="text-red-500 text-lg">{errors.email}</p>
               )}
             </div>
-            <div>
+            <div className="sm:col-span-2 lg:col-span-1">
               <label className="block font-medium ">
                 Phone Number (optional)
               </label>

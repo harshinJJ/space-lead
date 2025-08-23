@@ -127,7 +127,7 @@ export default function EventAgenda({className=""}) {
   const [activeDay, setActiveDay] = useState("day1");
 
   return (
-      <div className={`container mx-auto text-white ${className}`}>
+      <div className={`container-fluid mx-auto text-white ${className}`}>
         <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-15">
           <div className="flex flex-col justify-between gap-3">
             <h2 className="uppercase xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
@@ -227,13 +227,13 @@ export default function EventAgenda({className=""}) {
 
         {/* View All Button */}
         <div className="mt-15 flex items-center justify-center">
-          <PrimaryLink className="w-fit group px-7.5 py-[1.0625rem] items-center gap-2 hover:from-[#B20D5D] hover:to-[#4A0AB4] transition-all duration-300">
-            <span className="leading-[100%] text-lg group-hover:hidden">
+          <PrimaryLink className="w-fit group px-7.5 py-[1.0625rem] items-center gap-2 btn-gradient transition-all duration-300">
+            <span className="leading-[100%] text-lg ">
               View Agenda List
             </span>
-            <span className="leading-[100%] text-lg group-hover:block hidden">
+            {/* <span className="leading-[100%] text-lg group-hover:block hidden">
               Join The Event
-            </span>
+            </span> */}
             <svg
               width="20"
               height="16"

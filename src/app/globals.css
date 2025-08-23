@@ -39,23 +39,23 @@
   --breakpoint-3xl: 108rem;
   /* --breakpoint-4xl: 1920px; */
 
-  --color-primary: #7F529F;
-  --color-secondary: #5AC0BE;
-  --color-tertiary: #131F54;
-  --color-black-b2: #000000B2;
+  --color-primary: #7f529f;
+  --color-secondary: #5ac0be;
+  --color-tertiary: #131f54;
+  --color-black-b2: #000000b2;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-open-sans: var(--font-open-sans);
-  --font-raleway: var(--font-raleway);
-  --font-poppins: var(--font-poppins);
-  --font-inter: var(--font-inter);
+  --font-open-sans: var(--font-orbitron);
+  --font-raleway: var(--font-orbitron);
+  --font-poppins: "Gilroy-Medium", sans-serif;
+  --font-inter: var(--font-raleway);
   --font-encode-sans-semi-condensed: var(--font-encode-sans-semi-condensed);
   --font-outfit: var(--font-outfit);
-  --font-dm-sans: var(--font-dm-sans);
+  --font-dm-sans: var(--font-orbitron);
   --font-orbitron: var(--font-orbitron);
   --font-figtree: var(--font-figtree);
 
@@ -178,7 +178,7 @@ body {
 .speaker-swiper-container .swiper-slide-prev,
 .speaker-swiper-container .swiper-slide-next {
   opacity: 1;
-  transform: scale(0.9) translateY(-10px)!important;
+  transform: scale(0.9) translateY(-10px) !important;
   z-index: 2;
 }
 
@@ -190,7 +190,30 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-
-button{
+button {
   cursor: pointer;
+}
+.btn-gradient {
+  background-image: linear-gradient(
+    to var(--bg-gradient-dir, right),
+    var(--color-secondary),
+    var(--color-primary),
+    #b20d5d,
+    #4a0ab4
+  );
+  background-size: 300% 100%;
+  transition: all;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  -o-transition-duration: 500ms;
+}
+.btn-gradient:hover {
+  background-position: 100% 0;
+}
+.btn-gradient-top {
+  background-size: 100% 300%;
+  background-position: 0 100%;
+}
+.btn-gradient-top:hover {
+  background-position: 100% 0;
 }

@@ -59,7 +59,7 @@ export default function PassSelector() {
   const router = useRouter();
   return (
     <section className=" bg-white bg-[url('/images/backgrounds/register_bg.png')] bg-cover bg-no-repeat bg-[center_top] xl:pt-33.5 lg:py-30 md:py-20 py-10 xl:pb-56.25">
-      <div className="container mx-auto flex flex-col items-center justify-center px-5">
+      <div className="container-fluid mx-auto flex flex-col items-center justify-center px-5">
         <h1 className="text-3xl lg:text-4xl xl:text-[2.5rem] font-azonix text-white xl:mb-15 lg:mb-10 mb-5 tracking-wide text-center">
           SELECT YOUR PASS
         </h1>

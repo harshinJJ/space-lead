@@ -94,10 +94,10 @@ const MemberSlider = ({
   return (
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
-        <div className="container mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0">
+        <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0">
           {label && <p className="text-secondary">{label}</p>}
           <div
-            className={`flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-7.5 ${
+            className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 md:gap-7.5 ${
               link || navComponent ? "md:justify-between" : "md:justify-center"
             } mt-2`}
           >
@@ -115,7 +115,7 @@ const MemberSlider = ({
               : link && (
                   <PrimaryLink
                     href="/speakers"
-                    className="px-5 py-3.5 text-sm lg:text-lg"
+                    className="px-5 py-3.5 text-sm lg:text-lg sm:whitespace-nowrap md:whitespace-normal"
                   >
                     {linkLabel}
                   </PrimaryLink>
@@ -124,7 +124,7 @@ const MemberSlider = ({
         </div>
 
         {/* Speaker Cards as Swiper FreeMode */}
-        <div className="container mx-auto px-5 sm:px-0 mt-10 mb-5">
+        <div className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5">
           <Swiper
             modules={[FreeMode]}
             freeMode={true}

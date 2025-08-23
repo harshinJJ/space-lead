@@ -1,6 +1,12 @@
+"use client"
 import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import ScrollBottom from "../common/ScrollBottom";
+import dynamic from "next/dynamic";
+const TimerBlock = dynamic(
+  () => import("@/components/common/TimerBlock"),
+  { ssr: false }
+);
 
 const HomeBanner = ({ banner }) => {
   const remainingTime = {
@@ -69,10 +75,10 @@ const HomeBanner = ({ banner }) => {
     >
       {banner && (
         <div className="flex justify-end mb-30">
-          <img src="/images/banner_title.png" alt="" />
+          <img className="md:max-w-[65%]" src="/images/banner_title.png" alt="" />
         </div>
       )}
-      <div className="container mx-auto px-5 sm:px-0">
+      <div className="container-fluid mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
           <div className="w-full flex flex-col gap-5 md:max-w-[45%] font-gilroy-med">
             <PrimaryButton className="gap-1 px-3 pe-4.75 w-fit">
@@ -135,8 +141,9 @@ const HomeBanner = ({ banner }) => {
               {/* ))} */}
             </div>
           </div>
+          <TimerBlock eventDate="2025-08-30"/>
 
-          <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
+          {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">
                 <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7">
@@ -157,7 +164,7 @@ const HomeBanner = ({ banner }) => {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="relative w-full flex justify-center items-center">
           <ScrollBottom className="absolute mx-auto top-0 bottom-0 left-0 right-0 transform xl:-translate-y-[100%] lg:translate-y-[50%] md:-translate-y-[100%] translate-y-[50%] animate-float" />

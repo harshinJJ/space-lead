@@ -69,15 +69,15 @@ const Header = () => {
         } transition-all duration-300 ease-in-out`}
       >
         <div
-          className={`py-2 w-full container mx-auto left-0 right-0 top-0 px-5 sm:px-0 ${hasScrolled?"xl:py-9":"xl:py-14"}`}
+          className={`py-2 w-full container-fluid mx-auto left-0 right-0 top-0 px-5 sm:px-0 ${hasScrolled?"xl:py-9":"xl:py-14"}`}
         >
           <nav
             aria-label="Main Navigation"
             className="flex relative flex-col xl:flex-row justify-between items-center"
           >
-            <a href="/" className="logo">
+            <Link href="/" className="logo">
               <img src="/logo.png" alt="" />
-            </a>
+            </Link>
             <button
               className=" absolute left-0 mx-auto top-0 bottom-0 xl:hidden focus:outline-none"
               onClick={toggleMenu}

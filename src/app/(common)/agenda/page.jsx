@@ -11,7 +11,7 @@ export default function Agenda() {
   return (
     <main>
       <section className=" bg-[#1c192d] bg-center bg-cover py-20 ">
-        <EventAgenda className=" px-4 xl:px-38 sm:px-15" />
+        <EventAgenda className=" px-4 xl:px-15.75 " />
       </section>
       {/* <Marquee /> */}
       <VideoPreview

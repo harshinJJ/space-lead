@@ -15,7 +15,7 @@ const LatestInfo = () => {
   ];
 
   return (
-    <section className="container mx-auto px-5 md:px-10 rounded-4xl bg-[#1C192DB8] py-15 text-white">
+    <section className="container-fluid !w-full mx-auto px-5 md:px-10 rounded-4xl bg-[#1C192DB8] py-15 text-white">
       {/* Top Section */}
       <div className="xl:max-w-[1187px] mx-auto lg:px-4">
         <p className="text-lg text-secondary mb-5">Get the latest info about</p>

@@ -175,15 +175,15 @@ const AboutInfo = ({className=""}) => {
       className={` bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33 ${className}`}
     >
 
-      <div className="container mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 xl:gap-14.75 xl:ps-24.5 lg:ps-15">
+      <div className="container-fluid mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 xl:gap-39">
         {/* image */}
-        <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42%] xl:pe-18">
+        <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[43%]  xl:ps-47 lg:ps-15">
           <img
-            className="md:max-w-[90%] max-w-[80%]"
-            src="/images/about_section_img.png"
+            className=" object-cover aspect-[483/613] h-auto [transform:rotateY(180deg)] rounded-4xl"
+            src="/images/about_section_img.gif"
             alt=""
           />
-          <div className="absolute right-0 bottom-0 md:bottom-[unset] md:top-[2rem] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[25ch] md:max-w-[22ch] max-w-[20ch] transform md:translate-x-[38%] lg:translate-x-[-25%] md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-primary to-black opacity-90 xl:p-10 p-6 flex flex-col gap-5">
+          <div className="absolute right-0 bottom-0 md:bottom-[unset] md:top-[2rem] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[25ch] md:max-w-[22ch] max-w-[20ch] transform md:translate-x-[38%] lg:translate-x-0 md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-primary to-black opacity-90 xl:p-10 p-6 flex flex-col gap-5">
             <div className="bg-secondary aspect-square xl:w-18.5 w-15 rounded-full flex items-center justify-center">
               <svg
                 width="27"
@@ -210,7 +210,7 @@ const AboutInfo = ({className=""}) => {
         {/* content */}
         <div className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
           <h5 className="text-secondary  xl:text-lg text-base">{data.name}</h5>
-          <h3 className="text-tertiary lg:max-w-[90%] 2xl:leading-[3rem] uppercase font-azonix text-lg md:text-2xl xl:text-3xl 2xl:text-[2.5rem]">
+          <h3 className="text-tertiary  2xl:leading-[3rem] uppercase font-azonix text-lg md:text-2xl xl:text-3xl 2xl:text-[2.5rem]">
             {data.title}
           </h3>
           <p className="text-[#737373] xl:max-w-[80%] xl:text-lg text-base">

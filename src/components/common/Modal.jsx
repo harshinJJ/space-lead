@@ -4,11 +4,11 @@ import { createPortal } from 'react-dom'
 
 const SIZE_CLASSES = {
   sm: 'md:max-w-2/5 lg:max-w-1/5 max-w-3/4',
-  md: 'md:max-w-2/3 lg:max-w-1/2 max-w-3/4',
+  md: 'md:max-w-2/3 lg:max-w-1/3 max-w-3/4',
   lg: 'max-w-full'
 }
 
-const Modal = ({ isOpen, onClose, children, timer, size = 'sm' }) => {
+const Modal = ({ isOpen, onClose, children, timer, size = 'md' }) => {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Modal = ({ isOpen, onClose, children, timer, size = 'sm' }) => {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
+      className="fixed inset-0 z-999 flex items-center justify-center"
       style={{ background: 'rgba(0,0,0,0.5)' }}
       onClick={onClose}
     >

@@ -47,7 +47,7 @@ const ContactInfoOld = () => {
 const ContactInfo = () => {
   return (
     <section className="w-full bg-[#EDF0FE] font-sans px-5">
-      <div className="container flex flex-col xl:flex-row w-full mx-auto lg:py-20 py-10 gap-10 xl:items-end justify-between">
+      <div className="container-fluid flex flex-col xl:flex-row w-full mx-auto lg:py-20 py-10 gap-10 xl:items-end justify-between">
         {/* Left Side */}
         <div className="flex flex-col justify-between flex-1 lg:gap-15 gap-5 xl:max-w-[45%]">
           <div>
