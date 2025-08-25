@@ -82,7 +82,7 @@ const SpeakerCard = ({
         <img
           src={speaker?.image || "/images/user_placeholder.jpeg"}
           alt={speaker.name || "speaker_image"}
-          className="w-full relative aspect-square object-cover"
+          className="w-full relative aspect-square object-cover object-[top_center]"
           style={{ borderRadius: "0.75rem" }}
         />
       </div>
@@ -254,7 +254,7 @@ export const SpeakerSlideCard = ({
         <img
           src={image}
           alt={name}
-          className="w-full relative aspect-square object-cover"
+          className="w-full relative aspect-square object-cover object-[top_center]"
           style={{ borderRadius: "0.75rem" }}
         />
       </div>
