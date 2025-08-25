@@ -1,12 +1,11 @@
-"use client"
+"use client";
 import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import ScrollBottom from "../common/ScrollBottom";
 import dynamic from "next/dynamic";
-const TimerBlock = dynamic(
-  () => import("@/components/common/TimerBlock"),
-  { ssr: false }
-);
+const TimerBlock = dynamic(() => import("@/components/common/TimerBlock"), {
+  ssr: false,
+});
 
 const HomeBanner = ({ banner }) => {
   const remainingTime = {
@@ -71,14 +70,49 @@ const HomeBanner = ({ banner }) => {
   return (
     <section
       id="home-banner"
-      className="bg-[url('/images/home_banner.png')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
+      // className="relative bg-[url('/images/backgrounds/home_banner.gif')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
+      className="relative bg-[url('/images/home_banner.png')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
     >
+      {/* <div className="absolute inset-0 [background:linear-gradient(216.76deg,_rgba(0,_0,_0,_0.35)_22%,_rgba(19,_31,_84,_0.42)_97%),_rgba(26,_29,_39,_0.46)] opacity-20 w-full h-full" />
+      <div className="absolute inset-0 [background:linear-gradient(180.07deg,_#7F529F_-2.6%,_#000000_-2.6%,_#7F529F_99.94%)] opacity-20 w-full h-full">
+      </div>
+        <svg
+        className="absolute top-0 left-5 max-w-[50vw md:max-w-] bottom-0 m-auto"
+          width="413"
+          height="413"
+          viewBox="0 0 413 413"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M206.5 -9.0264e-06C320.547 -1.40115e-05 413 92.4532 413 206.5C413 320.547 320.547 413 206.5 413C92.4532 413 -4.04126e-06 320.547 -9.0264e-06 206.5C-1.40115e-05 92.4532 92.4532 -4.04126e-06 206.5 -9.0264e-06ZM206.5 400.861C313.843 400.861 400.861 313.843 400.861 206.5C400.861 99.1571 313.843 12.1386 206.5 12.1386C99.1571 12.1386 12.1386 99.1572 12.1386 206.5C12.1386 313.843 99.1572 400.861 206.5 400.861Z"
+            fill="url(#paint0_linear_64_2153)"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_64_2153"
+              x1="-11"
+              y1="206"
+              x2="413"
+              y2="206.5"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#5AC0BE" />
+              <stop stop-opacity="0.41" />
+              <stop offset="1" stop-color="#5AC0BE" />
+            </linearGradient>
+          </defs>
+        </svg> */}
       {banner && (
-        <div className="flex justify-end mb-30">
-          <img className="md:max-w-[65%]" src="/images/banner_title.png" alt="" />
+        <div className="container-fluid md:!max-w-full md:!w-full relative flex justify-end mb-30">
+          <img
+            className="md:max-w-[65%]"
+            src="/images/banner_title.png"
+            alt=""
+          />
         </div>
       )}
-      <div className="container-fluid mx-auto px-5 sm:px-0">
+      <div className="relative container-fluid mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
           <div className="w-full flex flex-col gap-5 md:max-w-[45%] font-gilroy-med">
             <PrimaryButton className="gap-1 px-3 pe-4.75 w-fit">
@@ -141,7 +175,7 @@ const HomeBanner = ({ banner }) => {
               {/* ))} */}
             </div>
           </div>
-          <TimerBlock eventDate="2025-08-30"/>
+          <TimerBlock eventDate="2025-12-09" />
 
           {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">

@@ -236,7 +236,7 @@ const AboutInfo = ({ className = "" }) => {
               </div>
             ))}
           </div>
-          <div className="hidden xl:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.25 md:me-12  border-t border-[#D7D7D7] pt-6 ">
+          <div className="hidden 2xl:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.25 md:me-12  border-t border-[#D7D7D7] pt-6 ">
             <div className="flex flex-col justify-center px-2.5">
               <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
                 Features
@@ -269,7 +269,7 @@ const AboutInfo = ({ className = "" }) => {
           </div>
         </div>
       </div>
-      <div className="px-10 sm:px-0  container mt-10  mx-auto xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
+      <div className="px-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
         <div className="flex flex-col justify-center px-2.5">
           <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
             Features

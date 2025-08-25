@@ -131,7 +131,7 @@ const TitleBlock = ({ title }) => {
               </div>
             </div>
           </div>
-          <TimerBlock eventDate="2025-08-30"/>
+          <TimerBlock eventDate="2025-12-09"/>
           {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">

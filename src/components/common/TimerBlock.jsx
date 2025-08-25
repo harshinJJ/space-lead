@@ -33,7 +33,7 @@ const TimerBlock = ({ eventDate = "2025-08-30" }) => {
       <div className="flex w-full md:w-auto flex-col gap-6.5">
         <div className="">
           <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7">
-            Time is running out Book your ticket.
+            Time is running out register now.
           </div>
         </div>
         <div className="flex lg:flex-row items-stretch gap-3 2xl:gap-10">

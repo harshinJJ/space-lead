@@ -17,7 +17,9 @@ const About = () => {
   return (
     <main>
       <AboutInfo />
-      <section className="bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[center]">
+      <section className="relative bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[center]">
+              <div className="absolute inset-0 bg-gradient-to-b from-black to-[#1C192D] opacity-20 w-full h-full"></div>
+
         <MemberList
           className="bg-transparent"
           title={"Steering Committee Members"}

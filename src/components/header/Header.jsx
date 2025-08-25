@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import TitleBlock from "./TitleBlock";
 import { usePathname } from "next/navigation";
+import { SecondaryLink } from "../buttons/SecondaryButton";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -18,7 +19,8 @@ const Header = () => {
     { title: "Sponsors", url: "/sponsors", type: "link" },
     { title: "Exhibitor", url: "/exhibitor", type: "link" },
     { title: "Contact Us", url: "/contact-us", type: "link" },
-    { title: "Register Now", url: "/registration", type: "button" },
+    // { title: "Download the App", url: "/registration", type: "secondaryButton" },
+    { title: "Register Now", url: "/registration", type: "primaryButton" },
   ];
 
   const pageLinks = [
@@ -110,10 +112,14 @@ const Header = () => {
             <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between gap-11.5 py-2.5 ps-6 pe-4 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-white/7">
               {navLinks.map((link, i) => (
                 <li key={i}>
-                  {link.type == "button" ? (
+                  {link.type == "primaryButton" ? (
                     <PrimaryLink className="px-8 ms-1" href={link.url}>
                       {link.title}
                     </PrimaryLink>
+                  ) :link.type=="secondaryButton"? (
+                    <SecondaryLink className="px-1 ms-1" href={link.url}>
+                      {link.title}
+                    </SecondaryLink>
                   ) : (
                     <Link
                       className={`relative text-sm ${i==0?"px-1":""}`}

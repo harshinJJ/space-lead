@@ -44,7 +44,7 @@ const Footer = () => {
       ),
     },
     {
-      url: "tel:+9660112157777",
+      url: "tel:+966112157777",
       title: "+966 11 215 7777",
       icon: (
         <svg
@@ -118,7 +118,7 @@ const Footer = () => {
           <img src="/logo.png" alt="" />
           <ul className="flex items-center gap-10">
             <li>
-              <a href="#">
+              <a href="#" target="_blank">
                 <svg
                   width="13"
                   height="21"
@@ -135,7 +135,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://x.com/SpaceLeadAU" target="_blank">
                 <svg
                   width="21"
                   height="21"
@@ -152,7 +152,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://www.instagram.com/spaceleadau/" target="_blank">
                 <svg
                   width="20"
                   height="21"

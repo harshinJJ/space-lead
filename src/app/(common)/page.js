@@ -63,7 +63,8 @@ export default function Home() {
       <HomeBanner banner={"/images/banner_title.png"} />
       <AboutInfo className="xl:pb-42" />
       {/* <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} /> */}
-      <section className="bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[center]">
+      <section className="relative bg-[url('/images/backgrounds/commitee_members_bg.gif')] bg-cover bg-[top_center]">
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-[#1C192D] opacity-20 w-full h-full"></div>
         <div className="container-fluid z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
           <div className="md:absolute mx-auto left-0 right-0 px-5 md:px-0 -translate-y-1/2 max-w-252.5 top-0 w-full">
             <StatsCard />
@@ -74,7 +75,7 @@ export default function Home() {
           theme="dark"
           title={"Steering Committee Members"}
           speakers={speakers}
-          link={"#"}
+          // link={"#"}
           cardSize="sm"
         />
       </section>
@@ -82,7 +83,7 @@ export default function Home() {
         className="bg-white"
         title={"Scientific Committee Members"}
         speakers={speakers}
-        link={"#"}
+        // link={"#"}
       />
       <WhyAttend>
         {/* <EventLists /> */}
@@ -94,7 +95,7 @@ export default function Home() {
         // embedUrl={"https://www.youtube.com/embed/sample"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <SponsorsBlock hasFaq={true} />
+      <SponsorsBlock />
     </main>
   );
 }
