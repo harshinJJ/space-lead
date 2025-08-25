@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Andrew Klesh",
+    "image": "/assets/images/speakers/andrew_klesh.png",
+    "description": [
+      "Dr. Andrew Klesh is the Associate Director and Chief Systems Engineer of the Brinson Exploration Hub at the California Institute of Technology. Previously, he served as the Lunar Trailblazer Project Systems Engineer and the chief engineer for MarCO, the first two interplanetary CubeSats, which successfully flew by Mars in 2018. He is also technical lead of several teams which use extreme environment robots and instruments to explore the deep ocean and ice-water interfaces in arctic, Antarctic, and glacial terrains. Prior to JPL, he served as a postdoctoral fellow at JAXA. He has multiple degrees from the University of Michigan (BSE EE, BSE Aero, MSE Aero, MEng Space Systems, PhD Aero), and a MS in geology/geophysics from CalPoly Pomona.",
+      "Andy currently volunteers at the USC/Wrigley Hyperbaric Chamber and with the Pasadena Fire Department as an emergency responder. As a lecturer at Caltech and adjunct professor at Arizona State University, he teaches Space Systems, Electronics for Space Applications, and Macgyver Engineering."
+    ]
+  },
+  {
+    "name": "Mark Simons",
+    "image": "/assets/images/speakers/mark_simons.png",
+    "description": [
+      "Prof. Mark Simons received his B.Sc. from UCLA in 1989 and his Ph.D. from M.I.T. in 1996. Dr. Simons has been at Caltech since 1996 and is currently a Professor of Geophysics and the Director of the Brinson Exploration Hub. Dr. Simons was Chief Scientist of NASA's Jet Propulsion Laboratory from 2017-2023. Dr. Simons studies processes that deform the solid earth including those associated with earthquakes, volcanic activity and shallow aquifers, as well as tides, and glacial rebound; Planetary tectonics and geodynamics, particularly the Earth’s Moon and Saturn’s moon Enceladus; Tools and applications using space geodesy, particularly GNSS, Interferometric SAR and gravity measurements. Dr. Simons is a Fellow of the American Geophysical Union and a Senior Member of IEEE."
+    ]
+  },
+  {
+    "name": "Abdulrahman Aljurbua",
+    "image": "/assets/images/speakers/abdulrahman_aljurbua.png",
+    "description": [
+      "Dr. Abdulrahman Aljurbua is an Assistant Research Professor at King Abdulaziz City for Science and Technology (KACST) in Riyadh, Saudi Arabia, and currently serves as the Ibn Rushd Postdoctoral Fellow at the California Institute of Technology (Caltech). He received his B.S. degree in Electrical Engineering from King Fahd University of Petroleum and Minerals in 2017, and his M.S. and Ph.D. degrees in Electrical Engineering from the University of Michigan, Ann Arbor, in 2020 and 2022, respectively. His research focuses on forward and inverse scattering problems in synthetic aperture radar (SAR) imaging and hyperspectral-based remote sensing."
+    ]
+  },
+  {
+    "name": "Paul Siqueira",
+    "image": "/assets/images/speakers/paul_siqueira.png",
+    "description": [
+      "Paul Siqueira is Professor of Electrical and Computer Engineering at the University of Massachusetts in Amherst and is co-Director of the University’s Microwave Remote Sensing Laboratory (MIRSL). In previous appointments, he has been a senior engineer at NASA’s Jet Laboratory, a visiting scientist for the European Commission in Ispra, Italy, and a Bullard Fellow at Harvard’s forest research station in Massachusetts. His work within MIRSL is in the design, development and use of microwave remote sensing instruments for earth science applications. While at UMass, Professor Siqueira has developed airborne Interferometric SAR’s that work at S-, Ku- and Ka-band frequencies, which are used for studying the remote sensing signatures of vegetation, soils, and snow.",
+      "Professor Siqueira is the Ecosystems Science Lead for NISAR, a joint NASA/ISRO L- and S-band SAR mission due to be launched in 2025. He is the PI for Snow Water Equivalent Wide-swath Interferometer and scatterometer (known as SNOWWI) which is an airborne instrument and satellite constellation concept that is being developed for NASA-ESTO’s Instrument Incubator Program. Professor Siqueira serves as a co-investigator in NASA’s Carbon Monitoring Systems (CMS) and Arctic-Boreal Vulnerability Experiment (ABoVE) programs."
+    ]
+  },
+  {
+    "name": "Kevin J. Hussey",
+    "image": "/assets/images/speakers/kevin_j_hussey.png",
+    "description": [
+      "The founding Manager of JPL’s Visualization Technology Applications and Development Group. Kevin has spent the majority of his 45-year career pioneering innovative tools and techniques to graphically represent virtually every type of data and abstract information used by NASA and Walt Disney Feature Animation. Currently, his focus is on assisting Caltech/KACST’s Earth scientists in visualizing their research results. The FBI, Nuclear Regulatory Commission, National Archives, and the Department of Defense have all consulted Kevin, who has managed teams of software developers, engineers, and artists to visualize everything from scanning electron microscopy and radio galaxies to earthquakes and Disney cartoon characters."
+    ]
+  },
+  {
+    "name": "Charles Elachi",
+    "image": "/assets/images/speakers/charles_elachi.png"
+  },
+  {
+    "name": "Bergen Moore",
+    "image": "/assets/images/speakers/bergen_moore.png",
+    "description": [
+      "Director of Technology at Moore Boeck, a multi-Emmy- and Webby-winning design studio recognized for reshaping how global audiences engage with science. He has over 20 years of experience translating complex vision into intuitive technology. Bergen co-leads the development of a new web platform that transforms large-scale satellite and in-situ data into visual narratives. His team previously reimagined NASA’s digital presence, making space science more engaging and Earth science more accessible and actionable. Today, that same design-first philosophy drives a platform built to derive meaning from data, empowering users to explore what we see—and what we’re learning—on a changing planet."
+    ]
+  },
+  {
+    "name": "Ayman M. Abdallah",
+    "image": "/assets/images/speakers/ayman_m_abdallah.png",
+    "description": [
+      "Dr. Ayman Abdallah, a PhD graduate of Old Dominion University, is an Aerospace faculty and the Founding Director of KFUPM’s Interdisciplinary Research Center for Aviation & Space Exploration (IRC-ASE), with a mandate to elevate KSA’s standing in the global New Space arena, in alignment with KSA’s national space strategy, stakeholders and ambitions. He currently leads innovation initiatives at KFUPM like the indigenous CubeSat program, lunar rover program, tech demonstration in space, and new program to train and produce local Space-qualified talent. Dr. Ayman has previously pioneered KFUPM’s drone-innovation ecosystem and launched interdisciplinary student platforms that deliver flight-ready hardware while nurturing local talent. His mission for Space: advance New Space research and become a pillar of the Saudi Space Ecosystem by building local capacity, and producing a generation of Saudi Human Capital in Space"
+    ]
+  },
+  {
+    "name": "Paul Alan Rosen",
+    "image": "/assets/images/speakers/paul_alan_rosen.png",
+    "description": [
+      "Paul A Rosen is currently Project Scientist for NASA-ISRO synthetic aperture radar mission (NISAR) at the Jet Propulsion Laboratory (JPL), and is a JPL Fellow and Senior Research Scientist. He is also the study coordinator for NASA’s Surface Deformation and Change Decadal Survey Architecture Study. Until 2012, he was the manager of the Radar Science and Engineering Section and Project Scientist for the DESDynI Mission concept at the Jet Propulsion Laboratory. He has been particularly active in understanding the phenomenology and scientific potentials of interferometric SAR and has led a number of research initiatives in data analysis and the development of software tools and techniques. Dr. Rosen was the team leader for Algorithm Development and Verification on the Shuttle Radar Topography Mission, for which he received NASA's Exceptional Service Medal (2001) and NASA's Exceptional Achievement Medal (2002)."
+    ]
+  },
+  {
+    "name": "Jean-Philippe Avouac",
+    "image": "/assets/images/speakers/jean_philippe_avouac.png",
+    "description": [
+      "Jean-Philippe Avouac uses remote sensing an geophysical observations to study Earth surface processes, in particular aeolian processes on Earth and Mars, as well as earthquakes and crustal deformation related to tectonics and anthropogenic activities (geothermal energy production or CO2 storage). His has been the director of the Caltech center for Geomechanics and the Mitigation of Geohazards since its creation in 2018 and was president of the Tectonophysics section of the American Geophysical Union from 2020 to 2022. He is a member of US National Academy of Sciences."
+    ]
+  },
+  {
+    "name": "Massimo Stafoggia",
+    "image": "/assets/images/speakers/massimo_stafoggia.png",
+    "description": [
+      "Senior researcher at Department of Epidemiology in Rome, and adjunct senior lecturer at the Institute of Environmental Medicine, Karolinska Institutet in Stockholm. He has contributed to many environmental epidemiology studies (ESCAPE, EXHAUSTION, ELAPSE, EXPANSE, MCC Collaborative Network) aimed at investigating the relationship between environmental exposures and adverse health outcomes. He has pioneered the development of spatiotemporal models to predict daily air pollutants concentrations at fine spatial grid in multiple countries. He is the epidemiological contact point for Italy for the NASA-led project MAIA. He is co-author of more than 290 scientific papers indexed in PubMed. His current H index is 70 (Scopus, June 2025)."
+    ]
+  },
+  {
+    "name": "Bonnie Jeanne Dunbar",
+    "image": "/assets/images/speakers/bonnie_jeanne_dunbar.png",
+    "description": [
+      "Professor Dunbar is the John and Bea Slattery Chair of Aerospace Engineering at Texas A&M University where she conducts research on advanced spacesuit technology, two phase fluid physics in reduced gravity and the effects of gravity dose on human physiology and performance. She holds an appointment to the College of Medicine and is the Chair of the 2025 International Space Medicine Summit to be held in November in Houston. A NASA Astronaut with 50 days in space, she also was elected to the Astronaut Hall of Fame, to the National Academy of Engineering and to the Royal Society of Edinburgh."
+    ]
+  },
+  {
+    "name": "Dr. Rob Green",
+    "image": "/assets/images/speakers/dr_rob_green.png",
+    "description": [
+      "Dr. Robert O. Green is the Principal Investigator of the Earth Surface Mineral Dust Source Investigation (EMIT) a state-of-the-art imaging spectrometer on the International Space Station. He is the Principal Investigator for AVIRIS-C, AVIRIS-NG, AVIRIS-3, and AVIRIS-5 imaging spectrometers with more than 40,000 Google Scholar results. Dr. Green was the Instrument Scientist for the NASA Moon Mineralogy Mapper (M3) that discovered water/hydroxyl on the illuminated surface of the Moon. He is a science Co-Investigator and Instrument Scientist on the Mapping Imaging Spectrometer for Europa (MISE) and a science Co-Investigator on the NASA Lunar Trailblazer mission to investigate volatile compounds and minerals on the Moon and follow-on mission. Dr. Green is a Senior Research Scientist, JPL Fellow, and the Director of the JPL Microdevices Laboratory. For more than 25 years, his research has used remote measurement via imaging spectroscopy to test hypotheses and pursue scientific investigations and applications on Earth and for discovery and exploration through the solar system."
+    ]
+  }
+]

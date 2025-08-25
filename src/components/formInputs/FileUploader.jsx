@@ -474,14 +474,14 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
 
   return (
     <>
-      <label htmlFor="file-input" className="relative">
+      <label htmlFor="file-input" className="relative block">
         <input
         id="file-input"
           type="file"
           ref={fileInputRef}
           onChange={handleImageUpload}
           accept="image/*"
-          className="hidden"
+          className="absolute h-full w-full opacity-0"
         />
 
         {!defaultImage && !croppedImage ? (

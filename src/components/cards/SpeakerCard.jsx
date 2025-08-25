@@ -9,49 +9,66 @@ const SpeakerCard = ({
   selectAction,
   color = "#4DE3ED",
   textSize = "lg",
-  showBtn=false
+  showBtn = false,
+  className = "",
+  hoverable = true,
 }) => {
-
-  const labelClass = textSize === "sm" ? "2xl:text-base xl:text-sm" : "text-base";
+  const labelClass =
+    textSize === "sm" ? "2xl:text-base xl:text-sm" : "text-base";
   const titleClass =
     textSize === "sm"
       ? ` md:text-[1.375rem] text-lg leading-[1.5] tracking-[-1.5%]`
       : `2xl:text-[2.5rem] lg:text-[1.5rem] md:text-4xl text-4xl font-semibold leading-[1.1] tracking-[-1.5%]`;
+  const hoverName = speaker?.name?.split(".").pop().trim().split(" ").shift();
   return (
     <div
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
-      className={`group relative p-8 py-15 ${!showBtn&&(textSize=="sm"?"pb-2.5":"2xl:pb-19.25 lg:pb-2.5 pb-19")} w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl`}
+      className={`${
+        hoverable ? "group" : ""
+      } relative p-8 2xl:pt-15 py-5 md:pb-2.5 w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl ${className}`}
     >
+      <div className="absolute transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-[100%] group-hover:translate-y-0 [writing-mode:sideways-lr] w-full h-full top-0 left-0 right-0 font-semibold text-7xl text-stroke text-transparent flex items-end">
+        {hoverName}
+      </div>
       <div className=" group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-10 flex flex-col gap-5 md:gap-7.5 w-full h-full justify-start">
-        <span style={{ color: color }} className={` font-semibold  ${labelClass} `}>
+        <span
+          style={{ color: color }}
+          className={` font-semibold  ${labelClass} `}
+        >
           {speaker?.name}
         </span>
-        <h3 className={`text-white ${titleClass} mb-2`}>
-          {speaker?.title}
-        </h3>
+        <h3 className={`text-white ${titleClass} mb-2`}>{speaker?.title}</h3>
       </div>
-      <div className={` group-hover:scale-[1.2] transition-all duration-700 ${textSize=="sm"?" origin-bottom-left ":" origin-top-left "} relative z-30 flex flex-col gap-15 w-full h-full justify-end`}>
+      <div
+        className={` group-hover:scale-[1.2] transition-all duration-700  origin-bottom-left  relative z-30 flex flex-col gap-15 w-full h-full justify-end`}
+      >
         <span className="text-white text-base font-semibold ">
           {speaker?.event?.name || "Live Event"}
         </span>
-        {showBtn&&<SecondaryLink href={speaker?.event?.url||"#"} target="_blank" rel="noopener noreferrer">
-          <span>Event Details</span>
-          <svg
-            width="21"
-            height="21"
-            viewBox="0 0 21 21"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        {textSize == "lg" && (
+          <SecondaryLink
+            href={speaker?.event?.url || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <path
-              d="M7.28571 15.7408L14.9642 8.06228M14.9642 8.06228L8.46701 8.06228M14.9642 8.06228L14.9642 14.5595"
-              stroke="white"
-              strokeWidth="1.50356"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </SecondaryLink>}
+            <span>Event Details</span>
+            <svg
+              width="21"
+              height="21"
+              viewBox="0 0 21 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.28571 15.7408L14.9642 8.06228M14.9642 8.06228L8.46701 8.06228M14.9642 8.06228L14.9642 14.5595"
+                stroke="white"
+                strokeWidth="1.50356"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </SecondaryLink>
+        )}
       </div>
       {/* Speaker image */}
       <div className=" h-1/2 aspect-square absolute z-20 bottom-0 right-0 group-hover:scale-[1.2] transition-all duration-700 origin-bottom-right ">
@@ -189,13 +206,15 @@ export const SpeakerSlideCard = ({
   program = "",
   color = "#4DE3ED",
 }) => {
+    const hoverName = name?.split(".").pop().trim().split(" ").shift();
+
   return (
     <div className="group relative p-8 py-15 w-[fit] h-115 rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl">
+      <div className="absolute transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-[100%] group-hover:translate-y-0 [writing-mode:sideways-lr] w-full h-full top-0 left-0 right-0 font-semibold text-7xl text-stroke text-transparent flex items-end">
+        {hoverName}
+      </div>
       <div className=" group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-10 flex flex-col gap-6 w-full h-full justify-start">
-        <span
-          style={{ color: color }}
-          className={` font-semibold text-base`}
-        >
+        <span style={{ color: color }} className={` font-semibold text-base`}>
           {name}
         </span>
         <h3 className="text-white text-[2.5rem] font-semibold leading-[1.1] tracking-[-1.5%] mb-2">

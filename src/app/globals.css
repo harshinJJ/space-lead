@@ -46,13 +46,13 @@
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --font-azonix: "Azonix", sans-serif;
   --font-gilroy-med: "Gilroy-Medium", sans-serif;
   --font-gilroy-bold: "Gilroy-Bold", sans-serif;
   --font-gilroy-black: "Gilroy-Black", sans-serif;
   --font-orbitron: var(--font-orbitron);
-  
+
   --animate-float: float-up-down 1s ease-in-out infinite;
 }
 
@@ -205,4 +205,11 @@ button {
 }
 .btn-gradient-top:hover {
   background-position: 100% 0;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2px #ffffff10; /* For WebKit browsers (Chrome, Safari) */
+  text-stroke: 2px #ffffff10; /* For modern browsers (non-webkit) */
+  /* text-shadow: -1px -1px 0px black, 1px -1px 0px black, -1px 1px 0px black,
+    1px 1px 0px black;  */
 }

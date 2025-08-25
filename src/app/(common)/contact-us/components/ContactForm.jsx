@@ -1,6 +1,7 @@
 "use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Modal from "@/components/common/Modal";
+import useValidation from "@/hooks/useValidation";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -25,6 +26,7 @@ const validationSchema = Yup.object({
 });
 const ContactForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
+  const {contactFormSchema}=useValidation();
   const {
     handleSubmit,
     values,
@@ -40,7 +42,7 @@ const ContactForm = () => {
       phone: "",
       message: "",
     },
-    validationSchema,
+    validationSchema:contactFormSchema,
     validateOnChange: true, // Disable validation on field change
     validateOnBlur: true,
     onSubmit: (values) => {
