@@ -1,7 +1,7 @@
 import React from "react";
 import StatsCard from "../cards/StatsCard";
 
-const AboutInfo = ({className=""}) => {
+const AboutInfo = ({ className = "" }) => {
   const data = {
     name: "About Us",
     title: "Bringing together pioneer industry experts",
@@ -174,12 +174,11 @@ const AboutInfo = ({className=""}) => {
       id="about"
       className={` bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33 ${className}`}
     >
-
       <div className="container-fluid mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 xl:gap-39">
         {/* image */}
-        <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[43%]  xl:ps-47 lg:ps-15">
+        <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15">
           <img
-            className=" object-cover aspect-[483/613] h-auto [transform:rotateY(180deg)] rounded-4xl"
+            className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
             src="/images/about_section_img.gif"
             alt=""
           />
@@ -209,17 +208,17 @@ const AboutInfo = ({className=""}) => {
 
         {/* content */}
         <div className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
-          <h5 className="text-secondary  xl:text-lg text-base">{data.name}</h5>
+          <h5 className="text-secondary font-azonix xl:text-lg text-base">{data.name}</h5>
           <h3 className="text-tertiary  2xl:leading-[3rem] uppercase font-azonix text-lg md:text-2xl xl:text-3xl 2xl:text-[2.5rem]">
             {data.title}
           </h3>
           <p className="text-[#737373] xl:max-w-[80%] xl:text-lg text-base">
             {data.description}
           </p>
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 lg:gap-10 2xl:gap-21.25 py-5 lg:py-0">
+          <div className="flex xl:items-center justify-between xl:flex-row flex-col gap-5 lg:gap-10 2xl:gap-21.25 py-5 lg:py-0">
             {data.vision.map((vision, i) => (
               <div
-                className="flex flex-col xs:flex-row items-center gap-2 xl:gap-6"
+                className="flex flex-1 flex-col xs:flex-row items-center gap-2 xl:gap-6"
                 key={i}
               >
                 <div className="bg-secondary aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-18.5 rounded-full flex items-center justify-center">
@@ -237,29 +236,29 @@ const AboutInfo = ({className=""}) => {
               </div>
             ))}
           </div>
-          <div className="hidden xl:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
-            <div className="flex flex-col justify-center">
-              <p className="text-secondary uppercase text-xs leading-[2.5rem]">
+          <div className="hidden xl:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.25 md:me-12  border-t border-[#D7D7D7] pt-6 ">
+            <div className="flex flex-col justify-center px-2.5">
+              <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
                 Features
               </p>
-              <h4 className="text-tertiary font-azonix text-2xl">
+              <h4 className="text-tertiary font-azonix text-lg lg:text-2xl">
                 Our Feature
               </h4>
             </div>
             {data.features.map((feature, i) => (
               <div
                 key={i}
-                className="group flex items-center gap-2.5 border border-[#F4F4F4] px-2.5 py-5 bg-white hover:bg-secondary focus:bg-secondary active:bg-secondary transition-all duration-700"
+                className="group flex items-center border border-[#F4F4F4] px-2.5 pe-2.25 py-5 bg-white hover:bg-secondary focus:bg-secondary active:bg-secondary transition-all duration-700"
               >
-                <div className="">
+                <div className="flex-1/5 flex items-center justify-center">
                   {/* {feature.icon} */}
                   {React.cloneElement(feature.icon, {
                     className:
-                      "text-secondary group-hover:text-white group-focus:text-white group-active:text-white transition-colors duration-700",
+                      "w-full h-auto text-secondary group-hover:text-white group-focus:text-white group-active:text-white transition-colors duration-700",
                     // stroke: "currentColor",
                   })}
                 </div>
-                <div className="">
+                <div className="ps-2.5 flex-4/5">
                   <h5 className="text-tertiary text-sm">{feature.title}</h5>
                   <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-xs leading-4.5">
                     {feature.description}
@@ -271,8 +270,8 @@ const AboutInfo = ({className=""}) => {
         </div>
       </div>
       <div className="px-10 sm:px-0  container mt-10  mx-auto xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
-        <div className="flex flex-col justify-center">
-          <p className="text-secondary uppercase text-xs leading-[2.5rem]">
+        <div className="flex flex-col justify-center px-2.5">
+          <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
             Features
           </p>
           <h4 className="text-tertiary font-azonix text-2xl">Our Feature</h4>

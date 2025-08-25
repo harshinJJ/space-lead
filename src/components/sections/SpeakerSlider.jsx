@@ -94,11 +94,11 @@ const SpeakerSlider = ({ className }) => {
           </PrimaryLink>
         </div>
         <div className="">
-          <p className="text-white text-xl font-figtree lg:text-[2.5rem] font-light mb-10">
+          <p className="text-white text-xl lg:text-[2.5rem] font-light mb-10">
             The Astronauts of Our Adventure: Meet the Team
           </p>
           <div className="flex flex-col xl:flex-row items-start justify-between mt-4">
-            <div className="2xl:w-1/5 w-full flex-2 text-xl font-figtree mb-10">
+            <div className="2xl:w-1/5 w-full flex-2 text-xl mb-10">
               <Link
                 href={"/speakers"}
                 className="bg-radial mb-2 from-[#149CCD] leading-[200%] w-fit text-transparent bg-clip-text to-[#00435B] font-bold cursor-pointer"

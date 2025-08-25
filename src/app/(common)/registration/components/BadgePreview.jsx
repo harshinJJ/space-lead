@@ -18,7 +18,7 @@ const BadgePreview = ({ name, category, badgeId,title,organisation }) => (
 
             </div>
           </div>
-          <div className="text-sm text-black font-outfit mb-10">
+          <div className="text-sm text-black uppercase mb-10">
             #{badgeId || "BADGEID"}
           </div>
           <div className="font-azonix text-center text-3xl mb-1">

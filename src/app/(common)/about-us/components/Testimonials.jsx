@@ -102,7 +102,7 @@ const TestimonialsSlider = () => {
                   />
                 </svg>
               </div>
-              <p className="text-lg font-open-sans leading-[1.8]">
+              <p className="text-lg  leading-[1.8]">
                 Completely procrastinate inexpensive leadership before
                 Seamlessly innovate state of the functionalities through the art
                 infomediaries. Assertively recapitulate resource network
@@ -123,7 +123,7 @@ const TestimonialsSlider = () => {
                 alt={testimonials[activeIndex]?.name}
               />
             </div>
-            <div className="flex flex-col gap-1.25 justify-between font-open-sans ">
+            <div className="flex flex-col gap-1.25 justify-between ">
               <span className="text-2xl font-semibold">
                 {testimonials[activeIndex]?.name}
               </span>
@@ -134,7 +134,7 @@ const TestimonialsSlider = () => {
           <div className="flex lg:relative gap-2 items-center">
             <CircularButton
               ref={prevRef}
-              className="p-3.5 bg-primary hover:bg-white text-white hover:text-primary transition-colors duration-300"
+              className="p-3.5 !bg-primary hover:!bg-white !text-white hover:!text-primary transition-colors duration-300"
             >
               <svg
                 width="20"
@@ -151,7 +151,7 @@ const TestimonialsSlider = () => {
             </CircularButton>
             <CircularButton
               ref={nextRef}
-              className="p-3.5 bg-primary hover:bg-white text-white hover:text-primary transition-colors duration-300"
+              className="p-3.5 !bg-primary hover:!bg-white !text-white hover:!text-primary transition-colors duration-300"
             >
               <svg
                 width="20"

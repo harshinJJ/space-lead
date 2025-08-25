@@ -46,12 +46,12 @@ const ContactInfoOld = () => {
 
 const ContactInfo = () => {
   return (
-    <section className="w-full bg-[#EDF0FE] font-sans px-5">
+    <section className="w-full bg-[#EDF0FE] px-5">
       <div className="container-fluid flex flex-col xl:flex-row w-full mx-auto lg:py-20 py-10 gap-10 xl:items-end justify-between">
         {/* Left Side */}
         <div className="flex flex-col justify-between flex-1 lg:gap-15 gap-5 xl:max-w-[45%]">
           <div>
-            <p className="text-secondary  lg:text-[1.375rem] text-lg mb-6">
+            <p className="text-secondary font-azonix lg:text-[1.375rem] text-lg mb-6">
               Contact Info
             </p>
             <h3 className="font-azonix text-[2rem] md:text-[2.5rem] lg:text-[2.5rem] leading-tight text-black mb-8 tracking-wide">

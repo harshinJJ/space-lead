@@ -94,7 +94,7 @@ const MemberList = ({
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
         <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 xl:px-15.75">
-          {label && <p className="text-secondary">{label}</p>}
+          {label && <p className="text-secondary font-azonix">{label}</p>}
           <div
             className={`flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-7.5 ${
               link || navComponent ? "md:justify-between" : "md:justify-center"

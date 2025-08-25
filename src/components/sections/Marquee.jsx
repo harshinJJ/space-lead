@@ -14,7 +14,7 @@ const Marquee = () => {
   }, []);
 
   return (
-    <section className="w-full font-open-sans overflow-hidden bg-gradient-to-r from-teal-400 via-blue-400 to-purple-500 py-3">
+    <section className="w-full overflow-hidden bg-gradient-to-r from-teal-400 via-blue-400 to-purple-500 py-3">
       <div
         ref={marqueeRef}
         style={{

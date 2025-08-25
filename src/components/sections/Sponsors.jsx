@@ -55,13 +55,13 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
 
         {/* Content */}
         <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col items-center lg:items-start">
-          <p className="text-secondary text-lg mb-4 leading-[100%] font-open-sans">
+          <p className="text-secondary text-lg mb-4 leading-[100%] font-orbitron">
             Our Sponsors
           </p>
-          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-raleway lg:mb-14 mb-7">
+          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-orbitron lg:mb-14 mb-7">
             Why sponsor
           </h2>
-          <p className="font-poppins sm:text-lg leading-[150%]  mb-10">
+          <p className="sm:text-lg leading-[150%]  mb-10">
             Sponsoring the Space Lead ’25 Conference positions your organization
             at the forefront of space innovation. Engage with top-level
             decision-makers, policymakers, and global disruptors. Build
@@ -89,10 +89,10 @@ export const SponsorList = ({showSlides=true}) => {
       <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
 
       <div className="container-fluid px-5 mx-auto lg:px-12.75 text-center">
-        <p className="text-secondary font-open-sans text-lg mb-2">
+        <p className="text-secondary font-azonix text-lg mb-2">
           Our Sponsors
         </p>
-        <h2 className="text-2xl font-raleway lg:text-[2.875rem] font-bold text-gray-900 mb-4">
+        <h2 className="text-2xl font-orbitron lg:text-[2.875rem] font-bold text-gray-900 mb-4">
           Sponsorship opportunities
         </h2>
         <p className={`lg:max-w-[68.5rem] leading-[1.875rem] text-lg mx-auto text-[#303030] ${!showSlides?"mb-0":""} mb-10 `}>
@@ -204,13 +204,13 @@ export const SponsorContentRight = () => {
 
         {/* Content */}
         <div className="w-full xl:w-1/2 text-center xl:text-left flex flex-col items-center xl:items-start">
-          <p className="text-secondary text-lg mb-4 leading-[100%] font-open-sans">
+          <p className="text-secondary text-lg mb-4 leading-[100%] font-orbitron">
             Our Sponsors
           </p>
-          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-raleway lg:mb-14 mb-7">
+          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-orbitron lg:mb-14 mb-7">
             Why sponsor
           </h2>
-          <p className="font-poppins sm:text-lg leading-[150%]  mb-10">
+          <p className="sm:text-lg leading-[150%]  mb-10">
             Sponsoring the Space Lead ’25 Conference positions your organization
             at the forefront of space innovation. Engage with top-level
             decision-makers, policymakers, and global disruptors. Build

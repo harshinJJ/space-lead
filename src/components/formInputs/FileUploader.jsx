@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 // import "./Filecroper.css";
 import Modal from "../common/Modal";
 import FadeLoader from "../loader/FadeLoader";
+import PrimaryButton from "../buttons/PrimaryButton";
 
 const FileUplodCroper = ({ onCropDone, defaultImage }) => {
   const [loading, setLoading] = useState(false);
@@ -473,8 +474,9 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
 
   return (
     <>
-      <div className="relative">
+      <label htmlFor="file-input" className="relative">
         <input
+        id="file-input"
           type="file"
           ref={fileInputRef}
           onChange={handleImageUpload}
@@ -485,13 +487,10 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
         {!defaultImage && !croppedImage ? (
           <div
             onClick={changeImage}
-            className="border-2 border-dashed border-green-500 rounded-xl p-4 text-center cursor-pointer transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(76,175,80,0.3)] bg-gray-100"
+            className=" bg-[#F6F6F6] text-xs flex gap-1.5 items-center rounded-xl p-1.75 text-center cursor-pointer transition-transform duration-300"
           >
-            <div className="text-green-500 mb-2">
-              <i className="fas fa-cloud-upload-alt fa-3x"></i>
-            </div>
-            <p className="mb-1 font-bold text-green-500">Click to Upload ID</p>
-            <small className="text-gray-500">PNG, JPG up to 5MB</small>
+            <p className=" text-black bg-white rounded-lg py-1.5 px-1">Choose File</p>
+            <small className="text-gray-500">Upload Student ID</small>
           </div>
         ) : (
           <div className="flex items-center gap-3">
@@ -499,36 +498,37 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
               <img
                 src={croppedImage ? croppedImage : defaultImage}
                 alt="ID Preview"
-                className="rounded-xl shadow-sm"
+                className="rounded-xl shadow-sm border-3 border-secondary"
                 style={{
                   width: "80px",
                   height: "80px",
                   objectFit: "contain",
-                  border: "3px solid #4CAF50",
                 }}
               />
               <div
                 className="absolute top-0 start-100 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                 onClick={removeFile}
               >
-                <span className="badge bg-green-500 rounded-full">
+                <span className="badge bg-[#F6F6F6] rounded-full">
                   <i className="fas fa-close fa-sm"></i>
                 </span>
               </div>
             </div>
             <div className="flex-grow">
-              <p className="mb-1 font-bold text-green-500">ID Added Successfully</p>
+              <p className="mb-1 font-bold text-black">
+                ID Added Successfully
+              </p>
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-3 py-1 rounded-lg border border-green-500 text-green-500 hover:bg-green-50"
+                className="px-3 py-1 rounded-lg border border-secondary text-secondary hover:bg-green-50"
               >
                 Change Image
               </button>
             </div>
           </div>
         )}
-      </div>
+      </label>
 
       {loading && <FadeLoader w="w-full" h="h-4" className="mb-3" />}
 
@@ -556,9 +556,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                   onMouseLeave={handleMouseUp}
                   style={{ userSelect: "none" }}
                 >
-                  <div
-                    className="relative inline-block max-w-full bg-gray-100 border-2 border-gray-300"
-                  >
+                  <div className="relative inline-block max-w-full bg-gray-100 border-2 border-gray-300">
                     <img
                       ref={imageRef}
                       src={uploadedImage}
@@ -606,7 +604,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
 
                     {/* Crop overlay */}
                     <div
-                      className="absolute border-2 border-green-500 bg-green-500/30 box-border"
+                      className="absolute border-2 border-secondary bg-secondary/30 box-border"
                       style={{
                         left: `${cropArea.x}px`,
                         top: `${cropArea.y}px`,
@@ -620,15 +618,31 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                       {/* Corner handles */}
                       {["nw", "ne", "sw", "se"].map((corner) => {
                         const positions = {
-                          nw: { top: "-6px", left: "-6px", cursor: "nw-resize" },
-                          ne: { top: "-6px", right: "-6px", cursor: "ne-resize" },
-                          sw: { bottom: "-6px", left: "-6px", cursor: "sw-resize" },
-                          se: { bottom: "-6px", right: "-6px", cursor: "se-resize" },
+                          nw: {
+                            top: "-6px",
+                            left: "-6px",
+                            cursor: "nw-resize",
+                          },
+                          ne: {
+                            top: "-6px",
+                            right: "-6px",
+                            cursor: "ne-resize",
+                          },
+                          sw: {
+                            bottom: "-6px",
+                            left: "-6px",
+                            cursor: "sw-resize",
+                          },
+                          se: {
+                            bottom: "-6px",
+                            right: "-6px",
+                            cursor: "se-resize",
+                          },
                         };
                         return (
                           <div
                             key={corner}
-                            className="absolute bg-green-500 rounded-full border-2 border-white shadow-md"
+                            className="absolute bg-[#F6F6F6] rounded-full border-2 border-white shadow-md"
                             style={{
                               width: "12px",
                               height: "12px",
@@ -640,17 +654,53 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                         );
                       })}
                       {/* Edge handles */}
-                      {["n","s","w","e"].map((edge) => {
+                      {["n", "s", "w", "e"].map((edge) => {
                         const edgeStyles = {
-                          n: { top: "-4px", left: "50%", transform: "translateX(-50%)", width: "20px", height: "8px", cursor: "n-resize", border: "1px solid white", borderRadius: "4px" },
-                          s: { bottom: "-4px", left: "50%", transform: "translateX(-50%)", width: "20px", height: "8px", cursor: "s-resize", border: "1px solid white", borderRadius: "4px" },
-                          w: { left: "-4px", top: "50%", transform: "translateY(-50%)", width: "8px", height: "20px", cursor: "w-resize", border: "1px solid white", borderRadius: "4px" },
-                          e: { right: "-4px", top: "50%", transform: "translateY(-50%)", width: "8px", height: "20px", cursor: "e-resize", border: "1px solid white", borderRadius: "4px" },
+                          n: {
+                            top: "-4px",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            width: "20px",
+                            height: "8px",
+                            cursor: "n-resize",
+                            border: "1px solid white",
+                            borderRadius: "4px",
+                          },
+                          s: {
+                            bottom: "-4px",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            width: "20px",
+                            height: "8px",
+                            cursor: "s-resize",
+                            border: "1px solid white",
+                            borderRadius: "4px",
+                          },
+                          w: {
+                            left: "-4px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            width: "8px",
+                            height: "20px",
+                            cursor: "w-resize",
+                            border: "1px solid white",
+                            borderRadius: "4px",
+                          },
+                          e: {
+                            right: "-4px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            width: "8px",
+                            height: "20px",
+                            cursor: "e-resize",
+                            border: "1px solid white",
+                            borderRadius: "4px",
+                          },
                         };
                         return (
                           <div
                             key={edge}
-                            className="absolute bg-green-500"
+                            className="absolute bg-[#F6F6F6]"
                             style={edgeStyles[edge]}
                             onMouseDown={(e) => handleResizeStart(e, edge)}
                             onTouchStart={(e) => handleResizeStart(e, edge)}
@@ -669,7 +719,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
 
                 <p className="mt-3 text-gray-500 text-sm">
                   <strong>Instructions:</strong>
-                  <br />• Drag the green area to move it
+                  <br />• Drag the selection area to move it
                   <br />• Drag the corner circles to resize diagonally
                   <br />• Drag the edge handles to resize in one direction
                 </p>
@@ -679,17 +729,17 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                 <button
                   type="button"
                   onClick={closeCropModal}
-                  className="px-4 py-2 rounded-lg text-gray-700 border border-gray-300 hover:bg-red-600 hover:text-white hover:shadow-[0_4px_12px_rgba(244,67,54,0.4)] transition-transform duration-300 hover:-translate-y-0.5"
+                  className="px-4 py-2 rounded-lg transition-all text-gray-700 border border-gray-300 bg-white hover:bg-red-600 hover:text-white hover:shadow-[0_4px_12px_rgba(244,67,54,0.4)] duration-500 hover:-translate-y-0.5"
                 >
                   Cancel
                 </button>
-                <button
+                <PrimaryButton
                   type="button"
                   onClick={cropImage}
-                  className="px-4 py-2 rounded-lg text-white border-none bg-gradient-to-r from-green-500 to-green-800 hover:from-green-800 hover:to-green-900 hover:shadow-[0_4px_12px_rgba(46,125,50,0.4)] transition-transform duration-300 hover:-translate-y-0.5"
+                  className="px-4 py-2 rounded-lg"
                 >
                   Crop & Save
-                </button>
+                </PrimaryButton>
               </div>
             </div>
           </div>

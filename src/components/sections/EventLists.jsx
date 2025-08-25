@@ -77,7 +77,7 @@ const EventLists = () => {
   return (
     <div className="container mx-auto px-5 lg:px-10 rounded-4xl bg-[#1C192D70] lg:py-16 py-6 text-white">
       {/* Heading */}
-      <div className="mb-10 font-open-sans">
+      <div className="mb-10 ">
         <p className="text-secondary  tracking-wide font-light">Event Lists</p>
         <div className="flex flex-col lg:flex-row justify-between">
           <h2 className="text-2xl xs:text-3xl 2xl:text-[2.875rem] lg:text-4xl leading-tight font-bold text-white mb-4 lg:max-w-2xl">

@@ -46,24 +46,13 @@
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-open-sans: var(--font-orbitron);
-  --font-raleway: var(--font-orbitron);
-  --font-poppins: "Gilroy-Medium", sans-serif;
-  --font-inter: var(--font-raleway);
-  --font-encode-sans-semi-condensed: var(--font-encode-sans-semi-condensed);
-  --font-outfit: var(--font-outfit);
-  --font-dm-sans: var(--font-orbitron);
-  --font-orbitron: var(--font-orbitron);
-  --font-figtree: var(--font-figtree);
-
+  
   --font-azonix: "Azonix", sans-serif;
   --font-gilroy-med: "Gilroy-Medium", sans-serif;
   --font-gilroy-bold: "Gilroy-Bold", sans-serif;
   --font-gilroy-black: "Gilroy-Black", sans-serif;
-
+  --font-orbitron: var(--font-orbitron);
+  
   --animate-float: float-up-down 1s ease-in-out infinite;
 }
 

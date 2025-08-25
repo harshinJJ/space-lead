@@ -7,12 +7,12 @@ const SpeakerTag = ({
   className,
 }) => {
   return (
-    <div className={`flex items-center md:gap-2.5 bg-[#1e2e4280] text-gray-300 p-[0.65625rem] xl:pe-9 md:pe-5 pe-2 rounded-full text-xs ${className}`}>
+    <div className={`flex items-center md:gap-2.5 bg-white/8 text-gray-300 p-[0.65625rem] xl:pe-9 md:pe-5 pe-2 rounded-full text-xs ${className}`}>
       <div className="w-10 aspect-square rounded-full overflow-hidden border-1 border-white/19">
         <img className="w-full h-full object-cover" src={image} alt={name} />
       </div>
       <div>
-        <span className="text-sm xl:text-lg font-raleway font-semibold">{name}</span>
+        <span className="text-sm xl:text-lg font-semibold">{name}</span>
         <div className="flex items-center gap-1 text-xs text-white/50">
           {role.toLowerCase() == "moderator" && (
             <svg
@@ -39,7 +39,7 @@ const SpeakerTag = ({
               />
             </svg>
           )}
-          <span className="font-open-sans">{role}</span>
+          <span className="">{role}</span>
         </div>
       </div>
     </div>

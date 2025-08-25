@@ -49,17 +49,17 @@ const FAQ = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-[#18182F] px-5 lg:py-22 py-10">
       <div className="max-w-3xl w-full">
-        <p className="text-secondary font-open-sans text-center text-sm mb-5 ">
+        <p className="text-secondary font-orbitron text-center text-sm mb-5 ">
           Can't find the answer here?
         </p>
-        <h2 className="text-white font-raleway text-center text-2xl md:text-3xl lg:text-[2.875rem] font-bold lg:mb-20 mb-10">
+        <h2 className="text-white font-orbitron text-center text-2xl md:text-3xl lg:text-[2.875rem] font-bold lg:mb-20 mb-10">
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <div key={idx} className={`bg-white/3 rounded-2xl`}>
               <button
-                className={`w-full font-inter flex justify-between items-center px-6 py-5 text-left focus:outline-none transition-colors text-white/80`}
+                className={`w-full flex justify-between items-center px-6 py-5 text-left focus:outline-none transition-colors text-white/80`}
                 onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
               >
                 <span className="text-lg font-medium">{faq.question}</span>

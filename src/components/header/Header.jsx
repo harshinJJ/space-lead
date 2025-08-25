@@ -107,21 +107,21 @@ const Header = () => {
                 )}
               </svg>
             </button>
-            <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between gap-11.5 py-2.5 ps-8.5 pe-4.5 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-white/7">
+            <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between gap-11.5 py-2.5 ps-6 pe-4 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-white/7">
               {navLinks.map((link, i) => (
                 <li key={i}>
                   {link.type == "button" ? (
-                    <PrimaryLink className="px-8 " href={link.url}>
+                    <PrimaryLink className="px-8 ms-1" href={link.url}>
                       {link.title}
                     </PrimaryLink>
                   ) : (
                     <Link
-                      className={`relative text-sm`}
+                      className={`relative text-sm ${i==0?"px-1":""}`}
                       href={link.url || "#"}
                     >
                       {link.title}
                       {pathname === link.url && (
-                        <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-secondary to-primary"></span>
+                        <span className="absolute bottom-[-4px] left-0 w-full h-[0.5px] bg-gradient-to-r from-secondary to-primary"></span>
                       )}
                     </Link>
                   )}

@@ -8,11 +8,11 @@ const stats = [
 ];
 
 const StatsCard = () => (
-  <div className="flex flex-col sm:flex-row rounded-[1.25rem] md:px-13.75 bg-gradient-to-r from-secondary to-primary px-0 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
+  <div className="flex flex-col sm:flex-row rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-0 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
     {stats.map((item, idx) => (
       <div
         key={item.label}
-        className={`flex-1 flex flex-col items-center justify-center font-inter  px-0 py-2 xl:py-5.75  ${
+        className={`flex-1 flex flex-col items-center justify-center  px-0 py-2 xl:py-5.75  ${
           idx !== stats.length - 1 ? "border-r border-white/15" : ""
         }`}
       >

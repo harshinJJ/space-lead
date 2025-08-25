@@ -6,10 +6,10 @@ const exhibitors = Array(8).fill({
 
 const ExhibitorList = () => (
   <section className="container-fluid mx-auto w-full py-10 px-5 sm:px-0">
-    <p className="text-secondary text-center tracking-wide font-light mb-5">
+    <p className="text-secondary text-center font-azonix tracking-wide font-light mb-5">
       Our Exhibitor
     </p>
-    <h3 className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-raleway text-[#000222] mb-12">
+    <h3 className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12">
       All Exhibitor
     </h3>
 
@@ -17,7 +17,7 @@ const ExhibitorList = () => (
       {exhibitors.map((item, i) => (
         <div
           key={i}
-          className="bg-[#F2F5FE] font-poppins  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-start"
+          className="bg-[#F2F5FE]   border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-start"
         >
           <div className="flex items-end mb-2 gap-2.5">
             <svg

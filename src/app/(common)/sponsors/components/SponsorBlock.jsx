@@ -5,10 +5,10 @@ const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
     >
       <div className="container-fluid mx-auto text-center">
         {label && (
-          <p className="text-secondary font-open-sans text-lg mb-2">{label}</p>
+          <p className="text-secondary font-azonix text-lg mb-2">{label}</p>
         )}
         {title && (
-          <h2 className="text-2xl font-raleway lg:text-[2.875rem] font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl font-orbitron lg:text-[2.875rem] font-bold text-gray-900 mb-4">
             {title}
           </h2>
         )}

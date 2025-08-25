@@ -112,11 +112,11 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
             )}
           </div>
 
-          <div className="xl:min-w-122.5 w-full xl:w-auto font-raleway ">
-            <h3 className="font-bold xl:text-[2.5rem] leading-[1.3] md:text-3xl text-lg mb-5 text-white">Who can attend?</h3>
+          <div className="xl:min-w-122.5 w-full xl:w-auto ">
+            <h3 className="font-bold xl:text-[2.5rem] font-orbitron leading-[1.3] md:text-3xl text-lg mb-5 text-white">Who can attend?</h3>
             <ul className="flex flex-col gap-2.5">
               {points.map((point, index) => (
-                <li key={index} className="text-lg font-figtree text-white flex items-center gap-3">
+                <li key={index} className="text-lg text-white flex items-center gap-3">
                   <svg
                     width="18"
                     height="19"

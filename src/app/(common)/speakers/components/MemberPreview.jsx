@@ -249,7 +249,7 @@ const MemberPreview = () => {
       {activeSpeaker && (
         <section id="speaker-preview" className="bg-[#EDF0FE] pt-20">
           <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-15.75 mb-15">
-            <p className="text-secondary">The Speakers Line-Up</p>
+            <p className="text-secondary font-azonix">The Speakers Line-Up</p>
             <div
               className={`flex flex-col gap-5 sm:flex-row md:items-start md:justify-between mt-2`}
             >
@@ -280,7 +280,7 @@ const MemberPreview = () => {
                     className={`px-5 sm:px-8 !py-1 rounded-lg flex-col relative ${
                       activeTab === i
                         ? ""
-                        : " from-transparent !text-secondary to-transparent"
+                        : " !bg-[url('')] from-transparent !text-secondary to-transparent"
                     }`}
                   >
                     {tab}

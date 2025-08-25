@@ -96,7 +96,7 @@ const ContactForm = () => {
         </div>
       </Modal>
       <div className="container-fluid mx-auto">
-        <p className="text-secondary text-2xl">Get Started</p>
+        <p className="text-secondary text-2xl font-azonix">Get Started</p>
         <div className="flex justify-between items-center xl:pe-69.5 mb-8">
           <h2 className="font-azonix text-2xl md:text-3xl lg:text-[2.5rem] max-w-3/4 lg:max-w-[25ch] mb-8 leading-tight text-gray-900">
             GET IN TOUCH WITH US. WE'RE HERE TO ASSIST YOU.

@@ -73,11 +73,11 @@ export default function RegistrationForm({
       <div className="flex flex-col md:flex-row gap-5 xl:gap-10 2xl:gap-22.5 w-full  text-black bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25">
         <div className="flex-1">
           <div className="bg-white/10  text-black-b2 rounded-xl mb-4">
-            <p className="font-encode-sans-semi-condensed font-light text-sm text-[#31313B] mb-1">
+            <p className="font-light text-sm text-[#31313B] mb-1">
               Please enter your details below, Fields marked with a * are
               mandatory.
             </p>
-            <div className="text-sm text-[#F82D2D] font-encode-sans-semi-condensed font-[500] mb-11.5">
+            <div className="text-sm text-[#F82D2D] font-[500] mb-11.5">
               *When adding your phone number, ensure your country code is
               entered first, e.g. +966*
             </div>
@@ -228,7 +228,7 @@ export default function RegistrationForm({
 
               <PrimaryButton
                 type="submit"
-                className="gap-2.5 text-lg col-span-2 w-fit px-7.5 font-dm-sans font-light tracking-[1px]"
+                className="gap-2.5 text-lg col-span-2 w-fit px-7.5 font-light tracking-[1px]"
               >
                 <span>Complete Your Registration </span>
 

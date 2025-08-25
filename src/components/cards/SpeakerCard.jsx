@@ -16,13 +16,13 @@ const SpeakerCard = ({
   const titleClass =
     textSize === "sm"
       ? ` md:text-[1.375rem] text-lg leading-[1.5] tracking-[-1.5%]`
-      : `2xl:text-[2.5rem] lg:text-[1.5rem] md:text-4xl text-4xl font-dm-sans font-semibold leading-[1.1] tracking-[-1.5%]`;
+      : `2xl:text-[2.5rem] lg:text-[1.5rem] md:text-4xl text-4xl font-semibold leading-[1.1] tracking-[-1.5%]`;
   return (
     <div
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
       className={`group relative p-8 py-15 ${!showBtn&&(textSize=="sm"?"pb-2.5":"2xl:pb-19.25 lg:pb-2.5 pb-19")} w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl`}
     >
-      <div className=" font-dm-sans group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-10 flex flex-col gap-5 md:gap-7.5 w-full h-full justify-start">
+      <div className=" group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-10 flex flex-col gap-5 md:gap-7.5 w-full h-full justify-start">
         <span style={{ color: color }} className={` font-semibold  ${labelClass} `}>
           {speaker?.name}
         </span>
@@ -194,11 +194,11 @@ export const SpeakerSlideCard = ({
       <div className=" group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-10 flex flex-col gap-6 w-full h-full justify-start">
         <span
           style={{ color: color }}
-          className={` font-semibold text-base font-dm-sans`}
+          className={` font-semibold text-base`}
         >
           {name}
         </span>
-        <h3 className="text-white text-[2.5rem] font-dm-sans font-semibold leading-[1.1] tracking-[-1.5%] mb-2">
+        <h3 className="text-white text-[2.5rem] font-semibold leading-[1.1] tracking-[-1.5%] mb-2">
           {title}
         </h3>
       </div>

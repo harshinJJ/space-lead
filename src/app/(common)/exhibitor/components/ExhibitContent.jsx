@@ -10,8 +10,8 @@ const ExhibitContent = () => (
         />
     </div>
     <div className="w-full lg:w-3/5 flex flex-col justify-center lg:pl-8">
-      <p className="text-secondary  tracking-wide font-light mb-5">Exhibitors</p>
-      <h2 className="text-2xl xl:text-5xl font-bold font-raleway text-[#000222] mb-12">
+      <p className="text-secondary  tracking-wide font-light mb-5 font-azonix">Exhibitors</p>
+      <h2 className="text-2xl xl:text-5xl font-bold font-orbitron text-[#000222] mb-12">
         Why Exhibit
       </h2>
       <p className="text-base lg:text-lg text-gray-700 leading-relaxed">

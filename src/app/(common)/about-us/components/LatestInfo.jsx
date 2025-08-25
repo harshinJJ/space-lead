@@ -84,16 +84,16 @@ const LatestInfo = () => {
             alt="Speaker"
             className="rounded-lg w-full xl:max-w-[33.5rem] h-full object-cover"
           />
-          <div className="lg:absolute lg:max-w-[25ch] w-auto text-center font-open-sans flex flex-col items-center lg:gap-19.5 gap-5 bottom-0 lg:translate-x-[-50%] transform lg:translate-y-[-30%] left-0 bg-gradient-to-b from-primary/31 to-[#2E1D3950] backdrop-blur-[24px]  text-white rounded-2xl p-10">
+          <div className="lg:absolute lg:max-w-[24ch] w-auto text-center flex flex-col items-center lg:gap-19.5 gap-5 bottom-0 lg:translate-x-[-50%] transform lg:translate-y-[-30%] left-0 bg-gradient-to-b from-primary/31 to-[#2E1D3950] backdrop-blur-[24px]  text-white rounded-2xl p-10">
             <p className="text-6xl">6k+</p>
-            <p className="">Trusted Customers also Satisfied</p>
+            <p className="leading-[1.6]">Trusted Customers also Satisfied</p>
           </div>
         </div>
 
         {/* Testimonial Card */}
         <div className="w-full lg:w-1/2 flex flex-col justify-start">
-          <p className="text-primary font-open-sans mb-5">Testimonials</p>
-          <h3 className="xl:text-[2.875rem] lg:text-4xl md:text-2xl text-xl font-bold xl:mb-15 mb-10 font-raleway">
+          <p className="text-primary font-azonix mb-5">Testimonials</p>
+          <h3 className="xl:text-[2.875rem] lg:text-4xl md:text-2xl text-xl font-bold xl:mb-15 mb-10 font-orbitron">
             Discover Clients Feedback <br /> About our Events
           </h3>
           <TestimonialsSlider />
