@@ -12,49 +12,51 @@ import SponsorsBlock from "@/components/sections/Sponsors";
 import SpeakerSlider from "@/components/sections/SpeakerSlider";
 import MemberSlider from "@/components/sections/MemberSlider";
 import StatsCard from "@/components/cards/StatsCard";
+import speakers from "@/../public/assets/json/speakers-data.json";
 
-const speakers = [
-  {
-    name: "Dr. Maha Bint Mishari AlSaud",
-    title: "Chairperson",
-    image: "/images/speakers/speaker1.png",
-  },
-  {
-    name: "Prof. Charles Elachi",
-    title: "President",
-    image: "/images/speakers/speaker2.png",
-  },
-  {
-    name: "Dr. Majid AlBahkali",
-    title: "General Manager",
-    image: "/images/speakers/speaker3.png",
-  },
-  {
-    name: "Dr. Esam AlBanyan",
-    title: "Vice President ",
-    image: "/images/speakers/speaker1.png",
-  },
-  {
-    name: "Dr. Maha Bint Mishari AlSaud",
-    title: "Chairperson",
-    image: "/images/speakers/speaker1.png",
-  },
-  {
-    name: "Prof. Charles Elachi",
-    title: "President",
-    image: "/images/speakers/speaker2.png",
-  },
-  {
-    name: "Dr. Majid AlBahkali",
-    title: "General Manager",
-    image: "/images/speakers/speaker3.png",
-  },
-  {
-    name: "Dr. Esam AlBanyan",
-    title: "Vice President ",
-    image: "/images/speakers/speaker1.png",
-  },
-];
+
+// const speakers = [
+//   {
+//     name: "Dr. Maha Bint Mishari AlSaud",
+//     title: "Chairperson",
+//     image: "/images/speakers/speaker1.png",
+//   },
+//   {
+//     name: "Prof. Charles Elachi",
+//     title: "President",
+//     image: "/images/speakers/speaker2.png",
+//   },
+//   {
+//     name: "Dr. Majid AlBahkali",
+//     title: "General Manager",
+//     image: "/images/speakers/speaker3.png",
+//   },
+//   {
+//     name: "Dr. Esam AlBanyan",
+//     title: "Vice President ",
+//     image: "/images/speakers/speaker1.png",
+//   },
+//   {
+//     name: "Dr. Maha Bint Mishari AlSaud",
+//     title: "Chairperson",
+//     image: "/images/speakers/speaker1.png",
+//   },
+//   {
+//     name: "Prof. Charles Elachi",
+//     title: "President",
+//     image: "/images/speakers/speaker2.png",
+//   },
+//   {
+//     name: "Dr. Majid AlBahkali",
+//     title: "General Manager",
+//     image: "/images/speakers/speaker3.png",
+//   },
+//   {
+//     name: "Dr. Esam AlBanyan",
+//     title: "Vice President ",
+//     image: "/images/speakers/speaker1.png",
+//   },
+// ];
 export default function Home() {
   return (
     <main>
@@ -86,7 +88,7 @@ export default function Home() {
         {/* <EventLists /> */}
         <EventAgenda className="!w-full bg-[#1C192D80]  px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
       </WhyAttend>
-      <SpeakerSlider />
+      <SpeakerSlider speakers={speakers} />
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         // embedUrl={"https://www.youtube.com/embed/sample"}

@@ -10,14 +10,15 @@ import { SpeakerSlideCard } from "../cards/SpeakerCard";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import Link from "next/link";
 
-const speakers = [
-  "Zylaran Vexor",
-  "Threxis N'alor",
-  "Xylozar K'thar",
-  "Virok Tal'mor",
-  "Zarathis O'rdan",
-  "Ilithra Velon",
-];
+
+// const speakers = [
+//   "Zylaran Vexor",
+//   "Threxis N'alor",
+//   "Xylozar K'thar",
+//   "Virok Tal'mor",
+//   "Zarathis O'rdan",
+//   "Ilithra Velon",
+// ];
 
 const cards = [
   {
@@ -76,7 +77,13 @@ const cards = [
   },
 ];
 
-const SpeakerSlider = ({ className }) => {
+const colors = [
+  "#DF91F2",
+  "#4DE3ED",
+  "#91F2A6",
+];
+
+const SpeakerSlider = ({ speakers=[],className }) => {
   const swiperRef = useRef(null);
   return (
     <section className={`bg-[#191A2A] py-20 relative ${className}`}>
@@ -106,7 +113,7 @@ const SpeakerSlider = ({ className }) => {
                 All
               </Link>
               <ul className="flex gap-x-9 items-center xl:items-start justify-start overflow-auto xl:flex-col gap-2 overflow-x-auto scrollbar-hide">
-                {cards.map((sp, i) => (
+                {speakers.map((sp, i) => (
                   <li
                     key={i}
                     onClick={() => swiperRef.current?.slideToLoop(i)}
@@ -136,7 +143,9 @@ const SpeakerSlider = ({ className }) => {
                 centeredSlides={true}
                 className="speaker-swiper-container lg:max-w-200 !w-full h-115 "
               >
-                {cards.map((card, id) => (
+                {speakers.map((card, id) => {
+                  const color = colors[id % colors.length];
+                  return(
                   <SwiperSlide
                     className="swiper-slide-custom !flex !items-center !justify-center  cursor-pointer  transition-all duration-300"
                     key={id}
@@ -146,12 +155,12 @@ const SpeakerSlider = ({ className }) => {
                       title={card.title}
                       type={card.type}
                       btn={card.btn}
-                      color={card.color}
+                      color={color}
                       image={card.image}
                       program={card.program}
                     />
                   </SwiperSlide>
-                ))}
+                )})}
                 {/* Swiper navigation buttons */}
                 <button className="swiper-prev speaker-swiper absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#353535] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-[#454545] transition">
                   <svg

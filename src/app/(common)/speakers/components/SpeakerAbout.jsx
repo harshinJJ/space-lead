@@ -4,10 +4,14 @@ const SpeakerAbout = ({ speaker }) => {
   return (
     <div className="text-[#737373] mt-2.5">
       <div className="[&>p]:leading-[1.6] space-y-8 text-lg">
-        <p>{speaker.description}</p>
+        {speaker?.description instanceof Array ? (
+          speaker.description.map((para, index) => <p key={index}>{para}</p>)
+        ) : (
+          <p>{speaker.description}</p>
+        )}
       </div>
 
-      <div className="mt-4">
+      {speaker?.facts&&<div className="mt-4">
         <p className="mb-2.5 text-lg text-black">
           Fast facts about {speaker.name}
         </p>
@@ -30,7 +34,7 @@ const SpeakerAbout = ({ speaker }) => {
             </li>
           ))}
         </ul>
-      </div>
+      </div>}
     </div>
   );
 };

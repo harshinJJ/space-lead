@@ -61,23 +61,32 @@ const useValidation = (props) => {
     // Student specific
     institution: Yup.string().when([], {
       is: () => type === "student",
-      then: (schema) => schema.required("This field is required")
-      .test("invalid-institution-name", "Invalid Institution Name", (value) => {
-        if (!value) return true;
+      then: (schema) =>
+        schema
+          .required("This field is required")
+          .test(
+            "invalid-institution-name",
+            "Invalid Institution Name",
+            (value) => {
+              if (!value) return true;
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const specialCharPattern = /[^a-zA-Z0-9\s&'’.-]/;
-        const numericOnlyPattern = /^\d+$/;
+              const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              const specialCharPattern = /[^a-zA-Z0-9\s&'’.-]/;
+              const numericOnlyPattern = /^\d+$/;
 
-        return (
-          !emailPattern.test(value) &&
-          !specialCharPattern.test(value) &&
-          !numericOnlyPattern.test(value.trim())
-        );
-      }),
+              return (
+                !emailPattern.test(value) &&
+                !specialCharPattern.test(value) &&
+                !numericOnlyPattern.test(value.trim())
+              );
+            }
+          ),
       otherwise: (schema) => schema.notRequired(),
     }),
-    studentId: Yup.mixed().required("Student ID file is required"),
+    studentId: Yup.mixed().when([], {
+      is: () => type === "student",
+      then: (schema) => schema.required("Student ID file is required"),
+    }),
 
     // Professional specific
     jobTitle: Yup.string().when([], {
@@ -102,20 +111,22 @@ const useValidation = (props) => {
     }),
     company: Yup.string().when([], {
       is: () => type === "professional",
-      then: (schema) => schema.required("This field is required")
-      .test("invalid-companyname", "Invalid Company Name", (value) => {
-        if (!value) return true;
+      then: (schema) =>
+        schema
+          .required("This field is required")
+          .test("invalid-companyname", "Invalid Company Name", (value) => {
+            if (!value) return true;
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const specialCharPattern = /[^a-zA-Z0-9\s&'’.-]/;
-        const numericOnlyPattern = /^\d+$/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const specialCharPattern = /[^a-zA-Z0-9\s&'’.-]/;
+            const numericOnlyPattern = /^\d+$/;
 
-        return (
-          !emailPattern.test(value) &&
-          !specialCharPattern.test(value) &&
-          !numericOnlyPattern.test(value.trim())
-        );
-      }),
+            return (
+              !emailPattern.test(value) &&
+              !specialCharPattern.test(value) &&
+              !numericOnlyPattern.test(value.trim())
+            );
+          }),
       otherwise: (schema) => schema.notRequired(),
     }),
   });

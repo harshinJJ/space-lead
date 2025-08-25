@@ -5,7 +5,9 @@ import VideoPreview from "@/components/sections/VideoPreview";
 import WhyAttend from "@/components/sections/WhyAttend";
 import React from "react";
 import LatestInfo from "./components/LatestInfo";
-import { speakerList } from "@/data/speakers";
+// import { speakerList } from "@/data/speakers";
+import speakers from "@/../public/assets/json/speakers-data.json";
+
 import MemberList from "@/components/sections/MemberList";
 
 export const metadata = {
@@ -19,7 +21,7 @@ const About = () => {
         <MemberList
           className="bg-transparent"
           title={"Steering Committee Members"}
-          speakers={[...speakerList, speakerList[0]]}
+          speakers={speakers}
           theme="dark"
           cardSize="sm"
         />
@@ -27,7 +29,7 @@ const About = () => {
       <MemberList
         className="bg-white"
         title={"Scientific Committee Members"}
-        speakers={speakerList}
+        speakers={speakers}
       />
       <WhyAttend>
         <LatestInfo />
