@@ -121,14 +121,14 @@ const TitleBlock = ({ title }) => {
                   {tags[0].label}
                 </span>
               </div>
-              <div className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
+              <a target="_blank" href="https://maps.app.goo.gl/UmrCYw9Got63qjtN7" className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
                 <div className="flex items-center justify-center">
                   {tags[1].icon}
                 </div>
                 <span className="lg:text-nowrap 2xl:text-base  text-xs text-[#90D3D0]">
                   {tags[1].label}
                 </span>
-              </div>
+              </a>
             </div>
           </div>
           <TimerBlock eventDate="2025-12-09"/>

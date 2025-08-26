@@ -5,7 +5,6 @@ import VideoPreview from "@/components/sections/VideoPreview";
 import WhyAttend from "@/components/sections/WhyAttend";
 import React from "react";
 import LatestInfo from "./components/LatestInfo";
-// import { speakerList } from "@/data/speakers";
 import speakers from "@/../public/assets/json/speakers-data.json";
 
 import MemberList from "@/components/sections/MemberList";

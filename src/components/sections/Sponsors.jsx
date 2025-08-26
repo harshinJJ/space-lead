@@ -28,7 +28,7 @@ export default function SponsorsBlock({ hasFaq = false }) {
   return (
     <>
       <SponsorContent />
-      {hasFaq && <FAQ />}
+      {/* {hasFaq && <FAQ />} */}
       <SponsorList />
     </>
   );

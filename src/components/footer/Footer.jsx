@@ -11,6 +11,7 @@ const Footer = () => {
     { title: "Agenda", url: "/agenda" },
     { title: "Contact Us", url: "/contact-us" },
     { title: "Speakers", url: "/speakers" },
+    { title: "FAQ", url: "/faq" },
   ];
 
   const contactLinks = [
@@ -72,7 +73,7 @@ const Footer = () => {
       ),
     },
     {
-      url: "https://www.google.com/maps",
+      url: "https://maps.app.goo.gl/UmrCYw9Got63qjtN7",
       title: "Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
       icon: (
         <svg
@@ -107,6 +108,12 @@ const Footer = () => {
       ),
     },
   ];
+
+  const footerLinks = [
+    { label: "Terms & Condition", url: "/terms-and-conditions" },
+    { label: "Privacy Policy", url: "/privacy-policy" },
+    { label: "Cookie Policy", url: "/cookie-policy" },
+  ];
   return (
     <footer className="bg-[url('/images/footer_bg.png')] bg-cover bg-center bg-no-repeat text-white">
       <nav
@@ -117,7 +124,7 @@ const Footer = () => {
           <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
           <img src="/logo.png" alt="" />
           <ul className="flex items-center gap-10">
-            <li>
+            {/* <li>
               <a href="#" target="_blank">
                 <svg
                   width="13"
@@ -133,7 +140,7 @@ const Footer = () => {
                   />
                 </svg>
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="https://x.com/SpaceLeadAU" target="_blank">
                 <svg
@@ -196,9 +203,10 @@ const Footer = () => {
                     href={info.url}
                     target="_blank"
                   >
-                  <div>{info.icon}</div>
-                  <span>{info.title}</span></a>
-                  </li>
+                    <div>{info.icon}</div>
+                    <span>{info.title}</span>
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
@@ -206,15 +214,11 @@ const Footer = () => {
         <div className="py-10 flex flex-col-reverse gap-2 md:flex-row items-center justify-between">
           <p>&copy; Space Lead 2025 | All Rights Reserved</p>
           <ul className="flex flex-wrap gap-5 lg:gap-x-11 items-center place-content-center">
-            <li>
-              <a href="#">Terms & Condition</a>
-            </li>
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#">Cookie Policy</a>
-            </li>
+            {footerLinks.map((link, i) => (
+              <li key={i}>
+                <Link href={link.url || "#"}>{link.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

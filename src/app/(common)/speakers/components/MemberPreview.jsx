@@ -250,21 +250,21 @@ const MemberPreview = () => {
       {activeSpeaker && (
         <section id="speaker-preview" className="bg-[#EDF0FE] pt-20">
           <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-15.75 mb-15">
-            <p className="text-secondary font-azonix">The Speakers Line-Up</p>
+            {/* <p className="text-secondary font-azonix">The Speakers Line-Up</p> */}
             <div
               className={`flex flex-col gap-5 sm:flex-row md:items-start md:justify-between mt-2`}
             >
               <h2
-                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix text-[#000222] leading-snug max-w-[25ch]`}
+                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix text-[#000222] leading-snug `}
               >
                 MEET OUR INDUSTRY EXPERT AND PROFESSIONAL SPEAKERS
               </h2>
 
-              <PrimaryDualTextLink
+              {/* <PrimaryDualTextLink
               className="mt-2.5"
                 initialText={"Buy Ticket"}
                 // hoverText={"Join The Event"}
-              />
+              /> */}
             </div>
           </div>
 
@@ -304,15 +304,15 @@ const MemberPreview = () => {
             ? "Steering Committee Members"
             : "MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"
         }
-        label={!activeSpeaker && "Steering Committee Members"}
-        navComponent={
-          !activeSpeaker && (
-            <PrimaryDualTextLink
-              initialText={"Buy Ticket"}
-              // hoverText={"Join The Event"}
-            />
-          )
-        }
+        // label={!activeSpeaker && "Steering Committee Members"}
+        // navComponent={
+        //   !activeSpeaker && (
+        //     <PrimaryDualTextLink
+        //       initialText={"Buy Ticket"}
+        //       // hoverText={"Join The Event"}
+        //     />
+        //   )
+        // }
       />
       <MemberList
         title={"Scientific Committee Members"}

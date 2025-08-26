@@ -14,12 +14,11 @@ export default function Speakers() {
       {/* speakers block pending */}
       <MemberPreview/>
       {/* <Marquee /> */}
-      <VideoPreview
+      {/* <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      {/* <SponsorsBlock /> */}
-      <SponsorList />
+      <SponsorList /> */}
     </main>
   );
 }

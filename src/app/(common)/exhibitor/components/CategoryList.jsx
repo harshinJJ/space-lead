@@ -33,7 +33,7 @@ const CategoryList = () => (
           <span className={`${cat.type === "Free" ? "bg-primary/19 text-primary" : "bg-[#0b993a50] text-[#1e611e]"} text-xs leading-[1.5] rounded-full px-4.75 mb-3`}>{cat.type}</span>
           <span className="text-2xl text-[#111111CC] mb-4">{cat.name}</span>
 
-          <PrimaryLink href={cat.link} className="w-fit group px-6 py-1 items-center gap-2 transition-all duration-300">
+          {/* <PrimaryLink href={cat.link} className="w-fit group px-6 py-1 items-center gap-2 transition-all duration-300">
             <span className="leading-[100%] text-lg ">
               Apply
             </span>
@@ -49,7 +49,7 @@ const CategoryList = () => (
                 fill="white"
               />
             </svg>
-          </PrimaryLink>
+          </PrimaryLink> */}
         </div>
       ))}
     </div>

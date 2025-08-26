@@ -12,6 +12,7 @@ const SpeakerCard = ({
   showBtn = false,
   className = "",
   hoverable = true,
+  showOverlay = true
 }) => {
   const labelClass =
     textSize === "sm" ? "2xl:text-base xl:text-sm" : "text-base";
@@ -20,7 +21,7 @@ const SpeakerCard = ({
       ? ` md:text-[1.375rem] text-lg leading-[1.5] tracking-[-1.5%]`
       : `2xl:text-[2.5rem] lg:text-[1.5rem] md:text-4xl text-4xl font-semibold leading-[1.1] tracking-[-1.5%]`;
   const hoverName = speaker?.name?.split(".").pop().trim().split(" ").shift();
-  const showOverlay = () => Math.random() < 0.5;
+  // const showOverlay = () => Math.random() < 0.5;
   return (
     <div
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
@@ -73,7 +74,7 @@ const SpeakerCard = ({
       </div>
       {/* Speaker image */}
       <div className=" h-1/2 aspect-square absolute z-20 bottom-0 right-0 group-hover:scale-[1.2] transition-all duration-700 origin-bottom-right ">
-        {showOverlay() && (
+        {showOverlay && (
           <div
             className={`absolute w-full h-full `}
             style={{ background: color + "50", filter: "blur(6.25rem)" }}
