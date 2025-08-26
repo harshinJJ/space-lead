@@ -42,9 +42,9 @@ const TimerBlock = ({ eventDate = "2025-08-30" }) => {
               key={key}
               className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-white/3"
             >
-              <h5 className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
+              <p className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
                 {String(value).padStart(2, "0")}
-              </h5>
+              </p>
               <p className="text-xs lg:text-sm 2xl:text-lg capitalize">{key}</p>
             </div>
           ))}

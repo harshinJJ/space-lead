@@ -5,6 +5,7 @@ import { PrimaryLink } from "../buttons/PrimaryButton";
 import TitleBlock from "./TitleBlock";
 import { usePathname } from "next/navigation";
 import { SecondaryLink } from "../buttons/SecondaryButton";
+import Image from "next/image";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -78,7 +79,7 @@ const Header = () => {
             className="flex relative flex-col xl:flex-row justify-between items-center"
           >
             <Link href="/" className="logo">
-              <img src="/logo.png" alt="" />
+              <Image width={132} height={60} src="/logo.png" alt="logo" />
             </Link>
             <button
               className=" absolute left-0 mx-auto top-0 bottom-0 xl:hidden focus:outline-none"

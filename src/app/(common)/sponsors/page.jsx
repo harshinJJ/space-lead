@@ -4,7 +4,8 @@ import SponsorBlock from "./components/SponsorBlock";
 import { SponsorContentRight, SponsorList } from "@/components/sections/Sponsors";
 
 export const metadata={
-  title:"Sponsors"
+  title:"Sponsors",
+  description:"Event Sponsors"
 }
 const sponsors = [
   { name: "Datab", logo: "/images/logos/sponsor1.png" },

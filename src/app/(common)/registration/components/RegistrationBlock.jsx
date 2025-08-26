@@ -31,9 +31,9 @@ export default function RegistrationBlock({ type = "" }) {
     <section className="py-10 text-white lg:pt-22 lg:pb-57.5 bg-[#1c192d] bg-[url('/images/backgrounds/pass_selector_bg.png')] bg-cover bg-[center_top] bg-no-repeat">
       {!success ? (
         <div className="container mx-auto flex flex-col items-center justify-center 2xl:px-56.75 lg:px-20 px-5">
-          <h1 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
+          <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
             SELECT YOUR PASS
-          </h1>
+          </h2>
           <div className="w-full flex flex-col gap-8">
             <SessionTypeSelector
               sessions={sessionList}
@@ -51,9 +51,9 @@ export default function RegistrationBlock({ type = "" }) {
         </div>
       ) : (
         <div className="container mx-auto flex flex-col items-center justify-center lg:px-56.75 px-5">
-          <h1 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
+          <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
             YOUR REGISTRATION
-          </h1>
+          </h2>
             <SuccessModal onContinue={() => setSuccess(false)} />
         </div>
       )}

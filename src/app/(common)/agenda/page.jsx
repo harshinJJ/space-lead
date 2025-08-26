@@ -5,7 +5,8 @@ import VideoPreview from "@/components/sections/VideoPreview";
 import React from "react";
 
 export const metadata={
-  title:"Agenda"
+  title:"Agenda",
+  description:"Event Agenda"
 }
 export default function Agenda() {
   return (

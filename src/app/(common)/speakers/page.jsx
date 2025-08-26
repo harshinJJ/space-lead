@@ -5,7 +5,8 @@ import VideoPreview from "@/components/sections/VideoPreview";
 import MemberPreview from "./components/MemberPreview";
 
 export const metadata={
-  title:"Speakers"
+  title:"Speakers",
+  description:"Event Speakers"
 }
 export default function Speakers() {
   return (

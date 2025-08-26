@@ -4,7 +4,8 @@ import ContactForm from "./components/ContactForm";
 import ContactInfo from "./components/ContactInfo";
 
 export const metadata={
-  title:"Contact Us"
+  title:"Contact Us",
+  description:"Get in touch with us"
 }
 export default function ContactUs() {
   return (

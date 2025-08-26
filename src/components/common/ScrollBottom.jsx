@@ -42,13 +42,14 @@ const ScrollBottom = ({ className = "" }) => {
     const nextSection = sections.find(
       (sec) => sec.offsetTop > currentPos + 10 // +10 to avoid floating point issues
     );
-console.log("nextSection", nextSection);
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
   };
   return (
     <button
+    id="scroll-down"
+    aria-label="Scroll to next section"
       onClick={scrollToNextSection}
       className={`cursor-pointer w-12.5 flex items-center justify-center aspect-square z-50 bg-black/5 p-2.5 border-2 border-white overflow-hidden rounded-full transition-colors duration-300 ${className}`}
     >

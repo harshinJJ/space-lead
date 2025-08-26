@@ -35,7 +35,9 @@ const ScrollTop = ({ className = "" }) => {
   };
   return (
     <button
-      onClick={()=>scrollToTop()}
+      id="scroll-top"
+      aria-label="Scroll to top"
+      onClick={() => scrollToTop()}
       className={`cursor-pointer w-fit aspect-square z-50 bg-secondary p-0.5 bg-gradient-to-r overflow-hidden from-secondary to-primary rounded-full transition-colors duration-300 ${className}`}
     >
       <div className="w-full h-full flex items-center justify-center bg-[#302e40] xl:p-6 p-4 aspect-square overflow-hidden rounded-full">

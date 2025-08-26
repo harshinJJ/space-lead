@@ -4,7 +4,8 @@ import Marquee from "@/components/sections/Marquee";
 
 
 export const metadata={
-  title:"Registration"
+  title:"Registration",
+  description:"Event Registration"
 }
 export default function Registration() {
   return (

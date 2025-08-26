@@ -1,5 +1,5 @@
 import { Orbitron } from "next/font/google";
-import "../globals.css";
+import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import RegisterBtn from "@/components/common/RegisterBtn";
@@ -12,13 +12,14 @@ const orbitron = Orbitron({
 
 export const metadata = {
   title: "SpaceLead",
+  description: "INTERNATIONAL AEROSPACE MEDICINE CONFERENCE 2025",
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({ children }) {

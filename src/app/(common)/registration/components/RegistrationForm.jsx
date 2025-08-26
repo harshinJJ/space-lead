@@ -64,7 +64,6 @@ export default function RegistrationForm({
   });
 
   // const formData = watch();
-  console.log("errors", errors);
   return (
     <>
       <p className="uppercase text-lg text-center">
@@ -88,7 +87,7 @@ export default function RegistrationForm({
               <div className="flex items-start gap-4">
                 {/* Title */}
                 <div>
-                  <Label required={true}>Title</Label>
+                  <Label htmlFor="react-select-title-select-input" required={true}>Title</Label>
 
                   <FormSelect
                     instanceId={"title-select"}

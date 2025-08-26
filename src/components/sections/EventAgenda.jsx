@@ -130,12 +130,12 @@ export default function EventAgenda({className=""}) {
       <div className={`container-fluid mx-auto text-white ${className}`}>
         <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-15">
           <div className="flex flex-col justify-between gap-3">
-            <h2 className="uppercase font-orbitron xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+            <p className="uppercase font-orbitron xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               Event Agenda
-            </h2>
-            <h1 className="uppercase font-orbitron text-2xl md:text-3xl 2xl:text-5xl font-bold">
+            </p>
+            <h2 className="uppercase font-orbitron text-2xl md:text-3xl 2xl:text-5xl font-bold">
               Follow Event Agenda
-            </h1>
+            </h2>
           </div>
 
           {/* Tabs */}

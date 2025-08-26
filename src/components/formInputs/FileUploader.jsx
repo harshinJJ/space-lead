@@ -74,7 +74,6 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
           reader.readAsDataURL(convertedBlob);
         })
         .catch((err) => {
-          console.error(err);
           toast.error("Failed to convert HEIC image.");
         })
         .finally(() => {
