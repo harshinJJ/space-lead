@@ -2,10 +2,9 @@
 import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import dynamic from "next/dynamic";
-const TimerBlock = dynamic(
-  () => import("@/components/common/TimerBlock"),
-  { ssr: false }
-);
+const TimerBlock = dynamic(() => import("@/components/common/TimerBlock"), {
+  ssr: false,
+});
 const TitleBlock = ({ title }) => {
   const remainingTime = {
     days: 9,
@@ -73,41 +72,41 @@ const TitleBlock = ({ title }) => {
       <div className="absolute z-1 inset-0 bg-gradient-to-r from-black/20 via-tertiary/25 to-[#1a1d2720] opacity-77"></div>
       <div className="container-fluid z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
-          <div className="w-full flex flex-col gap-5 md:max-w-[45%] font-gilroy-med">
-            <PrimaryButton className="gap-1 px-3 pe-4.75 w-fit">
+          <div className="w-full flex flex-col gap-5 md:max-w-[50%] font-gilroy-med">
+            <PrimaryButton className="gap-1 px-11.25 py-4.5 w-fit text-[1.375rem] leading-[100%]">
               <svg
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M15.5787 3.66663H6.41206C2.90122 3.66663 1.92039 4.50996 1.83789 7.79163C3.60706 7.79163 5.03706 9.23079 5.03706 11C5.03706 12.7691 3.60706 14.1991 1.83789 14.2083C1.92039 17.49 2.90122 18.3333 6.41206 18.3333H15.5787C19.2454 18.3333 20.1621 17.4166 20.1621 13.75V8.24996C20.1621 4.58329 19.2454 3.66663 15.5787 3.66663Z"
+                  d="M19.8272 4.66663H8.16053C3.6922 4.66663 2.44387 5.73996 2.33887 9.91663C4.59053 9.91663 6.41053 11.7483 6.41053 14C6.41053 16.2516 4.59053 18.0716 2.33887 18.0833C2.44387 22.26 3.6922 23.3333 8.16053 23.3333H19.8272C24.4939 23.3333 25.6606 22.1666 25.6606 17.5V10.5C25.6606 5.83329 24.4939 4.66663 19.8272 4.66663Z"
                   stroke="white"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
-                  d="M8.24365 3.66663V6.87496"
+                  d="M10.4922 4.66663V8.74996"
                   stroke="white"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
-                  d="M8.24365 15.125V18.3333"
+                  d="M10.4922 19.25V23.3333"
                   stroke="white"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
-                  d="M13.773 8.55236L14.3413 9.69818C14.3963 9.80818 14.5063 9.89068 14.6255 9.90902L15.8905 10.0923C16.2022 10.1382 16.3305 10.5232 16.1013 10.7432L15.1847 11.6323C15.093 11.7148 15.0563 11.8432 15.0747 11.9715L15.2947 13.2273C15.3497 13.539 15.0197 13.7773 14.7447 13.6307L13.6172 13.0348C13.5072 12.9798 13.3697 12.9798 13.2597 13.0348L12.1322 13.6307C11.848 13.7773 11.5272 13.539 11.5822 13.2273L11.8022 11.9715C11.8205 11.8432 11.7838 11.724 11.6922 11.6323L10.7847 10.7432C10.5555 10.5232 10.6838 10.1382 10.9955 10.0923L12.2605 9.90902C12.3888 9.89068 12.4897 9.81735 12.5447 9.69818L13.1038 8.55236C13.2322 8.26819 13.6355 8.26819 13.773 8.55236Z"
+                  d="M17.529 10.8849L18.2524 12.3432C18.3224 12.4832 18.4624 12.5882 18.614 12.6116L20.224 12.8449C20.6207 12.9032 20.784 13.3932 20.4924 13.6732L19.3257 14.8049C19.209 14.9099 19.1624 15.0732 19.1857 15.2366L19.4657 16.8349C19.5357 17.2316 19.1157 17.5349 18.7657 17.3482L17.3307 16.5899C17.1907 16.5199 17.0157 16.5199 16.8757 16.5899L15.4407 17.3482C15.079 17.5349 14.6707 17.2316 14.7407 16.8349L15.0207 15.2366C15.044 15.0732 14.9974 14.9216 14.8807 14.8049L13.7257 13.6732C13.434 13.3932 13.5974 12.9032 13.994 12.8449L15.604 12.6116C15.7674 12.5882 15.8957 12.4949 15.9657 12.3432L16.6774 10.8849C16.8407 10.5232 17.354 10.5232 17.529 10.8849Z"
                   stroke="white"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
-              Get Ticket
+              Register Now
             </PrimaryButton>
             <h4 className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[-1.6px] 2xl:leading-[2.5rem]">
               {title}
@@ -121,7 +120,11 @@ const TitleBlock = ({ title }) => {
                   {tags[0].label}
                 </span>
               </div>
-              <a target="_blank" href="https://maps.app.goo.gl/UmrCYw9Got63qjtN7" className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
+              <a
+                target="_blank"
+                href="https://maps.app.goo.gl/UmrCYw9Got63qjtN7"
+                className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit"
+              >
                 <div className="flex items-center justify-center">
                   {tags[1].icon}
                 </div>
@@ -131,7 +134,7 @@ const TitleBlock = ({ title }) => {
               </a>
             </div>
           </div>
-          <TimerBlock eventDate="2025-12-09"/>
+          <TimerBlock eventDate="2025-12-09" />
           {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">

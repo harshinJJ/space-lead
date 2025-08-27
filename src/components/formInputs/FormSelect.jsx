@@ -38,11 +38,11 @@ const customStyles = {
     border: "none",
     boxShadow: "none",
     borderRadius: "12px",
-    height:"100%",
-    minWidth:"5.25rem",
+    height: "100%",
+    minWidth: "5.25rem",
     paddingLeft: "0.875rem",
-    paddingright: "0.875rem", 
-    fontSize: "0.75rem",   
+    paddingright: "0.875rem",
+    fontSize: "0.75rem",
     color: "#31313B",
   }),
   valueContainer: (provided) => ({
@@ -55,8 +55,8 @@ const customStyles = {
     paddingLeft: "0.875rem",
     paddingright: "0.875rem",
     paddingTop: "0.75rem",
-    paddingBottom: "0.75rem",   
-    fontSize: "0.75rem",   
+    paddingBottom: "0.75rem",
+    fontSize: "0.75rem",
   }),
   indicatorSeparator: () => ({
     display: "none",
@@ -82,12 +82,22 @@ const customStyles = {
   }),
 };
 
-const FormSelect = ({ ...props }) => {
+const FormSelect = ({
+  options,
+  labelKey = "label",
+  valueKey = "value",
+  ...props
+}) => {
   return (
     <Select
-      {...props}
+      options={options}
+      isClearable={false}
       styles={customStyles}
+      autoComplete="off"
+      getOptionLabel={(e) => e[labelKey]}
+      getOptionValue={(e) => e[valueKey]}
       components={{ DropdownIndicator }}
+      {...props}
     />
   );
 };

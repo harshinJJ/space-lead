@@ -13,11 +13,14 @@ import Error from "@/components/common/Error";
 import { useFormik } from "formik";
 import useValidation from "@/hooks/useValidation";
 import dynamic from "next/dynamic";
+import countryList from "@/../public/assets/json/countryList.json";
+
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
   () => import("@/components/formInputs/FileUploader"),
   { ssr: false }
 );
+
 
 const titles = [
   { label: "Mr.", value: "mr" },
@@ -51,6 +54,8 @@ export default function RegistrationForm({
       phone: "",
       email: "",
       institution: "",
+      country:"",
+      nationality:"",
       studentId: "",
       jobTitle: "",
       company: "",
@@ -92,7 +97,7 @@ export default function RegistrationForm({
                   <FormSelect
                     instanceId={"title-select"}
                     name="title"
-                    onChange={handleChange}
+                    onChange={(option) => setFieldValue("title", option)}
                     onBlur={handleBlur}
                     value={formData.title}
                     options={titles}
@@ -149,6 +154,32 @@ export default function RegistrationForm({
                   placeholder="Email"
                 />
                 {touched.email && <Error message={errors?.email} />}
+              </div>
+              <div>
+                <Label required={true}>Country of Residency</Label>
+                <FormSelect
+                    instanceId={"residency-select"}
+                    name="country"
+                    onChange={(option) => setFieldValue("country", option)}
+                    onBlur={handleBlur}
+                    valueKey="name"
+                    labelKey="name"
+                    value={formData.country}
+                    options={countryList}
+                  />
+                {touched.country && <Error message={errors?.country} />}
+              </div>
+              {/* Email */}
+              <div>
+                <Label required={true}>Nationality</Label>
+                <FormInput
+                  name="nationality"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={formData.nationality}
+                  placeholder="Nationality"
+                />
+                {touched.nationality && <Error message={errors?.nationality} />}
               </div>
 
               {/* Institution Name (Student only) */}

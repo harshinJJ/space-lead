@@ -12,7 +12,7 @@ const DownloadButton = () => {
     <a
       target="_blank"
       href="#"
-      className="flex items-center gap-1.25 text-secondary"
+      className="flex items-center gap-1.25 text-secondary me-4 ms-2.75 text-sm leading-[100%]"
     >
       <svg
         width="24"
@@ -42,7 +42,10 @@ const DownloadButton = () => {
 
 const RegisterBtn = () => {
   return (
-    <PrimaryLink href="/registration" className=" gap-1.25 py-3.25 px-3.25 text-lg">
+    <PrimaryLink
+      href="/registration"
+      className=" gap-1.25 py-3.25 px-3.25 text-lg leading-[100%]"
+    >
       <svg
         width="22"
         height="22"
@@ -99,7 +102,7 @@ const Header = () => {
       url: "/registration",
       Component: DownloadButton,
     },
-    { title: "Register Now", url: "/registration", Component:RegisterBtn },
+    { title: "Register Now", url: "/registration", Component: RegisterBtn },
   ];
 
   const pageLinks = [
@@ -114,6 +117,31 @@ const Header = () => {
       url: "/registration/professional",
       type: "link",
     },
+    {
+      title: "Media Gallery",
+      url: "/media",
+      type: "link",
+    },
+    {
+      title: "Frequently Asked Questions",
+      url: "/faq",
+      type: "link",
+    },
+    {
+      title: "Privacy Policy",
+      url: "/privacy-policy",
+      type: "link",
+    },
+    {
+      title: "Cookie Policy",
+      url: "/cookie-policy",
+      type: "link",
+    },
+    // {
+    //   title: "",
+    //   url: "/",
+    //   type: "link",
+    // },
   ];
 
   useEffect(() => {
@@ -141,7 +169,8 @@ const Header = () => {
   };
 
   const activeLinkTitle =
-    pageLinks.find((link) => link.url === pathname)?.title || "";
+    pageLinks.filter((link) => link.url === pathname).pop()?.title || "";
+  // pageLinks.find((link) => link.url === pathname)?.title || "";
   return (
     <header className="text-white ">
       <div
@@ -190,7 +219,7 @@ const Header = () => {
                 )}
               </svg>
             </button>
-            <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between gap-11.5 py-1.5 ps-10 pe-2 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-white/7">
+            <ul className="hidden xl:flex flex-col xl:flex-row items-center justify-between py-1.5 ps-6 pe-2 rounded-full xl:bg-linear-to-r from-[#90D3D012] to-white/7">
               {navLinks.map(({ type, url, title, Component }, i) => (
                 <li key={i}>
                   {Component ? (
@@ -205,7 +234,9 @@ const Header = () => {
                     </SecondaryLink>
                   ) : (
                     <Link
-                      className={`relative text-sm ${i == 0 ? "px-1" : ""}`}
+                      className={`relative mx-4 text-sm ${
+                        i == 0 ? "px-1" : ""
+                      }`}
                       href={url || "#"}
                     >
                       {title}
@@ -226,26 +257,28 @@ const Header = () => {
         } transition-transform duration-300 ease-in-out`}
       >
         <ul className="flex flex-col items-center justify-center h-full gap-8 text-xl">
-          {navLinks.map((link, i) => (
+          {navLinks.map(({ type, title, url, Component }, i) => (
             <li key={i}>
-              {link.type === "button" ? (
+              {Component ? (
+                <Component />
+              ) : type === "button" ? (
                 <PrimaryLink
                   className="px-8 py-3 text-lg"
-                  href={link.url}
+                  href={url}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link.title}
+                  {title}
                 </PrimaryLink>
               ) : (
                 <Link
                   className={`relative hover:text-gray-300 transition-colors ${
-                    pathname === link.url ? "text-gray-100" : "text-gray-400"
+                    pathname === url ? "text-gray-100" : "text-gray-400"
                   }`}
-                  href={link.url || "#"}
+                  href={url || "#"}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link.title}
-                  {pathname === link.url && (
+                  {title}
+                  {pathname === url && (
                     <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-secondary to-primary"></span>
                   )}
                 </Link>

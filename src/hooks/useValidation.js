@@ -57,7 +57,8 @@ const useValidation = (props) => {
       .matches(/^[A-Za-z\s]+$/, "Last Name must contain only letters"),
     phone: phoneSchema,
     email: emailSchema,
-
+    country: Yup.object().required("This field is required"),
+    nationality: Yup.object().required("This field is required"),
     // Student specific
     institution: Yup.string().when([], {
       is: () => type === "student",
