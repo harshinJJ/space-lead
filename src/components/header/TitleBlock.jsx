@@ -2,6 +2,7 @@
 import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 const TimerBlock = dynamic(() => import("@/components/common/TimerBlock"), {
   ssr: false,
 });
@@ -67,8 +68,9 @@ const TitleBlock = ({ title }) => {
   return (
     <section
       id="home-banner"
-      className="relative bg-[url('/images/backgrounds/header_title_bg.png')] bg-[top_center] bg-cover bg-no-repeat py-9 pt-38 text-white"
+      className="relative bg-[#1c192d] bg-[top_center] bg-cover bg-no-repeat py-9 pt-38 text-white"
     >
+      <Image fill src={"/images/backgrounds/header_title_bg.png"} alt="title-bg" className="absolute absolute-center w-full h-full"/>
       <div className="absolute z-1 inset-0 bg-gradient-to-r from-black/20 via-tertiary/25 to-[#1a1d2720] opacity-77"></div>
       <div className="container-fluid z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">

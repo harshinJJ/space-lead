@@ -14,7 +14,15 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
   ];
 
   return (
-    <section className="bg-[url('/images/backgrounds/whocanattend_bg.gif')] bg-cover bg-center py-10 lg:py-34 px-5 sm:px-0">
+    <section className="bg-transparent relative bg-cover bg-center py-10 lg:py-34 px-5 sm:px-0">
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute  object-cover absolute-center w-full h-full"
+        src="/images/backgrounds/whocanattend_bg.webm"
+      />
+
       <div className="absolute inset-0 bg-black/20 w-full h-full"></div>
 
       <div className="relative container-fluid mx-auto flex justify-center items-center w-full rounded-xl overflow-hidden p-2 px-5 xl:px-15.75 md:px-10">
@@ -115,10 +123,15 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
           </div>
 
           <div className="xl:min-w-122.5 w-full xl:w-auto ">
-            <h3 className="font-bold xl:text-[2.5rem] font-orbitron leading-[1.3] md:text-3xl text-lg mb-5 text-white">Who can attend?</h3>
+            <h3 className="font-bold xl:text-[2.5rem] font-orbitron leading-[1.3] md:text-3xl text-lg mb-5 text-white">
+              Who can attend?
+            </h3>
             <ul className="flex flex-col gap-2.5">
               {points.map((point, index) => (
-                <li key={index} className="text-lg text-white flex items-center gap-3">
+                <li
+                  key={index}
+                  className="text-lg text-white flex items-center gap-3"
+                >
                   <svg
                     width="18"
                     height="19"
@@ -139,7 +152,9 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
                     />
                   </svg>
 
-                  <span className="font-medium text-[#E4E4E4] text-base">{point}</span>
+                  <span className="font-medium text-[#E4E4E4] text-base">
+                    {point}
+                  </span>
                 </li>
               ))}
             </ul>

@@ -4,7 +4,6 @@ import { FreeMode, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { PrimaryDualTextLink, PrimaryLink } from "../buttons/PrimaryButton";
-import FAQ from "./FAQ";
 import Image from "next/image";
 
 const sponsors = [
@@ -24,11 +23,10 @@ const sponsors = [
   { name: "Templar", logo: "/images/logos/sponsor7.png" },
 ];
 
-export default function SponsorsBlock({ hasFaq = false }) {
+export default function SponsorsBlock() {
   return (
     <>
       <SponsorContent />
-      {/* {hasFaq && <FAQ />} */}
       <SponsorList />
     </>
   );
@@ -44,10 +42,20 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
       >
         {/* Image */}
         <div className="relative w-full lg:w-1/2 ">
-          <Image
+          {/* <Image
             src="/images/sponsor_content_img.png" // replace with your actual image path
             alt="Astronaut looking at space"
             className="w-full h-full lg:absolute rounded-2xl object-cover"
+            width={775}
+            height={387}
+          /> */}
+          <video
+            autoPlay
+            loop
+            muted
+            src="/images/sponsor_content.webm"
+            alt="Astronaut looking at space"
+            className="w-full h-full lg:absolute rounded-[2.5rem] object-cover"
             width={775}
             height={387}
           />
@@ -81,7 +89,7 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
   );
 };
 
-export const SponsorList = ({showSlides=true}) => {
+export const SponsorList = ({ showSlides = true }) => {
   return (
     <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
       {/* Left & right edge gradients */}
@@ -89,13 +97,15 @@ export const SponsorList = ({showSlides=true}) => {
       <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
 
       <div className="container-fluid px-5 mx-auto lg:px-12.75 text-center">
-        <p className="text-secondary font-azonix text-lg mb-2">
-          Our Sponsors
-        </p>
+        <p className="text-secondary font-azonix text-lg mb-2">Our Sponsors</p>
         <h2 className="text-2xl font-orbitron lg:text-[2.875rem] font-bold text-gray-900 mb-4">
           Sponsorship opportunities
         </h2>
-        <p className={`lg:max-w-[68.5rem] leading-[1.875rem] text-lg mx-auto text-[#303030] ${!showSlides?"mb-0":""} mb-10 `}>
+        <p
+          className={`lg:max-w-[68.5rem] leading-[1.875rem] text-lg mx-auto text-[#303030] ${
+            !showSlides ? "mb-0" : ""
+          } mb-10 `}
+        >
           The Space Lead ’25 Conference offers curated sponsorship opportunities
           designed to deliver strategic value and measurable impact. Gain
           exclusive visibility, immersive branding experiences, and tailored
@@ -105,86 +115,88 @@ export const SponsorList = ({showSlides=true}) => {
           ecosystem engagement, choose your tier and lead the conversation.
         </p>
       </div>
-      {showSlides&&<div className="relative mx-auto lg:pb-10 ">
-        {/* Swiper for logos */}
-        <div className="py-3">
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={2}
-            loop
-            freeMode={true}
-            modules={[FreeMode, Autoplay]}
-            autoplay={{
-              delay: 0, // continuous scroll
-              disableOnInteraction: false,
-              reverseDirection: false, // first swiper normal
-            }}
-            className="!w-full"
-            speed={3000} // control smoothness
-            breakpoints={{
-              640: { slidesPerView: 2, spaceBetween: 40 },
-              768: { slidesPerView: 3, spaceBetween: 40 },
-              1024: { slidesPerView: 4, spaceBetween: 10 },
-              1280: { slidesPerView: 5, spaceBetween: 10 },
-              1400: { slidesPerView: 5, spaceBetween: 40 },
-              1536: { slidesPerView: 6, spaceBetween: 40 },
-              1728: { slidesPerView: 6, spaceBetween: 40 },
-              1920: { slidesPerView: "auto", spaceBetween: 20 },
-            }}
-          >
-            {sponsors.map((sponsor, idx) => (
-              <SwiperSlide className="3xl:!w-[248px]" key={idx}>
-                {/* <div className="flex items-center justify-center bg-white shadow rounded-xl py-4 px-6 hover:shadow-md transition"> */}
-                <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0">
-                  <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+      {showSlides && (
+        <div className="relative mx-auto lg:pb-10 ">
+          {/* Swiper for logos */}
+          <div className="py-3">
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={2}
+              loop
+              freeMode={true}
+              modules={[FreeMode, Autoplay]}
+              autoplay={{
+                delay: 0, // continuous scroll
+                disableOnInteraction: false,
+                reverseDirection: false, // first swiper normal
+              }}
+              className="!w-full"
+              speed={3000} // control smoothness
+              breakpoints={{
+                640: { slidesPerView: 2, spaceBetween: 40 },
+                768: { slidesPerView: 3, spaceBetween: 40 },
+                1024: { slidesPerView: 4, spaceBetween: 10 },
+                1280: { slidesPerView: 5, spaceBetween: 10 },
+                1400: { slidesPerView: 5, spaceBetween: 40 },
+                1536: { slidesPerView: 6, spaceBetween: 40 },
+                1728: { slidesPerView: 6, spaceBetween: 40 },
+                1920: { slidesPerView: "auto", spaceBetween: 20 },
+              }}
+            >
+              {sponsors.map((sponsor, idx) => (
+                <SwiperSlide className="3xl:!w-[248px]" key={idx}>
+                  {/* <div className="flex items-center justify-center bg-white shadow rounded-xl py-4 px-6 hover:shadow-md transition"> */}
+                  <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0">
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+          <div className="py-3">
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={2}
+              loop
+              freeMode={true}
+              modules={[FreeMode, Autoplay]}
+              autoplay={{
+                delay: 0, // continuous scroll
+                disableOnInteraction: false,
+                reverseDirection: true, // first swiper normal
+              }}
+              className="!w-full"
+              speed={3000} // control smoothness
+              breakpoints={{
+                640: { slidesPerView: 2, spaceBetween: 40 },
+                768: { slidesPerView: 3, spaceBetween: 40 },
+                1024: { slidesPerView: 4, spaceBetween: 10 },
+                1280: { slidesPerView: 5, spaceBetween: 10 },
+                1400: { slidesPerView: 5, spaceBetween: 40 },
+                1536: { slidesPerView: 6, spaceBetween: 40 },
+                1728: { slidesPerView: 6, spaceBetween: 40 },
+                1920: { slidesPerView: "auto", spaceBetween: 20 },
+              }}
+            >
+              {sponsors.map((sponsor, idx) => (
+                <SwiperSlide className="3xl:!w-[248px]" key={idx}>
+                  <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
-        <div className="py-3">
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={2}
-            loop
-            freeMode={true}
-            modules={[FreeMode, Autoplay]}
-            autoplay={{
-              delay: 0, // continuous scroll
-              disableOnInteraction: false,
-              reverseDirection: true, // first swiper normal
-            }}
-            className="!w-full"
-            speed={3000} // control smoothness
-            breakpoints={{
-              640: { slidesPerView: 2, spaceBetween: 40 },
-              768: { slidesPerView: 3, spaceBetween: 40 },
-              1024: { slidesPerView: 4, spaceBetween: 10 },
-              1280: { slidesPerView: 5, spaceBetween: 10 },
-              1400: { slidesPerView: 5, spaceBetween: 40 },
-              1536: { slidesPerView: 6, spaceBetween: 40 },
-              1728: { slidesPerView: 6, spaceBetween: 40 },
-              1920: { slidesPerView: "auto", spaceBetween: 20 },
-            }}
-          >
-            {sponsors.map((sponsor, idx) => (
-              <SwiperSlide className="3xl:!w-[248px]" key={idx}>
-                <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
-                  <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>}
+      )}
     </section>
   );
 };
@@ -195,8 +207,11 @@ export const SponsorContentRight = () => {
       <div className="container-fluid mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
         {/* Image */}
         <div className="w-full xl:w-1/2 xl:max-w-[44rem] flex justify-center">
-          <img
-            src="/images/sponsor_content_img.png" // replace with your actual image path
+          <video
+            autoPlay
+            loop
+            muted
+            src="/images/sponsor_content.webm" // replace with your actual image path
             alt="Astronaut looking at space"
             className="w-full  rounded-2xl object-cover"
           />

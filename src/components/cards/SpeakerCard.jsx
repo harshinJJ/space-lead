@@ -42,13 +42,14 @@ const SpeakerCard = ({
         <h3 className={`text-white ${titleClass} mb-2`}>{speaker?.title||"Nail your  interviews"}</h3>
       </div>
       <div
-        className={` group-hover:scale-[1.1] transition-all duration-700  origin-bottom-left  relative z-30 flex flex-col gap-15 w-full h-full justify-end`}
+        className={` group-hover:scale-[1.1] transition-all duration-700  origin-bottom-left  relative z-30 flex flex-col w-full h-full justify-end`}
       >
         <span className="text-white text-base font-semibold ">
           {speaker?.event?.name || "Live Event"}
         </span>
         {textSize == "lg" && (
           <SecondaryLink
+          className={" xl:mt-15 mt-10"}
             href={speaker?.event?.url || "#"}
             target="_blank"
             rel="noopener noreferrer"

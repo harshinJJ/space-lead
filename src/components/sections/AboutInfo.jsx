@@ -177,10 +177,13 @@ const AboutInfo = ({ className = "" }) => {
       <div className="container-fluid mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 xl:gap-39">
         {/* image */}
         <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15">
-          <img
+          <video
             className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
-            src="/images/about_section_img.gif"
+            src="/images/about_section_img.webm"
             alt=""
+            autoPlay
+            muted
+            loop
           />
           <div className="absolute right-0 bottom-0 md:bottom-[unset] md:top-[2rem] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[25ch] md:max-w-[22ch] max-w-[20ch] transform md:translate-x-[38%] lg:translate-x-0 md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-primary to-black opacity-90 xl:p-10 p-6 flex flex-col gap-5">
             <div className="bg-secondary aspect-square xl:w-18.5 w-15 rounded-full flex items-center justify-center">

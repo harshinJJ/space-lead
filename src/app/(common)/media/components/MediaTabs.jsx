@@ -58,6 +58,7 @@ const MediaTabs = () => {
                   <video
                     src={media.url}
                     autoPlay
+                    muted
                     loop
                     poster={media.thumbnail}
                     className="object-cover h-full w-full"

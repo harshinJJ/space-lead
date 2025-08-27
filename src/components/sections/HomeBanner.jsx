@@ -10,15 +10,21 @@ const TimerBlock = dynamic(() => import("@/components/common/TimerBlock"), {
 
 const BannerOverlay = () => {
   return (
-    <div className="absolute absolute-center w-full h-full  bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white">
+    <div className="absolute absolute-center w-full h-full  bg-[bottom_center] bg-cover bg-no-repeat text-white">
       <div className="absolute absolute-center h-full w-7/10 bg-[rgb(26,29,39,0.2)]"></div>
-      <div className="absolute absolute-center w-full h-full  bg-[url('/images/backgrounds/home_banner_overlay.png')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white" />
+      <Image
+        src={"/images/backgrounds/home_banner_overlay.png"}
+        alt="banner-overlay"
+        width={602}
+        height={1117}
+        className="absolute w-full absolute-center h-full object-center object-cover text-white"
+      />
       <Image
         src={"/images/backgrounds/home_banner_overlay2.png"}
         alt="banner-overlay"
         width={602}
         height={1117}
-        className="absolute w-full md:w-auto absolute-center h-full bg-[center_start] bg-cover bg-no-repeat text-white"
+        className="absolute w-full md:w-auto absolute-center h-full object-[center_start] object-cover bg-no-repeat text-white"
       />
       <svg
         className="absolute bottom-7 right-0 max-w-1/2 max-h-[55%]"
@@ -145,9 +151,16 @@ const HomeBanner = ({ banner }) => {
   return (
     <section
       id="home-banner"
-      className="relative bg-[url('/images/backgrounds/home_banner.gif')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
+      className="relative bg-transparent bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
       // className="relative bg-[url('/images/home_banner.png')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
     >
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute object-cover absolute-center w-full h-full"
+        src="/images/backgrounds/home_banner.webm"
+      />
       <BannerOverlay />
       {banner && (
         <div className="container-fluid md:!max-w-full md:!w-full relative flex justify-end mb-30">

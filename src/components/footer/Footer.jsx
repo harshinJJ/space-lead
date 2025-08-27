@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import ScrollTop from "../common/ScrollTop";
+import Image from "next/image";
 
 const Footer = () => {
   const quickLinks = [
@@ -122,7 +123,7 @@ const Footer = () => {
       >
         <section className=" relative border-b border-[#CCCCCC33] flex items-center justify-between py-3.5">
           <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
-          <img src="/logo.png" alt="" />
+              <Image width={132} height={60} src="/logo.png" alt="logo" />
           <ul className="flex items-center gap-10">
             {/* <li>
               <a href="#" target="_blank">
