@@ -1,3 +1,4 @@
+import { TextSplitStagger } from "@/utils/animations/CardStagger";
 import React from "react";
 
 const BgOverlay = () => {
@@ -35,7 +36,7 @@ const WhyAttend = ({ children }) => {
             <div className="w-full p-2 md:p-3 bg-linear-to-r from-[#EEEEEE] to-primary" />
 
             <div className="w-full p-2 md:p-3 bg-[#EEEEEE]" />
-            <div className="md:pe-16 xs:pe-8">
+            <TextSplitStagger className="md:pe-16 xs:pe-8">
               <p className="text-gray-300 text-lg 2xl:text-2xl md:text-xl leading-normal 2xl:leading-10 tracking-[0%] w-full">
                 Join Space Lead '25 Conference to connect with global experts at
                 the forefront of space science, technology and human health.
@@ -44,7 +45,7 @@ const WhyAttend = ({ children }) => {
                 researchers and visionaries committed to advancing humanity's
                 future.
               </p>
-            </div>
+            </TextSplitStagger>
           </div>
         </div>
         <div className="lg:pe-15.75 ">{children}</div>

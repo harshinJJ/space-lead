@@ -193,45 +193,117 @@ export const RowStagger = ({ children, className = "" }) => {
   );
 };
 
+// export const TextSplitStagger = ({ children, className = "" }) => {
+//   const containerRef = useRef(null);
+
+// useEffect(() => {
+//     const container = containerRef.current;
+//     if (!container) return;
+
+//     // Find all h, p, span elements
+//     const textElements = container.querySelectorAll("h1,h2,h3,h4,h5,h6,p,span");
+
+//     textElements.forEach((el) => {
+//       const text = el.textContent;
+//       if (!text) return;
+
+//       // Split into characters, preserving spaces
+//       const chars = text.split("").map((char) => {
+//         const span = document.createElement("span");
+//         span.textContent = char === " " ? "\u00A0" : char; // preserve space
+//         span.style.display = "inline-block";
+//         span.style.opacity = 0;
+//         span.style.transform = "translateY(20px)";
+//         return span;
+//       });
+
+//       el.textContent = "";
+//       chars.forEach((span) => el.appendChild(span));
+
+//       // Animate each character
+//       gsap.to(chars, {
+//         autoAlpha: 1,
+//         y: 0,
+//         duration: 0.6,
+//         ease: "power1.out",
+//         stagger: 0.005,
+//         scrollTrigger: {
+//           trigger: el,
+//           start: "top 90%",
+//           toggleActions: "play none none reverse",
+//         },
+//       });
+//     });
+
+//     ScrollTrigger.refresh();
+//   }, []);
+
+//   return (
+//     <div
+//       ref={containerRef}
+//       className={`text-split-stagger ${className}`}
+//     >
+//       {children}
+//     </div>
+//   );
+// };
+
 export const TextSplitStagger = ({ children, className = "" }) => {
   const containerRef = useRef(null);
 
-useEffect(() => {
+  useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Find all h, p, span elements
     const textElements = container.querySelectorAll("h1,h2,h3,h4,h5,h6,p,span");
 
     textElements.forEach((el) => {
-      const text = el.textContent;
+      const text = el.textContent.trim();
       if (!text) return;
 
-      // Split into characters, preserving spaces
-      const chars = text.split("").map((char) => {
-        const span = document.createElement("span");
-        span.textContent = char === " " ? "\u00A0" : char; // preserve space
-        span.style.display = "inline-block";
-        span.style.opacity = 0;
-        span.style.transform = "translateY(20px)";
-        return span;
+      // Wrap each line in a span
+      const words = text.split(" ");
+      el.textContent = "";
+      const lineWrapper = document.createElement("div");
+      lineWrapper.style.display = "inline-block";
+      lineWrapper.style.whiteSpace = "pre-wrap";
+      lineWrapper.style.overflow = "hidden";
+
+      words.forEach((word, i) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.textContent = word + (i < words.length - 1 ? " " : "");
+        wordSpan.style.display = "inline-block";
+        lineWrapper.appendChild(wordSpan);
       });
 
-      el.textContent = "";
-      chars.forEach((span) => el.appendChild(span));
+      el.appendChild(lineWrapper);
 
-      // Animate each character
-      gsap.to(chars, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power1.out",
-        stagger: 0.005,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 90%",
-          toggleActions: "play none none reverse",
-        },
+      // Animate each line (word spans grouped by offsetTop)
+      const linesMap = {};
+      const spans = lineWrapper.querySelectorAll("span");
+      spans.forEach((span) => {
+        const top = span.offsetTop;
+        if (!linesMap[top]) linesMap[top] = [];
+        linesMap[top].push(span);
+      });
+
+      Object.values(linesMap).forEach((line) => {
+        gsap.fromTo(
+          line,
+          { y: 20, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.8,
+            ease: "power1.out",
+            stagger: 0.03,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
       });
     });
 
@@ -239,10 +311,7 @@ useEffect(() => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className={`text-split-stagger ${className}`}
-    >
+    <div ref={containerRef} className={`text-split-container ${className}`}>
       {children}
     </div>
   );
