@@ -14,13 +14,13 @@ import { useFormik } from "formik";
 import useValidation from "@/hooks/useValidation";
 import dynamic from "next/dynamic";
 import countryList from "@/../public/assets/json/countryList.json";
+import titleList from "@/../public/assets/json/honorifics.json";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
   () => import("@/components/formInputs/FileUploader"),
   { ssr: false }
 );
-
 
 const titles = [
   { label: "Mr.", value: "mr" },
@@ -48,18 +48,18 @@ export default function RegistrationForm({
     validateField,
   } = useFormik({
     initialValues: {
-      title: titles[0],
+      title: "",
       firstName: "",
       lastName: "",
       phone: "",
       email: "",
       institution: "",
-      country:"",
-      nationality:"",
+      country: "",
+      nationality: "",
       studentId: "",
       jobTitle: "",
       company: "",
-      isOldFile: ""
+      isOldFile: "",
     },
     validationSchema: registerFormSchema,
     onSubmit: (data) => {
@@ -67,7 +67,8 @@ export default function RegistrationForm({
       window?.scrollTo({ top: 0, behavior: "smooth" });
     },
   });
-
+console.log("values",formData.phone)
+console.log("error",errors,touched)
   // const formData = watch();
   return (
     <>
@@ -91,20 +92,26 @@ export default function RegistrationForm({
             >
               <div className="flex items-start gap-4">
                 {/* Title */}
-                <div>
-                  <Label htmlFor="react-select-title-select-input" required={true}>Title</Label>
+                <div className="md:flex-7/20 flex-1/5">
+                  <Label
+                    htmlFor="react-select-title-select-input"
+                    required={true}
+                  >
+                    Title
+                  </Label>
 
                   <FormSelect
                     instanceId={"title-select"}
                     name="title"
+                    placeholder="Title"
                     onChange={(option) => setFieldValue("title", option)}
-                    onBlur={handleBlur}
+                    onBlur={() => setFieldTouched("title", true)}
                     value={formData.title}
-                    options={titles}
+                    options={titleList}
                   />
                   {touched.title && <Error message={errors?.title} />}
                 </div>
-                <div className="w-full">
+                <div className="w-full md:flex-13/20 flex-4/5">
                   {/* First Name */}
                   <Label required={true}>First Name</Label>
 
@@ -158,27 +165,39 @@ export default function RegistrationForm({
               <div>
                 <Label required={true}>Country of Residency</Label>
                 <FormSelect
-                    instanceId={"residency-select"}
-                    name="country"
-                    onChange={(option) => setFieldValue("country", option)}
-                    onBlur={handleBlur}
-                    valueKey="name"
-                    labelKey="name"
-                    value={formData.country}
-                    options={countryList}
-                  />
+                  instanceId={"residency-select"}
+                  name="country"
+                  onChange={(option) => setFieldValue("country", option)}
+                  placeholder="Country of Residency"
+                  onBlur={() => setFieldTouched("country", true)}
+                  valueKey="name"
+                  labelKey="name"
+                  value={formData.country}
+                  options={countryList}
+                />
                 {touched.country && <Error message={errors?.country} />}
               </div>
               {/* Email */}
               <div>
                 <Label required={true}>Nationality</Label>
-                <FormInput
+                <FormSelect
+                  instanceId={"nationality-select"}
+                  name="nationality"
+                  placeholder="Nationality"
+                  onChange={(option) => setFieldValue("nationality", option)}
+                  onBlur={() => setFieldTouched("nationality", true)}
+                  valueKey="name"
+                  labelKey="name"
+                  value={formData.nationality}
+                  options={countryList}
+                />
+                {/* <FormInput
                   name="nationality"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={formData.nationality}
                   placeholder="Nationality"
-                />
+                /> */}
                 {touched.nationality && <Error message={errors?.nationality} />}
               </div>
 
@@ -243,7 +262,7 @@ export default function RegistrationForm({
                     {touched.jobTitle && <Error message={errors?.jobTitle} />}
                   </div>
                   <div>
-                    <Label required={true}>Company Name*</Label>
+                    <Label required={true}>Company Name</Label>
                     <FormInput
                       name="company"
                       onChange={handleChange}

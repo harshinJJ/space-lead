@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #7f529f;
+  --secondary-color: #5ac0be;
+  --tertiary-color: #131f54;
+  --color-black-b2: #000000b2;
 }
 
 @font-face {

@@ -11,8 +11,6 @@ import metadata from "@/../public/assets/json/phone-metadata.json";
 
 import defaultLabels from "react-phone-number-input/locale/en.json";
 
-
-
 // Custom Country Select Component
 const CustomCountrySelect = ({
   value,
@@ -169,6 +167,7 @@ const PhoneInputs = ({
   placeholder,
   pointerEvents,
   country = "SA",
+  onBlur,
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -227,11 +226,18 @@ const PhoneInputs = ({
         value={value}
         onChange={onChange}
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onBlur={(e) => {setIsFocused(false);onBlur(e)}}
         disabled={disabled}
         readOnly={readOnly}
         placeholder={placeholder || ""}
-        className={`${isFocused ? "active_input" : ""} ${error ? "error" : ""} bg-[#F6F6F6] w-full py-3 px-3.5 text-xs rounded-lg focus-visible:outline-none`}
+        className={`
+    w-full py-3 px-3.5 text-sm rounded-lg bg-[#F6F6F6] text-[#31313B]
+    border ${isFocused ? "border-[var(--primary-color)]" : "border-transparent hover:border-[#e0e0e0]"}
+    focus:outline-none focus:ring-0
+    focus:border-[var(--primary-color)]
+    
+    ${error ? "border-red-500" : ""}
+  `}
         name={name}
         labels={labelsWithDialCodes}
         metadata={metadata}
@@ -243,6 +249,7 @@ const PhoneInputs = ({
         }}
         {...rest}
       />
+
       {error && (
         <div className="invalid-feedback" style={{ display: "block" }}>
           {error}

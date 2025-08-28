@@ -22,9 +22,9 @@ const useValidation = (props) => {
     );
 
   const phoneSchema = Yup.string()
-    .required("Phone number is required")
-    .test("is-valid-phone", "Phone number is invalid", (value) =>
-      value ? isValidPhoneNumber(value) : false
+      .required("This field is required")
+      .test("is-valid", "Mobile Number is not valid", (value) =>
+        isValidPhoneNumber(value || "")
     );
   //   const phoneSchema = Yup.string()
   //     .matches(/^\+?\d+$/, "Phone number is invalid")

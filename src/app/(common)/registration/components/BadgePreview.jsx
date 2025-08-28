@@ -9,7 +9,7 @@ const BadgePreview = ({ name, category, badgeId,title,organisation }) => (
         >
           Badge Preview
         </div>
-        <div className="flex flex-col items-center p-5.5">
+        <div className="flex flex-col items-center p-5.5 max-w-full">
           <div className="mb-2">
             {/* Placeholder for QR code, replace with actual QR code if needed */}
             <div className="bg-[#F0F0F0] p-1 rounded-sm aspect-square min-w-33 flex items-center justify-center">
@@ -18,10 +18,10 @@ const BadgePreview = ({ name, category, badgeId,title,organisation }) => (
 
             </div>
           </div>
-          <div className="text-sm text-black uppercase mb-10">
+          <div className="text-sm text-black uppercase mb-5">
             #{badgeId || "BADGEID"}
           </div>
-          <div className={`font-azonix text-center flex items-center flex-wrap justify-between ${name?.length>12?"text-xl":"text-3xl"} mb-1`}>
+          <div className={`font-azonix text-center break-all ${name?.length>12?"text-xl":"text-3xl"} mb-1`}>
             {name || "FULL NAME"}
           </div>
           {category == "professional" && (
