@@ -2,6 +2,7 @@ import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import { CircularLink } from "../buttons/CircularButton";
 import SpeakerCard from "../cards/SpeakerCard";
+import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 
 const MemberList = ({
   speakers = [],
@@ -125,11 +126,11 @@ const MemberList = ({
         </div>
 
         {/* Speaker Cards */}
-        <div
-          className={`container-fluid mx-auto px-5 grid grid-cols-1 ${containerClass} mt-10 mb-5 xl:px-15.75`}
+        <HorizontalCardStagger cardPerRow={cardSize=="sm"?5:4}
+          className={`container-fluid mx-auto px-5 grid grid-cols-1 ${containerClass} mt-10 xl:px-15.75`}
         >
           {speakers.map((speaker, index) => (
-            <div key={index} className="">
+            <div key={index} className="card">
               <SpeakerCard
                 speaker={speaker}
                 selectAction={selectAction}
@@ -137,7 +138,7 @@ const MemberList = ({
               />
             </div>
           ))}
-        </div>
+        </HorizontalCardStagger>
       </section>
     )
   );

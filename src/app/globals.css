@@ -82,7 +82,7 @@
   }
   @media (width >= 40rem) {
     .container-fluid {
-      width: 90%;
+      width: 90.625%;
     }
   }
   @media (width >= 108rem) {

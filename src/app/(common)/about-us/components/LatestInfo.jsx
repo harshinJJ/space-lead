@@ -3,6 +3,7 @@ import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import CircularButton from "@/components/buttons/CircularButton";
 import TestimonialsSlider from "./Testimonials";
 import StatsCard from "@/components/cards/StatsCard";
+import { RowStagger } from "@/utils/animations/CardStagger";
 
 const LatestInfo = () => {
   const points = [
@@ -76,7 +77,7 @@ const LatestInfo = () => {
       </div>
 
       {/* Testimonials */}
-      <div className="lg:max-w-[1593px] w-full mx-auto lg:px-4 lg:ps-15 py-16 flex flex-col lg:flex-row gap-3 gap-y-10 items-start">
+      <RowStagger className="lg:max-w-[1593px] w-full mx-auto lg:px-4 lg:ps-15 py-16 flex flex-col lg:flex-row gap-3 gap-y-10 items-start">
         {/* Image */}
         <div className="relative flex flex-col lg:flex-row gap-5 w-full lg:w-1/2 flex-shrink-0">
           <img
@@ -98,7 +99,7 @@ const LatestInfo = () => {
           </h3>
           <TestimonialsSlider />
         </div>
-      </div>
+      </RowStagger>
     </section>
   );
 };

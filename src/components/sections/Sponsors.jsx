@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import { PrimaryDualTextLink, PrimaryLink } from "../buttons/PrimaryButton";
 import Image from "next/image";
+import { RowStagger } from "@/utils/animations/CardStagger";
 
 const sponsors = [
   { name: "Datab", logo: "/images/logos/sponsor1.png" },
@@ -35,32 +36,11 @@ export default function SponsorsBlock() {
 export const SponsorContent = ({ imageAlign = "right" }) => {
   return (
     <section className="w-full bg-white pt-10 md:pt-25 pb-10 md:pb-30.5 px-5">
-      <div
+      <RowStagger
         className={`container-fluid mx-auto flex flex-col items-stretch ${
-          imageAlign === "right" ? "lg:flex-row-reverse" : " lg:flex-row"
+          imageAlign === "right" ? "lg:flex-row" : " lg:flex-row-reverse"
         } items-start gap-8 md:gap-20`}
       >
-        {/* Image */}
-        <div className="relative w-full lg:w-1/2 ">
-          {/* <Image
-            src="/images/sponsor_content_img.png" // replace with your actual image path
-            alt="Astronaut looking at space"
-            className="w-full h-full lg:absolute rounded-2xl object-cover"
-            width={775}
-            height={387}
-          /> */}
-          <video
-            autoPlay
-            loop
-            muted
-            src="/images/sponsor_content.webm"
-            alt="Astronaut looking at space"
-            className="w-full h-full lg:absolute rounded-[2.5rem] object-cover"
-            width={775}
-            height={387}
-          />
-        </div>
-
         {/* Content */}
         <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col items-center lg:items-start">
           <p className="text-secondary text-lg mb-4 leading-[100%] font-azonix">
@@ -84,7 +64,28 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
             // hoverText="Join The Event"
           />
         </div>
-      </div>
+        {/* Image */}
+        <div className="relative w-full lg:w-1/2 ">
+          {/* <Image
+            src="/images/sponsor_content_img.png" // replace with your actual image path
+            alt="Astronaut looking at space"
+            className="w-full h-full lg:absolute rounded-2xl object-cover"
+            width={775}
+            height={387}
+          /> */}
+          <video
+            autoPlay
+            loop
+            muted
+            src="/images/sponsor_content.webm"
+            alt="Astronaut looking at space"
+            className="w-full h-full lg:absolute rounded-[2.5rem] object-cover"
+            width={775}
+            height={387}
+          />
+        </div>
+
+      </RowStagger>
     </section>
   );
 };
@@ -204,7 +205,7 @@ export const SponsorList = ({ showSlides = true }) => {
 export const SponsorContentRight = () => {
   return (
     <section className="w-full bg-white pt-10 md:pt-25 px-5 pb-10 md:pb-30.5">
-      <div className="container-fluid mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
+      <RowStagger className="container-fluid mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
         {/* Image */}
         <div className="w-full xl:w-1/2 xl:max-w-[44rem] flex justify-center">
           <video
@@ -240,7 +241,7 @@ export const SponsorContentRight = () => {
             // hoverText="Join The Event"
           />
         </div>
-      </div>
+      </RowStagger>
     </section>
   );
 };

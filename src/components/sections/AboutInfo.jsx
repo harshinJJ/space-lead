@@ -1,5 +1,6 @@
 import React from "react";
 import StatsCard from "../cards/StatsCard";
+import { RowStagger } from "@/utils/animations/CardStagger";
 
 const AboutInfo = ({ className = "" }) => {
   const data = {
@@ -174,7 +175,7 @@ const AboutInfo = ({ className = "" }) => {
       id="about"
       className={` bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33 ${className}`}
     >
-      <div className="container-fluid mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 xl:gap-39">
+      <RowStagger className="container-fluid mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
         {/* image */}
         <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15">
           <video
@@ -211,28 +212,32 @@ const AboutInfo = ({ className = "" }) => {
 
         {/* content */}
         <div className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
-          <h5 className="text-secondary font-azonix xl:text-lg text-base">{data.name}</h5>
-          <h3 className="text-tertiary  2xl:leading-[3rem] uppercase font-azonix text-lg md:text-2xl xl:text-3xl 2xl:text-[2.5rem]">
+          <h5 className="text-secondary font-azonix xl:text-lg text-base">
+            {data.name}
+          </h5>
+          <h3 className="text-tertiary  2xl:leading-[3rem] uppercase font-azonix  tracking-[-1.6px] text-lg md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-[2.5rem]">
             {data.title}
           </h3>
-          <p className="text-[#737373] xl:max-w-[80%] xl:text-lg text-base">
+          <p className="text-[#737373] xl:max-w-[80%] 3xl:text-lg text-base">
             {data.description}
           </p>
-          <div className="flex xl:items-center justify-between xl:flex-row flex-col gap-5 lg:gap-10 2xl:gap-21.25 py-5 lg:py-0">
+          <div className="flex xl:items-center justify-between xl:flex-row flex-col gap-5 lg:gap-10 2xl:gap-18 3xl:gap-21.25 py-5 lg:py-0">
             {data.vision.map((vision, i) => (
               <div
                 className="flex flex-1 flex-col xs:flex-row items-center gap-2 xl:gap-6"
                 key={i}
               >
-                <div className="bg-secondary aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-18.5 rounded-full flex items-center justify-center">
-                  <div className="lg:scale-75 2xl:scale-100">{vision.icon}</div>
+                <div className="bg-secondary aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-16.5 3xl:min-w-18.5 rounded-full flex items-center justify-center">
+                  <div className="lg:scale-75 xl:scale-90 3xl:scale-100">
+                    {vision.icon}
+                  </div>
                 </div>
                 <p
                   className={`${
                     vision.label.length > 50
                       ? "2xl:max-w-[30ch] 2xl:min-w-[24ch]"
                       : ""
-                  } text-lg 2xl:text-lg lg:text-sm text-center xs:text-start break-words`}
+                  } text-lg 3xl:text-lg 2xl:text-base lg:text-sm text-center xs:text-start break-words`}
                 >
                   {vision.label}
                 </p>
@@ -244,7 +249,7 @@ const AboutInfo = ({ className = "" }) => {
               <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
                 Features
               </p>
-              <h4 className="text-tertiary font-azonix text-lg lg:text-2xl">
+              <h4 className="text-tertiary font-azonix text-lg 2xl:text-xl 3xl:text-2xl">
                 Our Feature
               </h4>
             </div>
@@ -271,7 +276,7 @@ const AboutInfo = ({ className = "" }) => {
             ))}
           </div>
         </div>
-      </div>
+      </RowStagger>
       <div className="px-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
         <div className="flex flex-col justify-center px-2.5">
           <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">

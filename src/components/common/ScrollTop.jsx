@@ -46,6 +46,7 @@ const ScrollTop = ({ className = "" }) => {
           height="10"
           viewBox="0 0 18 10"
           fill="none"
+          className="min-w-4.5 min-h-4.5"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
 import dynamic from "next/dynamic";
+import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 
 const MemberSlider = ({
   speakers = [],
@@ -125,7 +126,7 @@ const MemberSlider = ({
         </div>
 
         {/* Speaker Cards as Swiper FreeMode */}
-        <div className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5">
+        <HorizontalCardStagger className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5">
           <Swiper
             modules={[FreeMode]}
             freeMode={true}
@@ -145,7 +146,7 @@ const MemberSlider = ({
             {speakers.map((speaker, index) => (
               <SwiperSlide
                 key={index}
-                className={`${cardSize=="sm"?"!w-[260px] !h-auto":"!w-[320px] !h-auto"} lg:!max-w-2/5 flex items-stretch`}
+                className={`${cardSize=="sm"?"!w-[260px] !h-auto":"!w-[320px] !h-auto"} lg:!max-w-2/5 flex items-stretch card`}
               >
                 <SpeakerCard
                   speaker={speaker}
@@ -155,7 +156,7 @@ const MemberSlider = ({
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </HorizontalCardStagger>
       </section>
     )
   );

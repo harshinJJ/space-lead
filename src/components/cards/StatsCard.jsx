@@ -1,4 +1,8 @@
+"use client";
 import React from "react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const stats = [
   { label: "Exhibitors", value: "30+" },
@@ -7,8 +11,39 @@ const stats = [
   { label: "Workshops", value: "4+" },
 ];
 
+const Counter = ({ end, suffix = "" }) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const obj = { val: 0 };
+
+    gsap.to(obj, {
+      val: end,
+      duration: 2,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: ref.current,
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
+      onUpdate: () => {
+        if (ref.current) {
+          ref.current.innerText = Math.floor(obj.val) + suffix;
+        }
+      },
+    });
+  }, [end, suffix]);
+
+  return (
+    <div
+      ref={ref}
+      className="text-white font-extralight text-[2.5rem] md:text-[3.5rem] xl:text-[4rem] leading-none mb-2"
+    ></div>
+  );
+};
+
 const StatsCard = () => (
-  <div className="flex flex-col sm:flex-row rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-0 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
+  <div className="flex  rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-0 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
     {stats.map((item, idx) => (
       <div
         key={item.label}
@@ -16,9 +51,10 @@ const StatsCard = () => (
           idx !== stats.length - 1 ? "border-r border-white/15" : ""
         }`}
       >
-        <span className="text-white font-extralight text-[2.5rem] md:text-[3.5rem] xl:text-[4rem] leading-none mb-2">
+        <Counter end={parseInt(item.value)} suffix="+" />
+        {/* <span className="text-white font-extralight text-[2.5rem] md:text-[3.5rem] xl:text-[4rem] leading-none mb-2">
           {item.value}
-        </span>
+        </span> */}
         <span className="text-white/70 text-sm  md:text-base xl:text-lg font-normal tracking-wide">
           {item.label}
         </span>
@@ -28,7 +64,6 @@ const StatsCard = () => (
 );
 
 const StatsCardOld = () => {
-
   return (
     <div className="rounded-[1.25rem] bg-gradient-to-r px-2.5 py-6.25 from-secondary to-primary xl:mt-25 md:mt-10 mt-5 flex flex-col lg:flex-row justify-around text-center">
       {stats.map((item) => (

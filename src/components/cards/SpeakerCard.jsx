@@ -19,7 +19,7 @@ const SpeakerCard = ({
   const titleClass =
     textSize === "sm"
       ? ` md:text-[1.375rem] text-lg leading-[1.5] tracking-[-1.5%]`
-      : `2xl:text-[2.5rem] lg:text-[1.5rem] md:text-4xl text-4xl font-semibold leading-[1.1] tracking-[-1.5%]`;
+      : `3xl:text-[2.5rem] 2xl:text-4xl lg:text-[1.5rem] md:text-4xl text-4xl font-semibold leading-[1.1] tracking-[-1.5%]`;
   const hoverName = speaker?.name?.split(".").pop().trim().split(" ").shift();
   // const showOverlay = () => Math.random() < 0.5;
   return (
@@ -49,7 +49,7 @@ const SpeakerCard = ({
         </span>
         {textSize == "lg" && (
           <SecondaryLink
-          className={" xl:mt-15 mt-10"}
+          className={"3xl:mt-15 2xl:mt-12  mt-10"}
             href={speaker?.event?.url || "#"}
             target="_blank"
             rel="noopener noreferrer"

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PrimaryButton, { PrimaryLink } from "../buttons/PrimaryButton";
 import SpeakerTag from "../cards/SpeakerTag";
 import AgendaCard from "../cards/AgendaCard";
+import { ZigZagCardStagger } from "@/utils/animations/CardStagger";
 
 const eventsData = {
   day1: [
@@ -158,11 +159,11 @@ export default function EventAgenda({className=""}) {
         </div>
 
         {/* Event Cards */}
-        <div className="flex flex-col gap-7.5">
+        <ZigZagCardStagger className="flex flex-col gap-7.5">
           {eventsData[activeDay].map((event, idx) => (
             <div
               key={idx}
-              className="bg-white/8 rounded-4xl p-7.5 flex flex-col gap-4"
+              className="bg-white/8 rounded-4xl p-7.5 flex flex-col gap-4 card"
             >
               <AgendaCard event={event}/>
               {/* <div className="bg-gradient-to-r from-white/8 to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6">
@@ -223,7 +224,7 @@ export default function EventAgenda({className=""}) {
               </div>
             </div>
           ))}
-        </div>
+        </ZigZagCardStagger>
 
         {/* View All Button */}
         <div className="mt-15 flex items-center justify-center">

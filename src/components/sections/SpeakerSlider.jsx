@@ -9,7 +9,7 @@ import "swiper/css/effect-coverflow";
 import { SpeakerSlideCard } from "../cards/SpeakerCard";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import Link from "next/link";
-
+import { RowStagger } from "@/utils/animations/CardStagger";
 
 // const speakers = [
 //   "Zylaran Vexor",
@@ -77,13 +77,9 @@ const cards = [
   },
 ];
 
-const colors = [
-  "#DF91F2",
-  "#4DE3ED",
-  "#91F2A6",
-];
+const colors = ["#DF91F2", "#4DE3ED", "#91F2A6"];
 
-const SpeakerSlider = ({ speakers=[],className }) => {
+const SpeakerSlider = ({ speakers = [], className }) => {
   const swiperRef = useRef(null);
   return (
     <section className={`bg-[#191A2A] py-20 relative ${className}`}>
@@ -104,7 +100,7 @@ const SpeakerSlider = ({ speakers=[],className }) => {
           <p className="text-white text-xl lg:text-[2.5rem] font-light mb-10">
             The Astronauts of Our Adventure: Meet the Team
           </p>
-          <div className="flex flex-col xl:flex-row items-start justify-between mt-4">
+          <RowStagger className="flex flex-col xl:flex-row items-start justify-between mt-4">
             <div className="2xl:w-1/5 w-full flex-2 text-xl mb-10">
               <Link
                 href={"/speakers"}
@@ -145,22 +141,23 @@ const SpeakerSlider = ({ speakers=[],className }) => {
               >
                 {speakers.map((card, id) => {
                   const color = colors[id % colors.length];
-                  return(
-                  <SwiperSlide
-                    className="swiper-slide-custom !flex !items-center !justify-center  cursor-pointer  transition-all duration-300"
-                    key={id}
-                  >
-                    <SpeakerSlideCard
-                      name={card.name}
-                      title={card.title}
-                      type={card.type}
-                      btn={card.btn}
-                      color={color}
-                      image={card.image}
-                      program={card.program}
-                    />
-                  </SwiperSlide>
-                )})}
+                  return (
+                    <SwiperSlide
+                      className="swiper-slide-custom !flex !items-center !justify-center  cursor-pointer  transition-all duration-300"
+                      key={id}
+                    >
+                      <SpeakerSlideCard
+                        name={card.name}
+                        title={card.title}
+                        type={card.type}
+                        btn={card.btn}
+                        color={color}
+                        image={card.image}
+                        program={card.program}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
                 {/* Swiper navigation buttons */}
                 <button className="swiper-prev speaker-swiper absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#353535] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-[#454545] transition">
                   <svg
@@ -212,7 +209,7 @@ const SpeakerSlider = ({ speakers=[],className }) => {
                 </button>
               </Swiper>
             </div>
-          </div>
+          </RowStagger>
         </div>
       </div>
     </section>

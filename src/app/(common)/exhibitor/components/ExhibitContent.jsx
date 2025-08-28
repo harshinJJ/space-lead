@@ -1,7 +1,9 @@
+import { RowStagger } from "@/utils/animations/CardStagger";
 import Image from "next/image";
 
 const ExhibitContent = () => (
-  <section className="container-fluid mx-auto gap-y-10 w-full flex flex-col lg:flex-row items-start px-5 sm:px-0 lg:py-8  py-10 relative overflow-hidden">
+  <section className="w-full">
+  <RowStagger className="container-fluid mx-auto gap-y-10 w-full flex flex-col lg:flex-row items-start px-5 sm:px-0 lg:py-8  py-10 relative overflow-hidden">
       <div className="flex justify-center items-center mb-6 lg:mb-0 relative w-full lg:w-auto h-auto lg:min-w-[656px] lg:h-[283px] rounded-2xl overflow-hidden border-2 border-blue-200">
         <img
           src="/images/why_exhibit_img.png"
@@ -22,6 +24,7 @@ const ExhibitContent = () => (
         space sector and accelerate growth in a rapidly evolving landscape.
       </p>
     </div>
+  </RowStagger>
   </section>
 );
 

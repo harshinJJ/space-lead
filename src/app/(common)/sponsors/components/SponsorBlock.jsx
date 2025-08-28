@@ -1,3 +1,5 @@
+import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
+
 const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
   return (
     <section
@@ -13,11 +15,11 @@ const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
           </h2>
         )}
         <div className="relative mx-auto">
-          <div className="py-3 grid grid-col-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 2xl:gap-8">
+          <HorizontalCardStagger className="py-3 grid grid-col-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 2xl:gap-8">
             {sponsors.map((sponsor, i) => (
               <div
                 key={i}
-                className="box-border flex flex-row justify-center items-center p-[26px]  h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0"
+                className="card box-border flex flex-row justify-center items-center p-[26px]  h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0"
               >
                 <img
                   src={sponsor.logo}
@@ -26,7 +28,7 @@ const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
                 />
               </div>
             ))}
-          </div>
+          </HorizontalCardStagger>
         </div>
       </div>
     </section>

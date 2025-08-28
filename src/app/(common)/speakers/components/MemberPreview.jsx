@@ -299,6 +299,7 @@ const MemberPreview = () => {
       <MemberList
         selectAction={(speaker) => handleActiveSpeaker(speaker)}
         speakers={speakers}
+        className="pb-0"
         title={
           activeSpeaker
             ? "Steering Committee Members"
@@ -315,7 +316,7 @@ const MemberPreview = () => {
         // }
       />
       <MemberList
-        title={"Scientific Committee Members"}
+        title={"Moderator"}
         speakers={speakers}
         selectAction={(speaker) => handleActiveSpeaker(speaker)}
       />

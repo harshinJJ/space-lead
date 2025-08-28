@@ -1,4 +1,5 @@
 "use client";
+import { RowStagger } from "@/utils/animations/CardStagger";
 import React, { useState } from "react";
 
 const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
@@ -26,7 +27,7 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
       <div className="absolute inset-0 bg-black/20 w-full h-full"></div>
 
       <div className="relative container-fluid mx-auto flex justify-center items-center w-full rounded-xl overflow-hidden p-2 px-5 xl:px-15.75 md:px-10">
-        <div className="relative w-full flex flex-col lg:flex-row justify-between items-center xl:gap-28 md:10 gap-5 rounded-xl overflow-hidden">
+        <RowStagger className="relative w-full flex flex-col lg:flex-row justify-between items-center xl:gap-28 md:10 gap-5 rounded-xl overflow-hidden">
           <div className="relative w-full lg:max-w-3/5 xl:max-w-[52.5rem] aspect-video rounded-xl overflow-hidden">
             {!isPlaying && !embedUrl ? (
               <div
@@ -159,7 +160,7 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
               ))}
             </ul>
           </div>
-        </div>
+        </RowStagger>
       </div>
     </section>
   );

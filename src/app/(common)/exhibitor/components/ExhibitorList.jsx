@@ -1,3 +1,5 @@
+import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
+
 const exhibitors = Array(8).fill({
   code: "B12",
   name: "Eventpro Test Company",
@@ -13,11 +15,11 @@ const ExhibitorList = () => (
       All Exhibitor
     </h3>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 justify-items-center">
+    <HorizontalCardStagger className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 justify-items-center">
       {exhibitors.map((item, i) => (
         <div
           key={i}
-          className="bg-[#F2F5FE]   border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-start"
+          className="bg-[#F2F5FE] card  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-start"
         >
           <div className="flex items-end mb-2 gap-2.5">
             <svg
@@ -220,7 +222,7 @@ const ExhibitorList = () => (
           </div>
         </div>
       ))}
-    </div>
+    </HorizontalCardStagger>
   </section>
 );
 

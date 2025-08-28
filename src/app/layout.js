@@ -4,6 +4,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import RegisterBtn from "@/components/common/RegisterBtn";
 import GsapProvider from "@/utils/GsapProvider";
+import PageLoader from "@/utils/animations/PageLoader";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${orbitron.variable} antialiased`}>
         <Header />
+        <PageLoader/>
         <GsapProvider>
           {children}
           <Footer />

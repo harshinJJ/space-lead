@@ -1,4 +1,5 @@
 import { PrimaryLink } from "@/components/buttons/PrimaryButton";
+import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 
 const categories = [
   {name:"Booth Category 1",type:"Free",link:"#"},
@@ -23,12 +24,12 @@ const CategoryList = () => (
     <h3 className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12">
       Booth Category
     </h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+    <HorizontalCardStagger className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
       {categories.map((cat, i) => (
         <div
           key={i}
           // className="bg-white rounded-xl shadow-md p-6 w-full max-w-xs flex flex-col items-center"
-          className="bg-[#F2F5FE]  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-center"
+          className="bg-[#F2F5FE] card border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-center"
         >
           <span className={`${cat.type === "Free" ? "bg-primary/19 text-primary" : "bg-[#0b993a50] text-[#1e611e]"} text-xs leading-[1.5] rounded-full px-4.75 mb-3`}>{cat.type}</span>
           <span className="text-2xl text-[#111111CC] mb-4">{cat.name}</span>
@@ -52,7 +53,7 @@ const CategoryList = () => (
           </PrimaryLink> */}
         </div>
       ))}
-    </div>
+    </HorizontalCardStagger>
   </section>
 );
 
