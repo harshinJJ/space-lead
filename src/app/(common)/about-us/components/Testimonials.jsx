@@ -5,6 +5,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import CircularButton from "@/components/buttons/CircularButton";
+import Image from "next/image";
 
 // Assuming CircularButton is your custom component
 
@@ -117,9 +118,14 @@ const TestimonialsSlider = () => {
             className={`flex items-center gap-5  p-[0.65625rem] sm:pe-9 rounded-full text-xs `}
           >
             <div className="w-17.5 aspect-square rounded-full overflow-hidden border-1 border-white/19">
-              <img
+              <Image
+                height={70}
+                width={70}
                 className="w-full h-full object-cover"
-                src={testimonials[activeIndex]?.img||"/images/user_placeholder.jpeg"}
+                src={
+                  testimonials[activeIndex]?.img ||
+                  "/images/user_placeholder.jpeg"
+                }
                 alt={testimonials[activeIndex]?.name}
               />
             </div>
@@ -127,7 +133,9 @@ const TestimonialsSlider = () => {
               <span className="text-2xl font-semibold">
                 {testimonials[activeIndex]?.name}
               </span>
-              <span className=" text-secondary">{testimonials[activeIndex]?.role}</span>
+              <span className=" text-secondary">
+                {testimonials[activeIndex]?.role}
+              </span>
             </div>
           </div>
 

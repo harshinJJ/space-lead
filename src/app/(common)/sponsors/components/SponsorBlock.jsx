@@ -1,4 +1,5 @@
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
+import Image from "next/image";
 
 const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
   return (
@@ -21,7 +22,9 @@ const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
                 key={i}
                 className="card box-border flex flex-row justify-center items-center p-[26px]  h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0"
               >
-                <img
+                <Image
+                  width={150}
+                  height={40}
                   src={sponsor.logo}
                   alt={sponsor.name}
                   className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"

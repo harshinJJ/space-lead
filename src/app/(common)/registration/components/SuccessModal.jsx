@@ -1,5 +1,6 @@
 "use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import Image from "next/image";
 import React from "react";
 
 const SuccessModal = ({ onContinue }) => (
@@ -38,7 +39,7 @@ const SuccessModal = ({ onContinue }) => (
       Thank you for registering for the Event
     </p>
     <div className="bg-[#F0F0F0] p-2.5 rounded-lg w-44.5 aspect-square flex items-center justify-center my-4">
-      <img src="/images/dummy_qr.png" className="w-full aspect-square object-cover" alt="" />
+      <Image width={178} height={178} src="/images/dummy_qr.png" className="w-full aspect-square object-cover" alt="" />
     </div>
     <PrimaryButton className="uppercase py-2.5 px-10 mt-4 font-semibold">Continue</PrimaryButton>
   </div>

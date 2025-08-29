@@ -84,7 +84,6 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
             height={387}
           />
         </div>
-
       </RowStagger>
     </section>
   );
@@ -148,10 +147,12 @@ export const SponsorList = ({ showSlides = true }) => {
                 <SwiperSlide className="3xl:!w-[248px]" key={idx}>
                   {/* <div className="flex items-center justify-center bg-white shadow rounded-xl py-4 px-6 hover:shadow-md transition"> */}
                   <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0">
-                    <img
+                    <Image
+                      width={150}
+                      height={40}
                       src={sponsor.logo}
                       alt={sponsor.name}
-                      className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                      className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
                     />
                   </div>
                 </SwiperSlide>
@@ -186,10 +187,12 @@ export const SponsorList = ({ showSlides = true }) => {
               {sponsors.map((sponsor, idx) => (
                 <SwiperSlide className="3xl:!w-[248px]" key={idx}>
                   <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
-                    <img
+                    <Image
+                      width={150}
+                      height={40}
                       src={sponsor.logo}
                       alt={sponsor.name}
-                      className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                      className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
                     />
                   </div>
                 </SwiperSlide>

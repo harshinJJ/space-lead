@@ -1,5 +1,6 @@
 "use client";
 import { RowStagger } from "@/utils/animations/CardStagger";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
@@ -35,7 +36,9 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
                 onClick={() => setIsPlaying(true)}
               >
                 {/* Thumbnail Image */}
-                <img
+                <Image
+                  width={839}
+                  height={464}
                   src={thumbnail}
                   alt="Video thumbnail"
                   className="w-full h-full object-cover rounded-xl"

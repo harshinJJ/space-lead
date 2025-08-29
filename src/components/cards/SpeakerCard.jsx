@@ -3,6 +3,7 @@ import React from "react";
 import { CircularLink } from "../buttons/CircularButton";
 import Link from "next/link";
 import { SecondaryLink } from "../buttons/SecondaryButton";
+import Image from "next/image";
 
 const SpeakerCard = ({
   speaker = {},
@@ -12,7 +13,7 @@ const SpeakerCard = ({
   showBtn = false,
   className = "",
   hoverable = true,
-  showOverlay = true
+  showOverlay = true,
 }) => {
   const labelClass =
     textSize === "sm" ? "2xl:text-base xl:text-sm" : "text-base";
@@ -39,7 +40,9 @@ const SpeakerCard = ({
         >
           {speaker?.name}
         </span>
-        <h3 className={`text-white ${titleClass} mb-2`}>{speaker?.title||"Nail your  interviews"}</h3>
+        <h3 className={`text-white ${titleClass} mb-2`}>
+          {speaker?.title || "Nail your  interviews"}
+        </h3>
       </div>
       <div
         className={` group-hover:scale-[1.1] transition-all duration-700  origin-bottom-left  relative z-30 flex flex-col w-full h-full justify-end`}
@@ -49,7 +52,7 @@ const SpeakerCard = ({
         </span>
         {textSize == "lg" && (
           <SecondaryLink
-          className={"3xl:mt-15 2xl:mt-12  mt-10"}
+            className={"3xl:mt-15 2xl:mt-12  mt-10"}
             href={speaker?.event?.url || "#"}
             target="_blank"
             rel="noopener noreferrer"
@@ -81,7 +84,9 @@ const SpeakerCard = ({
             style={{ background: color + "50", filter: "blur(6.25rem)" }}
           ></div>
         )}
-        <img
+        <Image
+          width={256}
+          height={280}
           src={speaker?.image || "/images/user_placeholder.jpeg"}
           alt={speaker.name || "speaker_image"}
           className="w-full relative aspect-square object-cover object-[top_center]"
@@ -172,7 +177,9 @@ const SpeakerCardOld = ({ speaker = {}, selectAction }) => {
         {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
         className="w-full object-cover rounded-2xl overflow-hidden relative"
       >
-        <img
+        <Image
+          width={256}
+          height={280}
           src={speaker?.image || "/images/user_placeholder.jpeg"}
           alt={speaker?.name || "speaker"}
           className="w-full object-cover rounded-2xl group-hover:scale-[1.1] group-focus:scale-[1.1] group-active:scale-[1.1] "
@@ -211,7 +218,7 @@ export const SpeakerSlideCard = ({
   program = "",
   color = "#4DE3ED",
 }) => {
-    const hoverName = name?.split(".").pop().trim().split(" ").shift();
+  const hoverName = name?.split(".").pop().trim().split(" ").shift();
 
   return (
     <div className="group relative p-8 py-15 w-[fit] h-115 rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl">
@@ -223,7 +230,7 @@ export const SpeakerSlideCard = ({
           {name}
         </span>
         <h3 className="text-white text-[2.5rem] font-semibold leading-[1.1] tracking-[-1.5%] mb-2">
-          {title||"Nail your Interviews"}
+          {title || "Nail your Interviews"}
         </h3>
       </div>
       <div className=" group-hover:scale-[1.2] transition-all duration-700 origin-top-left relative z-30 flex flex-col gap-15 w-full h-full justify-end">
@@ -253,7 +260,9 @@ export const SpeakerSlideCard = ({
           className={`absolute w-full h-full `}
           style={{ background: color + "50", filter: "blur(6.25rem)" }}
         ></div>
-        <img
+        <Image
+          width={256}
+          height={280}
           src={image}
           alt={name}
           className="w-full relative aspect-square object-cover object-[top_center]"

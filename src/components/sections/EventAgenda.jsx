@@ -124,18 +124,18 @@ const tabs = [
   { id: "day3", label: "Day 03", date: "11 Nov 2025" },
 ];
 
-export default function EventAgenda({className=""}) {
+export default function EventAgenda({className="",label="Event Agenda",title="Follow Event AGENDA"}) {
   const [activeDay, setActiveDay] = useState("day1");
 
   return (
       <div className={`container-fluid mx-auto text-white ${className}`}>
         <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-15">
-          <div className="flex flex-col justify-between gap-3">
-            <p className="uppercase font-orbitron xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
-              Event Agenda
+          <div className="flex flex-col justify-between 3xl:gap-3 gap-2">
+            <p className="uppercase font-orbitron xl:text-base 3xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              {label}
             </p>
-            <h2 className="uppercase font-orbitron text-2xl md:text-3xl 2xl:text-5xl font-bold">
-              Follow Event Agenda
+            <h2 className=" font-orbitron text-2xl md:text-3xl 3xl:text-5xl xl:text-[2.6875rem] font-bold">
+              {title}
             </h2>
           </div>
 

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 
 const BadgePreview = ({ name, category, badgeId,title,organisation }) => (
@@ -12,9 +13,9 @@ const BadgePreview = ({ name, category, badgeId,title,organisation }) => (
         <div className="flex flex-col items-center p-5.5 max-w-full">
           <div className="mb-2">
             {/* Placeholder for QR code, replace with actual QR code if needed */}
-            <div className="bg-[#F0F0F0] p-1 rounded-sm aspect-square min-w-33 flex items-center justify-center">
+            <div className="relative bg-[#F0F0F0] p-1 rounded-sm aspect-square min-w-33 flex items-center justify-center">
               {/* <span className="text-gray-500">QR</span> */}
-                    <img src="/images/dummy_qr.png" className="w-full aspect-square object-cover" alt="" />
+                    <Image width={125} height={125} src="/images/dummy_qr.png" className="w-full aspect-square object-cover" alt="" />
 
             </div>
           </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import SpeakerTag from "../cards/SpeakerTag";
+import Image from "next/image";
 
 const EventLists = () => {
   const events = [
@@ -105,7 +106,9 @@ const EventLists = () => {
           >
             {/* Image */}
             <div className="lg:w-2/5 lg:rounded-3xl overflow-hidden">
-              <img
+              <Image
+                width={509}
+                height={407}
                 src={event.image}
                 alt={event.title}
                 className="w-full h-full object-cover"
@@ -121,7 +124,9 @@ const EventLists = () => {
                     {event.time}
                   </span>
                 </div>
-                <h3 className="text-lg sm:text-3xl  text-white mb-2">{event.title}</h3>
+                <h3 className="text-lg sm:text-3xl  text-white mb-2">
+                  {event.title}
+                </h3>
                 <p className="text-white/50 text-sm leading-7 mb-4 flex items-center gap-1 sm:gap-2">
                   <svg
                     width="10"
@@ -152,8 +157,12 @@ const EventLists = () => {
 
               {/* Button */}
               <PrimaryLink className="w-fit group px-6 py-5 items-center gap-2 btn-gradient transition-all duration-300">
-                <span className="leading-[100%] text-lg group-hover:hidden">View Details</span>
-                <span className="leading-[100%] text-lg group-hover:block hidden">Join The Event</span>
+                <span className="leading-[100%] text-lg group-hover:hidden">
+                  View Details
+                </span>
+                <span className="leading-[100%] text-lg group-hover:block hidden">
+                  Join The Event
+                </span>
                 <svg
                   width="20"
                   height="16"

@@ -4,6 +4,7 @@ import CircularButton from "@/components/buttons/CircularButton";
 import TestimonialsSlider from "./Testimonials";
 import StatsCard from "@/components/cards/StatsCard";
 import { RowStagger } from "@/utils/animations/CardStagger";
+import Image from "next/image";
 
 const LatestInfo = () => {
   const points = [
@@ -80,7 +81,9 @@ const LatestInfo = () => {
       <RowStagger className="lg:max-w-[1593px] w-full mx-auto lg:px-4 lg:ps-15 py-16 flex flex-col lg:flex-row gap-3 gap-y-10 items-start">
         {/* Image */}
         <div className="relative flex flex-col lg:flex-row gap-5 w-full lg:w-1/2 flex-shrink-0">
-          <img
+          <Image
+            width={536}
+            height={657}
             src="/images/testimonial_img.png"
             alt="Speaker"
             className="rounded-lg w-full xl:max-w-[33.5rem] h-full object-cover"

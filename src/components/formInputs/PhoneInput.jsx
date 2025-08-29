@@ -10,6 +10,7 @@ import "./PhoneInputs.css";
 import metadata from "@/../public/assets/json/phone-metadata.json";
 
 import defaultLabels from "react-phone-number-input/locale/en.json";
+import Image from "next/image";
 
 // Custom Country Select Component
 const CustomCountrySelect = ({
@@ -74,7 +75,7 @@ const CustomCountrySelect = ({
       <div className="select-trigger" onClick={toggleDropdown}>
         <div className="selected-country">
           {selectedOption && (
-            <img
+            <Image
               className="flag-icon"
               src={
                 selectedOption.value.toLowerCase() === "ac"
@@ -84,8 +85,8 @@ const CustomCountrySelect = ({
                   : `https://flagcdn.com/w40/${selectedOption.value.toLowerCase()}.png`
               }
               alt={`${selectedOption.value} flag`}
-              width="24"
-              height="18"
+              width={24}
+              height={18}
               style={{ borderRadius: "2px", objectFit: "cover" }}
             />
           )}
@@ -126,7 +127,7 @@ const CustomCountrySelect = ({
                 }`}
                 onClick={() => handleSelect(option)}
               >
-                <img
+                <Image
                   className="flag-icon"
                   src={
                     option.value.toLowerCase() === "ac"
@@ -136,8 +137,8 @@ const CustomCountrySelect = ({
                       : `https://flagcdn.com/w40/${option.value.toLowerCase()}.png`
                   }
                   alt={`${option.value} flag`}
-                  width="24"
-                  height="18"
+                  width={24}
+                  height={18}
                   style={{ borderRadius: "2px", objectFit: "cover" }}
                 />
                 <span className="country-name">
@@ -226,13 +227,20 @@ const PhoneInputs = ({
         value={value}
         onChange={onChange}
         onFocus={() => setIsFocused(true)}
-        onBlur={(e) => {setIsFocused(false);onBlur(e)}}
+        onBlur={(e) => {
+          setIsFocused(false);
+          onBlur(e);
+        }}
         disabled={disabled}
         readOnly={readOnly}
         placeholder={placeholder || ""}
         className={`
     w-full py-3 px-3.5 text-sm rounded-lg bg-[#F6F6F6] text-[#31313B]
-    border ${isFocused ? "border-[var(--primary-color)]" : "border-transparent hover:border-[#e0e0e0]"}
+    border ${
+      isFocused
+        ? "border-[var(--primary-color)]"
+        : "border-transparent hover:border-[#e0e0e0]"
+    }
     focus:outline-none focus:ring-0
     focus:border-[var(--primary-color)]
     
