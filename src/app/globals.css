@@ -7,6 +7,7 @@
   --secondary-color: #5ac0be;
   --tertiary-color: #131f54;
   --color-black-b2: #000000b2;
+  --color-indigo: #1c192d;
 }
 
 @font-face {
@@ -47,6 +48,7 @@
   --color-secondary: #5ac0be;
   --color-tertiary: #131f54;
   --color-black-b2: #000000b2;
+  --color-indigo: #1c192d;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -71,14 +73,12 @@
     position: relative;
   }
 
-
   @media (max-width: 48rem) {
-     input,
+    input,
     textarea,
     select {
       @apply text-base; /* text-base = 16px */
     }
-    
   }
   @media (width >= 40rem) {
     .container-fluid {
@@ -134,12 +134,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--background);
   /* color: var(--foreground); */
   font-family: "Gilroy-Medium", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 /* Prevent height jumps */
@@ -248,7 +250,7 @@ button {
     1px 1px 0px black;  */
 }
 
-.absolute-center{
+.absolute-center {
   top: 0;
   bottom: 0;
   left: 0;

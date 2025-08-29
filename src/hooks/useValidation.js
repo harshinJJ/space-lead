@@ -22,9 +22,9 @@ const useValidation = (props) => {
     );
 
   const phoneSchema = Yup.string()
-      .required("This field is required")
-      .test("is-valid", "Mobile Number is not valid", (value) =>
-        isValidPhoneNumber(value || "")
+    .required("This field is required")
+    .test("is-valid", "Mobile Number is not valid", (value) =>
+      isValidPhoneNumber(value || "")
     );
   //   const phoneSchema = Yup.string()
   //     .matches(/^\+?\d+$/, "Phone number is invalid")
@@ -118,14 +118,16 @@ const useValidation = (props) => {
           .test("invalid-companyname", "Invalid Company Name", (value) => {
             if (!value) return true;
 
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const specialCharPattern = /[^a-zA-Z0-9\s&'’.-]/;
-            const numericOnlyPattern = /^\d+$/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // block emails
+            const allowedPattern = /^[a-zA-Z0-9\s&'’.-]+$/; // allow only valid chars
+            const numericOnlyPattern = /^\d+$/; // block only numbers
+            const onlySpecialsPattern = /^[^a-zA-Z0-9]+$/; // block only specials (.,- etc.)
 
             return (
               !emailPattern.test(value) &&
-              !specialCharPattern.test(value) &&
-              !numericOnlyPattern.test(value.trim())
+              allowedPattern.test(value) &&
+              !numericOnlyPattern.test(value.trim()) &&
+              !onlySpecialsPattern.test(value.trim()) // block if only special chars
             );
           }),
       otherwise: (schema) => schema.notRequired(),

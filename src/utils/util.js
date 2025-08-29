@@ -37,3 +37,5 @@ export const scrollToTop = (duration = 3000, id) => {
   };
   requestAnimationFrame(animateScroll);
 };
+
+

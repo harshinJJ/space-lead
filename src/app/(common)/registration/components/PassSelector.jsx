@@ -2,6 +2,7 @@
 import React from "react";
 import PassSelectionCard from "./PassSelectionCard";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const icons = {
   student: (
@@ -55,10 +56,29 @@ const icons = {
   ),
 };
 
+const BgOverlay = () => {
+  return (
+    <div className="absolute absolute-center w-full h-full flex items-start">
+      <div className="w-full absolute">
+        <video
+          autoPlay
+          loop
+          muted
+          className="object-contain w-full h-auto max-h-[100%]"
+          src="/images/backgrounds/register_bg.webm"
+        />
+        {/* <div className="absolute absolute-center !-bottom-1 w-full h-full bg-gradient-to-b from-indigo/0 to-indigo"></div> */}
+      </div>
+    </div>
+  );
+};
+
 export default function PassSelector() {
   const router = useRouter();
   return (
-    <section className=" bg-white bg-[url('/images/backgrounds/register_bg.png')] bg-cover bg-no-repeat bg-[center_top] xl:pt-33.5 lg:py-30 md:py-20 py-10 xl:pb-56.25">
+    <section className="relative bg-indigo overflow-hidden   bg-cover bg-no-repeat bg-[center_top] xl:pt-33.5 lg:py-30 md:py-20 py-10 xl:pb-56.25">
+      {/* <Image alt="register-bg" src={"/images/backgrounds/register_bg.png"} fill className="object-cover object-[center_top] w-full h-full" /> */}
+      <BgOverlay />
       <div className="container-fluid mx-auto flex flex-col items-center justify-center px-5">
         <h2 className="text-3xl lg:text-4xl xl:text-[2.5rem] font-azonix text-white xl:mb-15 lg:mb-10 mb-5 tracking-wide text-center">
           SELECT YOUR PASS

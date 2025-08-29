@@ -1,6 +1,8 @@
 import React from "react";
 import StatsCard from "../cards/StatsCard";
 import { RowStagger } from "@/utils/animations/CardStagger";
+import DotPattern from "../patterns/DotPattern";
+import SemiCirclePattern from "../patterns/SemiCirclePattern";
 
 const AboutInfo = ({ className = "" }) => {
   const data = {
@@ -173,9 +175,11 @@ const AboutInfo = ({ className = "" }) => {
   return (
     <section
       id="about"
-      className={` bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33 ${className}`}
+      className={`relative bg-white bg-[top_center] bg-cover ${className}`}
     >
-      <RowStagger className="container-fluid mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
+      <SemiCirclePattern className="absolute bottom-5 right-0"/>
+      <RowStagger className="relative container-fluid pt-20 xl:pt-32.5 xl:pb-33 mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
+        <DotPattern className="absolute top-13.5 right-0 transform " />
         {/* image */}
         <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15">
           <video
@@ -204,7 +208,7 @@ const AboutInfo = ({ className = "" }) => {
             <p className="pb-2.5 leading-[1.2rem] break-words">
               Conveniently real time infrastructures economically
             </p>
-            <button className="cursor-pointer hover:bg-[#4461EF] transition-all duration-500 flex items-center gap-2 py-3 px-6.5 rounded-full bg-[#1C192D] border border-[#222222] hover:border-[#4461EF] w-fit">
+            <button className="cursor-pointer hover:bg-[#4461EF] transition-all duration-500 flex items-center gap-2 py-3 px-6.5 rounded-full bg-indigo border border-[#222222] hover:border-[#4461EF] w-fit">
               Join Event
             </button>
           </div>
@@ -268,7 +272,7 @@ const AboutInfo = ({ className = "" }) => {
                 </div>
                 <div className="ps-2.5 flex-4/5">
                   <h5 className="text-tertiary text-sm">{feature.title}</h5>
-                  <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-xs leading-4.5">
+                  <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 3xl:text-xs text-[0.625rem] leading-4.5">
                     {feature.description}
                   </p>
                 </div>
@@ -277,7 +281,7 @@ const AboutInfo = ({ className = "" }) => {
           </div>
         </div>
       </RowStagger>
-      <div className="px-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
+      <div className="relative px-10 pb-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
         <div className="flex flex-col justify-center px-2.5">
           <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
             Features

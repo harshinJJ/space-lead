@@ -4,6 +4,7 @@ import gallery from "@/../public/assets/json/gallery-data.json";
 import Image from "next/image";
 import useFancybox from "@/hooks/useFancyBox";
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
+import DotPattern from "@/components/patterns/DotPattern";
 
 const MediaTabs = () => {
   const [active, setActive] = useState(null);
@@ -22,13 +23,14 @@ const MediaTabs = () => {
 
   return (
     <section
-      className={` bg-[url('/images/backgrounds/about_info_bg.png')] bg-[top_center] bg-cover pt-20 xl:pt-32.5 pb-20 xl:pb-33 `}
+      className={` bg-white bg-[top_center] bg-cover `}
     >
-      <div className="container-fluid mx-auto px-5 sm:px-0 ">
-        <div className="flex xl:text-2xl lg:text-lg  gap-x-9 items-center xl:items-start justify-start overflow-auto  overflow-x-auto scrollbar-hide gap-5 i mb-10">
+      <div className="container-fluid mx-auto px-5 sm:px-0  pt-20 xl:pt-32.5 pb-20 xl:pb-33">
+        <DotPattern className="absolute top-13.5 right-0" />
+        <div className="relative flex xl:text-2xl lg:text-lg  gap-x-9 items-center xl:items-start justify-start overflow-auto  overflow-x-auto scrollbar-hide gap-5 i mb-10">
           <button
             onClick={() => setActive(null)}
-            className={` min-w-31.25 bg-secondary/13 font-medium rounded-full px-8 py-2.75 ${
+            className={`cursor-pointer min-w-31.25 bg-secondary/13 font-medium rounded-full px-8 py-2.75 ${
               !active ? "text-[#0F9F9D]" : "text-[#C2C2C2] "
             }`}
           >
@@ -38,7 +40,7 @@ const MediaTabs = () => {
             <button
               key={tab.key}
               onClick={() => handleActive(tab.key)}
-              className={` min-w-31.25 rounded-full bg-secondary/13 font-medium px-8 py-2.75 ${
+              className={`cursor-pointer min-w-31.25 rounded-full bg-secondary/13 font-medium px-8 py-2.75 ${
                 active == tab.key ? "text-[#0F9F9D]" : "text-[#C2C2C2] "
               }`}
             >

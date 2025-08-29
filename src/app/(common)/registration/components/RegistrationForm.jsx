@@ -15,6 +15,8 @@ import useValidation from "@/hooks/useValidation";
 import dynamic from "next/dynamic";
 import countryList from "@/../public/assets/json/countryList.json";
 import titleList from "@/../public/assets/json/honorifics.json";
+import publicServices from "@/services/publicServices";
+import useDebounce from "@/hooks/useDebounce";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
@@ -36,6 +38,7 @@ export default function RegistrationForm({
   onSuccess,
 }) {
   const { registerFormSchema } = useValidation({ type: type });
+  const {submitContactForm}=publicServices;
   const {
     values: formData,
     errors,
@@ -44,6 +47,7 @@ export default function RegistrationForm({
     handleBlur,
     handleSubmit,
     setFieldValue,
+    isSubmitting,
     setFieldTouched,
     validateField,
   } = useFormik({
@@ -62,13 +66,38 @@ export default function RegistrationForm({
       isOldFile: "",
     },
     validationSchema: registerFormSchema,
-    onSubmit: (data) => {
-      onSuccess && onSuccess(true);
-      window?.scrollTo({ top: 0, behavior: "smooth" });
-    },
+    onSubmit: useDebounce(async (values, { resetForm, setErrors,setSubmitting }) => {
+      setSubmitting(true)
+      const formData = new FormData();
+      Object.entries(values).forEach(([key, value]) => {
+        if (key === "studentId" && value) {
+          formData.append(key, value); // append File
+        } else {
+          formData.append(key, value);
+        }
+      });
+
+      const res = await submitContactForm(formData);
+
+      if (res.result === "success") {
+        onSuccess && onSuccess(true);
+        resetForm();
+        window?.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (res?.errors) {
+        const errorList = {};
+        Object.entries(res.errors).forEach(([key, value]) => {
+          errorList[key] = value;
+        });
+        setErrors(errorList);
+      }
+      setSubmitting(false)
+    }),
+    // onSubmit: (data) => {
+    //   onSuccess && onSuccess(true);
+    //   window?.scrollTo({ top: 0, behavior: "smooth" });
+    // },
   });
-console.log("values",formData.phone)
-console.log("error",errors,touched)
+  console.log("error", errors, touched);
   // const formData = watch();
   return (
     <>
@@ -277,6 +306,7 @@ console.log("error",errors,touched)
 
               <PrimaryButton
                 type="submit"
+                disabled={isSubmitting}
                 className="gap-2.5 text-lg col-span-2 w-fit px-7.5 font-light tracking-[1px]"
               >
                 <span>Complete Your Registration </span>

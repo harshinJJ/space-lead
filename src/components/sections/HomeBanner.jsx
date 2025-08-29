@@ -15,6 +15,7 @@ const BannerOverlay = () => {
       <Image
         src={"/images/backgrounds/home_banner_overlay.png"}
         alt="banner-overlay"
+        priority
         width={602}
         height={1117}
         className="absolute w-full absolute-center h-full object-center object-cover text-white"
@@ -23,6 +24,7 @@ const BannerOverlay = () => {
         src={"/images/backgrounds/home_banner_overlay2.png"}
         alt="banner-overlay"
         width={602}
+        priority
         height={1117}
         className="absolute w-full md:w-auto absolute-center h-full object-[center_start] object-cover bg-no-repeat text-white"
       />

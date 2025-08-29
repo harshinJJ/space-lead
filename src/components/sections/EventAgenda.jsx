@@ -129,7 +129,7 @@ export default function EventAgenda({className="",label="Event Agenda",title="Fo
 
   return (
       <div className={`container-fluid mx-auto text-white ${className}`}>
-        <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-15">
+        <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-10 xl:mb-15">
           <div className="flex flex-col justify-between 3xl:gap-3 gap-2">
             <p className="uppercase font-orbitron xl:text-base 3xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               {label}
@@ -140,19 +140,19 @@ export default function EventAgenda({className="",label="Event Agenda",title="Fo
           </div>
 
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-5.5 pb-7 mt-10 lg:mt-0">
+          <div className="flex flex-wrap md:flex-nowrap justify-center gap-2 xl:gap-5.5 pb-7 mt-10 lg:mt-0">
             {tabs.map((day) => (
               <PrimaryButton
                 key={day.id}
                 onClick={() => setActiveDay(day.id)}
-                className={`px-5 2xl:px-8 2xl:py-2 lg:!py-1 rounded-full flex-col relative btn-transparent-gradient ${
+                className={`px-5 lg:px-4 2xl:px-8 2xl:py-2 lg:!py-1 rounded-full flex-col relative btn-transparent-gradient ${
                   activeDay === day.id
                     ? "btn-transparent-gradien-active after:content-[''] after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-14 after:border-transparent after:border-t-secondary"
                     : " border border-[#CCCCCC33]"
                 }`}
               >
-                <span className="block 2xl:text-lg">{day.label}</span>
-                <span className="block text-xs xl:text-sm">{day.date}</span>
+                <span className="block lg:text-sm xl:text-base 2xl:text-lg">{day.label}</span>
+                <span className="block text-xs lg:text-[0.625rem] xl:text-sm">{day.date}</span>
               </PrimaryButton>
             ))}
           </div>
@@ -163,7 +163,7 @@ export default function EventAgenda({className="",label="Event Agenda",title="Fo
           {eventsData[activeDay].map((event, idx) => (
             <div
               key={idx}
-              className="bg-white/8 rounded-4xl p-7.5 flex flex-col gap-4 card"
+              className="bg-white/8 rounded-4xl xl:p-7.5 md:p-4 p-2 flex flex-col gap-4 card"
             >
               <AgendaCard event={event}/>
               <div className="flex flex-wrap gap-2.5">

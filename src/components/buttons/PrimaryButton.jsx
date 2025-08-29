@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
 
-const PrimaryButton = ({ children, className = "", ...props }) => {
+const PrimaryButton = ({ children,disabled=false, className = "", ...props }) => {
   return (
     <button
       {...props}
-      className={`cursor-pointer text-white flex justify-center items-center py-2 px-3 btn-gradient rounded-full ${className}`}
+      disabled={disabled}
+      className={`cursor-pointer disabled:!cursor-not-allowed disabled:opacity-70 text-white flex justify-center items-center py-2 px-3 btn-gradient rounded-full ${className}`}
     >
       {children}
     </button>

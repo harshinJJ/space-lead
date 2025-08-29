@@ -520,7 +520,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-3 py-1 rounded-lg border border-secondary text-secondary hover:bg-green-50"
+                className="px-3 py-1 rounded-lg border border-secondary text-secondary hover:bg-green-50 cursor-pointer"
               >
                 Change Image
               </button>
@@ -728,7 +728,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                 <button
                   type="button"
                   onClick={closeCropModal}
-                  className="px-4 py-2 rounded-lg transition-all text-gray-700 border border-gray-300 bg-white hover:bg-red-600 hover:text-white hover:shadow-[0_4px_12px_rgba(244,67,54,0.4)] duration-500 hover:-translate-y-0.5"
+                  className=" px-4 py-2 rounded-lg transition-all text-gray-700 border border-gray-300 bg-white hover:bg-red-600 hover:text-white hover:shadow-[0_4px_12px_rgba(244,67,54,0.4)] duration-500 hover:-translate-y-0.5"
                 >
                   Cancel
                 </button>

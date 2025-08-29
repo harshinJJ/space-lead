@@ -44,7 +44,7 @@ const RegisterBtn = () => {
   return (
     <PrimaryLink
       href="/registration"
-      className=" gap-1.25 py-3.25 px-3.25 text-lg leading-[100%]"
+      className=" gap-1.25 3xl:py-3.25 py-2.75 3xl:px-3.25 px-2.75 3xl:text-lg text-base leading-[100%]"
     >
       <svg
         width="22"
@@ -137,6 +137,8 @@ const Header = () => {
       url: "/cookie-policy",
       type: "link",
     },
+    // { title: "Register", url: "/registration", Component: RegisterBtn },
+
     // {
     //   title: "",
     //   url: "/",
@@ -234,7 +236,7 @@ const Header = () => {
                     </SecondaryLink>
                   ) : (
                     <Link
-                      className={`relative mx-4 text-sm ${
+                      className={`relative mx-4 3xl:text-sm text-xs ${
                         i == 0 ? "px-1" : ""
                       }`}
                       href={url || "#"}

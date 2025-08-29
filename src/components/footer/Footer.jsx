@@ -3,6 +3,68 @@ import React from "react";
 import ScrollTop from "../common/ScrollTop";
 import Image from "next/image";
 
+const BgOverlay = () => {
+  return (
+    <div className="absolute absolite-center w-full h-full flex items-end justify-between">
+      <svg
+        width="310"
+        className="absolute bottom-0 left-0  max-w-2/3"
+        height="133"
+        viewBox="0 0 310 133"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M103.5 -9.0264e-06C217.547 -1.40115e-05 310 92.4532 310 206.5C310 320.547 217.547 413 103.5 413C-10.5468 413 -103 320.547 -103 206.5C-103 92.4532 -10.5468 -4.04126e-06 103.5 -9.0264e-06ZM103.5 400.861C210.843 400.861 297.861 313.843 297.861 206.5C297.861 99.1571 210.843 12.1386 103.5 12.1386C-3.84285 12.1386 -90.8614 99.1572 -90.8614 206.5C-90.8614 313.843 -3.84284 400.861 103.5 400.861Z"
+          fill="url(#paint0_linear_1058_17912)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_1058_17912"
+            x1="-114"
+            y1="206"
+            x2="310"
+            y2="206.5"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#5AC0BE" />
+            <stop stopOpacity="0.41" />
+            <stop offset="1" stopColor="#5AC0BE" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <svg
+        className="absolute bottom-0 right-0 max-w-2/3"
+        width="500"
+        height="221"
+        viewBox="0 0 500 221"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M298 595C133.419 595 -2.01861e-05 461.805 -1.30041e-05 297.5C-5.82215e-06 133.195 133.419 -2.02201e-05 298 -1.3026e-05C462.581 -5.83194e-06 596 133.195 596 297.5C596 461.805 462.581 595 298 595ZM298 17.4878C143.094 17.4878 17.5172 142.854 17.5172 297.5C17.5172 452.146 143.094 577.512 298 577.512C452.906 577.512 578.483 452.146 578.483 297.5C578.483 142.854 452.906 17.4878 298 17.4878Z"
+          fill="url(#paint0_linear_1058_17911)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_1058_17911"
+            x1="611.874"
+            y1="298.22"
+            x2="-2.22626e-05"
+            y2="297.498"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#7F529F" />
+            <stop />
+            <stop offset="1" stopColor="#7F529F" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+};
+
 const Footer = () => {
   const quickLinks = [
     { title: "Home", url: "/" },
@@ -116,14 +178,15 @@ const Footer = () => {
     { label: "Cookie Policy", url: "/cookie-policy" },
   ];
   return (
-    <footer className="bg-[url('/images/footer_bg.png')] bg-cover bg-center bg-no-repeat text-white">
+    <footer className="relative bg-indigo bg-cover bg-center bg-no-repeat text-white">
+      <BgOverlay />
       <nav
         aria-label="Footer Navigation"
         className="container-fluid  mx-auto px-5 lg:px-18.75 pt-8"
       >
         <section className=" relative border-b border-[#CCCCCC33] flex items-center justify-between py-3.5">
           <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
-              <Image width={132} height={60} src="/logo.png" alt="logo" />
+          <Image width={132} height={60} src="/logo.png" alt="logo" />
           <ul className="flex items-center gap-10">
             {/* <li>
               <a href="#" target="_blank">

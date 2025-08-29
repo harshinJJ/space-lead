@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <main>
       <HomeBanner banner={"/images/banner_title.png"} />
-      <AboutInfo className="xl:pb-42" />
+      <AboutInfo className="2xl:pb-0 lg:pb-15 md:pb-10 xs:pb-5 " />
       {/* <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} /> */}
       <section className="relative bg-transparent bg-cover bg-[top_center]">
         <video
@@ -70,7 +70,7 @@ export default function Home() {
           className="absolute absolute-center w-full h-full object-cover"
           src="/images/backgrounds/commitee_members_bg.webm" />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black to-[#1C192D] opacity-20 w-full h-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
         <div className="container-fluid z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
           <div className="md:absolute mx-auto left-0 right-0 px-5 md:px-0 -translate-y-1/2 max-w-252.5 top-0 w-full">
             <StatsCard />
@@ -93,7 +93,7 @@ export default function Home() {
       />
       <WhyAttend>
         {/* <EventLists /> */}
-        <EventAgenda className="!w-full bg-[#1C192D80]  px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
+        <EventAgenda className="!w-full bg-indigo/50 px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
       </WhyAttend>
       <SpeakerSlider speakers={speakers} />
       <VideoPreview

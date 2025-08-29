@@ -1,9 +1,10 @@
+import DotPattern from "@/components/patterns/DotPattern";
 import { RowStagger } from "@/utils/animations/CardStagger";
 import React from "react";
 
 const ContactInfoOld = () => {
   return (
-    <section className="w-full bg-[#1c192d]">
+    <section className="w-full bg-indigo">
       <div className="text-[1.375rem] w-full mx-auto px-4 md:px-0 flex flex-col md:flex-row items-stretch">
         <div className="flex-31/72 lg:ps-30 flex flex-col justify-center text-white p-8 lg:py-32.5 rounded-lg">
           <p className="text-secondary  lg:text-[1.375rem]  text-[1.375rem]  mb-6">
@@ -49,6 +50,8 @@ const ContactInfo = () => {
   return (
     <section className="w-full bg-[#EDF0FE] px-5 relative">
       <RowStagger className="container-fluid flex flex-col xl:flex-row w-full mx-auto lg:py-20 py-10 gap-10 xl:items-end justify-between">
+        <DotPattern className="absolute top-13.5 right-0" />
+
         {/* Left Side */}
         <div className="flex flex-col justify-between flex-1 lg:gap-15 gap-5 xl:max-w-[45%]">
           <div>

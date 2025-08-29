@@ -1,7 +1,11 @@
 "use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Modal from "@/components/common/Modal";
+import DotPattern from "@/components/patterns/DotPattern";
+import SemiCirclePattern from "@/components/patterns/SemiCirclePattern";
+import useDebounce from "@/hooks/useDebounce";
 import useValidation from "@/hooks/useValidation";
+import publicServices from "@/services/publicServices";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -26,7 +30,8 @@ const validationSchema = Yup.object({
 });
 const ContactForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
-  const {contactFormSchema}=useValidation();
+  const { contactFormSchema } = useValidation();
+  const { submitContactForm } = publicServices;
   const {
     handleSubmit,
     values,
@@ -34,7 +39,7 @@ const ContactForm = () => {
     handleChange,
     handleBlur,
     touched,
-    resetForm,
+    isSubmitting,
   } = useFormik({
     initialValues: {
       name: "",
@@ -42,17 +47,33 @@ const ContactForm = () => {
       phone: "",
       message: "",
     },
-    validationSchema:contactFormSchema,
+    validationSchema: contactFormSchema,
     validateOnChange: true, // Disable validation on field change
     validateOnBlur: true,
-    onSubmit: (values) => {
-      setShowSuccess(true);
-      resetForm();
-    },
+    onSubmit: useDebounce(
+      async (values, { setErrors, resetForm, setSubmitting }) => {
+        setSubmitting(true);
+        const res = await submitContactForm(values);
+        if (res.result == "success") {
+          setShowSuccess(true);
+          resetForm();
+        } else {
+          if (res?.errors) {
+            const errorList = {};
+            Object.entries(res.errors).forEach(([key, value]) => {
+              errorList[key] = value;
+            });
+            setErrors(errorList);
+          }
+        }
+        setSubmitting(false);
+      }
+    ),
   });
-
+  console.log("isSinasdasd", isSubmitting);
   return (
-    <section className="bg-white bg-[url('/images/backgrounds/contact_form_bg.png')] bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 lg:py-32.75 py-20 w-full">
+    <section className="relative bg-white bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 w-full overflow-hidden">
+      <SemiCirclePattern className="absolute bottom-0 right-0 transform translate-y-2/5 translate-x-1/4" color="#7F529F"/>
       <Modal
         timer={3000}
         isOpen={showSuccess}
@@ -60,33 +81,33 @@ const ContactForm = () => {
       >
         {" "}
         <div className="flex flex-col items-center justify-center rounded-xl mx-auto mt-12">
-            <div className="bg-[#23A26D1F] rounded-full p-3 mb-4">
-              <svg
-                width="95"
-                height="95"
-                viewBox="0 0 95 95"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M47.5833 0.571411C21.6404 0.571411 0.5 21.7118 0.5 47.6547C0.5 73.5977 21.6404 94.7381 47.5833 94.7381C73.5263 94.7381 94.6667 73.5977 94.6667 47.6547C94.6667 21.7118 73.5263 0.571411 47.5833 0.571411ZM70.0892 36.8256L43.3929 63.5218C42.7337 64.181 41.8392 64.5577 40.8975 64.5577C39.9558 64.5577 39.0613 64.181 38.4021 63.5218L25.0775 50.1972C23.7121 48.8318 23.7121 46.5718 25.0775 45.2064C26.4429 43.841 28.7029 43.841 30.0683 45.2064L40.8975 56.0356L65.0983 31.8347C66.4638 30.4693 68.7238 30.4693 70.0892 31.8347C71.4546 33.2002 71.4546 35.4131 70.0892 36.8256Z"
-                  fill="url(#paint0_linear_117_15006)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_117_15006"
-                    x1="47.5833"
-                    y1="0.571411"
-                    x2="47.5833"
-                    y2="94.7381"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#7DC053" />
-                    <stop offset="1" stopColor="#63B330" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+          <div className="bg-[#23A26D1F] rounded-full p-3 mb-4">
+            <svg
+              width="95"
+              height="95"
+              viewBox="0 0 95 95"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M47.5833 0.571411C21.6404 0.571411 0.5 21.7118 0.5 47.6547C0.5 73.5977 21.6404 94.7381 47.5833 94.7381C73.5263 94.7381 94.6667 73.5977 94.6667 47.6547C94.6667 21.7118 73.5263 0.571411 47.5833 0.571411ZM70.0892 36.8256L43.3929 63.5218C42.7337 64.181 41.8392 64.5577 40.8975 64.5577C39.9558 64.5577 39.0613 64.181 38.4021 63.5218L25.0775 50.1972C23.7121 48.8318 23.7121 46.5718 25.0775 45.2064C26.4429 43.841 28.7029 43.841 30.0683 45.2064L40.8975 56.0356L65.0983 31.8347C66.4638 30.4693 68.7238 30.4693 70.0892 31.8347C71.4546 33.2002 71.4546 35.4131 70.0892 36.8256Z"
+                fill="url(#paint0_linear_117_15006)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_117_15006"
+                  x1="47.5833"
+                  y1="0.571411"
+                  x2="47.5833"
+                  y2="94.7381"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#7DC053" />
+                  <stop offset="1" stopColor="#63B330" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
           <div className="text-center">
             <h2 className="text-[2rem] text-[#78B6BA] mb-2">
               Message Sent Successfully
@@ -97,9 +118,13 @@ const ContactForm = () => {
           </div>
         </div>
       </Modal>
-      <div className="container-fluid mx-auto">
-        <p className="text-secondary text-2xl font-azonix">Get Started</p>
-        <div className="flex justify-between items-center xl:pe-69.5 mb-8">
+      <div className="container-fluid mx-auto lg:py-32.75 py-20">
+        <DotPattern className="absolute top-13.5 right-0" />
+
+        <p className="relative text-secondary text-2xl font-azonix">
+          Get Started
+        </p>
+        <div className="realtive flex justify-between items-center xl:pe-69.5 mb-8">
           <h2 className="font-azonix text-2xl md:text-3xl lg:text-[2.5rem] max-w-3/4 lg:max-w-[25ch] mb-8 leading-tight text-gray-900">
             GET IN TOUCH WITH US. WE'RE HERE TO ASSIST YOU.
           </h2>
@@ -253,6 +278,7 @@ const ContactForm = () => {
           </div>
           <div className="flex items-center justify-between mt-6">
             <PrimaryButton
+              // disabled={isSubmitting}
               type="submit"
               className="w-fit  px-7.5 py-[1.0625rem] items-center gap-2 "
             >

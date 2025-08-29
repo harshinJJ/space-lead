@@ -76,7 +76,7 @@ const EventLists = () => {
   ];
   const tags = ["Business", "Marketing", "Design"];
   return (
-    <div className="container mx-auto px-5 lg:px-10 rounded-4xl bg-[#1C192D70] lg:py-16 py-6 text-white">
+    <div className="container mx-auto px-5 lg:px-10 rounded-4xl bg-indigo/44 lg:py-16 py-6 text-white">
       {/* Heading */}
       <div className="mb-10 ">
         <p className="text-secondary  tracking-wide font-light">Event Lists</p>
@@ -88,7 +88,7 @@ const EventLists = () => {
             {tags.map((tag) => (
               <div
                 key={tag}
-                className="flex-1 text-center bg-secondary text-[#1C192D] px-4 xl:px-8 py-2 rounded-full text-base xl:text-lg "
+                className="flex-1 text-center bg-secondary text-indigo px-4 xl:px-8 py-2 rounded-full text-base xl:text-lg "
               >
                 {tag}
               </div>

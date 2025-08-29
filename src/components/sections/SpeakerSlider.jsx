@@ -84,7 +84,7 @@ const SpeakerSlider = ({ speakers = [], className }) => {
   return (
     <section className={`bg-[#191A2A] py-20 relative ${className}`}>
       <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col px-5 xl:px-15.75 md:px-10">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-2.5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-2.5">
           <h2 className="text-white text-6xl font-medium tracking-wide font-orbitron">
             Speakers
           </h2>
@@ -153,7 +153,7 @@ const SpeakerSlider = ({ speakers = [], className }) => {
                         btn={card.btn}
                         color={color}
                         image={card.image}
-                        program={card.program}
+                        program={card.program||"Live Event"}
                       />
                     </SwiperSlide>
                   );

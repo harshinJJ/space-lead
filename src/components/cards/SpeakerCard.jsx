@@ -202,7 +202,7 @@ const SpeakerCardOld = ({ speaker = {}, selectAction }) => {
           {speaker?.name}
         </h3>
         <p className="text-sm text-gray-600">{speaker.title}</p>
-        <button className="mt-3 bg-primary text-white leading-normal text-sm px-7 py-1.5 rounded-full">
+        <button className="mt-3 bg-primary text-white leading-normal text-sm px-7 py-1.5 rounded-full cursor-pointer">
           SPEAKER
         </button>
       </div>
