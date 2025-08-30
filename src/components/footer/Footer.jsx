@@ -1,4 +1,6 @@
-import Link from "next/link";
+// import Link from "next/link";
+import Link from "@/utils/CustomLink";
+
 import React from "react";
 import ScrollTop from "../common/ScrollTop";
 import Image from "next/image";
@@ -70,7 +72,7 @@ const Footer = () => {
     { title: "Home", url: "/" },
     { title: "Sponsors", url: "/sponsors" },
     { title: "About Us", url: "/about-us" },
-    { title: "Exhibitor", url: "/exhibitors" },
+    { title: "Exhibitor", url: "/exhibitor" },
     { title: "Agenda", url: "/agenda" },
     { title: "Contact Us", url: "/contact-us" },
     { title: "Speakers", url: "/speakers" },

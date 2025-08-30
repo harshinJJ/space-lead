@@ -8,7 +8,9 @@ import "swiper/css/effect-coverflow";
 
 import { SpeakerSlideCard } from "../cards/SpeakerCard";
 import { PrimaryLink } from "../buttons/PrimaryButton";
-import Link from "next/link";
+// import Link from "next/link";
+import Link from "@/utils/CustomLink";
+
 import { RowStagger } from "@/utils/animations/CardStagger";
 
 // const speakers = [

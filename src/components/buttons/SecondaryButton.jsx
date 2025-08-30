@@ -1,4 +1,6 @@
-import Link from "next/link";
+// import Link from "next/link";
+import Link from "@/utils/CustomLink";
+
 import React from "react";
 
 const SecondaryButton = ({ children, className, ...props }) => {

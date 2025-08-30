@@ -1,11 +1,12 @@
 "use client";
-import Link from "next/link";
+// import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import TitleBlock from "./TitleBlock";
 import { usePathname } from "next/navigation";
 import { SecondaryLink } from "../buttons/SecondaryButton";
 import Image from "next/image";
+import Link from "@/utils/CustomLink";
 
 const DownloadButton = () => {
   return (
