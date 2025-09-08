@@ -87,13 +87,15 @@ export default function PassSelector() {
           <PassSelectionCard
             type="Student"
             icon={icons.student}
-            onClick={() => router.push("/registration/student")}
+            url={"/registration/student"}
+            // onClick={() => router.push("/registration/student")}
           />
           <PassSelectionCard
             gradient="primary"
             type="Professionals"
             icon={icons.professional}
-            onClick={() => router.push("/registration/professional")}
+            url={"/registration/professional"}
+            // onClick={() => router.push("/registration/professional")}
           />
         </div>
       </div>

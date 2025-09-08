@@ -5,6 +5,7 @@ import Footer from "@/components/footer/Footer";
 import RegisterBtn from "@/components/common/RegisterBtn";
 import GsapProvider from "@/utils/GsapProvider";
 import PageLoader from "@/utils/animations/PageLoader";
+import RecaptchaProvider from "@/contexts/RecaptchaProvider";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -35,10 +36,12 @@ export default function RootLayout({ children }) {
         ></div>
         <Header />
         <PageLoader />
-        <GsapProvider>
-          {children}
-          <Footer />
-        </GsapProvider>
+        <RecaptchaProvider>
+          <GsapProvider>
+            {children}
+            <Footer />
+          </GsapProvider>
+        </RecaptchaProvider>
         <RegisterBtn />
       </body>
     </html>

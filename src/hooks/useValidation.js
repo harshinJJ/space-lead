@@ -39,8 +39,7 @@ const useValidation = (props) => {
     phone: Yup.string()
       .matches(/^\+?\d+$/, "Phone number is invalid")
       .min(10, "Must be at least 10 digits")
-      .max(15, "Cannot be more than 15 digits")
-      .required("Phone number is required"),
+      .max(15, "Cannot be more than 15 digits"),
     message: Yup.string()
       .min(20, "Message must be at least 20 characters")
       .max(500, "Message cannot be more than 500 characters")

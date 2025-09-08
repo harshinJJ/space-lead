@@ -6,6 +6,7 @@ import SemiCirclePattern from "@/components/patterns/SemiCirclePattern";
 import useDebounce from "@/hooks/useDebounce";
 import useValidation from "@/hooks/useValidation";
 import publicServices from "@/services/publicServices";
+import ReCaptchaHandler from "@/utils/ReCaptchaHandler";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -30,6 +31,9 @@ const validationSchema = Yup.object({
 });
 const ContactForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [captcha, setCaptcha] = useState({ token: null, type: null });
+  const [recaptchaError, setRecaptchaError] = useState(null);
   const { contactFormSchema } = useValidation();
   const { submitContactForm } = publicServices;
   const {
@@ -53,7 +57,13 @@ const ContactForm = () => {
     onSubmit: useDebounce(
       async (values, { setErrors, resetForm, setSubmitting }) => {
         setSubmitting(true);
-        const res = await submitContactForm(values);
+        const formData = {...values}
+
+        if(isVerified){
+          formData.reCaptchaToken=captcha?.token;
+          formData.reCaptchaType=captcha?.type;
+        }
+        const res = await submitContactForm(JSON.stringify(formData));
         if (res.result == "success") {
           setShowSuccess(true);
           resetForm();
@@ -70,10 +80,26 @@ const ContactForm = () => {
       }
     ),
   });
-  console.log("isSinasdasd", isSubmitting);
+  const handleRecaptchaVerify = (token, type) => {
+    setIsVerified(true);
+    setCaptcha({
+      token,
+      type,
+    });
+    setRecaptchaError(null);
+  };
+
+  // --- Handler for reCAPTCHA errors
+  const handleRecaptchaError = (err) => {
+    setIsVerified(false);
+    setRecaptchaError("ReCAPTCHA verification failed. Try again.");
+  };
   return (
     <section className="relative bg-white bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 w-full overflow-hidden">
-      <SemiCirclePattern className="absolute bottom-0 right-0 transform translate-y-2/5 translate-x-1/4" color="#7F529F"/>
+      <SemiCirclePattern
+        className="absolute bottom-0 right-0 transform translate-y-2/5 translate-x-1/4"
+        color="#7F529F"
+      />
       <Modal
         timer={3000}
         isOpen={showSuccess}
@@ -276,9 +302,18 @@ const ContactForm = () => {
               <p className="text-red-500 text-lg">{errors.message}</p>
             )}
           </div>
+          <div className="flex items-center justify-start mt-6">
+            <ReCaptchaHandler
+              isVerified={isVerified}
+              setIsVerified={setIsVerified}
+              onVerify={handleRecaptchaVerify}
+              onError={handleRecaptchaError}
+              // Optionally: fallbackScore, action, etc
+            />
+          </div>
           <div className="flex items-center justify-between mt-6">
             <PrimaryButton
-              // disabled={isSubmitting}
+              disabled={!isVerified}
               type="submit"
               className="w-fit  px-7.5 py-[1.0625rem] items-center gap-2 "
             >

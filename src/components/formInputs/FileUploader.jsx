@@ -395,7 +395,8 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
     }
   }
 
-  const removeFile = () => {
+  const removeFile = (e) => {
+    e.preventDefault();
     onCropDone(null);
     fileInputRef.current.value = "";
     setCroppedImage(null);
@@ -475,7 +476,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
     <>
       <label htmlFor="file-input" className="relative block">
         <input
-        id="file-input"
+          id="file-input"
           type="file"
           ref={fileInputRef}
           onChange={handleImageUpload}
@@ -488,7 +489,9 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
             onClick={changeImage}
             className=" bg-[#F6F6F6] text-xs flex gap-1.5 items-center rounded-xl p-1.75 text-center cursor-pointer transition-transform duration-300"
           >
-            <p className=" text-black bg-white rounded-lg py-1.5 px-1">Choose File</p>
+            <p className=" text-black bg-white rounded-lg py-1.5 px-1">
+              Choose File
+            </p>
             <small className="text-gray-500">Upload Student ID</small>
           </div>
         ) : (
@@ -509,14 +512,25 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                 onClick={removeFile}
               >
                 <span className="badge bg-[#F6F6F6] rounded-full">
-                  <i className="fas fa-close fa-sm"></i>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M6.7929 7.49998L1.14645 1.85353L1.85356 1.14642L7.50001 6.79287L13.1465 1.14642L13.8536 1.85353L8.20711 7.49998L13.8536 13.1464L13.1465 13.8535L7.50001 8.20708L1.85356 13.8535L1.14645 13.1464L6.7929 7.49998Z"
+                      fill="#000000"
+                    />
+                  </svg>
                 </span>
               </div>
             </div>
             <div className="flex-grow">
-              <p className="mb-1 font-bold text-black">
-                ID Added Successfully
-              </p>
+              <p className="mb-1 font-bold text-black">ID Added Successfully</p>
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
