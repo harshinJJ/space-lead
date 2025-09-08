@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 
-const TimerBlock = ({ eventDate = "2025-08-30" }) => {
+const TimerBlock = ({ eventDate = "2025-11-09" }) => {
   const calculateRemainingTime = () => {
     const now = new Date();
     const event = new Date(eventDate);

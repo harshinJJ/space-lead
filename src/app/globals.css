@@ -122,6 +122,123 @@
   .animate-marquee:hover {
     animation-play-state: paused;
   }
+
+  @-webkit-keyframes customerLogosMarquee {
+    0% {
+      -webkit-transform: translatex(0);
+      transform: translatex(0);
+    }
+    100% {
+      -webkit-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+  @-moz-keyframes customerLogosMarquee {
+    0% {
+      -moz-transform: translatex(0);
+      transform: translatex(0);
+    }
+    100% {
+      -moz-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+  @-o-keyframes customerLogosMarquee {
+    0% {
+      -o-transform: translatex(0);
+      transform: translatex(0);
+    }
+    100% {
+      -o-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+  @keyframes customerLogosMarquee {
+    0% {
+      -webkit-transform: translatex(0);
+      -moz-transform: translatex(0);
+      -o-transform: translatex(0);
+      transform: translatex(0);
+    }
+    100% {
+      -webkit-transform: translatex(-50%);
+      -moz-transform: translatex(-50%);
+      -o-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+
+
+  @-webkit-keyframes customerLogosMarqueeReverse {
+    100% {
+      -webkit-transform: translatex(0);
+      transform: translatex(0);
+    }
+    0% {
+      -webkit-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+  @-moz-keyframes customerLogosMarqueeReverse {
+    100% {
+      -moz-transform: translatex(0);
+      transform: translatex(0);
+    }
+    0% {
+      -moz-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+  @-o-keyframes customerLogosMarqueeReverse {
+    100% {
+      -o-transform: translatex(0);
+      transform: translatex(0);
+    }
+    0% {
+      -o-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+  @keyframes customerLogosMarqueeReverse {
+    100% {
+      -webkit-transform: translatex(0);
+      -moz-transform: translatex(0);
+      -o-transform: translatex(0);
+      transform: translatex(0);
+    }
+    0% {
+      -webkit-transform: translatex(-50%);
+      -moz-transform: translatex(-50%);
+      -o-transform: translatex(-50%);
+      transform: translatex(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reduce-motion {
+      -webkit-animation: none !important;
+      -moz-animation: none !important;
+      -o-animation: none !important;
+      animation: none !important;
+      -webkit-transform: none !important;
+      -moz-transform: none !important;
+      -ms-transform: none !important;
+      -o-transform: none !important;
+      transform: none !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reduce-motion {
+      -webkit-animation: none !important;
+      -moz-animation: none !important;
+      -o-animation: none !important;
+      animation: none !important;
+      -webkit-transform: none !important;
+      -moz-transform: none !important;
+      -ms-transform: none !important;
+      -o-transform: none !important;
+      transform: none !important;
+    }
+  }
 }
 /* Custom container for 1728px breakpoint */
 

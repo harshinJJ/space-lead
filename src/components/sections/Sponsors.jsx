@@ -116,50 +116,45 @@ export const SponsorList = ({ showSlides = true }) => {
         </p>
       </div>
       {showSlides && (
+
         <div className="relative mx-auto lg:pb-10 ">
-          {/* Swiper for logos */}
-          <div className="py-3">
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={2}
-              loop
-              freeMode={true}
-              modules={[FreeMode, Autoplay]}
-              autoplay={{
-                delay: 0, // continuous scroll
-                disableOnInteraction: false,
-                reverseDirection: false, // first swiper normal
-              }}
-              className="!w-full"
-              speed={3000} // control smoothness
-              breakpoints={{
-                640: { slidesPerView: 2, spaceBetween: 40 },
-                768: { slidesPerView: 3, spaceBetween: 40 },
-                1024: { slidesPerView: 4, spaceBetween: 10 },
-                1280: { slidesPerView: 5, spaceBetween: 10 },
-                1400: { slidesPerView: 5, spaceBetween: 40 },
-                1536: { slidesPerView: 6, spaceBetween: 40 },
-                1728: { slidesPerView: 6, spaceBetween: 40 },
-                1920: { slidesPerView: "auto", spaceBetween: 20 },
-              }}
-            >
+          <div className="overflow-hidden w-full relative group">
+            <div className="flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] animate-[customerLogosMarquee_var(--duration)_linear_infinite] group-hover:[animation-play-state:paused]">
               {sponsors.map((sponsor, idx) => (
-                <SwiperSlide className="3xl:!w-[248px]" key={idx}>
-                  {/* <div className="flex items-center justify-center bg-white shadow rounded-xl py-4 px-6 hover:shadow-md transition"> */}
-                  <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0">
-                    <Image
-                      width={150}
-                      height={40}
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                    />
-                  </div>
-                </SwiperSlide>
+                <div
+                  key={idx}
+                  className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                >
+                  <Image
+                    width={150}
+                    height={40}
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                  />
+                </div>
               ))}
-            </Swiper>
+              {/* Duplicate items for seamless infinite scroll */}
+              {sponsors.map((sponsor, idx) => (
+                <div
+                  key={`duplicate-${idx}`}
+                  className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                >
+                  <Image
+                    width={150}
+                    height={40}
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="py-3">
+
+          {/* Swiper for logos */}
+
+          {/* <div className="">
             <Swiper
               spaceBetween={20}
               slidesPerView={2}
@@ -169,9 +164,10 @@ export const SponsorList = ({ showSlides = true }) => {
               autoplay={{
                 delay: 0, // continuous scroll
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
                 reverseDirection: true, // first swiper normal
               }}
-              className="!w-full"
+              className="!w-full !py-3"
               speed={3000} // control smoothness
               breakpoints={{
                 640: { slidesPerView: 2, spaceBetween: 40 },
@@ -185,7 +181,10 @@ export const SponsorList = ({ showSlides = true }) => {
               }}
             >
               {sponsors.map((sponsor, idx) => (
-                <SwiperSlide className="3xl:!w-[248px]" key={idx}>
+                <SwiperSlide
+                  className="3xl:!w-[248px] hover:scale-[1.2]"
+                  key={idx}
+                >
                   <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
                     <Image
                       width={150}
@@ -198,6 +197,40 @@ export const SponsorList = ({ showSlides = true }) => {
                 </SwiperSlide>
               ))}
             </Swiper>
+          </div> */}
+
+                    <div className="overflow-hidden w-full relative group">
+            <div className="flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] animate-[customerLogosMarqueeReverse_var(--duration)_linear_infinite] group-hover:[animation-play-state:paused]">
+              {sponsors.map((sponsor, idx) => (
+                <div
+                  key={idx}
+                  className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                >
+                  <Image
+                    width={150}
+                    height={40}
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                  />
+                </div>
+              ))}
+              {/* Duplicate items for seamless infinite scroll */}
+              {sponsors.map((sponsor, idx) => (
+                <div
+                  key={`duplicate-${idx}`}
+                  className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                >
+                  <Image
+                    width={150}
+                    height={40}
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
