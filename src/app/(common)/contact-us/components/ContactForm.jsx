@@ -3,10 +3,11 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Modal from "@/components/common/Modal";
 import DotPattern from "@/components/patterns/DotPattern";
 import SemiCirclePattern from "@/components/patterns/SemiCirclePattern";
+import useContactForm from "@/hooks/useContactForm";
 import useDebounce from "@/hooks/useDebounce";
 import useValidation from "@/hooks/useValidation";
 import publicServices from "@/services/publicServices";
-import ReCaptchaHandler from "@/utils/ReCaptchaHandler";
+import ReCaptchaHandler, { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -30,70 +31,17 @@ const validationSchema = Yup.object({
     .required("Message is required"),
 });
 const ContactForm = () => {
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
-  const [captcha, setCaptcha] = useState({ token: null, type: null });
-  const [recaptchaError, setRecaptchaError] = useState(null);
-  const { contactFormSchema } = useValidation();
-  const { submitContactForm } = publicServices;
   const {
-    handleSubmit,
-    values,
-    errors,
-    handleChange,
-    handleBlur,
-    touched,
-    isSubmitting,
-  } = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    },
-    validationSchema: contactFormSchema,
-    validateOnChange: true, // Disable validation on field change
-    validateOnBlur: true,
-    onSubmit: useDebounce(
-      async (values, { setErrors, resetForm, setSubmitting }) => {
-        setSubmitting(true);
-        const formData = {...values}
+    formik,
+    setRef,
+    setRecaptchaToken,
+    setShowSuccess,
+    showV2,
+    showSuccess,
+    onSubmitRegistration,
+  } = useContactForm();
 
-        if(isVerified){
-          formData.reCaptchaToken=captcha?.token;
-          formData.reCaptchaType=captcha?.type;
-        }
-        const res = await submitContactForm(JSON.stringify(formData));
-        if (res.result == "success") {
-          setShowSuccess(true);
-          resetForm();
-        } else {
-          if (res?.errors) {
-            const errorList = {};
-            Object.entries(res.errors).forEach(([key, value]) => {
-              errorList[key] = value;
-            });
-            setErrors(errorList);
-          }
-        }
-        setSubmitting(false);
-      }
-    ),
-  });
-  const handleRecaptchaVerify = (token, type) => {
-    setIsVerified(true);
-    setCaptcha({
-      token,
-      type,
-    });
-    setRecaptchaError(null);
-  };
-
-  // --- Handler for reCAPTCHA errors
-  const handleRecaptchaError = (err) => {
-    setIsVerified(false);
-    setRecaptchaError("ReCAPTCHA verification failed. Try again.");
-  };
+  const { handleBlur, handleChange, values, touched, errors } = formik;
   return (
     <section className="relative bg-white bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 w-full overflow-hidden">
       <SemiCirclePattern
@@ -238,9 +186,9 @@ const ContactForm = () => {
             </a>
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form id="contactForm" className="space-y-8">
           <div className="grid grid-cols-1 text-2xl sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div>
+            <div ref={setRef("name")}>
               <label className="block font-medium ">Your Name</label>
               <input
                 type="text"
@@ -255,7 +203,7 @@ const ContactForm = () => {
                 <p className="text-red-500 text-lg">{errors.name}</p>
               )}
             </div>
-            <div>
+            <div ref={setRef("email")}>
               <label className="block font-medium ">Email Address</label>
               <input
                 type="email"
@@ -270,7 +218,7 @@ const ContactForm = () => {
                 <p className="text-red-500 text-lg">{errors.email}</p>
               )}
             </div>
-            <div className="sm:col-span-2 lg:col-span-1">
+            <div ref={setRef("phone")} className="sm:col-span-2 lg:col-span-1">
               <label className="block font-medium ">
                 Phone Number (optional)
               </label>
@@ -288,7 +236,7 @@ const ContactForm = () => {
               )}
             </div>
           </div>
-          <div>
+          <div ref={setRef("message")}>
             <label className="block text-2xl ">Message</label>
             <textarea
               rows={3}
@@ -302,19 +250,15 @@ const ContactForm = () => {
               <p className="text-red-500 text-lg">{errors.message}</p>
             )}
           </div>
-          <div className="flex items-center justify-start mt-6">
-            <ReCaptchaHandler
-              isVerified={isVerified}
-              setIsVerified={setIsVerified}
-              onVerify={handleRecaptchaVerify}
-              onError={handleRecaptchaError}
-              // Optionally: fallbackScore, action, etc
-            />
-          </div>
+          {showV2 && (
+            <div ref={setRef("recaptcha")} className="flex items-center justify-start mt-6">
+              <ReCAPTCHAV2 setCaptcha={setRecaptchaToken} />
+            </div>
+          )}
           <div className="flex items-center justify-between mt-6">
             <PrimaryButton
-              disabled={!isVerified}
-              type="submit"
+              type="button"
+              onClick={onSubmitRegistration}
               className="w-fit  px-7.5 py-[1.0625rem] items-center gap-2 "
             >
               <span className="leading-[100%] text-lg ">

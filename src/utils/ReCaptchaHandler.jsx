@@ -76,7 +76,7 @@ export default function ReCaptchaHandler({
       setIsVerified?.(true);
     } else {
       setError("reCAPTCHA verification failed. Please try again.");
-      setTimeout(() => setError(""), 5000); // hide after 5 sec
+      setTimeout(() => setError(""), 3000); // hide after 5 sec
     }
   };
 
@@ -90,7 +90,9 @@ export default function ReCaptchaHandler({
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V2}
             onChange={handleV2}
           />
-          {error && <div className="mt-2 text-red-600 text-xs block">{error}</div>}
+          {error && (
+            <div className="mt-2 text-red-600 text-xs block">{error}</div>
+          )}
         </>
       ) : loading ? (
         <div>Verifying reCAPTCHA...</div>
@@ -98,3 +100,25 @@ export default function ReCaptchaHandler({
     </div>
   );
 }
+
+export const ReCAPTCHAV2 = ({ setCaptcha }) => {
+  const [error, setError] = useState("");
+  const handleV2 = (token) => {
+    if (token) {
+      setCaptcha?.(token);
+    } else {
+      setError("reCAPTCHA verification failed. Please try again.");
+      setTimeout(() => setError(""), 3000); // hide after 5 sec
+    }
+  };
+  return (
+    <div>
+      <ReCAPTCHA
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V2}
+        onChange={handleV2}
+      />
+
+      {error && <div className="mt-2 text-red-600 text-xs block">{error}</div>}
+    </div>
+  );
+};

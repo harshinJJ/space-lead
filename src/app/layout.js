@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
         {/* Transition overlay */}
         <div
           id="transition-overlay"
-          className="fixed inset-0 bg-black z-[9999] pointer-events-none"
+          className="fixed inset-0 bg-indigo z-[9999] pointer-events-none"
           style={{ transform: "translateX(-100%)" }} // start hidden to the left
         ></div>
         <Header />

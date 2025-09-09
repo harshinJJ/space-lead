@@ -1,15 +1,20 @@
 import SERVICE from "@/data/service";
 import axios from "@/utils/axios";
 
-const PublicServices = {
-  submitContactForm: async (form) => {
+const RegistrationServices = {
+
+  createFormData: async (form) => {
     try {
-      return await axios.post(SERVICE.CONTACT.SUBMIT, form);
+      return await axios.post(SERVICE.REGISTER.SUBMIT, form, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
     } catch (e) {
       return e;
     }
   },
-  submitRegisterForm: async (form) => {
+  abandoned: async (form) => {
     try {
       return await axios.post(SERVICE.REGISTER.SUBMIT, form, {
         headers: {
@@ -29,4 +34,4 @@ const PublicServices = {
   },
 };
 
-export default PublicServices;
+export default RegistrationServices;

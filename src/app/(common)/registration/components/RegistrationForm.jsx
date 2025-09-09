@@ -17,7 +17,8 @@ import countryList from "@/../public/assets/json/countryList.json";
 import titleList from "@/../public/assets/json/honorifics.json";
 import publicServices from "@/services/publicServices";
 import useDebounce from "@/hooks/useDebounce";
-import ReCaptchaHandler from "@/utils/ReCaptchaHandler";
+import ReCaptchaHandler, { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
+import useRegistration from "@/hooks/useRegistration";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
@@ -38,91 +39,81 @@ export default function RegistrationForm({
   session = {},
   onSuccess,
 }) {
-  const { registerFormSchema } = useValidation({ type: type });
-  const { submitContactForm } = publicServices;
-
-  // --- NEW: ReCAPTCHA state ---
-  const [isVerified, setIsVerified] = useState(false);
-  const [captcha, setCaptcha] = useState({token:null,type:null});
-  const [recaptchaError, setRecaptchaError] = useState(null);
-
+  const { registerFormSchema } = useValidation({ type: type,onSuccess:onSuccess });
+  const registerData = useRegistration({ type });
+  const { formik, setRef, showV2, setRecaptchaToken } = registerData;
   const {
-    values: formData,
     errors,
     touched,
+    values: formData,
     handleChange,
     handleBlur,
-    handleSubmit,
     setFieldValue,
-    isSubmitting,
     setFieldTouched,
     validateField,
-  } = useFormik({
-    initialValues: {
-      title: "",
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      institution: "",
-      country: "",
-      nationality: "",
-      studentId: "",
-      jobTitle: "",
-      company: "",
-      isOldFile: "",
-    },
-    validationSchema: registerFormSchema,
-    onSubmit: useDebounce(
-      async (values, { resetForm, setErrors, setSubmitting }) => {
-        setSubmitting(true);
-        const formData = new FormData();
-        Object.entries(values).forEach(([key, value]) => {
-          if (key === "studentId" && value) {
-            formData.append(key, value); // append File
-          } else {
-            formData.append(key, value);
-          }
-        });
-        if(isVerified){
-          formData.append("reCaptchaToken",captcha?.token)
-          formData.append("reCaptchaType",captcha?.type)
-        }
+  } = formik;
 
-        const res = await submitContactForm(formData);
+  // const {
+  //   // values: formData,
+  //   // errors,
+  //   // touched,
+  //   // handleChange,
+  //   // handleBlur,
+  //   handleSubmit,
+  //   setFieldValue,
+  //   isSubmitting,
+  //   setFieldTouched,
+  //   validateField,
+  // } = useFormik({
+  //   initialValues: {
+  //     title: "",
+  //     firstName: "",
+  //     lastName: "",
+  //     phoneNumber: "",
+  //     email: "",
+  //     institution: "",
+  //     country: "",
+  //     nationality: "",
+  //     studentId: "",
+  //     jobTitle: "",
+  //     companyName: "",
+  //     isOldFile: "",
+  //   },
+  //   validationSchema: registerFormSchema,
+  //   onSubmit: useDebounce(
+  //     async (values, { resetForm, setErrors, setSubmitting }) => {
+  //       setSubmitting(true);
+  //       const formData = new FormData();
+  //       Object.entries(values).forEach(([key, value]) => {
+  //         if (key === "studentId" && value) {
+  //           formData.append(key, value); // append File
+  //         } else {
+  //           formData.append(key, value);
+  //         }
+  //       });
+  //       if (isVerified) {
+  //         formData.append("reCaptchaToken", captcha?.token);
+  //         formData.append("reCaptchaType", captcha?.type);
+  //       }
 
-        if (res.result === "success") {
-          onSuccess && onSuccess(true);
-          resetForm();
-          window?.scrollTo({ top: 0, behavior: "smooth" });
-        } else if (res?.errors) {
-          const errorList = {};
-          Object.entries(res.errors).forEach(([key, value]) => {
-            errorList[key] = value;
-          });
-          setErrors(errorList);
-        }
-        setSubmitting(false);
-      }
-    ),
-  });
+  //       const res = await submitContactForm(formData);
 
-  
-  const handleRecaptchaVerify = (token, type) => {
-    setIsVerified(true);
-    setCaptcha({
-      token,
-      type,
-    });
-    setRecaptchaError(null);
-  };
+  //       if (res.result === "success") {
+  //         onSuccess && onSuccess(true);
+  //         resetForm();
+  //         window?.scrollTo({ top: 0, behavior: "smooth" });
+  //       } else if (res?.errors) {
+  //         const errorList = {};
+  //         Object.entries(res.errors).forEach(([key, value]) => {
+  //           errorList[key] = value;
+  //         });
+  //         setErrors(errorList);
+  //       }
+  //       setSubmitting(false);
+  //     }
+  //   ),
+  // });
 
-
-  const handleRecaptchaError = (err) => {
-    setIsVerified(false);
-    setRecaptchaError("ReCAPTCHA verification failed. Try again.");
-  };
-  // const formData = watch();
   return (
     <>
       <p className="uppercase text-lg text-center">
@@ -140,12 +131,12 @@ export default function RegistrationForm({
               entered first, e.g. +966*
             </div>
             <form
-              onSubmit={handleSubmit}
+              id="registrationForm"
               className="w-full grid grid-cols-1 md:grid-cols-2 [&>div]:col-span-2 [&>div]:xl:col-span-1 gap-4 gap-y-6"
             >
               <div className="flex items-start gap-4">
                 {/* Title */}
-                <div className="md:flex-7/20 flex-1/5">
+                <div ref={setRef("title")} className="md:flex-7/20 flex-1/5">
                   <Label
                     htmlFor="react-select-title-select-input"
                     required={true}
@@ -164,7 +155,10 @@ export default function RegistrationForm({
                   />
                   {touched.title && <Error message={errors?.title} />}
                 </div>
-                <div className="w-full md:flex-13/20 flex-4/5">
+                <div
+                  ref={setRef("firstName")}
+                  className="w-full md:flex-13/20 flex-4/5"
+                >
                   {/* First Name */}
                   <Label required={true}>First Name</Label>
 
@@ -179,7 +173,7 @@ export default function RegistrationForm({
                 </div>
               </div>
               {/* Last Name */}
-              <div>
+              <div ref={setRef("lastName")}>
                 <Label required={true}>Last Name</Label>
                 <FormInput
                   name="lastName"
@@ -191,20 +185,20 @@ export default function RegistrationForm({
                 {touched.lastName && <Error message={errors?.lastName} />}
               </div>
               {/* Phone */}
-              <div>
+              <div ref={setRef("phoneNumber")}>
                 <Label required={true}>Phone No.</Label>
                 <PhoneInput
-                  name="phone"
+                  name="phoneNumber"
                   // onChange={handleChange}
-                  onChange={(val) => setFieldValue("phone", val)}
+                  onChange={(val) => setFieldValue("phoneNumber", val)}
                   onBlur={handleBlur}
-                  value={formData.phone}
+                  value={formData.phoneNumber}
                   placeholder="Phone number"
                 />
-                {touched.phone && <Error message={errors?.phone} />}
+                {touched.phoneNumber && <Error message={errors?.phoneNumber} />}
               </div>
               {/* Email */}
-              <div>
+              <div ref={setRef("email")}>
                 <Label required={true}>Email</Label>
                 <FormInput
                   name="email"
@@ -215,7 +209,7 @@ export default function RegistrationForm({
                 />
                 {touched.email && <Error message={errors?.email} />}
               </div>
-              <div>
+              <div ref={setRef("country")}>
                 <Label required={true}>Country of Residency</Label>
                 <FormSelect
                   instanceId={"residency-select"}
@@ -231,7 +225,7 @@ export default function RegistrationForm({
                 {touched.country && <Error message={errors?.country} />}
               </div>
               {/* Email */}
-              <div>
+              <div ref={setRef("nationality")}>
                 <Label required={true}>Nationality</Label>
                 <FormSelect
                   instanceId={"nationality-select"}
@@ -257,7 +251,7 @@ export default function RegistrationForm({
               {/* Institution Name (Student only) */}
               {type === "student" && (
                 <>
-                  <div>
+                  <div ref={setRef("institution")}>
                     <Label required={true}>Institution Name</Label>
                     <FormInput
                       name="institution"
@@ -270,7 +264,7 @@ export default function RegistrationForm({
                       <Error message={errors?.institution} />
                     )}
                   </div>
-                  <div>
+                  <div ref={setRef("studentId")}>
                     <Label required={true}>Student ID</Label>
                     {/* <FormInput
                       name="studentId"
@@ -303,7 +297,7 @@ export default function RegistrationForm({
               {/* Professional only: Company Name */}
               {type === "professional" && (
                 <>
-                  <div>
+                  <div ref={setRef("jobTitle")}>
                     <Label required={true}>Job Title</Label>
                     <FormInput
                       name="jobTitle"
@@ -314,33 +308,31 @@ export default function RegistrationForm({
                     />
                     {touched.jobTitle && <Error message={errors?.jobTitle} />}
                   </div>
-                  <div>
+                  <div ref={setRef("companyName")}>
                     <Label required={true}>Company Name</Label>
                     <FormInput
-                      name="company"
+                      name="companyName"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={formData.company}
+                      value={formData.companyName}
                       placeholder="Company name"
                     />
-                    {touched.company && <Error message={errors?.company} />}
+                    {touched.companyName && (
+                      <Error message={errors?.companyName} />
+                    )}
                   </div>
                 </>
               )}
 
-              <div className="">
-                <ReCaptchaHandler
-                  isVerified={isVerified}
-                  setIsVerified={setIsVerified}
-                  onVerify={handleRecaptchaVerify}
-                  onError={handleRecaptchaError}
-                  // Optionally: fallbackScore, action, etc
-                />
-              </div>
+              {showV2 && (
+                <div ref={setRef("recaptcha")}>
+                  <ReCAPTCHAV2 setCaptcha={setRecaptchaToken} />
+                </div>
+              )}
 
               <PrimaryButton
-                type="submit"
-                disabled={(!isVerified)}
+                type="button"
+                onClick={registerData.onSubmitRegistration}
                 className="gap-2.5 text-lg col-span-2 w-fit px-7.5 font-light tracking-[1px]"
               >
                 <span>Complete Your Registration </span>
@@ -373,7 +365,7 @@ export default function RegistrationForm({
             }
             category={type}
             title={formData.jobTitle || ""}
-            organisation={formData.company || ""}
+            organisation={formData.companyName || ""}
             badgeId={"Badgeid"}
           />
         </div>

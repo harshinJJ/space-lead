@@ -496,7 +496,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
           </div>
         ) : (
           <div className="flex items-center gap-3">
-            <div className="relative">
+            <div className="relative bg-red-500">
               <img
                 src={croppedImage ? croppedImage : defaultImage}
                 alt="ID Preview"
@@ -508,20 +508,20 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                 }}
               />
               <div
-                className="absolute top-0 start-100 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                className="absolute top-0 bg-[#F6F6F6] rounded-full p-1 right-0 translate-x-1/2 -translate-y-1/2 cursor-pointer"
                 onClick={removeFile}
               >
-                <span className="badge bg-[#F6F6F6] rounded-full">
+                <span className="badge bg-[#F6F6F6]">
                   <svg
-                    width="16"
-                    height="16"
+                    width="12"
+                    height="12"
                     viewBox="0 0 15 15"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M6.7929 7.49998L1.14645 1.85353L1.85356 1.14642L7.50001 6.79287L13.1465 1.14642L13.8536 1.85353L8.20711 7.49998L13.8536 13.1464L13.1465 13.8535L7.50001 8.20708L1.85356 13.8535L1.14645 13.1464L6.7929 7.49998Z"
                       fill="#000000"
                     />

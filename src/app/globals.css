@@ -373,3 +373,7 @@ button {
   left: 0;
   right: 0;
 }
+
+.grecaptcha-badge{
+  opacity: 0;
+}
