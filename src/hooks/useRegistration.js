@@ -116,7 +116,7 @@ const useRegistration = ({ type, onSuccess }) => {
           }),
       otherwise: (schema) => schema.notRequired(),
     }),
-    company: Yup.string().when([], {
+    companyName: Yup.string().when([], {
       is: () => type === "professional",
       then: (schema) =>
         schema
@@ -248,7 +248,7 @@ const useRegistration = ({ type, onSuccess }) => {
 
   const onSendRegister = async (item) => {
     const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
+    Object.entries(item).forEach(([key, value]) => {
       if (key === "studentId" && value) {
         formData.append(key, value); // append File
       } else {
@@ -275,16 +275,16 @@ const useRegistration = ({ type, onSuccess }) => {
         return;
       }
     }
-    if (formData.title && formData.title.value) {
-      formData.append("title", formData.title.value);
+    if (item.title && item.title.value) {
+      formData.append("title", item.title.value);
     }
-    if (formData.country && formData.country.name) {
-      formData.append("country", formData.country.value);
+    if (item.country && item.country.name) {
+      formData.append("country", item.country.value);
     }
-    if (formData.nationality && formData.nationality.name) {
-      formData.append("nationality", formData.nationality.value);
+    if (item.nationality && item.nationality.name) {
+      formData.append("nationality", item.nationality.value);
     }
-    const phone = separatePhoneNumber(formData.phoneNumber);
+    const phone = separatePhoneNumber(item.phoneNumber);
 
     formData.append("phoneNumber", phone.nationalNumber || "");
     formData.append("country_code", phone.countryCode || "");
@@ -430,8 +430,8 @@ const useRegistration = ({ type, onSuccess }) => {
   };
 
   const handleFormSubmit = async () => {
-    console.log("handleFormSubmit");
     const errors = await formik.validateForm();
+    console.log("handleFormSubmit",errors);
 
     // const billingErrors =
     //   ticket.is_free || !beforePayment
