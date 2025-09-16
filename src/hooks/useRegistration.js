@@ -10,7 +10,7 @@ import { separatePhoneNumber } from "@/utils/functions";
 import RegistrationServices from "@/services/registrationServices";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-const useRegistration = ({ type, onSuccess }) => {
+const useRegistration = ({ type, onSuccess,session }) => {
   const fieldRefs = useRef({});
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [loading, setLoading] = useState(true);
@@ -27,25 +27,25 @@ const useRegistration = ({ type, onSuccess }) => {
 
   const initialValues = {
     title: "",
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     phoneNumber: "",
     email: "",
     institution: "",
     country: "",
     nationality: "",
-    studentId: "",
-    jobTitle: "",
-    companyName: "",
+    user_document: "",
+    jobtitle: "",
+    companyname: "",
     isOldFile: "",
   };
 
   const validationSchema = Yup.object({
     title: Yup.object().required("Title is required"),
-    firstName: Yup.string()
+    firstname: Yup.string()
       .required("This field is required")
       .matches(/^[A-Za-z\s]+$/, "First name must contain only letters"),
-    lastName: Yup.string()
+    lastname: Yup.string()
       .required("This field is required")
       .matches(/^[A-Za-z\s]+$/, "Last Name must contain only letters"),
     phoneNumber: Yup.string()
@@ -90,13 +90,13 @@ const useRegistration = ({ type, onSuccess }) => {
           ),
       otherwise: (schema) => schema.notRequired(),
     }),
-    studentId: Yup.mixed().when([], {
+    user_document: Yup.mixed().when([], {
       is: () => type === "student",
       then: (schema) => schema.required("Student ID file is required"),
     }),
 
     // Professional specific
-    jobTitle: Yup.string().when([], {
+    jobtitle: Yup.string().when([], {
       is: () => type === "professional",
       then: (schema) =>
         schema
@@ -116,7 +116,7 @@ const useRegistration = ({ type, onSuccess }) => {
           }),
       otherwise: (schema) => schema.notRequired(),
     }),
-    companyName: Yup.string().when([], {
+    companyname: Yup.string().when([], {
       is: () => type === "professional",
       then: (schema) =>
         schema
@@ -140,127 +140,41 @@ const useRegistration = ({ type, onSuccess }) => {
     }),
   });
 
-  const billingInitialValue = {
-    billing_full_name: "",
-    billing_job_title: "",
-    billing_company_name: "",
-    billing_company_country: "",
-    billing_po_box: "",
-    billing_vat_number: "",
-    billing_address: "",
-  };
-  const billingValidationSchema = Yup.object().shape({
-    billing_full_name: Yup.string()
-      .required("Full Name is required")
-      .matches(
-        /^[A-Za-z\s]+$/,
-        "Full name must contain only letters and spaces"
-      ),
-    billing_job_title: Yup.string()
-      .required("Job Title is required")
-      // .test(
-      //   "no-leading-trailing-space",
-      //   "Job title must not start or end with space.",
-      //   (value) => {
-      //     if (!value) return true;
-      //     return value === value.trim();
-      //   }
-      // )
-      .test("invalid-jobtitle", "Invalid Job Title", (value) => {
-        if (!value) return true;
-
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const specialCharPattern = /[^a-zA-Z0-9\s\/\-]/;
-        const numericOnlyPattern = /^\d+$/;
-
-        return (
-          !emailPattern.test(value) &&
-          !specialCharPattern.test(value) &&
-          !numericOnlyPattern.test(value.trim())
-        );
-      }),
-    billing_company_name: Yup.string()
-      .required("Company Name is required")
-      .test("invalid-companyname", "Invalid Company Name", (value) => {
-        if (!value) return true;
-
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // block emails
-        const allowedPattern = /^[a-zA-Z0-9\s&'’.-]+$/; // allow only valid chars
-        const numericOnlyPattern = /^\d+$/; // block only numbers
-        const onlySpecialsPattern = /^[^a-zA-Z0-9]+$/; // block only specials (.,- etc.)
-
-        return (
-          !emailPattern.test(value) &&
-          allowedPattern.test(value) &&
-          !numericOnlyPattern.test(value.trim()) &&
-          !onlySpecialsPattern.test(value.trim()) // block if only special chars
-        );
-      }),
-    billing_company_country: Yup.object().required("Country is required"),
-    billing_po_box: Yup.string()
-      // .required("P.O Box is required")
-      .matches(/^\d+$/, "P.O Box must contain only numbers")
-      .max(8, "P.O Box must be at most 8 digits"),
-    billing_address: Yup.string().required("Address is required"),
-    // .test(
-    //   "no-leading-trailing-space",
-    //   "Address must not start or end with space.",
-    //   (value) => {
-    //     if (!value) return true;
-    //     return value === value.trim();
-    //   }
-    // ),
-    billing_vat_number: Yup.string().matches(
-      /^[a-zA-Z0-9]*$/,
-      "VAT Number must be alphanumeric"
-    ),
-    // .max(20, "VAT Number must be at most 20 characters"),
-  });
-
   const formik = useFormik({
     initialValues,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      //   if (beforePayment) {
-      //     setRegData(values);
-      //     billingFormik.setFieldValue(
-      //       "billing_full_name",
-      //       `${values.firstname} ${values.lastname}`
-      //     );
-      //     billingFormik.setFieldValue("billing_job_title", values.jobtitle);
-      //     billingFormik.setFieldValue("billing_company_name", values.companyName);
-
-      //     window.scrollTo({ top: 0, behavior: "smooth" });
-      //   } else {
       onSendRegister(values);
-      //   }
     },
     validateOnBlur: true,
     validateOnChange: true,
   });
-  const billingFormik = useFormik({
-    initialValues: billingInitialValue,
-    validationSchema: billingValidationSchema,
-    onSubmit: (values) => {
-      onSendRegister(regData, values);
-    },
-  });
 
   const onSendRegister = async (item) => {
-    const formData = new FormData();
-    Object.entries(item).forEach(([key, value]) => {
-      if (key === "studentId" && value) {
-        formData.append(key, value); // append File
-      } else {
-        formData.append(key, value);
-      }
-    });
+    const payload = { form_data: { ...item } };
+    if(session.id){
+      payload.ticket_id=session.id
+    }
+
+    if (item.title && item.title.value) {
+      payload.form_data.title = item.title.value;
+    }
+    if (item.country && item.country.name) {
+      payload.form_data.country = item.country.name;
+    }
+    if (item.nationality && item.nationality.name) {
+      payload.form_data.nationality = item.nationality.name;
+    }
+    const phone = separatePhoneNumber(item.phoneNumber);
+
+    payload.form_data.phoneNumber = phone.nationalNumber;
+    payload.form_data.country_code = phone.countryCode;
 
     if (!showV2) {
       const token = await executeRecaptcha("submit");
       if (token) {
-        formData.append("reCaptchaToken", token);
-        formData.append("reCaptchaType", "v3");
+        payload["recaptcha_token"] = token;
+        payload["recaptcha_type"] = "v3";
       } else {
         setShowV2(true);
         scrollToField("recaptcha");
@@ -268,33 +182,26 @@ const useRegistration = ({ type, onSuccess }) => {
       }
     } else {
       if (recaptchaToken) {
-        formData.append("reCaptchaToken", recaptchaToken);
-        formData.append("reCaptchaType", "v2");
+        payload["recaptcha_token"] = recaptchaToken;
+        payload["recaptcha_type"] = "v2";
       } else {
         scrollToField("recaptcha");
         return;
       }
     }
-    if (item.title && item.title.value) {
-      formData.append("title", item.title.value);
-    }
-    if (item.country && item.country.name) {
-      formData.append("country", item.country.value);
-    }
-    if (item.nationality && item.nationality.name) {
-      formData.append("nationality", item.nationality.value);
-    }
-    const phone = separatePhoneNumber(item.phoneNumber);
 
-    formData.append("phoneNumber", phone.nationalNumber || "");
-    formData.append("country_code", phone.countryCode || "");
+    const formData = new FormData();
+    console.log("payload", payload);
+    formData.append("payload", JSON.stringify(payload));
+    if (item.user_document) {
+      formData.append("user_document", item.user_document);
+    }
 
     RegistrationServices.createFormData(formData)
       .then((res) => {
         if (res.result === "success") {
           onSuccess && onSuccess(true);
           formik.resetForm();
-          // billingFormik.resetForm();
           window?.scrollTo({ top: 0, behavior: "smooth" });
         } else if (res?.errors) {
           Object.keys(errors).forEach((field) => {
@@ -306,7 +213,6 @@ const useRegistration = ({ type, onSuccess }) => {
         }
         // if (res.status == 200) {
         //   formik.resetForm();
-        //   billingFormik.resetForm();
         //   toast.success(
         //     res?.data?.message || "Registration completed successfully."
         //   );
@@ -431,13 +337,8 @@ const useRegistration = ({ type, onSuccess }) => {
 
   const handleFormSubmit = async () => {
     const errors = await formik.validateForm();
-    console.log("handleFormSubmit",errors);
+    console.log("handleFormSubmit", errors);
 
-    // const billingErrors =
-    //   ticket.is_free || !beforePayment
-    //     ? {}
-    //     : await billingFormik.validateForm();
-    // console.log(errors, billingErrors, "errors");
     formik.setTouched(
       Object.keys(formik.initialValues).reduce((acc, key) => {
         acc[key] = true;
@@ -445,13 +346,7 @@ const useRegistration = ({ type, onSuccess }) => {
       }, {}),
       true
     );
-    // billingFormik.setTouched(
-    //   Object.keys(billingFormik.initialValues).reduce((acc, key) => {
-    //     acc[key] = true;
-    //     return acc;
-    //   }, {}),
-    //   true
-    // );
+
     const errorKeys = Object.keys(errors);
 
     if (errorKeys.length > 0) {
@@ -473,19 +368,10 @@ const useRegistration = ({ type, onSuccess }) => {
         "institution",
         "country",
         "nationality",
-        "studentId",
-        "jobTitle",
-        "companyName",
+        "user_document",
+        "jobtitle",
+        "companyname",
         "isOldFile",
-        "billing_full_name",
-        "billing_job_title",
-        "billing_company_name",
-        "billing_company_country",
-        "billing_po_box",
-        "billing_vat_number",
-        "billing_address",
-        "billing_city",
-        "billing_pin_code",
       ];
       const firstError = priorityOrder.find((key) => errorKeys.includes(key));
       scrollToField(firstError);
@@ -495,46 +381,6 @@ const useRegistration = ({ type, onSuccess }) => {
   };
   const onSubmitRegistration = useDebounce(handleFormSubmit, 300);
 
-  const handleBillingSubmit = async () => {
-    if (beforePayment && totalPrice > 0) {
-      const errors = await billingFormik.validateForm();
-      billingFormik.setTouched(
-        Object.keys(billingFormik.initialValues).reduce((acc, key) => {
-          acc[key] = true;
-          return acc;
-        }, {}),
-        true
-      );
-      const errorKeys = Object.keys(errors);
-      if (errorKeys.length > 0) {
-        const errors = billingFormik.errors;
-        const hasErrors = errors && Object.keys(errors).length > 0;
-        if (hasErrors) {
-          Object.keys(errors).forEach((field) => {
-            billingFormik.setFieldTouched(field, true, false);
-            billingFormik.setFieldError(field, errors[field]);
-          });
-        }
-        const priorityOrder = [
-          "billing_full_name",
-          "billing_job_title",
-          "billing_company_name",
-          "billing_company_country",
-          "billing_po_box",
-          "billing_address",
-          "billing_vat_number",
-        ];
-        const firstError = priorityOrder.find((key) => errorKeys.includes(key));
-        scrollToField(firstError);
-        return;
-      }
-      billingFormik.handleSubmit();
-    } else {
-      onSendRegister(regData);
-    }
-  };
-  const onSubmitBilling = useDebounce(handleBillingSubmit, 300);
-
   return {
     formik,
     setRef,
@@ -542,9 +388,6 @@ const useRegistration = ({ type, onSuccess }) => {
     onSubmitRegistration,
     setRecaptchaToken,
     loading,
-    beforePayment,
-    billingFormik,
-    onSubmitBilling,
     showV2,
   };
 };

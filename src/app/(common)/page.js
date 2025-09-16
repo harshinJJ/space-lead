@@ -13,6 +13,7 @@ import SpeakerSlider from "@/components/sections/SpeakerSlider";
 import MemberSlider from "@/components/sections/MemberSlider";
 import StatsCard from "@/components/cards/StatsCard";
 import speakers from "@/../public/assets/json/speakers-data.json";
+import PublicServices from "@/services/publicServices";
 
 // const speakers = [
 //   {
@@ -56,7 +57,9 @@ import speakers from "@/../public/assets/json/speakers-data.json";
 //     image: "/images/speakers/speaker1.png",
 //   },
 // ];
-export default function Home() {
+export default async function Home() {
+  const agenda = await PublicServices.getAgenda().then(res=>res.data?res.data?.data:[])
+  console.log(agenda)
   return (
     <main>
       <HomeBanner banner={"/images/banner_title.png"} />
@@ -93,7 +96,7 @@ export default function Home() {
       />
       <WhyAttend>
         {/* <EventLists /> */}
-        <EventAgenda className="!w-full bg-indigo/50 px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
+        <EventAgenda dataList={agenda} className="!w-full bg-indigo/50 px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
       </WhyAttend>
       <SpeakerSlider speakers={speakers} />
       <VideoPreview

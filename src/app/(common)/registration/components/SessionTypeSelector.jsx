@@ -29,11 +29,11 @@ const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
       Which session you wish to attend?
     </p>
     <div className="gap-5 grid grid-cols-1 md:grid-cols-2 w-full">
-      {sessions.map((session) => (
+      {sessions.map((session,i) => (
         <SessionCard
-          key={session.key}
+          key={i}
           session={session}
-          isSelected={selected === session.key}
+          isSelected={selected === session.id}
           onSelect={() => onSelect(session)}
         />
       ))}
@@ -42,7 +42,8 @@ const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
 );
 
 const SessionCard = ({ session, isSelected, onSelect }) => {
-  const gradientBg = getGradientBg(session.theme);
+  const theme = session.price_amount?"primary":"secondary"
+  const gradientBg = getGradientBg(theme);
   return (
     <div
       className={`flex-1 transition-all duration-300 ease-in-out overflow-hidden relative rounded-xl pt-5 pb-3.5 ps-6 pe-8 cursor-pointer border-1  ${gradientBg} ${
@@ -52,7 +53,7 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
       }`}
       onClick={onSelect}
     >
-      {session.theme == "primary" ? (
+      {theme == "primary" ? (
         <svg
           width="176"
           height="87"
@@ -109,16 +110,16 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
           </defs>
         </svg>
       )}
-      {session.tag && (
+      {session.ticket_status_display && (
         <div
           className={`text-sm aspect-square absolute -top-2 flex items-center justify-center -right-2 max-w-19.5 text-center transform  `}
         >
           <div
             className={` text-center transform rotate-45 min-w-50 w-full py-1 ${getTagBg(
-              session.theme
+              theme
             )}`}
           >
-            {session.tag}
+            {session.ticket_status_display}
           </div>
         </div>
       )}
@@ -145,11 +146,11 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
         `}
             ></span>
           </span>
-          <span className="text-white text-xl md:text-3xl ms-2">{session.name}</span>
+          <span className="text-white text-xl md:text-3xl ms-2">{session.ticket_name}</span>
         </div>
         <span className={`text-white text-2xl md:text-5xl`}>
-          {session.price
-            ? `${session.currency}.${session.price.toFixed(2)}`
+          {session.price_amount
+            ? `${session.currency_name}.${session.price_amount.toFixed(2)}`
             : "Free"}
         </span>
       </label>

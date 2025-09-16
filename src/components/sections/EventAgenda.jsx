@@ -124,7 +124,8 @@ const tabs = [
   { id: "day3", label: "Day 03", date: "11 Nov 2025" },
 ];
 
-export default function EventAgenda({className="",label="Event Agenda",title="Follow Event AGENDA"}) {
+export default function EventAgenda({className="",label="Event Agenda",title="Follow Event AGENDA",dataList=[]}) {
+  console.log("dasdasd",dataList)
   const [activeDay, setActiveDay] = useState("day1");
 
   return (

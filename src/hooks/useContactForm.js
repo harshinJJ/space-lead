@@ -5,6 +5,7 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import toast from "react-hot-toast";
 import * as Yup from "yup";
 import useDebounce from "./useDebounce";
+import RegistrationServices from "@/services/registrationServices";
 
 const useContactForm = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -136,7 +137,7 @@ const useContactForm = () => {
     // payload.phoneNumber = phone.nationalNumber || "";
     // payload.country_code = phone.countryCode || "";
 
-    PublicServices.submitContactForm(payload)
+    RegistrationServices.submitContactForm(payload)
       .then((res) => {
         if (res.result == "success") {
           setShowSuccess(true);

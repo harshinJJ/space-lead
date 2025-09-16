@@ -168,7 +168,6 @@
     }
   }
 
-
   @-webkit-keyframes customerLogosMarqueeReverse {
     100% {
       -webkit-transform: translatex(0);
@@ -374,6 +373,6 @@ button {
   right: 0;
 }
 
-.grecaptcha-badge{
+.grecaptcha-badge {
   opacity: 0;
 }

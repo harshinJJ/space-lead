@@ -2,27 +2,51 @@ import SERVICE from "@/data/service";
 import axios from "@/utils/axios";
 
 const PublicServices = {
-  submitContactForm: async (form) => {
-    try {
-      return await axios.post(SERVICE.CONTACT.SUBMIT, form);
-    } catch (e) {
-      return e;
-    }
-  },
-  submitRegisterForm: async (form) => {
-    try {
-      return await axios.post(SERVICE.REGISTER.SUBMIT, form, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-    } catch (e) {
-      return e;
-    }
-  },
   getRegisterPassInfo: async () => {
     try {
       return await axios.get(SERVICE.REGISTER.PASS);
+    } catch (e) {
+      return e;
+    }
+  },
+  getAgenda: async () => {
+    try {
+      return await axios.get(SERVICE.CONTENT.AGENDA);
+    } catch (e) {
+      return e;
+    }
+  },
+  getSpeakers: async () => {
+    try {
+      return await axios.get(SERVICE.CONTENT.SPEAKERS);
+    } catch (e) {
+      return e;
+    }
+  },
+  getBooths: async () => {
+    try {
+      return await axios.get(SERVICE.CONTENT.BOOTHS);
+    } catch (e) {
+      return e;
+    }
+  },
+  getExhibitors: async () => {
+    try {
+      return await axios.get(SERVICE.CONTENT.EXHIBITORS);
+    } catch (e) {
+      return e;
+    }
+  },
+  getSponsors: async () => {
+    try {
+      return await axios.get(SERVICE.CONTENT.SPONSORS);
+    } catch (e) {
+      return e;
+    }
+  },
+  getSponsorCategory: async () => {
+    try {
+      return await axios.get(SERVICE.CONTENT.SPONSOR_CATEGORIES);
     } catch (e) {
       return e;
     }

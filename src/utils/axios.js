@@ -51,7 +51,7 @@ axios.interceptors.request.use(
 // Response Interceptor
 axios.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response;
   },
   (error) => {
     if (error.response) {

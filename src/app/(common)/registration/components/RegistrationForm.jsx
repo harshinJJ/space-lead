@@ -40,7 +40,7 @@ export default function RegistrationForm({
   onSuccess,
 }) {
   const { registerFormSchema } = useValidation({ type: type,onSuccess:onSuccess });
-  const registerData = useRegistration({ type });
+  const registerData = useRegistration({ type,session });
   const { formik, setRef, showV2, setRecaptchaToken } = registerData;
   const {
     errors,
@@ -53,66 +53,6 @@ export default function RegistrationForm({
     validateField,
   } = formik;
 
-  // const {
-  //   // values: formData,
-  //   // errors,
-  //   // touched,
-  //   // handleChange,
-  //   // handleBlur,
-  //   handleSubmit,
-  //   setFieldValue,
-  //   isSubmitting,
-  //   setFieldTouched,
-  //   validateField,
-  // } = useFormik({
-  //   initialValues: {
-  //     title: "",
-  //     firstName: "",
-  //     lastName: "",
-  //     phoneNumber: "",
-  //     email: "",
-  //     institution: "",
-  //     country: "",
-  //     nationality: "",
-  //     studentId: "",
-  //     jobTitle: "",
-  //     companyName: "",
-  //     isOldFile: "",
-  //   },
-  //   validationSchema: registerFormSchema,
-  //   onSubmit: useDebounce(
-  //     async (values, { resetForm, setErrors, setSubmitting }) => {
-  //       setSubmitting(true);
-  //       const formData = new FormData();
-  //       Object.entries(values).forEach(([key, value]) => {
-  //         if (key === "studentId" && value) {
-  //           formData.append(key, value); // append File
-  //         } else {
-  //           formData.append(key, value);
-  //         }
-  //       });
-  //       if (isVerified) {
-  //         formData.append("reCaptchaToken", captcha?.token);
-  //         formData.append("reCaptchaType", captcha?.type);
-  //       }
-
-  //       const res = await submitContactForm(formData);
-
-  //       if (res.result === "success") {
-  //         onSuccess && onSuccess(true);
-  //         resetForm();
-  //         window?.scrollTo({ top: 0, behavior: "smooth" });
-  //       } else if (res?.errors) {
-  //         const errorList = {};
-  //         Object.entries(res.errors).forEach(([key, value]) => {
-  //           errorList[key] = value;
-  //         });
-  //         setErrors(errorList);
-  //       }
-  //       setSubmitting(false);
-  //     }
-  //   ),
-  // });
 
   return (
     <>
@@ -156,33 +96,33 @@ export default function RegistrationForm({
                   {touched.title && <Error message={errors?.title} />}
                 </div>
                 <div
-                  ref={setRef("firstName")}
+                  ref={setRef("firstname")}
                   className="w-full md:flex-13/20 flex-4/5"
                 >
                   {/* First Name */}
                   <Label required={true}>First Name</Label>
 
                   <FormInput
-                    name="firstName"
+                    name="firstname"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={formData.firstName}
+                    value={formData.firstname}
                     placeholder="First name"
                   />
-                  {touched.firstName && <Error message={errors?.firstName} />}
+                  {touched.firstname && <Error message={errors?.firstname} />}
                 </div>
               </div>
               {/* Last Name */}
-              <div ref={setRef("lastName")}>
+              <div ref={setRef("lastname")}>
                 <Label required={true}>Last Name</Label>
                 <FormInput
-                  name="lastName"
+                  name="lastname"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={formData.lastName}
+                  value={formData.lastname}
                   placeholder="Last name"
                 />
-                {touched.lastName && <Error message={errors?.lastName} />}
+                {touched.lastname && <Error message={errors?.lastname} />}
               </div>
               {/* Phone */}
               <div ref={setRef("phoneNumber")}>
@@ -217,7 +157,7 @@ export default function RegistrationForm({
                   onChange={(option) => setFieldValue("country", option)}
                   placeholder="Country of Residency"
                   onBlur={() => setFieldTouched("country", true)}
-                  valueKey="name"
+                  valueKey="code"
                   labelKey="name"
                   value={formData.country}
                   options={countryList}
@@ -233,7 +173,7 @@ export default function RegistrationForm({
                   placeholder="Nationality"
                   onChange={(option) => setFieldValue("nationality", option)}
                   onBlur={() => setFieldTouched("nationality", true)}
-                  valueKey="name"
+                  valueKey="code"
                   labelKey="name"
                   value={formData.nationality}
                   options={countryList}
@@ -264,32 +204,32 @@ export default function RegistrationForm({
                       <Error message={errors?.institution} />
                     )}
                   </div>
-                  <div ref={setRef("studentId")}>
+                  <div ref={setRef("user_document")}>
                     <Label required={true}>Student ID</Label>
                     {/* <FormInput
-                      name="studentId"
+                      name="user_document"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={formData.studentId}
+                      value={formData.user_document}
                       placeholder="Student ID"
                     /> */}
                     <FileUplodCroper
                       defaultImage={
-                        formData.studentId
-                          ? URL.createObjectURL(formData.studentId)
+                        formData.user_document
+                          ? URL.createObjectURL(formData.user_document)
                           : formData.isOldFile
                       }
                       onCropDone={async (val) => {
-                        setFieldValue("studentId", val);
+                        setFieldValue("user_document", val);
                         if (val) {
-                          await setFieldTouched("studentId", true);
-                          await validateField("studentId");
+                          await setFieldTouched("user_document", true);
+                          await validateField("user_document");
                         } else {
                           setFieldValue("isOldFile", "");
                         }
                       }}
                     />
-                    {touched.studentId && <Error message={errors?.studentId} />}
+                    {touched.user_document && <Error message={errors?.user_document} />}
                   </div>
                 </>
               )}
@@ -297,28 +237,28 @@ export default function RegistrationForm({
               {/* Professional only: Company Name */}
               {type === "professional" && (
                 <>
-                  <div ref={setRef("jobTitle")}>
+                  <div ref={setRef("jobtitle")}>
                     <Label required={true}>Job Title</Label>
                     <FormInput
-                      name="jobTitle"
+                      name="jobtitle"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={formData.jobTitle}
+                      value={formData.jobtitle}
                       placeholder="Job title"
                     />
-                    {touched.jobTitle && <Error message={errors?.jobTitle} />}
+                    {touched.jobtitle && <Error message={errors?.jobtitle} />}
                   </div>
-                  <div ref={setRef("companyName")}>
+                  <div ref={setRef("companyname")}>
                     <Label required={true}>Company Name</Label>
                     <FormInput
-                      name="companyName"
+                      name="companyname"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={formData.companyName}
+                      value={formData.companyname}
                       placeholder="Company name"
                     />
-                    {touched.companyName && (
-                      <Error message={errors?.companyName} />
+                    {touched.companyname && (
+                      <Error message={errors?.companyname} />
                     )}
                   </div>
                 </>
@@ -352,20 +292,20 @@ export default function RegistrationForm({
               </PrimaryButton>
             </form>
           </div>
-          {session?.price > 0 && (
-            <TicketSummary price={session.price} currency={session.currency} />
+          {session?.price_amount > 0 && (
+            <TicketSummary price={session.price_amount} currency={session.currency_name} />
           )}
         </div>
         <div className="w-full md:w-80 lg:w-86.5 flex-shrink-0 flex flex-col items-center justify-start xl:px-4.5">
           <BadgePreview
             name={
-              formData.firstName || formData.lastName
-                ? `${formData.firstName} ${formData.lastName || ""}`
+              formData.firstname || formData.lastname
+                ? `${formData.firstname} ${formData.lastname || ""}`
                 : undefined
             }
             category={type}
-            title={formData.jobTitle || ""}
-            organisation={formData.companyName || ""}
+            title={formData.jobtitle || ""}
+            organisation={formData.companyname || ""}
             badgeId={"Badgeid"}
           />
         </div>

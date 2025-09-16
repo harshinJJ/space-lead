@@ -496,7 +496,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
           </div>
         ) : (
           <div className="flex items-center gap-3">
-            <div className="relative bg-red-500">
+            <div className="relative ">
               <img
                 src={croppedImage ? croppedImage : defaultImage}
                 alt="ID Preview"

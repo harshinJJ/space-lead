@@ -40,7 +40,9 @@ const BgOverlay = () => {
     </div>
   );
 };
-export default function RegistrationBlock({ type = "" }) {
+export default function RegistrationBlock({ type = "",passTypes=[],ticketType }) {
+  const sessionList = passTypes.filter(pass=>pass.sales_ticket_type_name==ticketType)
+  // console.log("pasdasd",sessionList)
   const [session, setSession] = useState(sessionList[0]);
   const [success, setSuccess] = useState(false);
 
@@ -56,13 +58,13 @@ export default function RegistrationBlock({ type = "" }) {
           <div className="w-full flex flex-col gap-8">
             <SessionTypeSelector
               sessions={sessionList}
-              selected={session?.key}
+              selected={session?.id}
               onSelect={setSession}
             />
 
             <RegistrationForm
               type={type}
-              paid={session?.key === "workshop"}
+              paid={session?.price_amount?true:false}
               session={session}
               onSuccess={() => setSuccess(true)}
             />
