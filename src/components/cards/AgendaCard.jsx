@@ -1,7 +1,34 @@
+import { format, parse, isValid } from "date-fns";
 import Image from "next/image";
 import React from "react";
 
+export function formatEventDate(event) {
+  if (!event?.event_day || !event?.start_tm || !event?.end_tm) return "";
+
+  // Try parsing "yyyy-MM-dd HH:mm:ss" or fallback to "yyyy-MM-dd HH:mm"
+  const startDate = parse(
+    `${event.event_day} ${event.start_tm}`,
+    "yyyy-MM-dd HH:mm:ss",
+    new Date()
+  );
+
+  const endDate = parse(
+    `${event.event_day} ${event.end_tm}`,
+    "yyyy-MM-dd HH:mm:ss",
+    new Date()
+  );
+
+  if (!isValid(startDate) || !isValid(endDate)) return "";
+
+  return `${format(startDate, "hh:mm a")} To ${format(
+    endDate,
+    "hh:mm a"
+  )} - ${format(startDate, "dd MMM yyyy")}`;
+}
+
 const AgendaCard = ({ event, containerClass }) => {
+  
+  const eventDate = formatEventDate(event);
   return (
     <div
       className={`bg-gradient-to-r from-white/8 to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6 ${containerClass}`}
@@ -9,9 +36,11 @@ const AgendaCard = ({ event, containerClass }) => {
       <Image
         width={309}
         height={197}
-        src={event.image}
+        src={event.image || "/logo.png"}
         alt={event.title}
-        className="w-full lg:w-1/4 rounded-lg object-cover"
+        className={`w-full lg:w-1/4 rounded-3xl object-cover bg-[#a2a2a2] ${
+          event.image ? "" : "py-15 px-20"
+        }`}
       />
       <div className="flex-1">
         <div className="grid grid-cols-2 lg:max-w-9/10">
@@ -30,7 +59,7 @@ const AgendaCard = ({ event, containerClass }) => {
                   fill="#5AC0BE"
                 />
               </svg>
-              <span>{event.time}</span>
+              <span>{eventDate}</span>
             </div>
             <div className="flex items-center gap-5">
               <svg
@@ -45,11 +74,13 @@ const AgendaCard = ({ event, containerClass }) => {
                   fill="#5AC0BE"
                 />
               </svg>
-              <span>{event.hall}</span>
+              <span>{event.hall_name}</span>
             </div>
           </div>
         </div>
-        <p className="mt-5 lg:max-w-17/20">{event.description}</p>
+        <p className="mt-5 lg:max-w-17/20">
+          {event?.session_description || event?.description}
+        </p>
       </div>
     </div>
   );

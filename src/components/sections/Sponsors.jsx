@@ -7,7 +7,7 @@ import { PrimaryDualTextLink, PrimaryLink } from "../buttons/PrimaryButton";
 import Image from "next/image";
 import { RowStagger } from "@/utils/animations/CardStagger";
 
-const sponsors = [
+const sponsorData = [
   { name: "Datab", logo: "/images/logos/sponsor1.png" },
   { name: "Novolex", logo: "/images/logos/sponsor2.png" },
   { name: "Walmart", logo: "/images/logos/sponsor3.png" },
@@ -24,11 +24,11 @@ const sponsors = [
   { name: "Templar", logo: "/images/logos/sponsor7.png" },
 ];
 
-export default function SponsorsBlock() {
+export default function SponsorsBlock({ sponsors = [] }) {
   return (
     <>
       <SponsorContent />
-      <SponsorList />
+      <SponsorList sponsors={sponsors} />
     </>
   );
 }
@@ -89,7 +89,8 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
   );
 };
 
-export const SponsorList = ({ showSlides = true }) => {
+export const SponsorList = ({ showSlides = true, sponsors = [] }) => {
+  const show = showSlides && sponsors.some((item) => item.logo);
   return (
     <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
       {/* Left & right edge gradients */}
@@ -103,7 +104,7 @@ export const SponsorList = ({ showSlides = true }) => {
         </h2>
         <p
           className={`lg:max-w-[68.5rem] leading-[1.875rem] text-lg mx-auto text-[#303030] ${
-            !showSlides ? "mb-0" : ""
+            !show ? "mb-0" : ""
           } mb-10 `}
         >
           The Space Lead ’25 Conference offers curated sponsorship opportunities
@@ -115,40 +116,52 @@ export const SponsorList = ({ showSlides = true }) => {
           ecosystem engagement, choose your tier and lead the conversation.
         </p>
       </div>
-      {showSlides && (
-
+      {show && (
         <div className="relative mx-auto lg:pb-10 ">
           <div className="overflow-hidden w-full relative group">
-            <div className="flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] animate-[customerLogosMarquee_var(--duration)_linear_infinite] group-hover:[animation-play-state:paused]">
-              {sponsors.map((sponsor, idx) => (
-                <div
-                  key={idx}
-                  className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
-                >
-                  <Image
-                    width={150}
-                    height={40}
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                  />
-                </div>
-              ))}
+            <div
+              className={`flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] ${
+                sponsors.length > 5
+                  ? "animate-[customerLogosMarquee_var(--duration)_linear_infinite]"
+                  : "justify-center !w-full"
+              } group-hover:[animation-play-state:paused]`}
+            >
+              {sponsors.map(
+                (sponsor, idx) =>
+                  sponsor.logo && (
+                    <div
+                      key={idx}
+                      className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                    >
+                      <Image
+                        width={150}
+                        height={40}
+                        src={sponsor.logo || "/logo.png"}
+                        alt={sponsor.id || sponsor.name}
+                        className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                      />
+                    </div>
+                  )
+              )}
               {/* Duplicate items for seamless infinite scroll */}
-              {sponsors.map((sponsor, idx) => (
-                <div
-                  key={`duplicate-${idx}`}
-                  className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
-                >
-                  <Image
-                    width={150}
-                    height={40}
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                  />
-                </div>
-              ))}
+              {sponsors?.length > 5 &&
+                sponsors.map(
+                  (sponsor, idx) =>
+                    sponsor.logo && (
+                      <div
+                        key={`duplicate-${idx}`}
+                        className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                      >
+                        <Image
+                          width={150}
+                          height={40}
+                          src={sponsor.logo || "/logo.png"}
+                          alt={sponsor.id || sponsor.name}
+                          className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                        />
+                      </div>
+                    )
+                )}
             </div>
           </div>
 
@@ -199,37 +212,50 @@ export const SponsorList = ({ showSlides = true }) => {
             </Swiper>
           </div> */}
 
-                    <div className="overflow-hidden w-full relative group">
-            <div className="flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] animate-[customerLogosMarqueeReverse_var(--duration)_linear_infinite] group-hover:[animation-play-state:paused]">
-              {sponsors.map((sponsor, idx) => (
-                <div
-                  key={idx}
-                  className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
-                >
-                  <Image
-                    width={150}
-                    height={40}
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                  />
-                </div>
-              ))}
+          <div className="overflow-hidden w-full relative group">
+            <div
+              className={`flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] ${
+                sponsors.length > 5
+                  ? "animate-[customerLogosMarqueeReverse_var(--duration)_linear_infinite]"
+                  : "justify-center !w-full"
+              } group-hover:[animation-play-state:paused]`}
+            >
+              {sponsors.map(
+                (sponsor, idx) =>
+                  sponsor.logo && (
+                    <div
+                      key={idx}
+                      className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                    >
+                      <Image
+                        width={150}
+                        height={40}
+                        src={sponsor.logo || "/logo.png"}
+                        alt={sponsor.id || sponsor.name}
+                        className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                      />
+                    </div>
+                  )
+              )}
               {/* Duplicate items for seamless infinite scroll */}
-              {sponsors.map((sponsor, idx) => (
-                <div
-                  key={`duplicate-${idx}`}
-                  className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
-                >
-                  <Image
-                    width={150}
-                    height={40}
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                  />
-                </div>
-              ))}
+              {sponsors?.length > 5 &&
+                sonsors.map(
+                  (sponsor, idx) =>
+                    sponsor.logo && (
+                      <div
+                        key={`duplicate-${idx}`}
+                        className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                      >
+                        <Image
+                          width={150}
+                          height={40}
+                          src={sponsor.logo || "/logo.png"}
+                          alt={sponsor.company_name || sponsor.id||"sponsor"}
+                          className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                        />
+                      </div>
+                    )
+                )}
             </div>
           </div>
         </div>

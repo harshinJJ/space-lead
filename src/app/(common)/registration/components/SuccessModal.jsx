@@ -41,7 +41,7 @@ const SuccessModal = ({ onContinue }) => (
     <div className="bg-[#F0F0F0] p-2.5 rounded-lg w-44.5 aspect-square flex items-center justify-center my-4">
       <Image width={178} height={178} src="/images/dummy_qr.png" className="w-full aspect-square object-cover" alt="" />
     </div>
-    <PrimaryButton className="uppercase py-2.5 px-10 mt-4 font-semibold">Continue</PrimaryButton>
+    <PrimaryButton onClick={onContinue} className="uppercase py-2.5 px-10 mt-4 font-semibold">Continue</PrimaryButton>
   </div>
 );
 

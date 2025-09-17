@@ -26,17 +26,19 @@ export default function Link({ href, children, className, ...props }) {
   }, [pathname]);
 
   const handleClick = (e) => {
-    e.preventDefault();
-    if (pathname === href) return;
-    // 👉 Exit animation before navigation
-    gsap.to("#transition-overlay", {
-      x: "0%",
-      duration: 0.5,
-      ease: "power2.in",
-      onComplete: () => {
-        router.push(href); // navigate after cover
-      },
-    });
+    if (props.target != "_blank") {
+      e.preventDefault();
+      if (pathname === href || href == "#") return;
+      // 👉 Exit animation before navigation
+      gsap.to("#transition-overlay", {
+        x: "0%",
+        duration: 0.5,
+        ease: "power2.in",
+        onComplete: () => {
+          router.push(href); // navigate after cover
+        },
+      });
+    }
   };
   return (
     <DefaultLink

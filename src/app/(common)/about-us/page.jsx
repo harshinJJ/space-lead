@@ -8,11 +8,16 @@ import LatestInfo from "./components/LatestInfo";
 import speakers from "@/../public/assets/json/speakers-data.json";
 
 import MemberList from "@/components/sections/MemberList";
+import PublicServices from "@/services/publicServices";
 
 export const metadata = {
   title: "About Us",
 };
-const About = () => {
+const About = async () => {
+  const sponsors = await PublicServices.getSponsors().then(
+    (res) => res.data || []
+  );
+
   return (
     <main>
       <AboutInfo />
@@ -47,7 +52,7 @@ const About = () => {
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <SponsorsBlock hasFaq={true} />
+      <SponsorsBlock sponsors={sponsors} hasFaq={true} />
     </main>
   );
 };

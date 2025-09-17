@@ -6,7 +6,7 @@ const exhibitors = Array(8).fill({
   email: "demo@spacemain",
 });
 
-const ExhibitorList = () => (
+const ExhibitorList = ({exhibitors=[]}) => (
   <section className="container-fluid mx-auto w-full py-10 px-5 sm:px-0">
     <p className="text-secondary text-center font-azonix tracking-wide font-light mb-5">
       Our Exhibitor
@@ -194,11 +194,11 @@ const ExhibitorList = () => (
             </svg>
 
             <span className=" text-primary leading-[0.8] text-[2rem]">
-              {item.code}
+              B{item?.booth_details?.number}
             </span>
           </div>
           <span className="text-[#111111CC] text-[1.75rem] mt-2.5">
-            {item.name}
+            {item?.company_name||item?.name}
           </span>
           <div className="flex items-center gap-4 mt-3.75">
             <svg

@@ -10,231 +10,8 @@ import SpeakerCard from "@/components/cards/SpeakerCard";
 import { scrollToTop } from "@/utils/util";
 import speakers from "@/../public/assets/json/speakers-data.json";
 
-// const speakers = [
-//   {
-//     name: "Dr. Maha Bint Mishari AlSaud",
-//     title: "Chairperson",
-//     image: "/images/speakers/speaker1.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-//   {
-//     name: "Prof. Charles Elachi",
-//     title: "President",
-//     image: "/images/speakers/speaker2.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-//   {
-//     name: "Dr. Majid AlBahkali",
-//     title: "General Manager",
-//     image: "/images/speakers/speaker3.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-//   {
-//     name: "Dr. Esam AlBanyan",
-//     title: "Vice President ",
-//     image: "/images/speakers/speaker2.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-//   {
-//     name: "Dr. Maha Bint Mishari AlSaud",
-//     title: "Chairperson",
-//     image: "/images/speakers/speaker1.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-//   {
-//     name: "Prof. Charles Elachi",
-//     title: "President",
-//     image: "/images/speakers/speaker2.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-//   {
-//     name: "Dr. Majid AlBahkali",
-//     title: "General Manager",
-//     image: "/images/speakers/speaker3.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-//   {
-//     name: "Dr. Esam AlBanyan",
-//     title: "Vice President ",
-//     image: "/images/speakers/speaker2.png",
-//     event:{
-//       title:"Live Event",
-//       price:0,
-//       url:"#"
-//     },
-//     description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-//                     It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-//     facts: [
-//       "Phosfluorescently architect optimal",
-//       "Synergistically target interoperable dev",
-//       "Collaboratively productivate",
-//       "Distinctively monetize robust times",
-//     ],
-//   },
-// ];
 
-const agenda = [
-  {
-    image: "/images/agenda1.png", // Replace with actual image
-    title: "Events That Leave a Impression",
-    time: "10:00 AM To 09:00 PM - 09 Nov 2025",
-    hall: "HALL - 01",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    speakers: [
-      {
-        name: "John D. Alexon",
-        role: "Moderator",
-        image: "/images/speakers/speaker1.png",
-      },
-      {
-        name: "John D. Alexon",
-        role: "Design Expert",
-        image: "/images/speakers/speaker2.png",
-      },
-      {
-        name: "John D. Alexon",
-        role: "Design Expert",
-        image: "/images/speakers/speaker3.png",
-      },
-    ],
-  },
-  {
-    image: "/images/agenda2.png",
-    title: "Sparkle & Shine on Celebrations",
-    time: "10:00 AM To 09:00 PM - 09 Nov 2025",
-    hall: "HALL - 01",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-    speakers: [
-      {
-        name: "John D. Alexon",
-        role: "Design Expert",
-        image: "/images/speakers/speaker1.png",
-      },
-      {
-        name: "John D. Alexon",
-        role: "Design Expert",
-        image: "/images/speakers/speaker2.png",
-      },
-    ],
-  },
-  {
-    image: "/images/agenda3.png",
-    title: "Sparkle & Shine on Celebrations",
-    time: "10:00 AM To 09:00 PM - 09 Nov 2025",
-    hall: "HALL - 01",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-    speakers: [
-      {
-        name: "John D. Alexon",
-        role: "Design Expert",
-        image: "/images/speakers/speaker1.png",
-      },
-      {
-        name: "John D. Alexon",
-        role: "Design Expert",
-        image: "/images/speakers/speaker2.png",
-      },
-      {
-        name: "John D. Alexon",
-        role: "Moderator",
-        image: "/images/speakers/speaker3.png",
-      },
-      {
-        name: "John D. Alexon",
-        role: "Moderator",
-        image: "/images/speakers/speaker2.png",
-      },
-    ],
-  },
-];
-const MemberPreview = () => {
+const MemberPreview = ({ speakerList=[] }) => {
   const [activeSpeaker, setActiveSpeaker] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
 
@@ -289,7 +66,7 @@ const MemberPreview = () => {
                 ))}
               </div>
               {activeTab === 0 && <SpeakerAbout speaker={activeSpeaker} />}
-              {activeTab === 1 && <SpeakerAgenda agenda={agenda} />}
+              {activeTab === 1 && <SpeakerAgenda agenda={activeSpeaker?.agenda_sessions} />}
               {/* <div className="hidden lg:block border-b lg:w-6/10 lg:mt-6 border-[#D7D7D7]" /> */}
             </div>
           </div>
@@ -298,7 +75,7 @@ const MemberPreview = () => {
       )}
       <MemberList
         selectAction={(speaker) => handleActiveSpeaker(speaker)}
-        speakers={speakers}
+        speakers={speakerList}
         className="pb-0"
         title={
           activeSpeaker
@@ -317,7 +94,7 @@ const MemberPreview = () => {
       />
       <MemberList
         title={"Moderator"}
-        speakers={speakers}
+        speakers={speakerList}
         selectAction={(speaker) => handleActiveSpeaker(speaker)}
       />
     </>

@@ -4,11 +4,8 @@ import { SUCCESS_CODES } from "@/data/successCodes";
 import PublicServices from "@/services/publicServices";
 
 export default async function StudentRegistration() {
-  let passTypes;
-  const res = await PublicServices.getRegisterPassInfo();
-  if (SUCCESS_CODES.includes(res.status) && res.data) {
-    passTypes = res?.data?.data||[];
-  }
+  const passTypes = await PublicServices.getRegisterPassInfo().then(res=>res.data?res.data:[]);
+
   return (
     <main>
       <RegistrationBlock passTypes={passTypes} type="student" ticketType={"Student Pass"} />

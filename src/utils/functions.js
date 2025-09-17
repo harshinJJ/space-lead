@@ -536,3 +536,8 @@ export function formatPhoneNum(countryCode, phoneNumber) {
   const cleanNumber = phoneNumber.replace(/^(\+|0)+/, "");
   return `${countryCode}${cleanNumber}`;
 }
+
+
+export function getFullfilled(result) {
+  return result.status === "fulfilled" ? result.value?.data ?? [] : [];
+}

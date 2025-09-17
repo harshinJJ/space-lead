@@ -117,7 +117,7 @@ const SpeakerSlider = ({ speakers = [], className }) => {
                     onClick={() => swiperRef.current?.slideToLoop(i)}
                     className="text-white font-light hover:text-cyan-400 cursor-pointer whitespace-nowrap"
                   >
-                    {sp.name}
+                    {sp.name ||`${sp.firstname} ${sp.lastname}`}
                   </li>
                 ))}
               </ul>
@@ -139,7 +139,7 @@ const SpeakerSlider = ({ speakers = [], className }) => {
                   640: { slidesPerView: 3 },
                 }}
                 centeredSlides={true}
-                className="speaker-swiper-container lg:max-w-200 !w-full h-115 "
+                className={`speaker-swiper-container ${speakers.length>2?"lg:max-w-200":"lg:min-w-200"} !w-full h-115 `}
               >
                 {speakers.map((card, id) => {
                   const color = colors[id % colors.length];
@@ -149,12 +149,12 @@ const SpeakerSlider = ({ speakers = [], className }) => {
                       key={id}
                     >
                       <SpeakerSlideCard
-                        name={card.name}
+                        name={card.name ||`${card.firstname} ${card.lastname}`}
                         title={card.title}
                         type={card.type}
                         btn={card.btn}
                         color={color}
-                        image={card.image}
+                        image={card?.image||card.profile_pic}
                         program={card.program||"Live Event"}
                       />
                     </SwiperSlide>

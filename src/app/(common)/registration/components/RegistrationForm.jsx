@@ -39,8 +39,7 @@ export default function RegistrationForm({
   session = {},
   onSuccess,
 }) {
-  const { registerFormSchema } = useValidation({ type: type,onSuccess:onSuccess });
-  const registerData = useRegistration({ type,session });
+  const registerData = useRegistration({ type,session,onSuccess });
   const { formik, setRef, showV2, setRecaptchaToken } = registerData;
   const {
     errors,

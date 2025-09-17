@@ -16,14 +16,14 @@ const SpeakerTag = ({
           height={40}
           width={40}
           className="w-full h-full object-cover"
-          src={image}
+          src={image||"/images/user_placeholder.jpeg"}
           alt={name}
         />
       </div>
       <div>
         <span className="text-sm xl:text-lg font-semibold">{name}</span>
         <div className="flex items-center gap-1 text-xs text-white/50">
-          {role.toLowerCase() == "moderator" && (
+          {role?.toLowerCase() == "moderator" && (
             <svg
               width="18"
               height="17"

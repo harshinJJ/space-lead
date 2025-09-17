@@ -9,8 +9,9 @@ import useDebounce from "@/hooks/useDebounce";
 import { separatePhoneNumber } from "@/utils/functions";
 import RegistrationServices from "@/services/registrationServices";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { SUCCESS_CODES } from "@/data/successCodes";
 
-const useRegistration = ({ type, onSuccess,session }) => {
+const useRegistration = ({ type, onSuccess, session }) => {
   const fieldRefs = useRef({});
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [loading, setLoading] = useState(true);
@@ -152,8 +153,10 @@ const useRegistration = ({ type, onSuccess,session }) => {
 
   const onSendRegister = async (item) => {
     const payload = { form_data: { ...item } };
-    if(session.id){
-      payload.ticket_id=session.id
+    if (session.id) {
+      payload.form_data.ticket_id = session.id;
+      payload.form_data.event_id = session.event_id;
+      payload.currency_name = session.currency_name;
     }
 
     if (item.title && item.title.value) {
@@ -189,9 +192,11 @@ const useRegistration = ({ type, onSuccess,session }) => {
         return;
       }
     }
+    // deleting unwanted values
+    delete payload.form_data.isOldFile;
+    delete payload.form_data.user_document;
 
     const formData = new FormData();
-    console.log("payload", payload);
     formData.append("payload", JSON.stringify(payload));
     if (item.user_document) {
       formData.append("user_document", item.user_document);
@@ -199,11 +204,12 @@ const useRegistration = ({ type, onSuccess,session }) => {
 
     RegistrationServices.createFormData(formData)
       .then((res) => {
-        if (res.result === "success") {
+        if (SUCCESS_CODES.includes(res.status)) {
           onSuccess && onSuccess(true);
           formik.resetForm();
           window?.scrollTo({ top: 0, behavior: "smooth" });
-        } else if (res?.errors) {
+        } else if (res?.data.errors) {
+          const errors = res?.data.errors;
           Object.keys(errors).forEach((field) => {
             formik.setFieldTouched(field, true, false);
             formik.setFieldError(field, errors[field]);

@@ -12,7 +12,7 @@ import SponsorsBlock from "@/components/sections/Sponsors";
 import SpeakerSlider from "@/components/sections/SpeakerSlider";
 import MemberSlider from "@/components/sections/MemberSlider";
 import StatsCard from "@/components/cards/StatsCard";
-import speakers from "@/../public/assets/json/speakers-data.json";
+import speakerData from "@/../public/assets/json/speakers-data.json";
 import PublicServices from "@/services/publicServices";
 
 // const speakers = [
@@ -57,9 +57,19 @@ import PublicServices from "@/services/publicServices";
 //     image: "/images/speakers/speaker1.png",
 //   },
 // ];
+
+function getFullfilled(result) {
+  return result.status === "fulfilled" ? result.value?.data ?? [] : [];
+}
 export default async function Home() {
-  const agenda = await PublicServices.getAgenda().then(res=>res.data?res.data?.data:[])
-  console.log(agenda)
+  const [agendaRes, speakersRes, sponsorsRes] = await Promise.allSettled([
+    PublicServices.getAgenda(),
+    PublicServices.getSpeakers(),
+    PublicServices.getSponsors(),
+  ]);
+  const agenda = getFullfilled(agendaRes);
+  const speakers = getFullfilled(speakersRes);
+  const sponsors = getFullfilled(sponsorsRes);
   return (
     <main>
       <HomeBanner banner={"/images/banner_title.png"} />
@@ -71,7 +81,8 @@ export default async function Home() {
           loop
           muted
           className="absolute absolute-center w-full h-full object-cover"
-          src="/images/backgrounds/commitee_members_bg.webm" />
+          src="/images/backgrounds/commitee_members_bg.webm"
+        />
 
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
         <div className="container-fluid z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
@@ -83,7 +94,7 @@ export default async function Home() {
           className="!bg-transparent"
           theme="dark"
           title={"Steering Committee Members"}
-          speakers={speakers}
+          speakers={speakerData}
           // link={"#"}
           cardSize="sm"
         />
@@ -91,12 +102,16 @@ export default async function Home() {
       <MemberSlider
         className="bg-white"
         title={"Scientific Committee Members"}
-        speakers={speakers}
+        speakers={speakerData}
         // link={"#"}
       />
       <WhyAttend>
         {/* <EventLists /> */}
-        <EventAgenda dataList={agenda} className="!w-full bg-indigo/50 px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]" />
+        <EventAgenda
+          showViewAll={true}
+          dataList={agenda}
+          className="!w-full bg-indigo/50 px-5 lg:px-10 rounded-4xl lg:py-15 py-6 backdrop-blur-[4px]"
+        />
       </WhyAttend>
       <SpeakerSlider speakers={speakers} />
       <VideoPreview
@@ -104,7 +119,7 @@ export default async function Home() {
         // embedUrl={"https://www.youtube.com/embed/sample"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <SponsorsBlock />
+      <SponsorsBlock sponsors={sponsors} />
     </main>
   );
 }

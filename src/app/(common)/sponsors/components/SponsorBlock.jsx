@@ -18,15 +18,15 @@ const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
         <div className="relative mx-auto">
           <HorizontalCardStagger className="py-3 grid grid-col-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 2xl:gap-8">
             {sponsors.map((sponsor, i) => (
-              <div
+              sponsor.logo&&<div
                 key={i}
-                className="card box-border flex flex-row justify-center items-center p-[26px]  h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0"
+                className="card box-border shadow-lg flex flex-row justify-center items-center p-[26px]  h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0"
               >
                 <Image
                   width={150}
                   height={40}
                   src={sponsor.logo}
-                  alt={sponsor.name}
+                  alt={sponsor.company_name||"sponsor"}
                   className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
                 />
               </div>

@@ -2,21 +2,21 @@ import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 
 const categories = [
-  {name:"Booth Category 1",type:"Free",link:"#"},
-  {name:"Booth Category 2",type:"Free",link:"#"},
-  {name:"Booth Category 3",type:"Free",link:"#"},
-  {name:"Booth Category 4",type:"Paid",link:"#"},
-  {name:"Booth Category 5",type:"Free",link:"#"},
-  {name:"Booth Category 6",type:"Free",link:"#"},
-  {name:"Booth Category 3",type:"Free",link:"#"},
-  {name:"Booth Category 4",type:"Free",link:"#"},
-  {name:"Booth Category 1",type:"Free",link:"#"},
-  {name:"Booth Category 2",type:"Free",link:"#"},
-  {name:"Booth Category 3",type:"Free",link:"#"},
-  {name:"Booth Category 4",type:"Free",link:"#"},
+  { name: "Booth Category 1", type: "Free", link: "#" },
+  { name: "Booth Category 2", type: "Free", link: "#" },
+  { name: "Booth Category 3", type: "Free", link: "#" },
+  { name: "Booth Category 4", type: "Paid", link: "#" },
+  { name: "Booth Category 5", type: "Free", link: "#" },
+  { name: "Booth Category 6", type: "Free", link: "#" },
+  { name: "Booth Category 3", type: "Free", link: "#" },
+  { name: "Booth Category 4", type: "Free", link: "#" },
+  { name: "Booth Category 1", type: "Free", link: "#" },
+  { name: "Booth Category 2", type: "Free", link: "#" },
+  { name: "Booth Category 3", type: "Free", link: "#" },
+  { name: "Booth Category 4", type: "Free", link: "#" },
 ];
 
-const CategoryList = () => (
+const CategoryList = ({ categories = [] }) => (
   <section className="container-fluid mx-auto w-full py-10 px-5 sm:px-0">
     <div className="text-center mb-2  text-secondary font-azonix font-semibold">
       Our Category
@@ -31,8 +31,16 @@ const CategoryList = () => (
           // className="bg-white rounded-xl shadow-md p-6 w-full max-w-xs flex flex-col items-center"
           className="bg-[#F2F5FE] card border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-center"
         >
-          <span className={`${cat.type === "Free" ? "bg-primary/19 text-primary" : "bg-[#0b993a50] text-[#1e611e]"} text-xs leading-[1.5] rounded-full px-4.75 mb-3`}>{cat.type}</span>
-          <span className="text-2xl text-[#111111CC] mb-4">{cat.name}</span>
+          <span
+            className={`${
+              cat.booth_category_details.price_amount
+                ? "bg-[#0b993a50] text-[#1e611e]"
+                : "bg-primary/19 text-primary"
+            } text-xs leading-[1.5] rounded-full px-4.75 mb-3`}
+          >
+            {cat.booth_category_details.price_amount?"Paid":"Free"}
+          </span>
+          <span className="text-2xl text-[#111111CC] mb-4">{cat.label||cat.booth_category_name}</span>
 
           {/* <PrimaryLink href={cat.link} className="w-fit group px-6 py-1 items-center gap-2 transition-all duration-300">
             <span className="leading-[100%] text-lg ">

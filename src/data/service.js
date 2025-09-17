@@ -13,7 +13,7 @@ const SERVICE = {
     },
     REGISTER:{
         PASS:'/microsite/v2/event-tickets',
-        SUBMIT:'/microsite/v1/form-registration',
+        SUBMIT:'/microsite/v2/form-registration',
     }
 };
 

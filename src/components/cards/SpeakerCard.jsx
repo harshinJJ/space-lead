@@ -21,7 +21,14 @@ const SpeakerCard = ({
     textSize === "sm"
       ? ` md:text-[1.375rem] text-lg leading-[1.5] tracking-[-1.5%]`
       : `3xl:text-[2.5rem] 2xl:text-4xl lg:text-[1.5rem] md:text-4xl text-4xl font-semibold leading-[1.1] tracking-[-1.5%]`;
-  const hoverName = speaker?.name?.split(".").pop().trim().split(" ").shift();
+  const hoverName = (
+    speaker?.name || `${speaker.firstname} ${speaker.lastname}`
+  )
+    ?.split(".")
+    .pop()
+    .trim()
+    .split(" ")
+    .shift();
   // const showOverlay = () => Math.random() < 0.5;
   return (
     <div
@@ -38,7 +45,7 @@ const SpeakerCard = ({
           style={{ color: color }}
           className={` font-semibold  ${labelClass} `}
         >
-          {speaker?.name}
+          {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </span>
         <h3 className={`text-white ${titleClass} mb-2`}>
           {speaker?.title || "Nail your  interviews"}
@@ -87,8 +94,12 @@ const SpeakerCard = ({
         <Image
           width={256}
           height={280}
-          src={speaker?.image || "/images/user_placeholder.jpeg"}
-          alt={speaker.name || "speaker_image"}
+          src={
+            speaker?.profile_pic ||
+            speaker?.image ||
+            "/images/user_placeholder.jpeg"
+          }
+          alt={speaker.name || `${speaker.firstname} ${speaker.lastname}` || "speaker_image"}
           className="w-full relative aspect-square object-cover object-[top_center]"
           style={{ borderRadius: "0.75rem" }}
         />

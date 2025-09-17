@@ -42,7 +42,6 @@ const BgOverlay = () => {
 };
 export default function RegistrationBlock({ type = "",passTypes=[],ticketType }) {
   const sessionList = passTypes.filter(pass=>pass.sales_ticket_type_name==ticketType)
-  // console.log("pasdasd",sessionList)
   const [session, setSession] = useState(sessionList[0]);
   const [success, setSuccess] = useState(false);
 
