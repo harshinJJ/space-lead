@@ -75,7 +75,8 @@ const MemberPreview = ({ speakerList=[] }) => {
       )}
       <MemberList
         selectAction={(speaker) => handleActiveSpeaker(speaker)}
-        speakers={speakerList}
+        // speakers={speakerList}
+        speakers={speakers}
         className="pb-0"
         title={
           activeSpeaker
@@ -94,7 +95,8 @@ const MemberPreview = ({ speakerList=[] }) => {
       />
       <MemberList
         title={"Moderator"}
-        speakers={speakerList}
+        // speakers={speakerList}
+        speakers={speakers}
         selectAction={(speaker) => handleActiveSpeaker(speaker)}
       />
     </>

@@ -1,6 +1,54 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 
+export const HomeTimer = ({ eventDate = "2025-11-09" }) => {
+  const calculateRemainingTime = () => {
+    const now = new Date();
+    const event = new Date(eventDate);
+    const diff = event - now;
+
+    if (diff <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    return { days, hours, minutes, seconds };
+  };
+
+  const [remainingTime, setRemainingTime] = useState(calculateRemainingTime());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRemainingTime(calculateRemainingTime());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [eventDate]);
+
+  return (
+    <div className="w-full flex flex-col gap-7.5 justify-center items-center font-gilroy-med">
+      <div className="flex lg:flex-row items-stretch xs:gap-3 gap-2 2xl:gap-10">
+        {Object.entries(remainingTime).map(([key, value]) => (
+          <div
+            key={key}
+            className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square p-2 xs:p-3.75 w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
+          >
+            <p className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
+              {String(value).padStart(2, "0")}
+            </p>
+            <p className="text-xs lg:text-sm 2xl:text-lg capitalize">{key}</p>
+          </div>
+        ))}
+      </div>
+      <div className=" w-full text-sm xs:text-base text-[#90D3D0] md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]">
+        Time is running out register now.
+      </div>
+    </div>
+  );
+};
 const TimerBlock = ({ eventDate = "2025-11-09" }) => {
   const calculateRemainingTime = () => {
     const now = new Date();

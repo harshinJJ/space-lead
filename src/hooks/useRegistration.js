@@ -204,6 +204,7 @@ const useRegistration = ({ type, onSuccess, session }) => {
 
     RegistrationServices.createFormData(formData)
       .then((res) => {
+        console.log("asdad",res)
         if (SUCCESS_CODES.includes(res.status)) {
           onSuccess && onSuccess(true);
           formik.resetForm();
@@ -216,6 +217,8 @@ const useRegistration = ({ type, onSuccess, session }) => {
             scrollToField(field);
             return;
           });
+        } else if(res?.message){
+          toast.error(res.message||"asdjkahsdaj,sd")
         }
         // if (res.status == 200) {
         //   formik.resetForm();

@@ -86,25 +86,26 @@ export default async function Home() {
 
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
         <div className="container-fluid z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
-          <div className="md:absolute mx-auto left-0 right-0 px-5 md:px-0 -translate-y-1/2 max-w-252.5 top-0 w-full">
+          <div className="lg:absolute mx-auto left-0 right-0 px-5 md:px-0 lg:translate-y-1/2 -translate-y-1/10 top-0 w-full">
             <StatsCard />
           </div>
         </div>
         <MemberSlider
           className="!bg-transparent"
           theme="dark"
-          title={"Steering Committee Members"}
+          // title={"Steering Committee Members"}
+          title={"Speakers"}
           speakers={speakerData}
           // link={"#"}
           cardSize="sm"
         />
       </section>
-      <MemberSlider
+      {/* <MemberSlider
         className="bg-white"
         title={"Scientific Committee Members"}
         speakers={speakerData}
         // link={"#"}
-      />
+      /> */}
       <WhyAttend>
         {/* <EventLists /> */}
         <EventAgenda

@@ -4,11 +4,19 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// const stats = [
+//   { label: "Exhibitors", value: "30+" },
+//   { label: "Sessions", value: "18+" },
+//   { label: "Speakers", value: "20+" },
+//   { label: "Workshops", value: "4+" },
+// ];
 const stats = [
-  { label: "Exhibitors", value: "30+" },
-  { label: "Sessions", value: "18+" },
+  { label: "Entities coming together", value: "100+" },
+  { label: "Companies Sponsors", value: "70+" },
+  { label: "Medial Outlets", value: "300+" },
+  { label: "Reach", value: "250+" },
   { label: "Speakers", value: "20+" },
-  { label: "Workshops", value: "4+" },
+  { label: "Nationalities ", value: "50+" },
 ];
 
 const Counter = ({ end, suffix = "" }) => {
@@ -43,19 +51,19 @@ const Counter = ({ end, suffix = "" }) => {
 };
 
 const StatsCard = () => (
-  <div className="flex  rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-0 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
+  <div className="grid grid-cols-1 lg:grid-cols-6 rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-12.5 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
     {stats.map((item, idx) => (
       <div
         key={item.label}
-        className={`flex-1 flex flex-col items-center justify-center  px-0 py-2 xl:py-5.75  ${
-          idx !== stats.length - 1 ? "border-r border-white/15" : ""
+        className={`flex-1 flex flex-col items-center justify-center  px-0 md:px-1 py-2 xl:py-5.75  ${
+          idx !== stats.length - 1 ? "lg:border-r border-white/15" : ""
         }`}
       >
         <Counter end={parseInt(item.value)} suffix="+" />
         {/* <span className="text-white font-extralight text-[2.5rem] md:text-[3.5rem] xl:text-[4rem] leading-none mb-2">
           {item.value}
         </span> */}
-        <span className="text-white/70 text-sm  md:text-base xl:text-lg font-normal tracking-wide">
+        <span className="text-white/70 text-sm text-center md:text-base xl:text-lg font-normal tracking-wide">
           {item.label}
         </span>
       </div>

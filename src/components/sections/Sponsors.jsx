@@ -6,6 +6,7 @@ import "swiper/css/free-mode";
 import { PrimaryDualTextLink, PrimaryLink } from "../buttons/PrimaryButton";
 import Image from "next/image";
 import { RowStagger } from "@/utils/animations/CardStagger";
+import Link from "@/utils/CustomLink";
 
 const sponsorData = [
   { name: "Datab", logo: "/images/logos/sponsor1.png" },
@@ -250,7 +251,7 @@ export const SponsorList = ({ showSlides = true, sponsors = [] }) => {
                           width={150}
                           height={40}
                           src={sponsor.logo || "/logo.png"}
-                          alt={sponsor.company_name || sponsor.id||"sponsor"}
+                          alt={sponsor.company_name || sponsor.id || "sponsor"}
                           className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
                         />
                       </div>
@@ -305,5 +306,63 @@ export const SponsorContentRight = () => {
         </div>
       </RowStagger>
     </section>
+  );
+};
+
+export const SponsorScroll = ({ sponsors = [] }) => {
+  return (
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={2}
+        freeMode={true}
+        modules={[FreeMode]}
+        className="!w-full !py-3"
+        speed={3000} // control smoothness
+        breakpoints={{
+          640: { slidesPerView: 2, spaceBetween: 40 },
+          768: { slidesPerView: 3, spaceBetween: 40 },
+          1024: { slidesPerView: 4, spaceBetween: 10 },
+          1280: { slidesPerView: 5, spaceBetween: 10 },
+          1400: { slidesPerView: 5, spaceBetween: 40 },
+          1536: { slidesPerView: 6, spaceBetween: 40 },
+          1728: { slidesPerView: 6, spaceBetween: 40 },
+          1920: { slidesPerView: "auto", spaceBetween: 20 },
+        }}
+        
+      preventClicks={false}
+      preventClicksPropagation={false}
+      >
+        {sponsors.map((sponsor, idx) => (
+          <SwiperSlide className="3xl:!w-[248px] hover:scale-[1.2]" key={idx}>
+            <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
+              <Image
+                width={150}
+                height={40}
+                src={sponsor.logo}
+                alt={sponsor.name}
+                className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+        <SwiperSlide className="" >
+          <Link href={"/sponsors"} className="box-border flex flex-row justify-center gap-4 items-center h-[86.96px]">
+            <span>View All Sponsors</span>
+            <svg
+            className="animate-goto"
+              width="22"
+              height="15"
+              viewBox="0 0 22 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M-3.0598e-07 7.5C-3.15693e-07 7.72222 0.0694441 7.90278 0.208333 8.04167C0.347222 8.18056 0.527777 8.25 0.75 8.25L19.1667 8.25L14.25 13.1667C14.0833 13.3333 14 13.5278 14 13.75C14 13.9722 14.0833 14.1528 14.25 14.2917C14.4167 14.4306 14.6111 14.5 14.8333 14.5C15.0556 14.5 15.25 14.4444 15.4167 14.3333L21.6667 8.08333C21.7778 7.91667 21.8333 7.72222 21.8333 7.5C21.8333 7.27778 21.7778 7.08333 21.6667 6.91667L15.4167 0.666667C15.25 0.555556 15.0556 0.500001 14.8333 0.500001C14.6111 0.500001 14.4167 0.569445 14.25 0.708334C14.0833 0.847223 14 1.02778 14 1.25C14 1.47222 14.0833 1.66667 14.25 1.83333L19.1667 6.75L0.75 6.75C0.527778 6.75 0.347222 6.81944 0.208333 6.95833C0.0694442 7.09722 -2.96266e-07 7.27778 -3.0598e-07 7.5Z"
+                fill="white"
+              />
+            </svg>
+          </Link>
+        </SwiperSlide>
+      </Swiper>
   );
 };

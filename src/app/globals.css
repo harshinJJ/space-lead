@@ -60,6 +60,7 @@
   --font-orbitron: var(--font-orbitron);
 
   --animate-float: float-up-down 1s ease-in-out infinite;
+  --animate-goto: goto 1s ease-in-out infinite;
 }
 
 @layer utilities {
@@ -104,6 +105,18 @@
     }
     100% {
       transform: translateY(0);
+    }
+  }
+
+  @keyframes goto {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-10px);
+    }
+    100% {
+      transform: translateX(0);
     }
   }
 

@@ -11,7 +11,6 @@ export async function customFetch(path, options = {}) {
       // next: { revalidate },  //activate for caching
       ...rest,
     });
-
     if (!res.ok) {
       throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
     }

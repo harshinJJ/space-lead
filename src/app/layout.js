@@ -6,6 +6,7 @@ import RegisterBtn from "@/components/common/RegisterBtn";
 import GsapProvider from "@/utils/GsapProvider";
 import PageLoader from "@/utils/animations/PageLoader";
 import RecaptchaProvider from "@/contexts/RecaptchaProvider";
+import { Toaster } from "react-hot-toast";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
           </GsapProvider>
         </RecaptchaProvider>
         <RegisterBtn />
+        <Toaster />
       </body>
     </html>
   );

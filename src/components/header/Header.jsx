@@ -190,9 +190,14 @@ const Header = () => {
             aria-label="Main Navigation"
             className="flex relative flex-col xl:flex-row justify-between items-center"
           >
-            <Link href="/" className="logo">
-              <Image width={132} height={60} src="/logo.png" alt="logo" />
-            </Link>
+            <div className="flex items-center 2xl:gap-7.5 md:gap-4 gap-2">
+              <div className="hidden xl:block rounded-[5px] overflow-h">
+                <Image width={113} height={54} src="/logo_secondary.png" alt="logo" />
+              </div>
+              <Link href="/" className="logo">
+                <Image width={132} height={60} src="/logo.png" alt="logo" />
+              </Link>
+            </div>
             <button
               className=" absolute left-0 mx-auto top-0 bottom-0 xl:hidden focus:outline-none"
               onClick={toggleMenu}
