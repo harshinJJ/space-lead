@@ -8,19 +8,27 @@ import Image from "next/image";
 
 const LatestInfo = () => {
   const points = [
-    "Space medicine researchers and healthcare professionals",
-    "Scientists and academic researchers",
-    "Policy-makers and government agencies",
-    "Space industry professionals and entrepreneurs",
-    "Graduate students in STEM and advanced engineering",
-    "Investors in the space sector",
+    "Aerospace Engineers",
+    "Space Medicine Professionals",
+    "Scientists & Researchers",
+    "Policymakers & Agencies",
+    "Industry Professionals",
+    "Students",
   ];
+  // const points = [
+  //   "Space medicine researchers and healthcare professionals",
+  //   "Scientists and academic researchers",
+  //   "Policy-makers and government agencies",
+  //   "Space industry professionals and entrepreneurs",
+  //   "Graduate students in STEM and advanced engineering",
+  //   "Investors in the space sector",
+  // ];
 
   return (
-    <section className="container-fluid !w-full mx-auto px-5 md:px-10 rounded-4xl bg-indigo/72 py-15 text-white">
+    <section className="container-fluid !w-full mx-auto px-5 md:px-10 rounded-4xl bg-black py-15 text-white">
       {/* Top Section */}
       <div className="xl:max-w-[1187px] mx-auto lg:px-4">
-        <p className="text-lg text-secondary mb-5">Get the latest info about</p>
+        {/* <p className="text-lg text-secondary mb-5">Get the latest info about</p> */}
         <div className="flex flex-col lg:flex-row gap-15 xl:gap-20 items-start justify-between">
           {/* Left Content */}
           <div className="max-w-">
@@ -29,11 +37,11 @@ const LatestInfo = () => {
             </h2>
             <div className="mt-6">
               <p className="mb-2.5 text-lg">For Whom</p>
-              <ul className=" space-y-3">
+              <ul className=" space-y-4">
                 {points.map((point, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-2.5 text-lg text-[#B3B3B3]"
+                    className="flex items-center gap-2.5 text-lg text-white font-gilroy-bold"
                   >
                     <svg
                       width="18"
@@ -58,28 +66,27 @@ const LatestInfo = () => {
           <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-end w-full lg:w-auto gap-4 lg:gap-0">
             <div className="relative transform  lg:translate-x-[1.625rem] bg-gradient-to-b from-secondary to-[#2A5A59] rounded-4xl px-6.5 py-10.25 text-center shadow-lg">
               <p className="text-6xl xl:text-[6.25rem] font-azonix text-tertiary">
-                14
+                09
               </p>
-              <p className="text-xl xl:text-[2rem]">JULY-2025</p>
+              <p className="text-xl xl:text-[2rem]">NOV-2025</p>
             </div>
             <div className=" relative transform lg:translate-y-[33%] bg-gradient-to-b from-primary to-[#2E1D39] rounded-4xl px-6.5 py-10.25 text-center shadow-lg">
               <p className="text-6xl xl:text-[6.25rem] font-azonix text-secondary">
-                15
+                11
               </p>
-              <p className="text-xl xl:text-[2rem]">JULY-2025</p>
+              <p className="text-xl xl:text-[2rem]">NOV-2025</p>
             </div>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="pt-10 lg:py-25 lg:pb-12.5">
+        {/* <div className="pt-10 lg:py-25 lg:pb-12.5">
           <StatsCard />
-        </div>
+        </div> */}
       </div>
 
       {/* Testimonials */}
-      <RowStagger className="lg:max-w-[1593px] w-full mx-auto lg:px-4 lg:ps-15 py-16 flex flex-col lg:flex-row gap-3 gap-y-10 items-start">
-        {/* Image */}
+      {/* <RowStagger className="lg:max-w-[1593px] w-full mx-auto lg:px-4 lg:ps-15 py-16 flex flex-col lg:flex-row gap-3 gap-y-10 items-start">
         <div className="relative flex flex-col lg:flex-row gap-5 w-full lg:w-1/2 flex-shrink-0">
           <Image
             width={536}
@@ -94,7 +101,6 @@ const LatestInfo = () => {
           </div>
         </div>
 
-        {/* Testimonial Card */}
         <div className="w-full lg:w-1/2 flex flex-col justify-start">
           <p className="text-primary font-azonix mb-5">Testimonials</p>
           <h3 className="xl:text-[2.875rem] lg:text-4xl md:text-2xl text-xl font-bold xl:mb-15 mb-10 font-orbitron">
@@ -102,7 +108,7 @@ const LatestInfo = () => {
           </h3>
           <TestimonialsSlider />
         </div>
-      </RowStagger>
+      </RowStagger> */}
     </section>
   );
 };

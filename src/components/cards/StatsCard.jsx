@@ -51,11 +51,11 @@ const Counter = ({ end, suffix = "" }) => {
 };
 
 const StatsCard = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-6 rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-12.5 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
+  <div className="grid grid-cols-1 lg:grid-cols-6 rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-5 xl:px-12.5 py-2 md:py-2 lg:py-3 w-full justify-between items-stretch">
     {stats.map((item, idx) => (
       <div
         key={item.label}
-        className={`flex-1 flex flex-col items-center justify-center  px-0 md:px-1 py-2 xl:py-5.75  ${
+        className={`flex-1 flex flex-col items-center justify-center  px-0 md:px-0.5 py-2 xl:py-5.75  ${
           idx !== stats.length - 1 ? "lg:border-r border-white/15" : ""
         }`}
       >
@@ -63,7 +63,7 @@ const StatsCard = () => (
         {/* <span className="text-white font-extralight text-[2.5rem] md:text-[3.5rem] xl:text-[4rem] leading-none mb-2">
           {item.value}
         </span> */}
-        <span className="text-white/70 text-sm text-center md:text-base xl:text-lg font-normal tracking-wide">
+        <span className={`text-white/70 text-sm text-center md:text-base xl:text-lg font-normal tracking-wide ${item.label?.length>10?" lg:text-xs xl:text-sm":""}`}>
           {item.label}
         </span>
       </div>

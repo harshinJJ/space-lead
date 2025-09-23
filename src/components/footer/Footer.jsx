@@ -180,7 +180,7 @@ const Footer = () => {
     { label: "Cookie Policy", url: "/cookie-policy" },
   ];
   return (
-    <footer className="relative bg-indigo bg-cover bg-center bg-no-repeat text-white">
+    <footer className="relative bg-black bg-cover bg-center bg-no-repeat text-white">
       <BgOverlay />
       <nav
         aria-label="Footer Navigation"

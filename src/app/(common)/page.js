@@ -14,6 +14,10 @@ import MemberSlider from "@/components/sections/MemberSlider";
 import StatsCard from "@/components/cards/StatsCard";
 import speakerData from "@/../public/assets/json/speakers-data.json";
 import PublicServices from "@/services/publicServices";
+import ExhibitorList from "./exhibitor/components/ExhibitorList";
+import OutExhibitor from "@/components/sections/OurExhibitor";
+import PressRelease from "@/components/sections/PressRelease";
+import AppPreview from "@/components/sections/AppPreview";
 
 // const speakers = [
 //   {
@@ -86,28 +90,33 @@ export default async function Home() {
 
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
         <div className="container-fluid z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
-          <div className="lg:absolute mx-auto left-0 right-0 px-5 md:px-0 lg:translate-y-1/2 -translate-y-1/10 top-0 w-full">
+          <div className="lg:absolute mx-auto left-0 right-0 px-5 md:px-0 lg:-translate-y-1/2 -translate-y-1/10 top-0 w-full">
             <StatsCard />
           </div>
         </div>
         <MemberSlider
-          className="!bg-transparent"
+          className="!bg-transparent pt-5 lg:pt-20"
           theme="dark"
           // title={"Steering Committee Members"}
           title={"Speakers"}
           speakers={speakerData}
           // link={"#"}
           cardSize="sm"
+          showNavButton={true}
+          navLabel="View All Speakers"
+          navLink="/speakers"
         />
       </section>
+      <OutExhibitor showNavButton={true} navLabel="Become an Exhibitor" navLink="/registration" />
+      <PressRelease showNavButton={true} />
+      <AppPreview/>
       {/* <MemberSlider
         className="bg-white"
         title={"Scientific Committee Members"}
         speakers={speakerData}
         // link={"#"}
       /> */}
-      <WhyAttend>
-        {/* <EventLists /> */}
+      {/* <WhyAttend>
         <EventAgenda
           showViewAll={true}
           dataList={agenda}
@@ -117,10 +126,9 @@ export default async function Home() {
       <SpeakerSlider speakers={speakers} />
       <VideoPreview
         videoUrl={"/videos/sample.mp4"}
-        // embedUrl={"https://www.youtube.com/embed/sample"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <SponsorsBlock sponsors={sponsors} />
+      <SponsorsBlock sponsors={sponsors} /> */}
     </main>
   );
 }

@@ -15,12 +15,12 @@ const nextConfig = {
         pathname: "/**",
       },
       {
-        protocol: "http",
-        hostname: "ecc6da915a50.ngrok-free.app",
+        protocol: "https",
+        hostname: new URL(process.env.NEXT_PUBLIC_BASE_URL).hostname,
         pathname: "/**",
       },
       {
-        protocol: "https",
+        protocol: "http",
         hostname: new URL(process.env.NEXT_PUBLIC_BASE_URL).hostname,
         pathname: "/**",
       },

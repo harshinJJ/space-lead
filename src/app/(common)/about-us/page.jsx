@@ -9,6 +9,9 @@ import speakers from "@/../public/assets/json/speakers-data.json";
 
 import MemberList from "@/components/sections/MemberList";
 import PublicServices from "@/services/publicServices";
+import MemberSlider from "@/components/sections/MemberSlider";
+import FocusAreas from "@/components/sections/FocusAreas";
+import TheSpaces from "@/components/sections/TheSpaces";
 
 export const metadata = {
   title: "About Us",
@@ -31,28 +34,55 @@ const About = async () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
 
-        <MemberList
+        <FocusAreas
           className="bg-transparent"
-          title={"Steering Committee Members"}
-          speakers={speakers}
+          label={"What We Explore"}
+          title={"Focus Areas"}
+          data={speakers}
           theme="dark"
-          cardSize="sm"
         />
       </section>
-      <MemberList
+
+      <MemberSlider
         className="bg-white"
-        title={"Scientific Committee Members"}
+        title={"Steering Committee"}
+        label={"Visionaries Behind Space Lead’25"}
         speakers={speakers}
+        cardSize="sm"
       />
+      <section className="relative bg-transparent bg-cover bg-[center]">
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute absolute-center w-full h-full object-cover"
+          src="/images/backgrounds/commitee_members_bg.webm"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
+
+        <MemberList
+          className="bg-transparent"
+          title={"Scientific Committee  "}
+          speakers={speakers.splice(0, 4)}
+          theme="dark"
+          cardSize="lg"
+        />
+      </section>
       <WhyAttend>
         <LatestInfo />
       </WhyAttend>
+      <TheSpaces
+        title={"The Spaces"}
+        description={
+          "Discover Space Lead, Explore the Four immersive spaces designed to engage, inspire, and transform."
+        }
+      />
       {/* <Marquee /> */}
-      <VideoPreview
+      {/* <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <SponsorsBlock sponsors={sponsors} hasFaq={true} />
+      <SponsorsBlock sponsors={sponsors} hasFaq={true} /> */}
     </main>
   );
 };
