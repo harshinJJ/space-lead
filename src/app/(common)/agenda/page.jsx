@@ -20,14 +20,15 @@ export default async function Agenda() {
   return (
     <main>
       <section className=" bg-indigo bg-center bg-cover py-20 ">
-        <EventAgenda dataList={agenda} className=" px-4 xl:px-15.75 " />
+        <EventAgenda label="Your agenda, your way  --  Never miss a moment." title="Experience what’s now. 
+Explore what’s next." dataList={agenda} className=" px-4 xl:px-15.75 " />
       </section>
       {/* <Marquee /> */}
-      <VideoPreview
+      {/* <VideoPreview
         videoUrl={"/videos/sample.mp4"}
         thumbnail={"/images/video_thumbnail.png"}
       />
-      <SponsorsBlock sponsors={sponsors} />
+      <SponsorsBlock sponsors={sponsors} /> */}
     </main>
   );
 }

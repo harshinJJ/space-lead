@@ -1,26 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import MemberList from "@/components/sections/MemberList";
-import PrimaryButton, {
-  PrimaryDualTextLink,
-} from "@/components/buttons/PrimaryButton";
+// import MemberList from "@/components/sections/MemberList";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SpeakerAbout from "./SpeakerAbout";
 import SpeakerAgenda from "./SpeakerAgenda";
-import SpeakerCard from "@/components/cards/SpeakerCard";
-import { scrollToTop } from "@/utils/util";
-import speakers from "@/../public/assets/json/speakers-data.json";
+// import speakers from "@/../public/assets/json/speakers-data.json";
+import SpeakerGroup from "./SpeakerGroup";
+import Image from "next/image";
 
-
-const MemberPreview = ({ speakerList=[] }) => {
-  const [activeSpeaker, setActiveSpeaker] = useState(null);
+const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
   const [activeTab, setActiveTab] = useState(0);
-
-  const handleActiveSpeaker = (speaker) => {
-    setActiveSpeaker(speaker);
-    setActiveTab(0);
-    // window.scrollTo({ top: 0, behavior: "smooth" });
-    scrollToTop(1000);
-  };
 
   return (
     <>
@@ -31,25 +20,43 @@ const MemberPreview = ({ speakerList=[] }) => {
             <div
               className={`flex flex-col gap-5 sm:flex-row md:items-start md:justify-between mt-2`}
             >
-              <h2
+              {/* <h2
                 className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix text-[#000222] leading-snug `}
               >
                 MEET OUR INDUSTRY EXPERT AND PROFESSIONAL SPEAKERS
-              </h2>
-
-              {/* <PrimaryDualTextLink
-              className="mt-2.5"
-                initialText={"Buy Ticket"}
-                // hoverText={"Join The Event"}
-              /> */}
+              </h2> */}
             </div>
           </div>
 
           <div className="container-fluid w-full mx-auto flex flex-col items-center lg:items-start lg:flex-row xl:gap-8.75 gap-5 xl:px-15.75 px-5">
-            <div className="xl:w-1/4 lg:w-2/5 sm:max-w-3/4 md:1/2 w-full">
-              <SpeakerCard speaker={activeSpeaker} showBtn={true} />
+            <div className="xl:w-1/4 lg:w-2/5 sm:max-w-3/4 bg- md:1/2 w-full">
+              {/* <SpeakerCard speaker={activeSpeaker} showBtn={true} /> */}
+              <div className="flex flex-col items-center gap-7 px-4 py-5 rounded-2xl bg-black">
+                <div className=" aspect-[298/272] w-full rounded-2xl overflow-hidden relative ">
+                  <Image
+                    fill
+                    src={
+                      activeSpeaker?.profile_pic ||
+                      activeSpeaker?.image ||
+                      "/images/user_placeholder.jpeg"
+                    }
+                    alt={
+                      activeSpeaker.name ||
+                      `${activeSpeaker.firstname} ${activeSpeaker.lastname}` ||
+                      "speaker_image"
+                    }
+                    className="w-full h-full absolute object-contain object-[bottom_center] bg-white"
+                  />
+                </div>
+                <h3
+                  className={`text-white font-semibold text-2xl leading-[1.5] text-center`}
+                >
+                  {activeSpeaker?.name ||
+                    `${activeSpeaker.firstname} ${activeSpeaker.lastname}`}
+                </h3>
+              </div>
             </div>
-            <div className="flex-3/4">
+            {activeSpeaker&&<div className="flex-3/4">
               <div className="flex bg bg-gradient-to-r from-white to-transparent w-full rounded-l-lg p-1 items-center  border border-[#E4E4E7]">
                 {["About", "Agenda"].map((tab, i) => (
                   <PrimaryButton
@@ -66,38 +73,22 @@ const MemberPreview = ({ speakerList=[] }) => {
                 ))}
               </div>
               {activeTab === 0 && <SpeakerAbout speaker={activeSpeaker} />}
-              {activeTab === 1 && <SpeakerAgenda agenda={activeSpeaker?.agenda_sessions} />}
+              {activeTab === 1 && (
+                <SpeakerAgenda agenda={activeSpeaker?.agenda_sessions} />
+              )}
               {/* <div className="hidden lg:block border-b lg:w-6/10 lg:mt-6 border-[#D7D7D7]" /> */}
-            </div>
+            </div>}
           </div>
           <div className="hidden lg:block border-b lg:w-1/3 mx-auto lg:mt-6 border-[#D7D7D7]" />
         </section>
       )}
-      <MemberList
-        selectAction={(speaker) => handleActiveSpeaker(speaker)}
-        // speakers={speakerList}
-        speakers={speakers}
-        className="pb-0"
-        title={
-          activeSpeaker
-            ? "Steering Committee Members"
-            : "MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"
-        }
-        // label={!activeSpeaker && "Steering Committee Members"}
-        // navComponent={
-        //   !activeSpeaker && (
-        //     <PrimaryDualTextLink
-        //       initialText={"Buy Ticket"}
-        //       // hoverText={"Join The Event"}
-        //     />
-        //   )
-        // }
-      />
-      <MemberList
-        title={"Moderator"}
-        // speakers={speakerList}
-        speakers={speakers}
-        selectAction={(speaker) => handleActiveSpeaker(speaker)}
+
+      <SpeakerGroup
+        className="!pt-7.5 !text-black !bg-[#EDF0FE]"
+        speakers={speakerList}
+        title={"Speakers"}
+        showGroupBg={false}
+        cardStyle="primary"
       />
     </>
   );

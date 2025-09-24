@@ -32,8 +32,6 @@ const dataList = [
 const TheSpaces = ({
   title,
   description,
-  theme = "light",
-  selectAction,
   className = "",
 }) => {
   return (
@@ -44,18 +42,22 @@ const TheSpaces = ({
         >
           {title && (
             <h2
-              className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-orbitron text-white 2xl:leading-snug  `}
+              className={`text-lg xs:text-2xl lg:text-5xl 2xl:text-[4rem] font-orbitron text-white leading-[1] font-medium mb-8.5`}
             >
               {title}
             </h2>
           )}
-          {description && <p className="text-secondary font-azonix text-center lg:max-w-[80%]">{description}</p>}
+          {/* {description && <p className="text-secondary font-azonix text-center lg:max-w-[50%]">{description}</p>} */}
+          <p className="text-secondary font-azonix text-center ">
+            Discover Space Lead, Explore the Four <br /> immersive spaces designed to
+            engage, inspire, and transform.
+          </p>
         </div>
-        <HorizontalCardStagger className="grid grid-cols-1 lg:grid-cols-2 lg:gap-7.5 gap-5 justify-items-center w-full">
+        <HorizontalCardStagger className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6 2xl:gap-x-16 2xl:gap-y-11.5 gap-5 justify-items-center w-full">
           {dataList.map((item, i) => (
             <div
               key={i}
-              className=" rounded-2xl p-5.5 flex items-center gap-5 w-full"
+              className=" bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex items-center gap-5 w-full"
             >
               <div className="flex flex-col items-center justify-center uppercase aspect-square  font-light text-[#D018B8] rounded-4xl p-5 2xl:p-7.5 shrink-0">
                 <div className="text-[4rem] leading-[1]">

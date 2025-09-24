@@ -133,15 +133,15 @@ export default function EventAgenda({
 }) {
   const [activeDay, setActiveDay] = useState("2025-11-09");
   const filteredEvents = dataList.filter((data) => data.event_day == activeDay);
-
+  
   return (
     <div className={`container-fluid mx-auto text-white ${className}`}>
-      <div className="flex flex-col lg:flex-row w-full justify-between items-stretch lg:mb-10 xl:mb-15">
-        <div className="flex flex-col justify-between 3xl:gap-3 gap-2">
+      <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:mb-10 xl:mb-15">
+        <div className="flex flex-col justify-between 3xl:gap-3 gap-2 lg:max-w-2/3">
           <p className="uppercase font-orbitron xl:text-base 3xl:text-lg w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
             {label}
           </p>
-          <h2 className=" font-orbitron text-2xl md:text-3xl 3xl:text-5xl xl:text-[2.6875rem] font-bold">
+          <h2 className=" font-azonix text-2xl md:text-3xl 3xl:text-5xl xl:text-[2.6875rem] font-bold">
             {title}
           </h2>
         </div>

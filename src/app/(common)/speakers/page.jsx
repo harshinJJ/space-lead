@@ -1,9 +1,6 @@
 import React from "react";
-import Marquee from "@/components/sections/Marquee";
-import { SponsorList } from "@/components/sections/Sponsors";
-import VideoPreview from "@/components/sections/VideoPreview";
-import MemberPreview from "./components/MemberPreview";
 import PublicServices from "@/services/publicServices";
+import SpeakerGroup from "./components/SpeakerGroup";
 
 export const metadata = {
   title: "Speakers",
@@ -15,8 +12,21 @@ export default async function Speakers() {
   );
   return (
     <main>
+      <SpeakerGroup
+        label="Speakers"
+        title={"Space & Advanced Engineering"}
+        className="!pb-7.5"
+        bgUrl="/images/backgrounds/speaker_group_bg2.jpg"
+        cardStyle="primary"
+        speakers={speakers}
+      />
+      <SpeakerGroup
+        label="Speakers"
+        title={"Space & Advanced Engineering"}
+        className="!pt-7.5"
+        speakers={speakers}
+      />
       {/* speakers block pending */}
-      <MemberPreview speakerList={speakers} />
       {/* <Marquee /> */}
       {/* <VideoPreview
         videoUrl={"/videos/sample.mp4"}

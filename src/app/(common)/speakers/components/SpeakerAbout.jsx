@@ -1,4 +1,5 @@
 import React from "react";
+import parse from "html-react-parser"
 
 const SpeakerAbout = ({ speaker }) => {
   return (
@@ -7,7 +8,8 @@ const SpeakerAbout = ({ speaker }) => {
         {speaker?.description instanceof Array ? (
           speaker.description.map((para, index) => <p key={index}>{para}</p>)
         ) : (
-          <p>{speaker.description}</p>
+          // <p>{speaker.description}</p>
+          speaker?.description&&parse(speaker?.description)
         )}
       </div>
 

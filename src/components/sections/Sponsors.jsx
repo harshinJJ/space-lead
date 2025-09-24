@@ -90,7 +90,7 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
   );
 };
 
-export const SponsorList = ({ showSlides = true, sponsors = [] }) => {
+export const SponsorList = ({ showSlides = true, sponsors = [],title="Sponsorship opportunities",description,label }) => {
   const show = showSlides && sponsors.some((item) => item.logo);
   return (
     <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
@@ -99,23 +99,24 @@ export const SponsorList = ({ showSlides = true, sponsors = [] }) => {
       <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
 
       <div className="container-fluid px-5 mx-auto lg:px-12.75 text-center">
-        <p className="text-secondary font-azonix text-lg mb-2">Our Sponsors</p>
-        <h2 className="text-2xl font-orbitron lg:text-[2.875rem] font-bold text-gray-900 mb-4">
-          Sponsorship opportunities
-        </h2>
-        <p
+        {label&&<p className="text-secondary font-azonix text-lg mb-2">{label}</p>}
+        {title&&<h2 className="text-2xl font-orbitron lg:text-[2.875rem] font-bold text-gray-900 mb-4">
+          {title}
+        </h2>}
+        {description&&<p
           className={`lg:max-w-[68.5rem] leading-[1.875rem] text-lg mx-auto text-[#303030] ${
             !show ? "mb-0" : ""
           } mb-10 `}
         >
-          The Space Lead ’25 Conference offers curated sponsorship opportunities
+          {description}
+          {/* The Space Lead ’25 Conference offers curated sponsorship opportunities
           designed to deliver strategic value and measurable impact. Gain
           exclusive visibility, immersive branding experiences, and tailored
           access to key stakeholders — including government leaders, educators,
           researchers, global investors, and C-level executives. Whether your
           goal is market expansion, thought leadership, lead generation, or
-          ecosystem engagement, choose your tier and lead the conversation.
-        </p>
+          ecosystem engagement, choose your tier and lead the conversation. */}
+        </p>}
       </div>
       {show && (
         <div className="relative mx-auto lg:pb-10 ">

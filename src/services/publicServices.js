@@ -44,6 +44,13 @@ const PublicServices = {
       return e;
     }
   },
+  getSpeaker: async (id) => {
+    try {
+      return await customFetch(`${SERVICE.CONTENT.SPEAKERS}/${id}`);
+    } catch (e) {
+      return e;
+    }
+  },
   getBooths: async () => {
     try {
       return await customFetch(SERVICE.CONTENT.BOOTHS);

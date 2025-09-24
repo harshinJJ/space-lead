@@ -1,3 +1,4 @@
+import { GoogleIcon, OutlookIcon } from "@/data/icons";
 import { format, parse, isValid } from "date-fns";
 import Image from "next/image";
 import React from "react";
@@ -26,14 +27,61 @@ export function formatEventDate(event) {
   )} - ${format(startDate, "dd MMM yyyy")}`;
 }
 
-const AgendaCard = ({ event, containerClass }) => {
-  
+function getEventDateRange(event) {
+  if (!event?.event_day || !event?.start_tm || !event?.end_tm) return null;
+
+  const startDate = parse(
+    `${event.event_day} ${event.start_tm}`,
+    "yyyy-MM-dd HH:mm:ss",
+    new Date()
+  );
+  const endDate = parse(
+    `${event.event_day} ${event.end_tm}`,
+    "yyyy-MM-dd HH:mm:ss",
+    new Date()
+  );
+
+  if (!isValid(startDate) || !isValid(endDate)) return null;
+
+  // Format to YYYYMMDDTHHmmssZ → required by Google/Outlook
+  const start = format(startDate, "yyyyMMdd'T'HHmmss'Z'");
+  const end = format(endDate, "yyyyMMdd'T'HHmmss'Z'");
+
+  return { start, end, startDate, endDate };
+}
+
+const AgendaCard = ({ event, containerClass,showAddtoCalender=true }) => {
   const eventDate = formatEventDate(event);
+  const title = event?.title || "Event";
+  const description =
+    event?.session_description || event?.description || "Event details";
+  const location = event?.hall_name || "Venue";
+
+  const dateRange = getEventDateRange(event);
+
+  const googleUrl = dateRange
+    ? `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+        title
+      )}&dates=${dateRange.start}/${dateRange.end}&details=${encodeURIComponent(
+        description
+      )}&location=${encodeURIComponent(location)}`
+    : "#";
+
+  // Outlook Calendar URL
+  const outlookUrl = dateRange
+    ? `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(
+        title
+      )}&body=${encodeURIComponent(
+        description
+      )}&startdt=${dateRange.startDate.toISOString()}&enddt=${dateRange.endDate.toISOString()}&location=${encodeURIComponent(
+        location
+      )}`
+    : "#";
   return (
     <div
-      className={`bg-gradient-to-r from-white/8 to-transparent to-90%  rounded-4xl px-[0.9375rem] py-[0.71875rem] flex flex-col lg:flex-row items-center gap-6 ${containerClass}`}
+      className={`bg-gradient-to-r from-white/8 to-transparent to-90%  rounded-4xl  px-8.5 py-5 flex flex-col lg:flex-row items-start justify-between gap-6 ${containerClass}`}
     >
-      <Image
+      {/* <Image
         width={309}
         height={197}
         src={event.image || "/logo.png"}
@@ -41,10 +89,10 @@ const AgendaCard = ({ event, containerClass }) => {
         className={`w-full lg:w-1/4 rounded-3xl object-cover bg-[#a2a2a2] ${
           event.image ? "" : "py-15 px-20"
         }`}
-      />
+      /> */}
       <div className="flex-1">
         <div className="grid grid-cols-2 lg:max-w-9/10">
-          <h3 className="text-2xl lg:max-w-3/4">{event.title}</h3>
+          <h3 className="text-2xl lg:max-w-3/4">{title}</h3>
           <div className="flex flex-col gap-2 text-teal-400 text-sm mt-1">
             <div className="flex items-center gap-5">
               <svg
@@ -74,14 +122,48 @@ const AgendaCard = ({ event, containerClass }) => {
                   fill="#5AC0BE"
                 />
               </svg>
+              <span>{location}</span>
+            </div>
+            <div className="flex items-center gap-5">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_2025_18492)">
+                  <path
+                    d="M5.13464 1.40734C5.25307 1.17719 5.31228 1.06211 5.39138 1.02454C5.46025 0.991819 5.5397 0.991819 5.60862 1.02454C5.68771 1.06211 5.74693 1.17719 5.86536 1.40734L6.59175 2.81886C6.64291 2.91823 6.66847 2.96791 6.70657 3.001C6.74018 3.03021 6.78055 3.05011 6.82376 3.05881C6.87276 3.06867 6.92665 3.05817 7.0344 3.03716L8.56477 2.73878C8.81429 2.69012 8.93907 2.6658 9.01708 2.70571C9.08502 2.74046 9.13453 2.80409 9.15249 2.87965C9.17314 2.96641 9.12224 3.08558 9.02038 3.32392L8.3958 4.78567C8.35181 4.88856 8.32987 4.94001 8.32832 4.99114C8.32698 5.03625 8.33694 5.08098 8.35729 5.12106C8.38031 5.16643 8.42192 5.20302 8.50514 5.2762L9.68709 6.31565C9.87981 6.48512 9.97615 6.56988 9.99432 6.65718C10.0102 6.73327 9.99246 6.81258 9.946 6.87408C9.89262 6.94472 9.7699 6.97825 9.52447 7.04529L8.01923 7.45651C7.91324 7.48549 7.86027 7.49998 7.82031 7.53065C7.78505 7.55767 7.75712 7.59357 7.73921 7.63481C7.71892 7.68156 7.71691 7.73766 7.71293 7.84992L7.6564 9.44446C7.64721 9.70446 7.64262 9.83443 7.58727 9.90343C7.53905 9.96355 7.4675 9.99887 7.39155 9.99998C7.30436 10.0013 7.20229 9.92389 6.99805 9.76918L5.74564 8.82025C5.65746 8.75347 5.61337 8.72005 5.56505 8.70715C5.5224 8.69578 5.47759 8.69578 5.43495 8.70715C5.38663 8.72005 5.34254 8.75347 5.25436 8.82025L4.00194 9.76918C3.79772 9.92389 3.69562 10.0013 3.60844 9.99998C3.53252 9.99887 3.46093 9.96355 3.41273 9.90343C3.35739 9.83443 3.35278 9.70446 3.34357 9.44446L3.28705 7.84992C3.28308 7.73766 3.28108 7.68156 3.26079 7.63481C3.24288 7.59357 3.21496 7.55767 3.17967 7.53065C3.13971 7.49998 3.08672 7.48549 2.98076 7.45651L1.47552 7.04529C1.23008 6.97825 1.10737 6.94472 1.054 6.87408C1.00752 6.81258 0.989848 6.73327 1.00567 6.65718C1.02383 6.56988 1.12019 6.48512 1.31291 6.31565L2.49487 5.2762C2.57808 5.20302 2.61968 5.16643 2.64271 5.12106C2.66303 5.08098 2.673 5.03625 2.67165 4.99114C2.67014 4.94001 2.64816 4.88856 2.60419 4.78567L1.97961 3.32392C1.87777 3.08558 1.82685 2.96641 1.84749 2.87965C1.86545 2.80409 1.915 2.74046 1.98293 2.70571C2.06091 2.6658 2.18569 2.69012 2.43522 2.73878L3.96561 3.03716C4.07335 3.05817 4.12722 3.06867 4.17621 3.05881C4.21947 3.05011 4.25982 3.03021 4.29344 3.001C4.33151 2.96791 4.35708 2.91823 4.40822 2.81886L5.13464 1.40734Z"
+                    stroke="#5AC0BE"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_2025_18492">
+                    <rect width="11" height="11" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+
               <span>{event.hall_name}</span>
             </div>
           </div>
         </div>
         <p className="mt-5 lg:max-w-17/20">
-          {event?.session_description || event?.description}
+          {description}
         </p>
       </div>
+      {showAddtoCalender&&<div className="bg-gradient-to-r from-white  to-indigo rounded-full flex items-center gap-3 py-1.5 px-3.5">
+        <a href={outlookUrl} target="_blank" rel="noopener noreferrer">
+          <OutlookIcon />
+        </a>
+        <a href={googleUrl} target="_blank" rel="noopener noreferrer">
+          <GoogleIcon />
+        </a>
+        <span>Add to my calender</span>
+      </div>}
     </div>
   );
 };

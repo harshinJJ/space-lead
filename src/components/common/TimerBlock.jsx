@@ -88,7 +88,7 @@ const TimerBlock = ({ eventDate = "2025-11-09" }) => {
           {Object.entries(remainingTime).map(([key, value]) => (
             <div
               key={key}
-              className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-white/3"
+              className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
             >
               <p className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
                 {String(value).padStart(2, "0")}

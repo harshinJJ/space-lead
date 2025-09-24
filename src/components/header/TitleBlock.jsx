@@ -75,7 +75,7 @@ const TitleBlock = ({ title }) => {
       <div className="container-fluid z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
           <div className="w-full flex flex-col gap-5 md:max-w-[50%] font-gilroy-med">
-            <PrimaryButton className="gap-1 px-11.25 py-4.5 w-fit text-[1.375rem] leading-[100%]">
+            <PrimaryButton className="gap-1 px-5 py-3.5 w-fit text-[1.375rem] !rounded-3xl leading-[100%] btn-gradient-secondary ">
               <svg
                 width="28"
                 height="28"

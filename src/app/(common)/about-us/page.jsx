@@ -12,6 +12,7 @@ import PublicServices from "@/services/publicServices";
 import MemberSlider from "@/components/sections/MemberSlider";
 import FocusAreas from "@/components/sections/FocusAreas";
 import TheSpaces from "@/components/sections/TheSpaces";
+import JoinUs from "@/components/sections/JoinUs";
 
 export const metadata = {
   title: "About Us",
@@ -68,14 +69,41 @@ const About = async () => {
           cardSize="lg"
         />
       </section>
-      <WhyAttend>
+      {/* <WhyAttend>
         <LatestInfo />
-      </WhyAttend>
-      <TheSpaces
-        title={"The Spaces"}
+      </WhyAttend> */}
+      <section className="relative bg-transparent bg-cover bg-[center]">
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute absolute-center w-full h-full object-cover"
+          src="/images/backgrounds/the_spaces_bg.webm"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
+        <TheSpaces
+          title={"The Spaces"}
+          description={
+            "Discover Space Lead, Explore the Four immersive spaces designed to engage, inspire, and transform."
+          }
+        />
+      </section>
+      <JoinUs
+        title="Be a part of the future"
         description={
-          "Discover Space Lead, Explore the Four immersive spaces designed to engage, inspire, and transform."
+          "Join global pioneers, innovators, and leaders in shaping tomorrow’s health and engineering advancements beyond Earth."
         }
+        navLinks={[
+          {
+            label: "Register Now ",
+            url: "/registration",
+            arrowDirection: "right",
+          },
+          {
+            label: "Explore Agenda ",
+            url: "/agendas",
+          },
+        ]}
       />
       {/* <Marquee /> */}
       {/* <VideoPreview

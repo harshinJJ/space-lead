@@ -342,6 +342,23 @@ button {
   transition-timing-function: ease-in-out;
   -o-transition-duration: 500ms;
 }
+  
+.btn-gradient-secondary {
+  background-image: linear-gradient(
+    to var(--bg-gradient-dir, right),
+    #68B1AF,
+    #00A8CE,
+    #68B1AF,
+    #b20d5d,
+    #4a0ab4
+  );
+  background-size: 300% 100%;
+  transition: all;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  -o-transition-duration: 500ms;
+}
+
 .btn-gradient:hover {
   background-position: 100% 0;
 }
@@ -371,6 +388,7 @@ button {
 .btn-transparent-gradien-active {
   background-position: 100% 0;
 }
+
 
 .text-stroke {
   -webkit-text-stroke: 2px #ffffff10; /* For WebKit browsers (Chrome, Safari) */

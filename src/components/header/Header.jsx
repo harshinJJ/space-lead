@@ -47,7 +47,7 @@ const RegisterBtn = () => {
       href="/registration"
       className=" gap-1.25 3xl:py-3.25 py-2.75 3xl:px-3.25 px-2.75 3xl:text-lg text-base leading-[100%]"
     >
-      <svg
+      {/* <svg
         width="22"
         height="22"
         viewBox="0 0 22 22"
@@ -79,7 +79,29 @@ const RegisterBtn = () => {
           strokeLinejoin="round"
         />
       </svg>
-      <span>Register Now</span>
+      <span>Register Now</span> */}
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 3V16M12 16L16 11.625M12 16L8 11.625"
+          stroke="white"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+          stroke="white"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+
+      <span>Download the App</span>
     </PrimaryLink>
   );
 };
@@ -91,19 +113,20 @@ const Header = () => {
   const pathname = usePathname();
   const navLinks = [
     { title: "Home", url: "/", type: "link" },
-    { title: "About Us", url: "/about-us", type: "link" },
+    { title: "About", url: "/about-us", type: "link" },
     { title: "Agenda", url: "/agenda", type: "link" },
     { title: "Speakers", url: "/speakers", type: "link" },
-    { title: "Sponsors", url: "/sponsors", type: "link" },
-    { title: "Exhibitor", url: "/exhibitor", type: "link" },
-    { title: "Gallery", url: "/media", type: "link" },
-    { title: "Contact Us", url: "/contact-us", type: "link" },
-    {
-      title: "Download the App",
-      url: "/registration",
-      Component: DownloadButton,
-    },
-    { title: "Register Now", url: "/registration", Component: RegisterBtn },
+    { title: "Sponsorship", url: "/sponsors", type: "link" },
+    { title: "Exhibition", url: "/exhibitor", type: "link" },
+    { title: "Registration", url: "/registration", type: "link" },
+    { title: "Media", url: "/media", type: "link" },
+    // { title: "Contact Us", url: "/contact-us", type: "link" },
+    // {
+    //   title: "Download the App",
+    //   url: "/registration",
+    //   Component: DownloadButton,
+    // },
+    { title: "Download the App", url: "#", Component: RegisterBtn },
   ];
 
   const pageLinks = [
@@ -119,13 +142,18 @@ const Header = () => {
       type: "link",
     },
     {
-      title: "Media Gallery",
+      title: "Media",
       url: "/media",
       type: "link",
     },
     {
       title: "Frequently Asked Questions",
       url: "/faq",
+      type: "link",
+    },
+    {
+      title: "Contact US",
+      url: "/contact-us",
       type: "link",
     },
     {
@@ -171,8 +199,10 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const activeLinkTitle =
-    pageLinks.filter((link) => link.url === pathname).pop()?.title || "";
+const activeLinkTitle =
+  pageLinks
+    .filter((link) => pathname.startsWith(link.url))
+    .pop()?.title || "";
   // pageLinks.find((link) => link.url === pathname)?.title || "";
   return (
     <header className="text-white ">
@@ -192,7 +222,12 @@ const Header = () => {
           >
             <div className="flex items-center 2xl:gap-7.5 md:gap-4 gap-2">
               <div className="hidden xl:block rounded-[5px] overflow-h">
-                <Image width={113} height={54} src="/logo_secondary.png" alt="logo" />
+                <Image
+                  width={113}
+                  height={54}
+                  src="/logo_secondary.png"
+                  alt="logo"
+                />
               </div>
               <Link href="/" className="logo">
                 <Image width={132} height={60} src="/logo.png" alt="logo" />

@@ -75,6 +75,7 @@ const AppPreview = ({
           width={350}
           height={724}
           className=""
+          alt="app-preview"
           src={"/images/app_preview.png"}
         />
       </div>

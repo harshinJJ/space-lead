@@ -65,13 +65,13 @@ const PressRelease = ({
   {dataList.map((item, i) => (
     <div
       key={i}
-      className="bg-[#F7F7F7] rounded-2xl p-5.5 flex items-center gap-5 w-full"
+      className="bg-[#F7F7F7] rounded-2xl p-5.5 flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full"
     >
-      <div className="flex flex-col items-center justify-center uppercase aspect-square bg-secondary font-semibold text-white rounded-4xl p-5 2xl:p-7.5 shrink-0">
-        <span className="text-2xl leading-[1]">
+      <div className="flex flex-col items-center justify-center uppercase aspect-square bg-secondary font-semibold text-white 2xl:rounded-4xl rounded-2xl p-2.5 sm:p-5 2xl:p-7.5 shrink-0">
+        <span className="md:text-2xl text-sm leading-[1]">
           {item.date && format(new Date(item.date), "MMMM")}
         </span>
-        <div className="text-[4rem] leading-[1]">
+        <div className="md:text-[4rem] text-3xl leading-[1]">
           {item.date && format(new Date(item.date), "dd")}
         </div>
       </div>

@@ -16,6 +16,7 @@
     "formik": "^2.4.6",
     "gsap": "^3.13.0",
     "heic2any": "^0.0.4",
+    "html-react-parser": "^5.2.6",
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
