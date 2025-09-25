@@ -51,7 +51,7 @@ const Counter = ({ end, suffix = "" }) => {
 };
 
 const StatsCard = ({stats=staticStats,className=""}) => (
-  <div className={`grid ${stats?.length>5?"grid-cols-1":`grid-cols-${stats.length}`} lg:grid-cols-${stats.length} rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-5 xl:px-12.5 py-2 md:py-2 lg:py-3 justify-between items-stretch w-full ${className}`}>
+  <div className={`grid  ${getGridCols(stats.length)} rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-5 xl:px-12.5 py-2 md:py-2 lg:py-3 justify-between items-stretch w-full ${className}`}>
     {stats.map((item, idx) => (
       <div
         key={item.label}
@@ -70,6 +70,25 @@ const StatsCard = ({stats=staticStats,className=""}) => (
     ))}
   </div>
 );
+
+const getGridCols = (len) => {
+  switch (true) {
+    case len > 6:
+      return "grid-cols-1 lg:grid-cols-1";
+    case len === 6:
+      return "grid-cols-1 lg:grid-cols-6";
+    case len === 5:
+      return "grid-cols-1 lg:grid-cols-5";
+    case len === 4:
+      return "grid-cols-1 lg:grid-cols-4";
+    case len === 3:
+      return "grid-cols-3 lg:grid-cols-3";
+    case len === 2:
+      return "grid-cols-2 lg:grid-cols-2";
+    default:
+      return "grid-cols-1 lg:grid-cols-6";
+  }
+};
 
 
 export default StatsCard;

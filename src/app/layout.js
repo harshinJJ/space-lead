@@ -35,15 +35,15 @@ export default function RootLayout({ children }) {
           className="fixed inset-0 bg-indigo z-[9999] pointer-events-none"
           style={{ transform: "translateX(-100%)" }} // start hidden to the left
         ></div>
-        <Header />
         <PageLoader />
         <RecaptchaProvider>
           <GsapProvider>
             {children}
-            <Footer />
           </GsapProvider>
         </RecaptchaProvider>
-        <RegisterBtn />
+        <RegisterBtn className="btn-gradient-secondary">
+          Register Now
+        </RegisterBtn>
         <Toaster />
       </body>
     </html>

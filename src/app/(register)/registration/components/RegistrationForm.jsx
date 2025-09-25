@@ -58,7 +58,7 @@ export default function RegistrationForm({
       <p className="uppercase text-lg text-center">
         Please enter your information
       </p>
-      <div className="flex flex-col md:flex-row gap-5 xl:gap-10 2xl:gap-22.5 w-full  text-black bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25">
+      <div className="flex flex-col lg:flex-row gap-5 xl:gap-10 2xl:gap-22.5 w-full  text-black bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25">
         <div className="flex-1">
           <div className="bg-white/10  text-black-b2 rounded-xl mb-4">
             <p className="font-light text-sm text-[#31313B] mb-1">
@@ -295,14 +295,14 @@ export default function RegistrationForm({
             <TicketSummary price={session.price_amount} currency={session.currency_name} />
           )}
         </div>
-        <div className="w-full md:w-80 lg:w-86.5 flex-shrink-0 flex flex-col items-center justify-start xl:px-4.5">
+        <div className="w-full  lg:w-86.5 flex-shrink-0 flex flex-col items-center justify-start xl:px-4.5">
           <BadgePreview
             name={
               formData.firstname || formData.lastname
                 ? `${formData.firstname} ${formData.lastname || ""}`
                 : undefined
             }
-            category={type}
+            category={session?.sales_ticket_type_name}
             title={formData.jobtitle || ""}
             organisation={formData.companyname || ""}
             badgeId={"Badgeid"}

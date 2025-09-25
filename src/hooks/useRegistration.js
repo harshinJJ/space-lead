@@ -204,7 +204,6 @@ const useRegistration = ({ type, onSuccess, session }) => {
 
     RegistrationServices.createFormData(formData)
       .then((res) => {
-        console.log("asdad",res)
         if (SUCCESS_CODES.includes(res.status)) {
           onSuccess && onSuccess(true);
           formik.resetForm();
@@ -346,7 +345,6 @@ const useRegistration = ({ type, onSuccess, session }) => {
 
   const handleFormSubmit = async () => {
     const errors = await formik.validateForm();
-    console.log("handleFormSubmit", errors);
 
     formik.setTouched(
       Object.keys(formik.initialValues).reduce((acc, key) => {

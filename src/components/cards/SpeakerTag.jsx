@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const SpeakerTag = ({
-  image = "/images/user_placeholder.jpeg",
+  image = "/images/user_placeholder.png",
   name,
   role,
   className,
@@ -16,7 +16,7 @@ const SpeakerTag = ({
           height={40}
           width={40}
           className="w-full h-full object-cover"
-          src={image||"/images/user_placeholder.jpeg"}
+          src={image||"/images/user_placeholder.png"}
           alt={name}
         />
       </div>

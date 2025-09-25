@@ -25,7 +25,7 @@ const SpeakerProfileCard = ({
         <p
           className={`text-[#272727] text-sm leading-[1.8] line-clamp-2 text-center`}
         >
-          {speaker?.short_description || "Short description"}
+          {speaker?.short_description || "Designation"}
         </p>
       </div>
       {/* Speaker image */}
@@ -36,14 +36,14 @@ const SpeakerProfileCard = ({
             src={
               speaker?.profile_pic ||
               speaker?.image ||
-              "/images/user_placeholder.jpeg"
+              "/images/user_placeholder.png"
             }
             alt={
               speaker.name ||
               `${speaker.firstname} ${speaker.lastname}` ||
               "speaker_image"
             }
-            className="w-full h-full absolute object-contain object-[bottom_center] bg-black"
+            className="w-full h-full object-contain object-[bottom_center] bg-black"
           />
         </div>
         <Link

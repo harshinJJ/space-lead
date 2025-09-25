@@ -95,15 +95,15 @@ const ContactForm = () => {
       <div className="container-fluid mx-auto lg:py-32.75 py-20">
         <DotPattern className="absolute top-13.5 right-0" />
 
-        <p className="relative text-secondary text-2xl font-azonix">
+        {/* <p className="relative text-secondary text-2xl font-azonix">
           Get Started
-        </p>
-        <div className="realtive flex justify-between items-center xl:pe-69.5 mb-8">
+        </p> */}
+        <div className="realtive flex flex-col md:flex-row justify-between items-center xl:pe-69.5 mb-8">
           <h2 className="font-azonix text-2xl md:text-3xl lg:text-[2.5rem] max-w-3/4 lg:max-w-[25ch] mb-8 leading-tight text-gray-900">
-            GET IN TOUCH WITH US. WE'RE HERE TO ASSIST YOU.
+            GET IN TOUCH WITH US
           </h2>
 
-          <div className="flex flex-col gap-3 lg:gap-6">
+          <div className="flex gap-3 lg:gap-6">
             <a
               href="#"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"

@@ -78,7 +78,7 @@ export default async function Sponsors() {
       />
       {/* <SponsorContentRight /> */}
       <TextScrollBlock description="“Sponsoring Space Lead ’25 positions your organization at the forefront of space innovation. Engage with global leaders, policymakers, and disruptors. Build credibility, amplify visibility, expand your network, and forge lasting partnerships." />
-      <section className="bg-white py-12.5 w-full">
+      <section className="bg-white py-12.5 w-full px-5">
         <StatsCard className="container-fluid mx-auto !max-w-217.5" stats={stats} />
       </section>
       <SponsorList title="Featured Sponsorship" sponsors={sponsors} />

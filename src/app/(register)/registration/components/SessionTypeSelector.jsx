@@ -25,24 +25,30 @@ const getTagBg = (theme) => {
 
 const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
   <>
-    <p className="text-secondary text-2xl text-center">
+    {/* <p className="text-secondary text-2xl text-center">
       Which session you wish to attend?
-    </p>
-    <div className="gap-5 grid grid-cols-1 md:grid-cols-2 w-full">
-      {sessions.map((session,i) => (
+    </p> */}
+    <div className="gap-5 grid grid-cols-1 lg:grid-cols-2 w-full">
+      {sessions.map((session, i) => (
         <SessionCard
           key={i}
           session={session}
           isSelected={selected === session.id}
           onSelect={() => onSelect(session)}
+          theme={i % 2 == 0 ? "secondary" : "primary"}
         />
       ))}
     </div>
   </>
 );
 
-const SessionCard = ({ session, isSelected, onSelect }) => {
-  const theme = session.price_amount?"primary":"secondary"
+const SessionCard = ({
+  session,
+  isSelected,
+  onSelect,
+  theme = "secondary",
+}) => {
+  // const theme = session.price_amount?"primary":"secondary"
   const gradientBg = getGradientBg(theme);
   return (
     <div
@@ -53,7 +59,7 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
       }`}
       onClick={onSelect}
     >
-      {theme == "primary" ? (
+      {/* {theme == "primary" ? (
         <svg
           width="176"
           height="87"
@@ -109,8 +115,8 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
             </linearGradient>
           </defs>
         </svg>
-      )}
-      {session.ticket_status_display && (
+      )} */}
+      {/* {session.ticket_status_display && (
         <div
           className={`text-sm aspect-square absolute -top-2 flex items-center justify-center -right-2 max-w-19.5 text-center transform  `}
         >
@@ -122,9 +128,9 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
             {session.ticket_status_display}
           </div>
         </div>
-      )}
+      )} */}
       {/* <div className="relative flex flex-col lg:gap-10 gap-5"> */}
-      <label className="relative flex flex-col lg:gap-10 gap-5 cursor-pointer">
+      <label className="relative flex flex-col cursor-pointer">
         <div className="flex items-center gap-2.5">
           <input
             type="radio"
@@ -133,26 +139,33 @@ const SessionCard = ({ session, isSelected, onSelect }) => {
             className="sr-only peer"
           />
           <span
-            className={`
-        w-6.25 h-6.25 rounded-full border-1 border-white flex items-center justify-center
-        peer-checked:border-white peer-checked:bg-transparent
-        transition-all duration-200
-      `}
+            className={`w-6.25 h-6.25 rounded-full border-1 border-white flex items-center justify-center peer-checked:border-white peer-checked:bg-transparent transition-all duration-200 `}
           >
             <span
-              className={`
-          w-3.25 h-3.25 rounded-full
-          ${isSelected ? "border-2 border-white bg-white" : ""}
-        `}
+              className={`w-3.25 h-3.25 rounded-full ${
+                isSelected ? "border-2 border-white bg-white" : ""
+              } `}
             ></span>
           </span>
-          <span className="text-white text-xl md:text-3xl ms-2">{session.ticket_name}</span>
+          <span className="text-white text-xl md:text-3xl ms-2">
+            {session.ticket_name}
+          </span>
         </div>
-        <span className={`text-white text-2xl md:text-5xl`}>
-          {session.price_amount
-            ? `${session.currency_name}.${session.price_amount.toFixed(2)}`
-            : "Free"}
-        </span>
+        {session.price_amount && (
+          <span className={`text-white text-2xl md:text-5xl lg:mt-10 mt-5`}>
+            {session.price_amount &&
+              `${session.currency_name}.${session.price_amount.toFixed(2)}`}
+          </span>
+        )}
+        {session.price_amount && (
+          <span
+            className={`text-[0.8125rem] ${
+              theme == "primary" ? "text-[#B853FF]" : "text-[#47F8F4]"
+            }`}
+          >
+            Inclusive of 15% VAT.
+          </span>
+        )}
       </label>
       {/* <div className="flex items-center gap-2.5">
           <input

@@ -34,7 +34,7 @@ const SpeakerCard = ({
         {hoverName}
       </div>
       {/* Speaker image */}
-      <div className="group-hover:scale-[1.2] transition-all duration-700 origin-bottom-center grow flex-1 flex items-end justify-center">
+      <div className="relative group-hover:scale-[1.2] transition-all duration-700 origin-bottom-center grow flex-1 flex items-end justify-center">
         {showOverlay && (
           <div
             className={`absolute h-2/3 w-3/4 top-0 bottom-0 left-0 right-0 m-auto bg-secondary/70`}
@@ -42,12 +42,11 @@ const SpeakerCard = ({
           ></div>
         )}
         <Image
-          width={256}
-          height={280}
+          fill
           src={
             speaker?.profile_pic ||
             speaker?.image ||
-            "/images/user_placeholder.jpeg"
+            "/images/user_placeholder.png"
           }
           alt={
             speaker.name ||
@@ -163,7 +162,7 @@ const SpeakerCardOld = ({
           src={
             speaker?.profile_pic ||
             speaker?.image ||
-            "/images/user_placeholder.jpeg"
+            "/images/user_placeholder.png"
           }
           alt={
             speaker.name ||
@@ -179,7 +178,7 @@ const SpeakerCardOld = ({
 };
 
 export const SpeakerSlideCard = ({
-  image = "/images/user_placeholder.jpeg",
+  image = "/images/user_placeholder.png",
   name = "",
   title = "",
   link = "#",
