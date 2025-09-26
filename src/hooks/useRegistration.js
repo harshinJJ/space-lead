@@ -11,9 +11,11 @@ import RegistrationServices from "@/services/registrationServices";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { SUCCESS_CODES } from "@/data/successCodes";
 
-const useRegistration = ({ type, onSuccess, session }) => {
+const useRegistration = ({ type, session }) => {
   const fieldRefs = useRef({});
   const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [successInfo,setSuccessInfo]=useState()
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [showV2, setShowV2] = useState(false);
@@ -200,13 +202,14 @@ const useRegistration = ({ type, onSuccess, session }) => {
 
     RegistrationServices.createFormData(formData)
       .then((res) => {
-        console.log("res",res)
-        if (SUCCESS_CODES.includes(res.status)&&res.data) {
+        console.log("res", res);
+        if (SUCCESS_CODES.includes(res.status) && res.data) {
           formik.setSubmitting(false);
-          if(res?.data?.redirect_type=="payment"&&res.data?.payment_url){
-            window.location.href=res.data?.payment_url
-          }else{
-            onSuccess && onSuccess(true);
+          if (res?.data?.redirect_type == "payment" && res.data?.payment_url) {
+            window.location.href = res.data?.payment_url;
+          } else {
+            setSuccess(true);
+            setSuccessInfo(res?.data?.data)
             formik.resetForm();
             window?.scrollTo({ top: 0, behavior: "smooth" });
           }
@@ -219,7 +222,7 @@ const useRegistration = ({ type, onSuccess, session }) => {
             formik.setSubmitting(false);
           });
         } else if (res?.message) {
-          toast.error(res.message,{id:"register-toast"});
+          toast.error(res.message, { id: "register-toast" });
           formik.setSubmitting(false);
         }
       })
@@ -339,6 +342,10 @@ const useRegistration = ({ type, onSuccess, session }) => {
     onSubmitRegistration,
     setRecaptchaToken,
     showV2,
+    success,
+    setSuccess,
+    successInfo,
+    setSuccessInfo,
   };
 };
 

@@ -60,34 +60,13 @@ export default function RegistrationBlock({
       <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
 
       {eventActive ? (
-        (!success) ? (
-          <div className="container-fluid mx-auto flex flex-col items-center justify-center  px-5">
-            <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center 2xl:!max-w-1/2 lg:!max-w-2/3">
-              Secure your place at the frontier of discovery.
-            </h2>
-            <div className="w-full flex flex-col gap-8 max-w-285">
-              <SessionTypeSelector
-                sessions={sessionList}
-                selected={session?.id}
-                onSelect={setSession}
-              />
-
-              <RegistrationForm
-                type={type}
-                paid={session?.price_amount ? true : false}
-                session={session}
-                onSuccess={() => setSuccess(true)}
-              />
-            </div>
-          </div>
-        ) : (
-          <div className="container-fluid mx-auto flex flex-col items-center justify-center lg:px-56.75 px-5">
-            <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
-              YOUR REGISTRATION
-            </h2>
-            <SuccessModal status="success" onContinue={() => setSuccess(false)} />
-          </div>
-        )
+        <RegistrationForm
+          sessionList={sessionList}
+          type={type}
+          paid={session?.price_amount ? true : false}
+          session={session}
+          onSuccess={() => setSuccess(true)}
+        />
       ) : (
         <div className="container-fluid mx-auto flex flex-col items-center justify-center xl:py-20 px-5">
           <ClosedModal onContinue={() => setSuccess(false)} />
