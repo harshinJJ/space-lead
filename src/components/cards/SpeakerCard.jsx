@@ -44,7 +44,7 @@ const SpeakerCard = ({
         <Image
           fill
           src={
-            speaker?.profile_pic ||
+            speaker?.profile_pic || speaker?.photo||
             speaker?.image ||
             "/images/user_placeholder.png"
           }
@@ -64,7 +64,7 @@ const SpeakerCard = ({
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </span>
         <h3 className={`text-secondary text-sm leading-[1.8]`}>
-          {speaker?.title || "CEO"}
+          {speaker?.designation}
         </h3>
       </div>
     </div>

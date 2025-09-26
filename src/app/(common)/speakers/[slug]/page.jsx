@@ -19,8 +19,8 @@ export default async function Speakers({ params,...props }) {
     PublicServices.getSpeakers(),
     PublicServices.getSpeaker(slug),
   ]);
-  const speakers = getFullfilled(speakersRes);
   const activeSpeaker = getFullfilled(speaker);
+  const speakers = getFullfilled(speakersRes).filter(item=>item?.id!=activeSpeaker?.id);
   return (
     <main>
       <MemberPreview activeSpeaker={activeSpeaker} speakerList={speakers} />

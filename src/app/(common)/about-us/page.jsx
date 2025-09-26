@@ -18,10 +18,10 @@ export const metadata = {
   title: "About Us",
 };
 const About = async () => {
-  const sponsors = await PublicServices.getSponsors().then(
+  const commitee = await PublicServices.getCommitee().then(
     (res) => res.data || []
   );
-
+  console.log("commitee",commitee)
   return (
     <main>
       <AboutInfo />
@@ -48,7 +48,7 @@ const About = async () => {
         className="bg-white"
         title={"Steering Committee"}
         label={"Visionaries Behind Space Lead’25"}
-        speakers={speakers}
+        speakers={commitee}
         cardSize="sm"
       />
       <section className="relative bg-transparent bg-cover bg-[center]">
@@ -64,7 +64,7 @@ const About = async () => {
         <MemberList
           className="bg-transparent"
           title={"Scientific Committee  "}
-          speakers={speakers.splice(0, 4)}
+          speakers={commitee}
           theme="dark"
           cardSize="lg"
         />

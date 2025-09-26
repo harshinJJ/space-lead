@@ -38,7 +38,7 @@ const exhibitorsList = [
     is_active:false
   },
 ];
-const OutExhibitor = ({
+const OurExhibitor = ({
   exhibitors = [],
   className="",
   label,
@@ -62,7 +62,7 @@ const OutExhibitor = ({
       )}
 
       <HorizontalCardStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
-        {exhibitorsList.map((item, i) => (
+        {exhibitors.map((item, i) => (
           <ExhibitorCard
             key={i}
             boothNumber={item.booth_details?.number}
@@ -88,4 +88,4 @@ const OutExhibitor = ({
   </section>
 );
 
-export default OutExhibitor;
+export default OurExhibitor;

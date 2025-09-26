@@ -44,6 +44,13 @@ const PublicServices = {
       return e;
     }
   },
+  getSessionSpeakers: async () => {
+    try {
+      return await customFetch(SERVICE.CONTENT.SESSION_SPEAKERS);
+    } catch (e) {
+      return e;
+    }
+  },
   getSpeaker: async (id) => {
     try {
       return await customFetch(`${SERVICE.CONTENT.SPEAKERS}/${id}`);
@@ -74,7 +81,28 @@ const PublicServices = {
   },
   getSponsorCategory: async () => {
     try {
-      return await  customFetch(SERVICE.CONTENT.SPONSOR_CATEGORIES);
+      return await customFetch(SERVICE.CONTENT.SPONSOR_CATEGORIES);
+    } catch (e) {
+      return e;
+    }
+  },
+  getCommitee: async () => {
+    try {
+      return await customFetch(SERVICE.CONTENT.COMMITEE);
+    } catch (e) {
+      return e;
+    }
+  },
+  getMedia: async () => {
+    try {
+      return await customFetch(SERVICE.CONTENT.MEDIA);
+    } catch (e) {
+      return e;
+    }
+  },
+  getLiveUpdates: async () => {
+    try {
+      return await customFetch(SERVICE.CONTENT.LIVE_UPDATES);
     } catch (e) {
       return e;
     }

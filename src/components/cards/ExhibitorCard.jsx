@@ -180,7 +180,7 @@ const ExhibitorCard = ({ email, name, boothNumber, isActive = true }) => {
         </span>
       </div>
       <span className="text-[#111111CC] 2xl:text-[1.75rem] text-xl mt-2.5">{name}</span>
-      <div className="flex items-center gap-4 mt-3.75">
+      {email&&<div className="flex items-center gap-4 mt-3.75">
         <svg
           width="18"
           height="14"
@@ -196,8 +196,8 @@ const ExhibitorCard = ({ email, name, boothNumber, isActive = true }) => {
           />
         </svg>
 
-        <span className="font-light text-black-b2 leading-1.5">{email}</span>
-      </div>
+        {<span className="font-light text-black-b2 leading-1.5">{email}</span>}
+      </div>}
       {!isActive&&<div className="absolute h-full w-full backdrop-blur-[2.65px] top-0 left-0 rounded-[1.25rem] flex items-center justify-center">
         <div className="py-2.5 px-11.5 rounded-full  bg-white text-[#111111CC] 2xl:text-[1.75rem] md:text-2x text-lgl">Coming Soon</div></div>}
     </div>

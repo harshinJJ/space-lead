@@ -1,24 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
 import BadgePreview from "./BadgePreview";
 import TicketSummary from "./TicketSummary";
 import FormInput from "@/components/formInputs/FormInput";
 import Label from "@/components/common/Label";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import PhoneInput from "@/components/formInputs/PhoneInput";
-import Select from "react-select";
 import FormSelect from "@/components/formInputs/FormSelect";
 import Error from "@/components/common/Error";
-import { useFormik } from "formik";
-import useValidation from "@/hooks/useValidation";
 import dynamic from "next/dynamic";
 import countryList from "@/../public/assets/json/countryList.json";
 import titleList from "@/../public/assets/json/honorifics.json";
-import publicServices from "@/services/publicServices";
-import useDebounce from "@/hooks/useDebounce";
-import ReCaptchaHandler, { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
+import { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
 import useRegistration from "@/hooks/useRegistration";
+import ButtonLoader from "@/components/loader/ButtonLoader";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
@@ -39,7 +34,7 @@ export default function RegistrationForm({
   session = {},
   onSuccess,
 }) {
-  const registerData = useRegistration({ type,session,onSuccess });
+  const registerData = useRegistration({ type, session, onSuccess });
   const { formik, setRef, showV2, setRecaptchaToken } = registerData;
   const {
     errors,
@@ -50,8 +45,8 @@ export default function RegistrationForm({
     setFieldValue,
     setFieldTouched,
     validateField,
+    isSubmitting,
   } = formik;
-
 
   return (
     <>
@@ -188,7 +183,7 @@ export default function RegistrationForm({
               </div>
 
               {/* Institution Name (Student only) */}
-              {type === "student" && (
+              {session?.sales_ticket_type_name === "Students" && (
                 <>
                   <div ref={setRef("institution")}>
                     <Label required={true}>Institution Name</Label>
@@ -228,13 +223,15 @@ export default function RegistrationForm({
                         }
                       }}
                     />
-                    {touched.user_document && <Error message={errors?.user_document} />}
+                    {touched.user_document && (
+                      <Error message={errors?.user_document} />
+                    )}
                   </div>
                 </>
               )}
 
               {/* Professional only: Company Name */}
-              {type === "professional" && (
+              {session?.sales_ticket_type_name === "Professional" && (
                 <>
                   <div ref={setRef("jobtitle")}>
                     <Label required={true}>Job Title</Label>
@@ -271,11 +268,12 @@ export default function RegistrationForm({
 
               <PrimaryButton
                 type="button"
+                disabled={isSubmitting}
                 onClick={registerData.onSubmitRegistration}
                 className="gap-2.5 text-lg col-span-2 w-fit px-7.5 font-light tracking-[1px]"
               >
                 <span>Complete Your Registration </span>
-
+                {isSubmitting?<ButtonLoader />:
                 <svg
                   width="21"
                   height="16"
@@ -287,12 +285,15 @@ export default function RegistrationForm({
                     d="M17.9287 9.08276L11.8496 15.1619C11.7422 15.2693 11.6152 15.3523 11.4688 15.4109C11.3223 15.4695 11.1709 15.4988 11.0146 15.4988C10.8486 15.4988 10.6899 15.4695 10.5386 15.4109C10.3872 15.3523 10.2578 15.2693 10.1504 15.1619C9.89648 14.9275 9.76953 14.6394 9.76953 14.2976C9.76953 13.9558 9.89648 13.6726 10.1504 13.448L14.1348 9.43433H2.51855C2.17676 9.43433 1.88867 9.31714 1.6543 9.08276C1.41992 8.84839 1.30273 8.5603 1.30273 8.21851C1.30273 7.89624 1.41992 7.61304 1.6543 7.3689C1.88867 7.12476 2.17676 7.00269 2.51855 7.00269H14.1348L10.1504 3.01831C9.89648 2.78394 9.76953 2.49585 9.76953 2.15405C9.76953 1.81226 9.89648 1.52905 10.1504 1.30444C10.375 1.0603 10.6582 0.938232 11 0.938232C11.3418 0.938232 11.625 1.0603 11.8496 1.30444L17.9287 7.38354C18.1729 7.60815 18.2949 7.89136 18.2949 8.23315C18.2949 8.57495 18.1729 8.85815 17.9287 9.08276Z"
                     fill="white"
                   />
-                </svg>
+                </svg>}
               </PrimaryButton>
             </form>
           </div>
           {session?.price_amount > 0 && (
-            <TicketSummary price={session.price_amount} currency={session.currency_name} />
+            <TicketSummary
+              price={session.price_amount}
+              currency={session.currency_name}
+            />
           )}
         </div>
         <div className="w-full  lg:w-86.5 flex-shrink-0 flex flex-col items-center justify-start xl:px-4.5">

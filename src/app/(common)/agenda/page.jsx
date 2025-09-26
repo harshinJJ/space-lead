@@ -11,12 +11,10 @@ export const metadata = {
   description: "Event Agenda",
 };
 export default async function Agenda() {
-  const [agendaRes, sponsorsRes] = await Promise.allSettled([
+  const [agendaRes] = await Promise.allSettled([
     PublicServices.getAgenda(),
-    PublicServices.getSponsors(),
   ]);
   const agenda = getFullfilled(agendaRes);
-  const sponsors = getFullfilled(sponsorsRes);
   return (
     <main>
       <section className=" bg-indigo bg-center bg-cover py-20 ">

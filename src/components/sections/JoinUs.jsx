@@ -10,7 +10,7 @@ const JoinUs = ({
   className = "",
   videoURL = "/images/backgrounds/why_attend_bg.webm",
   navLinks = [],
-  overlay="primary"
+  overlay = "primary",
 }) => {
   return (
     <section className={`bg-indigo py-20 px-5 ${className}`}>
@@ -23,7 +23,11 @@ const JoinUs = ({
           src={videoURL}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-50 w-full h-full"></div>
-        <div className={`absolute inset-0 bg-gradient-to-b ${overlay=="indigo"?"from-indigo":"from-primary  opacity-80"} to-indigo/0 to-[70%] w-full h-full`}></div>
+        <div
+          className={`absolute inset-0 bg-gradient-to-b ${
+            overlay == "indigo" ? "from-indigo" : "from-primary  opacity-80"
+          } to-indigo/0 to-[70%] w-full h-full`}
+        ></div>
 
         <div
           className={`relative flex flex-col sm:items-center sm:justify-between  md:justify-center `}
@@ -35,15 +39,18 @@ const JoinUs = ({
               {title}
             </h2>
           )}
-          {description&&<p className="text-[#BAFFFE] font-azonix text-center lg:max-w-4/5 2xl:text-[1.375rem] lg:text-lg text-sm  lg:mt-15 mt-8">
-            {description}
-            {/* Join global pioneers, innovators, and leaders in shaping tomorrow’s
+          {description && (
+            <p className="text-[#BAFFFE] font-azonix text-center lg:max-w-4/5 2xl:text-[1.375rem] lg:text-lg text-sm  lg:mt-15 mt-8">
+              {description}
+              {/* Join global pioneers, innovators, and leaders in shaping tomorrow’s
             health and engineering advancements beyond Earth. */}
-          </p>}
+            </p>
+          )}
           {/* {showViewAll && ( */}
           <div className="mt-15 flex flex-col sm:flex-row items-center justify-center lg:gap-10 gap-5">
-            {navLinks?.map((link) => (
+            {navLinks?.map((link, i) => (
               <PrimaryLink
+                key={i}
                 href={link.url || "#"}
                 className="w-fit group px-7.5 py-[1.0625rem] items-center gap-2 btn-gradient transition-all duration-300"
               >

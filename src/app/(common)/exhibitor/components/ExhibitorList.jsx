@@ -20,10 +20,10 @@ const ExhibitorList = ({ exhibitors = [],label,title="All Exhibitor" }) => (
     </h3>
 
     <HorizontalCardStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
-      {exhibitorsList.map((item, i) => (
+      {exhibitors.map((item, i) => (
         <ExhibitorCard key={i} boothNumber={item.booth_details?.number} name={item?.company_name||item?.name} email={item?.email} />
       ))}
-      {exhibitorsList.slice(0,5).map((item, i) => (
+      {exhibitors.slice(0,5).map((item, i) => (
         <ExhibitorCard key={i} boothNumber={item.booth_details?.number} name={item?.company_name||item?.name} isActive={false} email={item?.email} />
       ))}
     </HorizontalCardStagger>

@@ -112,7 +112,7 @@ const sponsorData = [
   { name: "Templar", logo: "/images/logos/sponsor7.png" },
 ];
 
-const HomeBanner = ({ banner }) => {
+const HomeBanner = ({ sponsors=[] }) => {
   const remainingTime = {
     days: 9,
     hours: 3,
@@ -193,7 +193,7 @@ const HomeBanner = ({ banner }) => {
       </div>
       <div className="relative py-2 flex items-center">
         <div className="absolute bg-gradient-to-r from-primary/21 to-black/0 to-[50%] mx-2.5 w-full h-full"></div>
-        <SponsorScroll sponsors={sponsorData} />
+        <SponsorScroll sponsors={sponsors} />
       </div>
       <div className="relative w-full flex justify-center items-center">
         <ScrollBottom className="absolute mx-auto top-0 bottom-0 left-0 right-0 transform ms:translate-y-[50%] lg:translate-y-[50%] translate-y-[50%] animate-float" />

@@ -25,7 +25,7 @@ const SpeakerProfileCard = ({
         <p
           className={`text-[#272727] text-sm leading-[1.8] line-clamp-2 text-center`}
         >
-          {speaker?.short_description || "Designation"}
+          {speaker?.designation}
         </p>
       </div>
       {/* Speaker image */}

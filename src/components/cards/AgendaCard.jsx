@@ -28,53 +28,71 @@ export function formatEventDate(event) {
 }
 
 function getEventDateRange(event) {
-  if (!event?.event_day || !event?.start_tm || !event?.end_tm) return null;
+  if (!event?.event_day) return null;
 
-  const startDate = parse(
-    `${event.event_day} ${event.start_tm}`,
-    "yyyy-MM-dd HH:mm:ss",
-    new Date()
-  );
-  const endDate = parse(
-    `${event.event_day} ${event.end_tm}`,
-    "yyyy-MM-dd HH:mm:ss",
-    new Date()
-  );
+  let startDate, endDate;
+
+  if (event.start_tm && event.end_tm) {
+    // If event has time → normal event
+    startDate = parse(
+      `${event.event_day} ${event.start_tm}`,
+      "yyyy-MM-dd HH:mm:ss",
+      new Date()
+    );
+    endDate = parse(
+      `${event.event_day} ${event.end_tm}`,
+      "yyyy-MM-dd HH:mm:ss",
+      new Date()
+    );
+  } else {
+    // If no time → treat as all-day event
+    startDate = parse(event.event_day, "yyyy-MM-dd", new Date());
+    endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 1); // all-day runs until next day
+  }
 
   if (!isValid(startDate) || !isValid(endDate)) return null;
 
-  // Format to YYYYMMDDTHHmmssZ → required by Google/Outlook
-  const start = format(startDate, "yyyyMMdd'T'HHmmss'Z'");
-  const end = format(endDate, "yyyyMMdd'T'HHmmss'Z'");
+  // Google format → yyyyMMddTHHmmssZ
+  const googleStart = format(startDate, "yyyyMMdd'T'HHmmss'Z'");
+  const googleEnd = format(endDate, "yyyyMMdd'T'HHmmss'Z'");
 
-  return { start, end, startDate, endDate };
+  // Outlook format → yyyy-MM-ddTHH:mm:ss (no Z)
+  const outlookStart = format(startDate, "yyyy-MM-dd'T'HH:mm:ss");
+  const outlookEnd = format(endDate, "yyyy-MM-dd'T'HH:mm:ss");
+
+  return {
+    googleStart,
+    googleEnd,
+    outlookStart,
+    outlookEnd,
+    startDate,
+    endDate,
+  };
 }
-
-const AgendaCard = ({ event, containerClass,showAddtoCalender=true }) => {
+const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
   const eventDate = formatEventDate(event);
   const title = event?.title || "Event";
   const description =
-    event?.session_description || event?.description || "Event details";
+    event?.session_description || event?.description ;
   const location = event?.hall_name || "Venue";
 
   const dateRange = getEventDateRange(event);
+  const googleUrl = dateRange
+    ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+        title
+      )}&dates=${dateRange.googleStart}/${dateRange.googleEnd}&details=${encodeURIComponent(
+        description
+      )}&location=${encodeURIComponent(location)}&sf=true&output=xml`
+    : "#";
 
-const googleUrl = dateRange
-  ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-      title
-    )}&dates=${dateRange.start}/${dateRange.end}&details=${encodeURIComponent(
-      description
-    )}&location=${encodeURIComponent(location)}&sf=true&output=xml`
-  : "#";
-
-// Outlook Calendar URL (correct format)
-const outlookUrl = dateRange
-  ? `https://outlook.office.com/calendar/action/compose?subject=${encodeURIComponent(
-      title
-    )}&startdt=${dateRange.startDate.toISOString()}&enddt=${dateRange.endDate.toISOString()}&body=${encodeURIComponent(
-      description
-    )}&location=${encodeURIComponent(location)}`
-  : "#";
+  const outlookUrl = dateRange
+    ? `https://outlook.office.com/calendar/action/compose?subject=${encodeURIComponent(
+        title
+      )}&startdt=${dateRange.outlookStart}&enddt=${dateRange.outlookEnd}&body=${encodeURIComponent(
+        description
+      )}&location=${encodeURIComponent(location)}`
+    : "#";
   return (
     <div
       className={`bg-gradient-to-r from-white/8 to-transparent to-90%  rounded-4xl  px-8.5 py-5 flex flex-col lg:flex-row items-start justify-between gap-6 ${containerClass}`}
@@ -145,23 +163,23 @@ const outlookUrl = dateRange
                 </defs>
               </svg>
 
-              <span>{event.hall_name}</span>
+              <span>{event?.session_type_details?.name}</span>
             </div>
           </div>
         </div>
-        <p className="mt-5 lg:max-w-17/20">
-          {description}
-        </p>
+        <p className="mt-5 lg:max-w-17/20">{description}</p>
       </div>
-      {showAddtoCalender&&<div className="bg-gradient-to-r from-white  to-indigo rounded-full flex items-center gap-3 py-1.5 px-3.5">
-        <a href={outlookUrl} target="_blank" rel="noopener noreferrer">
-          <OutlookIcon />
-        </a>
-        <a href={googleUrl} target="_blank" rel="noopener noreferrer">
-          <GoogleIcon />
-        </a>
-        <span>Add to my calender</span>
-      </div>}
+      {showAddtoCalender && (
+        <div className="bg-gradient-to-r from-white  to-indigo rounded-full flex items-center gap-3 py-1.5 px-3.5">
+          <a href={outlookUrl} target="_blank" rel="noopener noreferrer">
+            <OutlookIcon />
+          </a>
+          <a href={googleUrl} target="_blank" rel="noopener noreferrer">
+            <GoogleIcon />
+          </a>
+          <span>Add to my calender</span>
+        </div>
+      )}
     </div>
   );
 };

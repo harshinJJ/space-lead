@@ -14,13 +14,9 @@ import { SUCCESS_CODES } from "@/data/successCodes";
 const useRegistration = ({ type, onSuccess, session }) => {
   const fieldRefs = useRef({});
   const [recaptchaToken, setRecaptchaToken] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [regData, setRegData] = useState(null);
-  const [beforePayment, setBeforePayment] = useState(false);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [showV2, setShowV2] = useState(false);
-  const [captcha, setCaptcha] = useState(null);
 
   const setRef = (field) => (el) => {
     fieldRefs.current[field] = el;
@@ -68,7 +64,7 @@ const useRegistration = ({ type, onSuccess, session }) => {
     nationality: Yup.object().required("This field is required"),
     // Student specific
     institution: Yup.string().when([], {
-      is: () => type === "student",
+      is: () => session?.sales_ticket_type_name === "Students",
       then: (schema) =>
         schema
           .required("This field is required")
@@ -92,13 +88,13 @@ const useRegistration = ({ type, onSuccess, session }) => {
       otherwise: (schema) => schema.notRequired(),
     }),
     user_document: Yup.mixed().when([], {
-      is: () => type === "student",
+      is: () => session?.sales_ticket_type_name === "Students",
       then: (schema) => schema.required("Student ID file is required"),
     }),
 
     // Professional specific
     jobtitle: Yup.string().when([], {
-      is: () => type === "professional",
+      is: () => session?.sales_ticket_type_name === "Professional",
       then: (schema) =>
         schema
           .required("This field is required")
@@ -118,7 +114,7 @@ const useRegistration = ({ type, onSuccess, session }) => {
       otherwise: (schema) => schema.notRequired(),
     }),
     companyname: Yup.string().when([], {
-      is: () => type === "professional",
+      is: () => session?.sales_ticket_type_name === "Professional",
       then: (schema) =>
         schema
           .required("This field is required")
@@ -204,84 +200,32 @@ const useRegistration = ({ type, onSuccess, session }) => {
 
     RegistrationServices.createFormData(formData)
       .then((res) => {
-        if (SUCCESS_CODES.includes(res.status)) {
-          onSuccess && onSuccess(true);
-          formik.resetForm();
-          window?.scrollTo({ top: 0, behavior: "smooth" });
+        console.log("res",res)
+        if (SUCCESS_CODES.includes(res.status)&&res.data) {
+          formik.setSubmitting(false);
+          if(res?.data?.redirect_type=="payment"&&res.data?.payment_url){
+            window.location.href=res.data?.payment_url
+          }else{
+            onSuccess && onSuccess(true);
+            formik.resetForm();
+            window?.scrollTo({ top: 0, behavior: "smooth" });
+          }
         } else if (res?.data.errors) {
           const errors = res?.data.errors;
           Object.keys(errors).forEach((field) => {
             formik.setFieldTouched(field, true, false);
             formik.setFieldError(field, errors[field]);
             scrollToField(field);
-            return;
+            formik.setSubmitting(false);
           });
-        } else if(res?.message){
-          toast.error(res.message||"asdjkahsdaj,sd")
+        } else if (res?.message) {
+          toast.error(res.message,{id:"register-toast"});
+          formik.setSubmitting(false);
         }
-        // if (res.status == 200) {
-        //   formik.resetForm();
-        //   toast.success(
-        //     res?.data?.message || "Registration completed successfully."
-        //   );
-        //   if (res.data?.redirect_type == "payment") {
-        //     if (!!res.data?.payment_data?.redirect_url) {
-        //       window.location.href = res.data?.payment_data?.redirect_url;
-        //     } else {
-        //       toast.error("Try Again");
-        //     }
-        //   } else {
-        //     navigate(`/registration-status/${res.data.uid}`);
-        //   }
-        // } else {
-        //   if (res?.response?.data?.validation_errors?.length > 0) {
-        //     const errors =
-        //       res?.response?.data?.validation_errors[0]?.error ??
-        //       res?.response?.data?.validation_errors[0]?.errors;
-        //     if (errors["emailid"]) {
-        //       toast.error(
-        //         "This email is already registered. Click Login to log back in to complete/edit your registration"
-        //       );
-        //       //   alertToast.show({
-        //       //     message:
-        //       //       "This email is already registered. Click Login to log back in to complete/edit your registration",
-        //       //     onClick: () => {
-        //       //       navigate("/auth/login");
-        //       //     },
-        //       //     timeout: 60000,
-        //       //     buttonName: "Login",
-        //       //   });
-        //       return;
-        //     }
-        //     if (errors) {
-        //       Object.keys(errors).forEach((field) => {
-        //         formik.setFieldTouched(field, true, false);
-        //         formik.setFieldError(field, errors[field]);
-        //         scrollToField(field);
-        //         return;
-        //       });
-        //     }
-        //   } else {
-        //     toast.error(
-        //       res?.response?.data?.message ||
-        //         res?.response?.data?.detail ||
-        //         "Registration failed. Please try again."
-        //     );
-        //     // alertToast.show({
-        //     //   message:
-        //     //     res?.response?.data?.message ||
-        //     //     res?.response?.data?.detail ||
-        //     //     "Registration failed. Please try again.",
-        //     //   onClick: () => {
-        //     //     // console.log("User clicked YES!");
-        //     //   },
-        //     //   timeout: 3000, // closes automatically after 3 seconds
-        //     // });
-        //   }
-        // }
       })
       .catch((error) => {
         console.log(error);
+        formik.setSubmitting(false);
       });
   };
 
@@ -394,7 +338,6 @@ const useRegistration = ({ type, onSuccess, session }) => {
     abandonedRegister,
     onSubmitRegistration,
     setRecaptchaToken,
-    loading,
     showV2,
   };
 };

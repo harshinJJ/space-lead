@@ -10,21 +10,17 @@ export const metadata = {
   description: "Exhibitor Information",
 };
 export default async function Exhibitor() {
-  const [exhibitorRes, boothRes] = await Promise.allSettled([
+  const [exhibitorRes] = await Promise.allSettled([
     PublicServices.getExhibitors(),
-    PublicServices.getBooths(),
   ]);
   const exhibitors = getFullfilled(exhibitorRes);
-  const booths = getFullfilled(boothRes);
   return (
     <main>
-      <ExhibitorBlock exhibitors={exhibitors} booths={booths} />
-      <FullImageBlock url="/images/venue_location.png" title="Find Us"/>
+      <ExhibitorBlock exhibitors={exhibitors} />
+      <FullImageBlock url="/images/venue_location.png" title="Find Us" />
       <JoinUs
         title="Where visibility becomes opportunity."
-        description={
-          "Be seen. Be heard. Be part of Space Lead ’25.”"
-        }
+        description={"Be seen. Be heard. Be part of Space Lead ’25.”"}
         navLinks={[
           {
             label: "Become an Exhibitor  ",
@@ -34,7 +30,7 @@ export default async function Exhibitor() {
           {
             label: "Download Booklet",
             url: "#",
-            arrowDirection:"bottom"
+            arrowDirection: "bottom",
           },
         ]}
         overlay="indigo"

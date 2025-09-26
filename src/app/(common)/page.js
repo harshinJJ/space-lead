@@ -12,10 +12,10 @@ import SponsorsBlock from "@/components/sections/Sponsors";
 import SpeakerSlider from "@/components/sections/SpeakerSlider";
 import MemberSlider from "@/components/sections/MemberSlider";
 import StatsCard from "@/components/cards/StatsCard";
-import speakerData from "@/../public/assets/json/speakers-data.json";
+// import speakerData from "@/../public/assets/json/speakers-data.json";
 import PublicServices from "@/services/publicServices";
 import ExhibitorList from "./exhibitor/components/ExhibitorList";
-import OutExhibitor from "@/components/sections/OurExhibitor";
+import OurExhibitor from "@/components/sections/OurExhibitor";
 import PressRelease from "@/components/sections/PressRelease";
 import AppPreview from "@/components/sections/AppPreview";
 
@@ -66,17 +66,20 @@ function getFullfilled(result) {
   return result.status === "fulfilled" ? result.value?.data ?? [] : [];
 }
 export default async function Home() {
-  const [agendaRes, speakersRes, sponsorsRes] = await Promise.allSettled([
-    PublicServices.getAgenda(),
-    PublicServices.getSpeakers(),
-    PublicServices.getSponsors(),
-  ]);
-  const agenda = getFullfilled(agendaRes);
+  const [speakersRes, sponsorsRes, liveUpdateRes, exhibitorRes] =
+    await Promise.allSettled([
+      PublicServices.getSpeakers(),
+      PublicServices.getSponsors(),
+      PublicServices.getLiveUpdates(),
+      PublicServices.getExhibitors(),
+    ]);
   const speakers = getFullfilled(speakersRes);
   const sponsors = getFullfilled(sponsorsRes);
+  const liveUpdates = getFullfilled(liveUpdateRes);
+  const exhibitors = getFullfilled(exhibitorRes);
   return (
     <main>
-      <HomeBanner banner={"/images/banner_title.png"} />
+      <HomeBanner sponsors={sponsors} banner={"/images/banner_title.png"} />
       <AboutInfo className="2xl:pb-0 lg:pb-15 md:pb-10 xs:pb-5 " />
       {/* <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} /> */}
       <section className="relative bg-transparent bg-cover bg-[top_center]">
@@ -99,7 +102,7 @@ export default async function Home() {
           theme="dark"
           // title={"Steering Committee Members"}
           title={"Speakers"}
-          speakers={speakerData}
+          speakers={speakers}
           // link={"#"}
           cardSize="sm"
           showNavButton={true}
@@ -107,9 +110,14 @@ export default async function Home() {
           navLink="/speakers"
         />
       </section>
-      <OutExhibitor showNavButton={true} navLabel="Become an Exhibitor" navLink="/registration" />
-      <PressRelease showNavButton={true} />
-      <AppPreview/>
+      <OurExhibitor
+        exhibitors={exhibitors}
+        showNavButton={true}
+        navLabel="Become an Exhibitor"
+        navLink="/registration"
+      />
+      <PressRelease updates={liveUpdates}  showNavButton={true} />
+      <AppPreview />
       {/* <MemberSlider
         className="bg-white"
         title={"Scientific Committee Members"}

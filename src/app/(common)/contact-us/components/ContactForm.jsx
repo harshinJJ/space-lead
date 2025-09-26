@@ -1,35 +1,14 @@
 "use client";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Modal from "@/components/common/Modal";
+import PhoneInputs from "@/components/formInputs/PhoneInput";
+import ButtonLoader from "@/components/loader/ButtonLoader";
 import DotPattern from "@/components/patterns/DotPattern";
 import SemiCirclePattern from "@/components/patterns/SemiCirclePattern";
 import useContactForm from "@/hooks/useContactForm";
-import useDebounce from "@/hooks/useDebounce";
-import useValidation from "@/hooks/useValidation";
-import publicServices from "@/services/publicServices";
-import ReCaptchaHandler, { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
-import { useFormik } from "formik";
+import { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import * as Yup from "yup";
 
-const validationSchema = Yup.object({
-  name: Yup.string()
-    .min(2, "Name must be at least 2 characters")
-    .max(50, "Name cannot exceed 50 characters")
-    .required("Name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  phone: Yup.string()
-    .matches(/^\+?\d+$/, "Phone number is invalid")
-    .min(10, "Phone number must be at least 10 digits")
-    .max(15, "Phone number cannot be more than 15 digits"),
-  message: Yup.string()
-    .min(20, "Message must be at least 20 characters")
-    .max(500, "Message cannot be more than 500 characters")
-    .required("Message is required"),
-});
 const ContactForm = () => {
   const {
     formik,
@@ -41,7 +20,8 @@ const ContactForm = () => {
     onSubmitRegistration,
   } = useContactForm();
 
-  const { handleBlur, handleChange, values, touched, errors } = formik;
+  const { handleBlur, handleChange, values, touched, errors, isSubmitting } =
+    formik;
   return (
     <section className="relative bg-white bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 w-full overflow-hidden">
       <SemiCirclePattern
@@ -122,7 +102,8 @@ const ContactForm = () => {
               </svg>
             </a>
             <a
-              href="#"
+                    href="https://www.instagram.com/spaceleadau/"
+                    target="_blank"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
             >
               <svg
@@ -168,7 +149,8 @@ const ContactForm = () => {
               </svg>
             </a>
             <a
-              href="#"
+              href="https://x.com/SpaceLeadAU"
+              target="_blank"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
             >
               <svg
@@ -188,19 +170,19 @@ const ContactForm = () => {
         </div>
         <form id="contactForm" className="space-y-8">
           <div className="grid grid-cols-1 text-2xl sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div ref={setRef("name")}>
+            <div ref={setRef("firstName")}>
               <label className="block font-medium ">Your Name</label>
               <input
                 type="text"
                 maxLength={100}
-                name="name"
+                name="firstName"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
+                value={values.firstName}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
-              {errors.name && touched.name && (
-                <p className="text-red-500 text-lg">{errors.name}</p>
+              {errors.firstName && touched.firstName && (
+                <p className="text-red-500 text-lg">{errors.firstName}</p>
               )}
             </div>
             <div ref={setRef("email")}>
@@ -218,21 +200,33 @@ const ContactForm = () => {
                 <p className="text-red-500 text-lg">{errors.email}</p>
               )}
             </div>
-            <div ref={setRef("phone")} className="sm:col-span-2 lg:col-span-1">
+            <div
+              ref={setRef("phoneNumber")}
+              className="sm:col-span-2 lg:col-span-1"
+            >
               <label className="block font-medium ">
-                Phone Number (optional)
+                Phone Number
               </label>
-              <input
+              {/* <input
                 type="tel"
-                name="phone"
+                name="phoneNumber"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.phone}
+                value={values.phoneNumber}
                 maxLength={15}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
+              /> */}
+              <PhoneInputs
+                name="phoneNumber"
+                // onChange={handleChange}
+                onChange={(val) => formik.setFieldValue("phoneNumber", val)}
+                onBlur={handleBlur}
+                className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
+                value={values.phoneNumber}
+                placeholder="Phone number"
               />
-              {errors.phone && touched.phone && (
-                <p className="text-red-500 text-lg">{errors.phone}</p>
+              {errors.phoneNumber && touched.phoneNumber && (
+                <p className="text-red-500 text-lg">{errors.phoneNumber}</p>
               )}
             </div>
           </div>
@@ -251,31 +245,39 @@ const ContactForm = () => {
             )}
           </div>
           {showV2 && (
-            <div ref={setRef("recaptcha")} className="flex items-center justify-start mt-6">
+            <div
+              ref={setRef("recaptcha")}
+              className="flex items-center justify-start mt-6"
+            >
               <ReCAPTCHAV2 setCaptcha={setRecaptchaToken} />
             </div>
           )}
           <div className="flex items-center justify-between mt-6">
             <PrimaryButton
               type="button"
+              disabled={isSubmitting}
               onClick={onSubmitRegistration}
               className="w-fit  px-7.5 py-[1.0625rem] items-center gap-2 "
             >
               <span className="leading-[100%] text-lg ">
                 Leave us a Message
               </span>
-              <svg
-                width="20"
-                height="16"
-                viewBox="0 0 20 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.7598 9.46875L11.6807 15.5479C11.5732 15.6553 11.4463 15.7383 11.2998 15.7969C11.1533 15.8555 11.002 15.8848 10.8457 15.8848C10.6797 15.8848 10.521 15.8555 10.3696 15.7969C10.2183 15.7383 10.0889 15.6553 9.98145 15.5479C9.72754 15.3135 9.60059 15.0254 9.60059 14.6836C9.60059 14.3418 9.72754 14.0586 9.98145 13.834L13.9658 9.82031H2.34961C2.00781 9.82031 1.71973 9.70312 1.48535 9.46875C1.25098 9.23438 1.13379 8.94629 1.13379 8.60449C1.13379 8.28223 1.25098 7.99902 1.48535 7.75488C1.71973 7.51074 2.00781 7.38867 2.34961 7.38867H13.9658L9.98145 3.4043C9.72754 3.16992 9.60059 2.88184 9.60059 2.54004C9.60059 2.19824 9.72754 1.91504 9.98145 1.69043C10.2061 1.44629 10.4893 1.32422 10.8311 1.32422C11.1729 1.32422 11.4561 1.44629 11.6807 1.69043L17.7598 7.76953C18.0039 7.99414 18.126 8.27734 18.126 8.61914C18.126 8.96094 18.0039 9.24414 17.7598 9.46875Z"
-                  fill="white"
-                />
-              </svg>
+              {isSubmitting ? (
+                <ButtonLoader />
+              ) : (
+                <svg
+                  width="20"
+                  height="16"
+                  viewBox="0 0 20 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.7598 9.46875L11.6807 15.5479C11.5732 15.6553 11.4463 15.7383 11.2998 15.7969C11.1533 15.8555 11.002 15.8848 10.8457 15.8848C10.6797 15.8848 10.521 15.8555 10.3696 15.7969C10.2183 15.7383 10.0889 15.6553 9.98145 15.5479C9.72754 15.3135 9.60059 15.0254 9.60059 14.6836C9.60059 14.3418 9.72754 14.0586 9.98145 13.834L13.9658 9.82031H2.34961C2.00781 9.82031 1.71973 9.70312 1.48535 9.46875C1.25098 9.23438 1.13379 8.94629 1.13379 8.60449C1.13379 8.28223 1.25098 7.99902 1.48535 7.75488C1.71973 7.51074 2.00781 7.38867 2.34961 7.38867H13.9658L9.98145 3.4043C9.72754 3.16992 9.60059 2.88184 9.60059 2.54004C9.60059 2.19824 9.72754 1.91504 9.98145 1.69043C10.2061 1.44629 10.4893 1.32422 10.8311 1.32422C11.1729 1.32422 11.4561 1.44629 11.6807 1.69043L17.7598 7.76953C18.0039 7.99414 18.126 8.27734 18.126 8.61914C18.126 8.96094 18.0039 9.24414 17.7598 9.46875Z"
+                    fill="white"
+                  />
+                </svg>
+              )}
             </PrimaryButton>
           </div>
         </form>

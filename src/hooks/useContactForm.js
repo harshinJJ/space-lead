@@ -1,4 +1,3 @@
-import PublicServices from "@/services/publicServices";
 import { useFormik } from "formik";
 import React, { useRef, useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -6,6 +5,8 @@ import toast from "react-hot-toast";
 import * as Yup from "yup";
 import useDebounce from "./useDebounce";
 import RegistrationServices from "@/services/registrationServices";
+import { separatePhoneNumber } from "@/utils/functions";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
 const useContactForm = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -19,13 +20,13 @@ const useContactForm = () => {
   };
 
   const initialValues = {
-    name: "",
+    firstName: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     message: "",
   };
   const validationSchema = Yup.object({
-    name: Yup.string()
+    firstName: Yup.string()
       .required("This field is required")
       .matches(/^[A-Za-z\s]+$/, "Name must contain only letters"),
     email: Yup.string()
@@ -38,10 +39,11 @@ const useContactForm = () => {
         /^(?!.*\.\.)(?!.*@.*\.(\w+)\.\1$)[a-zA-Z0-9](?:[a-zA-Z0-9._%+-]*[a-zA-Z0-9])?@[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+$/,
         "Invalid email format"
       ),
-    phone: Yup.string()
-      .matches(/^\+?\d+$/, "Phone number is invalid")
-      .min(10, "Must be at least 10 digits")
-      .max(15, "Cannot be more than 15 digits"),
+    phoneNumber: Yup.string()
+      .required("This field is required")
+      .test("is-valid", "Mobile Number is not valid", (value) =>
+        isValidPhoneNumber(value || "")
+      ),
     message: Yup.string()
       .min(10, "Message must be at least 10 characters")
       .max(500, "Message cannot be more than 500 characters")
@@ -93,7 +95,7 @@ const useContactForm = () => {
         });
       }
 
-      const priorityOrder = ["name", "email", "phone", "message"];
+      const priorityOrder = ["firstName", "email", "phoneNumber", "message"];
       const firstError = priorityOrder.find((key) => errorKeys.includes(key));
       scrollToField(firstError);
       return;
@@ -103,7 +105,7 @@ const useContactForm = () => {
   const onSubmitRegistration = useDebounce(handleFormSubmit, 300);
 
   const onContactSubmit = async (values) => {
-    let payload = { ...values };
+    const payload = { ...values };
     if (!showV2) {
       const token = await executeRecaptcha("submit");
       if (token) {
@@ -123,38 +125,40 @@ const useContactForm = () => {
         return;
       }
     }
-    if (payload.title && payload.title.value) {
-      payload.title = payload.title.value;
-    }
-    if (payload.country && payload.country.name) {
-      payload.country = payload.country.name;
-    }
-    if (payload.nationality && payload.nationality.name) {
-      payload.nationality = payload.nationality.name;
-    }
-    // const phone = separatePhoneNumber(payload.phoneNumber);
+    const phone = separatePhoneNumber(values.phoneNumber);
 
-    // payload.phoneNumber = phone.nationalNumber || "";
-    // payload.country_code = phone.countryCode || "";
+    // payload.form_data.mobile = phone.nationalNumber;
+    // payload.form_data.country_code = phone.countryCode;
+
+    payload.mobile = phone.nationalNumber;
+    payload.country_code = phone.countryCode;
+
+    delete payload.phoneNumber
+
+    // const formData = new FormData();
+    // formData.append("payload", JSON.stringify(payload));
 
     RegistrationServices.submitContactForm(payload)
       .then((res) => {
         if (res.result == "success") {
           setShowSuccess(true);
           formik.resetForm();
-        } else {
-          if (res?.errors) {
-            Object.keys(res.errors).forEach((field) => {
-              formik.setFieldTouched(field, true, false);
-              formik.setFieldError(field, errors[field]);
-              scrollToField(field);
-              return;
-            });
-          }
+          formik.setSubmitting(false);
+        } else if (res?.data?.errors) {
+          Object.keys(res.data.errors).forEach((field) => {
+            formik.setFieldTouched(field, true, false);
+            formik.setFieldError(field, errors[field]);
+            scrollToField(field);
+            formik.setSubmitting(false);
+          });
+        } else if (res?.message) {
+          toast.error(res.message, { id: "contact-toast" });
+          formik.setSubmitting(false);
         }
       })
       .catch((error) => {
         console.log(error);
+        formik.setSubmitting(false);
       });
   };
 

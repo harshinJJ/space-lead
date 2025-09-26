@@ -10,19 +10,19 @@ import PressRelease from "@/components/sections/PressRelease";
 import ConnectWithUs from "@/components/sections/ConnectWithUs";
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
 
-const MediaTabs = () => {
+const MediaTabs = ({ gallery = [], updates = [] }) => {
   const [active, setActive] = useState(null);
   const [fancyboxRef] = useFancybox({});
   const handleActive = (tab) => {
     setActive((prev) => (prev == tab ? null : tab));
   };
   const tabs = [
-    { label: "Day 1", key: "day1" },
-    { label: "Day 2", key: "day2" },
-    { label: "Day 3", key: "day3" },
+    { label: "Day 1", key: "2025-11-09" },
+    { label: "Day 2", key: "2025-11-10" },
+    { label: "Day 3", key: "2025-11-11" },
   ];
   const filteredList = active
-    ? gallery.filter((media) => media.key == active)
+    ? gallery.filter((media) => media.date == active)
     : gallery;
 
   return (
@@ -132,7 +132,7 @@ const MediaTabs = () => {
             </HorizontalCardStagger>
           </div>
         </div>
-        <PressRelease />
+        <PressRelease updates={updates} />
       </div>
       <ConnectWithUs />
     </section>

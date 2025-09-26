@@ -52,11 +52,9 @@ const stats = [
   { label: "Networking outcomes / ROI", value: "300" },
 ];
 export default async function Sponsors() {
-  const [categoryRes, sponsorsRes] = await Promise.allSettled([
-    PublicServices.getSponsorCategory(),
+  const [sponsorsRes] = await Promise.allSettled([
     PublicServices.getSponsors(),
   ]);
-  const categories = getFullfilled(categoryRes);
   const sponsors = getFullfilled(sponsorsRes);
   return (
     <main>
