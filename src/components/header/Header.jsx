@@ -1,12 +1,14 @@
 "use client";
 // import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { PrimaryLink } from "../buttons/PrimaryButton";
+import PrimaryButton, { PrimaryLink } from "../buttons/PrimaryButton";
 import TitleBlock from "./TitleBlock";
 import { usePathname } from "next/navigation";
 import { SecondaryLink } from "../buttons/SecondaryButton";
 import Image from "next/image";
 import Link from "@/utils/CustomLink";
+import Modal from "../common/Modal";
+import { AppStoreButton, GooglePlayButton } from "@/data/icons";
 
 const DownloadButton = () => {
   return (
@@ -42,67 +44,59 @@ const DownloadButton = () => {
 };
 
 const RegisterBtn = () => {
+  const [show, setShow] = useState(false);
   return (
-    <PrimaryLink
-      href="/registration"
-      className=" gap-1.25 3xl:py-3.25 py-2.75 3xl:px-3.25 px-2.75 3xl:text-lg text-base leading-[100%]"
-    >
-      {/* <svg
-        width="22"
-        height="22"
-        viewBox="0 0 22 22"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+    <>
+      <PrimaryButton
+        onClick={() => setShow(true)}
+        className=" gap-1.25 3xl:py-3.25 py-2.75 3xl:px-3.25 px-2.75 3xl:text-lg text-base leading-[100%]"
       >
-        <path
-          d="M15.5787 3.66663H6.41206C2.90122 3.66663 1.92039 4.50996 1.83789 7.79163C3.60706 7.79163 5.03706 9.23079 5.03706 11C5.03706 12.7691 3.60706 14.1991 1.83789 14.2083C1.92039 17.49 2.90122 18.3333 6.41206 18.3333H15.5787C19.2454 18.3333 20.1621 17.4166 20.1621 13.75V8.24996C20.1621 4.58329 19.2454 3.66663 15.5787 3.66663Z"
-          stroke="white"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M8.24365 3.66663V6.87496"
-          stroke="white"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M8.24365 15.125V18.3333"
-          stroke="white"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M13.773 8.55236L14.3413 9.69818C14.3963 9.80818 14.5063 9.89068 14.6255 9.90902L15.8905 10.0923C16.2022 10.1382 16.3305 10.5232 16.1013 10.7432L15.1847 11.6323C15.093 11.7148 15.0563 11.8432 15.0747 11.9715L15.2947 13.2273C15.3497 13.539 15.0197 13.7773 14.7447 13.6307L13.6172 13.0348C13.5072 12.9798 13.3697 12.9798 13.2597 13.0348L12.1322 13.6307C11.848 13.7773 11.5272 13.539 11.5822 13.2273L11.8022 11.9715C11.8205 11.8432 11.7838 11.724 11.6922 11.6323L10.7847 10.7432C10.5555 10.5232 10.6838 10.1382 10.9955 10.0923L12.2605 9.90902C12.3888 9.89068 12.4897 9.81735 12.5447 9.69818L13.1038 8.55236C13.2322 8.26819 13.6355 8.26819 13.773 8.55236Z"
-          stroke="white"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span>Register Now</span> */}
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12 3V16M12 16L16 11.625M12 16L8 11.625"
-          stroke="white"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
-          stroke="white"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 3V16M12 16L16 11.625M12 16L8 11.625"
+            stroke="white"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+            stroke="white"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
 
-      <span>Download the App</span>
-    </PrimaryLink>
+        <span>Download the App</span>
+      </PrimaryButton>
+      <Modal className="p-0" isOpen={show} onClose={() => setShow(false)}>
+        <section
+          className={`bg-indigo  max-h-[70vh] h-full px-5 py-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
+        >
+          <div className="container-fluid mx-auto w-full px-5 sm:px-0 flex flex-col  items-center justify-center gap-20">
+            <div className="flex flex-col lg:gap-10 gap-5">
+              <h3 className=" text-2xl text-start leading-[1.2] font-bold font-azonix text-white">
+                Everything Space Lead ‘25,
+                <br className="2xl:block hidden" /> at your fingertips.
+              </h3>
+            </div>
+            <div className="flex flex-col  gap-4 ">
+              <button>
+                <GooglePlayButton className="w-full" />
+              </button>
+              <button>
+                <AppStoreButton className="w-full" />
+              </button>
+            </div>
+          </div>
+        </section>
+      </Modal>
+    </>
   );
 };
 
@@ -199,10 +193,9 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-const activeLinkTitle =
-  pageLinks
-    .filter((link) => pathname.startsWith(link.url))
-    .pop()?.title || "";
+  const activeLinkTitle =
+    pageLinks.filter((link) => pathname.startsWith(link.url)).pop()?.title ||
+    "";
   // pageLinks.find((link) => link.url === pathname)?.title || "";
   return (
     <header className="text-white ">

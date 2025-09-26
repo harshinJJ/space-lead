@@ -30,11 +30,11 @@ export const HomeTimer = ({ eventDate = "2025-11-09" }) => {
 
   return (
     <div className="w-full flex flex-col gap-7.5 justify-center items-center font-gilroy-med">
-      <div className="flex lg:flex-row items-stretch xs:gap-3 gap-2 2xl:gap-10">
+      <div className="grid grid-cols-4 justify-items-center xs:gap-3 gap-2 2xl:gap-10">
         {Object.entries(remainingTime).map(([key, value]) => (
           <div
             key={key}
-            className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square p-2 xs:p-3.75 w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
+            className="flex-1 w-full h-auto 2xl:min-w-25 flex items-center flex-col justify-center aspect-square p-2 xs:p-3.75 w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
           >
             <p className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
               {String(value).padStart(2, "0")}
@@ -84,11 +84,11 @@ const TimerBlock = ({ eventDate = "2025-11-09",theme="default" }) => {
             Time is running out register now.
           </div>
         </div>
-        <div className="flex lg:flex-row justify-center items-stretch gap-3 2xl:gap-10">
+        <div className="grid grid-cols-4 justify-items-center items-stretch gap-3 2xl:gap-10">
           {Object.entries(remainingTime).map(([key, value]) => (
             <div
               key={key}
-              className="flex-1 w-full h-full max-w-30 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
+              className="flex-1 w-full h-auto max-w-30 2xl:min-w-25 lg:min-w-20 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
             >
               <p className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
                 {String(value).padStart(2, "0")}
