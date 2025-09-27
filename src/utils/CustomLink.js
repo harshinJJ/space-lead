@@ -28,13 +28,17 @@ export default function Link({ href, children, className, ...props }) {
   const handleClick = (e) => {
     if (props.target != "_blank") {
       e.preventDefault();
-      if (pathname === href || href == "#") return;
+      if (pathname === href || href == "#") {
+        props.onClick && props.onClick();
+        return;
+      }
       // 👉 Exit animation before navigation
       gsap.to("#transition-overlay", {
         x: "0%",
         duration: 0.5,
         ease: "power2.in",
         onComplete: () => {
+          props.onClick && props.onClick();
           router.push(href); // navigate after cover
         },
       });
@@ -43,9 +47,9 @@ export default function Link({ href, children, className, ...props }) {
   return (
     <DefaultLink
       href={href}
-      onClick={handleClick}
       className={className}
       {...props}
+      onClick={handleClick}
     >
       {children}
     </DefaultLink>

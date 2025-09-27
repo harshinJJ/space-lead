@@ -44,12 +44,12 @@ const BgOverlay = () => {
 };
 export default function RegistrationBlock({
   type = "",
-  passTypes = [],
+  sessionList = [],
   ticketType,
 }) {
-  const sessionList = passTypes.filter(
-    (pass) => pass.ticket_price_type == type
-  );
+  // const sessionList = passTypes.filter(
+  //   (pass) => pass.ticket_price_type == type
+  // );
   const [session, setSession] = useState(sessionList[0]);
   const [success, setSuccess] = useState(false);
   const [eventActive, setEventActive] = useState(true);

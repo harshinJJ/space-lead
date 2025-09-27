@@ -10,10 +10,13 @@ export default async function StudentRegistration({ params }) {
     res.data ? res.data : []
   );
   const { id } = await params;
+  const sessionList = passTypes.filter(
+    (pass) => pass.ticket_price_type == id
+  );
   return (
     <main>
-      {passTypes?.length>0 ? (
-        <RegistrationBlock passTypes={passTypes} type={id} />
+      {sessionList?.length > 0 ? (
+        <RegistrationBlock sessionList={sessionList} type={id} />
       ) : (
         <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
           {/* <BgOverlay/> */}

@@ -7,6 +7,7 @@ import useDebounce from "./useDebounce";
 import RegistrationServices from "@/services/registrationServices";
 import { separatePhoneNumber } from "@/utils/functions";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import { SUCCESS_CODES } from "@/data/successCodes";
 
 const useContactForm = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -140,7 +141,7 @@ const useContactForm = () => {
 
     RegistrationServices.submitContactForm(formData)
       .then((res) => {
-        if (res.result == "success") {
+        if (SUCCESS_CODES.includes(res.status) && res.data) {
           setShowSuccess(true);
           formik.resetForm();
           formik.setSubmitting(false);

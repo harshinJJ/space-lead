@@ -20,14 +20,14 @@ const SponsorBlock = ({ sponsors = [], label, title, containerClass = "" }) => {
             {sponsors.map((sponsor, i) => (
               sponsor.logo&&<div
                 key={i}
-                className="card box-border shadow-lg flex flex-row justify-center items-center p-[26px]  h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0"
+                className="card box-border shadow-lg flex flex-row justify-center items-center p-[26px]  h-[86.96px] bg-white text-black rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0"
               >
                 <Image
                   width={150}
                   height={40}
                   src={sponsor.logo}
                   alt={sponsor.company_name||"sponsor"}
-                  className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                  className="max-h-10 object-contain [transform:matrix(1,0,-0.26,1.03,0,0)] text-black "
                 />
               </div>
             ))}
