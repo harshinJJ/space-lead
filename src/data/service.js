@@ -8,6 +8,7 @@ const SERVICE = {
     SPONSORS: "/microsite/v2/event-sponsors",
     SPONSOR_CATEGORIES: "/microsite/v2/event-sponsor-categories",
     COMMITEE: "/microsite/v2/committee",
+    EVENT_COMMITEE: "/microsite/v2/event-committe-category",
     LIVE_UPDATES: "/microsite/v2/press-releases",
     MEDIA: "/microsite/v2/gallery/",
   },

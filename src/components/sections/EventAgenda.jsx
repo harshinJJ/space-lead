@@ -192,7 +192,7 @@ export default function EventAgenda({
           ))} */}
         {filteredEvents.map((event, idx) => (
           <div
-            key={event.event_id}
+            key={idx}
             className="bg-white/8 rounded-4xl xl:p-7.5 md:p-4 p-2 flex flex-col gap-4 card"
           >
             <AgendaCard event={event} />

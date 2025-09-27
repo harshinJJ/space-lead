@@ -94,6 +94,13 @@ const PublicServices = {
       return e;
     }
   },
+  getCommiteeCategory: async () => {
+    try {
+      return await customFetch(SERVICE.CONTENT.EVENT_COMMITEE);
+    } catch (e) {
+      return e;
+    }
+  },
   getMedia: async () => {
     try {
       return await customFetch(SERVICE.CONTENT.MEDIA);

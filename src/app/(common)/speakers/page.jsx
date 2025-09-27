@@ -11,7 +11,6 @@ export default async function Speakers() {
     (res) => res.data || []
   );
   const [spaceSpeakers,healthSpeakers]=[speakers.find(speaker=>speaker.session_title=="Space")?.speakers||[],speakers.find(speaker=>speaker.session_title=="Health")?.speakers||[]]
-  console.log("asdasd",spaceSpeakers,healthSpeakers)
   return (
     <main>
       <SpeakerGroup

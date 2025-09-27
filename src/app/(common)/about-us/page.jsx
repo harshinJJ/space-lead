@@ -18,9 +18,10 @@ export const metadata = {
   title: "About Us",
 };
 const About = async () => {
-  const commitee = await PublicServices.getCommitee().then(
+  const commitee = await PublicServices.getCommiteeCategory().then(
     (res) => res.data || []
   );
+  const [scientific,steering]=[commitee.find(item=>item?.name=="Scientific Committee")?.staff_members||[],commitee.find(item=>item?.name=="Steering Committee")?.staff_members||[]]
   console.log("commitee",commitee)
   return (
     <main>
@@ -48,7 +49,7 @@ const About = async () => {
         className="bg-white"
         title={"Steering Committee"}
         label={"Visionaries Behind Space Lead’25"}
-        speakers={commitee}
+        speakers={steering}
         cardSize="sm"
       />
       <section className="relative bg-transparent bg-cover bg-[center]">
@@ -64,7 +65,7 @@ const About = async () => {
         <MemberList
           className="bg-transparent"
           title={"Scientific Committee  "}
-          speakers={commitee}
+          speakers={scientific}
           theme="dark"
           cardSize="lg"
         />
