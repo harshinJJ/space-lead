@@ -22,7 +22,6 @@ const About = async () => {
     (res) => res.data || []
   );
   const [scientific,steering]=[commitee.find(item=>item?.name=="Scientific Committee")?.staff_members||[],commitee.find(item=>item?.name=="Steering Committee")?.staff_members||[]]
-  console.log("commitee",commitee)
   return (
     <main>
       <AboutInfo />

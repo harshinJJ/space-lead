@@ -26,7 +26,6 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
   const filteredList = active
     ? gallery.filter((media) => media.date == active)
     : gallery;
-  console.log("asdasda", gallery);
   const handleVideo = (url) => {
     setActiveVideo(url);
 
