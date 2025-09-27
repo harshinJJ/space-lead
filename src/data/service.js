@@ -12,12 +12,12 @@ const SERVICE = {
     MEDIA: "/microsite/v2/gallery/",
   },
   CONTACT: {
-    SUBMIT: "/microsite/v2/event/get-in-touch/",
+    SUBMIT: "/microsite/v2/get-in-touch/",
   },
   REGISTER: {
     PASS: "/microsite/v2/event-tickets",
     SUBMIT: "/microsite/v2/form-registration",
-    STATUS: "/microsite/v2/form-registration",
+    STATUS: "/microsite/v2/event-register-user",
   },
 };
 

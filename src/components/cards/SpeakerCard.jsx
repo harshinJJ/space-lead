@@ -28,7 +28,7 @@ const SpeakerCard = ({
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
       className={`${
         hoverable ? "//group" : ""
-      } relative w-[fit] h-auto aspect-[331/488] rounded-2xl border-1 border-secondary overflow-hidden bg-[#232323] flex flex-col justify-end  shadow-2xl ${className}`}
+      } relative w-[fit] h-auto aspect-[331/488] rounded-2xl border-1 border-secondary overflow-hidden bg-[#232323] flex flex-col justify-end  ${className}`}
     >
       <div className="absolute transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-[100%] group-hover:translate-y-0 [writing-mode:sideways-lr] w-full h-full top-0 left-0 right-0 font-semibold text-7xl text-stroke text-transparent flex items-end">
         {hoverName}
@@ -100,7 +100,7 @@ const SpeakerCardOld = ({
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
       className={`${
         hoverable ? "group" : ""
-      } relative p-8 2xl:pt-15 py-5 md:pb-2.5 w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl ${className}`}
+      } relative p-8 2xl:pt-15 py-5 md:pb-2.5 w-[fit] h-auto aspect-[43/50] rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between ${className}`}
     >
       <div className="absolute transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-[100%] group-hover:translate-y-0 [writing-mode:sideways-lr] w-full h-full top-0 left-0 right-0 font-semibold text-7xl text-stroke text-transparent flex items-end">
         {hoverName}
@@ -188,7 +188,7 @@ export const SpeakerSlideCard = ({
   const hoverName = name?.split(".").pop().trim().split(" ").shift();
 
   return (
-    <div className="group relative p-8 py-15 w-[fit] h-115 rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between shadow-2xl">
+    <div className="group relative p-8 py-15 w-[fit] h-115 rounded-2xl border-1 border-[#4F4F4F] overflow-hidden bg-[#232323] flex flex-col justify-between ">
       <div className="absolute transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-[100%] group-hover:translate-y-0 [writing-mode:sideways-lr] w-full h-full top-0 left-0 right-0 font-semibold text-7xl text-stroke text-transparent flex items-end">
         {hoverName}
       </div>

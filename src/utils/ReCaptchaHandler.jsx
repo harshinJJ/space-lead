@@ -3,23 +3,6 @@ import { useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-async function verifyV3(token, action) {
-  const res = await fetch("/api/verify-recaptcha-v3", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token, action }),
-  });
-  return res.json();
-}
-
-async function verifyV2(token) {
-  const res = await fetch("/api/verify-recaptcha-v2", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token }),
-  });
-  return res.json();
-}
 
 export default function ReCaptchaHandler({
   onVerify,

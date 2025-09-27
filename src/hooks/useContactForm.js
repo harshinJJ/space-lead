@@ -105,7 +105,7 @@ const useContactForm = () => {
   const onSubmitRegistration = useDebounce(handleFormSubmit, 300);
 
   const onContactSubmit = async (values) => {
-    const payload = { ...values };
+    const payload = { form_data:{...values} };
     if (!showV2) {
       const token = await executeRecaptcha("submit");
       if (token) {
@@ -130,15 +130,15 @@ const useContactForm = () => {
     // payload.form_data.mobile = phone.nationalNumber;
     // payload.form_data.country_code = phone.countryCode;
 
-    payload.mobile = phone.nationalNumber;
-    payload.country_code = phone.countryCode;
+    payload.form_data.mobile = phone.nationalNumber;
+    payload.form_data.country_code = phone.countryCode;
 
     delete payload.phoneNumber
 
-    // const formData = new FormData();
-    // formData.append("payload", JSON.stringify(payload));
+    const formData = new FormData();
+    formData.append("payload", JSON.stringify(payload));
 
-    RegistrationServices.submitContactForm(payload)
+    RegistrationServices.submitContactForm(formData)
       .then((res) => {
         if (res.result == "success") {
           setShowSuccess(true);

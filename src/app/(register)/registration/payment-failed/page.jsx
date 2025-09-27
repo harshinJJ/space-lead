@@ -1,24 +1,17 @@
-import RegistrationServices from "@/services/registrationServices";
-import RegistrationBlock from "../components/RegistrationBlock";
-import { SUCCESS_CODES } from "@/data/successCodes";
-import PublicServices from "@/services/publicServices";
-import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import { LogoBg } from "@/data/icons";
+import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 
-export default async function StudentRegistration({ params }) {
-  const passTypes = await PublicServices.getRegisterPassInfo().then((res) =>
-    res.data ? res.data : []
-  );
-  const { id } = await params;
+export default function PaymentFailed() {
+
   return (
     <main>
-      {passTypes?.length>0 ? (
-        <RegistrationBlock passTypes={passTypes} type={id} />
-      ) : (
-        <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
-          {/* <BgOverlay/> */}
-          <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
-          <div className="relative flex flex-col items-center justify-center bg-white rounded-xl shadow-lg p-8 py-14.5 w-full max-w-[44rem] mx-auto mt-12">
+      <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
+        <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
+        <div className="container-fluid mx-auto flex flex-col items-center justify-center lg:px-56.75 px-5">
+          <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
+            YOUR REGISTRATION
+          </h2>
+          <div className="flex flex-col items-center justify-center bg-white rounded-3xl shadow-lg p-8 py-14.5 w-full max-w-[44rem] mx-auto mt-12">
             {/* Error Icon */}
             <div className="bg-[#E84C4C1F] rounded-full p-3 mb-4">
               <svg
@@ -38,23 +31,24 @@ export default async function StudentRegistration({ params }) {
             </div>
 
             {/* Error Text */}
-            <h2 className="text-[2rem] text-[#E84C4C] mb-2">
-              Something went wrong
+            <h2 className="text-[2rem] text-center text-[#E84C4C] mb-2">
+              Your Registration has Failed
             </h2>
             <p className="text-[#22222280] tracking-[-2%] mb-4">
-              Please try again or go back
+              Please try again later
             </p>
 
             {/* Action Button */}
+
             <PrimaryLink
-              href="/"
-              className="uppercase py-2.5 px-10 mt-4 font-semibold bg-[#E84C4C] hover:bg-[#d23c3c]"
+              href={"/"}
+              className="uppercase py-2.5 px-10 mt-4 font-semibold"
             >
-              Go Back
+              Continue
             </PrimaryLink>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </main>
   );
 }

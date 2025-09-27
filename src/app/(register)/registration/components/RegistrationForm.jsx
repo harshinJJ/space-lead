@@ -355,7 +355,7 @@ export default function RegistrationForm({
       <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
         YOUR REGISTRATION
       </h2>
-      <SuccessModal status="success" uid={successInfo?.uid} ticketUrl={successInfo?.uid} onContinue={handleContinue} />
+      <SuccessModal status="success" uid={successInfo?.unique_id} ticketUrl={successInfo?.booking_status=="1"&&successInfo?.encrypted_unique_id} onContinue={handleContinue} />
     </div>
   );
 }

@@ -77,25 +77,25 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
             </div>
           </div>
           <div ref={fancyboxRef}>
-            <HorizontalCardStagger className="grid xl:grid-cols-4 md:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-6">
+            {filteredList?.length>0?<HorizontalCardStagger className="grid xl:grid-cols-4 md:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-6">
               {filteredList.map((media, i) => (
                 <div
                   key={i}
                   className="relative aspect-[335/226] cursor-pointer card opacity-0 will-change-transform"
                 >
-                  {media.type == "video" ? (
+                  {media.media_type == "video" ? (
                     <a
                       data-fancybox="gallery"
-                      href={media.url || "#"}
+                      href={media.video || "#"}
                       data-caption={media.alt}
-                      data-thumb={media.thumbnail}
+                      data-thumb={media?.thumbnail}
                     >
                       <video
-                        src={media.url}
+                        src={media.video}
                         autoPlay
                         muted
                         loop
-                        poster={media.thumbnail}
+                        poster={media?.thumbnail}
                         className="object-cover h-full w-full"
                       />
                       <div className="z-1 absolute-center max-w-17 max-h-17 m-auto rounded-full absolute transition-all duration-300 bg-secondary hover:bg-[#34706f] aspect-square flex items-center justify-center p-5 w-fit">
@@ -116,12 +116,12 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                   ) : (
                     <a
                       data-fancybox="gallery"
-                      href={media.url || "#"}
-                      data-caption={media.alt}
+                      href={media.image || "#"}
+                      data-caption={media?.alt}
                     >
                       <Image
-                        src={media.url}
-                        alt={media.alt}
+                        src={media?.image}
+                        alt={media?.alt||"gallery_image_"+media?.id}
                         className="object-cover"
                         fill
                       />
@@ -130,6 +130,9 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                 </div>
               ))}
             </HorizontalCardStagger>
+            :
+            <div className="flex items-center justify-center w-full py-20 text-2xl">No data found</div>
+            }
           </div>
         </div>
         <PressRelease updates={updates} />

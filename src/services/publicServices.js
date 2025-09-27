@@ -9,6 +9,7 @@ export async function customFetch(path, options = {}) {
   try {
     const res = await fetch(`${BASE_URL}${path}`, {
       // next: { revalidate },  //activate for caching
+      cache:"no-store",     //remove for static generation
       ...rest,
     });
     if (!res.ok) {
@@ -103,6 +104,13 @@ const PublicServices = {
   getLiveUpdates: async () => {
     try {
       return await customFetch(SERVICE.CONTENT.LIVE_UPDATES);
+    } catch (e) {
+      return e;
+    }
+  },
+  getRegisterStatus: async (id) => {
+    try {
+      return await customFetch(`${SERVICE.REGISTER.STATUS}/${id}`);
     } catch (e) {
       return e;
     }

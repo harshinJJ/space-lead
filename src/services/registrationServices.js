@@ -35,7 +35,11 @@ const RegistrationServices = {
   },
   submitContactForm: async (form) => {
     try {
-      return await axios.post(SERVICE.CONTACT.SUBMIT, form);
+      return await axios.post(SERVICE.CONTACT.SUBMIT, form,{
+        headers:{
+          "Content-Type":"multipart/form-data"
+        }
+      });
     } catch (e) {
       return e;
     }

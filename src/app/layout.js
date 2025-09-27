@@ -41,9 +41,6 @@ export default function RootLayout({ children }) {
             {children}
           </GsapProvider>
         </RecaptchaProvider>
-        <RegisterBtn className="btn-gradient-secondary">
-          Register Now
-        </RegisterBtn>
         <Toaster />
       </body>
     </html>

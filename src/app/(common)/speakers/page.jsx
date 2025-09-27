@@ -7,9 +7,11 @@ export const metadata = {
   description: "Event Speakers",
 };
 export default async function Speakers() {
-  const speakers = await PublicServices.getSpeakers().then(
+  const speakers = await PublicServices.getSessionSpeakers().then(
     (res) => res.data || []
   );
+  const [spaceSpeakers,healthSpeakers]=[speakers.find(speaker=>speaker.session_title=="Space")?.speakers||[],speakers.find(speaker=>speaker.session_title=="Health")?.speakers||[]]
+  console.log("asdasd",spaceSpeakers,healthSpeakers)
   return (
     <main>
       <SpeakerGroup
@@ -18,13 +20,13 @@ export default async function Speakers() {
         className="!pb-7.5"
         bgUrl="/images/backgrounds/speaker_group_bg2.jpg"
         cardStyle="primary"
-        speakers={speakers}
+        speakers={spaceSpeakers}
       />
       <SpeakerGroup
         label="Speakers"
-        title={"Space & Advanced Engineering"}
+        title={"Human Health Off-Planet"}
         className="!pt-7.5"
-        speakers={speakers}
+        speakers={healthSpeakers}
       />
       {/* speakers block pending */}
       {/* <Marquee /> */}
