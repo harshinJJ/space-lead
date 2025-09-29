@@ -4,12 +4,15 @@ import axios from "@/utils/axios";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function customFetch(path, options = {}) {
-  const { revalidate = 60, ...rest } = options; // default ISR 60s
+  const { revalidate = 60, timeout = 60000, ...rest } = options; // default ISR 60s
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
 
   try {
     const res = await fetch(`${BASE_URL}${path}`, {
       // next: { revalidate },  //activate for caching
-      cache:"no-store",     //remove for static generation
+      cache: "no-store", //remove for static generation
+      signal: controller.signal,
       ...rest,
     });
     if (!res.ok) {
@@ -18,8 +21,14 @@ export async function customFetch(path, options = {}) {
 
     return await res.json();
   } catch (e) {
-    console.error(`❌ customFetch error at ${path}:`, e);
+    if (e.name === "AbortError") {
+      console.error(`⏱️ Request timed out at ${path}`);
+    } else {
+      console.error(`❌ customFetch error at ${path}:`, e);
+    }
     return { data: [] }; // safe fallback so UI doesn’t break
+  } finally {
+    clearTimeout(id);
   }
 }
 

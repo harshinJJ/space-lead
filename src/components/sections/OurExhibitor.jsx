@@ -52,27 +52,34 @@ const OurExhibitor = ({
     <section className={`bg-[#EDF0FE] py-10  ${className}`}>
       <div className="container-fluid mx-auto w-fullpx-5 sm:px-0 ">
         {label && (
-          <p className="text-secondary text-center font-azonix tracking-wide font-light mb-5">
+          <p
+            data-aos="fade-up"
+            className="text-secondary text-center font-azonix tracking-wide font-light mb-5"
+          >
             {label}
           </p>
         )}
         {title && (
-          <h3 className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12">
+          <h3
+            data-aos="fade-up"
+            className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12"
+          >
             {title}
           </h3>
         )}
 
-        <HorizontalCardStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
           {exhibitors.map((item, i) => (
             <ExhibitorCard
               key={i}
+              index={i}
               boothNumber={item.booth_details?.number}
               name={item?.company_name || item?.name}
               email={item?.email}
               isActive={item.is_active}
             />
           ))}
-        </HorizontalCardStagger>
+        </div>
 
         {showNavButton && (
           <div className="container-fluid mx-auto mt-10 flex items-center justify-center gap-3 px-5 sm:px-0">

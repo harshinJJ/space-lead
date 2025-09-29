@@ -6,10 +6,10 @@ import SemiCirclePattern from "../patterns/SemiCirclePattern";
 
 const AboutInfo = ({ className = "" }) => {
   const data = {
-    name: "About Us",
-    title: "Bringing together pioneer industry experts",
+    // name: "About Us",
+    title: "Space Lead",
     description:
-      "Space Lead ’25 Conference in Riyadh is a pioneering conference uniting the leading minds in space science to explore two main themes:",
+      "“The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. ",
     vision: [
       {
         icon: (
@@ -35,7 +35,9 @@ const AboutInfo = ({ className = "" }) => {
             />
           </svg>
         ),
-        label: `Human Health Off-Planet: Challenges and Breakthroughs `,
+        // label: `Human Health Off-Planet: Challenges and Breakthroughs `,
+        label:
+          "Conference Themes:<br/> Human Health Off-Planet | Space & Advanced Engineering",
       },
       {
         icon: (
@@ -55,7 +57,8 @@ const AboutInfo = ({ className = "" }) => {
             />
           </svg>
         ),
-        label: "Space and Advanced Engineering",
+        label:
+          "Across 3 Days We Cover:<br/> Keynotes, Workshops, Panels, Exhibitions",
       },
     ],
     features: [
@@ -150,38 +153,41 @@ const AboutInfo = ({ className = "" }) => {
         title: "New People",
         description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
       },
-      {
-        icon: (
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M37.8151 35.7221C37.8481 32.1257 36.1936 30.4606 34.5216 29.9145C33.0493 29.4337 30.0339 29.8731 27.8004 28.7251C25.6646 27.6274 24.4591 24.7218 24.3575 21.423M28.8378 37.9775L28.8376 38M10.1014 35.723L10.1011 35.7455M37.0521 8.66923L37.0519 8.69177M20.9848 35.723C20.9848 32.3413 19.8628 30.0868 17.7642 28.0463M29.7857 15.9686C32.2047 17.6871 34.4487 18.8144 38 17.7056M25.9844 6.96193C23.4594 4.42515 20.0347 3 16.4638 3C12.893 3 9.46846 4.42515 6.94348 6.96193C4.41851 9.49872 3 12.9393 3 16.527C3 20.1143 4.41851 23.5551 6.94348 26.0918L25.9844 6.96193Z"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        ),
-        title: "Party",
-        description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
-      },
+      // {
+      //   icon: (
+      //     <svg
+      //       width="40"
+      //       height="40"
+      //       viewBox="0 0 40 40"
+      //       fill="none"
+      //       xmlns="http://www.w3.org/2000/svg"
+      //     >
+      //       <path
+      //         d="M37.8151 35.7221C37.8481 32.1257 36.1936 30.4606 34.5216 29.9145C33.0493 29.4337 30.0339 29.8731 27.8004 28.7251C25.6646 27.6274 24.4591 24.7218 24.3575 21.423M28.8378 37.9775L28.8376 38M10.1014 35.723L10.1011 35.7455M37.0521 8.66923L37.0519 8.69177M20.9848 35.723C20.9848 32.3413 19.8628 30.0868 17.7642 28.0463M29.7857 15.9686C32.2047 17.6871 34.4487 18.8144 38 17.7056M25.9844 6.96193C23.4594 4.42515 20.0347 3 16.4638 3C12.893 3 9.46846 4.42515 6.94348 6.96193C4.41851 9.49872 3 12.9393 3 16.527C3 20.1143 4.41851 23.5551 6.94348 26.0918L25.9844 6.96193Z"
+      //         stroke="currentColor"
+      //         strokeLinecap="round"
+      //         strokeLinejoin="round"
+      //       />
+      //     </svg>
+      //   ),
+      //   title: "Party",
+      //   description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+      // },
     ],
   };
   return (
     <section
       id="about"
-      className={`relative bg-white bg-[top_center] bg-cover ${className}`}
+      className={`relative bg-[#EDF0FE] bg-[top_center] bg-cover ${className}`}
     >
-      <SemiCirclePattern className="absolute bottom-5 right-0"/>
+      <SemiCirclePattern className="absolute bottom-5 right-0" />
       <RowStagger className="relative container-fluid pt-20 xl:pt-32.5 xl:pb-33 mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
         <DotPattern className="absolute top-13.5 right-0 transform " />
         {/* image */}
-        <div data-aos="flip-left" className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15">
+        <div
+          data-aos="flip-left"
+          className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15"
+        >
           <video
             className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
             src="/images/about_section_img.webm"
@@ -215,16 +221,25 @@ const AboutInfo = ({ className = "" }) => {
         </div>
 
         {/* content */}
-        <div data-aos="fade-up" className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
-          <h5 className="text-secondary font-azonix xl:text-lg text-base">
-            {data.name}
-          </h5>
-          <h3 className="text-tertiary  2xl:leading-[3rem] uppercase font-azonix  tracking-[-1.6px] text-lg md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-[2.5rem]">
-            {data.title}
-          </h3>
-          <p className="text-[#737373] xl:max-w-[80%] 3xl:text-lg text-base">
-            {data.description}
-          </p>
+        <div
+          data-aos="fade-up"
+          className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0"
+        >
+          {data?.name && (
+            <h5 className="text-secondary font-azonix xl:text-lg text-base">
+              {data.name}
+            </h5>
+          )}
+          {data?.title && (
+            <h3 className="text-tertiary  2xl:leading-[3rem] uppercase font-azonix  tracking-[-1.6px] text-lg md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-[2.5rem]">
+              {data.title}
+            </h3>
+          )}
+          {data?.description && (
+            <p className="text-[#737373] xl:max-w-[90%] 3xl:text-2xl lg:text-xl text-base">
+              {data.description}
+            </p>
+          )}
           <div className="flex xl:items-center justify-between xl:flex-row flex-col gap-5 lg:gap-10 2xl:gap-18 3xl:gap-21.25 py-5 lg:py-0">
             {data.vision.map((vision, i) => (
               <div
@@ -236,15 +251,14 @@ const AboutInfo = ({ className = "" }) => {
                     {vision.icon}
                   </div>
                 </div>
-                <p
+                {vision?.label&&<p
                   className={`${
                     vision.label.length > 50
                       ? "2xl:max-w-[30ch] 2xl:min-w-[24ch]"
                       : ""
-                  } text-lg 3xl:text-lg 2xl:text-base lg:text-sm text-center xs:text-start break-words`}
-                >
-                  {vision.label}
-                </p>
+                  } text-sm 3xl:text-sm 2xl:text-xs lg:text-sm text-center xs:text-start break-words`}
+                  dangerouslySetInnerHTML={{__html:vision.label}}
+                />}
               </div>
             ))}
           </div>

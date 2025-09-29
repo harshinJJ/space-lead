@@ -441,3 +441,8 @@ button {
 .grecaptcha-badge {
   opacity: 0;
 }
+
+/* global.css or component module */
+[data-aos="color-change"].aos-animate {
+  color: #000; /* Target color on scroll */
+}

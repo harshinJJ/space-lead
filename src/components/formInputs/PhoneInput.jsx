@@ -227,6 +227,7 @@ const PhoneInputs = ({
         value={value}
         onChange={onChange}
         onFocus={() => setIsFocused(true)}
+        autoComplete="off"
         onBlur={(e) => {
           setIsFocused(false);
           onBlur(e);

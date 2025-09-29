@@ -26,13 +26,17 @@ const SpeakerGroup = ({
           <div className={`flex flex-col  md:items-center md:justify-center`}>
             {title && (
               <h2
+                data-aos="fade-up"
                 className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix  leading-[1]`}
               >
                 {title}
               </h2>
             )}
             {label && (
-              <p className="font-azonix 2xl:text-3xl lg:text-2xl text-lg">
+              <p
+                data-aos="fade-up"
+                className="font-azonix 2xl:text-3xl lg:text-2xl text-lg"
+              >
                 {label}
               </p>
             )}

@@ -133,6 +133,7 @@ export default function RegistrationForm({
                       onBlur={handleBlur}
                       value={formData.firstname}
                       placeholder="First name"
+                      autoComplete="name"
                     />
                     {touched.firstname && <Error message={errors?.firstname} />}
                   </div>
@@ -146,6 +147,7 @@ export default function RegistrationForm({
                     onBlur={handleBlur}
                     value={formData.lastname}
                     placeholder="Last name"
+                    autoComplete="lastName"
                   />
                   {touched.lastname && <Error message={errors?.lastname} />}
                 </div>
@@ -173,6 +175,7 @@ export default function RegistrationForm({
                     onBlur={handleBlur}
                     value={formData.email}
                     placeholder="Email"
+                    autoComplete="email"
                   />
                   {touched.email && <Error message={errors?.email} />}
                 </div>
@@ -186,6 +189,7 @@ export default function RegistrationForm({
                     onBlur={() => setFieldTouched("country", true)}
                     valueKey="code"
                     labelKey="name"
+                    autoComplete="country"
                     value={formData.country}
                     options={countryList}
                   />
@@ -198,6 +202,7 @@ export default function RegistrationForm({
                     instanceId={"nationality-select"}
                     name="nationality"
                     placeholder="Nationality"
+                    autoComplete="nationality"
                     onChange={(option) => setFieldValue("nationality", option)}
                     onBlur={() => setFieldTouched("nationality", true)}
                     valueKey="code"
@@ -225,6 +230,7 @@ export default function RegistrationForm({
                       <FormInput
                         name="institution"
                         onChange={handleChange}
+                        autoComplete="institution"
                         onBlur={handleBlur}
                         value={formData.institution}
                         placeholder="Institution name"
@@ -273,6 +279,7 @@ export default function RegistrationForm({
                       <FormInput
                         name="jobtitle"
                         onChange={handleChange}
+                        autoComplete="designation"
                         onBlur={handleBlur}
                         value={formData.jobtitle}
                         placeholder="Job title"
@@ -285,6 +292,7 @@ export default function RegistrationForm({
                         name="companyname"
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        autoComplete="company"
                         value={formData.companyname}
                         placeholder="Company name"
                       />
@@ -355,7 +363,14 @@ export default function RegistrationForm({
       <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center">
         YOUR REGISTRATION
       </h2>
-      <SuccessModal status="success" uid={successInfo?.unique_id} ticketUrl={successInfo?.booking_status=="1"&&successInfo?.encrypted_unique_id} onContinue={handleContinue} />
+      <SuccessModal
+        status="success"
+        uid={successInfo?.unique_id}
+        ticketUrl={
+          successInfo?.booking_status == "1" && successInfo?.encrypted_unique_id
+        }
+        onContinue={handleContinue}
+      />
     </div>
   );
 }

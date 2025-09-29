@@ -47,58 +47,59 @@ const PressRelease = ({
   navLabel = "View All Announcements",
   navLink = "/media",
   linkType = "internal",
-}) => (
-  updates?.length>0?<section className={`bg-white py-10  ${className}`}>
-    <div className="container-fluid mx-auto w-full px-5 sm:px-0 ">
-      {label && (
-        <p className="text-secondary text-center font-azonix tracking-wide font-light mb-5">
-          {label}
-        </p>
-      )}
-      {title && (
-        <h3 className="text-4xl md:text-2xl text-center xl:text-[2.875rem] leading-[1.2] font-bold font-azonix text-black/80 mb-12">
-          {title}
-        </h3>
-      )}
+}) =>
+  updates?.length > 0 ? (
+    <section className={`bg-white py-10  ${className}`}>
+      <div className="container-fluid mx-auto w-full px-5 sm:px-0 ">
+        {label && (
+          <p className="text-secondary text-center font-azonix tracking-wide font-light mb-5">
+            {label}
+          </p>
+        )}
+        {title && (
+          <h3 className="text-4xl md:text-2xl text-center xl:text-[2.875rem] leading-[1.2] font-bold font-azonix text-black/80 mb-12">
+            {title}
+          </h3>
+        )}
 
-      <HorizontalCardStagger className="grid grid-cols-1 lg:grid-cols-2 lg:gap-7.5 gap-5 justify-items-center w-full">
-        {updates.map((item, i) => (
-          <div
-            key={i}
-            className="bg-[#F7F7F7] rounded-2xl p-5.5 flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full"
-          >
-            <div className="flex flex-col items-center justify-center uppercase aspect-square bg-gradient-to-b from-secondary to-primary/37  font-semibold text-black 2xl:rounded-4xl rounded-2xl p-2.5 sm:p-5 2xl:p-7.5 shrink-0">
-              <span className="md:text-2xl text-sm leading-[1]">
-                {item.date && format(new Date(item.date), "MMMM")}
-              </span>
-              <div className="md:text-[4rem] text-3xl leading-[1]">
-                {item.date && format(new Date(item.date), "dd")}
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-7.5 gap-5 justify-items-center w-full">
+          {updates.map((item, i) => (
+            <div
+              key={i}
+              data-aos={i % 2 == 0 ? "fade-right" : "fade-left"}
+              className="bg-[#F7F7F7] rounded-2xl p-5.5 flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full"
+            >
+              <div className="flex flex-col items-center justify-center uppercase aspect-square bg-gradient-to-b from-secondary to-primary/37  font-semibold text-black 2xl:rounded-4xl rounded-2xl p-2.5 sm:p-5 2xl:p-7.5 shrink-0">
+                <span className="md:text-2xl text-sm leading-[1]">
+                  {item.date && format(new Date(item.date), "MMMM")}
+                </span>
+                <div className="md:text-[4rem] text-3xl leading-[1]">
+                  {item.date && format(new Date(item.date), "dd")}
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 xl:gap-4 flex-1">
+                <h4 className="2xl:text-2xl text-[#121416] font-semibold">
+                  {item.title}
+                </h4>
+                <p className="2xl:text-xl text-[#6C757D]">{item.description}</p>
               </div>
             </div>
-            <div className="flex flex-col gap-2 xl:gap-4 flex-1">
-              <h4 className="2xl:text-2xl text-[#121416] font-semibold">
-                {item.title}
-              </h4>
-              <p className="2xl:text-xl text-[#6C757D]">{item.description}</p>
-            </div>
-          </div>
-        ))}
-      </HorizontalCardStagger>
-
-      {showNavButton && (
-        <div className="container-fluid mx-auto mt-10 flex items-center justify-center gap-3 px-5 sm:px-0">
-          <PrimaryLink
-            href={navLink}
-            target={linkType == "external" ? "_blank" : "_self"}
-            className="px-5 py-3.5 text-sm lg:text-lg sm:whitespace-nowrap md:whitespace-normal w-fit"
-          >
-            {navLabel}
-          </PrimaryLink>
+          ))}
         </div>
-      )}
-    </div>
-  </section>
-  :null
-);
+
+        {showNavButton && (
+          <div className="container-fluid mx-auto mt-10 flex items-center justify-center gap-3 px-5 sm:px-0">
+            <PrimaryLink
+              href={navLink}
+              target={linkType == "external" ? "_blank" : "_self"}
+              className="px-5 py-3.5 text-sm lg:text-lg sm:whitespace-nowrap md:whitespace-normal w-fit"
+            >
+              {navLabel}
+            </PrimaryLink>
+          </div>
+        )}
+      </div>
+    </section>
+  ) : null;
 
 export default PressRelease;

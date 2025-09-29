@@ -21,11 +21,11 @@ const ExhibitorList = ({ exhibitors = [],label,title="All Exhibitor" }) => (
 
     <HorizontalCardStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
       {exhibitors.map((item, i) => (
-        <ExhibitorCard key={i} boothNumber={item.booth_details?.number} name={item?.company_name||item?.name} email={item?.email} />
+        <ExhibitorCard key={i} boothNumber={item.booth_details?.number} isActive={item?.booth_details?.active_status} name={item?.company_name||item?.name} email={item?.email} />
       ))}
-      {exhibitors.slice(0,5).map((item, i) => (
+      {/* {exhibitors.slice(0,5).map((item, i) => (
         <ExhibitorCard key={i} boothNumber={item.booth_details?.number} name={item?.company_name||item?.name} isActive={false} email={item?.email} />
-      ))}
+      ))} */}
     </HorizontalCardStagger>
   </section>
 );

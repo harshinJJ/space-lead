@@ -177,6 +177,7 @@ const ContactForm = () => {
                 maxLength={100}
                 name="firstName"
                 onChange={handleChange}
+                autoComplete="name"
                 onBlur={handleBlur}
                 value={values.firstName}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
@@ -191,6 +192,7 @@ const ContactForm = () => {
                 type="email"
                 maxLength={100}
                 name="email"
+                autoComplete="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
@@ -223,6 +225,7 @@ const ContactForm = () => {
                 onBlur={handleBlur}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
                 value={values.phoneNumber}
+                autoComplete="off"
                 placeholder="Phone number"
               />
               {errors.phoneNumber && touched.phoneNumber && (
@@ -235,6 +238,7 @@ const ContactForm = () => {
             <textarea
               rows={3}
               name="message"
+              autoComplete="off"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.message}

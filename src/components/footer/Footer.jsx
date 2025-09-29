@@ -195,7 +195,7 @@ const Footer = () => {
         </section> */}
         <section className="relative py-10 border-b border-[#CCCCCC33] grid md:grid-cols-3 grid-cols-1 gap-y-12">
           <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
-          <div data-aos="fade-up" className="flex flex-row md:flex-col xl:flex-row xl:items-start justify-center md:justify-start 2xl:gap-7.5 md:gap-4 gap-5">
+          <div data-aos="fade-up" data-aos-once="true" className="flex flex-row md:flex-col xl:flex-row xl:items-start justify-center md:justify-start 2xl:gap-7.5 md:gap-4 gap-5">
             <div className="rounded-[5px] md:min-w-30 overflow-hidden">
               <Image
                 width={113}
@@ -208,7 +208,7 @@ const Footer = () => {
               <Image width={132} height={60} src="/logo.png" alt="logo" />
             </Link>
           </div>
-          <div data-aos="fade-up" data-aos-delay="200" className=" flex flex-col items-center md:items-start lg:gap-10 gap-5">
+          <div data-aos="fade-up" data-aos-once="true" data-aos-delay="200" className=" flex flex-col items-center md:items-start lg:gap-10 gap-5">
             <h4 className="text-[1.5rem] font-medium">Quick Links</h4>
             <ul className="grid xs:grid-cols-3 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xs:text-sm sm:text-base  gap-y-2.5 leading-[1.8] 2xl:gap-x-12.5 xl:gap-x-6 lg:gap-x-1 gap-5 md:w-fit xs:w-2/3 min-w-3/5 ">
               {quickLinks.map((link, i) => (
@@ -226,7 +226,7 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div data-aos="fade-up" data-aos-delay="400" className=" flex flex-col  gap-y-12">
+          <div data-aos="fade-up" data-aos-once="true" data-aos-delay="400" className=" flex flex-col  gap-y-12">
             <div className="flex flex-col lg:gap-10 gap-5 items-center md:items-start">
               <h4 className="text-[1.5rem] font-medium text-center">
                 Contact Us

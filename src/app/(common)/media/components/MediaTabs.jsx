@@ -54,7 +54,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                 <video
                   src={activeVideo}
                   controls
-                  className="w-full h-full rounded-xl"
+                  className="w-full h-full rounded-xl bg-black/20"
                 />
               )}
             </div>
@@ -108,7 +108,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                     className="relative aspect-[335/226] cursor-pointer card opacity-0 will-change-transform"
                   >
                     {media.media_type == "video" ? (
-                      <div onClick={() => handleVideo(media.video)}>
+                      <div className="w-full h-full" onClick={() => handleVideo(media.video)}>
                         <video
                           src={media.video}
                           autoPlay

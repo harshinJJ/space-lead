@@ -171,28 +171,11 @@ export default function EventAgenda({
       </div>
 
       {/* Event Cards */}
-      <ZigZagCardStagger className="flex flex-col gap-7.5">
-        {/* {eventsData[activeDay].map((event, idx) => (
-            <div
-              key={idx}
-              className="bg-white/8 rounded-4xl xl:p-7.5 md:p-4 p-2 flex flex-col gap-4 card"
-            >
-              <AgendaCard event={event}/>
-              <div className="flex flex-wrap gap-2.5">
-                {event.speakers.map((speaker, i) => (
-                  <SpeakerTag
-                    key={i}
-                    image={speaker.image}
-                    name={speaker.name}
-                    role={speaker.role}
-                  />
-                ))}
-              </div>
-            </div>
-          ))} */}
+      <div key={filteredEvents} className="flex flex-col gap-7.5">
         {filteredEvents.map((event, idx) => (
           <div
             key={idx}
+            data-aos={idx%2==0?"fade-right":"fade-left"}
             className="bg-white/8 rounded-4xl xl:p-7.5 md:p-4 p-2 flex flex-col gap-4 card"
           >
             <AgendaCard event={event} />
@@ -208,7 +191,7 @@ export default function EventAgenda({
             </div>
           </div>
         ))}
-      </ZigZagCardStagger>
+      </div>
       {filteredEvents?.length <= 0 && (
         <div
           className="w-full flex items-center text-center text-xl justify-center py-10 text-white"

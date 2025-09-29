@@ -92,8 +92,10 @@ export default async function Home() {
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
-        <div className="container-fluid z-1 relative mx-auto w-full pt-5 lg:pt-9.5">
-          <div className="lg:absolute mx-auto left-0 right-0 px-5 md:px-0 lg:-translate-y-1/2 -translate-y-1/10 top-0 w-full">
+        <div
+          className={`container-fluid z-1 relative mx-auto w-full ${speakers?.length>0?"pt-5 lg:pt-9.5":"py-5"}`}
+        >
+          <div className={`${speakers?.length>0?"lg:absolute lg:-translate-y-1/2 -translate-y-1/10":""} mx-auto left-0 right-0 px-5 md:px-0  top-0 w-full`}>
             <StatsCard />
           </div>
         </div>
@@ -116,7 +118,7 @@ export default async function Home() {
         navLabel="Become an Exhibitor"
         navLink="/registration"
       />
-      <PressRelease updates={liveUpdates}  showNavButton={true} />
+      <PressRelease updates={liveUpdates} showNavButton={true} />
       <AppPreview />
       {/* <MemberSlider
         className="bg-white"

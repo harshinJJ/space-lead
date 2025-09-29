@@ -21,7 +21,7 @@ const MemberSlider = ({
   showNavButton,
   navLabel = "View Full Line-Up",
   navLink = "/speakers",
-  linkType="internal"
+  linkType = "internal",
 }) => {
   const socials = [
     {
@@ -100,7 +100,7 @@ const MemberSlider = ({
         <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0">
           <div
             className={`flex flex-col sm:items-center sm:justify-between  md:justify-center `}
-            >
+          >
             {label && <p className="text-secondary font-azonix">{label}</p>}
             {title && (
               <h2
@@ -115,7 +115,7 @@ const MemberSlider = ({
         </div>
 
         {/* Speaker Cards as Swiper FreeMode */}
-        <HorizontalCardStagger className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5">
+        <div className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5">
           <Swiper
             modules={[FreeMode]}
             freeMode={true}
@@ -134,6 +134,8 @@ const MemberSlider = ({
             {speakers.map((speaker, index) => (
               <SwiperSlide
                 key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 300}
                 className={`${
                   cardSize == "sm" ? "!w-[331px] !h-auto" : "!w-[320px] !h-auto"
                 } lg:!max-w-2/5 flex items-stretch card`}
@@ -146,17 +148,16 @@ const MemberSlider = ({
               </SwiperSlide>
             ))}
           </Swiper>
-        </HorizontalCardStagger>
+        </div>
         {showNavButton && (
           <div className="container-fluid mx-auto pt-5 flex items-center justify-center gap-3 px-5 sm:px-0">
-
-              <PrimaryLink
-                href={navLink}
-                target={linkType=="external"?"_blank":"_self"}
-                className="px-5 py-3.5 text-sm lg:text-lg sm:whitespace-nowrap md:whitespace-normal w-fit"
-              >
-                {navLabel}
-              </PrimaryLink>
+            <PrimaryLink
+              href={navLink}
+              target={linkType == "external" ? "_blank" : "_self"}
+              className="px-5 py-3.5 text-sm lg:text-lg sm:whitespace-nowrap md:whitespace-normal w-fit"
+            >
+              {navLabel}
+            </PrimaryLink>
           </div>
         )}
       </section>

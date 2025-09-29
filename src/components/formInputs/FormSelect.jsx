@@ -30,8 +30,10 @@ const DropdownIndicator = (props) => {
     </components.DropdownIndicator>
   );
 };
+const Input = (props)=>(
+  <components.Input {...props} autoComplete="customselectinputthatshallneverbefilled"/>
+)
 
-// // Custom styles for react-select
 // const customStyles = {
 //   control: (provided, state) => ({
 //     ...provided,
@@ -207,7 +209,7 @@ const FormSelect = ({
       options={options}
       isClearable={false}
       styles={customStyles}
-      autoComplete="off"
+      autoComplete="customselectinputthatshallneverbefilled"
       getOptionLabel={(e) => e[labelKey]}
       getOptionValue={(e) => e[valueKey]}
       placeholder=""
@@ -216,7 +218,8 @@ const FormSelect = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
       onMenuClose={handleBlur}
-      components={{ DropdownIndicator }}
+      components={{ DropdownIndicator,Input }}
+      inputProps={{ autoComplete: "customselectinputthatshallneverbefilled", form: { autoComplete: "off" } }}
       {...props}
     />
   );
