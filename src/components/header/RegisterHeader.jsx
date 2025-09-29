@@ -162,6 +162,11 @@ const RegisterHeader = () => {
       url: "/cookie-policy",
       type: "link",
     },
+    {
+      title: "Registration Complete",
+      url: "/registration/status",
+      type: "link",
+    },
     // { title: "Register", url: "/registration", Component: RegisterBtn },
 
     // {

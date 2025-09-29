@@ -46,7 +46,6 @@ const RegistrationServices = {
   },
   fetchRegisterPassInfo: async () => {
     try {
-      console.log("Fetching fresh data from API..."); // debugging
       const res = await fetch(`${baseURL}${SERVICE.REGISTER.PASS}`, {
         next: { revalidate: 300 }, // cache for 5 minutes
       });

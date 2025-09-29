@@ -132,7 +132,6 @@ export default function EventAgenda({
   showViewAll = false,
 }) {
   const [activeDay, setActiveDay] = useState("2025-11-09");
-  // console.log("Test:agendaList",dataList,activeDay)
   const filteredEvents = dataList.filter((data) => data.event_day == activeDay);
 
   return (

@@ -337,8 +337,9 @@ export default function RegistrationForm({
             </div>
             {session?.price_amount > 0 && (
               <TicketSummary
-                price={session.price_amount}
-                currency={session.currency_name}
+                name={session?.ticket_name}
+                price={session?.price_amount}
+                currency={session?.currency_name}
               />
             )}
           </div>

@@ -7,9 +7,9 @@ import { LogoBg } from "@/data/icons";
 
 export default async function RegistrationStatus({ params, searchParams }) {
   const { status = "success", encryptionId, uid } = await searchParams;
-  const response = await PublicServices.getRegisterStatus(uid).then(
-    (res) => res.data || {}
-  );
+  const response = (await uid)
+    ? PublicServices.getRegisterStatus(uid).then((res) => res.data || {})
+    : null;
   return (
     <main>
       <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
@@ -19,7 +19,9 @@ export default async function RegistrationStatus({ params, searchParams }) {
             YOUR REGISTRATION
           </h2>
           <SuccessModal
-            ticketUrl={response?.booking_status=="1"&&response?.encrypted_unique_id}
+            ticketUrl={
+              response?.booking_status == "1" && response?.encrypted_unique_id
+            }
             uid={response?.unique_id}
             status={status}
           />

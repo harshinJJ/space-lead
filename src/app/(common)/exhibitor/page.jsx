@@ -14,7 +14,6 @@ export default async function Exhibitor() {
     PublicServices.getExhibitors(),
   ]);
   const exhibitors = getFullfilled(exhibitorRes);
-  console.log(exhibitors)
   return (
     <main>
       <ExhibitorBlock exhibitors={exhibitors} />

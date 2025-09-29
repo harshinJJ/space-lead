@@ -2,9 +2,9 @@
 import { formatCurrency } from "@/utils/util";
 import React from "react";
 
-const TicketSummary = ({ price = 0, currency = "SAR" }) => {
-  const vat = price * 0.15 + 205; // VAT calculation
-  const totalPrice = price + vat;
+const TicketSummary = ({ price = 0, currency = "SAR",name }) => {
+  const vat =( price/115)*15; // VAT calculation
+  const basePrice = price - vat;
   return (
     <div className="text-black-b2 text-[0.625rem]  bg-gradient-to-b from-[#F4E4FF] to-secondary rounded-[1.25rem] py-5 px-6 mt-5 w-full  mx-auto">
       <h3 className="text-sm text-black mb-4.5">Your Ticket Summary</h3>
@@ -16,7 +16,7 @@ const TicketSummary = ({ price = 0, currency = "SAR" }) => {
           </span>
         </div>
         <div className=" text-black-b2">
-          <div className=" mb-2.75">Early Bird Ticket</div>
+          <div className=" mb-2.75">{name}</div>
           <div className="">Monday, 09th November</div>
           <div className="">08:00 AM to 04:00 PM</div>
         </div>
@@ -29,7 +29,7 @@ const TicketSummary = ({ price = 0, currency = "SAR" }) => {
         <div className="flex justify-between items-center">
           <span>Sub-total</span>
           <span className="text-[#101010] text-xs">
-            {currency}. {formatCurrency(price)}
+            {currency}. {formatCurrency(basePrice)}
           </span>
         </div>
         <div className="flex justify-between items-center">
@@ -43,7 +43,7 @@ const TicketSummary = ({ price = 0, currency = "SAR" }) => {
         <div className="flex justify-between items-center">
           <span>Total Amount</span>
           <span className="text-[#101010] text-xs">
-            {currency}. {formatCurrency(totalPrice)}
+            {currency}. {formatCurrency(price)}
           </span>
         </div>
       </div>
