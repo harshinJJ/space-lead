@@ -1,6 +1,7 @@
 import React from "react";
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 import SpeakerProfileCard from "@/components/cards/SpeakerProfileCard";
+import Image from "next/image";
 
 const SpeakerGroup = ({
   speakers = [],
@@ -20,10 +21,10 @@ const SpeakerGroup = ({
     speakers.length > 0 && (
       <section className={`bg-indigo lg:py-15 py-5 text-white ${className}`}>
         <div
-          style={showGroupBg ? { backgroundImage: `url("${bgUrl}")` } : {}}
-          className={`container-fluid mx-auto text-[1.13rem] bg-cover bg-center bg-no-repeat flex-3 flex flex-col gap-3 md:gap-7.5 px-5 xl:px-15.75 2xl:py-20 lg:py-15 py-10 rounded-3xl ${borderClass}`}
+          className={`container-fluid overflow-hidden mx-auto text-[1.13rem] bg-cover bg-center bg-no-repeat flex-3 flex flex-col gap-3 md:gap-7.5 px-5 xl:px-15.75 2xl:py-20 lg:py-15 py-10 rounded-3xl ${borderClass}`}
         >
-          <div className={`flex flex-col  md:items-center md:justify-center`}>
+          <Image fill src={bgUrl} alt="group-bg-image" className="object-cover object-center" />
+          <div className={`relative flex flex-col  md:items-center md:justify-center`}>
             {title && (
               <h2
                 data-aos="fade-up"
