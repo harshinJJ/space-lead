@@ -132,7 +132,7 @@ const HomeBanner = ({ sponsors=[] }) => {
   ];
 
   return (
-    <section
+    <section 
       id="home-banner"
       className="relative bg-transparent bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
       // className="relative bg-[url('/images/home_banner.png')] bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
@@ -147,14 +147,14 @@ const HomeBanner = ({ sponsors=[] }) => {
       {/* <BannerOverlay /> */}
       <div className="relative container-fluid mx-auto px-5 sm:px-0 mb-12.5">
         <div className="relative mx-auto px-5 sm:px-0 flex flex-col items-center lg:max-w-[65%]">
-          <h2 className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[0.2em] 2xl:leading-[1.25] text-center">
+          <h2 data-aos="fade-up" className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[0.2em] 2xl:leading-[1.25] text-center">
             The Future of{" "}
             <span className="text-secondary">
               Health & Advanced Engineering{" "}
             </span>
             in Space
           </h2>
-          <div className="flex flex-col sm:flex-row xl:gap-15 gap-5 bg-white/4 rounded-[1.25rem] px-7 py-14 mt-4.5">
+          <div data-aos="fade-up" data-aos-delay="50" className="flex flex-col sm:flex-row xl:gap-15 gap-5 bg-white/4 rounded-[1.25rem] px-7 py-14 mt-4.5">
             <div className="">
               <LogoSVG />
             </div>
@@ -183,10 +183,10 @@ const HomeBanner = ({ sponsors=[] }) => {
               {/* ))} */}
             </div>{" "}
           </div>
-          <div className="-translate-y-1/6">
+          <div data-aos="fade-up" data-aos-delay="100" className="-translate-y-1/6">
             <TimerBlock eventDate="2025-11-09" />
           </div>
-          <PrimaryButton className="gap-1 px-7 text-lg py-3 w-fit leading-[100%]">
+          <PrimaryButton data-aos="fade-up" data-aos-delay="150" className="gap-1 px-7 text-lg py-3 w-fit leading-[100%]">
             <span>Explore Agenda</span>
           </PrimaryButton>
         </div>

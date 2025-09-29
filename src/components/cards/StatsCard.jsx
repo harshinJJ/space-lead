@@ -51,7 +51,7 @@ const Counter = ({ end, suffix = "" }) => {
 };
 
 const StatsCard = ({stats=staticStats,className=""}) => (
-  <div className={`grid  ${getGridCols(stats.length)} rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-5 xl:px-12.5 py-2 md:py-2 lg:py-3 justify-between items-stretch w-full ${className}`}>
+  <div data-aos="zoom-in" className={`grid  ${getGridCols(stats.length)} rounded-[1.25rem] bg-gradient-to-r from-secondary to-primary px-5 xl:px-12.5 py-2 md:py-2 lg:py-3 justify-between items-stretch w-full ${className}`}>
     {stats.map((item, idx) => (
       <div
         key={item.label}

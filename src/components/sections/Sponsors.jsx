@@ -253,7 +253,7 @@ export const SponsorList = ({
               )}
               {/* Duplicate items for seamless infinite scroll */}
               {sponsors?.length > 5 &&
-                sonsors.map(
+                sponsors.map(
                   (sponsor, idx) =>
                     sponsor.logo && (
                       <div

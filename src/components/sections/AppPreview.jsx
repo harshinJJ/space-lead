@@ -54,23 +54,23 @@ const AppPreview = ({
   >
     <div className="container-fluid mx-auto w-full px-5 sm:px-0 flex flex-col sm:flex-row items-center justify-center gap-20">
       <div className="flex flex-col lg:gap-10 gap-5">
-        <p className="text-white bg-secondary rounded-full px-7.5 py-5 w-fit text-center leading-[0.7]  text-2xl font-light ">
+        <p  data-aos="fade-up" className="text-white bg-secondary rounded-full px-7.5 py-5 w-fit text-center leading-[0.7]  text-2xl font-light ">
           Let’s Interact
         </p>
-        <h3 className="sm:text-4xl text-2xl text-start xl:text-5xl leading-[1.5] font-bold font-azonix text-white">
+        <h3   data-aos="fade-up"className="sm:text-4xl text-2xl text-start xl:text-5xl leading-[1.5] font-bold font-azonix text-white">
           Everything Space Lead ‘25,
           <br className="2xl:block hidden" /> at your fingertips.
         </h3>
         <div className="flex sm:flex-row flex-col items-center md:gap-7.5 gap-4 md:max-w-2/3">
-          <button >
-            <GooglePlayButton className="w-full" />
+          <button data-aos="fade-right" >
+            <GooglePlayButton  className="w-full" />
           </button>
-          <button >
+          <button data-aos="fade-left" >
             <AppStoreButton className="w-full" />
           </button>
         </div>
       </div>
-      <div className="">
+      <div className="" data-aos="flip-left">
         <Image
           width={350}
           height={724}

@@ -181,7 +181,7 @@ const AboutInfo = ({ className = "" }) => {
       <RowStagger className="relative container-fluid pt-20 xl:pt-32.5 xl:pb-33 mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
         <DotPattern className="absolute top-13.5 right-0 transform " />
         {/* image */}
-        <div className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15">
+        <div data-aos="flip-left" className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15">
           <video
             className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
             src="/images/about_section_img.webm"
@@ -215,7 +215,7 @@ const AboutInfo = ({ className = "" }) => {
         </div>
 
         {/* content */}
-        <div className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
+        <div data-aos="fade-up" className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0">
           <h5 className="text-secondary font-azonix xl:text-lg text-base">
             {data.name}
           </h5>

@@ -30,6 +30,7 @@ const JoinUs = ({
         ></div>
 
         <div
+          data-aos="fade-up"
           className={`relative flex flex-col sm:items-center sm:justify-between  md:justify-center `}
         >
           {title && (
@@ -51,6 +52,8 @@ const JoinUs = ({
             {navLinks?.map((link, i) => (
               <PrimaryLink
                 key={i}
+                data-aos="fade-right"
+                data-aos-delay={`${i * 50}`}
                 href={link.url || "#"}
                 className="w-fit group px-7.5 py-[1.0625rem] items-center gap-2 btn-gradient transition-all duration-300"
               >

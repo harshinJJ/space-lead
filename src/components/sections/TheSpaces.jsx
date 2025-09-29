@@ -37,7 +37,7 @@ const TheSpaces = ({
   return (
     <section className={` py-20 ${className}`}>
       <div className="container-fluid  mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0">
-        <div
+        <div data-aos="fade-up"
           className={`flex flex-col sm:items-center sm:justify-between  md:justify-center `}
         >
           {title && (
@@ -57,6 +57,7 @@ const TheSpaces = ({
           {dataList.map((item, i) => (
             <div
               key={i}
+              data-aos={i%2==0?"fade-right":"fade-left"}
               className=" bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex items-center gap-5 w-full"
             >
               <div className="flex flex-col items-center justify-center uppercase aspect-square  font-light text-[#D018B8] rounded-4xl p-5 2xl:p-7.5 shrink-0">

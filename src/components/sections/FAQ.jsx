@@ -21,7 +21,7 @@ const FAQ = () => {
           </h2>
           <div className="space-y-4">
             {faqs.map((faq, idx) => (
-              <div key={idx} className={`bg-black/3 rounded-2xl`}>
+              <div data-aos="fade-up" data-aos-once="true" key={idx} className={`bg-black/3 rounded-2xl`}>
                 <button
                   className={`w-full flex justify-between items-center px-6 py-5 text-left focus:outline-none transition-colors text-Black/80`}
                   onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}

@@ -33,7 +33,6 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
       });
     }
   };
-
   useEffect(() => {
     if (ticketUrl && canvasRef.current) {
       (async () => {
@@ -115,8 +114,7 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
       >
         Continue
       </PrimaryButton>
-
-      <button className="relative flex items-center gap-3 bg-gradient-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F] p-2 rounded-full mt-5">
+      <button onClick={handleShare} className="relative flex items-center gap-3 bg-gradient-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F] p-2 rounded-full mt-5">
         <svg
           width="19"
           height="20"
@@ -141,7 +139,11 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
         </svg>
 
         <span>Invite Someone to Join You</span>
-        <SharePopup isOpen={true} />
+        <SharePopup
+          websiteSlug={"registration"}
+          isOpen={isSharePopupOpen}
+          onClose={() => setIsSharePopupOpen(false)}
+        />
       </button>
     </div>
   ) : (
@@ -180,37 +182,6 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
       >
         Continue
       </PrimaryButton>
-      <button onClick={handleShare} className="relative flex items-center gap-3 bg-gradient-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F] p-2 rounded-full mt-5">
-        <svg
-          width="19"
-          height="20"
-          viewBox="0 0 19 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            y="0.928589"
-            width="19"
-            height="19"
-            rx="9.5"
-            fill="white"
-            fillOpacity="0.24"
-          />
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M11.3333 7.22026C11.3333 6.46086 11.949 5.84526 12.7083 5.84526C13.4677 5.84526 14.0833 6.46086 14.0833 7.22026C14.0833 7.97965 13.4677 8.59526 12.7083 8.59526C11.949 8.59526 11.3333 7.97965 11.3333 7.22026ZM12.7083 4.92859C11.4427 4.92859 10.4167 5.9546 10.4167 7.22026C10.4167 7.37446 10.4319 7.52511 10.4609 7.67078L8.14075 9.07459C7.72373 8.50604 7.0508 8.13692 6.29167 8.13692C5.02601 8.13692 4 9.16293 4 10.4286C4 11.6943 5.02601 12.7203 6.29167 12.7203C7.11681 12.7203 7.84009 12.2842 8.24362 11.6298L10.4696 13.145C10.4349 13.3035 10.4167 13.4681 10.4167 13.6369C10.4167 14.9026 11.4427 15.9286 12.7083 15.9286C13.974 15.9286 15 14.9026 15 13.6369C15 12.3712 13.974 11.3453 12.7083 11.3453C11.9437 11.3453 11.2665 11.7197 10.8503 12.2953L8.56262 10.7381C8.57624 10.6369 8.58333 10.5336 8.58333 10.4286C8.58333 10.2514 8.56323 10.079 8.52522 9.91336L10.8229 8.5232C11.2365 9.12061 11.9267 9.51192 12.7083 9.51192C13.974 9.51192 15 8.48591 15 7.22026C15 5.9546 13.974 4.92859 12.7083 4.92859ZM11.3333 13.6369C11.3333 12.8776 11.949 12.2619 12.7083 12.2619C13.4677 12.2619 14.0833 12.8776 14.0833 13.6369C14.0833 14.3963 13.4677 15.0119 12.7083 15.0119C11.949 15.0119 11.3333 14.3963 11.3333 13.6369ZM4.91667 10.4286C4.91667 9.66922 5.53228 9.05359 6.29167 9.05359C7.05106 9.05359 7.66667 9.66922 7.66667 10.4286C7.66667 11.188 7.05106 11.8036 6.29167 11.8036C5.53228 11.8036 4.91667 11.188 4.91667 10.4286Z"
-            fill="white"
-          />
-        </svg>
-
-        <span>Invite Someone to Join You</span>
-        <SharePopup
-          websiteSlug={"registration"}
-          isOpen={isSharePopupOpen}
-          onClose={() => setIsSharePopupOpen(false)}
-        />
-      </button>
     </div>
   );
 };

@@ -82,7 +82,7 @@ export default async function Home() {
       <HomeBanner sponsors={sponsors} banner={"/images/banner_title.png"} />
       <AboutInfo className="2xl:pb-0 lg:pb-15 md:pb-10 xs:pb-5 " />
       {/* <MemberList title={"MEET OUR INDUSTRY EXPERT  AND PROFESSIONAL SPEAKERS"} label="Steering Committee Members" speakers={speakers} link={"#"} /> */}
-      <section className="relative bg-transparent bg-cover bg-[top_center]">
+      <section className="z-1 relative bg-transparent bg-cover bg-[top_center]">
         <video
           autoPlay
           loop
