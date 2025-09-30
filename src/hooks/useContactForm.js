@@ -21,13 +21,13 @@ const useContactForm = () => {
   };
 
   const initialValues = {
-    firstName: "",
+    firstname: "",
     email: "",
     phoneNumber: "",
     message: "",
   };
   const validationSchema = Yup.object({
-    firstName: Yup.string()
+    firstname: Yup.string()
       .required("This field is required")
       .matches(/^[A-Za-z\s]+$/, "Name must contain only letters"),
     email: Yup.string()
@@ -96,7 +96,7 @@ const useContactForm = () => {
         });
       }
 
-      const priorityOrder = ["firstName", "email", "phoneNumber", "message"];
+      const priorityOrder = ["firstname", "email", "phoneNumber", "message"];
       const firstError = priorityOrder.find((key) => errorKeys.includes(key));
       scrollToField(firstError);
       return;
@@ -134,7 +134,7 @@ const useContactForm = () => {
     payload.form_data.mobile = phone.nationalNumber;
     payload.form_data.country_code = phone.countryCode;
 
-    delete payload.phoneNumber
+    delete payload.form_data.phoneNumber
 
     const formData = new FormData();
     formData.append("payload", JSON.stringify(payload));

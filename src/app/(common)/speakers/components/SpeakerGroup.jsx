@@ -23,7 +23,7 @@ const SpeakerGroup = ({
         <div
           className={`container-fluid overflow-hidden mx-auto text-[1.13rem] bg-cover bg-center bg-no-repeat flex-3 flex flex-col gap-3 md:gap-7.5 px-5 xl:px-15.75 2xl:py-20 lg:py-15 py-10 rounded-3xl ${borderClass}`}
         >
-          <Image fill src={bgUrl} alt="group-bg-image" className="object-cover object-center" />
+          {showGroupBg&&<Image fill src={bgUrl} alt="group-bg-image" className="object-cover object-center" />}
           <div className={`relative flex flex-col  md:items-center md:justify-center`}>
             {title && (
               <h2

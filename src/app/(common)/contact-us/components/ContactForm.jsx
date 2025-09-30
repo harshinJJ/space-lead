@@ -170,20 +170,20 @@ const ContactForm = () => {
         </div>
         <form id="contactForm" className="space-y-8">
           <div className="grid grid-cols-1 text-2xl sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div ref={setRef("firstName")}>
+            <div ref={setRef("firstname")}>
               <label className="block font-medium ">Your Name</label>
               <input
                 type="text"
                 maxLength={100}
-                name="firstName"
+                name="firstname"
                 onChange={handleChange}
                 autoComplete="name"
                 onBlur={handleBlur}
-                value={values.firstName}
+                value={values.firstname}
                 className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
-              {errors.firstName && touched.firstName && (
-                <p className="text-red-500 text-lg">{errors.firstName}</p>
+              {errors.firstname && touched.firstname && (
+                <p className="text-red-500 text-lg">{errors.firstname}</p>
               )}
             </div>
             <div ref={setRef("email")}>

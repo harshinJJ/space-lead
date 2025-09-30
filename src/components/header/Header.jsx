@@ -43,12 +43,20 @@ const DownloadButton = () => {
   );
 };
 
-const RegisterBtn = ({onClick}) => {
-  const [show, setShow] = useState(false);
-  const handleClick=()=>{
-    setShow(!show)
-    onClick&&onClick()
+const extractPath = (pathname) => {
+  const list = pathname.split("/");
+  if (list.length > 2) {
+    list.pop();
   }
+  return list.join("/");
+};
+
+const RegisterBtn = ({ onClick }) => {
+  const [show, setShow] = useState(false);
+  const handleClick = () => {
+    setShow(!show);
+    onClick && onClick();
+  };
   return (
     <>
       <PrimaryButton
@@ -78,15 +86,20 @@ const RegisterBtn = ({onClick}) => {
 
         <span>Download the App</span>
       </PrimaryButton>
-      <Modal className="!p-0 rounded-3xl !bg-transparent" btnClassName="!text-black bg-white aspect-square h-auto w-fit p-2.5 rounded-full flex items-center justify-center text-5xl !-top-4 !-right-4" isOpen={show} onClose={() => setShow(false)}>
+      <Modal
+        className="!p-0 rounded-3xl !bg-transparent"
+        btnClassName="!text-black bg-white aspect-square h-auto w-fit p-2.5 rounded-full flex items-center justify-center text-5xl !-top-4 !-right-4"
+        isOpen={show}
+        onClose={() => setShow(false)}
+      >
         <section
           className={`bg-indigo rounded-3xl overflow-hidden  max-h-[70vh] h-full md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
         >
           <div className="container-fluid mx-auto w-full flex flex-col  items-center justify-center gap-10">
-              <h3 className=" text-2xl text-start leading-[1.2] font-bold font-azonix text-white">
-                Everything Space Lead ‘25,
-                <br className="2xl:block hidden" /> at your fingertips.
-              </h3>
+            <h3 className=" text-2xl text-start leading-[1.2] font-bold font-azonix text-white">
+              Everything Space Lead ‘25,
+              <br className="2xl:block hidden" /> at your fingertips.
+            </h3>
             <div className="flex flex-col  gap-4 ">
               <button>
                 <GooglePlayButton className="w-full" />
@@ -199,6 +212,10 @@ const Header = () => {
     pageLinks.filter((link) => pathname.startsWith(link.url)).pop()?.title ||
     "";
   // pageLinks.find((link) => link.url === pathname)?.title || "";
+  console.log(
+    "asdasd",
+    pathname.split("/").splice(0, pathname.split("/").length - 1)
+  );
   return (
     <header className="text-white ">
       <div
@@ -278,8 +295,9 @@ const Header = () => {
                       href={url || "#"}
                     >
                       {title}
-                      {pathname === url && (
-                        <span className="absolute bottom-[-4px] left-0 w-full h-[0.5px] bg-gradient-to-r from-secondary to-primary"></span>
+                      {(pathname === url ||
+                        url.includes(extractPath(pathname))) && (
+                        <span className="absolute bottom-[-4px] left-0 w-full h-[1px] bg-gradient-to-r from-secondary to-primary"></span>
                       )}
                     </Link>
                   )}
@@ -310,13 +328,16 @@ const Header = () => {
               ) : (
                 <Link
                   className={`relative hover:text-gray-300 transition-colors ${
-                    pathname === url ? "text-gray-100" : "text-gray-400"
+                    pathname === url || url.includes(extractPath(pathname))
+                      ? "text-gray-100"
+                      : "text-gray-400"
                   }`}
                   href={url || "#"}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {title}
-                  {pathname === url && (
+                  {(pathname === url ||
+                    url.includes(extractPath(pathname))) && (
                     <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-secondary to-primary"></span>
                   )}
                 </Link>
