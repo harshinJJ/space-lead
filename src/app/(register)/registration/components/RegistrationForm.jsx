@@ -361,7 +361,7 @@ export default function RegistrationForm({
         status="success"
         uid={successInfo?.unique_id}
         ticketUrl={
-          successInfo?.booking_status == "1" && successInfo?.encrypted_unique_id
+          successInfo?.booking_status == "2" && successInfo?.encrypted_unique_id
         }
         onContinue={handleContinue}
       />

@@ -38,7 +38,6 @@ const useRegistration = ({ type, session }) => {
     companyname: "",
     isOldFile: "",
   };
-console.log("session",session)
   const validationSchema = Yup.object({
     title: Yup.object().required("Title is required"),
     firstname: Yup.string()
@@ -202,7 +201,6 @@ console.log("session",session)
 
     RegistrationServices.createFormData(formData)
       .then((res) => {
-        console.log("res", res);
         if (SUCCESS_CODES.includes(res.status) && res.data) {
           formik.setSubmitting(false);
           if (res?.data?.redirect_type == "payment" && res.data?.payment_url) {

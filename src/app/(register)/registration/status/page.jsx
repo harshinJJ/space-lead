@@ -22,7 +22,7 @@ export default async function RegistrationStatus({ params, searchParams }) {
             </h2>
             <SuccessModal
               ticketUrl={
-                response?.booking_status == "1" && response?.encrypted_unique_id
+                response?.booking_status == "2" && response?.encrypted_unique_id
               }
               uid={response?.unique_id}
               status={status}
