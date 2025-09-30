@@ -296,7 +296,8 @@ const Header = () => {
                     >
                       {title}
                       {(pathname === url ||
-                        url.includes(extractPath(pathname))) && (
+                        (pathname != "/" &&
+                          url.includes(extractPath(pathname)))) && (
                         <span className="absolute bottom-[-4px] left-0 w-full h-[1px] bg-gradient-to-r from-secondary to-primary"></span>
                       )}
                     </Link>
@@ -328,7 +329,8 @@ const Header = () => {
               ) : (
                 <Link
                   className={`relative hover:text-gray-300 transition-colors ${
-                    pathname === url || url.includes(extractPath(pathname))
+                    pathname === url ||
+                    (pathname != "/" && url.includes(extractPath(pathname)))
                       ? "text-gray-100"
                       : "text-gray-400"
                   }`}
@@ -337,7 +339,8 @@ const Header = () => {
                 >
                   {title}
                   {(pathname === url ||
-                    url.includes(extractPath(pathname))) && (
+                    (pathname != "/" &&
+                      url.includes(extractPath(pathname)))) && (
                     <span className="absolute bottom-[-4px] left-0 w-full h-[2px] bg-gradient-to-r from-secondary to-primary"></span>
                   )}
                 </Link>
