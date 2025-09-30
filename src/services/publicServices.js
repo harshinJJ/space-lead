@@ -22,9 +22,9 @@ export async function customFetch(path, options = {}) {
     return await res.json();
   } catch (e) {
     if (e.name === "AbortError") {
-      console.error(`⏱️ Request timed out at ${path}`);
+      console.log(`⏱️ Request timed out at ${path}`);
     } else {
-      console.error(`❌ customFetch error at ${path}:`, e);
+      console.log(`❌ customFetch error at ${path}:`, e);
     }
     return { data: [] }; // safe fallback so UI doesn’t break
   } finally {
