@@ -7,8 +7,8 @@ import { LogoBg } from "@/data/icons";
 
 export default async function RegistrationStatus({ params, searchParams }) {
   const { status = "success", encryptionId, uid } = await searchParams;
-  const response = (await uid)
-    ? PublicServices.getRegisterStatus(uid).then((res) => res.data || {})
+  const response = uid
+    ? await PublicServices.getRegisterStatus(uid).then((res) => res.data || {})
     : null;
   return (
     <main>
