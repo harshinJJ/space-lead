@@ -9,6 +9,7 @@ import VideoPlayer from "./VideoPlayer";
 import PressRelease from "@/components/sections/PressRelease";
 import ConnectWithUs from "@/components/sections/ConnectWithUs";
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
+import EVENT_INFO from "@/data/eventInfo";
 
 const MediaTabs = ({ gallery = [], updates = [] }) => {
   const videoRef = useRef();
@@ -72,12 +73,12 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
               >
                 All
               </button>
-              {tabs.map((tab) => (
+              {EVENT_INFO.dayList.map((tab) => (
                 <button
-                  key={tab.key}
-                  onClick={() => handleActive(tab.key)}
+                  key={tab.dateKey}
+                  onClick={() => handleActive(tab.dateKey)}
                   className={`cursor-pointer min-w-31.25 rounded-full bg-secondary font-medium px-8 py-2.75 ${
-                    active == tab.key ? "text-[#00504E]" : "text-white "
+                    active == tab.dateKey ? "text-[#00504E]" : "text-white "
                   }`}
                 >
                   {tab.label}

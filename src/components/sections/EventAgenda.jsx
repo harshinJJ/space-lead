@@ -4,6 +4,7 @@ import PrimaryButton, { PrimaryLink } from "../buttons/PrimaryButton";
 import SpeakerTag from "../cards/SpeakerTag";
 import AgendaCard from "../cards/AgendaCard";
 import { ZigZagCardStagger } from "@/utils/animations/CardStagger";
+import EVENT_INFO from "@/data/eventInfo";
 
 const eventsData = {
   "2025-11-09": [
@@ -119,9 +120,9 @@ const eventsData = {
   ],
 };
 const tabs = [
-  { id: "day1", label: "Day 01", date: "09 Nov 2025", dateKey: "2025-11-09" },
-  { id: "day2", label: "Day 02", date: "10 Nov 2025", dateKey: "2025-11-10" },
-  { id: "day3", label: "Day 03", date: "11 Nov 2025", dateKey: "2025-11-11" },
+  // { id: "day1", label: "Day 01", date: "09 Nov 2025", dateKey: "2025-11-09" },
+  { id: "day1", label: "Day 01", date: "10 Nov 2025", dateKey: "2025-11-10" },
+  { id: "day2", label: "Day 02", date: "11 Nov 2025", dateKey: "2025-11-11" },
 ];
 
 export default function EventAgenda({
@@ -131,7 +132,7 @@ export default function EventAgenda({
   dataList = [],
   showViewAll = false,
 }) {
-  const [activeDay, setActiveDay] = useState("2025-11-09");
+  const [activeDay, setActiveDay] = useState(EVENT_INFO.dayList[0].dateKey);
   const filteredEvents = dataList.filter((data) => data.event_day == activeDay);
 
   return (
@@ -148,7 +149,7 @@ export default function EventAgenda({
 
         {/* Tabs */}
         <div className="flex flex-wrap md:flex-nowrap justify-center gap-2 xl:gap-5.5 pb-7 mt-10 lg:mt-0">
-          {tabs.map((day) => (
+          {EVENT_INFO.dayList.map((day) => (
             <PrimaryButton
               key={day.dateKey}
               onClick={() => setActiveDay(day.dateKey)}

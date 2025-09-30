@@ -62,10 +62,10 @@ const AppPreview = ({
           <br className="2xl:block hidden" /> at your fingertips.
         </h3>
         <div className="flex sm:flex-row flex-col items-center md:gap-7.5 gap-4 md:max-w-2/3">
-          <button data-aos="fade-right" >
+          <button name="google-play" data-aos="fade-right" >
             <GooglePlayButton  className="w-full" />
           </button>
-          <button data-aos="fade-left" >
+          <button name="apple-store" data-aos="fade-left" >
             <AppStoreButton className="w-full" />
           </button>
         </div>

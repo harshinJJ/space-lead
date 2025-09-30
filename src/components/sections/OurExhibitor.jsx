@@ -76,7 +76,8 @@ const OurExhibitor = ({
               boothNumber={item.booth_details?.number}
               name={item?.company_name || item?.name}
               email={item?.email}
-              isActive={item.is_active}
+              // isActive={item.is_active}
+              isActive={item?.booth_details?.active_status}
             />
           ))}
         </div>

@@ -22,7 +22,7 @@ const FullImageBlock = ({ title = "Find us", label, className = "", url }) => {
             </p>
           )}
         </div>
-        {url && <div data-aos="zoom-in" data-aos-once="true" className="bg-white rounded-3xl overflow-hidden p-5">
+        {url && <div data-aos="zoom-in" data-aos-once="true" className="bg-white rounded-3xl overflow-hidden">
             <Image className="w-full h-auto rounded-2xl" width={1438} height={820} src={url} alt="preview-full-image" />
             </div>}
       </div>

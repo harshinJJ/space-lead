@@ -45,7 +45,7 @@ const SpeakerGroup = ({
           {/* Speaker Cards */}
           <HorizontalCardStagger
             cardPerRow={4}
-            className={`container-fluid mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4`}
+            className={`container-fluid mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3`}
           >
             {speakers.map((speaker, index) => (
               <div key={index} className="card">

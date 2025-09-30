@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { CalenderIcon, LocationIcon, LogoSVG } from "@/data/icons";
 import { SponsorScroll } from "./Sponsors";
+import EVENT_INFO from "@/data/eventInfo";
 const TimerBlock = dynamic(
   () => import("@/components/common/TimerBlock").then((mod) => mod.HomeTimer),
   {
@@ -123,7 +124,7 @@ const HomeBanner = ({ sponsors=[] }) => {
   const tags = [
     {
       icon: <CalenderIcon />,
-      label: "Nov 09, 10, 11 - 2025",
+      label:EVENT_INFO.dateLabel,
     },
     {
       icon: <LocationIcon />,
@@ -160,7 +161,7 @@ const HomeBanner = ({ sponsors=[] }) => {
             </div>
             <div className="flex flex-col gap-2 gap-y-2.5">
               {/* {tags.map(({ icon, label }, i) => ( */}
-              <div className="flex items-center px-2.5  py-2 rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]  min-w-[70%] w-fit gap-2.5 text-white">
+              <div className="flex items-center px-2.5  py-2 rounded-full  min-w-[70%] w-fit gap-2.5 text-white">
                 <div className="flex items-center justify-center">
                   {tags[0].icon}
                 </div>
@@ -171,7 +172,7 @@ const HomeBanner = ({ sponsors=[] }) => {
               <a
                 target="_blank"
                 href="https://maps.app.goo.gl/UmrCYw9Got63qjtN7"
-                className="flex items-center px-2.5  py-2 rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F] w-full min-w-[70%] lg:w-fit gap-2.5 text-white"
+                className="flex items-center px-2.5  py-2 rounded-full w-full min-w-[70%] lg:w-fit gap-2.5 text-white"
               >
                 <div className="flex items-center justify-center">
                   {tags[1].icon}
@@ -184,7 +185,7 @@ const HomeBanner = ({ sponsors=[] }) => {
             </div>{" "}
           </div>
           <div data-aos="fade-up" data-aos-delay="100" className="-translate-y-1/6">
-            <TimerBlock eventDate="2025-11-09" />
+            <TimerBlock eventDate={EVENT_INFO.startDate} />
           </div>
           <PrimaryButton data-aos="fade-up" data-aos-delay="150" className="gap-1 px-7 text-lg py-3 w-fit leading-[100%]">
             <span>Explore Agenda</span>

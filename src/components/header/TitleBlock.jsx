@@ -3,6 +3,7 @@ import React from "react";
 import PrimaryButton from "../buttons/PrimaryButton";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import EVENT_INFO from "@/data/eventInfo";
 const TimerBlock = dynamic(() => import("@/components/common/TimerBlock"), {
   ssr: false,
 });
@@ -37,7 +38,7 @@ const TitleBlock = ({ title }) => {
           <path d="M29.5 10V17" stroke="#5AC0BE" strokeLinecap="round" />
         </svg>
       ),
-      label: "Nov 09, 10, 11 - 2025",
+      label: EVENT_INFO.dateLabel,
     },
     {
       icon: (
@@ -136,7 +137,7 @@ const TitleBlock = ({ title }) => {
               </a>
             </div>
           </div>
-          <TimerBlock eventDate="2025-11-09" />
+          <TimerBlock eventDate={EVENT_INFO.startDate} />
           {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">
