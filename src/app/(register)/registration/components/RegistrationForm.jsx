@@ -224,7 +224,6 @@ export default function RegistrationForm({
 
                 {/* Institution Name (Student only) */}
                 {session?.sales_ticket_type_name === "Students" && (
-                  <>
                     <div ref={setRef("institution")}>
                       <Label required={true}>Institution Name</Label>
                       <FormInput
@@ -239,36 +238,6 @@ export default function RegistrationForm({
                         <Error message={errors?.institution} />
                       )}
                     </div>
-                    <div ref={setRef("user_document")}>
-                      <Label required={true}>Student ID</Label>
-                      {/* <FormInput
-                      name="user_document"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={formData.user_document}
-                      placeholder="Student ID"
-                    /> */}
-                      <FileUplodCroper
-                        defaultImage={
-                          formData.user_document
-                            ? URL.createObjectURL(formData.user_document)
-                            : formData.isOldFile
-                        }
-                        onCropDone={async (val) => {
-                          setFieldValue("user_document", val);
-                          if (val) {
-                            await setFieldTouched("user_document", true);
-                            await validateField("user_document");
-                          } else {
-                            setFieldValue("isOldFile", "");
-                          }
-                        }}
-                      />
-                      {touched.user_document && (
-                        <Error message={errors?.user_document} />
-                      )}
-                    </div>
-                  </>
                 )}
 
                 {/* Professional only: Company Name */}
@@ -302,6 +271,30 @@ export default function RegistrationForm({
                     </div>
                   </>
                 )}
+                {session?.document_required&&
+                
+                    <div ref={setRef("user_document")}>
+                      <Label required={true}>{session?.sales_ticket_type_name === "Professional"?"Professional":"Student" } ID</Label>
+                      <FileUplodCroper
+                        defaultImage={
+                          formData.user_document
+                            ? URL.createObjectURL(formData.user_document)
+                            : formData.isOldFile
+                        }
+                        onCropDone={async (val) => {
+                          setFieldValue("user_document", val);
+                          if (val) {
+                            await setFieldTouched("user_document", true);
+                            await validateField("user_document");
+                          } else {
+                            setFieldValue("isOldFile", "");
+                          }
+                        }}
+                      />
+                      {touched.user_document && (
+                        <Error message={errors?.user_document} />
+                      )}
+                    </div>}
 
                 {showV2 && (
                   <div ref={setRef("recaptcha")}>

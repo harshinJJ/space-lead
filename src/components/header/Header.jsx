@@ -180,10 +180,7 @@ const Header = () => {
     pageLinks.filter((link) => pathname.startsWith(link.url)).pop()?.title ||
     "";
   // pageLinks.find((link) => link.url === pathname)?.title || "";
-  console.log(
-    "asdasd",
-    pathname.split("/").splice(0, pathname.split("/").length - 1)
-  );
+
   return (
     <header className="text-white ">
       <div

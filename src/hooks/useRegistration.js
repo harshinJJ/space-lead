@@ -38,7 +38,7 @@ const useRegistration = ({ type, session }) => {
     companyname: "",
     isOldFile: "",
   };
-
+console.log("session",session)
   const validationSchema = Yup.object({
     title: Yup.object().required("Title is required"),
     firstname: Yup.string()
@@ -90,8 +90,8 @@ const useRegistration = ({ type, session }) => {
       otherwise: (schema) => schema.notRequired(),
     }),
     user_document: Yup.mixed().when([], {
-      is: () => session?.sales_ticket_type_name === "Students",
-      then: (schema) => schema.required("Student ID file is required"),
+      is: () => session?.document_required,
+      then: (schema) => schema.required("ID is required"),
     }),
 
     // Professional specific
