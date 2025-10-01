@@ -14,7 +14,12 @@ const EVENT_INFO = {
     facebook:"#",
     linkedin:"#",
     twitter:"https://x.com/SpaceLeadAU",
-  }
+  },
+  email:"spacelead@alfaisal.edu",
+  phone:"+966 011 215 7777",
+  address:"Alfaisal University, Riyadh- KSA",
+  fullAddress:"Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
+  mapLink:"https://maps.app.goo.gl/UmrCYw9Got63qjtN7"
 };
 
 export default EVENT_INFO;

@@ -1,50 +1,8 @@
 import DotPattern from "@/components/patterns/DotPattern";
+import EVENT_INFO from "@/data/eventInfo";
 import { RowStagger } from "@/utils/animations/CardStagger";
 import React from "react";
 
-const ContactInfoOld = () => {
-  return (
-    <section className="w-full bg-indigo">
-      <div className="text-[1.375rem] w-full mx-auto px-4 md:px-0 flex flex-col md:flex-row items-stretch">
-        <div className="flex-31/72 lg:ps-30 flex flex-col justify-center text-white p-8 lg:py-32.5 rounded-lg">
-          <p className="text-secondary  lg:text-[1.375rem]  text-[1.375rem]  mb-6">
-            Contact Info
-          </p>
-          <h3 className="font-azonix text-2xl md:text-3xl lg:text-[2.5rem] mb-15 leading-tight">
-            WE ARE ALWAYS HAPPY TO ASSIST YOU
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2  gap-6 mb-6">
-            <div className="">
-              <div>
-                <p className="text-teal-300 mb-1">Email Address</p>
-                <p className="">spaceleads@alfaisal.edu</p>
-              </div>
-              <p className="text-gray-300">
-                Alfaisal University,
-                <br />
-                Riyadh - Kingdom of Saudi Arabia
-              </p>
-            </div>
-            <div>
-              <p className="text-teal-300 mb-1">Number</p>
-              <p className="">+966 011 215 7777</p>
-            </div>
-          </div>
-        </div>
-        <div className="flex-41/72 w-full h-[inherit] flex items-center justify-center">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3625.854829608681!2d46.674272376105094!3d24.66312475312408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f04a8d10e834b%3A0xb60f3792b7de22aa!2sAlfaisal%20University!5e0!3m2!1sen!2sin!4v1755173686416!5m2!1sen!2sin"
-            className="w-full h-full border-0"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const ContactInfo = () => {
   return (
@@ -74,9 +32,9 @@ const ContactInfo = () => {
                 <p className="text-secondary relative  after:block after:w-7 after:h-[3px] after:bg-black after:mt-5">
                   Email Address
                 </p>
-                <p className="text-black  ">spacelead@alfaisal.edu</p>
+                <p className="text-black  ">{EVENT_INFO.email}</p>
                 <p className="text-black">
-                  Alfaisal University, Riyadh- Kingdom of Saudi Arabia
+                  {EVENT_INFO.fullAddress}
                 </p>
               </div>
               {/* Number */}
@@ -84,7 +42,7 @@ const ContactInfo = () => {
                 <p className="text-secondary relative  after:block after:w-7 after:h-[3px] after:bg-black after:mt-5">
                   Number
                 </p>
-                <p className="text-black  ">+966 011 215 7777</p>
+                <p className="text-black  ">{EVENT_INFO.phone}</p>
               </div>
             </div>
           </div>
@@ -492,35 +450,9 @@ const ContactInfo = () => {
                 </linearGradient>
               </defs>
             </svg>
-
-            {/* Dots grid */}
-
-            {/* <div className="absolute top-8 right-8 hidden lg:block">
-              <div className="grid grid-cols-6 gap-2">
-                {[...Array(18)].map((_, i) => (
-                  <span
-                    key={i}
-                    className="w-1 h-1 rounded-full bg-[#7c5ea8] opacity-60"
-                    style={{ margin: "2px" }}
-                  />
-                ))}
-              </div>
-            </div> */}
           </div>
         </RowStagger>
       </div>
-      {/* Responsive dots grid for mobile */}
-      {/* <div className=" lg:hidden w-full flex justify-end pr-8 pt-2">
-        <div className="grid grid-cols-6 gap-2">
-          {[...Array(18)].map((_, i) => (
-            <span
-              key={i}
-              className="w-1 h-1 rounded-full bg-[#7c5ea8] opacity-60"
-              style={{ margin: "2px" }}
-            />
-          ))}
-        </div>
-      </div> */}
     </section>
   );
 };

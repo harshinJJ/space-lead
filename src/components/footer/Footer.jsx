@@ -86,8 +86,8 @@ const Footer = () => {
 
   const contactLinks = [
     {
-      url: "mailto:spacelead@alfaisal.edu",
-      title: "spacelead@alfaisal.edu",
+      url: `mailto:${EVENT_INFO.email}`,
+      title: EVENT_INFO.email,
       icon: (
         <svg
           width="40"
@@ -143,8 +143,8 @@ const Footer = () => {
     //   ),
     // },
     {
-      url: "https://maps.app.goo.gl/UmrCYw9Got63qjtN7",
-      title: "Alfaisal University, Riyadh- KSA",
+      url: EVENT_INFO.mapLink,
+      title:EVENT_INFO.address,
       icon: (
         <svg
           width="40"

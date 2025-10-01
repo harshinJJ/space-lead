@@ -6,6 +6,7 @@ import ButtonLoader from "@/components/loader/ButtonLoader";
 import DotPattern from "@/components/patterns/DotPattern";
 import SemiCirclePattern from "@/components/patterns/SemiCirclePattern";
 import EVENT_INFO from "@/data/eventInfo";
+import { LinkedInIcon } from "@/data/icons";
 import useContactForm from "@/hooks/useContactForm";
 import { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
 import React, { useState } from "react";
@@ -79,29 +80,18 @@ const ContactForm = () => {
         {/* <p className="relative text-secondary text-2xl font-azonix">
           Get Started
         </p> */}
-        <div className="realtive flex flex-col md:flex-row justify-between items-center xl:pe-69.5 mb-8">
-          <h2 className="font-azonix text-2xl md:text-3xl lg:text-[2.5rem] max-w-3/4 lg:max-w-[25ch] mb-8 leading-tight text-gray-900">
+        <div className="realtive flex flex-col md:flex-row justify-between items-center xl:pe-69.5 mb-8 py-3.25 gap-y-4 gap-x-2">
+          <h2 className="font-azonix text-2xl text-center md:text-3xl lg:text-[2.5rem] md:max-w-3/4 lg:max-w-[25ch] leading-[1.2] text-gray-900">
             GET IN TOUCH WITH US
           </h2>
 
           <div className="flex gap-3 lg:gap-6">
             <a
-              href={EVENT_INFO.socials.facebook}
+              href={EVENT_INFO.socials.linkedin}
               target="_blank"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
             >
-              <svg
-                width="9"
-                height="16"
-                viewBox="0 0 9 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2.70623 15.1464L2.68576 8.8871H0.0078125V6.20456H2.68576V4.4162C2.68576 2.00263 4.17783 0.839478 6.32721 0.839478C7.35678 0.839478 8.24165 0.916261 8.49952 0.950579V3.4729L7.00882 3.47358C5.83987 3.47358 5.61353 4.03 5.61353 4.84651V6.20456H8.93429L8.04165 8.8871H5.61352V15.1464H2.70623Z"
-                  fill="currentColor"
-                />
-              </svg>
+              <LinkedInIcon size={20}/>
             </a>
             <a
               href={EVENT_INFO.socials.instagram}
