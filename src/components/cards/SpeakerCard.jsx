@@ -57,7 +57,7 @@ const SpeakerCard = ({
         />
       </div>
 
-      <div className=" bg-white  py-4 px-6 ">
+      <div className=" bg-white  py-4 px-6 min-h-21 ">
         <span
           className={`text-black font-bold font-gilroy-bold text-lg leading-[1.5]`}
         >

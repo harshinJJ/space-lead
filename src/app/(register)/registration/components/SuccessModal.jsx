@@ -21,9 +21,9 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
   const shareref = useRef(null);
 
   const handleClick = () => {
-    if (onContinue) {
-      onContinue();
-    } else {
+    // if (onContinue) {
+    //   onContinue();
+    // } else {
       gsap.to("#transition-overlay", {
         x: "0%",
         duration: 0.5,
@@ -32,7 +32,7 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
           router.push("/registration"); // navigate after cover
         },
       });
-    }
+    // }
   };
   useEffect(() => {
     if (ticketUrl && canvasRef.current) {

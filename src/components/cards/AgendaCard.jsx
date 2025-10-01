@@ -98,9 +98,9 @@ function getEventDateRange(event) {
 }
 const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
   const eventDate = formatEventDate(event);
-  const title = event?.title || "Event";
+  const title = event?.title ;
   const description = event?.session_description || event?.description;
-  const location = event?.hall_name || "Venue";
+  const location = event?.hall_name ;
 
   const dateRange = getEventDateRange(event);
   const googleUrl = dateRange

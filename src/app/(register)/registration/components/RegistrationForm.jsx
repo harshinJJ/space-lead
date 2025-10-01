@@ -223,7 +223,7 @@ console.log("asdasdasd",session)
                 </div>
 
                 {/* Institution Name (Student only) */}
-                {session?.sales_ticket_type_name === "Students" && (
+                {session?.sales_ticket_type_name?.toLowerCase()?.startsWith("student") && (
                     <div ref={setRef("institution")}>
                       <Label required={true}>Institution Name</Label>
                       <FormInput
@@ -241,7 +241,7 @@ console.log("asdasdasd",session)
                 )}
 
                 {/* Professional only: Company Name */}
-                {session?.sales_ticket_type_name === "Professional" && (
+                {session?.sales_ticket_type_name?.toLowerCase()?.startsWith("professional") && (
                   <>
                     <div ref={setRef("jobtitle")}>
                       <Label required={true}>Job Title</Label>
@@ -274,7 +274,7 @@ console.log("asdasdasd",session)
                 {session?.document_required&&
                 
                     <div ref={setRef("user_document")}>
-                      <Label required={true}>{session?.sales_ticket_type_name === "Professional"?"Professional":"Student" } ID</Label>
+                      <Label required={true}>{session?.sales_ticket_type_name?.toLowerCase()?.startsWith("professional")?"Professional":"Student" } ID</Label>
                       <FileUplodCroper
                         defaultImage={
                           formData.user_document
@@ -330,7 +330,7 @@ console.log("asdasdasd",session)
             </div>
             {session?.price_amount > 0 && (
               <TicketSummary
-                name={session?.ticket_name}
+                name={session?.display_ticket_name||session?.ticket_name}
                 price={session?.price_amount}
                 currency={session?.currency_name}
               />

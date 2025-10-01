@@ -1,12 +1,10 @@
 import React from "react";
-import StatsCard from "../cards/StatsCard";
 import { RowStagger } from "@/utils/animations/CardStagger";
 import DotPattern from "../patterns/DotPattern";
 import SemiCirclePattern from "../patterns/SemiCirclePattern";
 
 const AboutInfo = ({ className = "" }) => {
   const data = {
-    // name: "About Us",
     title: "Space Lead",
     description:
       "“The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. ",
@@ -35,7 +33,6 @@ const AboutInfo = ({ className = "" }) => {
             />
           </svg>
         ),
-        // label: `Human Health Off-Planet: Challenges and Breakthroughs `,
         label:
           "Conference Themes:<br/> Human Health Off-Planet | Space & Advanced Engineering",
       },

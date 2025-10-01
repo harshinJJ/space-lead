@@ -63,7 +63,7 @@ const TitleBlock = ({ title }) => {
           />
         </svg>
       ),
-      label: "Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
+      label: EVENT_INFO.fullAddress,
     },
   ];
   return (

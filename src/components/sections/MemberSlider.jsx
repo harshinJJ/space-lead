@@ -23,8 +23,6 @@ const MemberSlider = ({
   navLink = "/speakers",
   linkType = "internal",
 }) => {
-
-
   return (
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
@@ -46,7 +44,11 @@ const MemberSlider = ({
         </div>
 
         {/* Speaker Cards as Swiper FreeMode */}
-        <div className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5">
+        <div
+          data-aos="fade-up"
+          // data-aos-once="true"
+          className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5"
+        >
           <Swiper
             modules={[FreeMode]}
             freeMode={true}
@@ -65,8 +67,6 @@ const MemberSlider = ({
             {speakers.map((speaker, index) => (
               <SwiperSlide
                 key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 300}
                 className={`${
                   cardSize == "sm" ? "!w-[331px] !h-auto" : "!w-[320px] !h-auto"
                 } lg:!max-w-2/5 flex items-stretch card`}

@@ -148,7 +148,7 @@ const SessionCard = ({
             ></span>
           </span>
           <span className="text-white text-xl md:text-3xl ms-2">
-            {session.ticket_name}
+            {session?.display_ticket_name||session?.ticket_name}
           </span>
         </div>
         {session.price_amount && (

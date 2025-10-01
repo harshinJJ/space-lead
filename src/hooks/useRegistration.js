@@ -75,7 +75,7 @@ const useRegistration = ({ type, session }) => {
     nationality: Yup.object().required("This field is required"),
     // Student specific
     institution: Yup.string().when([], {
-      is: () => session?.sales_ticket_type_name === "Students",
+      is: () => session?.sales_ticket_type_name?.toLowerCase()?.startsWith("student"),
       then: (schema) =>
         schema
           .required("This field is required")
@@ -110,7 +110,7 @@ const useRegistration = ({ type, session }) => {
 
     // Professional specific
     jobtitle: Yup.string().when([], {
-      is: () => session?.sales_ticket_type_name === "Professional",
+      is: () => session?.sales_ticket_type_name?.toLowerCase()?.startsWith("professional"),
       then: (schema) =>
         schema
           .required("This field is required")
@@ -135,7 +135,7 @@ const useRegistration = ({ type, session }) => {
       otherwise: (schema) => schema.notRequired(),
     }),
     companyname: Yup.string().when([], {
-      is: () => session?.sales_ticket_type_name === "Professional",
+      is: () => session?.sales_ticket_type_name?.toLowerCase()?.startsWith("professional"),
       then: (schema) =>
         schema
           .required("This field is required")
