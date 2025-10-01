@@ -53,5 +53,5 @@ export default function GsapProvider({ children }) {
       easing: "ease-in-out",
     });
   }, []);
-  return <div ref={containerRef}>{children}</div>;
+  return <div ref={containerRef} className="flex flex-col justify-between min-h-[100vh] bg-white">{children}</div>;
 }

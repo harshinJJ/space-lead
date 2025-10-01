@@ -37,7 +37,6 @@ export default function RegistrationForm({
   sessionList = [],
 }) {
   const [session, setSession] = useState(sessionList[0]);
-console.log("asdasdasd",session)
   const registerData = useRegistration({
     type,
     session,
