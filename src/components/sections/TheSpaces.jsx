@@ -49,7 +49,7 @@ const TheSpaces = ({
           )}
           {/* {description && <p className="text-secondary font-azonix text-center lg:max-w-[50%]">{description}</p>} */}
           <p className="text-secondary font-azonix text-center ">
-            Discover Space Lead, Explore the Four <br /> immersive spaces designed to
+            Discover Space Lead, Explore the Four <br className="hidden md:block" /> immersive spaces designed to
             engage, inspire, and transform.
           </p>
         </div>
@@ -58,7 +58,7 @@ const TheSpaces = ({
             <div
               key={i}
               data-aos={i%2==0?"fade-right":"fade-left"}
-              className=" bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex items-center gap-5 w-full"
+              className=" bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex flex-col md:flex-row items-center gap-5 w-full"
             >
               <div className="flex flex-col items-center justify-center uppercase aspect-square  font-light text-[#D018B8] rounded-4xl p-5 2xl:p-7.5 shrink-0">
                 <div className="text-[4rem] leading-[1]">

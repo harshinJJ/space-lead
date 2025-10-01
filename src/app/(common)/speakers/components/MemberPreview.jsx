@@ -56,7 +56,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
                 </h3>
               </div>
             </div>
-            {activeSpeaker&&<div className="flex-3/4">
+            {activeSpeaker&&<div className="flex-3/4 w-full">
               <div className="flex bg bg-gradient-to-r from-white to-transparent w-full rounded-l-lg p-1 items-center  border border-[#E4E4E7]">
                 {["About", "Agenda"].map((tab, i) => (
                   <PrimaryButton
