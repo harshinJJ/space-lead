@@ -530,7 +530,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
               </div>
             </div>
             <div className="flex-grow">
-              <p className="mb-1 font-bold text-black">ID Added Successfully</p>
+              <p className="mb-1 text-sm ">ID Added Successfully</p>
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}

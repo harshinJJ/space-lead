@@ -180,7 +180,7 @@ const PhoneInputs = ({
       const countryData = metadata.countries[countryCode];
       const countryLabel =
         defaultLabels[countryCode] === "Taiwan"
-          ? "Taiwan, China"
+          ? "Taiwan ROC"
           : defaultLabels[countryCode] === "Turkey"
           ? "Türkiye"
           : defaultLabels[countryCode];

@@ -1066,7 +1066,8 @@ export const countryList = [
   },
   {
     code: "TW",
-    name: "Taiwan, China",
+    // name: "Taiwan, China",
+    name: "Taiwan ROC",
     phoneCode: "886",
   },
   {

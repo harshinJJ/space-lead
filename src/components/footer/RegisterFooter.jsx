@@ -191,7 +191,7 @@ const RegisterFooter = () => {
         className="container-fluid  mx-auto px-5 lg:px-16"
       >
         <div className="text-center py-10 flex flex-col-reverse gap-2 lg:flex-row items-center lg:items-start justify-between">
-          <p className="md:text-nowrap">&copy; Space Lead 2025 | All Rights Reserved <a className=" underline" target="_blank" href="https://www.alfaisal.edu/en/">www.alfaisal.edu</a></p>
+          <p className="md:text-nowrap">&copy; Space Lead 25 | All Rights Reserved <a className=" underline" target="_blank" href="https://www.alfaisal.edu/en/">www.alfaisal.edu</a></p>
           <ul className="flex flex-wrap gap-4 lg:gap-x-5 xl:gap-x-11 items-center place-content-center">
             {footerLinks.map((link, i) => (
               <li key={i}>

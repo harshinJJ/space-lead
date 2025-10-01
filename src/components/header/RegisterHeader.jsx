@@ -116,12 +116,6 @@ const RegisterHeader = () => {
     { title: "Exhibition", url: "/exhibitor", type: "link" },
     { title: "Registration", url: "/registration", type: "link" },
     { title: "Media", url: "/media", type: "link" },
-    // { title: "Contact Us", url: "/contact-us", type: "link" },
-    // {
-    //   title: "Download the App",
-    //   url: "/registration",
-    //   Component: DownloadButton,
-    // },
     { title: "Download the App", url: "#", Component: RegisterBtn },
   ];
 

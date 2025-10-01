@@ -29,7 +29,12 @@ const useContactForm = () => {
   const validationSchema = Yup.object({
     firstname: Yup.string()
       .required("This field is required")
-      .matches(/^[A-Za-z\s]+$/, "Name must contain only letters"),
+      .matches(/^[A-Za-z\s]+$/, "Name must contain only letters")
+      .test(
+        "not-only-spaces",
+        "Invalid first name",
+        (value) => value && value.trim().length > 0
+      ),
     email: Yup.string()
       .required("This field is required")
       .matches(
@@ -48,7 +53,12 @@ const useContactForm = () => {
     message: Yup.string()
       .min(10, "Message must be at least 10 characters")
       .max(500, "Message cannot be more than 500 characters")
-      .required("Message is required"),
+      .required("Message is required")
+      .test(
+        "not-only-spaces",
+        "Message cannot be just spaces",
+        (value) => value && value.trim().length > 0
+      ),
   });
   const formik = useFormik({
     initialValues,

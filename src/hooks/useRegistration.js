@@ -15,7 +15,7 @@ const useRegistration = ({ type, session }) => {
   const fieldRefs = useRef({});
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [success, setSuccess] = useState(false);
-  const [successInfo,setSuccessInfo]=useState()
+  const [successInfo, setSuccessInfo] = useState();
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [showV2, setShowV2] = useState(false);
@@ -42,10 +42,20 @@ const useRegistration = ({ type, session }) => {
     title: Yup.object().required("Title is required"),
     firstname: Yup.string()
       .required("This field is required")
-      .matches(/^[A-Za-z\s]+$/, "First name must contain only letters"),
+      .matches(/^[A-Za-z\s]+$/, "First name must contain only letters")
+      .test(
+        "not-only-spaces",
+        "Invalid first name",
+        (value) => value && value.trim().length > 0
+      ),
     lastname: Yup.string()
       .required("This field is required")
-      .matches(/^[A-Za-z\s]+$/, "Last Name must contain only letters"),
+      .matches(/^[A-Za-z\s]+$/, "Last Name must contain only letters")
+      .test(
+        "not-only-spaces",
+        "Invalid last name",
+        (value) => value && value.trim().length > 0
+      ),
     phoneNumber: Yup.string()
       .required("This field is required")
       .test("is-valid", "Mobile Number is not valid", (value) =>
@@ -85,6 +95,11 @@ const useRegistration = ({ type, session }) => {
                 !numericOnlyPattern.test(value.trim())
               );
             }
+          )
+          .test(
+            "not-only-spaces",
+            "Invalid Institution Name",
+            (value) => value && value.trim().length > 0
           ),
       otherwise: (schema) => schema.notRequired(),
     }),
@@ -111,7 +126,12 @@ const useRegistration = ({ type, session }) => {
               !specialCharPattern.test(value) &&
               !numericOnlyPattern.test(value.trim())
             );
-          }),
+          })
+          .test(
+            "not-only-spaces",
+            "Invalid Job Title",
+            (value) => value && value.trim().length > 0
+          ),
       otherwise: (schema) => schema.notRequired(),
     }),
     companyname: Yup.string().when([], {
@@ -133,7 +153,12 @@ const useRegistration = ({ type, session }) => {
               !numericOnlyPattern.test(value.trim()) &&
               !onlySpecialsPattern.test(value.trim()) // block if only special chars
             );
-          }),
+          })
+          .test(
+            "not-only-spaces",
+            "Invalid Company Name",
+            (value) => value && value.trim().length > 0
+          ),
       otherwise: (schema) => schema.notRequired(),
     }),
   });
@@ -207,7 +232,7 @@ const useRegistration = ({ type, session }) => {
             window.location.href = res.data?.payment_url;
           } else {
             setSuccess(true);
-            setSuccessInfo(res?.data?.data)
+            setSuccessInfo(res?.data?.data);
             formik.resetForm();
             window?.scrollTo({ top: 0, behavior: "smooth" });
           }

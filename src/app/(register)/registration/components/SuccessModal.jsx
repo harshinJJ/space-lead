@@ -29,7 +29,7 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
         duration: 0.5,
         ease: "power2.in",
         onComplete: () => {
-          router.push("/"); // navigate after cover
+          router.push("/registration"); // navigate after cover
         },
       });
     }

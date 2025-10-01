@@ -10,7 +10,7 @@ const TicketSummary = ({ price = 0, currency = "SAR",name }) => {
       <h3 className="text-sm text-black mb-4.5">Your Ticket Summary</h3>
       <div className="border border-secondary p-2.5 mb-4.5">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-xs">SPACE LEAD 2025</span>
+          <span className="text-xs">SPACE LEAD 25</span>
           <span className="text-secondary text-[1.25rem] font-gilroy-black">
             {currency} {formatCurrency(price)}
           </span>
