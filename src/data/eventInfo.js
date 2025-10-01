@@ -7,8 +7,9 @@ const EVENT_INFO = {
     { id: "day2", label: "Day 02", date: "11 Nov 2025", dateKey: "2025-11-11" },
   ],
   venue:"Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
-  startDateLabel:"Tuesday, 10th November",
-  eventTimeLabel:"08:00 AM to 04:00 PM",
+  // startDateLabel:"Tuesday, 10th November",
+  startDateLabel:"10th - 11th November 2025",
+  eventTimeLabel:"07:30 AM to 04:00 PM",
   socials:{
     instagram:"https://www.instagram.com/spaceleadau/",
     facebook:"#",
