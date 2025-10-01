@@ -9,6 +9,12 @@ const EVENT_INFO = {
   venue:"Al Kifah Saudi Arabia",
   startDateLabel:"Tuesday, 10th November",
   eventTimeLabel:"08:00 AM to 04:00 PM",
+  socials:{
+    instagram:"https://www.instagram.com/spaceleadau/",
+    facebook:"#",
+    linkedin:"#",
+    twitter:"https://x.com/SpaceLeadAU",
+  }
 };
 
 export default EVENT_INFO;

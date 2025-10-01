@@ -44,9 +44,8 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
               Join the conversation. Shape the narrative.
             </h3>
           )}
-          <div className="relative">
+          <div ref={videoRef} className="relative">
             <div
-              ref={videoRef}
               className={`relative w-full ${
                 !activeVideo ? "hidden" : "block"
               }  lg:aspect-[1443/509] aspect-video rounded-3xl overflow-hidden`}
@@ -88,13 +87,13 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
             <div className="relative px-8 py-2.75  bg-secondary font-medium rounded-full flex text-sm md:text-lg  items-center justify-start gap-5 i mb-10">
               <div className="flex items-center">Connect with us :</div>
               <div className="flex items-center gap-4">
-                <a href="#">
+                <a href={EVENT_INFO.socials.twitter} target="_blank">
                   <TwitterIcon />
                 </a>
-                <a href="#">
+                <a href={EVENT_INFO.socials.instagram} target="_blank">
                   <InstagramIcon />
                 </a>
-                <a href="#">
+                <a href={EVENT_INFO.socials.linkedin} target="_blank">
                   <LinkedInIcon />
                 </a>
               </div>
@@ -109,7 +108,10 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                     className="relative aspect-[335/226] cursor-pointer card opacity-0 will-change-transform"
                   >
                     {media.media_type == "video" ? (
-                      <div className="w-full h-full" onClick={() => handleVideo(media.video)}>
+                      <div
+                        className="w-full h-full"
+                        onClick={() => handleVideo(media.video)}
+                      >
                         <video
                           src={media.video}
                           autoPlay

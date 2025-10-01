@@ -2,17 +2,18 @@
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
+import EVENT_INFO from "@/data/eventInfo";
 
 const platformList = [
   {
     platform: "twitter",
     label: "@spaceleadau",
-    url: "https://x.com/SpaceLeadAU",
+    url: EVENT_INFO.socials.twitter,
   },
   {
     platform: "instagram",
     label: "@spaceleadau",
-    url: "https://www.instagram.com/spaceleadau/",
+    url:EVENT_INFO.socials.instagram,
   },
 ];
 

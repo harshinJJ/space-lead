@@ -19,7 +19,7 @@ const SpeakerGroup = ({
       : "border-1 border-[#AE00FF]");
   return (
     speakers.length > 0 && (
-      <section className={`bg-indigo lg:py-15 py-5 text-white ${className}`}>
+      <section className={`bg-indigo lg:py-15 py-5 px-5 sm:px-0 text-white ${className}`}>
         <div
           className={`container-fluid overflow-hidden mx-auto text-[1.13rem] bg-cover bg-center bg-no-repeat flex-3 flex flex-col gap-3 md:gap-7.5 px-5 xl:px-15.75 2xl:py-20 lg:py-15 py-10 rounded-3xl ${borderClass}`}
         >

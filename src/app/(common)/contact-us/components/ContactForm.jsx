@@ -5,6 +5,7 @@ import PhoneInputs from "@/components/formInputs/PhoneInput";
 import ButtonLoader from "@/components/loader/ButtonLoader";
 import DotPattern from "@/components/patterns/DotPattern";
 import SemiCirclePattern from "@/components/patterns/SemiCirclePattern";
+import EVENT_INFO from "@/data/eventInfo";
 import useContactForm from "@/hooks/useContactForm";
 import { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
 import React, { useState } from "react";
@@ -85,7 +86,8 @@ const ContactForm = () => {
 
           <div className="flex gap-3 lg:gap-6">
             <a
-              href="#"
+              href={EVENT_INFO.socials.facebook}
+              target="_blank"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
             >
               <svg
@@ -102,8 +104,8 @@ const ContactForm = () => {
               </svg>
             </a>
             <a
-                    href="https://www.instagram.com/spaceleadau/"
-                    target="_blank"
+              href={EVENT_INFO.socials.instagram}
+              target="_blank"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
             >
               <svg
@@ -149,7 +151,7 @@ const ContactForm = () => {
               </svg>
             </a>
             <a
-              href="https://x.com/SpaceLeadAU"
+              href={EVENT_INFO.socials.twitter}
               target="_blank"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
             >
@@ -206,9 +208,7 @@ const ContactForm = () => {
               ref={setRef("phoneNumber")}
               className="sm:col-span-2 lg:col-span-1"
             >
-              <label className="block font-medium ">
-                Phone Number
-              </label>
+              <label className="block font-medium ">Phone Number</label>
               {/* <input
                 type="tel"
                 name="phoneNumber"

@@ -5,6 +5,7 @@ import React from "react";
 import ScrollTop from "../common/ScrollTop";
 import Image from "next/image";
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
+import EVENT_INFO from "@/data/eventInfo";
 
 const BgOverlay = () => {
   return (
@@ -250,20 +251,18 @@ const Footer = () => {
               <h4 className="text-[1.5rem] font-medium">Let’s Connect</h4>
               <ul className="flex items-center gap-4 text-secondary">
                 <li>
-                  <a href="https://x.com/SpaceLeadAU" target="_blank">
+                <a href={EVENT_INFO.socials.twitter} target="_blank">
                     <TwitterIcon size={17} />
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.instagram.com/spaceleadau/"
-                    target="_blank"
-                  >
+                <a href={EVENT_INFO.socials.instagram} target="_blank">
+
                     <InstagramIcon size={17} />
                   </a>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                <a href={EVENT_INFO.socials.linkedin} target="_blank">
                     <LinkedInIcon size={17} />
                   </a>
                 </li>

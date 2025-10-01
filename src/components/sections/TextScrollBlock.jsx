@@ -58,7 +58,7 @@ const TextScrollBlock = ({
         )} */}
           <p
             ref={textRef}
-            className=" text-5xl font-bold font-gilroy-bold text-start leading-relaxed"
+            className=" 2xl:text-5xl lg:text-4xl text-3xl font-bold font-gilroy-bold text-start leading-relaxed"
           >
             {description.split("").map((char, i) => (
               <span
