@@ -37,7 +37,7 @@ export default function RegistrationForm({
   sessionList = [],
 }) {
   const [session, setSession] = useState(sessionList[0]);
-
+console.log("asdasdasd",session)
   const registerData = useRegistration({
     type,
     session,
@@ -101,7 +101,7 @@ export default function RegistrationForm({
               >
                 <div className="flex items-start gap-4">
                   {/* Title */}
-                  <div ref={setRef("title")} className="md:flex-7/20 flex-1/5">
+                  <div ref={setRef("title")} className="md:flex-7/20 flex-2/6 xs:flex-1/5">
                     <Label
                       htmlFor="react-select-title-select-input"
                       required={true}
@@ -122,7 +122,7 @@ export default function RegistrationForm({
                   </div>
                   <div
                     ref={setRef("firstname")}
-                    className="w-full md:flex-13/20 flex-4/5"
+                    className="w-full md:flex-13/20 flex-4/6 xs:felx-4/5"
                   >
                     {/* First Name */}
                     <Label required={true}>First Name</Label>

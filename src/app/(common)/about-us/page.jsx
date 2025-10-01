@@ -101,7 +101,7 @@ const About = async () => {
           },
           {
             label: "Explore Agenda ",
-            url: "/agendas",
+            url: "/agenda",
           },
         ]}
       />

@@ -31,6 +31,7 @@ export default async function Exhibitor() {
             label: "Download Booklet",
             url: "#",
             arrowDirection: "bottom",
+            type:"external"
           },
         ]}
         overlay="indigo"

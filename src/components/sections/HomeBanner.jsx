@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import PrimaryButton from "../buttons/PrimaryButton";
+import PrimaryButton, { PrimaryLink } from "../buttons/PrimaryButton";
 import ScrollBottom from "../common/ScrollBottom";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -187,9 +187,9 @@ const HomeBanner = ({ sponsors=[] }) => {
           <div data-aos="fade-up" data-aos-delay="100" className="-translate-y-1/6">
             <TimerBlock eventDate={EVENT_INFO.startDate} />
           </div>
-          <PrimaryButton data-aos="fade-up" data-aos-delay="150" className="gap-1 px-7 text-lg py-3 w-fit leading-[100%]">
+          <PrimaryLink href="/agenda" data-aos="fade-up" data-aos-delay="150" className="gap-1 px-7 text-lg py-3 w-fit leading-[100%]">
             <span>Explore Agenda</span>
-          </PrimaryButton>
+          </PrimaryLink>
         </div>
       </div>
       <div className="relative py-2 flex items-center">

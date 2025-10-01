@@ -6,7 +6,7 @@ import Select, { components } from "react-select";
 const DropdownIndicator = (props) => {
   const { menuIsOpen } = props.selectProps;
   return (
-    <components.DropdownIndicator {...props}>
+    <components.DropdownIndicator {...props} className="!ps-0 xs:!ps-2">
       <svg
         width="13"
         height="8"

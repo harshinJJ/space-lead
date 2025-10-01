@@ -54,6 +54,7 @@ const JoinUs = ({
                 key={i}
                 data-aos="fade-right"
                 data-aos-delay={`${i * 50}`}
+                target={link?.type=="external"?"_blank":"_self"}
                 href={link.url || "#"}
                 className="w-fit group px-7.5 py-[1.0625rem] items-center gap-2 btn-gradient transition-all duration-300"
               >

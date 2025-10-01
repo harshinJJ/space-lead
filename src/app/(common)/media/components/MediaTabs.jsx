@@ -116,7 +116,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                           muted
                           loop
                           poster={media?.thumbnail}
-                          className="object-cover h-full w-full"
+                          className="object-cover h-full w-full bg-black/20"
                         />
                         <div className="z-1 absolute-center max-w-17 max-h-17 m-auto rounded-full absolute transition-all duration-300 bg-secondary hover:bg-[#34706f] aspect-square flex items-center justify-center p-5 w-fit">
                           <svg
