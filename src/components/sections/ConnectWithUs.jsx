@@ -3,16 +3,19 @@ import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import EVENT_INFO from "@/data/eventInfo";
+import { InstagramIcon, TwitterIcon } from "@/data/icons";
 
 const platformList = [
   {
     platform: "twitter",
     label: "@spaceleadau",
+    icon:<TwitterIcon size={30}/>,
     url: EVENT_INFO.socials.twitter,
   },
   {
     platform: "instagram",
     label: "@spaceleadau",
+    icon:<InstagramIcon size={30}/>,
     url:EVENT_INFO.socials.instagram,
   },
 ];
@@ -46,8 +49,9 @@ const ConnectWithUs = ({
                   key={i}
                   className=" text-center flex gap-2 flex-col sm:flex-row items-center font-azonix font-light"
                 >
-                  <span>{item.platform}:</span>
-                  <a href={item.url} target="_blank">
+                  {/* <span>{item.platform}:</span> */}
+                  <div className="">{item.icon}</div>
+                  <a href={item.url} className="leading-[1]" target="_blank">
                     {item.label}
                   </a>
                 </p>

@@ -53,11 +53,11 @@ const data = [
       [
         { icon: <RocketIcon />, label: "Aerospace Engineering" },
         { icon: <RobotIcon />, label: "Robotics" },
-        { icon: <SpaceStationIcon />, label: "Space Applications" },
+        // { icon: <SpaceStationIcon />, label: "Space Applications" },
       ],
       [
-        { icon: <LightningIcon />, label: "Energy & Power Systems" },
-        { icon: <LifeSupportIcon />, label: "Life Support Systems" },
+        { icon: <LightningIcon />, label: "Power Systems" },
+        { icon: <LifeSupportIcon />, label: "Life Support" },
       ],
     ],
   },
@@ -65,13 +65,14 @@ const data = [
     label: "Human Health Off-Planet",
     rows: [
       [
-        { icon: <EarthIcon />, label: "Earth Healthcare Transformation" },
-        { icon: <GlobeIcon />, label: "Physiological Challenges" },
+        // { icon: <EarthIcon />, label: "Earth Healthcare Transformation" },
+        { icon: <EarthIcon />, label: "Transformation" },
+        // { icon: <GlobeIcon />, label: "Physiological Challenges" },
       ],
       [
-        { icon: <AlertMsgIcon />, label: "Medical Challenges" },
-        { icon: <BrainIcon />, label: "Psychological Challenges" },
-        { icon: <TrophyIcon />, label: "Research Breakthroughs" },
+        { icon: <AlertMsgIcon />, label: "Challenges" },
+        // { icon: <BrainIcon />, label: "Psychological Challenges" },
+        { icon: <TrophyIcon />, label: "Research" },
       ],
     ],
   },
@@ -127,8 +128,8 @@ const FocusAreas = ({
                   key={rowIndex}
                   className={`flex flex-col lg:flex-row w-full lg:w-fit gap-4 relative before:absolute before:h-0.25 ${
                     rowIndex == 0
-                      ? "lg:before:w-144.5 pb-0 lg:pb-5"
-                      : "lg:before:w-108"
+                      ? "lg:before:w-93.5 pb-0 lg:pb-5"
+                      : "lg:before:w-79.5"
                   }  before:bg-primary before:-top-0 before:-left-0 p-5 `}
                 >
                   {row.map((item, itemIndex) => (
@@ -169,8 +170,8 @@ const FocusAreas = ({
                   key={rowIndex}
                   className={`flex flex-col lg:flex-row gap-4 justify-end relative before:absolute before:h-0.25 ${
                     rowIndex == 0
-                      ? "lg:before:w-122 pb-0 lg:pb-5"
-                      : "lg:before:w-182.5"
+                      ? "lg:before:w-30 pb-0 lg:pb-5"
+                      : "lg:before:w-67"
                   } lg:w-fit w-full before:bg-secondary before:-top-0 before:-right-0 p-5`}
                 >
                   {row.map((item, itemIndex) => (

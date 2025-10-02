@@ -1,3 +1,4 @@
+import Link from "@/utils/CustomLink";
 import Image from "next/image";
 import React from "react";
 
@@ -6,9 +7,10 @@ const SpeakerTag = ({
   name,
   role,
   className,
+  url="#",
 }) => {
   return (
-    <div
+    <Link href={url}
       className={`flex items-center md:gap-2.5 bg-white/8 text-gray-300 p-[0.65625rem] xl:pe-9 md:pe-5 pe-2 rounded-full text-xs ${className}`}
     >
       <div className="w-10 aspect-square rounded-full overflow-hidden border-1 border-white/19">
@@ -51,7 +53,7 @@ const SpeakerTag = ({
           <span className="">{role}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

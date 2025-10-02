@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import PrimaryButton from "../buttons/PrimaryButton";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import EVENT_INFO from "@/data/eventInfo";
+import { HomeIcon } from "@/data/icons";
+import Link from "@/utils/CustomLink";
 const TimerBlock = dynamic(() => import("@/components/common/TimerBlock"), {
   ssr: false,
 });
@@ -76,8 +76,11 @@ const RegisterTitleBlock = ({ title }) => {
       <div className="container-fluid z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-center justify-between">
           <div className="w-full flex flex-col gap-5 md:gap-12.5 md:max-w-[50%] font-gilroy-med">
-            <h4 className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[-1.6px] 2xl:leading-[2.5rem]">
-              {title}
+            <h4 className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[-1.6px] 2xl:leading-[2.5rem] flex items-center gap-2">
+              <Link href="/" className=" rounded-full aspect-square border-1 p-2 flex items-center justify-center bg-white/10">
+                <HomeIcon/>
+              </Link>
+             <div className="border-s-2 px-2 border-white "> {title}</div>
             </h4>
             <div className="flex flex-col lg:flex-row xl:gap-x-10 gap-2 gap-y-4 ">
               <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">

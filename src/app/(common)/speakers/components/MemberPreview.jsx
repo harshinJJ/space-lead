@@ -13,7 +13,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
 
   return (
     <>
-      {activeSpeaker && (
+      {activeSpeaker?.id && (
         <section id="speaker-preview" className="bg-[#EDF0FE] pt-20">
           <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-7.5 px-5 sm:px-0 xl:px-15.75 mb-15">
             {/* <p className="text-secondary font-azonix">The Speakers Line-Up</p> */}

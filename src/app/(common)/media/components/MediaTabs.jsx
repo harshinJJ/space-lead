@@ -59,7 +59,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
               )}
             </div>
           </div>
-          <h3 className="md:text-4xl text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] my-12">
+          <h3 className="md:text-4xl text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] my-12 uppercase">
             Event Coverage
           </h3>
           <div className="relative flex xl:text-2xl lg:text-lg  gap-x-4 items-center  flex-col-reverse lg:flex-row justify-between gap-5 i mb-10">

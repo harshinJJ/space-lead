@@ -236,7 +236,7 @@ const AboutInfo = ({ className = "", isHome }) => {
             </h3>
           )}
           {data?.description && (
-            <p className="text-[#737373] xl:max-w-[90%] 3xl:text-2xl lg:text-xl text-base">
+            <p className={`text-[#737373] xl:max-w-[92%] ${isHome? "3xl:text-2xl lg:text-xl" : "lg:text-lg"} text-base`}>
               {data.description}
             </p>
           )}

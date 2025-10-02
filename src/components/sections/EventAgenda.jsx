@@ -176,12 +176,15 @@ export default function EventAgenda({
           <div
             key={idx}
             data-aos={idx%2==0?"fade-right":"fade-left"}
+            data-aos-once="true"
+            data-aos-offset="100"
             className="bg-white/8 rounded-4xl xl:p-7.5 md:p-4 p-2 flex flex-col gap-4 card"
           >
             <AgendaCard event={event} />
             <div className="flex flex-wrap gap-2.5">
               {event.speakers.map((speaker, i) => (
                 <SpeakerTag
+                  url={`/speakers/${speaker.id}`}
                   key={i}
                   image={speaker.profile_pic}
                   name={`${speaker.firstname} ${speaker.lastname}`}

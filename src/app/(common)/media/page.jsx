@@ -14,7 +14,7 @@ export default async function Media() {
   return (
     <main>
       <MediaTabs gallery={gallery} updates={liveUpdates} />
-      <RegisterBtn className="!bottom-0">Download Media Kit</RegisterBtn>
+      {/* <RegisterBtn className="!bottom-0">Download Media Kit</RegisterBtn> */}
     </main>
   );
 }
