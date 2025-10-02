@@ -1,4 +1,3 @@
-
 import HomeBanner from "@/components/sections/HomeBanner";
 import AboutInfo from "@/components/sections/AboutInfo";
 import MemberSlider from "@/components/sections/MemberSlider";
@@ -27,7 +26,10 @@ export default async function Home() {
   return (
     <main>
       <HomeBanner sponsors={sponsors} banner={"/images/banner_title.png"} />
-      <AboutInfo className="2xl:pb-0 lg:pb-15 md:pb-10 xs:pb-5 " />
+      <AboutInfo
+        className="2xl:pb-0 lg:pb-15 md:pb-10 xs:pb-5 "
+        isHome={true}
+      />
       <section className="z-1 relative bg-transparent bg-cover bg-[top_center]">
         <video
           autoPlay
@@ -39,9 +41,17 @@ export default async function Home() {
 
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
         <div
-          className={`container-fluid z-1 relative mx-auto w-full ${speakers?.length>0?"pt-5 lg:pt-9.5":"py-5"}`}
+          className={`container-fluid z-1 relative mx-auto w-full ${
+            speakers?.length > 0 ? "pt-5 lg:pt-9.5" : "py-5"
+          }`}
         >
-          <div className={`${speakers?.length>0?"lg:absolute lg:-translate-y-1/2 -translate-y-1/10":""} mx-auto left-0 right-0 px-5 md:px-0  top-0 w-full`}>
+          <div
+            className={`${
+              speakers?.length > 0
+                ? "lg:absolute lg:-translate-y-1/2 -translate-y-1/10"
+                : ""
+            } mx-auto left-0 right-0 px-5 md:px-0  top-0 w-full`}
+          >
             <StatsCard />
           </div>
         </div>

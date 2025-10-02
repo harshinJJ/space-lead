@@ -42,7 +42,7 @@ const OurExhibitor = ({
   exhibitors = [],
   className = "",
   label,
-  title = "Our Exhibitor",
+  title = "Exhibitors",
   showNavButton,
   navLabel = "View All Exhibitor",
   navLink = "/exhibitors",

@@ -3,11 +3,14 @@ import { RowStagger } from "@/utils/animations/CardStagger";
 import DotPattern from "../patterns/DotPattern";
 import SemiCirclePattern from "../patterns/SemiCirclePattern";
 
-const AboutInfo = ({ className = "" }) => {
+const AboutInfo = ({ className = "", isHome }) => {
   const data = {
     title: "Space Lead",
-    description:
-      "“The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. ",
+    description: `${
+      isHome
+        ? "“The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. "
+        : "“The Space Lead ’25 in Riyadh is a pioneering global conference uniting aerospace engineers, space medicine professionals, scientists, researchers, policymakers, industry leaders, and students. Over two immersive days, delegates will engage in thought-provoking discussions, collaborative exchanges, and strategic networking sessions that shape the future of space exploration and its impact on humanity"
+    }`,
     vision: [
       {
         icon: (
@@ -248,14 +251,16 @@ const AboutInfo = ({ className = "" }) => {
                     {vision.icon}
                   </div>
                 </div>
-                {vision?.label&&<p
-                  className={`${
-                    vision.label.length > 50
-                      ? "2xl:max-w-[30ch] 2xl:min-w-[24ch]"
-                      : ""
-                  } text-sm 3xl:text-sm 2xl:text-xs lg:text-sm text-center xs:text-start break-words`}
-                  dangerouslySetInnerHTML={{__html:vision.label}}
-                />}
+                {vision?.label && (
+                  <p
+                    className={`${
+                      vision.label.length > 50
+                        ? "2xl:max-w-[30ch] 2xl:min-w-[24ch]"
+                        : ""
+                    } text-sm 3xl:text-sm 2xl:text-xs lg:text-sm text-center xs:text-start break-words`}
+                    dangerouslySetInnerHTML={{ __html: vision.label }}
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -265,7 +270,7 @@ const AboutInfo = ({ className = "" }) => {
                 Features
               </p>
               <h4 className="text-tertiary font-azonix text-lg 2xl:text-xl 3xl:text-2xl">
-                Our Feature
+                Why Attend?
               </h4>
             </div>
             {data.features.map((feature, i) => (
@@ -297,7 +302,7 @@ const AboutInfo = ({ className = "" }) => {
           <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
             Features
           </p>
-          <h4 className="text-tertiary font-azonix text-2xl">Our Feature</h4>
+          <h4 className="text-tertiary font-azonix text-2xl">Why Attend?</h4>
         </div>
         {data.features.map((feature, i) => (
           <div
