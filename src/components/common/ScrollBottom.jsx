@@ -51,7 +51,7 @@ const ScrollBottom = ({ className = "" }) => {
     id="scroll-down"
     aria-label="Scroll to next section"
       onClick={scrollToNextSection}
-      className={`cursor-pointer w-12.5 flex items-center justify-center aspect-square z-50 bg-black/5 p-2.5 border-2 border-white overflow-hidden rounded-full transition-colors duration-300 ${className}`}
+      className={`cursor-pointer w-12.5 flex items-center justify-center aspect-square z-10 bg-black/5 p-2.5 border-2 border-white overflow-hidden rounded-full transition-colors duration-300 ${className}`}
     >
       <svg
         width="25"

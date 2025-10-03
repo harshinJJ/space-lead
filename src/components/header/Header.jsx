@@ -183,8 +183,8 @@ const Header = () => {
   return (
     <header className="text-white ">
       <div
-        className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] via-tertiary to-[#0a1316]  xl:bg-none ${
-          hasScrolled ? " xl:bg-[#1b373f]/98" : ""
+        className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] bg-[#1b373f] xl:bg-transparent via-tertiary to-[#0a1316]  xl:bg-none ${
+          hasScrolled ? " xl:!bg-[#1b373f]/98 " : ""
         } transition-all duration-300 ease-in-out`}
       >
         <div
