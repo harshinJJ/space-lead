@@ -63,9 +63,9 @@ const DownloadButton = ({ onClick }) => {
           className={`bg-indigo rounded-3xl overflow-hidden  max-h-[70vh] h-full md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
         >
           <div className="container-fluid mx-auto w-full flex flex-col  items-center justify-center gap-10">
-            <h3 className=" text-2xl text-start leading-[1.2] font-bold font-azonix text-white">
+            <h3 className=" text-xl text-start leading-[1.2] font-bold font-azonix text-white">
               Everything Space Lead ‘25,
-              <br className="2xl:block hidden" /> at your fingertips.
+              <br className="2xl:block hidden" /> at your fingertips
             </h3>
             <div className="flex flex-col  gap-4 ">
               <button>
@@ -196,11 +196,11 @@ const Header = () => {
             aria-label="Main Navigation"
             className="flex relative flex-col xl:flex-row justify-between items-center"
           >
-            <div className="flex items-stretch 2xl:gap-7.5 md:gap-4 gap-2">
-              <div className="hidden xl:block rounded-[5px] overflow-h relative w-full h-full bg-white  min-w-[151px] min-h-[54px] p-1 overflow-hidden">
+            <div className="flex lg:items-stretch items-center 2xl:gap-7.5 md:gap-4 gap-2 max-w-2/3">
+              <div className="xl:block rounded-[5px] overflow-h relative w-fit h-full bg-white  lg:min-w-[151px] lg:min-h-[54px] p-1 overflow-hidden">
                 <Image unoptimized width={147} height={50} src="/logo_secondary_new.png" alt="logo" />
               </div>
-              <Link href="/" className="logo min-w-[132px] min-h-[60px]">
+              <Link href="/" className="logo lg:min-w-[132px] lg:min-h-[60px]">
                 <Image width={132} height={60} src="/logo.png" alt="logo" />
               </Link>
             </div>
@@ -272,7 +272,7 @@ const Header = () => {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
-        <ul className="flex flex-col items-center justify-center h-full gap-8 text-xl">
+        <ul className="flex flex-col items-center justify-center h-full gap-3 text-xl">
           {navLinks.map(({ type, title, url, Component }, i) => (
             <li key={i}>
               {Component ? (

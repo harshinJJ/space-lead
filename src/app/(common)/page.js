@@ -33,10 +33,11 @@ export default async function Home() {
       <section className="z-1 relative bg-transparent bg-cover bg-[top_center]">
         <video
           autoPlay
+          playsInline
           loop
           muted
           className="absolute absolute-center w-full h-full object-cover"
-          src="/images/backgrounds/commitee_members_bg.webm"
+          src="/images/backgrounds/commitee_members_bg.mp4"
           poster="/images/backgrounds/posters/commitee_members_bg.webp"
         />
 

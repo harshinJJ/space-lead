@@ -191,11 +191,12 @@ const AboutInfo = ({ className = "", isHome }) => {
         >
           <video
             className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
-            src="/images/about_section_img.webm"
+            src="/images/about_section_img.mp4"
             poster="/images/backgrounds/posters/about_section_img.webp"
             alt=""
             autoPlay
             muted
+            playsInline
             loop
           />
           <div className="absolute right-0 bottom-0 md:bottom-[unset] md:top-[2rem] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[28ch] sm:max-w-[28ch] max-w-[22ch] transform md:translate-x-[38%] lg:translate-x-0 md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-primary to-black opacity-90 xl:p-10 p-6 flex flex-col gap-5">

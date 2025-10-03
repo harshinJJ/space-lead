@@ -52,8 +52,9 @@ const HomeBanner = ({ sponsors = [] }) => {
         autoPlay
         loop
         muted
+        playsInline
         className="absolute object-cover absolute-center w-full h-full"
-        src="/images/backgrounds/home_banner.webm"
+        src="/images/backgrounds/home_banner.mp4"
         poster="/images/backgrounds/posters/home_banner.webp"
       />
       <BannerOverlay />

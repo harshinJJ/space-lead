@@ -70,8 +70,8 @@ export default function RegistrationForm({
 
   return !success ? (
     <div className="container-fluid mx-auto flex flex-col items-center justify-center  px-5">
-      <h2 className="text-3xl md:text-4xl xl:text-[2.5rem] font-azonix  mb-8 tracking-wide text-center 2xl:!max-w-1/2 lg:!max-w-2/3">
-        Secure your place at the frontier of discovery.
+      <h2 className="xl:text-5xl md:text-3xl text-2xl font-azonix  mb-8 tracking-wide text-center  lg:!max-w-2/3">
+        Secure your place at the frontier of discovery
       </h2>
       <div className="w-full flex flex-col gap-8 max-w-285">
         <SessionTypeSelector

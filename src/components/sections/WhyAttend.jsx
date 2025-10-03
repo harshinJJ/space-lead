@@ -5,14 +5,16 @@ const BgOverlay = () => {
   return (
     <div className="absolute absolute-center w-full h-full flex items-end">
       <div className="w-full absolute">
-      <video
-        autoPlay
-        loop
-        muted
-        className="object-contain w-full h-auto max-h-[100%]"
-        src="/images/backgrounds/why_attend_bg.webm"
-      />
-      <div className="absolute absolute-center !-top-1 w-full h-full bg-gradient-to-t from-indigo/0 to-indigo"></div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="object-contain w-full h-auto max-h-[100%]"
+          src="/images/backgrounds/why_attend_bg.mp4"
+          poster="/images/backgrounds/posters/why_attend_bg.webp"
+        />
+        <div className="absolute absolute-center !-top-1 w-full h-full bg-gradient-to-t from-indigo/0 to-indigo"></div>
       </div>
     </div>
   );
@@ -20,7 +22,7 @@ const BgOverlay = () => {
 const WhyAttend = ({ children }) => {
   return (
     <section className="relative overflow-hidden bg-[top_center] bg-indigo bg-cover bg-no-repeat py-10 sm:py-20 px-1 xs:px-4">
-      <BgOverlay/>
+      <BgOverlay />
       <div className="relative container-fluid mx-auto px-2 lg:ps-15.75 xs:px-4 lg:pe-0 rounded-t-4xl bg-gradient-to-b from-secondary via-secondary/50 via-[50%] to-transparent to-[75%] pt-22.5 text-white">
         <div className="w-full p-2 md:p-3 bg-[#EEEEEE] mb-5" />
         <div className="mb-10 flex flex-col justify-between lg:flex-row gap-3.5">

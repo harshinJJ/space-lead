@@ -9,7 +9,7 @@ const JoinUs = ({
   theme = "light",
   selectAction,
   className = "",
-  videoURL = "/images/backgrounds/join_us_bg.webm",
+  videoURL = "/images/backgrounds/join_us_bg.mp4",
   poster="/images/backgrounds/posters/join_us_bg.webp",
   imageURL,
   navLinks = [],
@@ -36,6 +36,7 @@ const JoinUs = ({
                 loop
                 muted
                 poster={poster}
+                playsInline
                 className="absolute absolute-center w-full h-full object-cover"
                 src={videoURL}
               />

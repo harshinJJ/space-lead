@@ -75,7 +75,7 @@ export default async function Sponsors() {
           },
         ]}
         overlay="indigo"
-        videoURL="/images/backgrounds/why_attend_bg.webm"
+        videoURL="/images/backgrounds/why_attend_bg.mp4"
         poster="/images/backgrounds/posters/why_attend_bg.webp"
       />
       {/* <SponsorContentRight /> */}

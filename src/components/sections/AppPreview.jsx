@@ -65,7 +65,7 @@ const AppPreview = ({
           className="xl:text-5xl md:text-4xl text-2xl font-azonix text-start leading-[1.5] font-bold  text-white"
         >
           Everything Space Lead ‘25,
-          <br className="2xl:block hidden" /> at your fingertips.
+          <br className="2xl:block hidden" /> at your fingertips
         </h3>
         <div className="flex sm:flex-row flex-col items-center md:gap-7.5 gap-4 md:max-w-2/3">
           <button name="google-play" data-aos="fade-right">

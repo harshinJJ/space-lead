@@ -13,7 +13,7 @@ export default function CommonLayout({ children }) {
         <svg
           width="30"
           height="30"
-          className="xl:w-8.5 h-auto md:w-6 w-5 font-azonix"
+          className="xl:w-8.5 h-auto md:w-6 w-5 font-azonix rotate-90"
           viewBox="0 0 23 22"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
