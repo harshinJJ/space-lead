@@ -66,6 +66,9 @@ export default async function Home() {
           showNavButton={true}
           navLabel="View All Speakers"
           navLink="/speakers"
+          hasCardNav={true}
+          autoplay={true}
+          loop={true}
         />
       </section>
       <OurExhibitor

@@ -11,9 +11,9 @@ const SpeakerTag = ({
 }) => {
   return (
     <Link href={url}
-      className={`flex items-center md:gap-2.5 bg-white/8 text-gray-300 p-[0.65625rem] xl:pe-9 md:pe-5 pe-2 rounded-full text-xs ${className}`}
+      className={`flex items-center gap-2 md:gap-2.5 bg-white/8 text-gray-300 p-[0.65625rem] xl:pe-9 md:pe-5 pe-2 rounded-full text-xs ${className}`}
     >
-      <div className="w-10 aspect-square rounded-full overflow-hidden border-1 border-white/19">
+      <div className="w-10 min-w-10 aspect-square rounded-full overflow-hidden border-1 border-white/19">
         <Image
           height={40}
           width={40}
@@ -50,7 +50,7 @@ const SpeakerTag = ({
               />
             </svg>
           )}
-          <span className="">{role}</span>
+          <span className="truncate max-w-[30ch] md:max-w-[50ch]">{role}</span>
         </div>
       </div>
     </Link>

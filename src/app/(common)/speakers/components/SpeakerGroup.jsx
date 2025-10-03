@@ -19,12 +19,26 @@ const SpeakerGroup = ({
       : "border-1 border-[#AE00FF]");
   return (
     speakers.length > 0 && (
-      <section className={`bg-indigo lg:py-15 py-5 px-5 sm:px-0 text-white ${className}`}>
+      <section
+        className={`bg-indigo lg:py-15 py-5 px-5 sm:px-0 text-white ${className}`}
+      >
         <div
           className={`container-fluid overflow-hidden mx-auto text-[1.13rem] bg-cover bg-center bg-no-repeat flex-3 flex flex-col gap-3 md:gap-7.5 px-5 xl:px-15.75 2xl:py-20 lg:py-15 py-10 rounded-3xl ${borderClass}`}
         >
-          {showGroupBg&&<Image fill src={bgUrl} alt="group-bg-image" className="object-cover object-center" />}
-          <div className={`relative flex flex-col  md:items-center md:justify-center`}>
+          {showGroupBg && (<>
+            <Image
+              fill
+              src={bgUrl}
+              alt="group-bg-image"
+              className="object-cover object-center"
+            />
+          <div className="absolute absolute-center h-full w-full bg-[rgb(26,29,39,0.2)]"></div>
+            </>
+          )}
+
+          <div
+            className={`relative flex flex-col  md:items-center md:justify-center`}
+          >
             {title && (
               <h2
                 data-aos="fade-up"

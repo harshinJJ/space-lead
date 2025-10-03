@@ -40,9 +40,9 @@ const JoinUs = ({
               <div
                 className={`absolute inset-0 bg-gradient-to-b ${
                   overlay == "indigo"
-                    ? "from-indigo"
-                    : "from-primary  opacity-80"
-                } to-indigo/0 to-[70%] w-full h-full`}
+                    ? "from-indigo to-indigo/40 "
+                    : "from-[#432F5F]  to-indigo/0  "
+                } w-full h-full`}
               ></div>
             </>
           )}

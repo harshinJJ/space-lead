@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { CalenderIcon, LocationIcon, LogoSVG } from "@/data/icons";
 import { SponsorScroll } from "./Sponsors";
 import EVENT_INFO from "@/data/eventInfo";
+import Image from "next/image";
 const TimerBlock = dynamic(
   () => import("@/components/common/TimerBlock").then((mod) => mod.HomeTimer),
   {
@@ -13,6 +14,23 @@ const TimerBlock = dynamic(
   }
 );
 
+const BannerOverlay = () => {
+  return (
+    <div className="absolute absolute-center w-full h-full  bg-[bottom_center] bg-cover bg-no-repeat text-white">
+      {/* <div className="absolute absolute-center h-full w-7/10 bg-[rgb(26,29,39,0.2)]"></div> */}
+
+      <Image
+        src={"/images/backgrounds/home_banner_overlay.png"}
+        alt="banner-overlay"
+        priority
+        width={602}
+        height={1117}
+        className="absolute w-full absolute-center h-full lg:object-top bg-right bg-no-repeat object-cover text-white"
+      />
+      <div className="absolute absolute-center w-full h-full [background:linear-gradient(216.76deg,_rgba(0,_0,_0,_0.35)_98.77%,rgba(19,_31,_84,_0.42)_173.77%),rgba(26,_29,_39,_0.46)] opacity-75" />
+    </div>
+  );
+};
 const HomeBanner = ({ sponsors = [] }) => {
   const tags = [
     {
@@ -37,13 +55,15 @@ const HomeBanner = ({ sponsors = [] }) => {
         className="absolute object-cover absolute-center w-full h-full"
         src="/images/backgrounds/home_banner.webm"
       />
+      <BannerOverlay />
       <div className="relative container-fluid mx-auto px-5 sm:px-0 mb-12.5">
         <div className="relative mx-auto px-5 sm:px-0 flex flex-col items-center ">
           <h2
             data-aos="fade-up"
             className="font-azonix 2xl:text-6xl xl:text-5xl lg:text-4xl text-3xl 2xl:tracking-[5px] 2xl:leading-[1] text-center"
           >
-            The Future of Health & <br className="hidden sm:block" /> Advanced Engineering in Space
+            The Future of Health & <br className="hidden sm:block" /> Advanced
+            Engineering in Space
           </h2>
           <div
             data-aos="fade-up"

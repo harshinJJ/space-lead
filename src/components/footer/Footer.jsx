@@ -205,6 +205,7 @@ const Footer = () => {
               <Image
                 width={147}
                 height={50}
+                unoptimized
                 src="/logo_secondary_new.png"
                 alt="logo"
               />

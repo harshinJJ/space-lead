@@ -2,12 +2,14 @@
 import {
   EmailIcon,
   FacebookIcon,
+  InstagramIcon,
   LinkedInIcon,
   ShareIcon,
   TwitterIcon,
 } from "@/data/icons";
 import dynamic from "next/dynamic";
 import React, { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 const SharePopup = ({
   isOpen,
@@ -18,6 +20,7 @@ const SharePopup = ({
   additionalStyles = {},
 }) => {
   const [copied, setCopied] = useState(false);
+  const [instaCopied, setInstaCopied] = useState(false);
   const shareref = useRef();
 
   const getShareUrls = () => {
@@ -52,6 +55,56 @@ const SharePopup = ({
         setTimeout(() => setCopied(false), 2000);
       })
       .catch((err) => console.error("Failed to copy: ", err));
+  };
+  const handleInstagramShare = async () => {
+    const shareUrl = websiteSlug
+      ? `${window.location.origin}/${websiteSlug}`
+      : window.location.href;
+
+    // Check if Web Share API is supported (mostly mobile browsers)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Check this out!",
+          url: shareUrl,
+        });
+        return; // Success — no need to copy
+      } catch (err) {
+        if (err.name === "AbortError") {
+          return; // User canceled — do nothing
+        }
+        // If share fails (e.g., desktop), fall back to copy
+      }
+    }
+
+    // Fallback: copy to clipboard
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setInstaCopied(true);
+      setTimeout(() => {
+        setInstaCopied(false);
+        const instaWindow = window.open("https://www.instagram.com/", "_blank");
+
+        // Optional: refocus if popup blocked
+        if (
+          !instaWindow ||
+          instaWindow.closed ||
+          instaWindow.closed === undefined
+        ) {
+          // Popup likely blocked — show message
+          setTimeout(() => {
+            setInstaCopied(false);
+            toast.error(
+              "Popup blocked. Please allow popups or open Instagram manually."
+            );
+          }, 2000);
+          return;
+        }
+      }, 2000); // Reset after 3s
+    } catch (err) {
+      console.error("Failed to copy link:", err);
+      // Optionally show an error tooltip
+    }
   };
 
   const handleClickOutside = (event) => {
@@ -90,7 +143,14 @@ const SharePopup = ({
               onClick: handleCopyLink,
             },
             {
-              label: "LinkedIn", 
+              label: instaCopied
+                ? "Navigating to instagram"
+                : "Instagram",
+              icon: <InstagramIcon size={20} />,
+              onClick: handleInstagramShare,
+            },
+            {
+              label: "LinkedIn",
               icon: <LinkedInIcon size={20} />,
               href: shareUrls.linkedin,
             },

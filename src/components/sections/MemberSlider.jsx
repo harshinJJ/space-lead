@@ -6,23 +6,42 @@ import SpeakerCard from "../cards/SpeakerCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
-import { FreeMode } from "swiper/modules";
+import { Autoplay, FreeMode } from "swiper/modules";
 import dynamic from "next/dynamic";
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
+import { useRouter } from "next/navigation";
+import gsap from "gsap";
 
 const MemberSlider = ({
   speakers = [],
   title,
   label,
   theme = "light",
-  selectAction,
+  // selectAction,
   className = "",
   cardSize = "lg",
   showNavButton,
   navLabel = "View Full Line-Up",
   navLink = "/speakers",
   linkType = "internal",
+  hasCardNav = false,
+  cardNavBaseURL = "/speakers",
+  loop=false,
+  autoplay=false
 }) => {
+  const router = useRouter();
+  const selectAction = (id) => {
+    if (hasCardNav) {
+      gsap.to("#transition-overlay", {
+        x: "0%",
+        duration: 0.5,
+        ease: "power2.in",
+        onComplete: () => {
+          router.push(`${cardNavBaseURL}/${id}`);
+        },
+      });
+    }
+  };
   return (
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
@@ -50,18 +69,26 @@ const MemberSlider = ({
           className="container-fluid mx-auto px-5 sm:px-0 mt-10 mb-5"
         >
           <Swiper
-            modules={[FreeMode]}
-            freeMode={true}
-            spaceBetween={24}
-            slidesPerView={cardSize == "sm" ? 1.2 : "auto"}
-            breakpoints={{
-              480: { slidesPerView: cardSize == "sm" ? 1.8 : "auto" },
-              640: { slidesPerView: cardSize == "sm" ? 2.8 : "auto" },
-              768: { slidesPerView: cardSize == "sm" ? 3 : "auto" },
-              1024: { slidesPerView: cardSize == "sm" ? 4 : "auto" },
-              1280: { slidesPerView: cardSize == "sm" ? 4.2 : "auto" },
-              1400: { slidesPerView: cardSize == "sm" ? 4.8 : "auto" },
-            }}
+            modules={[Autoplay]}
+            autoplay={autoplay?{
+              delay: 0, // continuous scroll
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }:false}
+            speed={3000} // control smoothness
+            // freeMode={true}
+            loop={loop}
+            spaceBetween={20}
+            slidesPerView={"auto"}
+            // slidesPerView={cardSize == "sm" ? 1.2 : "auto"}
+            // breakpoints={{
+            //   480: { slidesPerView: cardSize == "sm" ? 1.8 : "auto" },
+            //   640: { slidesPerView: cardSize == "sm" ? 2.8 : "auto" },
+            //   768: { slidesPerView: cardSize == "sm" ? 3 : "auto" },
+            //   1024: { slidesPerView: cardSize == "sm" ? 4 : "auto" },
+            //   1280: { slidesPerView: cardSize == "sm" ? 4.2 : "auto" },
+            //   1400: { slidesPerView: cardSize == "sm" ? 4.8 : "auto" },
+            // }}
             className="w-full"
           >
             {speakers.map((speaker, index) => (
@@ -73,7 +100,9 @@ const MemberSlider = ({
               >
                 <SpeakerCard
                   speaker={speaker}
-                  selectAction={selectAction}
+                  {...(hasCardNav
+                    ? { selectAction: () => selectAction(speaker.id) }
+                    : {})}
                   textSize={cardSize}
                 />
               </SwiperSlide>

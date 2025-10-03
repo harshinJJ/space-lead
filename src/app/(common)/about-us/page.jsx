@@ -21,7 +21,8 @@ const About = async () => {
   const commitee = await PublicServices.getCommiteeCategory().then(
     (res) => res.data || []
   );
-  const [scientific,steering]=[commitee.find(item=>item?.name=="Scientific Committee")?.staff_members||[],commitee.find(item=>item?.name=="Steering Committee")?.staff_members||[]]
+  console.log("commitee",commitee)
+  const [scientific,steering]=[commitee.find(item=>item?.name?.toLowerCase().includes("scientific"))?.staff_members||[],commitee.find(item=>item?.name?.toLowerCase()?.includes("steering"))?.staff_members||[]]
   return (
     <main>
       <AboutInfo />

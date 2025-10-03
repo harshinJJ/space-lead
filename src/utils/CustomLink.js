@@ -16,6 +16,7 @@ export default function Link({ href, children, className, ...props }) {
       { x: "0%" }, // start fully covering
       {
         x: "100%", // slide off left
+        delay:0.8,
         duration: 1,
         ease: "power2.out",
         onComplete: () => {
