@@ -15,6 +15,7 @@ const ExhibitContent = () => (
         <video
           className=" object-cover w-full h-auto"
           src="/images/why_exhibit_img.webm"
+          poster="/images/backgrounds/posters/why_exhibit_img.webp"
           alt=""
           autoPlay
           muted

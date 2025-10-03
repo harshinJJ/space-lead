@@ -54,6 +54,7 @@ const HomeBanner = ({ sponsors = [] }) => {
         muted
         className="absolute object-cover absolute-center w-full h-full"
         src="/images/backgrounds/home_banner.webm"
+        poster="/images/backgrounds/posters/home_banner.webp"
       />
       <BannerOverlay />
       <div className="relative container-fluid mx-auto px-5 sm:px-0 mb-12.5">

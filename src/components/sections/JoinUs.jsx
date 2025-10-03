@@ -10,6 +10,7 @@ const JoinUs = ({
   selectAction,
   className = "",
   videoURL = "/images/backgrounds/join_us_bg.webm",
+  poster="/images/backgrounds/posters/join_us_bg.webp",
   imageURL,
   navLinks = [],
   overlay = "primary",
@@ -34,6 +35,7 @@ const JoinUs = ({
                 autoPlay
                 loop
                 muted
+                poster={poster}
                 className="absolute absolute-center w-full h-full object-cover"
                 src={videoURL}
               />

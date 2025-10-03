@@ -21,7 +21,6 @@ const About = async () => {
   const commitee = await PublicServices.getCommiteeCategory().then(
     (res) => res.data || []
   );
-  console.log("commitee",commitee)
   const [scientific,steering]=[commitee.find(item=>item?.name?.toLowerCase().includes("scientific"))?.staff_members||[],commitee.find(item=>item?.name?.toLowerCase()?.includes("steering"))?.staff_members||[]]
   return (
     <main>
@@ -33,6 +32,7 @@ const About = async () => {
           muted
           className="absolute absolute-center w-full h-full object-cover"
           src="/images/backgrounds/commitee_members_bg.webm"
+          poster="/images/backgrounds/posters/commitee_members_bg.webp"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-90 w-full h-full"></div>
 
@@ -59,6 +59,7 @@ const About = async () => {
           muted
           className="absolute absolute-center w-full h-full object-cover"
           src="/images/backgrounds/commitee_members_bg.webm"
+          poster="/images/backgrounds/posters/commitee_members_bg.webp"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
 
@@ -80,6 +81,7 @@ const About = async () => {
           muted
           className="absolute absolute-center w-full h-full object-cover"
           src="/images/backgrounds/the_spaces_bg.webm"
+          poster="/images/backgrounds/posters/the_spaces_bg.webp"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
         <TheSpaces

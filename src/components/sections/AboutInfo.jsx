@@ -192,6 +192,7 @@ const AboutInfo = ({ className = "", isHome }) => {
           <video
             className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
             src="/images/about_section_img.webm"
+            poster="/images/backgrounds/posters/about_section_img.webp"
             alt=""
             autoPlay
             muted
