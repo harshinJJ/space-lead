@@ -103,7 +103,7 @@ const LatestInfo = () => {
 
         <div className="w-full lg:w-1/2 flex flex-col justify-start">
           <p className="text-primary font-azonix mb-5">Testimonials</p>
-          <h3 className="xl:text-[2.875rem] lg:text-4xl md:text-2xl text-xl font-bold xl:mb-15 mb-10 font-orbitron">
+          <h3 className="xl:text-5xl md:text-4xl text-2xl font-azonix font-bold xl:mb-15 mb-10">
             Discover Clients Feedback <br /> About our Events
           </h3>
           <TestimonialsSlider />

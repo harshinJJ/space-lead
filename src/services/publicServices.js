@@ -49,14 +49,15 @@ const PublicServices = {
   },
   getSpeakers: async () => {
     try {
-      return await customFetch(SERVICE.CONTENT.SPEAKERS);
+      return await customFetch(`${SERVICE.CONTENT.SPEAKERS}?limit=10`);
     } catch (e) {
       return e;
     }
   },
   getSessionSpeakers: async () => {
     try {
-      return await customFetch(SERVICE.CONTENT.SESSION_SPEAKERS);
+      // return await customFetch(SERVICE.CONTENT.SESSION_SPEAKERS);
+      return await customFetch(`${SERVICE.CONTENT.SPEAKERS}?limit=1000`);
     } catch (e) {
       return e;
     }

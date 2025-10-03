@@ -34,6 +34,7 @@ export default async function Exhibitor() {
             type:"external"
           },
         ]}
+        imageURL={"/images/backgrounds/exhibitor_connect_bg.jpg"}
         overlay="indigo"
       />
       {/* <Marquee /> */}

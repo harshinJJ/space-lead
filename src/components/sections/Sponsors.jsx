@@ -47,7 +47,7 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
           <p className="text-secondary text-lg mb-4 leading-[100%] font-azonix">
             Our Sponsors
           </p>
-          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-orbitron lg:mb-14 mb-7">
+          <h2 className="xl:text-5xl md:text-4xl text-2xl font-azonix lg:leading-13.75 font-bold lg:mb-14 mb-7">
             Why sponsor
           </h2>
           <p className="sm:text-lg leading-[150%]  mb-10">
@@ -299,7 +299,7 @@ export const SponsorContentRight = () => {
           <p className="text-secondary text-lg mb-4 leading-[100%] font-orbitron">
             Our Sponsors
           </p>
-          <h2 className="text-3xl lg:text-[2.875rem] lg:leading-13.75 font-bold font-orbitron lg:mb-14 mb-7">
+          <h2 className="xl:text-5xl md:text-4xl text-2xl font-azonix font-bold lg:mb-14 mb-7">
             Why sponsor
           </h2>
           <p className="sm:text-lg leading-[150%]  mb-10">

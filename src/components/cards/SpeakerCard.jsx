@@ -63,7 +63,7 @@ const SpeakerCard = ({
         >
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </span>
-        <h3 className={`text-secondary text-sm leading-[1.8]`}>
+        <h3 className={`text-secondary text-sm leading-[1.8] line-clamp-2`}>
           {speaker?.designation}
         </h3>
       </div>

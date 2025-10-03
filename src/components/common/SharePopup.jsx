@@ -1,5 +1,11 @@
 "use client";
-import { EmailIcon, FacebookIcon, ShareIcon, TwitterIcon } from "@/data/icons";
+import {
+  EmailIcon,
+  FacebookIcon,
+  LinkedInIcon,
+  ShareIcon,
+  TwitterIcon,
+} from "@/data/icons";
 import dynamic from "next/dynamic";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -26,6 +32,7 @@ const SharePopup = ({
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
       twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}`,
       email: `mailto:?subject=Check this out&body=${encodedUrl}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
       gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${subject}&body=${body}`,
       whatsapp: `https://wa.me/?text=${encodedUrl}`,
     };
@@ -79,18 +86,31 @@ const SharePopup = ({
           {[
             {
               label: copied ? "Link Copied!" : "Copy Link",
-              icon: <ShareIcon size={20}/>,
+              icon: <ShareIcon size={20} />,
               onClick: handleCopyLink,
             },
             {
-              label: "Facebook",
-              icon: <FacebookIcon size={20}/>,
-              href: shareUrls.facebook,
+              label: "LinkedIn", 
+              icon: <LinkedInIcon size={20} />,
+              href: shareUrls.linkedin,
             },
             // { label: "Whatsapp", icon: "icon-whatsapp", href: shareUrls.whatsapp },
-            { label: "Twitter", icon: <TwitterIcon size={20}/>, href: shareUrls.twitter },
+            {
+              label: "Twitter",
+              icon: <TwitterIcon size={20} />,
+              href: shareUrls.twitter,
+            },
+            {
+              label: "Facebook",
+              icon: <FacebookIcon size={20} />,
+              href: shareUrls.facebook,
+            },
             // { label: "Gmail", icon: "icon-mail", href: shareUrls.gmail },
-            { label: "Email", icon: <EmailIcon size={20}/>, href: shareUrls.email },
+            {
+              label: "Email",
+              icon: <EmailIcon size={20} />,
+              href: shareUrls.email,
+            },
           ].map((item, idx) => (
             <li key={idx} className="w-full flex flex-col items-center gap-2">
               <a
@@ -107,7 +127,7 @@ const SharePopup = ({
               >
                 {item.label}
                 <div className="w-9 h-9 rounded-full flex items-center justify-center bg-gray-100 text-[#100A44] transition-colors hover:bg-[#100A44] hover:text-white">
-                  <span >{item.icon}</span>
+                  <span>{item.icon}</span>
                 </div>
               </a>
             </li>

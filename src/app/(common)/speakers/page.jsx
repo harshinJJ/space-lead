@@ -10,7 +10,14 @@ export default async function Speakers() {
   const speakers = await PublicServices.getSessionSpeakers().then(
     (res) => res.data || []
   );
-  const [spaceSpeakers,healthSpeakers]=[speakers.find(speaker=>speaker.session_title=="Space")?.speakers||[],speakers.find(speaker=>speaker.session_title=="Health")?.speakers||[]]
+  const [spaceSpeakers, healthSpeakers] = [
+    speakers.filter((speaker) =>
+      speaker.category_name?.toLowerCase().includes("space")
+    ) || [],
+    speakers.filter((speaker) =>
+      speaker.category_name?.toLowerCase().includes("health")
+    ) || [],
+  ];
   return (
     <main>
       <SpeakerGroup

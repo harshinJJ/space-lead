@@ -1507,7 +1507,7 @@ export const HomeIcon = ({ size = 24, className = "" }) => (
     height={size}
     className={className}
     viewBox="0 0 52 52"
-    enable-background="new 0 0 52 52"
+    enableBackground="new 0 0 52 52"
   >
     <g>
       <path

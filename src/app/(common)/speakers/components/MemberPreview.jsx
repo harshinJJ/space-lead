@@ -21,7 +21,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
               className={`flex flex-col gap-5 sm:flex-row md:items-start md:justify-between mt-2`}
             >
               {/* <h2
-                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix text-[#000222] leading-snug `}
+                className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-[#000222] leading-snug `}
               >
                 MEET OUR INDUSTRY EXPERT AND PROFESSIONAL SPEAKERS
               </h2> */}
