@@ -33,7 +33,7 @@ const About = async () => {
           className="absolute absolute-center w-full h-full object-cover"
           src="/images/backgrounds/commitee_members_bg.webm"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-90 w-full h-full"></div>
 
         <FocusAreas
           className="bg-transparent"
@@ -104,6 +104,7 @@ const About = async () => {
             url: "/agenda",
           },
         ]}
+        // videoURL="/"
       />
       {/* <Marquee /> */}
       {/* <VideoPreview

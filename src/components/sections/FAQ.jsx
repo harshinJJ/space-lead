@@ -13,10 +13,10 @@ const FAQ = () => {
       <div className="container-fluid mx-auto flex flex-col items-center justify-center  px-5 lg:py-22 py-10 relative ">
         <DotPattern className="absolute top-13.5 right-0" />
         <div className="relative max-w-3xl w-full">
-          <p className="text-secondary font-orbitron text-center text-sm mb-5 ">
+          <p className="text-secondary  text-centerxl:text-lg text-sm font-azonix mb-5 ">
             Can't find the answer here?
           </p>
-          <h2 className="text-black font-orbitron text-center text-2xl md:text-3xl lg:text-[2.875rem] font-bold lg:mb-20 mb-10">
+          <h2 className="text-black xl:text-5xl md:text-4xl text-2xl font-azonix text-center font-bold lg:mb-20 mb-10">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">

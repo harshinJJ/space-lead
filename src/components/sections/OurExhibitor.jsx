@@ -62,7 +62,7 @@ const OurExhibitor = ({
         {title && (
           <h3
             data-aos="fade-up"
-            className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-azonix text-[#000222] mb-12 uppercase"
+            className="md:text-4xl text-2xl text-center xl:text-5xl font-bold font-azonix text-[#000222] mb-12 uppercase"
           >
             {title}
           </h3>

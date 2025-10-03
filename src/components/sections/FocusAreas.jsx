@@ -93,16 +93,16 @@ const FocusAreas = ({
 }) => {
   return (
     <section className={`bg-[#EDF0FE] py-20 ${className}`}>
-      <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 sm:px-0">
+      <div className="container-fluid mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 lg:px-30 px-5 sm:px-0">
         <div className="relative">
           <div
             data-aos="fade-up"
             className={`flex flex-col items-center sm:justify-between  md:justify-center `}
           >
-            {label && <p className="text-secondary font-azonix">{label}</p>}
+            {label && <p className="text-secondary xl:text-base text-sm font-azonix">{label}</p>}
             {title && (
               <h2
-                className={`text-4xl font-medium lg:text-5xl 2xl:text-[4rem] font-orbitron mb-3 ${
+                className={`xl:text-5xl md:text-4xl text-2xl font-azonix mb-3 ${
                   theme == "dark" ? "text-white" : "text-[#000222]"
                 } 2xl:leading-snug  `}
               >
@@ -110,9 +110,9 @@ const FocusAreas = ({
               </h2>
             )}
           </div>
-          <div data-aos="fade-right" className="mb-16">
+          <div data-aos="fade-right" className="mb-16 lg:mb-0">
             <div
-              className={`text-white text-2xl font-gilroy-bold font-medium mb-5 flex items-center text-center  justify-start`}
+              className={`text-white xl:text-3xl text-2xl font-gilroy-bold font-medium mb-5 flex items-center text-center  justify-start`}
             >
               <h5 className="border-b-1  border-primary pb-2.5 leading-[1]">
                 Space & Advanced <br /> Engineering
@@ -128,8 +128,8 @@ const FocusAreas = ({
                   key={rowIndex}
                   className={`flex flex-col lg:flex-row w-full lg:w-fit gap-4 relative before:absolute before:h-0.25 ${
                     rowIndex == 0
-                      ? "lg:before:w-93.5 pb-0 lg:pb-5"
-                      : "lg:before:w-79.5"
+                      ? "lg:before:w-112.5 pb-0 lg:pb-5"
+                      : "lg:before:w-94"
                   }  before:bg-primary before:-top-0 before:-left-0 p-5 `}
                 >
                   {row.map((item, itemIndex) => (
@@ -139,7 +139,7 @@ const FocusAreas = ({
                         itemIndex == 0 && rowIndex == data.length - 1
                           ? " after:h-0.25 after:w-3 after:-left-5  after:mx-auto "
                           : " lg:after:h-1/5 lg:after:w-0.25 lg:after:left-0 lg:after:right-0 lg:after:-top-5 after:h-0.25 after:w-3 after:-left-5  after:mx-auto"
-                      } after:bg-primary bg-white/10 flex gap-2 items-center rounded-2xl px-5 font-gilroy-bold py-3.5 text-white text-lg font-medium backdrop-blur-sm hover:bg-white/20 transition-colors duration-200 flex-shrink-0`}
+                      } after:bg-primary bg-white/10 flex gap-2 items-center rounded-2xl px-5 font-gilroy-bold py-3.5 text-white xl:text-2xl font-medium backdrop-blur-sm hover:bg-white/20 transition-colors duration-200 flex-shrink-0`}
                     >
                       <span className="text-primary">{item.icon}</span>
                       <span>{item.label}</span>
@@ -152,9 +152,9 @@ const FocusAreas = ({
 
           {/* second section */}
 
-          <div data-aos="fade-left" className="mb-16">
+          <div data-aos="fade-left" className="mb-16 lg:-translate-y-10">
             <div
-              className={`text-white text-2xl font-gilroy-bold font-medium mb-5 flex items-center text-center justify-end`}
+              className={`text-white xl:text-3xl text-2xl font-gilroy-bold font-medium mb-5 flex items-center text-center justify-end`}
             >
               <h5 className="border-b-1  border-secondary pb-2.5 leading-[1]">
                 Human Health <br /> Off-Planet
@@ -170,8 +170,8 @@ const FocusAreas = ({
                   key={rowIndex}
                   className={`flex flex-col lg:flex-row gap-4 justify-end relative before:absolute before:h-0.25 ${
                     rowIndex == 0
-                      ? "lg:before:w-30 pb-0 lg:pb-5"
-                      : "lg:before:w-67"
+                      ? "lg:before:w-35 pb-0 lg:pb-5"
+                      : "lg:before:w-77"
                   } lg:w-fit w-full before:bg-secondary before:-top-0 before:-right-0 p-5`}
                 >
                   {row.map((item, itemIndex) => (
@@ -182,7 +182,7 @@ const FocusAreas = ({
                         rowIndex == data.length - 1
                           ? " after:h-0.25 after:w-3 after:-right-5  after:mx-auto "
                           : " lg:after:h-1/5 lg:after:w-0.25 lg:after:left-0 lg:after:right-0 lg:after:-top-5 after:h-0.25 after:w-3 after:-right-5  after:mx-auto"
-                      } after:bg-secondary bg-white/10 flex gap-2 items-center rounded-2xl px-5 font-gilroy-bold py-3.5 text-white text-lg font-medium backdrop-blur-sm hover:bg-white/20 transition-colors duration-200 flex-shrink-0`}
+                      } after:bg-secondary bg-white/10 flex gap-2 items-center rounded-2xl px-5 font-gilroy-bold py-3.5 text-white xl:text-2xl font-medium backdrop-blur-sm hover:bg-white/20 transition-colors duration-200 flex-shrink-0`}
                     >
                       <span className="text-secondary">{item.icon}</span>
                       <span>{item.label}</span>

@@ -101,15 +101,15 @@ export const SponsorList = ({
   return sponsors?.length > 0 ? (
     <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
       {/* Left & right edge gradients */}
-      <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
-      <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-50 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
+      <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
+      <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
 
       <div className="container-fluid px-5 mx-auto lg:px-12.75 text-center">
         {label && (
           <p className="text-secondary font-azonix text-lg mb-2">{label}</p>
         )}
         {title && (
-          <h2 className="text-2xl font-orbitron lg:text-[2.875rem] font-bold text-gray-900 mb-4">
+          <h2 className="xl:text-5xl md:text-4xl text-2xl font-azonix font-bold text-gray-900 mb-4">
             {title}
           </h2>
         )}

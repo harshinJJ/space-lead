@@ -57,7 +57,7 @@ const PressRelease = ({
           </p>
         )}
         {title && (
-          <h3 className="text-2xl md:text-2xl text-center xl:text-[2.875rem] leading-[1.2] font-bold font-azonix text-black/80 lg:mb-12 mb-6">
+          <h3 className="text-center xl:text-5xl md:text-4xl text-2xl  leading-[1.2] font-bold font-azonix text-black lg:mb-12 mb-6">
             {title}
           </h3>
         )}

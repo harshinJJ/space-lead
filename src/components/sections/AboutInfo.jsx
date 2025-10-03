@@ -258,7 +258,7 @@ const AboutInfo = ({ className = "", isHome }) => {
                       vision.label.length > 50
                         ? "2xl:max-w-[30ch] 2xl:min-w-[24ch]"
                         : ""
-                    } text-sm 3xl:text-sm 2xl:text-xs lg:text-sm text-center xs:text-start break-words`}
+                    } text-sm 3xl:text-sm 2xl:text-base lg:text-sm text-center xs:text-start break-words`}
                     dangerouslySetInnerHTML={{ __html: vision.label }}
                   />
                 )}
@@ -267,10 +267,8 @@ const AboutInfo = ({ className = "", isHome }) => {
           </div>
           <div className="hidden 2xl:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.25 md:me-12  border-t border-[#D7D7D7] pt-6 ">
             <div className="flex flex-col justify-center px-2.5">
-              <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
-                Features
-              </p>
-              <h4 className="text-tertiary font-azonix text-lg 2xl:text-xl 3xl:text-2xl">
+
+              <h4 className="text-tertiary font-azonix text-lg 2xl:text-2xl 3xl:text-3xl">
                 Why Attend?
               </h4>
             </div>
@@ -289,7 +287,7 @@ const AboutInfo = ({ className = "", isHome }) => {
                 </div>
                 <div className="ps-2.5 flex-4/5">
                   <h5 className="text-tertiary text-sm">{feature.title}</h5>
-                  <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 3xl:text-xs text-[0.625rem] leading-4.5">
+                  <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-sm  leading-4.5">
                     {feature.description}
                   </p>
                 </div>
@@ -299,10 +297,10 @@ const AboutInfo = ({ className = "", isHome }) => {
         </div>
       </RowStagger>
       <div className="relative px-10 pb-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
-        <div className="flex flex-col justify-center px-2.5">
-          <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
+        <div className="flex flex-col justify-center px-2.5 py-2">
+          {/* <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
             Features
-          </p>
+          </p> */}
           <h4 className="text-tertiary font-azonix text-2xl">Why Attend?</h4>
         </div>
         {data.features.map((feature, i) => (
@@ -320,7 +318,7 @@ const AboutInfo = ({ className = "", isHome }) => {
             </div>
             <div className="">
               <h5 className="text-tertiary text-sm">{feature.title}</h5>
-              <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-xs leading-4.5">
+              <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-sm leading-4.5">
                 {feature.description}
               </p>
             </div>

@@ -31,24 +31,24 @@ const JoinUs = ({
 
         <div
           data-aos="fade-up"
-          className={`relative flex flex-col sm:items-center sm:justify-between  md:justify-center `}
+          className={`relative flex flex-col items-center sm:justify-between  md:justify-center `}
         >
           {title && (
             <h2
-              className={`text-lg xs:text-2xl lg:text-5xl 2xl:text-[4rem] font-orbitron text-white leading-[1] text-center font-medium max-w-[80%]`}
+              className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-white leading-[1] text-center font-medium max-w-[80%]`}
             >
               {title}
             </h2>
           )}
           {description && (
-            <p className="text-[#BAFFFE] font-azonix text-center lg:max-w-4/5 2xl:text-[1.375rem] lg:text-lg text-sm  lg:mt-15 mt-8">
+            <p className="text-[#BAFFFE] text-center lg:max-w-4/5 xl:text-2xl md:text-lg text-sm font-azonix lg:mt-15 mt-8">
               {description}
               {/* Join global pioneers, innovators, and leaders in shaping tomorrow’s
             health and engineering advancements beyond Earth. */}
             </p>
           )}
           {/* {showViewAll && ( */}
-          <div className="mt-15 flex flex-col sm:flex-row items-center justify-center lg:gap-10 gap-5">
+          <div className="mt-15 flex flex-col md:flex-row items-center justify-center lg:gap-10 gap-5">
             {navLinks?.map((link, i) => (
               <PrimaryLink
                 key={i}
@@ -56,7 +56,7 @@ const JoinUs = ({
                 data-aos-delay={`${i * 50}`}
                 target={link?.type=="external"?"_blank":"_self"}
                 href={link.url || "#"}
-                className="w-fit group px-7.5 py-[1.0625rem] items-center gap-2 btn-gradient transition-all duration-300"
+                className=" group px-7.5 py-[1.0625rem] items-center gap-2 btn-gradient transition-all duration-300 w-full md:w-fit"
               >
                 <span className="leading-[100%] text-lg ">{link.label}</span>
                 <svg

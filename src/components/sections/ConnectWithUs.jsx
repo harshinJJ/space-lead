@@ -3,19 +3,25 @@ import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import EVENT_INFO from "@/data/eventInfo";
-import { InstagramIcon, TwitterIcon } from "@/data/icons";
+import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
 
 const platformList = [
   {
+    platform: "linkedin",
+    label: "@spaceleadau",
+    icon:<LinkedInIcon size={24}/>,
+    url: EVENT_INFO.socials.twitter,
+  },
+  {
     platform: "twitter",
     label: "@spaceleadau",
-    icon:<TwitterIcon size={30}/>,
+    icon:<TwitterIcon size={24}/>,
     url: EVENT_INFO.socials.twitter,
   },
   {
     platform: "instagram",
     label: "@spaceleadau",
-    icon:<InstagramIcon size={30}/>,
+    icon:<InstagramIcon size={24}/>,
     url:EVENT_INFO.socials.instagram,
   },
 ];
@@ -38,19 +44,19 @@ const ConnectWithUs = ({
           >
             {title && (
               <h2
-                className={`text-lg xs:text-2xl lg:text-5xl 2xl:text-[4rem] font-orbitron text-white leading-[1] text-center font-medium max-w-[80%]`}
+                className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-white leading-[1] text-center font-medium max-w-[80%]`}
               >
                 {title}
               </h2>
             )}
-            <div className="text-white flex flex-col items-center md:gap-y-2.5 gap-y-5 md:text-xl text-sm leading-[1]">
+            <div className="text-white flex flex-col md:flex-row xl:gap-x-30 gap-x-5 items-center md:gap-y-2.5 gap-y-10 md:text-xl text-sm leading-[1]">
               {platformList.map((item, i) => (
                 <div
                   key={i}
-                  className=" text-center flex gap-2 flex-col sm:flex-row items-center font-azonix font-light"
+                  className=" text-center flex gap-2 flex-col sm:flex-row items-center xl:text-3xl text-2xl font-light"
                 >
                   {/* <span>{item.platform}:</span> */}
-                  <div className="">{item.icon}</div>
+                  <div className="text-secondary">{item.icon}</div>
                   <a href={item.url} className="leading-[1]" target="_blank">
                     {item.label}
                   </a>

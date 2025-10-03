@@ -43,7 +43,7 @@ const TextScrollBlock = ({
             <p className="text-secondary font-azonix text-lg mb-2">{label}</p>
           )}
           {title && (
-            <h2 className="text-2xl font-orbitron lg:text-[2.875rem] font-bold text-gray-900 mb-4">
+            <h2 className="xl:text-5xl md:text-4xl text-2xl font-azonix text-center font-bold text-gray-900 mb-4">
               {title}
             </h2>
           )}

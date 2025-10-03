@@ -7,7 +7,7 @@ import EVENT_INFO from "@/data/eventInfo";
 const TimerBlock = dynamic(() => import("@/components/common/TimerBlock"), {
   ssr: false,
 });
-const TitleBlock = ({ title }) => {
+const TitleBlock = ({ title,pathname }) => {
   const remainingTime = {
     days: 9,
     hours: 3,
@@ -111,6 +111,10 @@ const TitleBlock = ({ title }) => {
               </svg>
               Register Now
             </PrimaryLink> */}
+            {pathname=="/media"&&<PrimaryLink href="#" className="gap-1 px-5 py-3.5 w-fit text-[1.375rem] !rounded-3xl leading-[100%] btn-gradient-secondary ">
+
+              Download Media Kit
+            </PrimaryLink>}
             <h4 className="font-azonix 2xl:text-[2.5rem] xl:text-3xl lg:text-2xl xs:text-2xl sm:text-xl xl:tracking-[-1.6px] 2xl:leading-[2.5rem]">
               {title}
             </h4>

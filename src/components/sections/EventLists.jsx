@@ -81,7 +81,7 @@ const EventLists = () => {
       <div className="mb-10 ">
         <p className="text-secondary  tracking-wide font-light">Event Lists</p>
         <div className="flex flex-col lg:flex-row justify-between">
-          <h2 className="text-2xl xs:text-3xl 2xl:text-[2.875rem] lg:text-4xl leading-tight font-bold text-white mb-4 lg:max-w-2xl">
+          <h2 className="xl:text-5xl md:text-4xl text-2xl font-azonix text-center leading-tight font-bold text-white mb-4 lg:max-w-2xl">
             Explore Upcoming Events with Industry Expert
           </h2>
           <div className="flex flex-wrap items-start justify-center gap-3 ">

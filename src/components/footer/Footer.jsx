@@ -144,7 +144,7 @@ const Footer = () => {
     // },
     {
       url: EVENT_INFO.mapLink,
-      title:EVENT_INFO.address,
+      title: EVENT_INFO.address,
       icon: (
         <svg
           width="40"
@@ -196,13 +196,16 @@ const Footer = () => {
         </section> */}
         <section className="relative py-10 border-b border-[#CCCCCC33] grid md:grid-cols-3 grid-cols-1 gap-y-12">
           <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
-          <div data-aos="fade-up" data-aos-once="true" className="flex flex-row md:flex-col xl:flex-row xl:items-start justify-center md:justify-start 2xl:gap-7.5 md:gap-4 gap-5">
-            <div className="rounded-[5px] md:min-w-30 overflow-hidden">
+          <div
+            data-aos="fade-up"
+            data-aos-once="true"
+            className="flex flex-row md:flex-col xl:flex-row xl:items-start justify-center md:justify-start 2xl:gap-7.5 md:gap-4 gap-5"
+          >
+            <div className=" rounded-[5px] overflow-h relative w-fit h-auto bg-white  min-w-[151px] min-h-[54px] p-1 overflow-hidden">
               <Image
-                width={113}
-                height={54}
-                quality={100}
-                src="/logo_secondary.png"
+                width={147}
+                height={50}
+                src="/logo_secondary_new.png"
                 alt="logo"
               />
             </div>
@@ -210,7 +213,12 @@ const Footer = () => {
               <Image width={132} height={60} src="/logo.png" alt="logo" />
             </Link>
           </div>
-          <div data-aos="fade-up" data-aos-once="true" data-aos-delay="200" className=" flex flex-col items-center md:items-start lg:gap-10 gap-5">
+          <div
+            data-aos="fade-up"
+            data-aos-once="true"
+            data-aos-delay="200"
+            className=" flex flex-col items-center md:items-start lg:gap-10 gap-5"
+          >
             <h4 className="text-[1.5rem] font-medium">Quick Links</h4>
             <ul className="grid xs:grid-cols-3 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xs:text-sm sm:text-base  gap-y-2.5 leading-[1.8] 2xl:gap-x-12.5 xl:gap-x-6 lg:gap-x-1 gap-5 md:w-fit xs:w-2/3 min-w-3/5 ">
               {quickLinks.map((link, i) => (
@@ -228,7 +236,12 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div data-aos="fade-up" data-aos-once="true" data-aos-delay="400" className=" flex flex-col  gap-y-12">
+          <div
+            data-aos="fade-up"
+            data-aos-once="true"
+            data-aos-delay="400"
+            className=" flex flex-col  gap-y-12"
+          >
             <div className="flex flex-col lg:gap-10 gap-5 items-center md:items-start">
               <h4 className="text-[1.5rem] font-medium text-center">
                 Contact Us
@@ -252,18 +265,17 @@ const Footer = () => {
               <h4 className="text-[1.5rem] font-medium">Let’s Connect</h4>
               <ul className="flex items-center gap-4 text-secondary">
                 <li>
-                <a href={EVENT_INFO.socials.twitter} target="_blank">
+                  <a href={EVENT_INFO.socials.twitter} target="_blank">
                     <TwitterIcon size={17} />
                   </a>
                 </li>
                 <li>
-                <a href={EVENT_INFO.socials.instagram} target="_blank">
-
+                  <a href={EVENT_INFO.socials.instagram} target="_blank">
                     <InstagramIcon size={17} />
                   </a>
                 </li>
                 <li>
-                <a href={EVENT_INFO.socials.linkedin} target="_blank">
+                  <a href={EVENT_INFO.socials.linkedin} target="_blank">
                     <LinkedInIcon size={17} />
                   </a>
                 </li>
@@ -271,8 +283,17 @@ const Footer = () => {
             </div>
           </div>
         </section>
-        <div  className="text-center py-10 flex flex-col-reverse gap-2 lg:flex-row items-center lg:items-start justify-between">
-          <p className="md:text-nowrap">&copy; Spacelead'25 | All Rights Reserved <a className=" underline" target="_blank" href="https://www.alfaisal.edu/en/">www.alfaisal.edu</a></p>
+        <div className="text-center py-10 flex flex-col-reverse gap-2 lg:flex-row items-center lg:items-start justify-between">
+          <p className="md:text-nowrap">
+            &copy; Spacelead'25 | All Rights Reserved{" "}
+            <a
+              className=" underline"
+              target="_blank"
+              href="https://www.alfaisal.edu/en/"
+            >
+              www.alfaisal.edu
+            </a>
+          </p>
           <ul className="flex flex-wrap gap-4 lg:gap-x-5 xl:gap-x-11 items-center place-content-center">
             {footerLinks.map((link, i) => (
               <li key={i}>

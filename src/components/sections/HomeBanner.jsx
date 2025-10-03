@@ -28,7 +28,7 @@ const HomeBanner = ({ sponsors = [] }) => {
   return (
     <section
       id="home-banner"
-      className="relative bg-transparent bg-[bottom_center] bg-cover bg-no-repeat py-20 pt-54 text-white"
+      className="relative bg-transparent bg-[bottom_center] bg-cover bg-no-repeat py-20 xl:pt-54 pt-30 text-white"
     >
       <video
         autoPlay
@@ -41,9 +41,9 @@ const HomeBanner = ({ sponsors = [] }) => {
         <div className="relative mx-auto px-5 sm:px-0 flex flex-col items-center ">
           <h2
             data-aos="fade-up"
-            className="font-azonix 2xl:text-6xl xl:text-4xl lg:text-3xl xs:text-2xl text-xl 2xl:tracking-[5px] 2xl:leading-[1] text-center"
+            className="font-azonix 2xl:text-6xl xl:text-5xl lg:text-4xl text-3xl 2xl:tracking-[5px] 2xl:leading-[1] text-center"
           >
-            The Future of Health & <br className="hidden xs:block" /> Advanced Engineering in Space
+            The Future of Health & <br className="hidden sm:block" /> Advanced Engineering in Space
           </h2>
           <div
             data-aos="fade-up"

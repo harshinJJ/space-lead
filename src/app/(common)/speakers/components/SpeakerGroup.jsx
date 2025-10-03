@@ -28,7 +28,7 @@ const SpeakerGroup = ({
             {title && (
               <h2
                 data-aos="fade-up"
-                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix  leading-[1]`}
+                className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-center  leading-[1]`}
               >
                 {title}
               </h2>

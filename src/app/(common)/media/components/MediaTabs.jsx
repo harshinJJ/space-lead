@@ -40,7 +40,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
         <DotPattern className="absolute top-13.5 right-0" />
         <div className="xl:px-15.75">
           {activeVideo && (
-            <h3 className="md:text-4xl text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12.5 uppercase">
+            <h3 className="xl:text-5xl md:text-4xl text-2xl font-azonix text-center text-[#000222] mb-12.5 uppercase">
               Join the conversation. Shape the narrative.
             </h3>
           )}
@@ -48,7 +48,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
             <div
               className={`relative w-full ${
                 !activeVideo ? "hidden" : "block"
-              }  lg:aspect-[1443/509] aspect-video rounded-3xl overflow-hidden`}
+              }  lg:aspect-[1443/509] aspect-video rounded-3xl overflow-hidden mb-12`}
             >
               {activeVideo && (
                 <video
@@ -59,7 +59,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
               )}
             </div>
           </div>
-          <h3 className="md:text-4xl text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] my-12 uppercase">
+          <h3 className="xl:text-5xl md:text-4xl text-2xl font-azonix text-center text-[#000222] md:mb-12 mb-6 uppercase">
             Event Coverage
           </h3>
           <div className="relative flex xl:text-2xl lg:text-lg  gap-x-4 items-center  flex-col-reverse lg:flex-row justify-between gap-5 i mb-10">

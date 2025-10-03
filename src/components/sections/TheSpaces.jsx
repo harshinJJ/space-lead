@@ -35,13 +35,13 @@ const TheSpaces = ({ title, description, className = "" }) => {
         >
           {title && (
             <h2
-              className={`text-lg xs:text-2xl lg:text-5xl 2xl:text-[4rem] font-orbitron text-white leading-[1] font-medium mb-8.5`}
+              className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-center text-white leading-[1] font-medium mb-8.5`}
             >
               {title}
             </h2>
           )}
           {/* {description && <p className="text-secondary font-azonix text-center lg:max-w-[50%]">{description}</p>} */}
-          <p className="text-secondary font-azonix text-center ">
+          <p className="text-secondary xl:text-base text-sm font-azonix text-center ">
             Discover Space Lead, Explore the Four{" "}
             <br className="hidden md:block" /> immersive spaces designed to
             engage, inspire, and transform.
@@ -52,7 +52,7 @@ const TheSpaces = ({ title, description, className = "" }) => {
             <div
               key={i}
               data-aos={i % 2 == 0 ? "fade-right" : "fade-left"}
-              className=" bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex flex-col md:flex-row items-center gap-5 w-full px-38"
+              className=" bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex flex-col md:flex-row items-center gap-5 w-full 3xl:px-38 2xl:px-15"
             >
               <div className="flex flex-col items-center justify-center uppercase aspect-square  font-light text-[#D018B8] rounded-4xl shrink-0">
                 <div className="text-[3.125rem] leading-[1] font-extralight">

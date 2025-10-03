@@ -10,7 +10,6 @@ import Link from "@/utils/CustomLink";
 import Modal from "../common/Modal";
 import { AppStoreButton, GooglePlayButton } from "@/data/icons";
 
-
 const extractPath = (pathname) => {
   const list = pathname.split("/");
   if (list.length > 2) {
@@ -197,16 +196,11 @@ const Header = () => {
             aria-label="Main Navigation"
             className="flex relative flex-col xl:flex-row justify-between items-center"
           >
-            <div className="flex items-center 2xl:gap-7.5 md:gap-4 gap-2">
-              <div className="hidden xl:block rounded-[5px] overflow-h">
-                <Image
-                  width={113}
-                  height={54}
-                  src="/logo_secondary.png"
-                  alt="logo"
-                />
+            <div className="flex items-stretch 2xl:gap-7.5 md:gap-4 gap-2">
+              <div className="hidden xl:block rounded-[5px] overflow-h relative w-full h-full bg-white  min-w-[151px] min-h-[54px] p-1 overflow-hidden">
+                <Image width={147} height={50} src="/logo_secondary_new.png" alt="logo" />
               </div>
-              <Link href="/" className="logo">
+              <Link href="/" className="logo min-w-[132px] min-h-[60px]">
                 <Image width={132} height={60} src="/logo.png" alt="logo" />
               </Link>
             </div>
@@ -314,7 +308,7 @@ const Header = () => {
           ))}
         </ul>
       </div>
-      {pathname != "/" && <TitleBlock title={activeLinkTitle} />}
+      {pathname != "/" && <TitleBlock pathname={pathname} title={activeLinkTitle} />}
     </header>
   );
 };

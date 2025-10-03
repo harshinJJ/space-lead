@@ -33,7 +33,7 @@ const MemberSlider = ({
             {label && <p className="text-secondary font-azonix">{label}</p>}
             {title && (
               <h2
-                className={`xs:text-2xl lg:text-4xl 2xl:text-[2.875rem] font-azonix ${
+                className={`xl:text-5xl md:text-4xl text-2xl font-azonix ${
                   theme == "dark" ? "text-white" : "text-[#000222]"
                 } 2xl:leading-snug  `}
               >
