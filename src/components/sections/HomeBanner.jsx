@@ -48,7 +48,7 @@ const HomeBanner = ({ sponsors = [] }) => {
           <div
             data-aos="fade-up"
             data-aos-delay="50"
-            className="flex flex-col sm:flex-row xl:gap-15 gap-5 bg-white/4 rounded-[1.25rem] px-7 py-14 mt-4.5"
+            className="flex flex-col sm:flex-row xl:gap-15 gap-5 bg-white/4 rounded-[1.25rem] px-7 py-8 mt-4.5"
           >
             <div className="">
               <LogoSVG />
@@ -79,7 +79,7 @@ const HomeBanner = ({ sponsors = [] }) => {
           <div
             data-aos="fade-up"
             data-aos-delay="100"
-            className="-translate-y-1/6"
+            className="-translate-y-1/8"
           >
             <TimerBlock eventDate={EVENT_INFO.startDate} />
           </div>

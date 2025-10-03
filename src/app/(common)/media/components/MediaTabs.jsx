@@ -40,7 +40,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
         <DotPattern className="absolute top-13.5 right-0" />
         <div className="xl:px-15.75">
           {activeVideo && (
-            <h3 className="md:text-4xl text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12.5">
+            <h3 className="md:text-4xl text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12.5 uppercase">
               Join the conversation. Shape the narrative.
             </h3>
           )}

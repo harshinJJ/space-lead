@@ -45,7 +45,7 @@ const ConnectWithUs = ({
             )}
             <div className="text-white flex flex-col items-center md:gap-y-2.5 gap-y-5 md:text-xl text-sm leading-[1]">
               {platformList.map((item, i) => (
-                <p
+                <div
                   key={i}
                   className=" text-center flex gap-2 flex-col sm:flex-row items-center font-azonix font-light"
                 >
@@ -54,7 +54,7 @@ const ConnectWithUs = ({
                   <a href={item.url} className="leading-[1]" target="_blank">
                     {item.label}
                   </a>
-                </p>
+                </div>
               ))}
             </div>
             {description && (

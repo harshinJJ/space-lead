@@ -15,7 +15,7 @@ const ExhibitorList = ({ exhibitors = [],label,title="All Exhibitor" }) => (
     {label&&<p className="text-secondary text-center font-azonix tracking-wide font-light mb-5">
       {label}
     </p>}
-    <h3 className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12">
+    <h3 className="text-4xl md:text-2xl text-center xl:text-5xl font-bold font-orbitron text-[#000222] mb-12 uppercase">
       {title}
     </h3>
 

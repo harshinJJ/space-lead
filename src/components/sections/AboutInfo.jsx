@@ -2,6 +2,7 @@ import React from "react";
 import { RowStagger } from "@/utils/animations/CardStagger";
 import DotPattern from "../patterns/DotPattern";
 import SemiCirclePattern from "../patterns/SemiCirclePattern";
+import Link from "@/utils/CustomLink";
 
 const AboutInfo = ({ className = "", isHome }) => {
   const data = {
@@ -214,9 +215,9 @@ const AboutInfo = ({ className = "", isHome }) => {
             <p className="pb-2.5 leading-[1.2rem] break-words">
               Conveniently real time infrastructures economically
             </p>
-            <button className="cursor-pointer hover:bg-[#4461EF] transition-all duration-500 flex items-center gap-2 py-3 px-6.5 rounded-full bg-indigo border border-[#222222] hover:border-[#4461EF] w-fit">
-              Join Event
-            </button>
+            <Link href={"/agenda"} className="cursor-pointer leading-[1] hover:bg-[#4461EF] transition-all duration-500 flex items-center gap-2 py-3.75 px-6.25 rounded-full bg-indigo border border-[#222222] hover:border-[#4461EF] w-fit">
+              View Agenda
+            </Link>
           </div>
         </div>
 
