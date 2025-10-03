@@ -240,7 +240,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
         }`}
       /> */}
       <div className="flex-1">
-        <div className="grid grid-cols-2 lg:max-w-9/10">
+        <div className="grid xl:grid-cols-2 lg:max-w-9/10">
           <h3 className="text-2xl lg:max-w-3/4">{title}</h3>
           <div className="flex flex-col gap-2 text-teal-400 text-sm mt-1">
             {eventDate?.trim() && (
