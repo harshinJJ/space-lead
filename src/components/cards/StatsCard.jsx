@@ -63,7 +63,7 @@ const StatsCard = ({stats=staticStats,className=""}) => (
         {/* <span className="text-white font-extralight text-[2.5rem] md:text-[3.5rem] xl:text-[4rem] leading-none mb-2">
           {item.value}
         </span> */}
-        <span className={`text-white/70 text-sm text-center md:text-base xl:text-lg font-normal tracking-wide ${(item?.length>5&&item.label?.length>10)?" lg:text-xs xl:text-sm":""}`}>
+        <span className={`text-white/70 text-sm text-center md:text-base font-normal tracking-wide ${(stats?.length>5&&item.label?.length>10)?" lg:text-xs xl:text-sm":" xl:text-lg"}`}>
           {item.label}
         </span>
       </div>
