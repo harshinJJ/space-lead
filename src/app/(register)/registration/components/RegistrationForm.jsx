@@ -70,7 +70,7 @@ export default function RegistrationForm({
 
   return !success ? (
     <div className="container-fluid mx-auto flex flex-col items-center justify-center  px-5">
-      <h2 className="xl:text-5xl md:text-3xl text-2xl font-azonix  mb-8 tracking-wide text-center  lg:!max-w-2/3">
+        <h2 className="xl:text-5xl sm:text-3xl xs:text-2xl text-lg font-azonix text-white xl:mb-15 lg:mb-10 mb-5 tracking-wide text-center">
         Secure your place at the frontier of discovery
       </h2>
       <div className="w-full flex flex-col gap-8 max-w-285">
