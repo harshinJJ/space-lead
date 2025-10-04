@@ -26,7 +26,8 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
     // } else {
       gsap.to("#transition-overlay", {
         x: "0%",
-        duration: 0.5,
+        duration: 0,
+        immediateRender:true,
         ease: "power2.in",
         onComplete: () => {
           router.push("/registration"); // navigate after cover

@@ -34,7 +34,8 @@ const MemberSlider = ({
     if (hasCardNav) {
       gsap.to("#transition-overlay", {
         x: "0%",
-        duration: 0.5,
+        duration: 0,
+        immediateRender:true,
         ease: "power2.in",
         onComplete: () => {
           router.push(`${cardNavBaseURL}/${id}`);
