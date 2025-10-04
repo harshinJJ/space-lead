@@ -10,7 +10,7 @@ const platformList = [
     platform: "linkedin",
     label: "@spaceleadau",
     icon:<LinkedInIcon size={24}/>,
-    url: EVENT_INFO.socials.twitter,
+    url: EVENT_INFO.socials.linkedin,
   },
   {
     platform: "twitter",

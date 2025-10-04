@@ -14,7 +14,7 @@ const SpeakerProfileCard = ({
   return (
     <div
       //   {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
-      className={` relative w-[fit] h-full rounded-2xl ${bgClass} overflow-hidden bg-[#232323] flex flex-col justify-between md:p-3 p-1 gap-6 shadow-2xl ${className}`}
+      className={` relative w-[fit] h-full rounded-2xl ${bgClass} overflow-hidden bg-[#232323] flex flex-col justify-between md:p-3 p-1 md:gap-6 gap-1 shadow-2xl ${className}`}
     >
       <div className=" 2xl:py-4 py-2 2xl:px-6 px-1">
         <h3
@@ -22,14 +22,14 @@ const SpeakerProfileCard = ({
         >
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </h3>
-        <p
+        {speaker?.description_ar&&<p
           className={`text-[#272727] text-sm 3xl:leading-[1.8] line-clamp-2 text-center`}
         >
           {speaker?.description_ar}
-        </p>
+        </p>}
       </div>
       {/* Speaker image */}
-      <div className="flex flex-col items-center gap-7 2xl:px-8 xs:px-4 px-1 pb-2">
+      <div className="flex flex-col items-center md:gap-7 gap-3 2xl:px-8 xs:px-4 px-1 pb-2">
         <div className=" aspect-[240/210] w-full rounded-2xl overflow-hidden relative bg-black ">
           <Image
             fill

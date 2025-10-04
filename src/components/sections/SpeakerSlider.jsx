@@ -110,7 +110,7 @@ const SpeakerSlider = ({ speakers = [], className }) => {
               >
                 All
               </Link>
-              <ul className="flex gap-x-9 items-center xl:items-start justify-start overflow-auto xl:flex-col gap-2 overflow-x-auto scrollbar-hide">
+              <ul className="flex gap-x-9 items-center xl:items-start justify-start overflow-auto xl:flex-col gap-2 overflow-x-auto scrollbar-hide hide-scrollbar">
                 {speakers.map((sp, i) => (
                   <li
                     key={i}

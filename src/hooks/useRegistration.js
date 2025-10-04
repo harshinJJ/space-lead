@@ -252,7 +252,12 @@ const useRegistration = ({ type, session }) => {
             setSuccessInfo(res?.data?.data);
             formik.resetForm();
             // window?.scrollTo({ top: 0, behavior: "smooth" });
-            containerRef.current?.scrollIntoView({ behavior: "smooth" });
+            // containerRef.current?.scrollIntoView({ behavior: "smooth" });
+            setTimeout(
+              () =>
+                containerRef.current?.scrollIntoView({ behavior: "smooth" }),
+              100
+            );
           }
         } else if (res?.data.errors) {
           const errors = res?.data.errors;

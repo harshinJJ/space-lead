@@ -152,6 +152,7 @@ export const SponsorList = ({
                         height={40}
                         src={sponsor.logo || "/logo.png"}
                         alt={sponsor.id || sponsor.name}
+                        priority={true}
                         className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
                       />
                     </div>
@@ -169,6 +170,7 @@ export const SponsorList = ({
                         <Image
                           width={150}
                           height={40}
+                          priority={true}
                           src={sponsor.logo || "/logo.png"}
                           alt={sponsor.id || sponsor.name}
                           className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"

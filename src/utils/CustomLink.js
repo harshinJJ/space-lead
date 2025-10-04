@@ -2,33 +2,14 @@
 import DefaultLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Link({ href, children, className, ...props }) {
   const router = useRouter();
   const pathname = usePathname();
 
   // 👉 Enter animation after route change
-  useEffect(() => {
-    const overlay = document.getElementById("transition-overlay");
-    const loader = document.getElementById("transition-loader");
-    gsap.fromTo(
-      overlay,
-      { x: "0%" }, // start fully covering
-      {
-        x: "100%", // slide off left
-        delay: 0.8,
-        duration: 1,
-        ease: "power2.out",
-        onStart: () => {
-          gsap.to(loader, { opacity: 0, duration: 0.3 }); // hide loader as we leave
-        },
-        onComplete: () => {
-          gsap.set(overlay, { x: "-100%" }); // reset offscreen for next time
-        },
-      }
-    );
-  }, [pathname]);
+
 
   const handleClick = (e) => {
     if (props.target != "_blank") {

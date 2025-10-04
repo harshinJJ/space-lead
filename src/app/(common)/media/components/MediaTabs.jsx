@@ -63,7 +63,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
             Event Coverage
           </h3>
           <div className="relative flex xl:text-2xl lg:text-lg  gap-x-4 items-center  flex-col-reverse lg:flex-row justify-between gap-5 i mb-10">
-            <div className="relative flex-1 w-full lg:w-auto flex xl:text-2xl lg:text-lg  gap-x-3 2xl:gap-9 items-center xl:items-start justify-start overflow-auto  overflow-x-auto scrollbar-hide gap-5 i mb-10">
+            <div className="relative flex-1 w-full lg:w-auto flex xl:text-2xl lg:text-lg  gap-x-3 2xl:gap-9 items-center xl:items-start justify-start overflow-auto  overflow-x-auto scrollbar-hide hide-scrollbar gap-5 i mb-10">
               <button
                 onClick={() => setActive(null)}
                 className={`cursor-pointer min-w-31.25 bg-secondary font-medium rounded-full px-8 py-2.75 ${
