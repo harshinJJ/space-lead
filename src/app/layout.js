@@ -7,6 +7,7 @@ import GsapProvider from "@/utils/GsapProvider";
 import PageLoader from "@/utils/animations/PageLoader";
 import RecaptchaProvider from "@/contexts/RecaptchaProvider";
 import { Toaster } from "react-hot-toast";
+import SpinnerLoader from "@/components/loader/SpinnerLoader";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -32,14 +33,16 @@ export default function RootLayout({ children }) {
         {/* Transition overlay */}
         <div
           id="transition-overlay"
-          className="fixed inset-0 bg-indigo z-[9999] pointer-events-none"
+          className="fixed inset-0 bg-[#212121] z-[9999] pointer-events-auto flex items-center justify-center"
           style={{ transform: "translateX(-100%)" }} // start hidden to the left
-        ></div>
+        >
+          <div id="transition-loader" className="opacity-0">
+            <SpinnerLoader />
+          </div>
+        </div>
         <PageLoader />
         <RecaptchaProvider>
-          <GsapProvider>
-            {children}
-          </GsapProvider>
+          <GsapProvider>{children}</GsapProvider>
         </RecaptchaProvider>
         <Toaster />
       </body>
