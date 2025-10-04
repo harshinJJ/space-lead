@@ -10,17 +10,18 @@ const SpeakerProfileCard = ({
   className = "",
   cardStyle = "secondary",
 }) => {
+  const name = speaker?.name || `${speaker.firstname} ${speaker.lastname}`;
   const bgClass = cardStyle == "primary" ? "bg-primary border-1 border-[#DD00FF]" : "bg-secondary border-1 border-secondary";
   return (
     <div
       //   {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
-      className={` relative w-[fit] h-full rounded-2xl ${bgClass} overflow-hidden bg-[#232323] flex flex-col justify-between md:p-3 p-1 md:gap-6 gap-1 shadow-2xl ${className}`}
+      className={` relative w-[fit] h-full rounded-2xl ${bgClass} overflow-hidden bg-[#232323] flex flex-col justify-between md:p-3 p-1 2xl:gap-6 md:gap-4 gap-1 shadow-2xl ${className}`}
     >
       <div className=" 2xl:py-4 py-2 2xl:px-6 px-1">
         <h3
-          className={`text-black font-semibold 2xl:text-2xl text-lg leading-[1.5] text-center`}
+          className={`text-black line-clamp-3 font-semibold ${name?.length>20?"3xl:text-lg lg:text-base ":" 3xl:text-2xl lg:text-xl"} text-lg leading-[1.5] text-center`}
         >
-          {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
+          {name}
         </h3>
         {speaker?.description_ar&&<p
           className={`text-[#272727] text-sm 3xl:leading-[1.8] line-clamp-2 text-center`}

@@ -19,7 +19,7 @@ export default async function Home() {
       PublicServices.getLiveUpdates(),
       PublicServices.getExhibitors(),
     ]);
-  const speakers = getFullfilled(speakersRes);
+  const speakers = getFullfilled(speakersRes)?.sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
   const sponsors = getFullfilled(sponsorsRes);
   const liveUpdates = getFullfilled(liveUpdateRes);
   const exhibitors = getFullfilled(exhibitorRes);

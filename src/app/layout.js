@@ -31,15 +31,7 @@ export default function RootLayout({ children }) {
     <html lang="en" data-scroll-behavior="smooth">
       <body id="" className={`${orbitron.variable} antialiased`}>
         {/* Transition overlay */}
-        <div
-          id="transition-overlay"
-          className="fixed inset-0 bg-[#212121] z-[9999] pointer-events-auto flex items-center justify-center"
-          style={{ transform: "translateX(-100%)" }} // start hidden to the left
-        >
-          <div id="transition-loader" className="opacity-0">
-            <SpinnerLoader />
-          </div>
-        </div>
+       
         <PageLoader />
         <RecaptchaProvider>
           <GsapProvider>{children}</GsapProvider>

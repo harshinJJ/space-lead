@@ -3,8 +3,27 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { LogoBg, LogoIcon, LogoLoader, LogoSVG } from "@/data/icons";
 
 const PageLoader = () => {
+  return (
+    <div
+      id="transition-overlay"
+      className="fixed inset-0 px-10 bg-[#212121] z-[9999] pointer-events-auto flex items-center justify-center"
+    >
+      <div
+        id="transition-loader"
+        className="relative sm:px-0 flex gap-2 w-full md:max-w-1/3 sm:max-w-2/3 overflow-hidden"
+      >
+          {/* <SpinnerLoader /> */}
+          <LogoLoader size={200} className="text-white w-full" />
+          <div className="shimmer absolute top-0 left-0"></div>{" "}
+      </div>
+    </div>
+  );
+};
+
+const PageLoaderOld = () => {
   const loaderRef = useRef(null);
   const logoRef = useRef(null);
   const videoRef = useRef(null);
@@ -12,7 +31,6 @@ const PageLoader = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
     const ctx = gsap.context(() => {
@@ -26,7 +44,6 @@ const PageLoader = () => {
       });
 
       if (headerLogo) {
-
         const headerRect = headerLogo.getBoundingClientRect();
         const { top, left, width, height } = headerRect;
         const yOffset = pathname === "/" ? 0 : -20;
@@ -49,7 +66,6 @@ const PageLoader = () => {
             pointerEvents: "none",
           });
       } else {
-
         tl.fromTo(
           logo,
           { scale: 1, opacity: 1 },
@@ -119,14 +135,14 @@ const PageLoader = () => {
       ref={loaderRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a1316]"
     >
-        <Image
-          src="/logo.png"
-          alt="Loading Logo"
-          width={132}
-          height={60}
-          className="w-[132px] h-auto"
-        />
-        {/* <video className="w-full md:max-w-1/3 sm:w-2/3 " ref={videoRef} muted autoPlay src={"/loader.webm"}></video> */}
+      <Image
+        src="/logo.png"
+        alt="Loading Logo"
+        width={500}
+        height={300}
+        className="h-auto w-full md:max-w-1/3 sm:w-2/3"
+      />
+      {/* <video className="w-full md:max-w-1/3 sm:w-2/3 " ref={videoRef} muted autoPlay src={"/loader.webm"}></video> */}
     </div>
   );
 };

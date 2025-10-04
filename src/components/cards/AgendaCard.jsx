@@ -126,7 +126,8 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
 
   const miscSession =
     event?.session_type_details?.name == "Break" ||
-    event?.session_type_details?.name == "Lunch";
+    event?.session_type_details?.name == "Lunch" ||
+    event?.session_type_details?.name == "Dinner";
   return miscSession ? (
     <div
       className={`bg-secondary rounded-4xl  px-8.5 py-5 flex flex-col lg:flex-row items-start justify-between gap-6 ${containerClass}`}

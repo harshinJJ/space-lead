@@ -10,14 +10,26 @@ export default async function Speakers() {
   const speakers = await PublicServices.getSessionSpeakers().then(
     (res) => res.data || []
   );
-  const [spaceSpeakers, healthSpeakers] = [
+  // const [spaceSpeakers, healthSpeakers] = [
+  //   speakers.filter((speaker) =>
+  //     speaker.category_name?.toLowerCase().includes("space")
+  //   ) || [],
+  //   speakers.filter((speaker) =>
+  //     speaker.category_name?.toLowerCase().includes("health")
+  //   ) || [],
+  // ];
+  const spaceSpeakers = (
     speakers.filter((speaker) =>
       speaker.category_name?.toLowerCase().includes("space")
-    ) || [],
+    ) || []
+  ).sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
+
+  const healthSpeakers = (
     speakers.filter((speaker) =>
       speaker.category_name?.toLowerCase().includes("health")
-    ) || [],
-  ];
+    ) || []
+  ).sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
+  console.log("asdkasdkjasd", spaceSpeakers, healthSpeakers);
   return (
     <main>
       <SpeakerGroup

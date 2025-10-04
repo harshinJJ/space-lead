@@ -61,17 +61,18 @@ export default function GsapProvider({ children }) {
       const loader = document.getElementById("transition-loader");
       gsap.fromTo(
         overlay,
-        { x: "0%" }, // start fully covering
+        { x: "0%",opacity:100 }, // start fully covering
         {
-          x: "100%", // slide off left
+          x: "0%", // slide off left
           delay: 0.8,
+          opacity:0,
           duration: 1,
           ease: "power2.out",
-          onStart: () => {
-            gsap.to(loader, { opacity: 0, duration: 0.3 }); // hide loader as we leave
-          },
+          // onStart: () => {
+          //   gsap.to(loader, { opacity: 0, duration: 0.3 }); // hide loader as we leave
+          // },
           onComplete: () => {
-            gsap.set(overlay, { x: "-100%" }); // reset offscreen for next time
+            gsap.set(overlay, { x: "-100%",opacity:100 }); // reset offscreen for next time
             pathRef.current = pathname;
           },
         }

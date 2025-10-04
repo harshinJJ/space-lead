@@ -24,8 +24,9 @@ export default function Link({ href, children, className, ...props }) {
       // 👉 Exit animation before navigation
       gsap.to(overlay, {
         x: "0%",
-        duration: 0.5,
+        duration: 0,
         ease: "power2.in",
+        immediateRender:true,
         onComplete: () => {
           gsap.to(loader, {
             opacity: 1,
