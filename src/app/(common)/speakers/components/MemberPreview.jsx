@@ -54,7 +54,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
                   {activeSpeaker?.name ||
                     `${activeSpeaker.firstname} ${activeSpeaker.lastname}`}
                 </h3>
-                <p className="text-white text-sm">{activeSpeaker?.designation}</p>
+                <p className="text-white text-center text-sm">{activeSpeaker?.designation}</p>
               </div>
             </div>
             {activeSpeaker&&<div className="flex-3/4 w-full">

@@ -75,8 +75,8 @@ export default async function Sponsors() {
           },
         ]}
         overlay="indigo"
-        videoURL="/images/backgrounds/sponsors_join_us_bg.mp4"
-        poster="/images/backgrounds/posters/sponsors_join_us_bg.jpg"
+        videoURL="/images/backgrounds/sponsors_join_us_bg_new.mp4"
+        poster="/images/backgrounds/posters/sponsors_join_us_bg_new.jpeg"
       />
       {/* <SponsorContentRight /> */}
       <TextScrollBlock description="“Sponsoring Space Lead ’25 positions your organization at the forefront of space innovation. Engage with global leaders, policymakers, and disruptors. Build credibility, amplify visibility, expand your network, and forge lasting partnerships." />
