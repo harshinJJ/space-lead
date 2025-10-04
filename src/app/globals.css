@@ -61,6 +61,8 @@
   --font-gilroy-black: "Gilroy-Black", sans-serif;
   --font-orbitron: var(--font-orbitron);
 
+  --text-xxs: 0.625rem; /* 10px */
+
   --animate-float: float-up-down 1s ease-in-out infinite;
   --animate-goto: goto 1s ease-in-out infinite;
 }
@@ -301,6 +303,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden!important;
+  scroll-padding-top: 5rem;
 }
 
 body {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const SIZE_CLASSES = {
@@ -18,6 +18,52 @@ const Modal = ({
   btnClassName = "",
 }) => {
   const [mounted, setMounted] = useState(false);
+  const modalContentRef = useRef(null);
+
+  // 🔒 Prevent background scroll on mobile
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Save original body style
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+
+    // Lock body scroll
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none"; // 👈 Critical for mobile
+
+    // Prevent touch scrolling on background
+    const preventDefault = (e) => {
+      // Allow scrolling inside modal content
+      if (modalContentRef.current?.contains(e.target)) {
+        // Optional: only allow if content is scrollable
+        const { scrollTop, scrollHeight, clientHeight } =
+          modalContentRef.current;
+        const atTop = scrollTop === 0;
+        const atBottom = scrollTop + clientHeight >= scrollHeight;
+
+        // If trying to scroll up at top or down at bottom, prevent pull
+        if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) {
+          e.preventDefault();
+        }
+        return;
+      }
+
+      // Block all other touch moves
+      e.preventDefault();
+    };
+
+    // Use non-passive listener to allow preventDefault
+    document.addEventListener("touchmove", preventDefault, { passive: false });
+
+    return () => {
+      // Cleanup
+      document.body.style.overflow = originalOverflow;
+      document.body.style.touchAction = "";
+      document.body.style.paddingRight = originalPaddingRight;
+      document.removeEventListener("touchmove", preventDefault);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     setMounted(true);
@@ -38,6 +84,7 @@ const Modal = ({
       onClick={onClose}
     >
       <div
+        ref={modalContentRef}
         className={`relative bg-white shadow-xl rounded-2xl p-6 w-[90%] ${
           SIZE_CLASSES[size] || SIZE_CLASSES.md
         } ${className}`}

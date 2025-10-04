@@ -559,7 +559,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
               <div className="modal-header">
                 <h5 className="modal-title">Crop Your Image</h5>
               </div>
-              <div className="modal-body text-center">
+              <div className="modal-body text-center max-w-full">
                 <div
                   className="relative inline-block"
                   onMouseMove={handleMouseMove}
@@ -611,7 +611,7 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
                           height: 0,
                         });
                       }}
-                      className="max-w-[400px] max-h-[300px] border-2 border-gray-300 block select-none"
+                      className="lg:max-w-[400px] max-w-full max-h-[300px] border-2 border-gray-300 block select-none"
                       draggable={false}
                     />
 

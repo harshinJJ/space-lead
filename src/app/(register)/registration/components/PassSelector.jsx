@@ -88,9 +88,9 @@ export default function PassSelector() {
       {/* <BgOverlay /> */}
       <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
       <div className="container-fluid mx-auto flex flex-col items-center justify-center px-5 lg:!max-w-2/3">
-        <h2 className="xl:text-5xl sm:text-3xl xs:text-2xl text-lg font-azonix text-white xl:mb-15 lg:mb-10 mb-5 tracking-wide text-center">
-          Secure your place at the frontier of discovery
-        </h2>
+        <h2 className="xl:text-5xl sm:text-3xl xs:text-2xl text-lg font-azonix text-white xl:mb-15 lg:mb-10 mb-5 tracking-wide text-center ">
+        Secure your place at the <br className="hidden xs:block" /> frontier of discovery
+      </h2>
         <div className="flex flex-col md:flex-row xl:gap-15 lg:gap-10 gap-5 w-full justify-center">
           <PassSelectionCard
             type="Conference "

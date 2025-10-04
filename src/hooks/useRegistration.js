@@ -13,6 +13,7 @@ import { SUCCESS_CODES } from "@/data/successCodes";
 
 const useRegistration = ({ type, session }) => {
   const fieldRefs = useRef({});
+  const containerRef = useRef();
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [success, setSuccess] = useState(false);
   const [successInfo, setSuccessInfo] = useState();
@@ -250,7 +251,8 @@ const useRegistration = ({ type, session }) => {
             setSuccess(true);
             setSuccessInfo(res?.data?.data);
             formik.resetForm();
-            window?.scrollTo({ top: 0, behavior: "smooth" });
+            // window?.scrollTo({ top: 0, behavior: "smooth" });
+            containerRef.current?.scrollIntoView({ behavior: "smooth" });
           }
         } else if (res?.data.errors) {
           const errors = res?.data.errors;
@@ -385,6 +387,7 @@ const useRegistration = ({ type, session }) => {
     setSuccess,
     successInfo,
     setSuccessInfo,
+    containerRef,
   };
 };
 
