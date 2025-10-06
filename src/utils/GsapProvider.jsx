@@ -64,7 +64,7 @@ export default function GsapProvider({ children }) {
         { x: "0%",opacity:100 }, // start fully covering
         {
           x: "0%", // slide off left
-          delay: 0.8,
+          delay: 0.5,
           opacity:0,
           duration: 1,
           ease: "power2.out",

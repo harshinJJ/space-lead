@@ -10,14 +10,21 @@ export const metadata = {
   description: "Exhibitor Information",
 };
 export default async function Exhibitor() {
+  const params = new URLSearchParams({ limit: 100 });
   const [exhibitorRes] = await Promise.allSettled([
-    PublicServices.getExhibitors(),
+    PublicServices.getExhibitors(params),
   ]);
   const exhibitors = getFullfilled(exhibitorRes);
+
+  exhibitors.sort((a, b) => {
+    if (a.order === null) return 1; // put nulls last
+    if (b.order === null) return -1;
+    return a.order - b.order;
+  });
   return (
     <main>
       <ExhibitorBlock exhibitors={exhibitors} />
-      <FullImageBlock url="/images/event_venue_location.png" title="Find Us" />
+      <FullImageBlock url="/images/event_floor_map.jpg" title="Find Us" />
       <JoinUs
         title="Where visibility becomes opportunity."
         description={"Be seen. Be heard. Be part of Space Lead ’25.”"}
@@ -31,7 +38,7 @@ export default async function Exhibitor() {
             label: "Download Booklet",
             url: "#",
             arrowDirection: "bottom",
-            type:"external"
+            type: "external",
           },
         ]}
         imageURL={"/images/backgrounds/exhibitor_connect_bg.jpg"}

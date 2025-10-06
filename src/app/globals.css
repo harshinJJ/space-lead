@@ -298,14 +298,19 @@
     animation: shimmer 1.5s infinite;
     pointer-events: none;
     border-radius: 0.5rem;
+  background-size: 300% 100%;
   }
 
   @keyframes shimmer {
     0% {
-      transform: translateX(-100%);
+      /* transform: translateX(-100%); */
+
+  background-position: 100% 0;
     }
     100% {
-      transform: translateX(100%);
+
+  background-position: 0% 0;
+      /* transform: translateX(100%); */
     }
   }
 }

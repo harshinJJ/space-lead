@@ -128,8 +128,8 @@ const FocusAreas = ({
                   key={rowIndex}
                   className={`flex flex-col lg:flex-row w-full lg:w-fit gap-4 relative before:absolute before:h-0.25 ${
                     rowIndex == 0
-                      ? "lg:before:w-112.5 pb-0 lg:pb-5"
-                      : "lg:before:w-94"
+                      ? "lg:before:w-95 xl:before:w-114.5 pb-0 lg:pb-5"
+                      : "lg:before:w-82 xl:before:w-97"
                   }  before:bg-primary before:-top-0 before:-left-0 p-5 `}
                 >
                   {row.map((item, itemIndex) => (
@@ -170,8 +170,8 @@ const FocusAreas = ({
                   key={rowIndex}
                   className={`flex flex-col lg:flex-row gap-4 justify-end relative before:absolute before:h-0.25 ${
                     rowIndex == 0
-                      ? "lg:before:w-35 pb-0 lg:pb-5"
-                      : "lg:before:w-77"
+                      ? "lg:before:w-31 xl:before:w-36.5 pb-0 lg:pb-5"
+                      : "xl:before:w-78 lg:before:w-68"
                   } lg:w-fit w-full before:bg-secondary before:-top-0 before:-right-0 p-5`}
                 >
                   {row.map((item, itemIndex) => (

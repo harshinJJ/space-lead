@@ -9,15 +9,15 @@ const PageLoader = () => {
   return (
     <div
       id="transition-overlay"
-      className="fixed inset-0 px-10 bg-[#212121] z-[9999] pointer-events-auto flex items-center justify-center"
+      className="fixed inset-0 px-5 bg-[#212121] z-[9999] pointer-events-auto flex items-center justify-center"
     >
       <div
         id="transition-loader"
-        className="relative sm:px-0 flex gap-2 w-full md:max-w-1/3 sm:max-w-2/3 overflow-hidden"
+        className="relative sm:px-0 flex gap-2 w-full lg:max-w-1/3 sm:max-w-2/3 overflow-hidden"
       >
           {/* <SpinnerLoader /> */}
-          <LogoLoader size={200} className="text-white w-full" />
-          <div className="shimmer absolute top-0 left-0"></div>{" "}
+          <LogoLoader size={200} className="text-white w-full shimmer" />
+          {/* <div className="shimmer absolute top-0 left-0"></div>{" "} */}
       </div>
     </div>
   );

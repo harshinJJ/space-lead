@@ -52,10 +52,17 @@ const stats = [
   { label: "Networking outcomes / ROI", value: "300" },
 ];
 export default async function Sponsors() {
+  const params = new URLSearchParams({ limit: 100 });
   const [sponsorsRes] = await Promise.allSettled([
-    PublicServices.getSponsors(),
+    PublicServices.getSponsors(params),
   ]);
   const sponsors = getFullfilled(sponsorsRes);
+
+  sponsors.sort((a, b) => {
+    if (a.order === null) return 1; // put nulls last
+    if (b.order === null) return -1;
+    return a.order - b.order;
+  });
   return (
     <main>
       <JoinUs
@@ -71,7 +78,7 @@ export default async function Sponsors() {
             label: "Download Booklet ",
             url: "#",
             arrowDirection: "bottom",
-            type:"external"
+            type: "external",
           },
         ]}
         overlay="indigo"
@@ -81,7 +88,10 @@ export default async function Sponsors() {
       {/* <SponsorContentRight /> */}
       <TextScrollBlock description="“Sponsoring Space Lead ’25 positions your organization at the forefront of space innovation. Engage with global leaders, policymakers, and disruptors. Build credibility, amplify visibility, expand your network, and forge lasting partnerships." />
       <section className="bg-white py-12.5 w-full px-5">
-        <StatsCard className="container-fluid mx-auto !max-w-217.5" stats={stats} />
+        <StatsCard
+          className="container-fluid mx-auto !max-w-217.5"
+          stats={stats}
+        />
       </section>
       <SponsorList title="Featured Sponsorship" sponsors={sponsors} />
 

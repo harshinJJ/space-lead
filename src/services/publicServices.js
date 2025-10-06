@@ -76,16 +76,16 @@ const PublicServices = {
       return e;
     }
   },
-  getExhibitors: async () => {
+  getExhibitors: async (params=new URLSearchParams()) => {
     try {
-      return await customFetch(SERVICE.CONTENT.EXHIBITORS);
+      return await customFetch(`${SERVICE.CONTENT.EXHIBITORS}?${params}`);
     } catch (e) {
       return e;
     }
   },
-  getSponsors: async () => {
+  getSponsors: async (params=new URLSearchParams()) => {
     try {
-      return await customFetch(SERVICE.CONTENT.SPONSORS);
+      return await customFetch(`${SERVICE.CONTENT.SPONSORS}?${params}`);
     } catch (e) {
       return e;
     }
