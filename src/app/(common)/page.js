@@ -20,7 +20,10 @@ export default async function Home() {
       PublicServices.getExhibitors(),
     ]);
   const speakers = getFullfilled(speakersRes)?.sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
-  const sponsors = getFullfilled(sponsorsRes);
+  const sponsors = getFullfilled(sponsorsRes)?.sort((a, b) => {
+    if (a.order === null) return 1; // put nulls last
+    if (b.order === null) return -1;
+    return a.order - b.order});
   const liveUpdates = getFullfilled(liveUpdateRes);
   const exhibitors = getFullfilled(exhibitorRes);
   return (
