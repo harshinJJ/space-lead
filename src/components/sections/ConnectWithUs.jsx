@@ -4,6 +4,7 @@ import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import EVENT_INFO from "@/data/eventInfo";
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
+import Image from "next/image";
 
 const platformList = [
   {
@@ -36,7 +37,8 @@ const ConnectWithUs = ({
     <section className={`bg-indigo py-5 px-5 ${className}`}>
       <div className="container-fluid mx-auto lg:px-16">
         <div className="-translate-y-15 mx-auto text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5  py-10 lg:py-20 lg:pb-20 rounded-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/images/backgrounds/speaker_group_bg1.jpg')] bg-center bg-cover opacity-90 w-full h-full"></div>
+          {/* <div className="absolute inset-0 bg-[url('/images/backgrounds/speaker_group_bg1.jpg')] bg-center bg-cover opacity-90 w-full h-full"></div> */}
+          <Image priority fill src={'/images/backgrounds/speaker_group_bg1.jpg'} alt="connect-with-us" className=" inset-0 w-full h-full object-cover object-center opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-50 w-full h-full"></div>
 
           <div

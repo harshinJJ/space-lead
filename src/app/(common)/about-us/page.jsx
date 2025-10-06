@@ -21,7 +21,30 @@ const About = async () => {
   const commitee = await PublicServices.getCommiteeCategory().then(
     (res) => res.data || []
   );
-  const [scientific,steering]=[commitee.find(item=>item?.name?.toLowerCase().includes("scientific"))?.staff_members||[],commitee.find(item=>item?.name?.toLowerCase()?.includes("steering"))?.staff_members||[]]
+  // const [scientific, steering] = [
+  //   commitee.find((item) => item?.name?.toLowerCase().includes("scientific"))
+  //     ?.staff_members || [],
+  //   commitee.find((item) => item?.name?.toLowerCase()?.includes("steering"))
+  //     ?.staff_members || [],
+  // ];
+
+  const scientific = (
+    commitee.find((item) => item?.name?.toLowerCase().includes("scientific"))
+      ?.staff_members || []
+  ).sort((a, b) => {
+    if (a.order === null) return 1; // put nulls last
+    if (b.order === null) return -1;
+    return a.order - b.order;
+  });
+
+  const steering = (
+    commitee.find((item) => item?.name?.toLowerCase()?.includes("steering"))
+      ?.staff_members || []
+  ).sort((a, b) => {
+    if (a.order === null) return 1; // put nulls last
+    if (b.order === null) return -1;
+    return a.order - b.order;
+  });
   return (
     <main>
       <AboutInfo />
@@ -86,7 +109,7 @@ const About = async () => {
           playsInline
           poster="/images/backgrounds/posters/the_spaces_bg.webp"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-80 w-full h-full"></div>
         <TheSpaces
           title={"The Spaces"}
           description={
