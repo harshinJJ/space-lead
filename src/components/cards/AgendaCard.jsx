@@ -134,11 +134,11 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
     >
       <div className="flex-1 w-full">
         <div className="flex w-full flex-col md:flex-row items-center justify-center gap-10">
-          <h3 className="text-2xl lg:max-w-3/4">{title}</h3>
+          <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">{title}</h3>
           <div className="flex flex-col gap-2 text-white text-sm mt-1">
             {eventDate?.trim() && (
-              <div className="flex items-center gap-5">
-                <div>
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
                   <svg
                     width="12"
                     height="12"
@@ -157,8 +157,8 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
               </div>
             )}
             {location?.trim() && (
-              <div className="flex items-center gap-5">
-                <div>
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
                   <svg
                     width="12"
                     height="12"
@@ -176,8 +176,8 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
               </div>
             )}
             {event?.session_type_details?.name?.trim() && (
-              <div className="flex items-center gap-5">
-                <div>
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
                   <svg
                     width="12"
                     height="12"
@@ -205,8 +205,8 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
               </div>
             )}
             {theme?.trim() && (
-              <div className="flex items-center gap-5">
-                <div>
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
                   <svg
                     width="12"
                     height="12"
@@ -241,12 +241,12 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
         }`}
       /> */}
       <div className="flex-1">
-        <div className="grid xl:grid-cols-2 lg:max-w-9/10">
-          <h3 className="text-2xl lg:max-w-3/4">{title}</h3>
+        <div className="grid xl:grid-cols-2 lg:max-w-9/10 gap-y-5">
+          <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">{title}</h3>
           <div className="flex flex-col gap-2 text-teal-400 text-sm mt-1">
             {eventDate?.trim() && (
-              <div className="flex items-center gap-5">
-                <div>
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
                   <svg
                     width="12"
                     height="12"
@@ -264,26 +264,27 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
               </div>
             )}
             {location?.trim() && (
-              <div className="flex items-center gap-5">
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 10 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.01758 11.9463C3.71289 11.557 3.33203 11.0534 2.875 10.4355C2.41797 9.81771 1.97575 9.1639 1.54834 8.47412C1.12093 7.78434 0.759115 7.09668 0.462891 6.41113C0.158203 5.72559 0.00585938 5.11621 0.00585938 4.58301C0.00585938 3.95671 0.124349 3.36426 0.361328 2.80566C0.598307 2.24707 0.924154 1.76042 1.33887 1.3457C1.75358 0.930989 2.24023 0.600911 2.79883 0.355469C3.35742 0.118489 3.9541 0 4.58887 0C5.22363 0 5.82031 0.118489 6.37891 0.355469C6.9375 0.600911 7.42415 0.930989 7.83887 1.3457C8.25358 1.76042 8.57943 2.24707 8.81641 2.80566C9.06185 3.36426 9.18457 3.95671 9.18457 4.58301C9.18457 5.11621 9.03223 5.72559 8.72754 6.41113C8.42285 7.09668 8.0568 7.78434 7.62939 8.47412C7.20199 9.1639 6.75977 9.81771 6.30273 10.4355C5.83724 11.0534 5.45215 11.557 5.14746 11.9463C5.00358 12.124 4.81527 12.2129 4.58252 12.2129C4.34977 12.2129 4.16146 12.124 4.01758 11.9463ZM4.58887 6.11914C5.01204 6.11914 5.37386 5.97103 5.67432 5.6748C5.97477 5.37858 6.125 5.01465 6.125 4.58301C6.125 4.16829 5.97477 3.81071 5.67432 3.51025C5.37386 3.2098 5.01204 3.05957 4.58887 3.05957C4.16569 3.05957 3.80599 3.2098 3.50977 3.51025C3.21354 3.81071 3.06543 4.16829 3.06543 4.58301C3.06543 5.01465 3.21354 5.37858 3.50977 5.6748C3.80599 5.97103 4.16569 6.11914 4.58887 6.11914Z"
-                    fill="#5AC0BE"
-                  />
-                </svg>
-
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 10 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.01758 11.9463C3.71289 11.557 3.33203 11.0534 2.875 10.4355C2.41797 9.81771 1.97575 9.1639 1.54834 8.47412C1.12093 7.78434 0.759115 7.09668 0.462891 6.41113C0.158203 5.72559 0.00585938 5.11621 0.00585938 4.58301C0.00585938 3.95671 0.124349 3.36426 0.361328 2.80566C0.598307 2.24707 0.924154 1.76042 1.33887 1.3457C1.75358 0.930989 2.24023 0.600911 2.79883 0.355469C3.35742 0.118489 3.9541 0 4.58887 0C5.22363 0 5.82031 0.118489 6.37891 0.355469C6.9375 0.600911 7.42415 0.930989 7.83887 1.3457C8.25358 1.76042 8.57943 2.24707 8.81641 2.80566C9.06185 3.36426 9.18457 3.95671 9.18457 4.58301C9.18457 5.11621 9.03223 5.72559 8.72754 6.41113C8.42285 7.09668 8.0568 7.78434 7.62939 8.47412C7.20199 9.1639 6.75977 9.81771 6.30273 10.4355C5.83724 11.0534 5.45215 11.557 5.14746 11.9463C5.00358 12.124 4.81527 12.2129 4.58252 12.2129C4.34977 12.2129 4.16146 12.124 4.01758 11.9463ZM4.58887 6.11914C5.01204 6.11914 5.37386 5.97103 5.67432 5.6748C5.97477 5.37858 6.125 5.01465 6.125 4.58301C6.125 4.16829 5.97477 3.81071 5.67432 3.51025C5.37386 3.2098 5.01204 3.05957 4.58887 3.05957C4.16569 3.05957 3.80599 3.2098 3.50977 3.51025C3.21354 3.81071 3.06543 4.16829 3.06543 4.58301C3.06543 5.01465 3.21354 5.37858 3.50977 5.6748C3.80599 5.97103 4.16569 6.11914 4.58887 6.11914Z"
+                      fill="#5AC0BE"
+                    />
+                  </svg>
+                </div>
                 <span>{location}</span>
               </div>
             )}
             {event?.session_type_details?.name?.trim() && (
-              <div className="flex items-center gap-5">
-                <div>
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
                   <svg
                     width="12"
                     height="12"
@@ -311,8 +312,8 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
               </div>
             )}
             {theme?.trim() && (
-              <div className="flex items-center gap-5">
-                <div>
+              <div className="flex items-start md:items-center gap-3 md:gap-5">
+                <div className="mt-1">
                   <svg
                     width="12"
                     height="12"

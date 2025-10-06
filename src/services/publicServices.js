@@ -33,6 +33,13 @@ export async function customFetch(path, options = {}) {
 }
 
 const PublicServices = {
+  gerInvoice: async (id) => {
+    try {
+      return await customFetch(`${SERVICE.INVOICE}/${id}`);
+    } catch (e) {
+      return e;
+    }
+  },
   getRegisterPassInfo: async () => {
     try {
       return await customFetch(SERVICE.REGISTER.PASS);
@@ -76,14 +83,14 @@ const PublicServices = {
       return e;
     }
   },
-  getExhibitors: async (params=new URLSearchParams()) => {
+  getExhibitors: async (params = new URLSearchParams()) => {
     try {
       return await customFetch(`${SERVICE.CONTENT.EXHIBITORS}?${params}`);
     } catch (e) {
       return e;
     }
   },
-  getSponsors: async (params=new URLSearchParams()) => {
+  getSponsors: async (params = new URLSearchParams()) => {
     try {
       return await customFetch(`${SERVICE.CONTENT.SPONSORS}?${params}`);
     } catch (e) {

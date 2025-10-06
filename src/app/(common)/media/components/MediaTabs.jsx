@@ -117,6 +117,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                           autoPlay
                           muted
                           loop
+                          playsInline
                           poster={media?.thumbnail}
                           className="object-cover h-full w-full bg-black/20"
                         />
