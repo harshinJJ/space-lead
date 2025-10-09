@@ -196,9 +196,9 @@ const Header = ({showTitleBlock=true,className=""}) => {
             aria-label="Main Navigation"
             className="flex relative flex-col xl:flex-row justify-between items-center"
           >
-            <div className="flex lg:items-stretch items-center 2xl:gap-7.5 md:gap-4 gap-2 max-w-2/3">
-              <div className="xl:block rounded-[5px] overflow-h relative w-fit h-full bg-white  lg:min-w-[151px] lg:min-h-[54px] p-1 overflow-hidden">
-                <Image unoptimized width={147} height={50} src="/logo_secondary_new.png" alt="logo" />
+            <div className="flex lg:items-stretch items-center gap-2.5 max-w-2/3">
+              <div className="xl:block overflow-h relative w-fit h-full bg-white  lg:min-w-[42px] lg:min-h-[62px] overflow-hidden">
+                <Image unoptimized width={42} height={62} src="/secondary_logo_new.png" alt="logo" />
               </div>
               <Link href="/" className="logo lg:min-w-[132px] lg:min-h-[60px]">
                 <Image width={132} height={60} src="/logo.png" alt="logo" />

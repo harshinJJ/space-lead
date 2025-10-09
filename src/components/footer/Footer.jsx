@@ -199,14 +199,14 @@ const Footer = () => {
           <div
             data-aos="fade-up"
             data-aos-once="true"
-            className="flex flex-row md:flex-col xl:flex-row xl:items-start justify-center md:justify-start 2xl:gap-7.5 md:gap-4 gap-5"
+            className="flex flex-row md:flex-row xl:flex-row items-start justify-center md:justify-start gap-2.5"
           >
-            <div className=" rounded-[5px] overflow-h relative w-fit h-auto bg-white  min-w-[151px] min-h-[54px] p-1 overflow-hidden">
+            <div className="overflow-h relative w-fit h-auto bg-white  min-w-[42px] min-h-[62px] overflow-hidden">
               <Image
-                width={147}
-                height={50}
+                width={42}
+                height={62}
                 unoptimized
-                src="/logo_secondary_new.png"
+                src="/secondary_logo_new.png"
                 alt="logo"
               />
             </div>
