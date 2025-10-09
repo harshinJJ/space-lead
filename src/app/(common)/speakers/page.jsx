@@ -29,7 +29,6 @@ export default async function Speakers() {
       speaker.category_name?.toLowerCase().includes("health")
     ) || []
   ).sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
-  console.log("asdkasdkjasd", spaceSpeakers, healthSpeakers);
   return (
     <main>
       <SpeakerGroup

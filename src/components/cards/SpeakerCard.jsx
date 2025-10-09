@@ -26,44 +26,46 @@ const SpeakerCard = ({
   return (
     <div
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
-      className={` ${selectAction?"cursor-pointer":""} ${
+      className={` ${selectAction ? "cursor-pointer" : ""} ${
         hoverable ? "//group" : ""
       } relative w-[fit] h-auto aspect-[331/488] rounded-2xl border-1 border-secondary overflow-hidden bg-[#232323] flex flex-col justify-end  ${className}`}
     >
-      <div className="absolute transition-all duration-500 opacity-0 group-hover:opacity-100 transform translate-y-[100%] group-hover:translate-y-0 [writing-mode:sideways-lr] w-full h-full top-0 left-0 right-0 font-semibold text-7xl text-stroke text-transparent flex items-end">
-        {hoverName}
-      </div>
       {/* Speaker image */}
-      <div className="relative group-hover:scale-[1.2] transition-all duration-700 origin-bottom-center grow flex-1 flex items-end justify-center">
+      <div className="relative px-5 transition-all duration-700 origin-bottom-center grow flex-1 flex items-end justify-center">
         {showOverlay && (
           <div
             className={`absolute h-2/3 w-3/4 top-0 bottom-0 left-0 right-0 m-auto bg-secondary/70`}
-            style={{  filter: "blur(6.25rem)" }}
+            style={{ filter: "blur(6.25rem)" }}
           ></div>
         )}
-        <Image
-          fill
-          src={
-            speaker?.profile_pic || speaker?.photo||
-            speaker?.image ||
-            "/images/user_placeholder.png"
-          }
-          alt={
-            speaker.name ||
-            `${speaker.firstname} ${speaker.lastname}` ||
-            "speaker_image"
-          }
-          className="w-full relative  object-contain object-[bottom_center] "
-        />
+        <div className="relative w-full aspect-square h-auto">
+          <Image
+            fill
+            src={
+              speaker?.profile_pic ||
+              speaker?.photo ||
+              speaker?.image ||
+              "/images/user_placeholder.png"
+            }
+            alt={
+              speaker.name ||
+              `${speaker.firstname} ${speaker.lastname}` ||
+              "speaker_image"
+            }
+            className="w-full relative  object-contain object-[bottom_center] "
+          />
+        </div>
       </div>
 
       <div className=" bg-white  py-4 px-6 min-h-27 ">
-        <span
-          className={`text-black font-bold font-gilroy-bold text-lg leading-[1.5]`}
+        <div
+          className={`text-black font-bold font-gilroy-bold text-lg leading-[1.5] text-center`}
         >
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
-        </span>
-        <h3 className={`text-secondary text-sm leading-[1.8] line-clamp-2`}>
+        </div>
+        <h3
+          className={`text-secondary text-sm leading-[1.8] line-clamp-2 text-center`}
+        >
           {speaker?.designation}
         </h3>
       </div>

@@ -82,7 +82,7 @@ const DownloadButton = ({ onClick }) => {
   );
 };
 
-const Header = () => {
+const Header = ({showTitleBlock=true,className=""}) => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -185,7 +185,7 @@ const Header = () => {
       <div
         className={`fixed z-99 w-full bg-gradient-to-r from-[#0a1316] bg-[#1b373f] xl:bg-transparent via-tertiary to-[#0a1316]  xl:bg-none ${
           hasScrolled ? " xl:!bg-[#1b373f]/98 " : ""
-        } transition-all duration-300 ease-in-out`}
+        } transition-all duration-300 ease-in-out ${className}`}
       >
         <div
           className={`py-2 w-full container-fluid mx-auto left-0 right-0 top-0 px-5 sm:px-0 ${
@@ -308,7 +308,7 @@ const Header = () => {
           ))}
         </ul>
       </div>
-      {pathname != "/" && <TitleBlock pathname={pathname} title={activeLinkTitle} />}
+      {(pathname != "/"&&showTitleBlock) && <TitleBlock pathname={pathname} title={activeLinkTitle} />}
     </header>
   );
 };

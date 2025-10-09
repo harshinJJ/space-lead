@@ -6,11 +6,11 @@ import Link from "@/utils/CustomLink";
 
 const AboutInfo = ({ className = "", isHome }) => {
   const data = {
-    title: "Space Lead",
+    title: "Space Lead 25",
     description: `${
       isHome
         ? "“The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. "
-        : "“The Space Lead ’25 in Riyadh is a pioneering global conference uniting aerospace engineers, space medicine professionals, scientists, researchers, policymakers, industry leaders, and students. Over two immersive days, delegates will engage in thought-provoking discussions, collaborative exchanges, and strategic networking sessions that shape the future of space exploration and its impact on humanity"
+        : "“The Space Lead’25 in Riyadh is a pioneering global conference uniting aerospace engineers, space medicine professionals, scientists, researchers, policymakers, industry leaders, and students. Over two immersive days, delegates will engage in thought-provoking discussions, collaborative exchanges, and strategic networking sessions that shape the future of space exploration and its impact on humanity"
     }`,
     vision: [
       {
@@ -182,7 +182,7 @@ const AboutInfo = ({ className = "", isHome }) => {
       className={`relative bg-[#EDF0FE] bg-[top_center] bg-cover ${className}`}
     >
       <SemiCirclePattern className="absolute bottom-5 right-0" />
-      <RowStagger className="relative container-fluid pt-20 xl:pt-32.5 xl:pb-33 mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
+      <RowStagger className="relative container-fluid pt-20 xl:pt-32.5 2xl:pb-33 mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start lg:items-stretch 2xl:items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
         <DotPattern className="absolute top-13.5 right-0 transform " />
         {/* image */}
         <div
@@ -226,7 +226,7 @@ const AboutInfo = ({ className = "", isHome }) => {
         {/* content */}
         <div
           data-aos="fade-up"
-          className=" text-lg  flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0"
+          className=" text-lg justify-between h-[inherit] flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0"
         >
           {data?.name && (
             <h5 className="text-secondary font-azonix xl:text-lg text-base">
@@ -267,7 +267,7 @@ const AboutInfo = ({ className = "", isHome }) => {
               </div>
             ))}
           </div>
-          <div className="hidden 2xl:grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.25 md:me-12  border-t border-[#D7D7D7] pt-6 ">
+          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.25 md:me-12  border-t border-[#D7D7D7] pt-6 ">
             <div className="flex flex-col justify-center px-2.5">
 
               <h4 className="text-tertiary font-azonix text-lg 2xl:text-2xl 3xl:text-3xl">
@@ -277,7 +277,7 @@ const AboutInfo = ({ className = "", isHome }) => {
             {data.features.map((feature, i) => (
               <div
                 key={i}
-                className="group flex items-center border border-[#F4F4F4] px-2.5 pe-2.25 py-5 bg-white hover:bg-secondary focus:bg-secondary active:bg-secondary transition-all duration-700"
+                className="group hidden 2xl:flex items-center border border-[#F4F4F4] px-2.5 pe-2.25 py-5 bg-white hover:bg-secondary focus:bg-secondary active:bg-secondary transition-all duration-700"
               >
                 <div className="flex-1/5 flex items-center justify-center">
                   {/* {feature.icon} */}
@@ -298,8 +298,8 @@ const AboutInfo = ({ className = "", isHome }) => {
           </div>
         </div>
       </RowStagger>
-      <div className="relative px-10 pb-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t border-[#D7D7D7] pt-6 ">
-        <div className="flex flex-col justify-center px-2.5 py-2">
+      <div className="relative px-10 pb-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t lg:border-t-0 border-[#D7D7D7] pt-6 ">
+        <div className="lg:hidden flex flex-col justify-center px-2.5 py-2">
           {/* <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
             Features
           </p> */}

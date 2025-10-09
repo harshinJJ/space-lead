@@ -41,7 +41,7 @@ export default async function Home() {
           muted
           className="absolute absolute-center w-full h-full object-cover"
           src="/images/backgrounds/commitee_members_bg.mp4"
-          poster="/images/backgrounds/posters/commitee_members_bg.webp"
+          poster="/images/backgrounds/posters/commitee_members_bg_poster.webp"
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>

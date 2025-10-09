@@ -37,7 +37,7 @@ const SpeakerGroup = ({
           )}
 
           <div
-            className={`relative flex flex-col  md:items-center md:justify-center`}
+            className={`relative flex flex-col  gap-2 md:gap-1 items-center md:justify-center`}
           >
             {title && (
               <h2

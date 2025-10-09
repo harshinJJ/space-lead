@@ -93,7 +93,7 @@ export default async function Sponsors() {
           stats={stats}
         />
       </section>
-      <SponsorList title="Featured Sponsorship" sponsors={sponsors} />
+      <SponsorList title="Featured Sponsors" sponsors={sponsors} />
 
       {/* <SponsorBlock
         containerClass="bg-gradient-to-b from-white to-[#EDF0FE]"

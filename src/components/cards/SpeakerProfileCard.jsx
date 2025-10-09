@@ -19,7 +19,7 @@ const SpeakerProfileCard = ({
     >
       <div className=" 2xl:py-4 py-2 3xl:px-6 xl:px-4 px-1">
         <h3
-          className={`text-black line-clamp-3 font-semibold ${name?.length>21?"3xl:text-lg lg:text-base ":" 3xl:text-2xl lg:text-xl"} text-lg leading-[1.5] text-center`}
+          className={`text-black line-clamp-3 font-semibold 2xl:text-base 3xl:text-lg xl:text-lg lg:text-base md:text-lg sm:text-base leading-[1.5] text-center`}
         >
           {name}
         </h3>

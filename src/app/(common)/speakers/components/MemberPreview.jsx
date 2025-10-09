@@ -31,7 +31,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
           <div className="container-fluid w-full mx-auto flex flex-col items-center lg:items-start lg:flex-row xl:gap-8.75 gap-5 xl:px-15.75 px-5">
             <div className="xl:w-1/4 lg:w-2/5 sm:max-w-3/4 bg- md:1/2 w-full">
               {/* <SpeakerCard speaker={activeSpeaker} showBtn={true} /> */}
-              <div className="flex flex-col items-center gap-7 px-4 py-5 rounded-2xl bg-black">
+              <div className="flex flex-col items-center gap-7 px-4 py-5 rounded-2xl bg-primary">
                 <div className=" aspect-[298/272] w-full rounded-2xl overflow-hidden relative ">
                   <Image
                     fill

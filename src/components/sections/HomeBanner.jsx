@@ -35,7 +35,7 @@ const HomeBanner = ({ sponsors = [] }) => {
   const tags = [
     {
       icon: <CalenderIcon />,
-      label: EVENT_INFO.dateLabel,
+      label: EVENT_INFO.bannerDateLabel,
     },
     {
       icon: <LocationIcon />,
@@ -80,7 +80,7 @@ const HomeBanner = ({ sponsors = [] }) => {
                 <div className="flex items-center justify-center">
                   {tags[0].icon}
                 </div>
-                <span className="lg:text-nowrap 2xl:text-lg lg:text-sm text-xs">
+                <span className="lg:text-nowrap xl:text-xl font-droid-bold font-bold text-base">
                   {tags[0].label}
                 </span>
               </div>
@@ -92,7 +92,7 @@ const HomeBanner = ({ sponsors = [] }) => {
                 <div className="flex items-center justify-center">
                   {tags[1].icon}
                 </div>
-                <span className="lg:text-nowrap 2xl:text-base  text-xs">
+                <span className="lg:text-nowrap xl:text-xl font-droid-bold font-bold text-base">
                   {tags[1].label}
                 </span>
               </a>
