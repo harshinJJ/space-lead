@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 
-const BadgePreview = ({ name, category, badgeId, title, organisation }) => (
+const BadgePreview = ({ name, category, badgeId, title, organisation,institution }) => (
   <div className=" bg-white  bg-gradient-to-r from-secondary/50 to-primary/50 rounded-[1.25rem] shadow-lg p-2.5 flex flex-col items-center justify-end w-full max-w-xs overflow-hidden">
     <div className="bg-white uppercase rounded-[1.25rem] overflow-hidden flex flex-col items-center w-full max-w-xs">
       <div
@@ -37,13 +37,20 @@ const BadgePreview = ({ name, category, badgeId, title, organisation }) => (
         >
           {name || "FULL NAME"}
         </div>
-        {category == "professional" && (
+        {category?.toLowerCase().includes("professional") && (
           <>
             <div className=" text-center text-lg text-[#017792] mt-1">
               {title || "JOB TITLE"}
             </div>
             <div className=" text-center text-xs text-[#5E5E5E] mt-1">
               {organisation || "COMPANY NAME"}
+            </div>
+          </>
+        )}
+        {category?.toLowerCase().includes("student") && (
+          <>
+            <div className=" text-center text-sm text-[#017792] mt-1">
+              {institution || "Institution"}
             </div>
           </>
         )}

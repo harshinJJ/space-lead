@@ -12,10 +12,10 @@ import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
 import EVENT_INFO from "@/data/eventInfo";
 
 const MediaTabs = ({ gallery = [], updates = [] }) => {
-  const videoRef = useRef();
+  // const videoRef = useRef();
   const [active, setActive] = useState(null);
   const [fancyboxRef] = useFancybox({});
-  const [activeVideo, setActiveVideo] = useState();
+  // const [activeVideo, setActiveVideo] = useState();
   const handleActive = (tab) => {
     setActive((prev) => (prev == tab ? null : tab));
   };
@@ -27,19 +27,19 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
   const filteredList = active
     ? gallery.filter((media) => media.date == active)
     : gallery;
-  const handleVideo = (url) => {
-    setActiveVideo(url);
+  // const handleVideo = (url) => {
+  //   setActiveVideo(url);
 
-    if (videoRef.current) {
-      videoRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  };
+  //   if (videoRef.current) {
+  //     videoRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+  //   }
+  // };
   return (
     <section className={` bg-white bg-[top_center] bg-cover `}>
       <div className="container-fluid mx-auto px-5 sm:px-0  pt-20 xl:pt-32.5 pb-20 xl:pb-33">
         <DotPattern className="absolute top-13.5 right-0" />
         <div className="xl:px-15.75">
-          {activeVideo && (
+          {/* {activeVideo && (
             <h3 className="xl:text-5xl md:text-4xl text-2xl font-azonix text-center text-[#000222] mb-12.5 uppercase">
               Join the conversation. Shape the narrative.
             </h3>
@@ -58,7 +58,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                 />
               )}
             </div>
-          </div>
+          </div> */}
           <h3 className="xl:text-5xl md:text-4xl text-2xl font-azonix text-center text-[#000222] md:mb-12 mb-6 uppercase">
             Event Coverage
           </h3>
@@ -101,16 +101,20 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
           </div>
           <div ref={fancyboxRef}>
             {filteredList?.length > 0 ? (
-              <HorizontalCardStagger className="grid xl:grid-cols-4 md:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-6">
+              <div className="grid xl:grid-cols-4 md:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-6">
                 {filteredList.map((media, i) => (
                   <div
                     key={i}
-                    className="relative aspect-[335/226] cursor-pointer card opacity-0 will-change-transform"
+                    data-aos="fade-up"
+                    data-aos-once="true"
+                    className="relative aspect-[335/226] cursor-pointer card "
                   >
                     {media.media_type == "video" ? (
-                      <div
+                      <a
+                        data-fancybox="gallery"
+                        href={media.video || "#"}
                         className="w-full h-full"
-                        onClick={() => handleVideo(media.video)}
+                        // onClick={() => handleVideo(media.video)}
                       >
                         <video
                           src={media.video}
@@ -135,7 +139,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                             />
                           </svg>
                         </div>
-                      </div>
+                      </a>
                     ) : (
                       <a data-fancybox="gallery" href={media.image || "#"}>
                         <Image
@@ -148,7 +152,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                     )}
                   </div>
                 ))}
-              </HorizontalCardStagger>
+              </div>
             ) : (
               <div className="flex items-center justify-center w-full py-20 text-2xl">
                 No data found

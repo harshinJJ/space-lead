@@ -80,8 +80,8 @@ function getEventDateRange(event) {
   if (!isValid(startDate) || !isValid(endDate)) return null;
 
   // Google format → yyyyMMddTHHmmssZ
-  const googleStart = format(startDate, "yyyyMMdd'T'HHmmss'Z'");
-  const googleEnd = format(endDate, "yyyyMMdd'T'HHmmss'Z'");
+  const googleStart = format(startDate, "yyyyMMdd'T'HHmmss");
+  const googleEnd = format(endDate, "yyyyMMdd'T'HHmmss");
 
   // Outlook format → yyyy-MM-ddTHH:mm:ss (no Z)
   const outlookStart = format(startDate, "yyyy-MM-dd'T'HH:mm:ss");
@@ -138,7 +138,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
           <div className="flex flex-col gap-2 text-white text-sm mt-1">
             {eventDate?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"
@@ -158,7 +158,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
             )}
             {location?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"
@@ -177,7 +177,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
             )}
             {event?.session_type_details?.name?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"
@@ -206,7 +206,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
             )}
             {theme?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"
@@ -246,7 +246,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
           <div className="flex flex-col gap-2 text-teal-400 text-sm mt-1">
             {eventDate?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"
@@ -265,7 +265,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
             )}
             {location?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"
@@ -284,7 +284,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
             )}
             {event?.session_type_details?.name?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"
@@ -313,7 +313,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true }) => {
             )}
             {theme?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1">
+                <div className="mt-1 md:mt-0">
                   <svg
                     width="12"
                     height="12"

@@ -14,9 +14,9 @@ const EVENT_INFO = {
   startDateLabel:"10th - 11th November 2025",
   eventTimeLabel:"07:30 AM to 04:00 PM",
   socials:{
-    instagram:"https://www.instagram.com/spaceleadau/",
+    instagram:"https://www.instagram.com/spaceleadau/?igsh=MXIwNjdiOHg4YWFydA%3D%3D",
     facebook:"#",
-    linkedin:"#",
+    linkedin:"https://www.linkedin.com/school/alfaisal-university/?viewAsMember=true",
     twitter:"https://x.com/SpaceLeadAU",
   },
   email:"spacelead@alfaisal.edu",

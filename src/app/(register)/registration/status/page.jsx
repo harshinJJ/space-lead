@@ -1,6 +1,3 @@
-import RegistrationServices from "@/services/registrationServices";
-import RegistrationBlock from "../components/RegistrationBlock";
-import { SUCCESS_CODES } from "@/data/successCodes";
 import PublicServices from "@/services/publicServices";
 import SuccessModal from "../components/SuccessModal";
 import { LogoBg } from "@/data/icons";

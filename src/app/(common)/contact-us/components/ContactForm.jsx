@@ -8,8 +8,43 @@ import SemiCirclePattern from "@/components/patterns/SemiCirclePattern";
 import EVENT_INFO from "@/data/eventInfo";
 import { LinkedInIcon } from "@/data/icons";
 import useContactForm from "@/hooks/useContactForm";
+import { smartTrim } from "@/utils/functions";
 import { ReCAPTCHAV2 } from "@/utils/ReCaptchaHandler";
 import React, { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const CustomInput = ({ onChange, onBlur, value, ...props }) => {
+  return (
+    <input
+      {...props}
+      onChange={(e) => {
+        let value = e.target.value.replace(
+          /[^a-zA-Z0-9\s&.,\-'/()#@!+_:;]/g,
+          "" // keep only allowed chars
+        );
+        if (/^\s*$/.test(value)) {
+          value = "";
+        }
+        onChange(value, e);
+      }}
+      onBlur={(e) => {
+        let trimmed = e.target.value.replace(
+          /[^a-zA-Z0-9\s&.,\-'/()#@!+_:;]/g,
+          ""
+        );
+
+        if (/^\s*$/.test(trimmed)) {
+          trimmed = "";
+        } else {
+          trimmed = smartTrim(trimmed);
+        }
+        onBlur(trimmed, e);
+      }}
+      value={value}
+      className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
+    />
+  );
+};
 
 const ContactForm = () => {
   const {
@@ -20,10 +55,18 @@ const ContactForm = () => {
     showV2,
     showSuccess,
     onSubmitRegistration,
+    recaptchaRef,
   } = useContactForm();
 
-  const { handleBlur, handleChange, values, touched, errors, isSubmitting } =
-    formik;
+  const {
+    handleBlur,
+    handleChange,
+    values,
+    touched,
+    errors,
+    isSubmitting,
+    setFieldValue,
+  } = formik;
   return (
     <section className="relative bg-white bg-no-repeat bg-cover bg-[center_top] px-5 sm:px-0 w-full overflow-hidden">
       <SemiCirclePattern
@@ -91,7 +134,7 @@ const ContactForm = () => {
               target="_blank"
               className="w-12.5 h-12.5 flex items-center justify-center rounded-full border border-secondary text-secondary hover:bg-teal-50 transition"
             >
-              <LinkedInIcon size={20}/>
+              <LinkedInIcon size={20} />
             </a>
             <a
               href={EVENT_INFO.socials.instagram}
@@ -164,15 +207,19 @@ const ContactForm = () => {
           <div className="grid grid-cols-1 text-2xl sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div ref={setRef("firstname")}>
               <label className="block font-medium ">Your Name</label>
-              <input
+              <CustomInput
                 type="text"
                 maxLength={100}
                 name="firstname"
-                onChange={handleChange}
                 autoComplete="name"
-                onBlur={handleBlur}
+                onChange={(value) => {
+                  setFieldValue("firstname", value);
+                }}
+                onBlur={async (value, e) => {
+                  await setFieldValue("firstname", value);
+                  handleBlur(e);
+                }}
                 value={values.firstname}
-                className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
               {errors.firstname && touched.firstname && (
                 <p className="text-red-500 text-lg">{errors.firstname}</p>
@@ -180,15 +227,19 @@ const ContactForm = () => {
             </div>
             <div ref={setRef("email")}>
               <label className="block font-medium ">Email Address</label>
-              <input
-                type="email"
+              <CustomInput
+                // type="email"
                 maxLength={100}
                 name="email"
                 autoComplete="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
+                onChange={(value) => {
+                  setFieldValue("email", value);
+                }}
+                onBlur={async (value, e) => {
+                  await setFieldValue("email", value);
+                  handleBlur(e);
+                }}
                 value={values.email}
-                className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
               />
               {errors.email && touched.email && (
                 <p className="text-red-500 text-lg">{errors.email}</p>
@@ -229,8 +280,31 @@ const ContactForm = () => {
               rows={3}
               name="message"
               autoComplete="off"
-              onChange={handleChange}
-              onBlur={handleBlur}
+              onChange={(e) => {
+                let value = e.target.value.replace(
+                  /[^a-zA-Z0-9\s&.,\-'/()#@!+_:;]/g,
+                  "" // keep only allowed chars
+                );
+                if (/^\s*$/.test(value)) {
+                  value = "";
+                }
+                setFieldValue("message", value);
+              }}
+              onBlur={async (e) => {
+                let trimmed = e.target.value.replace(
+                  /[^a-zA-Z0-9\s&.,\-'/()#@!+_:;]/g,
+                  ""
+                );
+
+                if (/^\s*$/.test(trimmed)) {
+                  trimmed = "";
+                } else {
+                  trimmed = smartTrim(trimmed);
+                }
+
+                await setFieldValue("message", trimmed);
+                handleBlur(e);
+              }}
               value={values.message}
               className="w-full border-b text-2xl border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent resize-none"
             />
@@ -241,9 +315,15 @@ const ContactForm = () => {
           {showV2 && (
             <div
               ref={setRef("recaptcha")}
-              className="flex items-center justify-start mt-6"
+              className="flex items-start flex-col justify-start mt-6"
             >
-              <ReCAPTCHAV2 setCaptcha={setRecaptchaToken} />
+              {/* <ReCAPTCHAV2 setCaptcha={setRecaptchaToken} /> */}
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V2}
+                onChange={setRecaptchaToken}
+                onError={()=>setRecaptchaToken(null)}
+                ref={recaptchaRef}
+              />
             </div>
           )}
           <div className="flex items-center justify-between mt-6">

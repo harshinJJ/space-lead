@@ -16,6 +16,7 @@ import useRegistration from "@/hooks/useRegistration";
 import ButtonLoader from "@/components/loader/ButtonLoader";
 import SuccessModal from "./SuccessModal";
 import SessionTypeSelector from "./SessionTypeSelector";
+import ReCAPTCHA from "react-google-recaptcha";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
@@ -51,6 +52,7 @@ export default function RegistrationForm({
     successInfo,
     setSuccessInfo,
     containerRef,
+    recaptchaRef,
   } = registerData;
   const {
     errors,
@@ -155,8 +157,13 @@ export default function RegistrationForm({
 
                         <FormInput
                           name="firstname"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
+                          onChange={(value) => {
+                            setFieldValue("firstname", value);
+                          }}
+                          onBlur={(value, e) => {
+                            setFieldValue("firstname", value);
+                            handleBlur(e);
+                          }}
                           value={formData.firstname}
                           placeholder="First name"
                           autoComplete="name"
@@ -171,8 +178,13 @@ export default function RegistrationForm({
                       <Label required={true}>Last Name</Label>
                       <FormInput
                         name="lastname"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
+                        onChange={(value) => {
+                          setFieldValue("lastname", value);
+                        }}
+                        onBlur={(value, e) => {
+                          setFieldValue("lastname", value);
+                          handleBlur(e);
+                        }}
                         value={formData.lastname}
                         placeholder="Last name"
                         autoComplete="lastName"
@@ -199,8 +211,13 @@ export default function RegistrationForm({
                       <Label required={true}>Email</Label>
                       <FormInput
                         name="email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
+                        onChange={(value) => {
+                          setFieldValue("email", value);
+                        }}
+                        onBlur={(value, e) => {
+                          setFieldValue("email", value);
+                          handleBlur(e);
+                        }}
                         value={formData.email}
                         placeholder="Email"
                         autoComplete="email"
@@ -268,9 +285,14 @@ export default function RegistrationForm({
                         <Label required={true}>Institution Name</Label>
                         <FormInput
                           name="institution"
-                          onChange={handleChange}
+                          onChange={(value) => {
+                            setFieldValue("institution", value);
+                          }}
+                          onBlur={(value, e) => {
+                            setFieldValue("institution", value);
+                            handleBlur(e);
+                          }}
                           autoComplete="institution"
-                          onBlur={handleBlur}
                           value={formData.institution}
                           placeholder="Institution name"
                         />
@@ -289,9 +311,14 @@ export default function RegistrationForm({
                           <Label required={true}>Job Title</Label>
                           <FormInput
                             name="jobtitle"
-                            onChange={handleChange}
                             autoComplete="designation"
-                            onBlur={handleBlur}
+                            onChange={(value) => {
+                              setFieldValue("jobtitle", value);
+                            }}
+                            onBlur={(value, e) => {
+                              setFieldValue("jobtitle", value);
+                              handleBlur(e);
+                            }}
                             value={formData.jobtitle}
                             placeholder="Job title"
                           />
@@ -303,8 +330,13 @@ export default function RegistrationForm({
                           <Label required={true}>Company Name</Label>
                           <FormInput
                             name="companyname"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
+                            onChange={(value) => {
+                              setFieldValue("companyname", value);
+                            }}
+                            onBlur={(value, e) => {
+                              setFieldValue("companyname", value);
+                              handleBlur(e);
+                            }}
                             autoComplete="company"
                             value={formData.companyname}
                             placeholder="Company name"
@@ -349,7 +381,14 @@ export default function RegistrationForm({
 
                     {showV2 && (
                       <div ref={setRef("recaptcha")}>
-                        <ReCAPTCHAV2 setCaptcha={setRecaptchaToken} />
+                        <ReCAPTCHA
+                          sitekey={
+                            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V2
+                          }
+                          onError={() => setRecaptchaToken(null)}
+                          onChange={setRecaptchaToken}
+                          ref={recaptchaRef}
+                        />
                       </div>
                     )}
 
@@ -397,6 +436,7 @@ export default function RegistrationForm({
                   category={session?.sales_ticket_type_name}
                   title={formData.jobtitle || ""}
                   organisation={formData.companyname || ""}
+                  institution={formData.institution || ""}
                   badgeId={"Badgeid"}
                 />
               </div>

@@ -70,6 +70,7 @@ const PressRelease = ({
               <div
                 key={i}
                 data-aos={i % 2 == 0 ? "fade-right" : "fade-left"}
+                data-aos-once="true"
                 className="bg-[#F7F7F7] rounded-2xl p-5.5 flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full"
               >
                 <div className="flex xs:min-w-2/9 min-w-1/3 font-droid-bold font-bold flex-col items-center justify-center uppercase aspect-square bg-gradient-to-b from-secondary to-primary/37  text-black 2xl:rounded-4xl rounded-2xl p-2.5 sm:p-5 2xl:p-7.5 shrink-0">

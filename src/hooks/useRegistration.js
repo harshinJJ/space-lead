@@ -9,11 +9,12 @@ import useDebounce from "@/hooks/useDebounce";
 import { separatePhoneNumber } from "@/utils/functions";
 import RegistrationServices from "@/services/registrationServices";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { SUCCESS_CODES } from "@/data/successCodes";
+import { errorList, SUCCESS_CODES } from "@/data/responseDatas";
 
 const useRegistration = ({ type, session }) => {
   const fieldRefs = useRef({});
   const containerRef = useRef();
+  const recaptchaRef = useRef();
   const [recaptchaToken, setRecaptchaToken] = useState("");
   const [success, setSuccess] = useState(false);
   const [successInfo, setSuccessInfo] = useState();
@@ -182,100 +183,130 @@ const useRegistration = ({ type, session }) => {
   });
 
   const onSendRegister = async (item) => {
-    const payload = { form_data: { ...item } };
-    if (session.id) {
-      payload.form_data.ticket_id = session.id;
-      payload.form_data.event_id = session.event_id;
-      payload.currency_name = session.currency_name;
-    }
-
-    if (item.title && item.title.value) {
-      payload.form_data.title = item.title.value;
-    }
-    if (item.country && item.country.name) {
-      payload.form_data.country = item.country.name;
-    }
-    if (item.nationality && item.nationality.name) {
-      payload.form_data.nationality = item.nationality.name;
-    }
-    const phone = separatePhoneNumber(item.phoneNumber);
-
-    payload.form_data.phoneNumber = phone.nationalNumber;
-    payload.form_data.country_code = phone.countryCode;
-
-    if (!showV2) {
-      const token = await executeRecaptcha("submit");
-      if (token) {
-        payload["recaptcha_token"] = token;
-        payload["recaptcha_type"] = "v3";
-      } else {
-        setShowV2(true);
-        scrollToField("recaptcha");
-        return;
-      }
+    if (!session.id) {
+      toast.error("No sessions selected, Please try again later",{ id: "register-toast" });
     } else {
-      if (recaptchaToken) {
-        payload["recaptcha_token"] = recaptchaToken;
-        payload["recaptcha_type"] = "v2";
+      let captchaToken;
+      let recaptchaVersion;
+      if (!showV2) {
+        captchaToken = await executeRecaptcha("registration");
+        recaptchaVersion = "v3";
       } else {
+        captchaToken = recaptchaToken;
+        recaptchaVersion = "v2";
+      }
+      if (!captchaToken) {
+        if (!showV2) {
+          setShowV2(true);
+        }
         scrollToField("recaptcha");
+        toast.error("Recaptcha verification failed. Please try again.",{ id: "register-toast" });
+        formik.setSubmitting(false);
         return;
       }
-    }
-    if (
-      session?.sales_ticket_type_name?.toLowerCase()?.startsWith("professional")
-    ) {
-      delete payload.form_data.institution;
-    }
-    if (session?.sales_ticket_type_name?.toLowerCase()?.startsWith("student")) {
-      delete payload.form_data.jobtitle;
-      delete payload.form_data.companyname;
-    }
-    // deleting unwanted values
-    delete payload.form_data.isOldFile;
-    delete payload.form_data.user_document;
 
-    const formData = new FormData();
-    formData.append("payload", JSON.stringify(payload));
-    if (item.user_document) {
-      formData.append("user_document", item.user_document);
-    }
+      const payload = {
+        form_data: { ...item },
+        recaptcha_token: captchaToken,
+        recaptcha_type: recaptchaVersion,
+      };
+      if (session.id) {
+        payload.form_data.ticket_id = session.id;
+        payload.form_data.event_id = session.event_id;
+        payload.currency_name = session.currency_name;
+      }
 
-    RegistrationServices.createFormData(formData)
-      .then((res) => {
-        if (SUCCESS_CODES.includes(res.status) && res.data) {
-          formik.setSubmitting(false);
-          if (res?.data?.redirect_type == "payment" && res.data?.payment_url) {
-            window.location.href = res.data?.payment_url;
-          } else {
-            setSuccess(true);
-            setSuccessInfo(res?.data?.data);
-            formik.resetForm();
-            // window?.scrollTo({ top: 0, behavior: "smooth" });
-            // containerRef.current?.scrollIntoView({ behavior: "smooth" });
-            setTimeout(
-              () =>
-                containerRef.current?.scrollIntoView({ behavior: "smooth" }),
-              100
-            );
-          }
-        } else if (res?.data.errors) {
-          const errors = res?.data.errors;
-          Object.keys(errors).forEach((field) => {
-            formik.setFieldTouched(field, true, false);
-            formik.setFieldError(field, errors[field]);
-            scrollToField(field);
+      if (item.title && item.title.value) {
+        payload.form_data.title = item.title.value;
+      }
+      if (item.country && item.country.name) {
+        payload.form_data.country = item.country.name;
+      }
+      if (item.nationality && item.nationality.name) {
+        payload.form_data.nationality = item.nationality.name;
+      }
+      const phone = separatePhoneNumber(item.phoneNumber);
+
+      payload.form_data.phoneNumber = phone.nationalNumber;
+      payload.form_data.country_code = phone.countryCode;
+
+      if (
+        session?.sales_ticket_type_name
+          ?.toLowerCase()
+          ?.startsWith("professional")
+      ) {
+        delete payload.form_data.institution;
+      }
+      if (
+        session?.sales_ticket_type_name?.toLowerCase()?.startsWith("student")
+      ) {
+        delete payload.form_data.jobtitle;
+        delete payload.form_data.companyname;
+      }
+      // deleting unwanted values
+      delete payload.form_data.isOldFile;
+      delete payload.form_data.user_document;
+
+      const formData = new FormData();
+      formData.append("payload", JSON.stringify(payload));
+      if (item.user_document) {
+        formData.append("user_document", item.user_document);
+      }
+
+      RegistrationServices.createFormData(formData)
+        .then((res) => {
+          if (SUCCESS_CODES.includes(res.status) && res.data) {
             formik.setSubmitting(false);
-          });
-        } else if (res?.message) {
-          toast.error(res.message, { id: "register-toast" });
+            if (
+              res?.data?.redirect_type == "payment" &&
+              res.data?.payment_url
+            ) {
+              window.location.href = res.data?.payment_url;
+            } else {
+              setSuccess(true);
+              setSuccessInfo(res?.data?.data);
+              setShowV2(false);
+              formik.resetForm();
+              // window?.scrollTo({ top: 0, behavior: "smooth" });
+              // containerRef.current?.scrollIntoView({ behavior: "smooth" });
+              setTimeout(
+                () =>
+                  containerRef.current?.scrollIntoView({ behavior: "smooth" }),
+                100
+              );
+            }
+          } else {
+            if (
+              errorList.some(
+                (item) =>
+                  item.toLowerCase() === res?.data?.message.toLowerCase()
+              )
+            ) {
+              recaptchaRef?.current?.reset();
+              setShowV2(true);
+              setRecaptchaToken("");
+              scrollToField("recaptcha");
+              toast.error(
+                res?.data?.message ||
+                  "Recaptcha verification failed. Please try again.",
+                { id: "register-toast" }
+              );
+              formik.setSubmitting(false);
+              return;
+            } else if (res?.data?.message) {
+              toast.error(res.data?.message, { id: "register-toast" });
+              formik.setSubmitting(false);
+            }
+          }
+          recaptchaRef.current?.reset();
+          setRecaptchaToken(null);
+        })
+        .catch((error) => {
+          console.log(error);
           formik.setSubmitting(false);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        formik.setSubmitting(false);
-      });
+        });
+    }
+    formik.setSubmitting(false);
   };
 
   // abandoned register
@@ -393,6 +424,7 @@ const useRegistration = ({ type, session }) => {
     successInfo,
     setSuccessInfo,
     containerRef,
+    recaptchaRef,
   };
 };
 

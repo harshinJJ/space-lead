@@ -1,6 +1,4 @@
-import RegistrationServices from "@/services/registrationServices";
 import RegistrationBlock from "../components/RegistrationBlock";
-import { SUCCESS_CODES } from "@/data/successCodes";
 import PublicServices from "@/services/publicServices";
 import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import { LogoBg } from "@/data/icons";
@@ -13,6 +11,7 @@ export default async function StudentRegistration({ params }) {
   const sessionList = passTypes.filter(
     (pass) => pass.ticket_price_type == id
   );
+  console.log("asdasdasd",passTypes)
   return (
     <main>
       {sessionList?.length > 0 ? (
