@@ -26,8 +26,6 @@ Font.register({
   fontWeight: "normal",
 });
 
-
-
 const styles = StyleSheet.create({
   page: {
     // fontFamily: "Helvetica",
@@ -74,15 +72,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 25,
-    marginBottom: 10,
     paddingHorizontal: 15,
   },
   billToLabelContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent:"center",
+    justifyContent: "center",
     marginBottom: 0,
-    width:"100%",
+    width: "100%",
     marginTop: 30,
   },
   billToLabel: {
@@ -99,6 +96,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-end",
     fontSize: 12,
+  },
+  transactionId: {
+    marginBottom: 10,
+    paddingHorizontal: 15,
   },
   label: {
     fontWeight: "bold",
@@ -199,7 +200,6 @@ const DownloadIcon = ({ size = 20, className = "" }) => (
 
 const DownloadButton = ({ invoice, invoiceId }) => {
   const [loading, setLoading] = useState(false);
-
 
   const handleDownload = async () => {
     if (!invoice?.invoice_id && !invoiceId) return;
@@ -364,37 +364,26 @@ const DownloadButton = ({ invoice, invoiceId }) => {
       <Document>
         <PDFPage size="A4" style={styles.page}>
           {/* Header */}
-          <View style={styles.header}>  
+          <View style={styles.header}>
             <View>
-              <Text style={styles.headerTitle}>
-                {invoice?.invoice?.title}
-              </Text>
+              <Text style={styles.headerTitle}>{invoice?.invoice?.title}</Text>
             </View>
             <View style={styles.logoContainer}>
               {/* Replace with your logo if available */}
-              <Image
-                src={invoice?.company?.logo}
-                style={styles.logo}
-              />
+              <Image src={invoice?.company?.logo} style={styles.logo} />
             </View>
           </View>
 
           {/* Bill To Section */}
           <View style={styles.billToLabelContainer}>
             <Text style={styles.billToLabel}>Bill To /</Text>
-            <Text style={[styles.billToLabel,styles.arabic]}>فاتورة إلى</Text>
+            <Text style={[styles.billToLabel, styles.arabic]}>فاتورة إلى</Text>
           </View>
           <View style={styles.billToSection}>
             <View>
-              <Text style={styles.text}>
-                {invoice?.bill_to?.name}
-              </Text>
-              <Text style={styles.text}>
-                {invoice?.bill_to?.phone}
-              </Text>
-              <Text style={styles.text}>
-                {invoice?.bill_to?.email}
-              </Text>
+              <Text style={styles.text}>{invoice?.bill_to?.name}</Text>
+              <Text style={styles.text}>{invoice?.bill_to?.phone}</Text>
+              <Text style={styles.text}>{invoice?.bill_to?.email}</Text>
             </View>
 
             <View style={styles.invoiceInfo}>
@@ -404,15 +393,11 @@ const DownloadButton = ({ invoice, invoiceId }) => {
                   {" "}
                   رقم الفاتورة:{" "}
                 </Text>
-                <Text style={styles.value}>
-                  {invoice?.invoice?.number}
-                </Text>
+                <Text style={styles.value}>{invoice?.invoice?.number}</Text>
               </View>
               <View style={styles.infoRow}>
                 <Text style={styles.label}>Invoice Date /</Text>
-                <Text style={styles.value}>
-                  {invoice?.invoice?.date} :{" "}
-                </Text>
+                <Text style={styles.value}>{invoice?.invoice?.date} : </Text>
                 <Text style={[styles.label, styles.arabic]}>
                   {" "}
                   تاريخ الفاتورة
@@ -423,20 +408,16 @@ const DownloadButton = ({ invoice, invoiceId }) => {
                 <Text style={[styles.label, styles.arabic]}>
                   رقم التذكرة :{" "}
                 </Text>
-                <Text style={styles.value}>
-                  {invoice?.invoice?.ticket_id}
-                </Text>
+                <Text style={styles.value}>{invoice?.invoice?.ticket_id}</Text>
               </View>
               <View style={styles.infoRow}>
                 <Text style={styles.label}>Transaction ID /</Text>
                 <Text style={[styles.label, styles.arabic]}> مرجع السداد:</Text>
               </View>
-              <View style={styles.infoRow}>
-                <Text style={styles.value}>
-                  {invoice?.invoice?.transaction_id}
-                </Text>
-              </View>
             </View>
+          </View>
+          <View style={[styles.infoRow, styles.transactionId]}>
+            <Text style={styles.value}>{invoice?.invoice?.transaction_id}</Text>
           </View>
 
           {/* Table Header */}
@@ -475,8 +456,7 @@ const DownloadButton = ({ invoice, invoiceId }) => {
                 </View>
                 <View style={[styles.td, styles.colTotal]}>
                   <Text>
-                    {item.price.toFixed(2)}{" "}
-                    {invoice?.totals?.currency}
+                    {item.price.toFixed(2)} {invoice?.totals?.currency}
                   </Text>
                 </View>
               </View>
@@ -485,10 +465,9 @@ const DownloadButton = ({ invoice, invoiceId }) => {
             {/* QR + Totals */}
             <View style={styles.bottomSection}>
               <View style={styles.qrContainer}>
-                {invoice?.qr_code&&<Image
-                  src={invoice.qr_code}
-                  style={styles.qrCode}
-                />}
+                {invoice?.qr_code && (
+                  <Image src={invoice.qr_code} style={styles.qrCode} />
+                )}
               </View>
 
               <View style={styles.totals}>
@@ -571,7 +550,7 @@ const DownloadButton = ({ invoice, invoiceId }) => {
 
 export default DownloadButton;
 
-export const Preview = ({invoice={}}) => {
+export const Preview = ({ invoice = {} }) => {
   return (
     <PDFViewer width="100%" height={600}>
       <Document>
@@ -579,16 +558,11 @@ export const Preview = ({invoice={}}) => {
           {/* Header */}
           <View style={styles.header}>
             <View>
-              <Text style={styles.headerTitle}>
-                {invoice.invoice.title}
-              </Text>
+              <Text style={styles.headerTitle}>{invoice.invoice.title}</Text>
             </View>
             <View style={styles.logoContainer}>
               {/* Replace with your logo if available */}
-              <Image
-                src={invoice.company.logo}
-                style={styles.logo}
-              />
+              <Image src={invoice.company.logo} style={styles.logo} />
             </View>
           </View>
 
@@ -598,15 +572,9 @@ export const Preview = ({invoice={}}) => {
           </View>
           <View style={styles.billToSection}>
             <View>
-              <Text style={styles.text}>
-                {invoice.bill_to.name}
-              </Text>
-              <Text style={styles.text}>
-                {invoice.bill_to.phone}
-              </Text>
-              <Text style={styles.text}>
-                {invoice.bill_to.email}
-              </Text>
+              <Text style={styles.text}>{invoice.bill_to.name}</Text>
+              <Text style={styles.text}>{invoice.bill_to.phone}</Text>
+              <Text style={styles.text}>{invoice.bill_to.email}</Text>
             </View>
 
             <View style={styles.invoiceInfo}>
@@ -616,15 +584,11 @@ export const Preview = ({invoice={}}) => {
                   {" "}
                   رقم الفاتورة:{" "}
                 </Text>
-                <Text style={styles.value}>
-                  {invoice.invoice.number}
-                </Text>
+                <Text style={styles.value}>{invoice.invoice.number}</Text>
               </View>
               <View style={styles.infoRow}>
                 <Text style={styles.label}>Invoice Date /</Text>
-                <Text style={styles.value}>
-                  {invoice.invoice.date} :{" "}
-                </Text>
+                <Text style={styles.value}>{invoice.invoice.date} : </Text>
                 <Text style={[styles.label, styles.arabic]}>
                   {" "}
                   تاريخ الفاتورة
@@ -635,9 +599,7 @@ export const Preview = ({invoice={}}) => {
                 <Text style={[styles.label, styles.arabic]}>
                   رقم التذكرة :{" "}
                 </Text>
-                <Text style={styles.value}>
-                  {invoice.invoice.ticket_id}
-                </Text>
+                <Text style={styles.value}>{invoice.invoice.ticket_id}</Text>
               </View>
               <View style={styles.infoRow}>
                 <Text style={styles.label}>Transaction ID /</Text>
@@ -687,8 +649,7 @@ export const Preview = ({invoice={}}) => {
                 </View>
                 <View style={[styles.td, styles.colTotal]}>
                   <Text>
-                    {item.price.toFixed(2)}{" "}
-                    {invoice.totals.currency}
+                    {item.price.toFixed(2)} {invoice.totals.currency}
                   </Text>
                 </View>
               </View>
@@ -697,10 +658,7 @@ export const Preview = ({invoice={}}) => {
             {/* QR + Totals */}
             <View style={styles.bottomSection}>
               <View style={styles.qrContainer}>
-                <Image
-                  src={invoice.qr_code}
-                  style={styles.qrCode}
-                />
+                <Image src={invoice.qr_code} style={styles.qrCode} />
               </View>
 
               <View style={styles.totals}>
@@ -730,8 +688,7 @@ export const Preview = ({invoice={}}) => {
                     الإجمالي المستحق :
                   </Text>
                   <Text style={styles.totalValueBold}>
-                    {invoice.totals.total.toFixed(2)}{" "}
-                    {invoice.totals.currency}
+                    {invoice.totals.total.toFixed(2)} {invoice.totals.currency}
                   </Text>
                 </View>
                 <View style={styles.totalRow}>
@@ -740,8 +697,7 @@ export const Preview = ({invoice={}}) => {
                     المدفوع :
                   </Text>
                   <Text style={styles.totalValueBold}>
-                    {invoice.totals.paid.toFixed(2)}{" "}
-                    {invoice.totals.currency}
+                    {invoice.totals.paid.toFixed(2)} {invoice.totals.currency}
                   </Text>
                 </View>
               </View>

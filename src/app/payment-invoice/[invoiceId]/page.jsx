@@ -47,94 +47,6 @@ const Page = async ({ params }) => {
     (res) => res?.data || {}
   );
 
-  // const invoiceRes = {
-  //   uid: "dee8421b-c8d4-4707-b3d8-085fb0fa9b30",
-  //   invoice_id: "INV-20250911-00018",
-  //   payment_mode: "free",
-  //   payment_id: null,
-  //   transaction_id: null,
-  //   paid_status: true,
-  //   refund_status: false,
-  //   payment_receive_timestamp: "2025-09-11T09:51:15.044941",
-  //   refund_receive_timestamp: null,
-  //   name: "Sharon Sebastian",
-  //   email: "sharon@veuz.in",
-  //   phone: "8589914973",
-  //   notes: null,
-  //   booking_type: 0,
-  //   source: "microsite",
-  //   ticket_state: 0,
-  //   ticket_amount: 0.0,
-  //   tax_amount: 0.0,
-  //   sub_total: 0.0,
-  //   original_amount: 2625.0,
-  //   discount_amount: 2625.0,
-  //   total_amount: 0.0,
-  //   currency: "AED",
-  //   global_ticket_amount: 0.0,
-  //   global_tax_amount: 0.0,
-  //   global_sub_total: 0.0,
-  //   global_original_amount: 2625.0,
-  //   global_discount_amount: 2625.0,
-  //   global_currency: "AED",
-  //   billing_details: {
-  //     full_name: null,
-  //     job_title: null,
-  //     company_country: null,
-  //     company_name: null,
-  //     vat_number: null,
-  //     po_box: null,
-  //     address: null,
-  //     email: "sharon@veuz.in",
-  //     ticket_id: "12499",
-  //   },
-  //   promocode: {
-  //     id: 55,
-  //     code: "RSEEARLYD",
-  //     discountType: "0",
-  //     discountValue: 100,
-  //     active_status: true,
-  //   },
-  //   purchase_history: [
-  //     {
-  //       id: 79,
-  //       quantity: 1,
-  //       created_at: "2025-09-11T09:51:15.061214",
-  //       updated_at: "2025-09-11T09:51:15.061233",
-  //       ticket_amount: 0.0,
-  //       sub_total: 0.0,
-  //       tax_amount: 0.0,
-  //       original_amount: 2625.0,
-  //       discount_amount: 2625.0,
-  //       currency: "AED",
-  //       global_ticket_amount: 0.0,
-  //       global_sub_total: 0.0,
-  //       global_tax_amount: 0.0,
-  //       global_original_amount: 2625.0,
-  //       global_discount_amount: 2625.0,
-  //       global_currency: "AED",
-  //       ticket_details: {
-  //         id: 31,
-  //         ticket_name: "DELEGATE",
-  //         ticket_type: "0",
-  //         ticket_price: 0.0,
-  //         description: "<p><br></p>",
-  //         ticket_status: "1",
-  //         ar_ticket_name: "",
-  //         display_ticket_name: "DELEGATE",
-  //       },
-  //       old_ticket_details: null,
-  //     },
-  //   ],
-  //   card_brand: null,
-  //   cardNumber: null,
-  //   cardType: null,
-  //   is_primary_user: true,
-  //   ticket_state_display: "Unknown",
-  //   event_name: "RISE",
-  //   event_start_date: "2026-01-13",
-  //   event_end_date: "2026-01-15",
-  // };
   const invoiceData = {
     company: {
       name: EVENT_INFO.title,
@@ -145,8 +57,8 @@ const Page = async ({ params }) => {
       title: "TAX INVOICE / فاتورة ضريبية",
       number: invoiceRes?.invoice_id || "--",
       date:
-        (invoiceRes?.transaction_date &&
-          format(new Date(invoiceRes.transaction_date), "dd/MM/yyyy")) ||
+        (invoiceRes?.payment_receive_timestamp &&
+          format(new Date(invoiceRes.payment_receive_timestamp), "dd/MM/yyyy")) ||
         "--/--/----",
       ticket_id: invoiceRes?.billing_details?.ticket_id || "--",
       transaction_id: invoiceRes?.transaction_id || "#######",
@@ -162,7 +74,7 @@ const Page = async ({ params }) => {
         item?.ticket_details?.display_ticket_name ||
         item?.ticket_details?.ticket_name,
       qty: 1,
-      price: item?.ticket_details?.ticket_price,
+      price: item?.ticket_amount,
     })),
     totals: {
       subtotal: invoiceRes?.sub_total || 0,
@@ -172,7 +84,7 @@ const Page = async ({ params }) => {
       paid: invoiceRes?.ticket_amount,
       currency: invoiceRes?.currency,
     },
-    qr_code: invoiceRes?.zatca_qr,
+    qr_code: invoiceRes?.zatca_qr_image,
   };
 
   if (!invoiceData?.invoiceId) {
@@ -302,11 +214,11 @@ const Page = async ({ params }) => {
                         </span>
                         <span className="font-normal arabic">مرجع السداد:</span>
                       </div>
-                      <span className="lg:hidden">
+                      {/* <span className="lg:hidden">
                         {invoiceData?.invoice?.transaction_id}
-                      </span>
+                      </span> */}
                     </div>
-                    <div className="hidden lg:flex justify-between lg:justify-end">
+                    <div className="flex justify-between lg:justify-end">
                       <span>{invoiceData?.invoice?.transaction_id}</span>
                     </div>
                   </div>
