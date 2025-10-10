@@ -184,7 +184,9 @@ const useRegistration = ({ type, session }) => {
 
   const onSendRegister = async (item) => {
     if (!session.id) {
-      toast.error("No sessions selected, Please try again later",{ id: "register-toast" });
+      toast.error("No sessions selected, Please try again later", {
+        id: "register-toast",
+      });
     } else {
       let captchaToken;
       let recaptchaVersion;
@@ -200,7 +202,9 @@ const useRegistration = ({ type, session }) => {
           setShowV2(true);
         }
         scrollToField("recaptcha");
-        toast.error("Recaptcha verification failed. Please try again.",{ id: "register-toast" });
+        toast.error("Recaptcha verification failed. Please try again.", {
+          id: "register-toast",
+        });
         formik.setSubmitting(false);
         return;
       }
@@ -279,7 +283,7 @@ const useRegistration = ({ type, session }) => {
             if (
               errorList.some(
                 (item) =>
-                  item.toLowerCase() === res?.data?.message.toLowerCase()
+                  item.toLowerCase() === res?.data?.message?.toLowerCase()
               )
             ) {
               recaptchaRef?.current?.reset();
@@ -293,8 +297,10 @@ const useRegistration = ({ type, session }) => {
               );
               formik.setSubmitting(false);
               return;
-            } else if (res?.data?.message) {
-              toast.error(res.data?.message, { id: "register-toast" });
+            } else if (res?.data?.message || res?.message) {
+              toast.error(res?.data?.message || res?.message, {
+                id: "register-toast",
+              });
               formik.setSubmitting(false);
             }
           }
@@ -303,6 +309,7 @@ const useRegistration = ({ type, session }) => {
         })
         .catch((error) => {
           console.log(error);
+          toast.error("Something went wrong")
           formik.setSubmitting(false);
         });
     }

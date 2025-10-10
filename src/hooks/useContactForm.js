@@ -158,6 +158,7 @@ const useContactForm = () => {
 
     RegistrationServices.submitContactForm(formData)
       .then((res) => {
+        console.log("asdasdasd", res);
         if (SUCCESS_CODES.includes(res.status) && res.data) {
           setShowSuccess(true);
           formik.resetForm();
@@ -166,7 +167,7 @@ const useContactForm = () => {
         } else {
           if (
             errorList.some(
-              (item) => item.toLowerCase() === res?.data?.message.toLowerCase()
+              (item) => item.toLowerCase() === res?.data?.message?.toLowerCase()
             )
           ) {
             recaptchaRef?.current?.reset();
@@ -180,8 +181,10 @@ const useContactForm = () => {
             );
             formik.setSubmitting(false);
             return;
-          } else if (res?.data?.message) {
-            toast.error(res.data?.message, { id: "contact-toast" });
+          } else if (res?.data?.message || res?.message) {
+            toast.error(res.data?.message || res?.message, {
+              id: "contact-toast",
+            });
             formik.setSubmitting(false);
           }
         }
@@ -190,6 +193,7 @@ const useContactForm = () => {
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Something went wrong");
         formik.setSubmitting(false);
         recaptchaRef.current?.reset();
         setRecaptchaToken(null);
