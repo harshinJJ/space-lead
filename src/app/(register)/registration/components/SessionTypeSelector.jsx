@@ -28,7 +28,11 @@ const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
     {/* <p className="text-secondary text-2xl text-center">
       Which session you wish to attend?
     </p> */}
-    <div className="gap-5 grid grid-cols-2 w-full">
+    <div className={`grid w-full gap-5 ${
+        sessions.length === 1
+          ? "grid-cols-1 justify-items-center [&>div]:lg:w-1/2 [&>div]:md:w-2/3  [&>div]:w-full" // 👈 center single card
+          : "grid-cols-2"
+      }`}>
       {sessions.map((session, i) => (
         <SessionCard
           key={i}

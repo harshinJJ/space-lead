@@ -8,235 +8,175 @@ import {
   Text,
   View,
   StyleSheet,
+  Image,
+  Font,
+  PDFViewer,
 } from "@react-pdf/renderer";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 
+Font.register({
+  family: "Noto Sans Arabic",
+  src: "/fonts/NotoSansArabic.ttf", // local .ttf font
+  fontWeight: "normal",
+});
+
+Font.register({
+  family: "Noto Sans Arabic",
+  src: "/fonts/NotoSansArabic-Bold.ttf", // local .ttf font
+  fontWeight: "normal",
+});
+
+
+
 const styles = StyleSheet.create({
   page: {
-    padding: 40,
-    fontSize: 11,
-    fontFamily: "Helvetica",
-    backgroundColor: "#ffffff",
+    // fontFamily: "Helvetica",
+    fontFamily: "Noto Sans Arabic", // ✅ Use registered Arabic font
+    fontSize: 10,
+    backgroundColor: "#fff",
+    paddingHorizontal: 50,
+    paddingVertical: 15,
   },
   header: {
-    marginBottom: 30,
-    paddingBottom: 20,
-    borderBottomWidth: 3,
-    borderBottomColor: "#7f529f",
-  },
-  invoiceTitle: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#7f529f",
-    marginBottom: 5,
-  },
-  invoiceNumber: {
-    fontSize: 11,
-    color: "#666666",
-  },
-  statusBadge: {
-    backgroundColor: "#5ac0be",
-    color: "#ffffff",
-    padding: "6 12",
-    borderRadius: 12,
-    fontSize: 9,
-    fontWeight: "bold",
-    alignSelf: "flex-start",
-    marginTop: 10,
-  },
-  infoSection: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 25,
+    alignItems: "center",
+    backgroundColor: "#023c3b",
+    color: "#fff",
+    paddingVertical: 15,
+    paddingHorizontal: 15,
   },
-  infoBlock: {
-    width: "48%",
-  },
-  infoTitle: {
-    fontSize: 9,
-    color: "#7f529f",
+  headerTitle: {
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 8,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
+    color: "#fff",
+    // fontFamily: "Noto Sans Arabic",
   },
-  companyName: {
-    fontSize: 13,
-    fontWeight: "bold",
-    color: "#131f54",
-    marginBottom: 4,
-  },
-  infoText: {
-    fontSize: 10,
-    color: "#4a5568",
-    marginBottom: 2,
-  },
-  emailText: {
-    fontSize: 10,
-    color: "#5ac0be",
-    marginBottom: 2,
-    marginTop: 3,
-  },
-  detailsBox: {
-    backgroundColor: "#f8f5fb",
-    padding: 15,
-    borderRadius: 8,
-    marginBottom: 25,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  detailItem: {
-    width: "24%",
-  },
-  detailLabel: {
-    fontSize: 8,
-    color: "#7f529f",
-    fontWeight: "bold",
-    marginBottom: 4,
-    textTransform: "uppercase",
-  },
-  detailValue: {
-    fontSize: 11,
-    color: "#131f54",
-    fontWeight: "bold",
-  },
-  eventSection: {
-    backgroundColor: "#f0fffe",
-    padding: 20,
-    borderRadius: 8,
-    marginBottom: 25,
-    borderWidth: 2,
-    borderColor: "#5ac0be",
-  },
-  eventTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#131f54",
-    marginBottom: 10,
-  },
-  eventDetail: {
-    flexDirection: "row",
-    marginBottom: 6,
-  },
-  eventLabel: {
-    fontSize: 10,
-    color: "#7f529f",
-    fontWeight: "bold",
-    width: 80,
-  },
-  eventValue: {
-    fontSize: 10,
-    color: "#131f54",
-    flex: 1,
-  },
-  table: {
-    marginBottom: 20,
-  },
-  tableHeader: {
-    flexDirection: "row",
-    borderBottomWidth: 2,
-    borderBottomColor: "#7f529f",
-    paddingBottom: 8,
-    marginBottom: 8,
-  },
-  tableRow: {
-    flexDirection: "row",
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e2e8f0",
-  },
-  colDescription: {
-    width: "60%",
-    paddingRight: 10,
-  },
-  colQty: {
-    width: "15%",
-    textAlign: "center",
-  },
-  colAmount: {
-    width: "25%",
+  logoContainer: {
     textAlign: "right",
   },
-  tableHeaderText: {
-    fontSize: 9,
+  subContainer: {
+    paddingHorizontal: 15,
+  },
+  logo: {
+    textAlign: "right",
+    width: 125,
+    height: "auto",
+  },
+  logoText: {
+    fontSize: 18,
     fontWeight: "bold",
-    color: "#7f529f",
-    textTransform: "uppercase",
   },
-  tableText: {
+  logoSub: {
     fontSize: 10,
-    color: "#131f54",
   },
-  tableTextGray: {
-    fontSize: 10,
-    color: "#4a5568",
+  billToSection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 25,
+    marginBottom: 10,
+    paddingHorizontal: 15,
   },
-  totalsSection: {
-    marginTop: 20,
-    alignSelf: "flex-end",
-    width: "45%",
+  billToLabelContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent:"center",
+    marginBottom: 0,
+    width:"100%",
+    marginTop: 30,
+  },
+  billToLabel: {
+    fontWeight: "bold",
+    fontSize: 12,
+  },
+  text: {
+    fontSize: 12,
+  },
+  invoiceInfo: {
+    width: "50%",
+  },
+  infoRow: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    fontSize: 12,
+  },
+  label: {
+    fontWeight: "bold",
+  },
+  value: {},
+  tableHeader: {
+    flexDirection: "row",
+    backgroundColor: "#023c3b",
+    color: "#fff",
+    paddingVertical: 6,
+    paddingHorizontal: 5,
+    marginTop: 15,
+  },
+  th: {
+    fontWeight: "bold",
+    fontSize: 12,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  colSr: { width: "8%", textAlign: "center" },
+  colDescription: { width: "52%", textAlign: "left" },
+  colQty: { width: "15%", textAlign: "left" },
+  rowQty: { width: "15%", textAlign: "center" },
+  colTotal: { width: "25%", textAlign: "left" },
+  tableRow: {
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+    paddingVertical: 6,
+    paddingHorizontal: 5,
+  },
+  td: {
+    fontSize: 12,
+  },
+  bottomSection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 15,
+    marginLeft: "10%",
+  },
+  qrContainer: {
+    width: "20%",
+  },
+  qrCode: {
+    width: 70,
+    height: 70,
+  },
+  totals: {
+    width: "75%",
   },
   totalRow: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 8,
+    justifyContent: "flex-end",
   },
   totalLabel: {
-    fontSize: 10,
-    color: "#4a5568",
+    fontWeight: "bold",
+    fontSize: 12,
+    color: "#000",
+    textAlign: "right",
   },
   totalValue: {
-    fontSize: 10,
-    color: "#131f54",
+    fontSize: 9,
+  },
+  totalValueBold: {
+    fontSize: 12,
     fontWeight: "bold",
+    width: "30%",
+    textAlign: "right",
   },
-  grandTotalRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingTop: 10,
-    borderTopWidth: 2,
-    borderTopColor: "#7f529f",
-    marginTop: 5,
-  },
-  grandTotalLabel: {
-    fontSize: 13,
-    fontWeight: "bold",
-    color: "#131f54",
-  },
-  grandTotalValue: {
-    fontSize: 13,
-    fontWeight: "bold",
-    color: "#5ac0be",
-  },
-  notesBox: {
-    backgroundColor: "#f8f5fb",
-    padding: 15,
-    borderRadius: 8,
-    marginTop: 25,
-    borderWidth: 1,
-    borderColor: "#e9d5f5",
-  },
-  notesTitle: {
+  totalValueBoldGreen: {
     fontSize: 10,
     fontWeight: "bold",
-    color: "#131f54",
-    marginBottom: 6,
+    color: "#023c3b",
   },
-  notesText: {
-    fontSize: 9,
-    color: "#4a5568",
-    lineHeight: 1.5,
-  },
-  footer: {
-    marginTop: 30,
-    paddingTop: 15,
-    borderTopWidth: 1,
-    borderTopColor: "#e2e8f0",
-    textAlign: "center",
-  },
-  footerText: {
-    fontSize: 9,
-    color: "#718096",
+  arabic: {
+    fontFamily: "Noto Sans Arabic",
+    fontWeight: "normal",
   },
 });
 const DownloadIcon = ({ size = 20, className = "" }) => (
@@ -260,33 +200,161 @@ const DownloadIcon = ({ size = 20, className = "" }) => (
 const DownloadButton = ({ invoice, invoiceId }) => {
   const [loading, setLoading] = useState(false);
 
-  const subtotal = invoice.tickets.reduce((sum, item) => sum + item.amount, 0);
-  const feesTotal = invoice.fees.reduce((sum, fee) => sum + fee.amount, 0);
-  const tax = (subtotal + feesTotal) * invoice.taxRate;
-  const total = subtotal + feesTotal + tax;
 
   const handleDownload = async () => {
-    if (!invoice?.id && !invoiceId) return;
+    if (!invoice?.invoice_id && !invoiceId) return;
     setLoading(true);
 
+    // old doc
     // const MyDoc = (
     //   <Document>
     //     <PDFPage size="A4" style={styles.page}>
-    //       <Text style={styles.title}>Invoice #{invoice.id}</Text>
-    //       <View style={styles.section}>
-    //         <Text>Date: {invoice.date}</Text>
-    //         <Text>Customer: {invoice.customer}</Text>
+    //       {/* Header */}
+    //       <View style={styles.header}>
+    //         <Text style={styles.invoiceTitle}>TICKET INVOICE</Text>
+    //         <Text style={styles.invoiceNumber}>#{invoice.id}</Text>
+    //         {invoice.status === "paid" && (
+    //           <View style={styles.statusBadge}>
+    //             <Text>✓ PAID</Text>
+    //           </View>
+    //         )}
     //       </View>
-    //       <View style={styles.section}>
-    //         {invoice.items?.map((item, idx) => (
+
+    //       {/* Event Information */}
+    //       <View style={styles.eventSection}>
+    //         <Text style={styles.eventTitle}>{invoice.event.name}</Text>
+    //         <View style={styles.eventDetail}>
+    //           <Text style={styles.eventLabel}>Date:</Text>
+    //           <Text style={styles.eventValue}>{invoice.event.date}</Text>
+    //         </View>
+    //         <View style={styles.eventDetail}>
+    //           <Text style={styles.eventLabel}>Time:</Text>
+    //           <Text style={styles.eventValue}>{invoice.event.time}</Text>
+    //         </View>
+    //         <View style={styles.eventDetail}>
+    //           <Text style={styles.eventLabel}>Venue:</Text>
+    //           <Text style={styles.eventValue}>{invoice.event.venue}</Text>
+    //         </View>
+    //         <View style={styles.eventDetail}>
+    //           <Text style={styles.eventLabel}>Location:</Text>
+    //           <Text style={styles.eventValue}>{invoice.event.address}</Text>
+    //         </View>
+    //       </View>
+
+    //       {/* Customer & Organizer Info */}
+    //       <View style={styles.infoSection}>
+    //         <View style={styles.infoBlock}>
+    //           <Text style={styles.infoTitle}>Customer Details</Text>
+    //           <Text style={styles.companyName}>{invoice.customer.name}</Text>
+    //           <Text style={styles.emailText}>{invoice.customer.email}</Text>
+    //           <Text style={styles.infoText}>{invoice.customer.phone}</Text>
+    //         </View>
+
+    //         <View style={styles.infoBlock}>
+    //           <Text style={styles.infoTitle}>Organizer</Text>
+    //           <Text style={styles.companyName}>{invoice.organizer.name}</Text>
+    //           <Text style={styles.emailText}>{invoice.organizer.email}</Text>
+    //           <Text style={styles.infoText}>{invoice.organizer.phone}</Text>
+    //         </View>
+    //       </View>
+
+    //       {/* Invoice Details */}
+    //       <View style={styles.detailsBox}>
+    //         <View style={styles.detailItem}>
+    //           <Text style={styles.detailLabel}>Invoice Date</Text>
+    //           <Text style={styles.detailValue}>{invoice.date}</Text>
+    //         </View>
+    //         <View style={styles.detailItem}>
+    //           <Text style={styles.detailLabel}>Invoice Number</Text>
+    //           <Text style={styles.detailValue}>{invoice.id}</Text>
+    //         </View>
+    //         <View style={styles.detailItem}>
+    //           <Text style={styles.detailLabel}>Payment Status</Text>
+    //           <Text style={[styles.detailValue, { color: "#5ac0be" }]}>
+    //             PAID
+    //           </Text>
+    //         </View>
+    //         <View style={styles.detailItem}>
+    //           <Text style={styles.detailLabel}>Total Amount</Text>
+    //           <Text style={[styles.detailValue, { color: "#5ac0be" }]}>
+    //             ${total.toFixed(2)}
+    //           </Text>
+    //         </View>
+    //       </View>
+
+    //       {/* Tickets Table */}
+    //       <View style={styles.table}>
+    //         <View style={styles.tableHeader}>
+    //           <Text style={[styles.tableHeaderText, styles.colDescription]}>
+    //             Ticket Type
+    //           </Text>
+    //           <Text style={[styles.tableHeaderText, styles.colQty]}>Qty</Text>
+    //           <Text style={[styles.tableHeaderText, styles.colAmount]}>
+    //             Amount
+    //           </Text>
+    //         </View>
+
+    //         {invoice.tickets.map((ticket, idx) => (
     //           <View key={idx} style={styles.tableRow}>
-    //             <Text>{item.name}</Text>
-    //             <Text>${item.price}</Text>
+    //             <Text style={[styles.tableText, styles.colDescription]}>
+    //               {ticket.description}
+    //             </Text>
+    //             <Text style={[styles.tableTextGray, styles.colQty]}>
+    //               {ticket.quantity}
+    //             </Text>
+    //             <Text style={[styles.tableText, styles.colAmount]}>
+    //               ${ticket.amount.toFixed(2)}
+    //             </Text>
+    //           </View>
+    //         ))}
+
+    //         {invoice.fees.map((fee, idx) => (
+    //           <View key={`fee-${idx}`} style={styles.tableRow}>
+    //             <Text style={[styles.tableTextGray, styles.colDescription]}>
+    //               {fee.description}
+    //             </Text>
+    //             <Text style={[styles.tableTextGray, styles.colQty]}>-</Text>
+    //             <Text style={[styles.tableTextGray, styles.colAmount]}>
+    //               ${fee.amount.toFixed(2)}
+    //             </Text>
     //           </View>
     //         ))}
     //       </View>
-    //       <View style={styles.section}>
-    //         <Text>Total: ${invoice.total}</Text>
+
+    //       {/* Totals */}
+    //       <View style={styles.totalsSection}>
+    //         <View style={styles.totalRow}>
+    //           <Text style={styles.totalLabel}>Subtotal</Text>
+    //           <Text style={styles.totalValue}>${subtotal.toFixed(2)}</Text>
+    //         </View>
+    //         <View style={styles.totalRow}>
+    //           <Text style={styles.totalLabel}>Fees</Text>
+    //           <Text style={styles.totalValue}>${feesTotal.toFixed(2)}</Text>
+    //         </View>
+    //         <View style={styles.totalRow}>
+    //           <Text style={styles.totalLabel}>
+    //             Tax ({(invoice.taxRate * 100).toFixed(0)}%)
+    //           </Text>
+    //           <Text style={styles.totalValue}>${tax.toFixed(2)}</Text>
+    //         </View>
+    //         <View style={styles.grandTotalRow}>
+    //           <Text style={styles.grandTotalLabel}>Total Paid</Text>
+    //           <Text style={styles.grandTotalValue}>${total.toFixed(2)}</Text>
+    //         </View>
+    //       </View>
+
+    //       {/* Notes */}
+    //       <View style={styles.notesBox}>
+    //         <Text style={styles.notesTitle}>Important Information</Text>
+    //         <Text style={styles.notesText}>{invoice.notes}</Text>
+    //       </View>
+
+    //       {/* Footer */}
+    //       <View style={styles.footer}>
+    //         <Text style={styles.footerText}>
+    //           Thank you for your purchase! For support, contact{" "}
+    //           {invoice.organizer.email}
+    //         </Text>
     //       </View>
     //     </PDFPage>
     //   </Document>
@@ -296,151 +364,176 @@ const DownloadButton = ({ invoice, invoiceId }) => {
       <Document>
         <PDFPage size="A4" style={styles.page}>
           {/* Header */}
-          <View style={styles.header}>
-            <Text style={styles.invoiceTitle}>TICKET INVOICE</Text>
-            <Text style={styles.invoiceNumber}>#{invoice.id}</Text>
-            {invoice.status === "paid" && (
-              <View style={styles.statusBadge}>
-                <Text>✓ PAID</Text>
+          <View style={styles.header}>  
+            <View>
+              <Text style={styles.headerTitle}>
+                {invoice?.invoice?.title}
+              </Text>
+            </View>
+            <View style={styles.logoContainer}>
+              {/* Replace with your logo if available */}
+              <Image
+                src={invoice?.company?.logo}
+                style={styles.logo}
+              />
+            </View>
+          </View>
+
+          {/* Bill To Section */}
+          <View style={styles.billToLabelContainer}>
+            <Text style={styles.billToLabel}>Bill To /</Text>
+            <Text style={[styles.billToLabel,styles.arabic]}>فاتورة إلى</Text>
+          </View>
+          <View style={styles.billToSection}>
+            <View>
+              <Text style={styles.text}>
+                {invoice?.bill_to?.name}
+              </Text>
+              <Text style={styles.text}>
+                {invoice?.bill_to?.phone}
+              </Text>
+              <Text style={styles.text}>
+                {invoice?.bill_to?.email}
+              </Text>
+            </View>
+
+            <View style={styles.invoiceInfo}>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Invoice# /</Text>
+                <Text style={[styles.label, styles.arabic]}>
+                  {" "}
+                  رقم الفاتورة:{" "}
+                </Text>
+                <Text style={styles.value}>
+                  {invoice?.invoice?.number}
+                </Text>
               </View>
-            )}
-          </View>
-
-          {/* Event Information */}
-          <View style={styles.eventSection}>
-            <Text style={styles.eventTitle}>{invoice.event.name}</Text>
-            <View style={styles.eventDetail}>
-              <Text style={styles.eventLabel}>Date:</Text>
-              <Text style={styles.eventValue}>{invoice.event.date}</Text>
-            </View>
-            <View style={styles.eventDetail}>
-              <Text style={styles.eventLabel}>Time:</Text>
-              <Text style={styles.eventValue}>{invoice.event.time}</Text>
-            </View>
-            <View style={styles.eventDetail}>
-              <Text style={styles.eventLabel}>Venue:</Text>
-              <Text style={styles.eventValue}>{invoice.event.venue}</Text>
-            </View>
-            <View style={styles.eventDetail}>
-              <Text style={styles.eventLabel}>Location:</Text>
-              <Text style={styles.eventValue}>{invoice.event.address}</Text>
-            </View>
-          </View>
-
-          {/* Customer & Organizer Info */}
-          <View style={styles.infoSection}>
-            <View style={styles.infoBlock}>
-              <Text style={styles.infoTitle}>Customer Details</Text>
-              <Text style={styles.companyName}>{invoice.customer.name}</Text>
-              <Text style={styles.emailText}>{invoice.customer.email}</Text>
-              <Text style={styles.infoText}>{invoice.customer.phone}</Text>
-            </View>
-
-            <View style={styles.infoBlock}>
-              <Text style={styles.infoTitle}>Organizer</Text>
-              <Text style={styles.companyName}>{invoice.organizer.name}</Text>
-              <Text style={styles.emailText}>{invoice.organizer.email}</Text>
-              <Text style={styles.infoText}>{invoice.organizer.phone}</Text>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Invoice Date /</Text>
+                <Text style={styles.value}>
+                  {invoice?.invoice?.date} :{" "}
+                </Text>
+                <Text style={[styles.label, styles.arabic]}>
+                  {" "}
+                  تاريخ الفاتورة
+                </Text>
+              </View>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Ticket ID /</Text>
+                <Text style={[styles.label, styles.arabic]}>
+                  رقم التذكرة :{" "}
+                </Text>
+                <Text style={styles.value}>
+                  {invoice?.invoice?.ticket_id}
+                </Text>
+              </View>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Transaction ID /</Text>
+                <Text style={[styles.label, styles.arabic]}> مرجع السداد:</Text>
+              </View>
+              <View style={styles.infoRow}>
+                <Text style={styles.value}>
+                  {invoice?.invoice?.transaction_id}
+                </Text>
+              </View>
             </View>
           </View>
 
-          {/* Invoice Details */}
-          <View style={styles.detailsBox}>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Invoice Date</Text>
-              <Text style={styles.detailValue}>{invoice.date}</Text>
-            </View>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Invoice Number</Text>
-              <Text style={styles.detailValue}>{invoice.id}</Text>
-            </View>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Payment Status</Text>
-              <Text style={[styles.detailValue, { color: "#5ac0be" }]}>
-                PAID
-              </Text>
-            </View>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Total Amount</Text>
-              <Text style={[styles.detailValue, { color: "#5ac0be" }]}>
-                ${total.toFixed(2)}
-              </Text>
-            </View>
-          </View>
-
-          {/* Tickets Table */}
-          <View style={styles.table}>
+          {/* Table Header */}
+          <View style={styles.subContainer}>
             <View style={styles.tableHeader}>
-              <Text style={[styles.tableHeaderText, styles.colDescription]}>
-                Ticket Type
-              </Text>
-              <Text style={[styles.tableHeaderText, styles.colQty]}>Qty</Text>
-              <Text style={[styles.tableHeaderText, styles.colAmount]}>
-                Amount
-              </Text>
+              <View style={[styles.th, styles.colSr]}>
+                <Text style={styles.arabic}>رﻗﻢ</Text>
+                <Text>Sr</Text>
+                <Text>#</Text>
+              </View>
+              <View style={[styles.th, styles.colDescription]}>
+                <Text style={styles.arabic}>الوصف</Text>
+                <Text>Description</Text>
+              </View>
+              <View style={[styles.th, styles.colQty]}>
+                <Text style={styles.arabic}>الكمية</Text>
+                <Text>Qty</Text>
+              </View>
+              <View style={[styles.th, styles.colTotal]}>
+                <Text style={styles.arabic}>السعر الإجمالي</Text>
+                <Text>Total Price</Text>
+              </View>
             </View>
 
-            {invoice.tickets.map((ticket, idx) => (
-              <View key={idx} style={styles.tableRow}>
-                <Text style={[styles.tableText, styles.colDescription]}>
-                  {ticket.description}
-                </Text>
-                <Text style={[styles.tableTextGray, styles.colQty]}>
-                  {ticket.quantity}
-                </Text>
-                <Text style={[styles.tableText, styles.colAmount]}>
-                  ${ticket.amount.toFixed(2)}
-                </Text>
+            {/* Table Rows */}
+            {invoice?.items?.map((item) => (
+              <View style={styles.tableRow} key={item.id}>
+                <View style={[styles.td, styles.colSr]}>
+                  <Text>{item.id}</Text>
+                </View>
+                <View style={[styles.td, styles.colDescription]}>
+                  <Text>{item.description}</Text>
+                </View>
+                <View style={[styles.td, styles.rowQty]}>
+                  <Text>{item.qty}</Text>
+                </View>
+                <View style={[styles.td, styles.colTotal]}>
+                  <Text>
+                    {item.price.toFixed(2)}{" "}
+                    {invoice?.totals?.currency}
+                  </Text>
+                </View>
               </View>
             ))}
 
-            {invoice.fees.map((fee, idx) => (
-              <View key={`fee-${idx}`} style={styles.tableRow}>
-                <Text style={[styles.tableTextGray, styles.colDescription]}>
-                  {fee.description}
-                </Text>
-                <Text style={[styles.tableTextGray, styles.colQty]}>-</Text>
-                <Text style={[styles.tableTextGray, styles.colAmount]}>
-                  ${fee.amount.toFixed(2)}
-                </Text>
+            {/* QR + Totals */}
+            <View style={styles.bottomSection}>
+              <View style={styles.qrContainer}>
+                {invoice?.qr_code&&<Image
+                  src={invoice.qr_code}
+                  style={styles.qrCode}
+                />}
               </View>
-            ))}
-          </View>
 
-          {/* Totals */}
-          <View style={styles.totalsSection}>
-            <View style={styles.totalRow}>
-              <Text style={styles.totalLabel}>Subtotal</Text>
-              <Text style={styles.totalValue}>${subtotal.toFixed(2)}</Text>
+              <View style={styles.totals}>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>Subtotal /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    الإجمالي قبل الضريبة :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice?.totals?.subtotal?.toFixed(2)}{" "}
+                    {invoice?.totals?.currency}
+                  </Text>
+                </View>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>15% VAT Amount /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    ضريبة القيمة المضافة :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice?.totals?.vat_amount?.toFixed(2)}{" "}
+                    {invoice?.totals?.currency}
+                  </Text>
+                </View>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>Total Payable /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    الإجمالي المستحق :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice?.totals?.total?.toFixed(2)}{" "}
+                    {invoice?.totals?.currency}
+                  </Text>
+                </View>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>Paid /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    المدفوع :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice?.totals?.paid?.toFixed(2)}{" "}
+                    {invoice?.totals?.currency}
+                  </Text>
+                </View>
+              </View>
             </View>
-            <View style={styles.totalRow}>
-              <Text style={styles.totalLabel}>Fees</Text>
-              <Text style={styles.totalValue}>${feesTotal.toFixed(2)}</Text>
-            </View>
-            <View style={styles.totalRow}>
-              <Text style={styles.totalLabel}>
-                Tax ({(invoice.taxRate * 100).toFixed(0)}%)
-              </Text>
-              <Text style={styles.totalValue}>${tax.toFixed(2)}</Text>
-            </View>
-            <View style={styles.grandTotalRow}>
-              <Text style={styles.grandTotalLabel}>Total Paid</Text>
-              <Text style={styles.grandTotalValue}>${total.toFixed(2)}</Text>
-            </View>
-          </View>
-
-          {/* Notes */}
-          <View style={styles.notesBox}>
-            <Text style={styles.notesTitle}>Important Information</Text>
-            <Text style={styles.notesText}>{invoice.notes}</Text>
-          </View>
-
-          {/* Footer */}
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>
-              Thank you for your purchase! For support, contact{" "}
-              {invoice.organizer.email}
-            </Text>
           </View>
         </PDFPage>
       </Document>
@@ -449,7 +542,7 @@ const DownloadButton = ({ invoice, invoiceId }) => {
     const blob = await pdf(MyDoc).toBlob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `invoice_${invoice.id}.pdf`;
+    link.download = `Spacelead_25_invoice_${invoice.id}.pdf`;
     link.click();
 
     setLoading(false);
@@ -462,13 +555,13 @@ const DownloadButton = ({ invoice, invoiceId }) => {
       className={`flex items-center gap-2 px-6 py-3 text-white rounded-lg transition-all shadow-md hover:shadow-lg ${
         loading ? "bg-gray-400 cursor-not-allowed" : ""
       }`}
-    //   style={
-    //     !loading
-    //       ? {
-    //           background: "linear-gradient(135deg, #7f529f 0%, #5ac0be 100%)",
-    //         }
-    //       : {}
-    //   }
+      //   style={
+      //     !loading
+      //       ? {
+      //           background: "linear-gradient(135deg, #7f529f 0%, #5ac0be 100%)",
+      //         }
+      //       : {}
+      //   }
     >
       <DownloadIcon size={18} />
       <span>{loading ? "Preparing your PDF..." : "Download Invoice"}</span>
@@ -477,3 +570,185 @@ const DownloadButton = ({ invoice, invoiceId }) => {
 };
 
 export default DownloadButton;
+
+export const Preview = ({invoice={}}) => {
+  return (
+    <PDFViewer width="100%" height={600}>
+      <Document>
+        <PDFPage size="A4" style={styles.page}>
+          {/* Header */}
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.headerTitle}>
+                {invoice.invoice.title}
+              </Text>
+            </View>
+            <View style={styles.logoContainer}>
+              {/* Replace with your logo if available */}
+              <Image
+                src={invoice.company.logo}
+                style={styles.logo}
+              />
+            </View>
+          </View>
+
+          {/* Bill To Section */}
+          <View style={styles.billToLabelContainer}>
+            <Text style={styles.billToLabel}>Bill To /فاتورة إلى</Text>
+          </View>
+          <View style={styles.billToSection}>
+            <View>
+              <Text style={styles.text}>
+                {invoice.bill_to.name}
+              </Text>
+              <Text style={styles.text}>
+                {invoice.bill_to.phone}
+              </Text>
+              <Text style={styles.text}>
+                {invoice.bill_to.email}
+              </Text>
+            </View>
+
+            <View style={styles.invoiceInfo}>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Invoice# /</Text>
+                <Text style={[styles.label, styles.arabic]}>
+                  {" "}
+                  رقم الفاتورة:{" "}
+                </Text>
+                <Text style={styles.value}>
+                  {invoice.invoice.number}
+                </Text>
+              </View>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Invoice Date /</Text>
+                <Text style={styles.value}>
+                  {invoice.invoice.date} :{" "}
+                </Text>
+                <Text style={[styles.label, styles.arabic]}>
+                  {" "}
+                  تاريخ الفاتورة
+                </Text>
+              </View>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Ticket ID /</Text>
+                <Text style={[styles.label, styles.arabic]}>
+                  رقم التذكرة :{" "}
+                </Text>
+                <Text style={styles.value}>
+                  {invoice.invoice.ticket_id}
+                </Text>
+              </View>
+              <View style={styles.infoRow}>
+                <Text style={styles.label}>Transaction ID /</Text>
+                <Text style={[styles.label, styles.arabic]}> مرجع السداد:</Text>
+              </View>
+              <View style={styles.infoRow}>
+                <Text style={styles.value}>
+                  {invoice.invoice.transaction_id}
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Table Header */}
+          <View style={styles.subContainer}>
+            <View style={styles.tableHeader}>
+              <View style={[styles.th, styles.colSr]}>
+                <Text style={styles.arabic}>رﻗﻢ</Text>
+                <Text>Sr</Text>
+                <Text>#</Text>
+              </View>
+              <View style={[styles.th, styles.colDescription]}>
+                <Text style={styles.arabic}>الوصف</Text>
+                <Text>Description</Text>
+              </View>
+              <View style={[styles.th, styles.colQty]}>
+                <Text style={styles.arabic}>الكمية</Text>
+                <Text>Qty</Text>
+              </View>
+              <View style={[styles.th, styles.colTotal]}>
+                <Text style={styles.arabic}>السعر الإجمالي</Text>
+                <Text>Total Price</Text>
+              </View>
+            </View>
+
+            {/* Table Rows */}
+            {invoice.items.map((item) => (
+              <View style={styles.tableRow} key={item.id}>
+                <View style={[styles.td, styles.colSr]}>
+                  <Text>{item.id}</Text>
+                </View>
+                <View style={[styles.td, styles.colDescription]}>
+                  <Text>{item.description}</Text>
+                </View>
+                <View style={[styles.td, styles.rowQty]}>
+                  <Text>{item.qty}</Text>
+                </View>
+                <View style={[styles.td, styles.colTotal]}>
+                  <Text>
+                    {item.price.toFixed(2)}{" "}
+                    {invoice.totals.currency}
+                  </Text>
+                </View>
+              </View>
+            ))}
+
+            {/* QR + Totals */}
+            <View style={styles.bottomSection}>
+              <View style={styles.qrContainer}>
+                <Image
+                  src={invoice.qr_code}
+                  style={styles.qrCode}
+                />
+              </View>
+
+              <View style={styles.totals}>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>Subtotal /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    الإجمالي قبل الضريبة :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice.totals.subtotal.toFixed(2)}{" "}
+                    {invoice.totals.currency}
+                  </Text>
+                </View>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>15% VAT Amount /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    ضريبة القيمة المضافة :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice.totals.vat_amount.toFixed(2)}{" "}
+                    {invoice.totals.currency}
+                  </Text>
+                </View>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>Total Payable /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    الإجمالي المستحق :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice.totals.total.toFixed(2)}{" "}
+                    {invoice.totals.currency}
+                  </Text>
+                </View>
+                <View style={styles.totalRow}>
+                  <Text style={styles.totalLabel}>Paid /</Text>
+                  <Text style={[styles.totalLabel, styles.arabic]}>
+                    المدفوع :
+                  </Text>
+                  <Text style={styles.totalValueBold}>
+                    {invoice.totals.paid.toFixed(2)}{" "}
+                    {invoice.totals.currency}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </PDFPage>
+      </Document>
+    </PDFViewer>
+  );
+};

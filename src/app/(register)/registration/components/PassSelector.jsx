@@ -67,13 +67,13 @@ const BgOverlay = () => {
   return (
     <div className="absolute absolute-center w-full h-full flex items-start">
       <div className="w-full absolute">
-        <video
+        {/* <video
           autoPlay
           loop
           muted
           className="object-contain w-full h-auto max-h-[100%]"
           src="/images/backgrounds/register_bg.webm"
-        />
+        /> */}
         {/* <div className="absolute absolute-center !-bottom-1 w-full h-full bg-gradient-to-b from-indigo/0 to-indigo"></div> */}
       </div>
     </div>

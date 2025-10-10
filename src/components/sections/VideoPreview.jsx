@@ -17,13 +17,13 @@ const VideoPreview = ({ videoUrl, embedUrl, thumbnail }) => {
 
   return (
     <section className="bg-transparent relative bg-cover bg-center py-10 lg:py-34 px-5 sm:px-0">
-      <video
+      {/* <video
         autoPlay
         loop
         muted
         className="absolute  object-cover absolute-center w-full h-full"
         src="/images/backgrounds/whocanattend_bg.webm"
-      />
+      /> */}
 
       <div className="absolute inset-0 bg-black/20 w-full h-full"></div>
 

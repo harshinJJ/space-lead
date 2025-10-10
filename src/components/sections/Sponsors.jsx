@@ -74,7 +74,7 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
             width={775}
             height={387}
           /> */}
-          <video
+          {/* <video
             autoPlay
             loop
             muted
@@ -83,7 +83,7 @@ export const SponsorContent = ({ imageAlign = "right" }) => {
             className="w-full h-full lg:absolute rounded-[2.5rem] object-cover"
             width={775}
             height={387}
-          />
+          /> */}
         </div>
       </RowStagger>
     </section>
@@ -286,14 +286,14 @@ export const SponsorContentRight = () => {
       <RowStagger className="container-fluid mx-auto flex flex-col xl:flex-row items-start gap-8 md:gap-20">
         {/* Image */}
         <div className="w-full xl:w-1/2 xl:max-w-[44rem] flex justify-center">
-          <video
+          {/* <video
             autoPlay
             loop
             muted
             src="/images/sponsor_content.webm" // replace with your actual image path
             alt="Astronaut looking at space"
             className="w-full  rounded-2xl object-cover"
-          />
+          /> */}
         </div>
 
         {/* Content */}

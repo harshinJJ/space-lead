@@ -1,5 +1,5 @@
 const SERVICE = {
-  INVOICE:"/microsite/v2/invoice",
+  INVOICE:"/microsite/v2/invoice-amount-history",
   CONTENT: {
     AGENDA: "/microsite/v2/event-agenda-sessions",
     SPEAKERS: "/microsite/v2/event-speakers",

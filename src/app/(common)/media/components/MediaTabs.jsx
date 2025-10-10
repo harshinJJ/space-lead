@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import gallery from "@/../public/assets/json/gallery-data.json";
 import Image from "next/image";
 import useFancybox from "@/hooks/useFancyBox";
-import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
+// import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 import DotPattern from "@/components/patterns/DotPattern";
-import VideoPlayer from "./VideoPlayer";
+// import VideoPlayer from "./VideoPlayer";
 import PressRelease from "@/components/sections/PressRelease";
 import ConnectWithUs from "@/components/sections/ConnectWithUs";
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";

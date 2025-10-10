@@ -1,10 +1,5 @@
 import AboutInfo from "@/components/sections/AboutInfo";
-import Marquee from "@/components/sections/Marquee";
-import SponsorsBlock from "@/components/sections/Sponsors";
-import VideoPreview from "@/components/sections/VideoPreview";
-import WhyAttend from "@/components/sections/WhyAttend";
 import React from "react";
-import LatestInfo from "./components/LatestInfo";
 import speakers from "@/../public/assets/json/speakers-data.json";
 
 import MemberList from "@/components/sections/MemberList";
@@ -96,9 +91,6 @@ const About = async () => {
           cardSize="lg"
         />
       </section>
-      {/* <WhyAttend>
-        <LatestInfo />
-      </WhyAttend> */}
       <section className="relative bg-transparent bg-cover bg-[center]">
         <video
           autoPlay
@@ -135,12 +127,6 @@ const About = async () => {
         ]}
         // videoURL="/"
       />
-      {/* <Marquee /> */}
-      {/* <VideoPreview
-        videoUrl={"/videos/sample.mp4"}
-        thumbnail={"/images/video_thumbnail.png"}
-      />
-      <SponsorsBlock sponsors={sponsors} hasFaq={true} /> */}
     </main>
   );
 };

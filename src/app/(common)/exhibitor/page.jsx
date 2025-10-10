@@ -24,7 +24,7 @@ export default async function Exhibitor() {
   return (
     <main>
       <ExhibitorBlock exhibitors={exhibitors} />
-      <FullImageBlock url="/images/event_floor_map.jpg" title="Find Us" />
+      <FullImageBlock url="/images/event_floor_map_new.png" title="Find Us" />
       <JoinUs
         title="Where visibility becomes opportunity."
         description={"Be seen. Be heard. Be part of Space Lead ’25.”"}

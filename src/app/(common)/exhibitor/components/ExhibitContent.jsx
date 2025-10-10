@@ -12,7 +12,7 @@ const ExhibitContent = () => (
           alt="Why Exhibit"
           className="object-cover w-full h-auto"
         /> */}
-        <video
+        {/* <video
           className=" object-cover w-full h-auto"
           src="/images/why_exhibit_img.webm"
           poster="/images/backgrounds/posters/why_exhibit_img.webp"
@@ -20,7 +20,7 @@ const ExhibitContent = () => (
           autoPlay
           muted
           loop
-        />
+        /> */}
       </div>
       <div className="w-full lg:w-3/5 flex flex-col justify-center lg:pl-8">
         <p className="text-secondary  tracking-wide font-light mb-5 font-azonix">

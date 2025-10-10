@@ -45,13 +45,6 @@ export default async function Speakers() {
         className="!pt-7.5"
         speakers={healthSpeakers}
       />
-      {/* speakers block pending */}
-      {/* <Marquee /> */}
-      {/* <VideoPreview
-        videoUrl={"/videos/sample.mp4"}
-        thumbnail={"/images/video_thumbnail.png"}
-      />
-      <SponsorList /> */}
     </main>
   );
 }

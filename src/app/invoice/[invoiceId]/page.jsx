@@ -1,8 +1,10 @@
 import PublicServices from "@/services/publicServices";
 import React from "react";
-import DownloadButton from "../components/DownloadButton";
+import DownloadButton, { Preview } from "../components/DownloadButton";
 import EVENT_INFO from "@/data/eventInfo";
-
+import { LogoBg, LogoIcon } from "@/data/icons";
+import { format } from "date-fns";
+import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 
 const CheckIcon = ({ size = 20, className = "" }) => (
   <svg
@@ -20,7 +22,7 @@ const CheckIcon = ({ size = 20, className = "" }) => (
   </svg>
 );
 
-const TicketIcon = ({ size = 20, className = '' }) => (
+const TicketIcon = ({ size = 20, className = "" }) => (
   <svg
     width={size}
     height={size}
@@ -38,363 +40,399 @@ const TicketIcon = ({ size = 20, className = '' }) => (
     <path d="M13 11v2" />
   </svg>
 );
-const Page = async ({ params }) => {
-    const { invoiceId } = await params;
-  //   const invoice = await PublicServices.gerInvoice(invoiceId).then(
-  //     (res) => res?.data || {}
-  //   );
 
-  const invoice = {
-    id: "INV-2025-001",
-    date: "2025-10-06",
-    status: "paid",
-    event: {
+const Page = async ({ params }) => {
+  const { invoiceId } = await params;
+  const invoiceRes = await PublicServices.gerInvoice(invoiceId).then(
+    (res) => res?.data || {}
+  );
+
+  // const invoiceRes = {
+  //   uid: "dee8421b-c8d4-4707-b3d8-085fb0fa9b30",
+  //   invoice_id: "INV-20250911-00018",
+  //   payment_mode: "free",
+  //   payment_id: null,
+  //   transaction_id: null,
+  //   paid_status: true,
+  //   refund_status: false,
+  //   payment_receive_timestamp: "2025-09-11T09:51:15.044941",
+  //   refund_receive_timestamp: null,
+  //   name: "Sharon Sebastian",
+  //   email: "sharon@veuz.in",
+  //   phone: "8589914973",
+  //   notes: null,
+  //   booking_type: 0,
+  //   source: "microsite",
+  //   ticket_state: 0,
+  //   ticket_amount: 0.0,
+  //   tax_amount: 0.0,
+  //   sub_total: 0.0,
+  //   original_amount: 2625.0,
+  //   discount_amount: 2625.0,
+  //   total_amount: 0.0,
+  //   currency: "AED",
+  //   global_ticket_amount: 0.0,
+  //   global_tax_amount: 0.0,
+  //   global_sub_total: 0.0,
+  //   global_original_amount: 2625.0,
+  //   global_discount_amount: 2625.0,
+  //   global_currency: "AED",
+  //   billing_details: {
+  //     full_name: null,
+  //     job_title: null,
+  //     company_country: null,
+  //     company_name: null,
+  //     vat_number: null,
+  //     po_box: null,
+  //     address: null,
+  //     email: "sharon@veuz.in",
+  //     ticket_id: "12499",
+  //   },
+  //   promocode: {
+  //     id: 55,
+  //     code: "RSEEARLYD",
+  //     discountType: "0",
+  //     discountValue: 100,
+  //     active_status: true,
+  //   },
+  //   purchase_history: [
+  //     {
+  //       id: 79,
+  //       quantity: 1,
+  //       created_at: "2025-09-11T09:51:15.061214",
+  //       updated_at: "2025-09-11T09:51:15.061233",
+  //       ticket_amount: 0.0,
+  //       sub_total: 0.0,
+  //       tax_amount: 0.0,
+  //       original_amount: 2625.0,
+  //       discount_amount: 2625.0,
+  //       currency: "AED",
+  //       global_ticket_amount: 0.0,
+  //       global_sub_total: 0.0,
+  //       global_tax_amount: 0.0,
+  //       global_original_amount: 2625.0,
+  //       global_discount_amount: 2625.0,
+  //       global_currency: "AED",
+  //       ticket_details: {
+  //         id: 31,
+  //         ticket_name: "DELEGATE",
+  //         ticket_type: "0",
+  //         ticket_price: 0.0,
+  //         description: "<p><br></p>",
+  //         ticket_status: "1",
+  //         ar_ticket_name: "",
+  //         display_ticket_name: "DELEGATE",
+  //       },
+  //       old_ticket_details: null,
+  //     },
+  //   ],
+  //   card_brand: null,
+  //   cardNumber: null,
+  //   cardType: null,
+  //   is_primary_user: true,
+  //   ticket_state_display: "Unknown",
+  //   event_name: "RISE",
+  //   event_start_date: "2026-01-13",
+  //   event_end_date: "2026-01-15",
+  // };
+  const invoiceData = {
+    company: {
       name: EVENT_INFO.title,
-      date: EVENT_INFO.startDate,
-      time: EVENT_INFO.eventTimeLabel,
-      venue: EVENT_INFO.venueName,
-      address: EVENT_INFO.venueLocation,
+      logo: "/logo.png",
     },
-    organizer: {
-      name: EVENT_INFO.organizer,
-      email: EVENT_INFO.email,
-      phone: EVENT_INFO.phone,
+    invoiceId: invoiceRes?.invoice_id,
+    invoice: {
+      title: "TAX INVOICE / فاتورة ضريبية",
+      number: invoiceRes?.invoice_id || "--",
+      date:
+        (invoiceRes?.transaction_date &&
+          format(new Date(invoiceRes.transaction_date), "dd/MM/yyyy")) ||
+        "--/--/----",
+      ticket_id: invoiceRes?.billing_details?.ticket_id || "--",
+      transaction_id: invoiceRes?.transaction_id || "#######",
     },
-    customer: {
-      name: "John Doe",
-      email: "john.doe@email.com",
-      phone: "+1 (555) 987-6543",
+    bill_to: {
+      name: invoiceRes?.name || "--",
+      phone: invoiceRes?.phone || "--",
+      email: invoiceRes?.email || "--",
     },
-    tickets: [
-      {
-        description: "General Admission Ticket",
-        quantity: 2,
-        price: 150,
-        amount: 300,
-      },
-      { description: "VIP Access Pass", quantity: 1, price: 250, amount: 250 },
-    ],
-    fees: [
-      { description: "Processing Fee", amount: 15 },
-      { description: "Platform Fee", amount: 10 },
-    ],
-    notes:
-      "Please bring this invoice and a valid ID to the event. Tickets are non-refundable. For event inquiries, contact the organizer.",
-    taxRate: 0.08,
+    items: invoiceRes?.purchase_history?.map((item, i) => ({
+      id: i + 1,
+      description:
+        item?.ticket_details?.display_ticket_name ||
+        item?.ticket_details?.ticket_name,
+      qty: 1,
+      price: item?.ticket_details?.ticket_price,
+    })),
+    totals: {
+      subtotal: invoiceRes?.sub_total || 0,
+      vat_percent: invoiceRes?.tax_percentage || 0, //not available
+      vat_amount: invoiceRes?.tax_amount || 0,
+      total: invoiceRes?.total_amount,
+      paid: invoiceRes?.ticket_amount,
+      currency: invoiceRes?.currency,
+    },
+    qr_code: invoiceRes?.zatca_qr,
   };
 
-  const subtotal = invoice.tickets.reduce((sum, item) => sum + item.amount, 0);
-  const feesTotal = invoice.fees.reduce((sum, fee) => sum + fee.amount, 0);
-  const tax = (subtotal + feesTotal) * invoice.taxRate;
-  const total = subtotal + feesTotal + tax;
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-cyan-50 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="container-fluid mx-auto max-w-5xl">
-        {/* Download Button */}
-        <div className="mb-6 flex justify-end">
-          <DownloadButton invoice={invoice} invoiceId={invoiceId} />
-        </div>
-
-        {/* Invoice Container */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          {/* Header Section */}
-          <div
-            className="px-6 sm:px-10 py-8 text-white"
-            style={{
-              background: "linear-gradient(135deg, #7f529f 0%, #131f54 100%)",
-            }}
-          >
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-              <div>
-                <h1 className="text-3xl sm:text-4xl font-bold mb-2">
-                  TICKET INVOICE
-                </h1>
-                <p className="text-purple-200 text-sm">#{invoice.id}</p>
-              </div>
-              <div
-                className="px-4 py-2 rounded-full text-sm font-semibold text-white flex items-center gap-2"
-                style={{ backgroundColor: "#5ac0be" }}
+  if (!invoiceData?.invoiceId) {
+    return (
+      <main>
+        <section className="relative  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
+          <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
+          <div className="relative flex flex-col items-center justify-center bg-white rounded-xl shadow-lg p-8 py-14.5 w-full max-w-[44rem] mx-auto mt-12">
+            {/* Error Icon */}
+            <div className="bg-[#E84C4C1F] rounded-full p-3 mb-4">
+              <svg
+                width="89"
+                height="90"
+                viewBox="0 0 89 90"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <CheckIcon size={16} />
-                PAID
-              </div>
-            </div>
-          </div>
-
-          {/* Content Section */}
-          <div className="px-6 sm:px-10 py-8">
-            {/* Event Information */}
-            <div
-              className="mb-10 p-6 rounded-xl border-2"
-              style={{ backgroundColor: "#f0fffe", borderColor: "#5ac0be" }}
-            >
-              <div className="flex items-start gap-3 mb-4">
-                <TicketIcon
-                  size={24}
-                  className="text-cyan-600 flex-shrink-0 mt-1"
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M0.15625 45C0.15625 20.5096 20.0096 0.65625 44.5 0.65625C68.9905 0.65625 88.8438 20.5096 88.8438 45C88.8438 69.4905 68.9905 89.3438 44.5 89.3438C20.0096 89.3438 0.15625 69.4905 0.15625 45ZM29.9374 30.4374C31.1456 29.2292 33.1044 29.2292 34.3126 30.4374L44.5 40.6246L54.6875 30.4374C55.8957 29.2292 57.8543 29.2292 59.0625 30.4374C60.2707 31.6456 60.2707 33.6044 59.0625 34.8126L48.875 45L59.0625 55.1875C60.2707 56.3957 60.2707 58.3543 59.0625 59.5625C57.8543 60.7707 55.8953 60.7707 54.6871 59.5625L44.5 49.3754L34.3126 59.5625C33.1044 60.7707 31.1456 60.7707 29.9374 59.5625C28.7292 58.3543 28.7292 56.3953 29.9374 55.1871L40.1246 45L29.9374 34.8126C28.7292 33.6044 28.7292 31.6456 29.9374 30.4374Z"
+                  fill="#F82D2D"
                 />
-                <div className="flex-1">
-                  <h2
-                    className="text-xl font-bold mb-3"
-                    style={{ color: "#131f54" }}
-                  >
-                    {invoice.event.name}
-                  </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="flex gap-2">
-                      <span
-                        className="font-semibold text-sm"
-                        style={{ color: "#7f529f" }}
-                      >
-                        Date:
-                      </span>
-                      <span className="text-sm" style={{ color: "#131f54" }}>
-                        {invoice.event.date}
+              </svg>
+            </div>
+
+            {/* Error Text */}
+            <h2 className="text-[2rem] text-[#E84C4C] mb-2">
+              Something went wrong
+            </h2>
+            <p className="text-[#22222280] tracking-[-2%] mb-4">
+              Please try again or go back
+            </p>
+
+            {/* Action Button */}
+            <PrimaryLink
+              href="/"
+              className="uppercase py-2.5 px-10 mt-4 font-semibold bg-[#E84C4C] hover:bg-[#d23c3c]"
+            >
+              Go back
+            </PrimaryLink>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      <section className="relative overflow-hidden  text-black py-10  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
+        <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
+          <div className="container-fluid mx-auto max-w-5xl">
+            {/* Download Button */}
+            <div className="mb-6 flex justify-end">
+              <DownloadButton
+                invoice={invoiceData}
+                invoiceId={invoiceRes?.invoice_id}
+              />
+            </div>
+
+            {/* <Preview/> */}
+            {/* Invoice Container */}
+            <div className="bg-white w-full max-w-6xl mx-auto shadow-xl overflow-hidden text-sm xs:text-base md:text-lg">
+              {/* Header */}
+              <div className="flex justify-between items-center bg-[#023c3b] text-white px-6 py-4">
+                <h1 className="md:text-2xl xl:text-3xl text-lg font-bold">
+                  {invoiceData?.invoice?.title}
+                </h1>
+                <div className="w-32 sm:w-40">
+                  <img
+                    src={invoiceData?.company?.logo}
+                    alt="Logo"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Bill To Section */}
+              <h2 className="font-bold mb-2 text-center mt-10 text-base font-droid-bold">
+                Bill To / <span className="font-normal">فاتورة إلى</span>
+              </h2>
+              <div className="px-6 sm:px-10">
+                <div className=" py-6 flex flex-col lg:flex-row justify-between">
+                  <div className="space-y-2">
+                    <p className="">{invoiceData?.bill_to?.name}</p>
+                    <p className="">{invoiceData?.bill_to?.phone}</p>
+                    <p className="">{invoiceData?.bill_to?.email}</p>
+                  </div>
+
+                  {/* Invoice Info */}
+                  <div className="mt-6 lg:mt-0 w-full lg:w-1/2 space-y-2">
+                    <div className="flex justify-between lg:justify-end">
+                      <div>
+                        <span className="font-bold font-droid-bold">
+                          Invoice# /
+                        </span>
+                        <span className="font-normal arabic">
+                          رقم الفاتورة:
+                        </span>
+                      </div>
+                      <span>{invoiceData?.invoice?.number}</span>
+                    </div>
+                    <div className="flex justify-between lg:justify-end">
+                      <div>
+                        <span className="font-bold font-droid-bold">
+                          Invoice Date /
+                        </span>
+                        <span className="font-normal arabic">
+                          تاريخ الفاتورة:{" "}
+                        </span>
+                      </div>
+                      <span>{invoiceData?.invoice?.date}</span>
+                    </div>
+                    <div className="flex justify-between lg:justify-end">
+                      <div>
+                        <span className="font-bold font-droid-bold">
+                          Ticket ID /
+                        </span>
+                        <span className="font-normal arabic">رقم التذكرة:</span>
+                      </div>
+                      <span>{invoiceData?.invoice?.ticket_id}</span>
+                    </div>
+                    <div className="flex justify-between lg:justify-end">
+                      <div>
+                        <span className="font-bold font-droid-bold">
+                          Transaction ID /
+                        </span>
+                        <span className="font-normal arabic">مرجع السداد:</span>
+                      </div>
+                      <span className="lg:hidden">
+                        {invoiceData?.invoice?.transaction_id}
                       </span>
                     </div>
-                    <div className="flex gap-2">
-                      <span
-                        className="font-semibold text-sm"
-                        style={{ color: "#7f529f" }}
-                      >
-                        Time:
-                      </span>
-                      <span className="text-sm" style={{ color: "#131f54" }}>
-                        {invoice.event.time}
+                    <div className="hidden lg:flex justify-between lg:justify-end">
+                      <span>{invoiceData?.invoice?.transaction_id}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Table */}
+                <div className=" overflow-auto">
+                  <table className="px-6 sm:px-10 py-4 w-full">
+                    <thead className=" bg-[#023c3b] text-white py-2 font-bold">
+                      <tr className=" [&>th]:py-5 [&>th]:px-2">
+                        <th className=" text-center">
+                          <span className="block font-light">رﻗﻢ</span>
+                          <span>Sr</span>
+                          <span>#</span>
+                        </th>
+                        <th className="!text-start">
+                          <span className="block font-light">الوصف</span>
+                          <span>Description</span>
+                        </th>
+                        <th className=" text-center">
+                          <span className="block font-light">الكمية</span>
+                          <span>Qty</span>
+                        </th>
+                        <th className=" !text-start text-nowrap">
+                          <span className="block font-light">
+                            السعر الإجمالي
+                          </span>
+                          <span>Total Price</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {invoiceData?.items?.map((item) => (
+                        <tr
+                          key={item.id}
+                          className=" border-b border-gray-300 py-2 [&>td]:py-2 [&>td]:px-2"
+                        >
+                          <td className=" text-center">{item.id}</td>
+                          <td className="">{item.description}</td>
+                          <td className=" text-center">{item.qty}</td>
+                          <td className=" text-start">
+                            {item.price.toFixed(2)}{" "}
+                            {invoiceData?.totals?.currency}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Bottom Section: QR + Totals */}
+                <div className="md:ps-10 md:py-6 py-10 flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+                  {/* QR Code */}
+                  {invoiceData?.qr_code && (
+                    <div className="aspect-square lg:max-w-30 md:max-w-20 max-w-2/5 bg-[#e3e3e3] p-1 flex">
+                      <img
+                        src={invoiceData.qr_code}
+                        alt="QR Code"
+                        className="w-full h-auto aspect-square object-contain"
+                      />
+                    </div>
+                  )}
+
+                  {/* Totals */}
+                  <div className="flex-1 flex flex-col gap-2 w-full lg:text-lg md:text-base">
+                    <div className="flex justify-between md:justify-end">
+                      <div className="">
+                        <span className="font-bold font-droid-bold">
+                          Subtotal /
+                        </span>
+                        <span className="font-normal arabic">
+                          الإجمالي قبل الضريبة:
+                        </span>
+                      </div>
+                      <span className="font-bold md:w-1/5 w-2/5 text-end">
+                        {invoiceData?.totals?.subtotal?.toFixed(2)}{" "}
+                        {invoiceData?.totals?.currency}
                       </span>
                     </div>
-                    <div className="flex gap-2 sm:col-span-2">
-                      <span
-                        className="font-semibold text-sm"
-                        style={{ color: "#7f529f" }}
-                      >
-                        Venue:
-                      </span>
-                      <span className="text-sm" style={{ color: "#131f54" }}>
-                        {invoice.event.venue}
+                    <div className="flex justify-between md:justify-end">
+                      <div className="">
+                        <span className="font-bold font-droid-bold">
+                          15% VAT Amount /
+                        </span>
+                        <span className="font-normal arabic">
+                          ضريبة القيمة المضافة:
+                        </span>
+                      </div>
+                      <span className="font-bold md:w-1/5 w-2/5 text-end">
+                        {invoiceData?.totals?.vat_amount?.toFixed(2)}{" "}
+                        {invoiceData?.totals?.currency}
                       </span>
                     </div>
-                    <div className="flex gap-2 sm:col-span-2">
-                      <span
-                        className="font-semibold text-sm"
-                        style={{ color: "#7f529f" }}
-                      >
-                        Location:
+                    <div className="flex justify-between md:justify-end">
+                      <div className="">
+                        <span className="font-bold font-droid-bold">
+                          Total Payable /
+                        </span>
+                        <span className="font-normal arabic">
+                          الإجمالي المستحق:
+                        </span>
+                      </div>
+                      <span className="font-bold md:w-1/5 w-2/5 text-end">
+                        {invoiceData?.totals?.total?.toFixed(2)}{" "}
+                        {invoiceData?.totals?.currency}
                       </span>
-                      <span className="text-sm" style={{ color: "#131f54" }}>
-                        {invoice.event.address}
+                    </div>
+                    <div className="flex justify-between md:justify-end">
+                      <div className="">
+                        <span className="font-bold font-droid-bold">
+                          Paid /
+                        </span>
+                        <span className="font-normal arabic">المدفوع:</span>
+                      </div>
+                      <span className="font-bold md:w-1/5 w-2/5 text-end">
+                        {invoiceData?.totals?.paid?.toFixed(2)}{" "}
+                        {invoiceData?.totals?.currency}
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Customer & Organizer Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-              <div>
-                <h3
-                  className="text-xs font-semibold uppercase tracking-wide mb-3"
-                  style={{ color: "#7f529f" }}
-                >
-                  Customer Details
-                </h3>
-                <div className="space-y-1">
-                  <p className="font-bold text-lg" style={{ color: "#131f54" }}>
-                    {invoice.customer.name}
-                  </p>
-                  <p className="text-sm mt-2" style={{ color: "#5ac0be" }}>
-                    {invoice.customer.email}
-                  </p>
-                  <p className="text-slate-600 text-sm">
-                    {invoice.customer.phone}
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <h3
-                  className="text-xs font-semibold uppercase tracking-wide mb-3"
-                  style={{ color: "#7f529f" }}
-                >
-                  Organizer
-                </h3>
-                <div className="space-y-1">
-                  <p className="font-bold text-lg uppercase" style={{ color: "#131f54" }}>
-                    {invoice.organizer.name}
-                  </p>
-                  <p className="text-sm mt-2" style={{ color: "#5ac0be" }}>
-                    {invoice.organizer.email}
-                  </p>
-                  <p className="text-slate-600 text-sm">
-                    {invoice.organizer.phone}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Invoice Details */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10 p-6 bg-gradient-to-r from-purple-50 to-cyan-50 rounded-xl border border-purple-100">
-              <div>
-                <p
-                  className="text-xs font-semibold uppercase tracking-wide mb-1"
-                  style={{ color: "#7f529f" }}
-                >
-                  Invoice Date
-                </p>
-                <p className="font-medium" style={{ color: "#131f54" }}>
-                  {invoice.date}
-                </p>
-              </div>
-              <div>
-                <p
-                  className="text-xs font-semibold uppercase tracking-wide mb-1"
-                  style={{ color: "#7f529f" }}
-                >
-                  Invoice Number
-                </p>
-                <p className="font-medium" style={{ color: "#131f54" }}>
-                  {invoice.id}
-                </p>
-              </div>
-              <div>
-                <p
-                  className="text-xs font-semibold uppercase tracking-wide mb-1"
-                  style={{ color: "#7f529f" }}
-                >
-                  Payment Status
-                </p>
-                <p className="font-medium" style={{ color: "#5ac0be" }}>
-                  PAID
-                </p>
-              </div>
-              <div>
-                <p
-                  className="text-xs font-semibold uppercase tracking-wide mb-1"
-                  style={{ color: "#7f529f" }}
-                >
-                  Total Amount
-                </p>
-                <p className="font-bold" style={{ color: "#5ac0be" }}>
-                  SAR {total.toFixed(2)}
-                </p>
-              </div>
-            </div>
-
-            {/* Tickets Table */}
-            <div className="mb-8 overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2" style={{ borderColor: "#7f529f" }}>
-                    <th
-                      className="text-left py-4 px-2 text-xs font-semibold uppercase tracking-wide"
-                      style={{ color: "#7f529f" }}
-                    >
-                      Ticket Type
-                    </th>
-                    <th
-                      className="text-center py-4 px-2 text-xs font-semibold uppercase tracking-wide"
-                      style={{ color: "#7f529f" }}
-                    >
-                      Qty
-                    </th>
-                    <th
-                      className="text-right py-4 px-2 text-xs font-semibold uppercase tracking-wide"
-                      style={{ color: "#7f529f" }}
-                    >
-                      Amount
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {invoice.tickets.map((ticket, index) => (
-                    <tr
-                      key={index}
-                      className="border-b border-slate-100 hover:bg-purple-50 transition-colors"
-                    >
-                      <td className="py-4 px-2" style={{ color: "#131f54" }}>
-                        {ticket.description}
-                      </td>
-                      <td className="py-4 px-2 text-center text-slate-600">
-                        {ticket.quantity}
-                      </td>
-                      <td
-                        className="py-4 px-2 text-right font-medium"
-                        style={{ color: "#131f54" }}
-                      >
-                        SAR {ticket.amount.toFixed(2)}
-                      </td>
-                    </tr>
-                  ))}
-                  {invoice.fees.map((fee, index) => (
-                    <tr
-                      key={`fee-${index}`}
-                      className="border-b border-slate-100"
-                    >
-                      <td className="py-4 px-2 text-slate-600 text-sm">
-                        {fee.description}
-                      </td>
-                      <td className="py-4 px-2 text-center text-slate-400">
-                        -
-                      </td>
-                      <td className="py-4 px-2 text-right text-slate-600">
-                        SAR {fee.amount.toFixed(2)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Totals Section */}
-            <div className="flex justify-end mb-8">
-              <div className="w-full sm:w-80 space-y-3">
-                <div className="flex justify-between text-slate-600">
-                  <span>Subtotal</span>
-                  <span className="font-medium">SAR {subtotal.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-slate-600">
-                  <span>Fees</span>
-                  <span className="font-medium">SAR {feesTotal.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-slate-600">
-                  <span>Tax ({(invoice.taxRate * 100).toFixed(0)}%)</span>
-                  <span className="font-medium">SAR {tax.toFixed(2)}</span>
-                </div>
-                <div
-                  className="border-t-2 pt-3 flex justify-between text-lg font-bold"
-                  style={{ borderColor: "#7f529f" }}
-                >
-                  <span style={{ color: "#131f54" }}>Total Paid</span>
-                  <span style={{ color: "#5ac0be" }}>SAR {total.toFixed(2)}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Notes Section */}
-            <div className="p-6 bg-gradient-to-r from-purple-50 to-cyan-50 rounded-xl border border-purple-100">
-              <h3
-                className="text-sm font-semibold mb-2"
-                style={{ color: "#131f54" }}
-              >
-                Important Information
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {invoice.notes}
-              </p>
-            </div>
           </div>
-
-          {/* Footer */}
-          <div className="bg-slate-50 px-6 sm:px-10 py-6 border-t border-slate-200">
-            <p className="text-center text-slate-500 text-sm">
-              Thank you for your purchase! For support, contact{" "}
-              {invoice.organizer.email}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 
