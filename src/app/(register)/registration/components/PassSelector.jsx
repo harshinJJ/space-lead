@@ -103,9 +103,10 @@ export default function PassSelector() {
             gradient="primary"
             type="Workshops "
             icon={icons.professional}
-            tag="limited availability"
+            tag="coming soon"
             eventType="paid"
-            url={"/registration/1"}
+            disabled={true}
+            // url={"/registration/1"}
             // onClick={() => router.push("/registration/professional")}
           />
         </div>
