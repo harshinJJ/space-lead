@@ -298,9 +298,15 @@ const useRegistration = ({ type, session }) => {
               formik.setSubmitting(false);
               return;
             } else if (res?.data?.message || res?.message) {
-              toast.error(res?.data?.message || res?.message, {
-                id: "register-toast",
-              });
+              const message = res?.data?.message || res?.message;
+              console.log("asdasdasd",message)
+              if (message == "Email already registered") {
+                formik.setFieldError("email",message)
+              } else {
+                toast.error(message, {
+                  id: "register-toast",
+                });
+              }
               formik.setSubmitting(false);
             }
           }
@@ -309,7 +315,7 @@ const useRegistration = ({ type, session }) => {
         })
         .catch((error) => {
           console.log(error);
-          toast.error("Something went wrong")
+          toast.error("Something went wrong");
           formik.setSubmitting(false);
         });
     }

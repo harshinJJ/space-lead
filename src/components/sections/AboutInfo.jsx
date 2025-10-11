@@ -79,7 +79,7 @@ const AboutInfo = ({ className = "", isHome }) => {
           </svg>
         ),
         title: "Networking",
-        description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
       },
       {
         icon: (
@@ -109,7 +109,7 @@ const AboutInfo = ({ className = "", isHome }) => {
           </svg>
         ),
         title: "Experience",
-        description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
       },
       {
         icon: (
@@ -129,7 +129,7 @@ const AboutInfo = ({ className = "", isHome }) => {
           </svg>
         ),
         title: "Great Speakers",
-        description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
       },
       {
         icon: (
@@ -152,7 +152,7 @@ const AboutInfo = ({ className = "", isHome }) => {
           </svg>
         ),
         title: "New People",
-        description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
       },
       // {
       //   icon: (
@@ -289,9 +289,9 @@ const AboutInfo = ({ className = "", isHome }) => {
                 </div>
                 <div className="ps-2.5 flex-4/5">
                   <h5 className="text-tertiary text-sm">{feature.title}</h5>
-                  <p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-sm  leading-4.5">
+                  {feature.description&&<p className="text-[#737373] group-hover:text-white group-focus:text-white group-active:text-white duration-700 text-sm  leading-4.5">
                     {feature.description}
-                  </p>
+                  </p>}
                 </div>
               </div>
             ))}

@@ -38,7 +38,7 @@ export default async function Exhibitor() {
             label: "Download Booklet",
             url: "#",
             arrowDirection: "bottom",
-            type: "external",
+            // type: "external",
           },
         ]}
         imageURL={"/images/backgrounds/exhibitor_connect_bg.jpg"}

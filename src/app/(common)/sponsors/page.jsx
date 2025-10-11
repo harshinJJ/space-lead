@@ -78,7 +78,7 @@ export default async function Sponsors() {
             label: "Download Booklet ",
             url: "#",
             arrowDirection: "bottom",
-            type: "external",
+            // type: "external",
           },
         ]}
         overlay="indigo"
