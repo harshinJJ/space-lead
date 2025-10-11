@@ -19,7 +19,8 @@ const MemberList = ({
   const containerClass =
     cardSize == "sm"
       ? "!flex flex-wrap justify-center  [&>div]:p-2.5 [&>div]:sm:flex-1/5 [&>div]:w-full [&>div]:sm:w-auto [&>div]:sm:max-w-1/2 [&>div]:md:max-w-1/4 [&>div]:lg:max-w-1/5"
-      : " gap-6 sm:grid-cols-2 lg:grid-cols-4";
+      // : " gap-6 sm:grid-cols-2 lg:grid-cols-4";
+      : " !flex flex-wrap justify-center  [&>div]:p-2.5 [&>div]:lg:flex-1/3 [&>div]:xl:flex-1/4  [&>div]:sm:flex-1/2  [&>div]:w-full [&>div]:sm:w-full [&>div]:sm:max-w-1/2 [&>div]:lg:max-w-1/3 [&>div]:xl:max-w-1/4";
   return (
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
@@ -55,12 +56,17 @@ const MemberList = ({
         </div>
 
         {/* Speaker Cards */}
-        <HorizontalCardStagger
-          cardPerRow={cardSize == "sm" ? 5 : 4}
+        <div
+          // cardPerRow={cardSize == "sm" ? 5 : 4}
           className={`container-fluid mx-auto px-5 grid grid-cols-1 ${containerClass} mt-10 xl:px-15.75`}
         >
           {speakers.map((speaker, index) => (
-            <div key={index} className="card">
+            <div
+              data-aos="fade-up"
+              data-aos-once="true"
+              key={index}
+              className="card"
+            >
               <SpeakerCard
                 speaker={speaker}
                 selectAction={selectAction}
@@ -68,7 +74,7 @@ const MemberList = ({
               />
             </div>
           ))}
-        </HorizontalCardStagger>
+        </div>
       </section>
     )
   );
