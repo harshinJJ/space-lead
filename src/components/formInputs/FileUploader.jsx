@@ -541,9 +541,9 @@ const FileUplodCroper = ({ onCropDone, defaultImage }) => {
             </div>
           </div>
         )}
+      {loading && <FadeLoader w="w-full" h="h-4" className="mb-3 absolute right-1 top-1 aspect-square "  />}
       </label>
 
-      {loading && <FadeLoader w="w-full" h="h-4" className="mb-3" />}
 
       {showCropper && (
         <Modal

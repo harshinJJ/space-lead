@@ -225,7 +225,7 @@ export default function RegistrationForm({
                       {touched.email && <Error message={errors?.email} />}
                     </div>
                     <div ref={setRef("country")}>
-                      <Label required={true}>Country of Residency</Label>
+                      <Label required={true}>Country of Residence</Label>
                       <FormSelect
                         instanceId={"residency-select"}
                         name="country"
@@ -235,7 +235,7 @@ export default function RegistrationForm({
                             setFieldTouched("country", true);
                           }
                         }}
-                        placeholder="Country of Residency"
+                        placeholder="Country of Residence"
                         onBlur={() => setFieldTouched("country", true)}
                         valueKey="code"
                         labelKey="name"

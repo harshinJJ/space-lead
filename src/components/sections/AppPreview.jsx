@@ -1,9 +1,11 @@
+"use client"
 import ExhibitorCard from "@/components/cards/ExhibitorCard";
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import { format } from "date-fns";
 import { AppStoreButton, GooglePlayButton } from "@/data/icons";
 import Image from "next/image";
+import EVENT_INFO from "@/data/eventInfo";
 
 // const exhibitorsList = Array(3).fill({
 //   booth_details: {
@@ -48,45 +50,60 @@ const AppPreview = ({
   navLabel = "View All Announcements",
   navLink = "/media",
   linkType = "internal",
-}) => (
-  <section
-    className={`bg-indigo py-10 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat ${className}`}
-  >
-    <div className="container-fluid mx-auto w-full px-5 sm:px-0 flex flex-col sm:flex-row items-center justify-center gap-20">
-      <div className="flex flex-col lg:gap-10 gap-5">
-        <p
-          data-aos="fade-up"
-          className="text-white bg-secondary rounded-full px-7.5 py-5 w-fit text-center leading-[0.7]  text-2xl font-light "
-        >
-          Let’s Interact
-        </p>
-        <h3
-          data-aos="fade-up"
-          className="xl:text-5xl md:text-4xl text-2xl font-azonix text-start leading-[1.5] font-bold  text-white"
-        >
-          Everything Space Lead ‘25,
-          <br className="2xl:block hidden" /> at your fingertips
-        </h3>
-        <div className="flex sm:flex-row flex-col items-center md:gap-7.5 gap-4 md:max-w-2/3">
-          <button name="google-play" data-aos="fade-right">
-            <GooglePlayButton className="w-full" />
-          </button>
-          <button name="apple-store" data-aos="fade-left">
-            <AppStoreButton className="w-full" />
-          </button>
+}) => {
+  const handleClick = (url) => {
+    if (url) {
+      window?.open(url, "_blank"); // Opens in a new tab/window
+    }
+  };
+  return (
+    <section
+      className={`bg-indigo py-10 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat ${className}`}
+    >
+      <div className="container-fluid mx-auto w-full px-5 sm:px-0 flex flex-col sm:flex-row items-center justify-center gap-20">
+        <div className="flex flex-col lg:gap-10 gap-5">
+          <p
+            data-aos="fade-up"
+            className="text-white bg-secondary rounded-full px-7.5 py-5 w-fit text-center leading-[0.7]  text-2xl font-light "
+          >
+            Let’s Interact
+          </p>
+          <h3
+            data-aos="fade-up"
+            className="xl:text-5xl md:text-4xl text-2xl font-azonix text-start leading-[1.5] font-bold  text-white"
+          >
+            Everything Space Lead ‘25,
+            <br className="2xl:block hidden" /> at your fingertips
+          </h3>
+          <div className="flex sm:flex-row flex-col items-center md:gap-7.5 gap-4 md:max-w-2/3">
+            <button
+              onClick={() => handleClick(EVENT_INFO.playStore)}
+              name="google-play"
+              data-aos="fade-right"
+            >
+              <GooglePlayButton className="w-full" />
+            </button>
+            <button
+              onClick={() => handleClick(EVENT_INFO.appStore)}
+              name="apple-store"
+              data-aos="fade-left"
+            >
+              <AppStoreButton className="w-full" />
+            </button>
+          </div>
+        </div>
+        <div className="" data-aos="flip-left">
+          <Image
+            width={350}
+            height={724}
+            className=""
+            alt="app-preview"
+            src={"/images/app_preview.png"}
+          />
         </div>
       </div>
-      <div className="" data-aos="flip-left">
-        <Image
-          width={350}
-          height={724}
-          className=""
-          alt="app-preview"
-          src={"/images/app_preview.png"}
-        />
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default AppPreview;

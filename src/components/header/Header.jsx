@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "@/utils/CustomLink";
 import Modal from "../common/Modal";
 import { AppStoreButton, GooglePlayButton } from "@/data/icons";
+import EVENT_INFO from "@/data/eventInfo";
 
 const extractPath = (pathname) => {
   const list = pathname.split("/");
@@ -20,14 +21,20 @@ const extractPath = (pathname) => {
 
 const DownloadButton = ({ onClick }) => {
   const [show, setShow] = useState(false);
-  const handleClick = () => {
+  const handleClose = () => {
     setShow(!show);
     onClick && onClick();
+  };
+
+  const handleClick = (url) => {
+    if (url) {
+      window?.open(url, "_blank"); // Opens in a new tab/window
+    }
   };
   return (
     <>
       <PrimaryButton
-        onClick={handleClick}
+        onClick={handleClose}
         className=" gap-1.25 3xl:py-3.25 py-2.75 3xl:px-3.25 px-2.75 3xl:text-lg text-base leading-[100%]"
       >
         <svg
@@ -68,10 +75,11 @@ const DownloadButton = ({ onClick }) => {
               <br className="2xl:block hidden" /> at your fingertips
             </h3>
             <div className="flex flex-col  gap-4 ">
-              <button>
+              <button onClick={() => handleClick(EVENT_INFO.playStore)}>
                 <GooglePlayButton className="w-full" />
               </button>
-              <button>
+              <button
+              onClick={() => handleClick(EVENT_INFO.appStore)}>
                 <AppStoreButton className="w-full" />
               </button>
             </div>
@@ -82,7 +90,7 @@ const DownloadButton = ({ onClick }) => {
   );
 };
 
-const Header = ({showTitleBlock=true,className=""}) => {
+const Header = ({ showTitleBlock = true, className = "" }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -198,7 +206,13 @@ const Header = ({showTitleBlock=true,className=""}) => {
           >
             <div className="flex lg:items-stretch items-center gap-2.5 max-w-2/3">
               <div className="xl:block overflow-h relative w-fit h-full bg-white  lg:min-w-[42px] lg:min-h-[62px] overflow-hidden">
-                <Image unoptimized width={42} height={62} src="/secondary_logo_new.png" alt="logo" />
+                <Image
+                  unoptimized
+                  width={42}
+                  height={62}
+                  src="/secondary_logo_new.png"
+                  alt="logo"
+                />
               </div>
               <Link href="/" className="logo lg:min-w-[132px] lg:min-h-[60px]">
                 <Image width={132} height={60} src="/logo.png" alt="logo" />
@@ -308,7 +322,9 @@ const Header = ({showTitleBlock=true,className=""}) => {
           ))}
         </ul>
       </div>
-      {(pathname != "/"&&showTitleBlock) && <TitleBlock pathname={pathname} title={activeLinkTitle} />}
+      {pathname != "/" && showTitleBlock && (
+        <TitleBlock pathname={pathname} title={activeLinkTitle} />
+      )}
     </header>
   );
 };

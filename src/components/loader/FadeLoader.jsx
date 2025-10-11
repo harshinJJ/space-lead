@@ -8,9 +8,10 @@ import React from "react";
  */
 export default function FadeLoader({
   className = "",
-  w = "w-full",
-  h = "h-4",
-  rounded = "rounded-lg",
+  size = "w-8 h-8", // Tailwind width & height
+  border = "border-4", // Tailwind border width
+  borderColor = "border-gray-200", // base color
+  borderTopColor = "border-t-black/50", // highlight color
   as: Tag = "div",
   "aria-label": ariaLabel = "Loading…",
 }) {
@@ -21,16 +22,13 @@ export default function FadeLoader({
       aria-busy="true"
       aria-label={ariaLabel}
       className={[
-        // fade effect
-        "motion-safe:animate-pulse",
-        // base colors (light/dark)
-        "bg-gray-200 dark:bg-gray-700",
-        // size + shape
-        w,
-        h,
-        rounded,
-        // layout safety
-        "shrink-0",
+        "rounded-full",
+        "animate-spin",
+        size,
+        border,
+        borderColor,
+        borderTopColor,
+        "inline-block",
         className,
       ].join(" ")}
     />
