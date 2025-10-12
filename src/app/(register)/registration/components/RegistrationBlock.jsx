@@ -55,7 +55,7 @@ export default function RegistrationBlock({
   const [eventActive, setEventActive] = useState(true);
 
   return (
-    <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
+    <section className="relative overflow-hidden  text-white py-25 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
       {/* <BgOverlay/> */}
       <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
 

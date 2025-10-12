@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import ExhibitorCard from "@/components/cards/ExhibitorCard";
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
 import { PrimaryLink } from "../buttons/PrimaryButton";
@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { AppStoreButton, GooglePlayButton } from "@/data/icons";
 import Image from "next/image";
 import EVENT_INFO from "@/data/eventInfo";
+import ComingSoonOverlay from "../common/ComingSoonOverlay";
 
 // const exhibitorsList = Array(3).fill({
 //   booth_details: {
@@ -80,15 +81,21 @@ const AppPreview = ({
               onClick={() => handleClick(EVENT_INFO.playStore)}
               name="google-play"
               data-aos="fade-right"
+              disabled={!EVENT_INFO.playStore}
+              className="relative rounded-sm overflow-hidden disabled:!cursor-default"
             >
               <GooglePlayButton className="w-full" />
+              {!EVENT_INFO.playStore && <ComingSoonOverlay />}
             </button>
             <button
               onClick={() => handleClick(EVENT_INFO.appStore)}
               name="apple-store"
               data-aos="fade-left"
+              disabled={!EVENT_INFO.appStore}
+              className="relative rounded-sm overflow-hidden disabled:!cursor-default"
             >
               <AppStoreButton className="w-full" />
+              {!EVENT_INFO.appStore && <ComingSoonOverlay />}
             </button>
           </div>
         </div>

@@ -83,7 +83,7 @@ const BgOverlay = () => {
 export default function PassSelector() {
   const router = useRouter();
   return (
-    <section className="relative bg-indigo overflow-hidden   bg-cover bg-no-repeat bg-[center_top] lg:py-50 md:py-20 py-10 xl:pb-56.25">
+    <section className="relative bg-indigo overflow-hidden   bg-cover bg-no-repeat bg-[center_top] lg:py-50 md:py-20 py-25 xl:pb-56.25">
       {/* <Image alt="register-bg" src={"/images/backgrounds/register_bg.png"} fill className="object-cover object-[center_top] w-full h-full" /> */}
       {/* <BgOverlay /> */}
       <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
@@ -103,7 +103,7 @@ export default function PassSelector() {
             gradient="primary"
             type="Workshops "
             icon={icons.professional}
-            tag="coming soon"
+            tag=" Coming Soon "
             eventType="paid"
             disabled={true}
             // url={"/registration/1"}

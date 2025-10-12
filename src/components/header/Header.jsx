@@ -10,6 +10,7 @@ import Link from "@/utils/CustomLink";
 import Modal from "../common/Modal";
 import { AppStoreButton, GooglePlayButton } from "@/data/icons";
 import EVENT_INFO from "@/data/eventInfo";
+import ComingSoonOverlay from "../common/ComingSoonOverlay";
 
 const extractPath = (pathname) => {
   const list = pathname.split("/");
@@ -75,12 +76,25 @@ const DownloadButton = ({ onClick }) => {
               <br className="2xl:block hidden" /> at your fingertips
             </h3>
             <div className="flex flex-col  gap-4 ">
-              <button onClick={() => handleClick(EVENT_INFO.playStore)}>
+              <button
+                onClick={() => handleClick(EVENT_INFO.playStore)}
+                disabled={!EVENT_INFO.playStore}
+                className="relative rounded-sm overflow-hidden disabled:!cursor-default"
+              >
                 <GooglePlayButton className="w-full" />
+                {!EVENT_INFO.playStore && (
+                <ComingSoonOverlay/>
+                )}
               </button>
               <button
-              onClick={() => handleClick(EVENT_INFO.appStore)}>
+                onClick={() => handleClick(EVENT_INFO.appStore)}
+                disabled={!EVENT_INFO.appStore}
+                className="relative rounded-sm overflow-hidden disabled:!cursor-default"
+              >
                 <AppStoreButton className="w-full" />
+                {!EVENT_INFO.appStore && (
+                <ComingSoonOverlay/>
+                )}
               </button>
             </div>
           </div>

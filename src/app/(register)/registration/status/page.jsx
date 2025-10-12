@@ -46,10 +46,10 @@ export default async function RegistrationStatus({ params, searchParams }) {
             </div>
 
             {/* Error Text */}
-            <h2 className="text-[2rem] text-[#E84C4C] mb-2">
+            <h2 className="text-[2rem] text-center text-[#E84C4C] mb-2">
               Something went wrong
             </h2>
-            <p className="text-[#22222280] tracking-[-2%] mb-4">
+            <p className="text-[#22222280] text-center tracking-[-2%] mb-4">
               Please try again or go back
             </p>
 

@@ -218,7 +218,7 @@ const ExhibitorCard = ({
       )}
       {!isActive && (
         <div className="absolute h-full w-full backdrop-blur-[2.65px] top-0 left-0 rounded-[1.25rem] flex items-center justify-center">
-          <div className="py-2.5 px-11.5 rounded-full  bg-white text-[#111111CC] 2xl:text-[1.75rem] md:text-2x text-lgl">
+          <div className="py-2.5 px-11.5 rounded-full  bg-white text-[#111111CC] 2xl:text-[1.75rem] md:text-2x text-lg">
             Coming Soon
           </div>
         </div>
