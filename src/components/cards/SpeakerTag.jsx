@@ -17,8 +17,8 @@ const SpeakerTag = ({
         <Image
           height={40}
           width={40}
-          className="w-full h-full object-cover"
-          src={image||"/images/user_placeholder.png"}
+          className="w-full h-full object-cover object-[top_center]"
+          src={image||"/images/user_placeholder_new.png"}
           alt={name}
         />
       </div>

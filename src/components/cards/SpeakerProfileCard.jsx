@@ -46,7 +46,7 @@ const SpeakerProfileCard = ({
               "/images/user_placeholder_new.png"
             }
             alt={name || "speaker_image"}
-            className="w-full h-full object-contain object-[bottom_center] bg-black"
+            className="w-full h-full object-cover object-[top_center] bg-black"
           />
         </div>
         <Link

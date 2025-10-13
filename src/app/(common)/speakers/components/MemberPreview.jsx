@@ -44,7 +44,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
                       `${activeSpeaker.firstname} ${activeSpeaker.lastname}` ||
                       "speaker_image"
                     }
-                    className="w-full h-full absolute object-contain object-[bottom_center] bg-white"
+                    className="w-full h-full absolute object-cover object-[top_center] bg-white"
                   />
                 </div>
                 <h3

@@ -31,7 +31,7 @@ const SpeakerCard = ({
       } relative w-[fit] h-auto aspect-[331/488] rounded-2xl border-1 border-secondary overflow-hidden bg-[#232323] flex flex-col justify-end  ${className}`}
     >
       {/* Speaker image */}
-      <div className="relative px-5 transition-all duration-700 origin-bottom-center grow flex-1 flex items-end justify-center">
+      <div className="relative transition-all duration-700 origin-bottom-center grow flex-1 flex items-end justify-center">
         {showOverlay && (
           <div
             className={`absolute h-2/3 w-3/4 top-0 bottom-0 left-0 right-0 m-auto bg-secondary/70`}
@@ -53,12 +53,12 @@ const SpeakerCard = ({
               `${speaker.firstname} ${speaker.lastname}` ||
               "speaker_image"
             }
-            className="w-full relative  object-contain object-[bottom_center] "
+            className="w-full !top-10  object-cover object-[top_center] "
           />
         </div>
       </div>
 
-      <div className=" bg-white  py-4 px-6 min-h-27 ">
+      <div className=" bg-white relative py-4 px-6 min-h-27 ">
         <div
           className={`text-black font-bold font-gilroy-bold text-lg leading-[1.5] text-center`}
         >
