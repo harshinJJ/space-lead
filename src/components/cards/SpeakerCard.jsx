@@ -75,7 +75,7 @@ const SpeakerCard = ({
 };
 
 export const SpeakerSlideCard = ({
-  image = "/images/user_placeholder.png",
+  image = "/images/user_placeholder_new.png",
   name = "",
   title = "",
   link = "#",

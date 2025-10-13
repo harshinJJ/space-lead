@@ -124,7 +124,7 @@ const TestimonialsSlider = () => {
                 className="w-full h-full object-cover"
                 src={
                   testimonials[activeIndex]?.img ||
-                  "/images/user_placeholder.png"
+                  "/images/user_placeholder_new.png"
                 }
                 alt={testimonials[activeIndex]?.name}
               />

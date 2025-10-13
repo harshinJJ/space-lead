@@ -37,7 +37,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
                     src={
                       activeSpeaker?.profile_pic ||
                       activeSpeaker?.image ||
-                      "/images/user_placeholder.png"
+                      "/images/user_placeholder_new.png"
                     }
                     alt={
                       activeSpeaker.name ||
