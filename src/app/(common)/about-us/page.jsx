@@ -1,6 +1,5 @@
 import AboutInfo from "@/components/sections/AboutInfo";
 import React from "react";
-import speakers from "@/../public/assets/json/speakers-data.json";
 
 import MemberList from "@/components/sections/MemberList";
 import PublicServices from "@/services/publicServices";
@@ -59,7 +58,6 @@ const About = async () => {
           className="bg-transparent"
           label={"What We Explore"}
           title={"Focus Areas"}
-          data={speakers}
           theme="dark"
         />
       </section>

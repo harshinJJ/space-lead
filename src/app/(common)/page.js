@@ -2,7 +2,6 @@ import HomeBanner from "@/components/sections/HomeBanner";
 import AboutInfo from "@/components/sections/AboutInfo";
 import MemberSlider from "@/components/sections/MemberSlider";
 import StatsCard from "@/components/cards/StatsCard";
-// import speakerData from "@/../public/assets/json/speakers-data.json";
 import PublicServices from "@/services/publicServices";
 import OurExhibitor from "@/components/sections/OurExhibitor";
 import PressRelease from "@/components/sections/PressRelease";

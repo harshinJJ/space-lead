@@ -11,7 +11,10 @@ const SpeakerProfileCard = ({
   cardStyle = "secondary",
 }) => {
   const name = speaker?.name || `${speaker.firstname} ${speaker.lastname}`;
-  const bgClass = cardStyle == "primary" ? "bg-primary border-1 border-[#DD00FF]" : "bg-secondary border-1 border-secondary";
+  const bgClass =
+    cardStyle == "primary"
+      ? "bg-primary border-1 border-[#DD00FF]"
+      : "bg-secondary border-1 border-secondary";
   return (
     <div
       //   {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
@@ -23,25 +26,26 @@ const SpeakerProfileCard = ({
         >
           {name}
         </h3>
-        {speaker?.description_ar&&<p
-          className={`text-[#272727] text-sm 3xl:leading-[1.8] line-clamp-2 text-center`}
-        >
-          {speaker?.description_ar}
-        </p>}
+        {speaker?.description_ar && (
+          <p
+            className={`text-[#272727] text-sm 3xl:leading-[1.8] line-clamp-2 text-center`}
+          >
+            {speaker?.description_ar}
+          </p>
+        )}
       </div>
       {/* Speaker image */}
       <div className="flex flex-col items-center md:gap-7 gap-3 2xl:px-8 xs:px-4 px-1 pb-2">
         <div className=" aspect-[240/210] w-full rounded-2xl overflow-hidden relative bg-black ">
           <Image
             fill
+            priority={true}
             src={
               speaker?.profile_pic ||
               speaker?.image ||
-              "/images/user_placeholder.png"
+              "/images/user_placeholder_new.png"
             }
-            alt={name||
-              "speaker_image"
-            }
+            alt={name || "speaker_image"}
             className="w-full h-full object-contain object-[bottom_center] bg-black"
           />
         </div>
@@ -52,7 +56,7 @@ const SpeakerProfileCard = ({
           href={speaker?.id ? `/speakers/${speaker.id}` : "#"}
         >
           <span>Profile</span>
-          <GotoArrow size={21}/>
+          <GotoArrow size={21} />
         </Link>
       </div>
     </div>

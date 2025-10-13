@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SpeakerAbout from "./SpeakerAbout";
 import SpeakerAgenda from "./SpeakerAgenda";
-// import speakers from "@/../public/assets/json/speakers-data.json";
 import SpeakerGroup from "./SpeakerGroup";
 import Image from "next/image";
 

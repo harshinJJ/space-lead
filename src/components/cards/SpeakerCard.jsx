@@ -38,14 +38,15 @@ const SpeakerCard = ({
             style={{ filter: "blur(6.25rem)" }}
           ></div>
         )}
-        <div className="relative w-full aspect-square h-auto">
+        <div className="relative w-full aspect-[6/7] h-auto">
           <Image
             fill
+            priority={true}
             src={
               speaker?.profile_pic ||
               speaker?.photo ||
               speaker?.image ||
-              "/images/user_placeholder.png"
+              "/images/user_placeholder_new.png"
             }
             alt={
               speaker.name ||
@@ -126,6 +127,7 @@ export const SpeakerSlideCard = ({
         <Image
           width={256}
           height={280}
+          priority={true}
           src={image}
           alt={name}
           className="w-full relative aspect-square object-cover object-[top_center]"
