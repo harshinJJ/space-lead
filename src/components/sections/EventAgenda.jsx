@@ -125,6 +125,17 @@ const tabs = [
   { id: "day2", label: "Day 02", date: "11 Nov 2025", dateKey: "2025-11-11" },
 ];
 
+const sortBytime = (sessions = []) => {
+  const sorted = [...sessions].sort((a, b) => {
+    const timeA = a.start_tm.split(":").map(Number);
+    const timeB = b.start_tm.split(":").map(Number);
+    const minutesA = timeA[0] * 60 + timeA[1];
+    const minutesB = timeB[0] * 60 + timeB[1];
+    return minutesA - minutesB;
+  });
+  return sorted;
+};
+
 export default function EventAgenda({
   className = "",
   label = "Event Agenda",
@@ -133,7 +144,9 @@ export default function EventAgenda({
   showViewAll = false,
 }) {
   const [activeDay, setActiveDay] = useState(EVENT_INFO.dayList[0].dateKey);
-  const filteredEvents = dataList.filter((data) => data.event_day == activeDay);
+    const filteredEvents = sortBytime(
+    dataList.filter((data) => data.event_day == activeDay)
+  );
 
   return (
     <div className={`container-fluid mx-auto text-white ${className}`}>
@@ -175,31 +188,31 @@ export default function EventAgenda({
         {filteredEvents.map((event, idx) => (
           <div
             key={idx}
-            data-aos={idx%2==0?"fade-right":"fade-left"}
+            data-aos={idx % 2 == 0 ? "fade-right" : "fade-left"}
             data-aos-once="true"
             data-aos-offset="100"
             className="bg-white/8 rounded-4xl xl:p-7.5 md:p-4 p-2 flex flex-col gap-4 card"
           >
             <AgendaCard event={event} />
-            <div className="flex flex-wrap gap-2.5">
-              {event.speakers.map((speaker, i) => (
-                <SpeakerTag
-                  url={`/speakers/${speaker.id}`}
-                  key={i}
-                  image={speaker.profile_pic}
-                  name={`${speaker.firstname} ${speaker.lastname}`}
-                  role={speaker.designation}
-                />
-              ))}
-            </div>
+            {event?.speakers?.length > 0 && (
+              <div className="flex flex-wrap gap-2.5">
+                {event.speakers.map((speaker, i) => (
+                  <SpeakerTag
+                    url={`/speakers/${speaker.id}`}
+                    key={i}
+                    image={speaker.profile_pic}
+                    name={`${speaker.firstname} ${speaker.lastname}`}
+                    role={speaker.designation}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
       {filteredEvents?.length <= 0 && (
-        <div
-          className="w-full flex items-center text-center text-xl justify-center py-10 text-white"
-        >
-         No sessions available for the selected date.
+        <div className="w-full flex items-center text-center text-xl justify-center py-10 text-white">
+          No sessions available for the selected date.
         </div>
       )}
 
