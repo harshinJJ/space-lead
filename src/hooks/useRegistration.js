@@ -39,6 +39,7 @@ const useRegistration = ({ type, session }) => {
     jobtitle: "",
     companyname: "",
     isOldFile: "",
+    workshops: [],
   };
   const validationSchema = Yup.object({
     title: Yup.object().required("Title is required"),
@@ -170,6 +171,22 @@ const useRegistration = ({ type, session }) => {
           ),
       otherwise: (schema) => schema.notRequired(),
     }),
+    workshops: Yup.array().when([], {
+      is: () => session?.ticket_price_type == 1,
+      then: (schema) =>
+        schema
+          .required("Please select at least one workshop")
+          .min(1, "Please select at least one workshop")
+          // .of(
+          //   Yup.object().shape({
+          //     id: Yup.number().required(),
+          //     session_title: Yup.string(),
+          //     price_amount: Yup.string(),
+          //   })
+          // )
+          ,
+      otherwise: (schema) => schema.notRequired(),
+    }),
   });
 
   const formik = useFormik({
@@ -247,9 +264,15 @@ const useRegistration = ({ type, session }) => {
         delete payload.form_data.jobtitle;
         delete payload.form_data.companyname;
       }
+      if (session?.ticket_price_type == 1 && item.workshops?.length > 0) {
+        payload.form_data.session_ids = item.workshops.map(
+          (workshop) => workshop.id
+        );
+      }
       // deleting unwanted values
       delete payload.form_data.isOldFile;
       delete payload.form_data.user_document;
+      delete payload.form_data?.workshops;
 
       const formData = new FormData();
       formData.append("payload", JSON.stringify(payload));
@@ -299,9 +322,8 @@ const useRegistration = ({ type, session }) => {
               return;
             } else if (res?.data?.message || res?.message) {
               const message = res?.data?.message || res?.message;
-              console.log("asdasdasd",message)
               if (message == "Email already registered") {
-                formik.setFieldError("email",message)
+                formik.setFieldError("email", message);
               } else {
                 toast.error(message, {
                   id: "register-toast",
@@ -314,7 +336,6 @@ const useRegistration = ({ type, session }) => {
           setRecaptchaToken(null);
         })
         .catch((error) => {
-          console.log(error);
           toast.error("Something went wrong");
           formik.setSubmitting(false);
         });
@@ -404,6 +425,7 @@ const useRegistration = ({ type, session }) => {
       }
 
       const priorityOrder = [
+        "workshops",
         "title",
         "firstname",
         "lastname",

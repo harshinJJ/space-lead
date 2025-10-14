@@ -17,6 +17,7 @@ import ButtonLoader from "@/components/loader/ButtonLoader";
 import SuccessModal from "./SuccessModal";
 import SessionTypeSelector from "./SessionTypeSelector";
 import ReCAPTCHA from "react-google-recaptcha";
+import { CheckIcon } from "@/data/icons";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
@@ -33,11 +34,11 @@ const titles = [
 
 export default function RegistrationForm({
   type,
-  paid,
-  onSuccess,
   sessionList = [],
+  workshopList = [],
 }) {
   const [session, setSession] = useState(sessionList[0]);
+  const [workshops, setWorkshops] = useState([]);
   const registerData = useRegistration({
     type,
     session,
@@ -71,6 +72,28 @@ export default function RegistrationForm({
     setSuccessInfo(null);
   };
 
+  // const handleWorkshopSelect = (workshop = {}) => {
+  //   setWorkshops((prevWorkshops) => {
+  //     if (prevWorkshops.some((w) => w.id === workshop.id)) {
+  //       return prevWorkshops.filter((w) => w.id !== workshop.id);
+  //     }
+  //     return [...prevWorkshops, workshop];
+  //   });
+  // };
+
+  const handleWorkshopSelect = (workshop) => {
+    const currentWorkshops = formData.workshops || [];
+    const isSelected = currentWorkshops.some((w) => w.id === workshop.id);
+
+    if (isSelected) {
+      setFieldValue(
+        "workshops",
+        currentWorkshops.filter((w) => w.id !== workshop.id)
+      );
+    } else {
+      setFieldValue("workshops", [...currentWorkshops, workshop]);
+    }
+  };
   return (
     <section ref={containerRef}>
       {success ? (
@@ -100,7 +123,65 @@ export default function RegistrationForm({
               selected={session?.id}
               onSelect={setSession}
             />
-
+            {workshopList?.length > 0 && (
+              <p className="uppercase md:text-lg text-base text-center">
+                Select workshop(s) to attend
+              </p>
+            )}
+            <div className="">
+              {workshopList?.length > 0 && (
+                <div
+                  ref={setRef("workshops")}
+                  className="w-full flex flex-col sm:flex-row items-center justify-center [&>div]:col-span-2 flex-wrap [&>div]:xl:col-span-1 gap-y-4 px-5 xl:px-14"
+                >
+                  {workshopList.map((workshop, i) => {
+                    const isSelected = formData?.workshops?.some(
+                      (w) => w.id === workshop.id
+                    );
+                    return (
+                      <label
+                        key={i}
+                        className="relative flex flex-col sm:flex-1/2 sm:max-w-1/2 w-full px-2"
+                      >
+                        <div
+                          className={`flex items-start lg:gap-2.5 gap-1 cursor-pointer border-1 border-white rounded-lg p-2 ${
+                            isSelected
+                              ? "bg-gradient-to-r from-primary to-secondary"
+                              : ""
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={isSelected}
+                            onChange={() => handleWorkshopSelect(workshop)}
+                            className="sr-only peer"
+                          />
+                          <span
+                            className={`lg:w-6.25 w-4 lg:h-6.25 h-4 aspect-square rounded-sm border-1 border-white flex items-center justify-center peer-checked:border-white peer-checked:bg-white peer-checked:text-primary transition-all duration-200 `}
+                          >
+                            {isSelected && <CheckIcon />}
+                          </span>
+                          <div className="flex items-start justify-between w-full ms-2 gap-2">
+                            <span className="text-white xs:text-lg text-sm md:text-xl leading-[1] flex-1">
+                              {workshop?.display_title ||
+                                workshop?.session_title}
+                            </span>
+                            {workshop?.price_amount&&<span className="text-white xs:text-lg text-sm md:text-xl leading-[1] text-nowrap text-end">
+                              {session?.currency_name} {workshop?.price_amount}
+                            </span>}
+                          </div>
+                        </div>
+                      </label>
+                    );
+                  })}
+                </div>
+              )}
+              {errors.workshops && (
+                <div className="text-red-500 text-sm text-center mt-2">
+                  {errors?.workshops}
+                </div>
+              )}
+            </div>
             <p className="uppercase md:text-lg text-base text-center">
               Please enter your information
             </p>
@@ -418,11 +499,15 @@ export default function RegistrationForm({
                     </PrimaryButton>
                   </form>
                 </div>
-                {session?.price_amount > 0 && (
+                {(session?.price_amount > 0 ||
+                  formData?.workshops?.some(
+                    (workshop) => workshop.price_amount
+                  )) && (
                   <TicketSummary
                     name={session?.display_ticket_name || session?.ticket_name}
                     price={session?.price_amount}
                     currency={session?.currency_name}
+                    workshops={formData?.workshops}
                   />
                 )}
               </div>

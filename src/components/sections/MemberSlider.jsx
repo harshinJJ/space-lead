@@ -159,6 +159,7 @@ const MemberSlider = ({
               )}
               <div className="flex justify-center gap-4">
                 <button
+                  aria-label="swiper-prev-btn"
                   disabled={!loop && swiperInstance?.isBeginning}
                   ref={prevRef}
                   className={` p-3 aspect-square flex items-center justify-center h-11.5 w-11.5 border-1 rounded-full disabled:opacity-40 disabled:cursor-not-allowed transition ${
@@ -170,6 +171,7 @@ const MemberSlider = ({
                   <ChevronRightIcon className="rotate-180" />
                 </button>
                 <button
+                  aria-label="swiper-next-btn"
                   disabled={!loop && swiperInstance?.isEnd}
                   ref={nextRef}
                   className={` p-3 aspect-square  flex items-center justify-center h-11.5 w-11.5 border-1 rounded-full disabled:opacity-40 disabled:cursor-not-allowed transition ${

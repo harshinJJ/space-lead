@@ -57,6 +57,7 @@ const PassSelectionCard = ({
     disabled={disabled}
       className={`relative overflow-hidden flex w-full md:w-fit flex-col border-1 border-white backdrop-blur-[1.85px] items-center justify-center ${gradientBg} rounded-4xl shadow-lg py-13.5 md:px-22 px-10 w-fit  ${disabled?"":"hover:scale-105"} disabled:!cursor-not-allowed transition-transform duration-200`}
       // onClick={onClick}
+      {...(onClick && !disabled ? { onClick: onClick } : {})}
     >
       {disabled && <div className="absolute inset-0 bg-black/40 z-10 rounded-4xl"></div>}
       {tag && (

@@ -161,7 +161,7 @@ const SpeakerSlider = ({ speakers = [], className }) => {
                   );
                 })}
                 {/* Swiper navigation buttons */}
-                <button className="swiper-prev speaker-swiper absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#353535] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-[#454545] transition">
+                <button aria-label="swiper-prev-btn" className="swiper-prev speaker-swiper absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#353535] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-[#454545] transition">
                   <svg
                     width="26"
                     height="26"
@@ -185,7 +185,7 @@ const SpeakerSlider = ({ speakers = [], className }) => {
                     />
                   </svg>
                 </button>
-                <button className="swiper-next speaker-swiper absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#353535] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-[#454545] transition">
+                <button aria-label="swiper-next-btn" className="swiper-next speaker-swiper absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#353535] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-[#454545] transition">
                   <svg
                     width="26"
                     height="26"

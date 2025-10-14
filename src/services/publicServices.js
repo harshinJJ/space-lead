@@ -40,9 +40,9 @@ const PublicServices = {
       return e;
     }
   },
-  getRegisterPassInfo: async () => {
+  getRegisterPassInfo: async (params=new URLSearchParams()) => {
     try {
-      return await customFetch(SERVICE.REGISTER.PASS);
+      return await customFetch(`${SERVICE.REGISTER.PASS}?${params}`);
     } catch (e) {
       return e;
     }

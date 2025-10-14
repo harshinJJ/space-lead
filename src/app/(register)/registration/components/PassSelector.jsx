@@ -1,8 +1,5 @@
-"use client";
 import React from "react";
 import PassSelectionCard from "./PassSelectionCard";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { LogoBg } from "@/data/icons";
 
 const icons = {
@@ -81,7 +78,6 @@ const BgOverlay = () => {
 };
 
 export default function PassSelector() {
-  const router = useRouter();
   return (
     <section className="relative bg-indigo overflow-hidden   bg-cover bg-no-repeat bg-[center_top] lg:py-50 md:py-20 py-25 xl:pb-56.25">
       {/* <Image alt="register-bg" src={"/images/backgrounds/register_bg.png"} fill className="object-cover object-[center_top] w-full h-full" /> */}
@@ -97,7 +93,6 @@ export default function PassSelector() {
             icon={icons.student}
             eventType="free"
             url={"/registration/2"}
-            // onClick={() => router.push("/registration/student")}
           />
           <PassSelectionCard
             gradient="primary"
@@ -107,7 +102,6 @@ export default function PassSelector() {
             eventType="paid"
             disabled={true}
             // url={"/registration/1"}
-            // onClick={() => router.push("/registration/professional")}
           />
         </div>
       </div>

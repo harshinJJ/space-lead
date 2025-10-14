@@ -4,16 +4,16 @@ import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import { LogoBg } from "@/data/icons";
 
 export default async function StudentRegistration({ params }) {
-  const passTypes = await PublicServices.getRegisterPassInfo().then((res) =>
-    res.data ? res.data : []
-  );
   const { id } = await params;
-  const sessionList = passTypes.filter((pass) => pass.ticket_price_type == id);
+  const passTypes = await PublicServices.getRegisterPassInfo(new URLSearchParams(((id&&id==1)?{workshop_type:true}:{}))).then((res) =>
+    res||{data:[],session_type:[]}
+  );
+  const sessionList = id !=1? passTypes?.data?.filter((pass) => pass.ticket_price_type == id):passTypes?.data;
   console.log("asdasdasd", passTypes);
   return (
     <main>
       {sessionList?.length > 0 ? (
-        <RegistrationBlock sessionList={sessionList} type={id} />
+        <RegistrationBlock sessionList={sessionList} workshops={passTypes?.session_type} type={id} />
       ) : (
         <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
           {/* <BgOverlay/> */}

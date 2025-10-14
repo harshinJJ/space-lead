@@ -3,7 +3,7 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 import Image from "next/image";
 import React from "react";
 
-const ClosedModal = ({ onContinue }) => (
+const ClosedModal = () => (
   <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-lg px-19.5 py-11.25 w-full max-w-[33rem] mx-auto mt-12">
     <svg
       width="366"

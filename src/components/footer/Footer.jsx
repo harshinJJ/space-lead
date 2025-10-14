@@ -266,17 +266,17 @@ const Footer = () => {
               <h4 className="text-[1.5rem] font-medium">Let’s Connect</h4>
               <ul className="flex items-center gap-4 text-secondary">
                 <li>
-                  <a href={EVENT_INFO.socials.twitter} target="_blank">
+                  <a aria-label="twitter-link" href={EVENT_INFO.socials.twitter} target="_blank">
                     <TwitterIcon size={17} />
                   </a>
                 </li>
                 <li>
-                  <a href={EVENT_INFO.socials.instagram} target="_blank">
+                  <a aria-label="instagram-link" href={EVENT_INFO.socials.instagram} target="_blank">
                     <InstagramIcon size={17} />
                   </a>
                 </li>
                 <li>
-                  <a href={EVENT_INFO.socials.linkedin} target="_blank">
+                  <a aria-label="linkedin-link" href={EVENT_INFO.socials.linkedin} target="_blank">
                     <LinkedInIcon size={17} />
                   </a>
                 </li>
