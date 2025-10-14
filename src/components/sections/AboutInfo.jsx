@@ -199,7 +199,7 @@ const AboutInfo = ({ className = "", isHome }) => {
             playsInline
             loop
           />
-          <div className="absolute right-0 bottom-0 md:bottom-[unset] md:top-[2rem] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[28ch] sm:max-w-[28ch] max-w-[22ch] transform md:translate-x-[38%] lg:translate-x-0 md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-primary to-black opacity-90 xl:p-10 p-6 flex flex-col gap-5">
+          {/* <div className="absolute right-0 bottom-0 md:bottom-[unset] md:top-[2rem] md:left-0 md:right-[unset] xl:text-base sm:text-sm xl:max-w-[28ch] sm:max-w-[28ch] max-w-[22ch] transform md:translate-x-[38%] lg:translate-x-0 md:translate-y-0 translate-y-[20%] rounded-[2rem] text-white bg-linear-to-t from-primary to-black opacity-90 xl:p-10 p-6 flex flex-col gap-5">
             <div className="bg-secondary aspect-square xl:w-18.5 w-15 rounded-full flex items-center justify-center">
               <svg
                 width="27"
@@ -220,7 +220,7 @@ const AboutInfo = ({ className = "", isHome }) => {
             <Link href={"/agenda"} className="cursor-pointer text-nowrap leading-[1] hover:bg-[#4461EF] transition-all duration-500 flex items-center gap-2 py-3.75 px-6.25 rounded-full bg-indigo border border-[#222222] hover:border-[#4461EF] w-fit">
               View Agenda
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* content */}
