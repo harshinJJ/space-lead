@@ -6,7 +6,7 @@ import { LogoBg } from "@/data/icons";
 export default async function StudentRegistration({ params }) {
   const { id } = await params;
   const passTypes = await PublicServices.getRegisterPassInfo(
-    new URLSearchParams({ workshop_type: id && id == 1 })
+    new URLSearchParams({ workshop_type: id && id == "workshop" })
   ).then((res) => res || { data: [], session_type: [] });
   // const sessionList =
   //   id != 1
@@ -19,7 +19,7 @@ export default async function StudentRegistration({ params }) {
       {sessionList?.length > 0 ? (
         <RegistrationBlock
           sessionList={sessionList}
-          workshops={passTypes?.session_type}
+          isWorkshop={id && id == "workshop"}
           type={id}
         />
       ) : (

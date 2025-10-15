@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         <RecaptchaProvider>
           <GsapProvider>{children}</GsapProvider>
         </RecaptchaProvider>
-        <Toaster />
+        <Toaster toastOptions={{style:{wordBreak: "break-word"}}} />
       </body>
     </html>
   );

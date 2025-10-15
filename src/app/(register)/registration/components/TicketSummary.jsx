@@ -8,11 +8,17 @@ const TicketSummary = ({
   currency = "SAR",
   workshops = [],
   name,
+  visitorType,
 }) => {
-  const workshopTotal = workshops.reduce(
-    (total, workshop) => total + (workshop?.price_amount || 0),
-    0
-  );
+  const workshopTotal = workshops.reduce((total, workshop) => {
+    const workshopPrice =
+      (visitorType == "7"
+        ? workshop?.student_amount
+        : visitorType == "15"
+        ? workshop?.professional_amount
+        : workshop?.price_amount) || 0;
+    return total + workshopPrice;
+  }, 0);
   const total = price + workshopTotal;
   const vat = (total / 115) * 15; // VAT calculation
   const basePrice = total - vat;
@@ -33,9 +39,18 @@ const TicketSummary = ({
             <span className="text-sm">WORKSHOPS</span>
             {workshops?.map((workshop, i) => (
               <div className="flex justify-between items-center mb-2" key={i}>
-                <span className="text-sm">{workshop?.session_title}</span>
+                <span className="text-sm">
+                  {workshop?.display_title || workshop?.session_title}
+                </span>
                 <span className="text-primary text-sm">
-                  {currency} {formatCurrency(workshop?.price_amount)}
+                  {currency}{" "}
+                  {formatCurrency(
+                    visitorType == "7"
+                      ? workshop?.student_amount
+                      : visitorType == "15"
+                      ? workshop?.professional_amount
+                      : workshop?.price_amount
+                  ) || 0}
                 </span>
               </div>
             ))}

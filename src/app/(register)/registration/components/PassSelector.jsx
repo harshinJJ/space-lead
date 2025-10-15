@@ -92,16 +92,16 @@ export default function PassSelector() {
             type="Conference "
             icon={icons.student}
             eventType="free"
-            url={"/registration/2"}
+            url={"/registration/conference"}
           />
           <PassSelectionCard
             gradient="primary"
             type="Workshops "
             icon={icons.professional}
-            tag=" Coming Soon "
+            tag=" Limited Availability "
             eventType="paid"
-            disabled={true}
-            // url={"/registration/1"}
+            // disabled={true}
+            url={"/registration/workshop"}
           />
         </div>
       </div>

@@ -122,13 +122,13 @@ const RegisterHeader = () => {
   const pageLinks = [
     ...navLinks,
     {
-      title: "Student Registration",
-      url: "/registration/student",
+      title: "Conference Registration",
+      url: "/registration/conference",
       type: "link",
     },
     {
-      title: "Professional Registration",
-      url: "/registration/professional",
+      title: "Workshop Registration",
+      url: "/registration/workshop",
       type: "link",
     },
     {

@@ -1,12 +1,13 @@
 "use client";
 import PrimaryButton, { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import SharePopup from "@/components/common/SharePopup";
+import { RightArrow } from "@/data/icons";
 import gsap from "gsap";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
-const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
+const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid,invoiceId }) => {
   const router = useRouter();
   const canvasRef = useRef(null);
   const [qrReady, setQrReady] = useState(false);
@@ -116,6 +117,14 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
       >
         Continue
       </PrimaryButton>
+      {/* {invoiceId&&<PrimaryLink
+        href={"/payment-invoice/"+invoiceId}
+        className=" py-2.5 px-10 mt-4 font-semibold"
+      >
+        <span>Download Invoice</span>
+        <RightArrow className="ml-2" />
+      </PrimaryLink>} */}
+      
       <div className="relative">
         <button
           ref={shareRef}

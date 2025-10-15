@@ -46,7 +46,7 @@ const Page = async ({ params }) => {
   const invoiceRes = await PublicServices.gerInvoice(invoiceId).then(
     (res) => res?.data || {}
   );
-
+console.log("hashkdajsdljkasd",invoiceRes)
   const invoiceData = {
     company: {
       name: EVENT_INFO.title,

@@ -23,6 +23,7 @@ export default async function RegistrationStatus({ params, searchParams }) {
               }
               uid={response?.unique_id}
               status={status}
+              invoiceId={response?.invoice_id}
             />
           </div>
         ) : (

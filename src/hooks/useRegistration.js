@@ -11,7 +11,7 @@ import RegistrationServices from "@/services/registrationServices";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { errorList, SUCCESS_CODES } from "@/data/responseDatas";
 
-const useRegistration = ({ type, session }) => {
+const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
   const fieldRefs = useRef({});
   const containerRef = useRef();
   const recaptchaRef = useRef();
@@ -25,6 +25,7 @@ const useRegistration = ({ type, session }) => {
   const setRef = (field) => (el) => {
     fieldRefs.current[field] = el;
   };
+  const ticketName = session?.display_ticket_name || session?.ticket_name;
 
   const initialValues = {
     title: "",
@@ -79,7 +80,7 @@ const useRegistration = ({ type, session }) => {
     // Student specific
     institution: Yup.string().when([], {
       is: () =>
-        session?.display_ticket_name?.toLowerCase()?.startsWith("student"),
+        ticketName?.toLowerCase()?.startsWith("student"),
       then: (schema) =>
         schema
           .required("This field is required")
@@ -115,9 +116,7 @@ const useRegistration = ({ type, session }) => {
     // Professional specific
     jobtitle: Yup.string().when([], {
       is: () =>
-        session?.display_ticket_name
-          ?.toLowerCase()
-          ?.startsWith("professional"),
+        ticketName?.toLowerCase()?.startsWith("professional"),
       then: (schema) =>
         schema
           .required("This field is required")
@@ -143,9 +142,7 @@ const useRegistration = ({ type, session }) => {
     }),
     companyname: Yup.string().when([], {
       is: () =>
-        session?.display_ticket_name
-          ?.toLowerCase()
-          ?.startsWith("professional"),
+        ticketName?.toLowerCase()?.startsWith("professional"),
       then: (schema) =>
         schema
           .required("This field is required")
@@ -173,7 +170,7 @@ const useRegistration = ({ type, session }) => {
     }),
     workshops: Yup.array().when([], {
       // is: () => session?.ticket_price_type == 1,
-      is: () => session?.workshop.length > 0,
+      is: () => session?.workshop.length > 0 && isWorkshop,
       then: (schema) =>
         schema
           .required("Please select at least one workshop")
@@ -252,19 +249,20 @@ const useRegistration = ({ type, session }) => {
       payload.form_data.country_code = phone.countryCode;
 
       if (
-        session?.display_ticket_name
-          ?.toLowerCase()
-          ?.startsWith("professional")
+        ticketName?.toLowerCase()?.startsWith("professional")
       ) {
         delete payload.form_data.institution;
       }
-      if (
-        session?.display_ticket_name?.toLowerCase()?.startsWith("student")
-      ) {
+      if (ticketName?.toLowerCase()?.startsWith("student")) {
         delete payload.form_data.jobtitle;
         delete payload.form_data.companyname;
       }
-      if (session?.workshop&&session?.workshop?.length>0 && item.workshops?.length > 0) {
+      if (
+        session?.workshop &&
+        session?.workshop?.length > 0 &&
+        item.workshops?.length > 0 &&
+        isWorkshop
+      ) {
         payload.form_data.session_ids = item.workshops.map(
           (workshop) => workshop.id
         );
@@ -324,6 +322,7 @@ const useRegistration = ({ type, session }) => {
               const message = res?.data?.message || res?.message;
               if (message == "Email already registered") {
                 formik.setFieldError("email", message);
+                scrollToField("email");
               } else {
                 toast.error(message, {
                   id: "register-toast",
@@ -425,7 +424,6 @@ const useRegistration = ({ type, session }) => {
       }
 
       const priorityOrder = [
-        "workshops",
         "title",
         "firstname",
         "lastname",
@@ -437,7 +435,7 @@ const useRegistration = ({ type, session }) => {
         "user_document",
         "jobtitle",
         "companyname",
-        "isOldFile",
+        "workshops",
       ];
       const firstError = priorityOrder.find((key) => errorKeys.includes(key));
       scrollToField(firstError);

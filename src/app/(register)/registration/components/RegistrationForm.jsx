@@ -18,6 +18,7 @@ import SuccessModal from "./SuccessModal";
 import SessionTypeSelector from "./SessionTypeSelector";
 import ReCAPTCHA from "react-google-recaptcha";
 import { CheckIcon } from "@/data/icons";
+import { TextOverlay } from "@/components/common/ComingSoonOverlay";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
@@ -35,12 +36,13 @@ const titles = [
 export default function RegistrationForm({
   type,
   sessionList = [],
-  workshopList = [],
+  isWorkshop = false,
 }) {
   const [session, setSession] = useState(sessionList[0]);
   const registerData = useRegistration({
     type,
     session,
+    isWorkshop,
   });
   const {
     formik,
@@ -80,7 +82,7 @@ export default function RegistrationForm({
   //   });
   // };
 
-  const handleWorkshopSelect = async(workshop) => {
+  const handleWorkshopSelect = async (workshop) => {
     const currentWorkshops = formData.workshops || [];
     const isSelected = currentWorkshops.some((w) => w.id === workshop.id);
 
@@ -95,12 +97,15 @@ export default function RegistrationForm({
     setFieldTouched("workshops", true);
   };
 
-  const handleSessionSelect = async (session) => {
-    setSession(session);
+  const handleSessionSelect = async (data) => {
+    if (session?.id === data?.id) return;
+    setSession(data);
     // Reset workshops when session changes
     setFieldTouched("workshops", false);
-    setFieldValue("workshops", [],false);
+    setFieldValue("workshops", [], false);
   };
+
+  const ticketName = session?.display_ticket_name || session?.ticket_name;
   return (
     <section ref={containerRef}>
       {success ? (
@@ -130,68 +135,6 @@ export default function RegistrationForm({
               selected={session?.id}
               onSelect={handleSessionSelect}
             />
-            {session?.workshop?.length > 0 && (
-              <p className="uppercase md:text-lg text-base text-center">
-                Select workshop(s) to attend
-              </p>
-            )}
-            <div className="">
-              {session?.workshop?.length > 0 && (
-                <div
-                  ref={setRef("workshops")}
-                  className="w-full flex flex-col sm:flex-row items-center justify-center [&>div]:col-span-2 flex-wrap [&>div]:xl:col-span-1 gap-y-4 px-5 xl:px-14"
-                >
-                  {session?.workshop?.map((workshop, i) => {
-                    const isSelected = formData?.workshops?.some(
-                      (w) => w.id === workshop.id
-                    );
-                    return (
-                      <label
-                        key={i}
-                        className="relative flex flex-col sm:flex-1/2 sm:max-w-1/2 w-full px-2"
-                      >
-                        <div
-                          className={`flex items-start lg:gap-2.5 gap-1 cursor-pointer border-1 border-white rounded-lg p-2 ${
-                            isSelected
-                              ? "bg-gradient-to-r from-primary to-secondary"
-                              : ""
-                          }`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isSelected}
-                            onChange={() => handleWorkshopSelect(workshop)}
-                            className="sr-only peer"
-                          />
-                          <span
-                            className={`lg:w-6.25 w-4 lg:h-6.25 h-4 aspect-square rounded-sm border-1 border-white flex items-center justify-center peer-checked:border-white peer-checked:bg-white peer-checked:text-primary transition-all duration-200 `}
-                          >
-                            {isSelected && <CheckIcon />}
-                          </span>
-                          <div className="flex items-start justify-between w-full ms-2 gap-2">
-                            <span className="text-white xs:text-lg text-sm md:text-xl leading-[1] flex-1">
-                              {workshop?.display_title ||
-                                workshop?.session_title}
-                            </span>
-                            {workshop?.price_amount && (
-                              <span className="text-white xs:text-lg text-sm md:text-xl leading-[1] text-nowrap text-end">
-                                {session?.currency_name}{" "}
-                                {workshop?.price_amount}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </label>
-                    );
-                  })}
-                </div>
-              )}
-              {errors.workshops && touched.workshops && (
-                <div className="text-red-500 text-sm text-center mt-2">
-                  {errors?.workshops}
-                </div>
-              )}
-            </div>
             <p className="uppercase md:text-lg text-base text-center">
               Please enter your information
             </p>
@@ -369,9 +312,7 @@ export default function RegistrationForm({
                     </div>
 
                     {/* Institution Name (Student only) */}
-                    {session?.sales_ticket_type_name
-                      ?.toLowerCase()
-                      ?.startsWith("student") && (
+                    {ticketName?.toLowerCase()?.startsWith("student") && (
                       <div ref={setRef("institution")}>
                         <Label required={true}>Institution Name</Label>
                         <FormInput
@@ -394,9 +335,7 @@ export default function RegistrationForm({
                     )}
 
                     {/* Professional only: Company Name */}
-                    {session?.sales_ticket_type_name
-                      ?.toLowerCase()
-                      ?.startsWith("professional") && (
+                    {ticketName?.toLowerCase()?.startsWith("professional") && (
                       <>
                         <div ref={setRef("jobtitle")}>
                           <Label required={true}>Job Title</Label>
@@ -441,9 +380,7 @@ export default function RegistrationForm({
                     {session?.document_required && (
                       <div ref={setRef("user_document")}>
                         <Label required={true}>
-                          {session?.sales_ticket_type_name
-                            ?.toLowerCase()
-                            ?.startsWith("professional")
+                          {ticketName?.toLowerCase()?.startsWith("professional")
                             ? "Professional"
                             : "Student"}{" "}
                           ID
@@ -470,6 +407,84 @@ export default function RegistrationForm({
                       </div>
                     )}
 
+                    {session?.workshop?.length > 0 && isWorkshop && (
+                      <div className=" xl:!col-span-2">
+                        <Label required={true}>
+                          Select workshop(s) to attend
+                        </Label>
+                        <div className="border-1 border-black/20 rounded-2xl w-full">
+                          <div
+                            ref={setRef("workshops")}
+                            className="w-full grid grid-cols-1 sm:grid-cols-2 items-stretch p-2.5 gap-2.5"
+                          >
+                            {session?.workshop?.map((workshop, i) => {
+                              const isSelected = formData?.workshops?.some(
+                                (w) => w.id === workshop.id
+                              );
+                              return (
+                                <label
+                                  key={i}
+                                  className={` relative text-sm flex items-start lg:gap-2.5 gap-1 cursor-pointer h-inherit rounded-lg  ${
+                                    isSelected
+                                      ? "bg-gradient-to-r from-[#9066b7] to-tertiary from-30% to-90% p-3.25"
+                                      : "border-1 border-secondary p-3"
+                                  }`}
+                                >
+                                  <input
+                                    type="checkbox"
+                                    checked={isSelected}
+                                    disabled={
+                                      workshop?.booked_quantity >=
+                                      workshop?.booking_capacity
+                                    }
+                                    onChange={() =>
+                                      handleWorkshopSelect(workshop)
+                                    }
+                                    className="sr-only peer disabled:!cursor-not-allowed"
+                                  />
+                                  {isSelected && (
+                                    <span
+                                      className={` animate-partial-rotate absolute top-0 right-0 -translate-y-1/3 translate-x-1/3 w-5 h-5 aspect-square rounded-full flex items-center justify-center  bg-green-500 peer-checked:text-white transition-all duration-200 `}
+                                    >
+                                      <CheckIcon className="w-full h-full" />
+                                    </span>
+                                  )}
+                                  <div className="flex select-none text-black peer-checked:!text-white  items-start justify-between w-full ms-2 gap-2 overflow-hidden">
+                                    <span className=" leading-[1] flex-2 break-all text-wrap font-semibold">
+                                      {workshop?.display_title ||
+                                        workshop?.session_title}{" "}
+                                    </span>
+                                    {workshop?.price_amount && (
+                                      <span className=" flex-1 leading-[1] text-nowrap font-droid-bold text-end">
+                                        {session?.currency_name}{" "}
+                                        {(session?.ticket_visitor_type == "7"
+                                          ? workshop?.student_amount
+                                          : session?.ticket_visitor_type == "15"
+                                          ? workshop?.professional_amount
+                                          : workshop?.price_amount) || 0}
+                                      </span>
+                                    )}
+                                  </div>
+                                  {workshop?.booked_quantity >=
+                                    workshop?.booking_capacity && (
+                                    <TextOverlay
+                                      containerClass="rounded-lg backdrop-blur-[2.5px]"
+                                      className="!bg-tertiary/90 w-full h-full  !text-white font-droid-bold rounded-lg cursor-not-allowed"
+                                      text="Sold out"
+                                    />
+                                  )}
+                                </label>
+                              );
+                            })}
+                          </div>
+                        </div>
+                        {errors.workshops && touched.workshops && (
+                          <div className="text-red-500 text-xs mt-2">
+                            {errors?.workshops}
+                          </div>
+                        )}
+                      </div>
+                    )}
                     {showV2 && (
                       <div ref={setRef("recaptcha")}>
                         <ReCAPTCHA
@@ -509,15 +524,13 @@ export default function RegistrationForm({
                     </PrimaryButton>
                   </form>
                 </div>
-                {(session?.price_amount > 0 ||
-                  formData?.workshops?.some(
-                    (workshop) => workshop.price_amount
-                  )) && (
+                {(session?.price_amount > 0 || checkPriceExist(formData?.workshops, session?.ticket_visitor_type)) && (
                   <TicketSummary
-                    name={session?.display_ticket_name || session?.ticket_name}
+                    name={ticketName}
                     price={session?.price_amount}
                     currency={session?.currency_name}
                     workshops={formData?.workshops}
+                    visitorType={session?.ticket_visitor_type}
                   />
                 )}
               </div>
@@ -528,7 +541,7 @@ export default function RegistrationForm({
                       ? `${formData.firstname} ${formData.lastname || ""}`
                       : undefined
                   }
-                  category={session?.sales_ticket_type_name}
+                  category={ticketName}
                   title={formData.jobtitle || ""}
                   organisation={formData.companyname || ""}
                   institution={formData.institution || ""}
@@ -542,3 +555,15 @@ export default function RegistrationForm({
     </section>
   );
 }
+
+const checkPriceExist = (workshops, visitorType) => {
+  return workshops?.some((workshop) => {
+    if (visitorType === "7") {
+      return workshop?.student_amount > 0;
+    } else if (visitorType === "15") {
+      return workshop?.professional_amount > 0;
+    } else {
+      return workshop?.price_amount > 0;
+    }
+  });
+};

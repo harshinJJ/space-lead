@@ -52,6 +52,7 @@ export default function RegistrationBlock({
   type = "",
   sessionList = [],
   workshops = [],
+  isWorkshop = false,
   ticketType,
 }) {
   // const sessionList = passTypes.filter(
@@ -65,7 +66,7 @@ export default function RegistrationBlock({
       <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
 
       {eventActive ? (
-        <RegistrationForm sessionList={sessionList} workshopList={workshops} type={type} />
+        <RegistrationForm sessionList={sessionList} workshopList={workshops} type={type} isWorkshop={isWorkshop} />
       ) : (
         <div className="container-fluid mx-auto flex flex-col items-center justify-center xl:py-20 px-5">
           <ClosedModal />
