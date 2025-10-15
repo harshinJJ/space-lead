@@ -59,7 +59,7 @@ const AboutInfo = ({ className = "", isHome }) => {
           </svg>
         ),
         label:
-          "Across 3 Days We Cover:<br/> Keynotes, Workshops, Panels, Exhibitions",
+          "Across 2 Days We Cover:<br/> Keynotes, Workshops, Panels, Exhibitions",
       },
     ],
     features: [

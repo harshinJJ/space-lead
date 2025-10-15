@@ -36,9 +36,10 @@ export default async function Exhibitor() {
           },
           {
             label: "Download Booklet",
-            url: "#",
+            url: "/assets/documents/Space%20Lead%2025%20Participation%20and%20Exhibition%20Brochure.pdf",
             arrowDirection: "bottom",
-            // type: "external",
+            additionaProps: { download: "Space Lead 25 Participation and Exhibition Brochure.pdf" },
+            type: "external",
           },
         ]}
         imageURL={"/images/backgrounds/exhibitor_connect_bg.jpg"}

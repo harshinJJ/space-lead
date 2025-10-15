@@ -78,6 +78,7 @@ const JoinUs = ({
                   key={i}
                   target={link?.type == "external" ? "_blank" : "_self"}
                   href={link.url || "#"}
+                  {...(link.additionaProps || {})}
                   className=" group px-7.5 py-[1.0625rem] items-center gap-2 btn-gradient transition-all duration-300 w-full md:w-fit"
                 >
                   <span className="leading-[100%] text-lg ">{link.label}</span>
