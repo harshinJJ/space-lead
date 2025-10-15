@@ -38,7 +38,6 @@ export default function RegistrationForm({
   workshopList = [],
 }) {
   const [session, setSession] = useState(sessionList[0]);
-  const [workshops, setWorkshops] = useState([]);
   const registerData = useRegistration({
     type,
     session,
@@ -81,18 +80,26 @@ export default function RegistrationForm({
   //   });
   // };
 
-  const handleWorkshopSelect = (workshop) => {
+  const handleWorkshopSelect = async(workshop) => {
     const currentWorkshops = formData.workshops || [];
     const isSelected = currentWorkshops.some((w) => w.id === workshop.id);
 
     if (isSelected) {
-      setFieldValue(
+      await setFieldValue(
         "workshops",
         currentWorkshops.filter((w) => w.id !== workshop.id)
       );
     } else {
-      setFieldValue("workshops", [...currentWorkshops, workshop]);
+      await setFieldValue("workshops", [...currentWorkshops, workshop]);
     }
+    setFieldTouched("workshops", true);
+  };
+
+  const handleSessionSelect = async (session) => {
+    setSession(session);
+    // Reset workshops when session changes
+    setFieldTouched("workshops", false);
+    setFieldValue("workshops", [],false);
   };
   return (
     <section ref={containerRef}>
@@ -121,20 +128,20 @@ export default function RegistrationForm({
             <SessionTypeSelector
               sessions={sessionList}
               selected={session?.id}
-              onSelect={setSession}
+              onSelect={handleSessionSelect}
             />
-            {workshopList?.length > 0 && (
+            {session?.workshop?.length > 0 && (
               <p className="uppercase md:text-lg text-base text-center">
                 Select workshop(s) to attend
               </p>
             )}
             <div className="">
-              {workshopList?.length > 0 && (
+              {session?.workshop?.length > 0 && (
                 <div
                   ref={setRef("workshops")}
                   className="w-full flex flex-col sm:flex-row items-center justify-center [&>div]:col-span-2 flex-wrap [&>div]:xl:col-span-1 gap-y-4 px-5 xl:px-14"
                 >
-                  {workshopList.map((workshop, i) => {
+                  {session?.workshop?.map((workshop, i) => {
                     const isSelected = formData?.workshops?.some(
                       (w) => w.id === workshop.id
                     );
@@ -166,9 +173,12 @@ export default function RegistrationForm({
                               {workshop?.display_title ||
                                 workshop?.session_title}
                             </span>
-                            {workshop?.price_amount&&<span className="text-white xs:text-lg text-sm md:text-xl leading-[1] text-nowrap text-end">
-                              {session?.currency_name} {workshop?.price_amount}
-                            </span>}
+                            {workshop?.price_amount && (
+                              <span className="text-white xs:text-lg text-sm md:text-xl leading-[1] text-nowrap text-end">
+                                {session?.currency_name}{" "}
+                                {workshop?.price_amount}
+                              </span>
+                            )}
                           </div>
                         </div>
                       </label>
@@ -176,7 +186,7 @@ export default function RegistrationForm({
                   })}
                 </div>
               )}
-              {errors.workshops && (
+              {errors.workshops && touched.workshops && (
                 <div className="text-red-500 text-sm text-center mt-2">
                   {errors?.workshops}
                 </div>

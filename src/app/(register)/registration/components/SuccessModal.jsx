@@ -105,7 +105,7 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid }) => {
         <Image
           width={178}
           height={178}
-          src="/images/dummy_qr.png"
+          src="/images/space_lead_qr.png"
           className="w-full aspect-square object-cover"
           alt=""
         />

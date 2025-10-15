@@ -5,15 +5,23 @@ import { LogoBg } from "@/data/icons";
 
 export default async function StudentRegistration({ params }) {
   const { id } = await params;
-  const passTypes = await PublicServices.getRegisterPassInfo(new URLSearchParams(((id&&id==1)?{workshop_type:true}:{}))).then((res) =>
-    res||{data:[],session_type:[]}
-  );
-  const sessionList = id !=1? passTypes?.data?.filter((pass) => pass.ticket_price_type == id):passTypes?.data;
+  const passTypes = await PublicServices.getRegisterPassInfo(
+    new URLSearchParams({ workshop_type: id && id == 1 })
+  ).then((res) => res || { data: [], session_type: [] });
+  // const sessionList =
+  //   id != 1
+  //     ? passTypes?.data?.filter((pass) => pass.ticket_price_type == id)
+  //     : passTypes?.data;
+  const sessionList = passTypes?.data;
   console.log("asdasdasd", passTypes);
   return (
     <main>
       {sessionList?.length > 0 ? (
-        <RegistrationBlock sessionList={sessionList} workshops={passTypes?.session_type} type={id} />
+        <RegistrationBlock
+          sessionList={sessionList}
+          workshops={passTypes?.session_type}
+          type={id}
+        />
       ) : (
         <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
           {/* <BgOverlay/> */}

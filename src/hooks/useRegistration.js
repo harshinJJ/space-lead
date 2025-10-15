@@ -79,7 +79,7 @@ const useRegistration = ({ type, session }) => {
     // Student specific
     institution: Yup.string().when([], {
       is: () =>
-        session?.sales_ticket_type_name?.toLowerCase()?.startsWith("student"),
+        session?.display_ticket_name?.toLowerCase()?.startsWith("student"),
       then: (schema) =>
         schema
           .required("This field is required")
@@ -115,7 +115,7 @@ const useRegistration = ({ type, session }) => {
     // Professional specific
     jobtitle: Yup.string().when([], {
       is: () =>
-        session?.sales_ticket_type_name
+        session?.display_ticket_name
           ?.toLowerCase()
           ?.startsWith("professional"),
       then: (schema) =>
@@ -143,7 +143,7 @@ const useRegistration = ({ type, session }) => {
     }),
     companyname: Yup.string().when([], {
       is: () =>
-        session?.sales_ticket_type_name
+        session?.display_ticket_name
           ?.toLowerCase()
           ?.startsWith("professional"),
       then: (schema) =>
@@ -172,19 +172,19 @@ const useRegistration = ({ type, session }) => {
       otherwise: (schema) => schema.notRequired(),
     }),
     workshops: Yup.array().when([], {
-      is: () => session?.ticket_price_type == 1,
+      // is: () => session?.ticket_price_type == 1,
+      is: () => session?.workshop.length > 0,
       then: (schema) =>
         schema
           .required("Please select at least one workshop")
-          .min(1, "Please select at least one workshop")
-          // .of(
-          //   Yup.object().shape({
-          //     id: Yup.number().required(),
-          //     session_title: Yup.string(),
-          //     price_amount: Yup.string(),
-          //   })
-          // )
-          ,
+          .min(1, "Please select at least one workshop"),
+      // .of(
+      //   Yup.object().shape({
+      //     id: Yup.number().required(),
+      //     session_title: Yup.string(),
+      //     price_amount: Yup.string(),
+      //   })
+      // )
       otherwise: (schema) => schema.notRequired(),
     }),
   });
@@ -252,19 +252,19 @@ const useRegistration = ({ type, session }) => {
       payload.form_data.country_code = phone.countryCode;
 
       if (
-        session?.sales_ticket_type_name
+        session?.display_ticket_name
           ?.toLowerCase()
           ?.startsWith("professional")
       ) {
         delete payload.form_data.institution;
       }
       if (
-        session?.sales_ticket_type_name?.toLowerCase()?.startsWith("student")
+        session?.display_ticket_name?.toLowerCase()?.startsWith("student")
       ) {
         delete payload.form_data.jobtitle;
         delete payload.form_data.companyname;
       }
-      if (session?.ticket_price_type == 1 && item.workshops?.length > 0) {
+      if (session?.workshop&&session?.workshop?.length>0 && item.workshops?.length > 0) {
         payload.form_data.session_ids = item.workshops.map(
           (workshop) => workshop.id
         );

@@ -18,7 +18,7 @@ const BadgePreview = ({ name, category, badgeId, title, organisation,institution
             <Image
               width={125}
               height={125}
-              src="/images/dummy_qr.png"
+              src="/images/space_lead_qr.png"
               className="w-full aspect-square object-cover"
               alt=""
             />
