@@ -23,7 +23,7 @@ const getTagBg = (theme) => {
   }
 };
 
-const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
+const SessionTypeSelector = ({ selected, onSelect, sessions = [],isDisabled=false }) => (
   <>
     {/* <p className="text-secondary text-2xl text-center">
       Which session you wish to attend?
@@ -32,11 +32,12 @@ const SessionTypeSelector = ({ selected, onSelect, sessions = [] }) => (
         sessions.length === 1
           ? "grid-cols-1 justify-items-center [&>div]:lg:w-1/2 [&>div]:md:w-2/3  [&>div]:w-full" // 👈 center single card
           : "grid-cols-2"
-      }`}>
+      } `}>
       {sessions.map((session, i) => (
         <SessionCard
           key={i}
           session={session}
+          isDisabled={isDisabled}
           isSelected={selected === session.id}
           onSelect={() => onSelect(session)}
           theme={i % 2 == 0 ? "secondary" : "primary"}
@@ -50,6 +51,7 @@ const SessionCard = ({
   session,
   isSelected,
   onSelect,
+  isDisabled,
   theme = "secondary",
 }) => {
   // const theme = session.price_amount?"primary":"secondary"
@@ -63,7 +65,7 @@ const SessionCard = ({
       }`}
       onClick={onSelect}
     >
-      <label className="relative flex flex-col cursor-pointer">
+      <label className={`relative flex flex-col cursor-pointer  ${isDisabled ?  "!cursor-not-allowed opacity-80" : ""}`}>
         <div className="flex items-center lg:gap-2.5 gap-1">
           <input
             type="radio"

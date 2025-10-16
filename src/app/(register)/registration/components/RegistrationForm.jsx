@@ -83,6 +83,7 @@ export default function RegistrationForm({
   // };
 
   const handleWorkshopSelect = async (workshop) => {
+    if (isSubmitting) return;
     const currentWorkshops = formData.workshops || [];
     const isSelected = currentWorkshops.some((w) => w.id === workshop.id);
 
@@ -98,7 +99,7 @@ export default function RegistrationForm({
   };
 
   const handleSessionSelect = async (data) => {
-    if (session?.id === data?.id) return;
+    if ((session?.id === data?.id) || isSubmitting) return;
     setSession(data);
     // Reset workshops when session changes
     setFieldTouched("workshops", false);
@@ -139,6 +140,7 @@ export default function RegistrationForm({
             <SessionTypeSelector
               sessions={sessionList}
               selected={session?.id}
+              isDisabled={isSubmitting}
               onSelect={handleSessionSelect}
             />
             <p className="uppercase md:text-lg text-base text-center">
@@ -434,13 +436,13 @@ export default function RegistrationForm({
                                     isSelected
                                       ? "bg-gradient-to-r from-[#9066b7] to-tertiary from-30% to-90% p-3.25"
                                       : "border-1 border-secondary p-3"
-                                  }`}
+                                  } ${isSubmitting ? "!cursor-not-allowed" : ""}`}
                                 >
                                   <input
                                     type="checkbox"
                                     checked={isSelected}
-                                    {...(workshop?.booked_quantity >=
-                                    workshop?.booking_capacity
+                                    {...((workshop?.booked_quantity >=
+                                    workshop?.booking_capacity|| isSubmitting )
                                       ? { disabled: true }
                                       : {
                                           onChange: () =>
