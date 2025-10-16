@@ -30,9 +30,9 @@ const TicketSummary = ({
       <div className="border border-secondary p-2.5 mb-4.5">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm">SPACELEAD'25</span>
-          <span className="text-secondary text-[1.25rem] font-gilroy-black">
+          {price>0&&<span className="text-secondary text-[1.25rem] font-gilroy-black">
             {currency} {formatCurrency(price)}
-          </span>
+          </span>}
         </div>
         {workshops?.length > 0 && (
           <div className="">
