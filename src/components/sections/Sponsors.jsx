@@ -101,8 +101,12 @@ export const SponsorList = ({
   return sponsors?.length > 0 ? (
     <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
       {/* Left & right edge gradients */}
-      <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
-      <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
+      {sponsors.length > 2 && (
+        <>
+          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 xl:w-100 bg-gradient-to-r from-[#EDF0FE] to-transparent"></div>
+          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 xl:w-100 bg-gradient-to-l from-[#EDF0FE] to-transparent"></div>
+        </>
+      )}
 
       <div className="container-fluid px-5 mx-auto lg:px-12.75 text-center">
         {label && (
@@ -134,11 +138,22 @@ export const SponsorList = ({
         <div className="relative mx-auto lg:pb-10 ">
           <div className="overflow-hidden w-full relative group">
             <div
-              className={`flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] ${
-                sponsors.length > 5
-                  ? "animate-[customerLogosMarquee_var(--duration)_linear_infinite]"
-                  : "justify-center !w-full"
-              } group-hover:[animation-play-state:paused]`}
+              className={`flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform animate-[customerLogosMarquee_var(--duration)_linear_infinite] [--duration:42s] 
+                 ${
+                   sponsors.length <= 1
+                     ? "![animation-play-state:paused]  "
+                     : sponsors.length <= 2
+                     ? "sm:![animation-play-state:paused]  ![--duration:10s] "
+                     : sponsors.length <= 3
+                     ? "lg:![animation-play-state:paused]  ![--duration:12s] "
+                     : sponsors.length <= 4
+                     ? "xl:![animation-play-state:paused]  ![--duration:22s]   "
+                     : sponsors.length <= 5
+                     ? "2xl:![animation-play-state:paused]  ![--duration:32s]  "
+                     : "justify-center !w-full"
+                 }
+                ${sponsors.length > 5 ? "" : "justify-center !w-full"} 
+              group-hover:[animation-play-state:paused]`}
             >
               {sponsors.map(
                 (sponsor, idx) =>
@@ -159,93 +174,23 @@ export const SponsorList = ({
                   )
               )}
               {/* Duplicate items for seamless infinite scroll */}
-              {sponsors?.length > 5 &&
-                sponsors.map(
-                  (sponsor, idx) =>
-                    sponsor.logo && (
-                      <div
-                        key={`duplicate-${idx}`}
-                        className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
-                      >
-                        <Image
-                          width={150}
-                          height={40}
-                          priority={true}
-                          src={sponsor.logo || "/logo.png"}
-                          alt={sponsor.id || sponsor.name}
-                          className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                        />
-                      </div>
-                    )
-                )}
-            </div>
-          </div>
-
-          {/* Swiper for logos */}
-
-          {/* <div className="">
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={2}
-              loop
-              freeMode={true}
-              modules={[FreeMode, Autoplay]}
-              autoplay={{
-                delay: 0, // continuous scroll
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-                reverseDirection: true, // first swiper normal
-              }}
-              className="!w-full !py-3"
-              speed={3000} // control smoothness
-              breakpoints={{
-                640: { slidesPerView: 2, spaceBetween: 40 },
-                768: { slidesPerView: 3, spaceBetween: 40 },
-                1024: { slidesPerView: 4, spaceBetween: 10 },
-                1280: { slidesPerView: 5, spaceBetween: 10 },
-                1400: { slidesPerView: 5, spaceBetween: 40 },
-                1536: { slidesPerView: 6, spaceBetween: 40 },
-                1728: { slidesPerView: 6, spaceBetween: 40 },
-                1920: { slidesPerView: "auto", spaceBetween: 20 },
-              }}
-            >
-              {sponsors.map((sponsor, idx) => (
-                <SwiperSlide
-                  className="3xl:!w-[248px] hover:scale-[1.2]"
-                  key={idx}
-                >
-                  <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
-                    <Image
-                      width={150}
-                      height={40}
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div> */}
-
-          <div className="overflow-hidden w-full relative group">
-            <div
-              className={`flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] ${
-                sponsors.length > 5
-                  ? "animate-[customerLogosMarqueeReverse_var(--duration)_linear_infinite]"
-                  : "justify-center !w-full"
-              } group-hover:[animation-play-state:paused]`}
-            >
-              {sponsors.map(
+              {sponsors?.map(
                 (sponsor, idx) =>
                   sponsor.logo && (
                     <div
-                      key={idx}
-                      className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                      key={`duplicate-${idx}`}
+                      className={`box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300 
+                         ${sponsors.length <= 1 ? "hidden" : ""}
+                         ${sponsors.length <= 2 ? "sm:hidden" : ""}
+                          ${sponsors.length <= 3 ? "lg:hidden" : ""}
+                          ${sponsors.length <= 4 ? "xl:hidden" : ""}
+                          ${sponsors.length <= 5 ? "2xl:hidden" : ""} 
+                        `}
                     >
                       <Image
                         width={150}
                         height={40}
+                        priority={true}
                         src={sponsor.logo || "/logo.png"}
                         alt={sponsor.id || sponsor.name}
                         className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
@@ -253,9 +198,37 @@ export const SponsorList = ({
                     </div>
                   )
               )}
-              {/* Duplicate items for seamless infinite scroll */}
-              {sponsors?.length > 5 &&
-                sponsors.map(
+            </div>
+          </div>
+
+          {sponsors?.length > 5 && (
+            <div className="overflow-hidden w-full relative group">
+              <div
+                className={`flex w-max items-center gap-5 sm:gap-10  py-3 will-change-transform [--duration:42s] ${
+                  sponsors.length > 5
+                    ? "animate-[customerLogosMarqueeReverse_var(--duration)_linear_infinite]"
+                    : "justify-center !w-full"
+                } group-hover:[animation-play-state:paused]`}
+              >
+                {sponsors.map(
+                  (sponsor, idx) =>
+                    sponsor.logo && (
+                      <div
+                        key={idx}
+                        className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                      >
+                        <Image
+                          width={150}
+                          height={40}
+                          src={sponsor.logo || "/logo.png"}
+                          alt={sponsor.id || sponsor.name}
+                          className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)]"
+                        />
+                      </div>
+                    )
+                )}
+                {/* Duplicate items for seamless infinite scroll */}
+                {sponsors.map(
                   (sponsor, idx) =>
                     sponsor.logo && (
                       <div
@@ -272,8 +245,9 @@ export const SponsorList = ({
                       </div>
                     )
                 )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </section>
