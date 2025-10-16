@@ -17,6 +17,7 @@ const orbitron = Orbitron({
 export const metadata = {
   title: "SpaceLead",
   description: "INTERNATIONAL AEROSPACE MEDICINE CONFERENCE 2025",
+  robots: "noindex, nofollow",
 };
 
 export const viewport = {
@@ -31,7 +32,7 @@ export default function RootLayout({ children }) {
     <html lang="en" data-scroll-behavior="smooth">
       <body id="" className={`${orbitron.variable} antialiased`}>
         {/* Transition overlay */}
-       
+
         <PageLoader />
         <RecaptchaProvider>
           <GsapProvider>{children}</GsapProvider>
