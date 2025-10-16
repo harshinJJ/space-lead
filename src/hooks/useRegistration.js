@@ -170,7 +170,7 @@ const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
     }),
     workshops: Yup.array().when([], {
       // is: () => session?.ticket_price_type == 1,
-      is: () => session?.workshop.length > 0 && isWorkshop,
+      is: () => session?.workshop?.length > 0 && isWorkshop,
       then: (schema) =>
         schema
           .required("Please select at least one workshop")
