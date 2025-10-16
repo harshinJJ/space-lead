@@ -335,10 +335,10 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
       </div>
       {showAddtoCalender && !miscSession && (
         <div className="bg-gradient-to-r from-white  to-indigo rounded-full flex items-center gap-3 py-1.5 px-3.5">
-          <a href={outlookUrl} target="_blank" rel="noopener noreferrer">
+          <a aria-label="add-to-calendar-outlook" href={outlookUrl} target="_blank" rel="noopener noreferrer">
             <OutlookIcon />
           </a>
-          <a href={googleUrl} target="_blank" rel="noopener noreferrer">
+          <a aria-label="add-to-calendar-google" href={googleUrl} target="_blank" rel="noopener noreferrer">
             <GoogleIcon />
           </a>
           <span>Add to my calender</span>

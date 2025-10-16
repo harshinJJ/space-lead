@@ -331,7 +331,7 @@ export const SponsorScroll = ({ sponsors = [] }) => {
       slidesPerView={2}
       freeMode={true}
       modules={[FreeMode]}
-      className="!w-full !py-3"
+      className="!w-full !py-3 !ps-2.5"
       speed={3000} // control smoothness
       breakpoints={{
         640: { slidesPerView: 2, spaceBetween: 40 },
@@ -347,8 +347,8 @@ export const SponsorScroll = ({ sponsors = [] }) => {
       preventClicksPropagation={false}
     >
       {sponsors.map((sponsor, idx) => (
-        <SwiperSlide className="3xl:!w-[248px] hover:scale-[1.2]" key={idx}>
-          <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
+        <SwiperSlide className="3xl:!w-[248px] !transition-all !duration-500 hover:scale-[1.2]" key={idx}>
+          <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] text-black bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
             <Image
               width={150}
               height={40}
@@ -359,7 +359,7 @@ export const SponsorScroll = ({ sponsors = [] }) => {
           </div>
         </SwiperSlide>
       ))}
-      <SwiperSlide className="">
+      <SwiperSlide className="3xl:!max-w-[248px] ">
         <Link
           href={"/sponsors"}
           className="box-border flex flex-row justify-center gap-4 items-center h-[86.96px]"

@@ -86,13 +86,13 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
             <div className="relative px-8 py-2.75  bg-secondary font-medium rounded-full flex text-sm md:text-lg  items-center justify-start gap-5 i mb-10">
               <div className="flex items-center">Connect with us :</div>
               <div className="flex items-center gap-4">
-                <a href={EVENT_INFO.socials.twitter} target="_blank">
+                <a aria-label="social-link-twitter" href={EVENT_INFO.socials.twitter} target="_blank">
                   <TwitterIcon />
                 </a>
-                <a href={EVENT_INFO.socials.instagram} target="_blank">
+                <a aria-label="social-link-instagram" href={EVENT_INFO.socials.instagram} target="_blank">
                   <InstagramIcon />
                 </a>
-                <a href={EVENT_INFO.socials.linkedin} target="_blank">
+                <a aria-label="social-link-linkedin" href={EVENT_INFO.socials.linkedin} target="_blank">
                   <LinkedInIcon />
                 </a>
               </div>
@@ -140,7 +140,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                         </div>
                       </a>
                     ) : (
-                      <a data-fancybox="gallery" href={media.image || "#"}>
+                      <a aria-label={`gallery_image_${i}`} data-fancybox="gallery" href={media.image || "#"}>
                         <Image
                           src={media?.image}
                           alt={media?.alt || "gallery_image_" + media?.id}
