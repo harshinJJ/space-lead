@@ -3,6 +3,8 @@ import PublicServices from "@/services/publicServices";
 import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import { LogoBg } from "@/data/icons";
 
+const allowedSessionTypes = ["conference", "workshop"];
+
 export default async function StudentRegistration({ params }) {
   const { id } = await params;
   const passTypes = await PublicServices.getRegisterPassInfo(
@@ -15,7 +17,7 @@ export default async function StudentRegistration({ params }) {
   const sessionList = passTypes?.data;
   return (
     <main>
-      {sessionList?.length > 0 ? (
+      {sessionList?.length > 0 && allowedSessionTypes.includes(id) ? (
         <RegistrationBlock
           sessionList={sessionList}
           isWorkshop={id && id == "workshop"}
