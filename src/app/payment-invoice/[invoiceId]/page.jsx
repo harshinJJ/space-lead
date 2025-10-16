@@ -75,13 +75,9 @@ const Page = async ({ params }) => {
     (res) => res?.data || {}
   );
 
-
   if (!invoiceRes?.invoice_id) {
-    return (
-<SomethingWentWrong url="/"/>
-    );
+    return <SomethingWentWrong url="/" />;
   }
-
 
   const invoiceData = {
     company: {
@@ -113,9 +109,11 @@ const Page = async ({ params }) => {
         description:
           item?.ticket_details?.display_ticket_name ||
           item?.ticket_details?.ticket_name,
-        // qty: 1,
+
         isHeading: true,
-        // price: item?.ticket_amount,
+        ...(item?.ticket_amount > 0
+          ? { qty: 1, price: item?.ticket_amount }
+          : {}),
       })),
       ...invoiceRes?.selected_sessions_type?.map((item, i) => ({
         id: `(${toRoman(i + 1)})`,
@@ -125,16 +123,15 @@ const Page = async ({ params }) => {
       })),
     ],
     totals: {
-      subtotal: invoiceRes?.purchase_history[0]?.sub_total || 0,
-      vat_percent: invoiceRes?.purchase_history[0]?.tax_percentage || 0, //not available
-      vat_amount: invoiceRes?.purchase_history[0]?.tax_amount || 0,
-      total: invoiceRes?.purchase_history[0]?.ticket_amount,
-      paid: invoiceRes?.purchase_history[0]?.ticket_amount,
+      subtotal: invoiceRes?.sub_total || 0,
+      vat_percent: invoiceRes?.tax_percentage || 0, //not available
+      vat_amount: invoiceRes?.tax_amount || 0,
+      total: invoiceRes?.ticket_amount,
+      paid: invoiceRes?.ticket_amount,
       currency: invoiceRes?.currency,
     },
     qr_code: invoiceRes?.zatca_qr_base64 || invoiceRes?.zatca_qr_image,
   };
-
 
   return (
     <main>
@@ -248,29 +245,77 @@ const Page = async ({ params }) => {
                         <span className="block font-light">السعر الإجمالي</span>
                         <span>Total Price</span>
                       </th>
+                      {/* <th className=" !text-start text-nowrap">
+                        <span className="block font-light">السعر الوحدة</span>
+                        <span>Unit Price</span>
+                      </th>
+                      <th className=" !text-start text-nowrap">
+                        <span className="block font-light">السعر الصافي</span>
+                        <span>Net Price</span>
+                      </th>
+                      <th className=" !text-start text-nowrap">
+                        <span className="block font-light">مبلغ الضريبة</span>
+                        <span>15% Vat Amount</span>
+                      </th> */}
                     </tr>
                   </thead>
                   <tbody>
-                    {invoiceData?.items?.map((item, i) => (
-                      <tr
-                        key={i}
-                        className={` border-b border-gray-300 py-2 [&>td]:py-2 [&>td]:px-2 ${
-                          item.isHeading ? "bg-[#F0F0F0] font-semibold text-lg" : ""
-                        }`}
-                      >
-                        <td className=" text-center">{item?.id}</td>
-                        <td><div className={`${item.isHeading ? "" : "ps-4"}`}>{item.description}</div></td>
-                        <td className=" text-center">{item.qty}</td>
-                        <td className=" text-start">
-                          {(item?.price || item?.price == "0") && (
-                            <>
-                              {item?.price?.toFixed(2) || "0.00"}{" "}
-                              {invoiceData?.totals?.currency}
-                            </>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
+                    {invoiceData?.items?.map((item, i) => {
+                      const price = parseFloat(item?.price) || null;
+                      // const vat = (price / 115) * 15;
+                      // const netPrice = price - vat;
+                      return (
+                        <tr
+                          key={i}
+                          className={` border-b border-gray-300 py-2 [&>td]:py-2 [&>td]:px-2 ${
+                            item.isHeading
+                              ? "bg-[#F0F0F0] font-semibold md:text-lg text-base"
+                              : "md:text-base text-sm"
+                          }`}
+                        >
+                          <td className=" text-center">{item?.id}</td>
+                          <td>
+                            <div className={`${item.isHeading ? "" : "ps-4"}`}>
+                              {item.description}
+                            </div>
+                          </td>
+                          <td className=" text-center">{item.qty}</td>
+                          <td className=" text-start">
+                            {(price || price == "0") && (
+                              <>
+                                {price.toFixed(2) || "0.00"}{" "}
+                                {invoiceData?.totals?.currency}
+                              </>
+                            )}
+                          </td>
+                          {/* <td className=" text-start">
+                            {(price || price == "0") && (
+                              <>
+                                {netPrice.toFixed(2) || "0.00"}{" "}
+                                {invoiceData?.totals?.currency}
+                              </>
+                            )}
+                          </td>
+                          <td className=" text-start">
+                            {(price || price == "0") && (
+                              <>
+                                {(netPrice * (item.qty || 1))?.toFixed(2) ||
+                                  "0.00"}{" "}
+                                {invoiceData?.totals?.currency}
+                              </>
+                            )}
+                          </td>
+                          <td className=" text-start">
+                            {(price || price == "0") && (
+                              <>
+                                {vat.toFixed(2) || "0.00"}{" "}
+                                {invoiceData?.totals?.currency}
+                              </>
+                            )}
+                          </td> */}
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

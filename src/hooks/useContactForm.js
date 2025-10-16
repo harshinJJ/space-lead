@@ -158,7 +158,6 @@ const useContactForm = () => {
 
     RegistrationServices.submitContactForm(formData)
       .then((res) => {
-        console.log("asdasdasd", res);
         if (SUCCESS_CODES.includes(res.status) && res.data) {
           setShowSuccess(true);
           formik.resetForm();

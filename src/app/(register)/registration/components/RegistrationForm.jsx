@@ -106,6 +106,12 @@ export default function RegistrationForm({
   };
 
   const ticketName = session?.display_ticket_name || session?.ticket_name;
+  const priceKey =
+    session?.ticket_visitor_type == "7"
+      ? "student_amount"
+      : session?.ticket_visitor_type == "15"
+      ? "professional_amount"
+      : "price_amount";
   return (
     <section ref={containerRef}>
       {success ? (
@@ -433,13 +439,13 @@ export default function RegistrationForm({
                                   <input
                                     type="checkbox"
                                     checked={isSelected}
-                                    disabled={
-                                      workshop?.booked_quantity >=
-                                      workshop?.booking_capacity
-                                    }
-                                    onChange={() =>
-                                      handleWorkshopSelect(workshop)
-                                    }
+                                    {...(workshop?.booked_quantity >=
+                                    workshop?.booking_capacity
+                                      ? { disabled: true }
+                                      : {
+                                          onChange: () =>
+                                            handleWorkshopSelect(workshop),
+                                        })}
                                     className="sr-only peer disabled:!cursor-not-allowed"
                                   />
                                   {isSelected && (
@@ -454,22 +460,18 @@ export default function RegistrationForm({
                                       {workshop?.display_title ||
                                         workshop?.session_title}{" "}
                                     </span>
-                                    {workshop?.price_amount && (
+                                    {workshop[priceKey] ? (
                                       <span className=" flex-1 leading-[1] text-nowrap font-droid-bold text-end">
                                         {session?.currency_name}{" "}
-                                        {(session?.ticket_visitor_type == "7"
-                                          ? workshop?.student_amount
-                                          : session?.ticket_visitor_type == "15"
-                                          ? workshop?.professional_amount
-                                          : workshop?.price_amount) || 0}
+                                        {workshop[priceKey] || 0}
                                       </span>
-                                    )}
+                                    ) : null}
                                   </div>
                                   {workshop?.booked_quantity >=
                                     workshop?.booking_capacity && (
                                     <TextOverlay
-                                      containerClass="rounded-lg backdrop-blur-[2.5px]"
-                                      className="!bg-black/40 w-full h-full  !text-black font-droid-bold rounded-lg cursor-not-allowed"
+                                      containerClass="rounded-lg !backdrop-blur-[0.5px]"
+                                      className=" w-full h-full bg-gradient-to-r from-[#9066b7]/50 to-tertiary/50 from-30% to-90%  !text-white font-droid-bold rounded-lg cursor-not-allowed"
                                       text="Sold out"
                                     />
                                   )}
@@ -524,7 +526,11 @@ export default function RegistrationForm({
                     </PrimaryButton>
                   </form>
                 </div>
-                {(session?.price_amount > 0 || checkPriceExist(formData?.workshops, session?.ticket_visitor_type)) && (
+                {(session?.price_amount > 0 ||
+                  checkPriceExist(
+                    formData?.workshops,
+                    session?.ticket_visitor_type
+                  )) && (
                   <TicketSummary
                     name={ticketName}
                     price={session?.price_amount}

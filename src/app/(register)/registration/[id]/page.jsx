@@ -13,7 +13,6 @@ export default async function StudentRegistration({ params }) {
   //     ? passTypes?.data?.filter((pass) => pass.ticket_price_type == id)
   //     : passTypes?.data;
   const sessionList = passTypes?.data;
-  console.log("asdasdasd", passTypes);
   return (
     <main>
       {sessionList?.length > 0 ? (
