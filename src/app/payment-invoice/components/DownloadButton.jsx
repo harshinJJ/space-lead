@@ -132,6 +132,10 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 5,
   },
+  tableRowHeading: {
+    fontWeight: "bold",
+    backgroundColor: "#F0F0F0",
+  },
   td: {
     fontSize: 12,
   },
@@ -444,21 +448,21 @@ const DownloadButton = ({ invoice, invoiceId }) => {
 
             {/* Table Rows */}
             {invoice?.items?.map((item) => (
-              <View style={styles.tableRow} key={item.id}>
+              <View style={[styles.tableRow,item?.isHeading&&styles.tableRowHeading]} key={item.id}>
                 <View style={[styles.td, styles.colSr]}>
                   <Text>{item.id}</Text>
                 </View>
-                <View style={[styles.td, styles.colDescription]}>
+                <View style={[styles.td, styles.colDescription, item?.isHeading?{}:{paddingLeft: 10}]}>
                   <Text>{item.description}</Text>
                 </View>
                 <View style={[styles.td, styles.rowQty]}>
                   <Text>{item.qty}</Text>
                 </View>
-                <View style={[styles.td, styles.colTotal]}>
+                {(item.price||item?.price=="0")&&<View style={[styles.td, styles.colTotal]}>
                   <Text>
-                    {item.price.toFixed(2)} {invoice?.totals?.currency}
+                    {item.price?.toFixed(2)} {invoice?.totals?.currency}
                   </Text>
-                </View>
+                </View>}
               </View>
             ))}
 

@@ -469,7 +469,7 @@ export default function RegistrationForm({
                                     workshop?.booking_capacity && (
                                     <TextOverlay
                                       containerClass="rounded-lg backdrop-blur-[2.5px]"
-                                      className="!bg-tertiary/90 w-full h-full  !text-white font-droid-bold rounded-lg cursor-not-allowed"
+                                      className="!bg-black/40 w-full h-full  !text-black font-droid-bold rounded-lg cursor-not-allowed"
                                       text="Sold out"
                                     />
                                   )}
