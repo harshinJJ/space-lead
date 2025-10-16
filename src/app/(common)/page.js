@@ -52,9 +52,9 @@ export default async function Home() {
           <div
             className={`${
               speakers?.length > 0
-                ? "lg:absolute lg:-translate-y-1/2 -translate-y-1/10"
+                ? "md:absolute md:-translate-y-1/2 -translate-y-1/10"
                 : ""
-            } mx-auto left-0 right-0 px-5 md:px-0  top-0 w-full`}
+            } mx-auto left-0 right-0 px-5 md:px-15  top-0 w-full`}
           >
             <StatsCard />
           </div>

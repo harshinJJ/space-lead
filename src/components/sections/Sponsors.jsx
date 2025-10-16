@@ -302,10 +302,20 @@ export const SponsorScroll = ({ sponsors = [] }) => {
   return (
     <Swiper
       spaceBetween={20}
+      // centeredSlides={true}
       slidesPerView={2}
       freeMode={true}
+      wrapperClass={` !w-full !py-3 !ps-2.5
+          swiper-wrapper
+          ${sponsors?.length <= 2 ? "sm:!flex sm:!justify-center" : ""}
+          ${sponsors?.length <= 3 ? "md:!flex md:!justify-center" : ""}
+          ${sponsors?.length <= 4 ? "lg:!flex lg:!justify-center" : ""}
+          ${sponsors?.length <= 5 ? "xl:!flex xl:!justify-center" : ""}
+        `}
       modules={[FreeMode]}
-      className="!w-full !py-3"
+      // className="!w-full !py-3 !ps-2.5"
+
+      className={` !w-full !py-3 `}
       speed={3000} // control smoothness
       breakpoints={{
         640: { slidesPerView: 2, spaceBetween: 40 },
@@ -333,7 +343,7 @@ export const SponsorScroll = ({ sponsors = [] }) => {
           </div>
         </SwiperSlide>
       ))}
-      <SwiperSlide className="">
+      <SwiperSlide className="3xl:!max-w-[248px] ">
         <Link
           href={"/sponsors"}
           className="box-border flex flex-row justify-center gap-4 items-center h-[86.96px]"
