@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   pdf,
   Document,
@@ -204,6 +204,10 @@ const DownloadIcon = ({ size = 20, className = "" }) => (
 
 const DownloadButton = ({ invoice, invoiceId }) => {
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    handleDownload();
+  }, []);
 
   const handleDownload = async () => {
     if (!invoice?.invoice_id && !invoiceId) return;
@@ -529,6 +533,10 @@ const DownloadButton = ({ invoice, invoiceId }) => {
     link.click();
 
     setLoading(false);
+
+    setTimeout(() => {
+      window.close();
+    }, 100);
   };
 
   return (

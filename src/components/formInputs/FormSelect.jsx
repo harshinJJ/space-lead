@@ -96,6 +96,7 @@ const FormSelect = ({
   onChange,
   onBlur,
   id,
+  isDisabled,
   ...props
 }) => {
   const [hasValue, setHasValue] = useState(false);
@@ -141,6 +142,8 @@ const FormSelect = ({
       "&:hover": {
         borderColor: isFocused ? "var(--primary-color)" : "#e0e0e0",
       },
+      cursor:state.isDisabled ? "not-allowed" : "pointer",
+      pointerEvents:"auto",
     }),
     option: (provided, state) => ({
       ...provided,
@@ -220,6 +223,7 @@ const FormSelect = ({
       onMenuClose={handleBlur}
       components={{ DropdownIndicator,Input }}
       inputProps={{ autoComplete: "customselectinputthatshallneverbefilled", form: { autoComplete: "off" } }}
+      isDisabled={isDisabled}
       {...props}
     />
   );

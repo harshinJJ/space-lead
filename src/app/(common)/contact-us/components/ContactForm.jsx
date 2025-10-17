@@ -41,7 +41,7 @@ const CustomInput = ({ onChange, onBlur, value, ...props }) => {
         onBlur(trimmed, e);
       }}
       value={value}
-      className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent"
+      className="w-full border-b border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent disabled:!cursor-not-allowed "
     />
   );
 };
@@ -220,6 +220,7 @@ const ContactForm = () => {
                   handleBlur(e);
                 }}
                 value={values.firstname}
+                disabled={isSubmitting}
               />
               {errors.firstname && touched.firstname && (
                 <p className="text-red-500 text-lg">{errors.firstname}</p>
@@ -240,6 +241,7 @@ const ContactForm = () => {
                   handleBlur(e);
                 }}
                 value={values.email}
+                disabled={isSubmitting}
               />
               {errors.email && touched.email && (
                 <p className="text-red-500 text-lg">{errors.email}</p>
@@ -268,6 +270,7 @@ const ContactForm = () => {
                 value={values.phoneNumber}
                 autoComplete="off"
                 placeholder="Phone number"
+                disabled={isSubmitting}
               />
               {errors.phoneNumber && touched.phoneNumber && (
                 <p className="text-red-500 text-lg">{errors.phoneNumber}</p>
@@ -280,6 +283,7 @@ const ContactForm = () => {
               rows={3}
               name="message"
               autoComplete="off"
+              disabled={isSubmitting}
               onChange={(e) => {
                 let value = e.target.value.replace(
                   /[^a-zA-Z0-9\s&.,\-'/()#@!+_:;]/g,
@@ -306,7 +310,7 @@ const ContactForm = () => {
                 handleBlur(e);
               }}
               value={values.message}
-              className="w-full border-b text-2xl border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent resize-none"
+              className="w-full border-b text-2xl border-gray-300 focus:border-teal-500 outline-none py-2 bg-transparent resize-none disabled:!cursor-not-allowed "
             />
             {errors.message && touched.message && (
               <p className="text-red-500 text-lg">{errors.message}</p>

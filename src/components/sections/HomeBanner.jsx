@@ -116,7 +116,7 @@ const HomeBanner = ({ sponsors = [] }) => {
         </div>
       </div>
       <div className="relative py-2 flex items-center">
-        <div className="absolute bg-gradient-to-r from-primary/21 to-black/0 to-[50%] mx-2.5 w-full h-full"></div>
+        <div className="absolute bg-gradient-to-r from-primary/21 to-black/0 to-[50%] w-full h-full"></div>
         <SponsorScroll sponsors={sponsors} />
       </div>
       <div className="relative w-full flex justify-center items-center">

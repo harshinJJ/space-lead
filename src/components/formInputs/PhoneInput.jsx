@@ -246,6 +246,7 @@ const PhoneInputs = ({
     focus:border-[var(--primary-color)]
     
     ${error ? "border-red-500" : ""}
+    ${disabled ? "bg-gray-100 !cursor-not-allowed " : ""}
   `}
         name={name}
         labels={labelsWithDialCodes}

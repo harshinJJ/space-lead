@@ -1,13 +1,20 @@
 "use client";
 import PrimaryButton, { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import SharePopup from "@/components/common/SharePopup";
-import { RightArrow } from "@/data/icons";
+import { DownloadIcon, RightArrow } from "@/data/icons";
+import Link from "@/utils/CustomLink";
 import gsap from "gsap";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
-const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid,invoiceId }) => {
+const SuccessModal = ({
+  onContinue,
+  status = "failure",
+  ticketUrl,
+  uid,
+  invoiceId,
+}) => {
   const router = useRouter();
   const canvasRef = useRef(null);
   const [qrReady, setQrReady] = useState(false);
@@ -25,15 +32,15 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid,invoiceId
     // if (onContinue) {
     //   onContinue();
     // } else {
-      gsap.to("#transition-overlay", {
-        x: "0%",
-        duration: 0,
-        immediateRender:true,
-        ease: "power2.in",
-        onComplete: () => {
-          router.push("/registration"); // navigate after cover
-        },
-      });
+    gsap.to("#transition-overlay", {
+      x: "0%",
+      duration: 0,
+      immediateRender: true,
+      ease: "power2.in",
+      onComplete: () => {
+        router.push("/registration"); // navigate after cover
+      },
+    });
     // }
   };
   useEffect(() => {
@@ -117,14 +124,7 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid,invoiceId
       >
         Continue
       </PrimaryButton>
-      {/* {invoiceId&&<PrimaryLink
-        href={"/payment-invoice/"+invoiceId}
-        className=" py-2.5 px-10 mt-4 font-semibold"
-      >
-        <span>Download Invoice</span>
-        <RightArrow className="ml-2" />
-      </PrimaryLink>} */}
-      
+
       <div className="relative">
         <button
           ref={shareRef}
@@ -163,6 +163,17 @@ const SuccessModal = ({ onContinue, status = "failure", ticketUrl, uid,invoiceId
           onClose={() => setIsSharePopupOpen(false)}
         />
       </div>
+
+      {invoiceId && (
+        <Link
+        target="_blank"
+          href={"/payment-invoice/" + invoiceId}
+          className=" py-2.5 px-10 mt-4 font-semibold bg-tertiary/90 hover:bg-tertiary transition-all duration-300 flex items-center rounded-full text-white "
+        >
+          <span>Download Invoice</span>
+          <DownloadIcon size={20} className="ml-2" />
+        </Link>
+      )}
     </div>
   ) : (
     <div className="flex flex-col items-center justify-center bg-white rounded-3xl shadow-lg p-8 py-14.5 w-full max-w-[44rem] mx-auto mt-12">

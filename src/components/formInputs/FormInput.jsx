@@ -1,12 +1,12 @@
 import { smartTrim } from "@/utils/functions";
 import React, { useState } from "react";
 
-const FormInput = ({ className = "", onFocus, onBlur, onChange, ...props }) => {
+const FormInput = ({ className = "", onFocus, onBlur, onChange,disabled, ...props }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <input
-      className={`bg-[#F6F6F6] w-full py-2.5 px-3.5 text-sm rounded-lg 
+      className={`bg-[#F6F6F6] w-full py-2.5 px-3.5 text-sm rounded-lg disabled:!cursor-not-allowed 
         border ${
           isFocused
             ? "border-[var(--primary-color)]"
@@ -47,6 +47,7 @@ const FormInput = ({ className = "", onFocus, onBlur, onChange, ...props }) => {
         setIsFocused(false);
         onBlur(trimmed, e);
       }}
+      disabled={disabled}
       {...props}
     />
   );

@@ -113,6 +113,7 @@ export default function RegistrationForm({
       : session?.ticket_visitor_type == "15"
       ? "professional_amount"
       : "price_amount";
+      console.log("asdasdjajsds",session)
   return (
     <section ref={containerRef}>
       {success ? (
@@ -175,6 +176,7 @@ export default function RegistrationForm({
                         </Label>
 
                         <FormSelect
+                        isDisabled={isSubmitting}
                           instanceId={"title-select"}
                           name="title"
                           placeholder="Title"
@@ -198,6 +200,7 @@ export default function RegistrationForm({
                         <Label required={true}>First Name</Label>
 
                         <FormInput
+                        disabled={isSubmitting}
                           name="firstname"
                           onChange={(value) => {
                             setFieldValue("firstname", value);
@@ -219,6 +222,7 @@ export default function RegistrationForm({
                     <div ref={setRef("lastname")}>
                       <Label required={true}>Last Name</Label>
                       <FormInput
+                      disabled={isSubmitting}
                         name="lastname"
                         onChange={(value) => {
                           setFieldValue("lastname", value);
@@ -243,6 +247,7 @@ export default function RegistrationForm({
                         onBlur={handleBlur}
                         value={formData.phoneNumber}
                         placeholder="Phone number"
+                        disabled={isSubmitting}
                       />
                       {touched.phoneNumber && (
                         <Error message={errors?.phoneNumber} />
@@ -252,6 +257,7 @@ export default function RegistrationForm({
                     <div ref={setRef("email")}>
                       <Label required={true}>Email</Label>
                       <FormInput
+                      disabled={isSubmitting}
                         name="email"
                         onChange={(value) => {
                           setFieldValue("email", value);
@@ -269,6 +275,7 @@ export default function RegistrationForm({
                     <div ref={setRef("country")}>
                       <Label required={true}>Country of Residence</Label>
                       <FormSelect
+                      isDisabled={isSubmitting}
                         instanceId={"residency-select"}
                         name="country"
                         onChange={async (option) => {
@@ -291,6 +298,7 @@ export default function RegistrationForm({
                     <div ref={setRef("nationality")}>
                       <Label required={true}>Nationality</Label>
                       <FormSelect
+                      isDisabled={isSubmitting}
                         instanceId={"nationality-select"}
                         name="nationality"
                         placeholder="Nationality"
@@ -308,6 +316,7 @@ export default function RegistrationForm({
                         options={countryList}
                       />
                       {/* <FormInput
+                      disabled={isSubmitting}
                   name="nationality"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -324,6 +333,7 @@ export default function RegistrationForm({
                       <div ref={setRef("institution")}>
                         <Label required={true}>Institution Name</Label>
                         <FormInput
+                        disabled={isSubmitting}
                           name="institution"
                           onChange={(value) => {
                             setFieldValue("institution", value);
@@ -348,6 +358,7 @@ export default function RegistrationForm({
                         <div ref={setRef("jobtitle")}>
                           <Label required={true}>Job Title</Label>
                           <FormInput
+                          disabled={isSubmitting}
                             name="jobtitle"
                             autoComplete="designation"
                             onChange={(value) => {
@@ -367,6 +378,7 @@ export default function RegistrationForm({
                         <div ref={setRef("companyname")}>
                           <Label required={true}>Company Name</Label>
                           <FormInput
+                          disabled={isSubmitting}
                             name="companyname"
                             onChange={(value) => {
                               setFieldValue("companyname", value);
@@ -432,7 +444,7 @@ export default function RegistrationForm({
                               return (
                                 <label
                                   key={i}
-                                  className={` relative text-sm flex items-start lg:gap-2.5 gap-1 cursor-pointer h-inherit rounded-lg  ${
+                                  className={` relative text-sm flex min-h-[4em] items-start lg:gap-2.5 gap-1 cursor-pointer h-inherit rounded-lg  ${
                                     isSelected
                                       ? "bg-gradient-to-r from-[#9066b7] to-tertiary from-30% to-90% p-3.25"
                                       : "border-1 border-secondary p-3"
@@ -457,8 +469,8 @@ export default function RegistrationForm({
                                       <CheckIcon className="w-full h-full" />
                                     </span>
                                   )}
-                                  <div className="flex select-none text-black peer-checked:!text-white  items-start justify-between w-full ms-2 gap-2 overflow-hidden">
-                                    <span className=" leading-[1] flex-2 break-all text-wrap font-semibold">
+                                  <div className="flex select-none text-black peer-checked:!text-white  items-center justify-between w-full h-full ms-2 gap-2 overflow-hidden">
+                                    <span className=" leading-[1] flex-2 break-words text-wrap font-semibold">
                                       {workshop?.display_title ||
                                         workshop?.session_title}{" "}
                                     </span>

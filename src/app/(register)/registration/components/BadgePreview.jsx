@@ -13,7 +13,7 @@ const BadgePreview = ({
   <div className=" bg-white  bg-gradient-to-r from-secondary/50 to-primary/50 rounded-[1.25rem] shadow-lg p-2.5 flex flex-col items-center justify-end w-full max-w-xs overflow-hidden">
     <div className="bg-white uppercase rounded-[1.25rem] overflow-hidden flex flex-col items-center w-full max-w-xs">
       <div
-        className={`relative w-full cursor-pointer font-azonix text-lg leading-[1.6] text-white text-center py-4 px-3 bg-linear-to-r from-secondary to-primary `}
+        className={`relative w-full flex flex-col items-center cursor-pointer font-azonix text-lg leading-[1.6] text-white text-center py-4 px-3 bg-linear-to-r from-secondary to-primary `}
       >
         <div className="shimmer glass-bg  absolute left-0 top-0 !rounded-none w-full h-full"></div>
         Badge Preview
@@ -66,11 +66,11 @@ const BadgePreview = ({
         )}
       </div>
       <div
-        className={`relative w-full text-center uppercase cursor-pointer font-azonix text-3xl leading-[1.6] text-white py-2 px-3 bg-linear-to-r from-secondary to-primary `}
+        className={`relative w-full text-center uppercase cursor-pointer flex flex-col items-center font-azonix text-3xl leading-[1.6] text-white py-2 px-3 bg-linear-to-r from-secondary to-primary `}
       >
         <div className="shimmer  glass-bg absolute left-0 top-0 !rounded-none w-full h-full"></div>
-        <div className=" font-gilroy-med text-xs">BADGE CATEGORY</div>
-        <div>{category || "CATEGORY"}</div>
+        <div className=" font-gilroy-med text-xs text=center">BADGE CATEGORY</div>
+        <div className="text-center">{category || "CATEGORY"}</div>
       </div>
     </div>
   </div>

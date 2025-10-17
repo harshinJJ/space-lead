@@ -526,3 +526,8 @@ button {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+
+.PhoneInputInput:disabled{
+  cursor: not-allowed;
+}
