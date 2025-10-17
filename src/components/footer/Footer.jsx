@@ -1,11 +1,14 @@
+"use client";
 // import Link from "next/link";
 import Link from "@/utils/CustomLink";
 
-import React from "react";
+import React, { useState } from "react";
 import ScrollTop from "../common/ScrollTop";
 import Image from "next/image";
-import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
+import { AppStoreButton, GooglePlayButton, InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
 import EVENT_INFO from "@/data/eventInfo";
+import Modal from "../common/Modal";
+import ComingSoonOverlay from "../common/ComingSoonOverlay";
 
 const BgOverlay = () => {
   return (
@@ -69,13 +72,69 @@ const BgOverlay = () => {
   );
 };
 
+const MobileApp = ({ onClick }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(!show);
+    onClick && onClick();
+  };
+
+  const handleClick = (url) => {
+    if (url) {
+      window?.open(url, "_blank"); // Opens in a new tab/window
+    }
+  };
+  return (
+    <>
+      <button onClick={handleClose} className={"w-full block text-nowrap"}>
+        Mobile App
+      </button>
+      <Modal
+        className="!p-0 rounded-3xl !bg-transparent"
+        btnClassName="!text-black bg-white aspect-square h-auto w-fit p-2.5 rounded-full flex items-center justify-center text-5xl !-top-4 !-right-4"
+        isOpen={show}
+        onClose={() => setShow(false)}
+      >
+        <section
+          className={`bg-indigo rounded-3xl overflow-hidden  max-h-[70vh] h-full md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
+        >
+          <div className="container-fluid mx-auto w-full flex flex-col  items-center justify-center gap-10">
+            <h3 className=" text-xl text-start leading-[1.2] font-bold font-azonix text-white">
+              Everything Space Lead ‘25,
+              <br className="2xl:block hidden" /> at your fingertips
+            </h3>
+            <div className="flex flex-col  gap-4 ">
+              <button
+                onClick={() => handleClick(EVENT_INFO.playStore)}
+                disabled={!EVENT_INFO.playStore}
+                className="relative rounded-sm overflow-hidden disabled:!cursor-default"
+              >
+                <GooglePlayButton className="w-full" />
+                {!EVENT_INFO.playStore && <ComingSoonOverlay />}
+              </button>
+              <button
+                onClick={() => handleClick(EVENT_INFO.appStore)}
+                disabled={!EVENT_INFO.appStore}
+                className="relative rounded-sm overflow-hidden disabled:!cursor-default"
+              >
+                <AppStoreButton className="w-full" />
+                {!EVENT_INFO.appStore && <ComingSoonOverlay />}
+              </button>
+            </div>
+          </div>
+        </section>
+      </Modal>
+    </>
+  );
+};
+
 const Footer = () => {
   const quickLinks = [
     { title: "Home", url: "/" },
     { title: "Registration", url: "/registration" },
     { title: "Media", url: "/media" },
     { title: "About Us", url: "/about-us" },
-    { title: "Mobile App", url: "#" },
+    { title: "Mobile App", url: "#", Component: MobileApp },
     { title: "Contact", url: "/contact-us" },
     { title: "Agenda", url: "/agenda" },
     { title: "Sponsors", url: "/sponsors" },
@@ -222,7 +281,7 @@ const Footer = () => {
           >
             <h4 className="text-[1.5rem] font-medium">Quick Links</h4>
             <ul className="grid xs:grid-cols-3 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xs:text-sm sm:text-base  gap-y-2.5 leading-[1.8] 2xl:gap-x-12.5 xl:gap-x-6 lg:gap-x-1 gap-5 md:w-fit xs:w-2/3 min-w-3/5 ">
-              {quickLinks.map((link, i) => (
+              {quickLinks.map(({ url, title, Component }, i) => (
                 <li
                   key={i}
                   className="
@@ -230,9 +289,16 @@ const Footer = () => {
        
         md:[&_a]:!text-start "
                 >
-                  <Link className={"w-full block text-nowrap"} href={link.url}>
-                    {link.title}
-                  </Link>
+                  {Component ? (
+                    <Component />
+                  ) : (
+                    <Link
+                      className={"w-full block text-nowrap"}
+                      href={url || "#"}
+                    >
+                      {title}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -266,17 +332,29 @@ const Footer = () => {
               <h4 className="text-[1.5rem] font-medium">Let’s Connect</h4>
               <ul className="flex items-center gap-4 text-secondary">
                 <li>
-                  <a aria-label="twitter-link" href={EVENT_INFO.socials.twitter} target="_blank">
+                  <a
+                    aria-label="twitter-link"
+                    href={EVENT_INFO.socials.twitter}
+                    target="_blank"
+                  >
                     <TwitterIcon size={17} />
                   </a>
                 </li>
                 <li>
-                  <a aria-label="instagram-link" href={EVENT_INFO.socials.instagram} target="_blank">
+                  <a
+                    aria-label="instagram-link"
+                    href={EVENT_INFO.socials.instagram}
+                    target="_blank"
+                  >
                     <InstagramIcon size={17} />
                   </a>
                 </li>
                 <li>
-                  <a aria-label="linkedin-link" href={EVENT_INFO.socials.linkedin} target="_blank">
+                  <a
+                    aria-label="linkedin-link"
+                    href={EVENT_INFO.socials.linkedin}
+                    target="_blank"
+                  >
                     <LinkedInIcon size={17} />
                   </a>
                 </li>

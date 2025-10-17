@@ -11,7 +11,7 @@ import RegistrationServices from "@/services/registrationServices";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { errorList, SUCCESS_CODES } from "@/data/responseDatas";
 
-const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
+const useRegistration = ({ session, isWorkshop = false }) => {
   const fieldRefs = useRef({});
   const containerRef = useRef();
   const recaptchaRef = useRef();
@@ -26,6 +26,7 @@ const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
     fieldRefs.current[field] = el;
   };
   const ticketName = session?.display_ticket_name || session?.ticket_name;
+  const ticketType = session?.ticket_visitor_type;
 
   const initialValues = {
     title: "",
@@ -79,8 +80,7 @@ const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
     nationality: Yup.object().required("This field is required"),
     // Student specific
     institution: Yup.string().when([], {
-      is: () =>
-        ticketName?.toLowerCase()?.startsWith("student"),
+      is: () => ticketType == "7",
       then: (schema) =>
         schema
           .required("This field is required")
@@ -115,8 +115,7 @@ const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
 
     // Professional specific
     jobtitle: Yup.string().when([], {
-      is: () =>
-        ticketName?.toLowerCase()?.startsWith("professional"),
+      is: () => ticketType != "7",
       then: (schema) =>
         schema
           .required("This field is required")
@@ -141,8 +140,7 @@ const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
       otherwise: (schema) => schema.notRequired(),
     }),
     companyname: Yup.string().when([], {
-      is: () =>
-        ticketName?.toLowerCase()?.startsWith("professional"),
+      is: () => ticketType != "7",
       then: (schema) =>
         schema
           .required("This field is required")
@@ -248,12 +246,10 @@ const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
       payload.form_data.phoneNumber = phone.nationalNumber;
       payload.form_data.country_code = phone.countryCode;
 
-      if (
-        ticketName?.toLowerCase()?.startsWith("professional")
-      ) {
+      if (ticketType != "7") {
         delete payload.form_data.institution;
       }
-      if (ticketName?.toLowerCase()?.startsWith("student")) {
+      if (ticketType=="7") {
         delete payload.form_data.jobtitle;
         delete payload.form_data.companyname;
       }
@@ -287,6 +283,7 @@ const useRegistration = ({ ticketType, session, isWorkshop = false }) => {
               res.data?.payment_url
             ) {
               window.location.href = res.data?.payment_url;
+              return;
             } else {
               setSuccess(true);
               setSuccessInfo(res?.data?.data);

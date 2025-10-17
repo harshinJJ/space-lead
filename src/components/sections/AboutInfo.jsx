@@ -1,5 +1,4 @@
 import React from "react";
-import { RowStagger } from "@/utils/animations/CardStagger";
 import DotPattern from "../patterns/DotPattern";
 import SemiCirclePattern from "../patterns/SemiCirclePattern";
 import Link from "@/utils/CustomLink";
@@ -182,15 +181,16 @@ const AboutInfo = ({ className = "", isHome }) => {
       className={`relative bg-[#EDF0FE] bg-[top_center] bg-cover ${className}`}
     >
       <SemiCirclePattern className="absolute bottom-5 right-0" />
-      <RowStagger className="relative container-fluid pt-20 xl:pt-32.5 2xl:pb-33 mx-auto px-5 sm:px-0 flex flex-col lg:flex-row justify-between items-start lg:items-stretch 2xl:items-start gap-5 md:gap-10 3xl:gap-39 xl:gap-35">
+      <div className="relative container-fluid pt-20 xl:pt-32.5 2xl:pb-33 mx-auto px-5 xl:px-30 flex flex-col lg:flex-row justify-center items-center lg:items-stretch 2xl:items-start gap-5 md:gap-10 2xl:gap-20 xl:gap-15">
         <DotPattern className="absolute top-13.5 right-0 transform " />
         {/* image */}
         <div
           data-aos="flip-left"
-          className=" mb-20 md:mb-0 flex w-full flex-col md:flex-row items-center justify-center xl:justify-end flex-2 gap-5 relative lg:min-w-[42.85%]  xl:ps-47 lg:ps-15"
+          className=" mb-20 md:mb-0 flex  justify-center w-full xl:justify-end 2xl:flex-1/3 lg:flex-2/5 gap-5 relative max-w-[423px]"
         >
           <video
-            className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
+            // className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
+            className=" object-cover aspect-[423/526] h-auto w-[90%] xs:w-[70%] md:w-full   lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
             src="/images/about_section_img.mp4"
             poster="/images/backgrounds/posters/about_section_img.webp"
             alt=""
@@ -226,7 +226,7 @@ const AboutInfo = ({ className = "", isHome }) => {
         {/* content */}
         <div
           data-aos="fade-up"
-          className=" text-lg justify-between h-[inherit] flex flex-col lg:gap-7.5 gap-3 px-5 md:px-0"
+          className=" text-lg justify-between h-[inherit] flex flex-col 2xl:flex-2/3 lg:flex-3/5 lg:gap-7.5 gap-3 px-5 md:px-0"
         >
           {data?.name && (
             <h5 className="text-secondary font-azonix xl:text-lg text-base">
@@ -267,7 +267,7 @@ const AboutInfo = ({ className = "", isHome }) => {
               </div>
             ))}
           </div>
-          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.25 md:me-12  border-t border-[#D7D7D7] pt-6 ">
+          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.25  border-t border-[#D7D7D7] pt-6 ">
             <div className="flex flex-col justify-center px-2.5">
 
               <h4 className="text-tertiary font-azonix text-lg 2xl:text-2xl 3xl:text-3xl">
@@ -297,7 +297,7 @@ const AboutInfo = ({ className = "", isHome }) => {
             ))}
           </div>
         </div>
-      </RowStagger>
+      </div>
       <div className="relative px-10 pb-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t lg:border-t-0 border-[#D7D7D7] pt-6 ">
         <div className="lg:hidden flex flex-col justify-center px-2.5 py-2">
           {/* <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">

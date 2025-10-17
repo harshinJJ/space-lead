@@ -6,6 +6,7 @@ import PublicServices from "@/services/publicServices";
 import OurExhibitor from "@/components/sections/OurExhibitor";
 import PressRelease from "@/components/sections/PressRelease";
 import AppPreview from "@/components/sections/AppPreview";
+import ChairmanBlock from "@/components/sections/ChairmanBlock";
 
 function getFullfilled(result) {
   return result.status === "fulfilled" ? result.value?.data ?? [] : [];
@@ -28,6 +29,7 @@ export default async function Home() {
   return (
     <main>
       <HomeBanner sponsors={sponsors} banner={"/images/banner_title.png"} />
+      <ChairmanBlock className="pb-0 lg:pb-0"/>
       <AboutInfo
         className="2xl:pb-0 lg:pb-15 md:pb-10 xs:pb-5 "
         isHome={true}
@@ -54,7 +56,7 @@ export default async function Home() {
               speakers?.length > 0
                 ? "md:absolute md:-translate-y-1/2 -translate-y-1/10"
                 : ""
-            } mx-auto left-0 right-0 px-5 md:px-15  top-0 w-full`}
+            } mx-auto left-0 right-0 px-5 xl:px-15  top-0 w-full`}
           >
             <StatsCard />
           </div>

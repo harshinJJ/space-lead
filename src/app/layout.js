@@ -1,4 +1,4 @@
-import { Orbitron } from "next/font/google";
+import { Orbitron,Noto_Kufi_Arabic } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
@@ -12,6 +12,11 @@ import SpinnerLoader from "@/components/loader/SpinnerLoader";
 const orbitron = Orbitron({
   variable: "--font-orbitron",
   subsets: ["latin"],
+});
+
+const notoKufiArabic = Noto_Kufi_Arabic({
+  variable: "--font-noto-kufi-arabic",
+  subsets: ["arabic"],
 });
 
 export const metadata = {
@@ -30,7 +35,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body id="" className={`${orbitron.variable} antialiased`}>
+      <body id="" className={`${orbitron.variable} ${notoKufiArabic.variable} antialiased`}>
         {/* Transition overlay */}
 
         <PageLoader />

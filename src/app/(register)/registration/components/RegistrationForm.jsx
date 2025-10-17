@@ -99,7 +99,7 @@ export default function RegistrationForm({
   };
 
   const handleSessionSelect = async (data) => {
-    if ((session?.id === data?.id) || isSubmitting) return;
+    if (session?.id === data?.id || isSubmitting) return;
     setSession(data);
     // Reset workshops when session changes
     setFieldTouched("workshops", false);
@@ -107,13 +107,14 @@ export default function RegistrationForm({
   };
 
   const ticketName = session?.display_ticket_name || session?.ticket_name;
+  const ticketType = session?.ticket_visitor_type;
   const priceKey =
     session?.ticket_visitor_type == "7"
       ? "student_amount"
       : session?.ticket_visitor_type == "15"
       ? "professional_amount"
       : "price_amount";
-      console.log("asdasdjajsds",session)
+  console.log("asdasdjajsds", session);
   return (
     <section ref={containerRef}>
       {success ? (
@@ -122,7 +123,7 @@ export default function RegistrationForm({
             YOUR REGISTRATION
           </h2>
           <SuccessModal
-            status="success"
+            status={successInfo?.booking_status}
             uid={successInfo?.unique_id}
             ticketUrl={
               successInfo?.booking_status == "2" &&
@@ -176,7 +177,7 @@ export default function RegistrationForm({
                         </Label>
 
                         <FormSelect
-                        isDisabled={isSubmitting}
+                          isDisabled={isSubmitting}
                           instanceId={"title-select"}
                           name="title"
                           placeholder="Title"
@@ -200,7 +201,7 @@ export default function RegistrationForm({
                         <Label required={true}>First Name</Label>
 
                         <FormInput
-                        disabled={isSubmitting}
+                          disabled={isSubmitting}
                           name="firstname"
                           onChange={(value) => {
                             setFieldValue("firstname", value);
@@ -222,7 +223,7 @@ export default function RegistrationForm({
                     <div ref={setRef("lastname")}>
                       <Label required={true}>Last Name</Label>
                       <FormInput
-                      disabled={isSubmitting}
+                        disabled={isSubmitting}
                         name="lastname"
                         onChange={(value) => {
                           setFieldValue("lastname", value);
@@ -257,7 +258,7 @@ export default function RegistrationForm({
                     <div ref={setRef("email")}>
                       <Label required={true}>Email</Label>
                       <FormInput
-                      disabled={isSubmitting}
+                        disabled={isSubmitting}
                         name="email"
                         onChange={(value) => {
                           setFieldValue("email", value);
@@ -275,7 +276,7 @@ export default function RegistrationForm({
                     <div ref={setRef("country")}>
                       <Label required={true}>Country of Residence</Label>
                       <FormSelect
-                      isDisabled={isSubmitting}
+                        isDisabled={isSubmitting}
                         instanceId={"residency-select"}
                         name="country"
                         onChange={async (option) => {
@@ -298,7 +299,7 @@ export default function RegistrationForm({
                     <div ref={setRef("nationality")}>
                       <Label required={true}>Nationality</Label>
                       <FormSelect
-                      isDisabled={isSubmitting}
+                        isDisabled={isSubmitting}
                         instanceId={"nationality-select"}
                         name="nationality"
                         placeholder="Nationality"
@@ -329,11 +330,11 @@ export default function RegistrationForm({
                     </div>
 
                     {/* Institution Name (Student only) */}
-                    {ticketName?.toLowerCase()?.startsWith("student") && (
+                    {ticketType == "7" && (
                       <div ref={setRef("institution")}>
                         <Label required={true}>Institution Name</Label>
                         <FormInput
-                        disabled={isSubmitting}
+                          disabled={isSubmitting}
                           name="institution"
                           onChange={(value) => {
                             setFieldValue("institution", value);
@@ -353,12 +354,12 @@ export default function RegistrationForm({
                     )}
 
                     {/* Professional only: Company Name */}
-                    {ticketName?.toLowerCase()?.startsWith("professional") && (
+                    {ticketType != "7" && (
                       <>
                         <div ref={setRef("jobtitle")}>
                           <Label required={true}>Job Title</Label>
                           <FormInput
-                          disabled={isSubmitting}
+                            disabled={isSubmitting}
                             name="jobtitle"
                             autoComplete="designation"
                             onChange={(value) => {
@@ -378,7 +379,7 @@ export default function RegistrationForm({
                         <div ref={setRef("companyname")}>
                           <Label required={true}>Company Name</Label>
                           <FormInput
-                          disabled={isSubmitting}
+                            disabled={isSubmitting}
                             name="companyname"
                             onChange={(value) => {
                               setFieldValue("companyname", value);
@@ -400,10 +401,7 @@ export default function RegistrationForm({
                     {session?.document_required && (
                       <div ref={setRef("user_document")}>
                         <Label required={true}>
-                          {ticketName?.toLowerCase()?.startsWith("professional")
-                            ? "Professional"
-                            : "Student"}{" "}
-                          ID
+                          {ticketType != "7" ? "Professional" : "Student"} ID
                         </Label>
                         <FileUplodCroper
                           defaultImage={
@@ -441,6 +439,9 @@ export default function RegistrationForm({
                               const isSelected = formData?.workshops?.some(
                                 (w) => w.id === workshop.id
                               );
+                              const isSoldOut =
+                                workshop?.booked_quantity >=
+                                workshop?.booking_capacity;
                               return (
                                 <label
                                   key={i}
@@ -448,13 +449,14 @@ export default function RegistrationForm({
                                     isSelected
                                       ? "bg-gradient-to-r from-[#9066b7] to-tertiary from-30% to-90% p-3.25"
                                       : "border-1 border-secondary p-3"
-                                  } ${isSubmitting ? "!cursor-not-allowed" : ""}`}
+                                  } ${
+                                    isSubmitting ? "!cursor-not-allowed" : ""
+                                  }`}
                                 >
                                   <input
                                     type="checkbox"
                                     checked={isSelected}
-                                    {...((workshop?.booked_quantity >=
-                                    workshop?.booking_capacity|| isSubmitting )
+                                    {...(isSoldOut || isSubmitting
                                       ? { disabled: true }
                                       : {
                                           onChange: () =>
@@ -469,7 +471,7 @@ export default function RegistrationForm({
                                       <CheckIcon className="w-full h-full" />
                                     </span>
                                   )}
-                                  <div className="flex select-none text-black peer-checked:!text-white  items-center justify-between w-full h-full ms-2 gap-2 overflow-hidden">
+                                  <div className={`flex select-none text-black peer-checked:!text-white  items-center justify-between w-full h-full ms-2 gap-2 overflow-hidden ${isSoldOut ? "opacity-70" : ""}`}>
                                     <span className=" leading-[1] flex-2 break-words text-wrap font-semibold">
                                       {workshop?.display_title ||
                                         workshop?.session_title}{" "}
@@ -481,11 +483,10 @@ export default function RegistrationForm({
                                       </span>
                                     ) : null}
                                   </div>
-                                  {workshop?.booked_quantity >=
-                                    workshop?.booking_capacity && (
+                                  {isSoldOut && (
                                     <TextOverlay
                                       containerClass="rounded-lg !backdrop-blur-[0.5px]"
-                                      className=" w-full h-full bg-gradient-to-r from-[#9066b7]/50 to-tertiary/50 from-30% to-90%  !text-white font-droid-bold rounded-lg cursor-not-allowed"
+                                      className=" w-full h-full !bg-gray-400/50 from-[#9066b7]/50 to-tertiary/50 from-30% to-90%  !text-black font-droid-bold rounded-lg cursor-not-allowed"
                                       text="Sold out"
                                     />
                                   )}

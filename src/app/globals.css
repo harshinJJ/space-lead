@@ -62,6 +62,7 @@
   --font-gilroy-bold: "Gilroy-Bold", sans-serif;
   --font-gilroy-black: "Gilroy-Black", sans-serif;
   --font-orbitron: var(--font-orbitron);
+  --font-noto-kufi-arabic: var(--font-noto-kufi-arabic);
 
   --text-xxs: 0.625rem; /* 10px */
 
