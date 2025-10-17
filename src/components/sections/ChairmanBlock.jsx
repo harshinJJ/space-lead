@@ -1,3 +1,4 @@
+import EVENT_INFO from "@/data/eventInfo";
 import { LogoCentered } from "@/data/icons/LogoCenteredIcon";
 import Image from "next/image";
 import React from "react";
@@ -20,17 +21,7 @@ const ChairmanBlock = ({ className = "" }) => {
           <div className="absolute absolute-center h-full w-full bg-[#1D1A2D]/80"></div>
         </>
 
-        <div className="relative mx-auto w-full flex flex-col lg:flex-row items-center justify-center xl:gap-20 md:gap-10 gap-5 gap-y-10">
-          <div className="relative aspect-[418/628] max-h-[628px] h-full flex-1 w-full max-w-9/10 sm:max-w-1/2 lg:max-w-auto " data-aos="flip-left">
-            <div className="absolute w-full h-full bg-gradient-to-b from-primary to-secondary rounded-2xl lg:top-2.5 top-5 left-2 lg:left-5"></div>
-            <Image
-              width={418}
-              height={628}
-              className="relative w-full h-full rounded-2xl overflow-hidden lg:right-0 right-2 lg:bottom-2.5"
-              alt="app-preview"
-              src={"/images/chairman.png"}
-            />
-          </div>
+        <div className="relative mx-auto w-full flex flex-col-reverse lg:flex-row items-center justify-center xl:gap-6.5 md:gap-4 gap-5 gap-y-10">
           <div className="flex flex-col items-center xl:gap-12.5  gap-8 flex-2 w-full">
             <div className="text-center 2xl:text-4xl xl:text-2xl lg:text-xl md:text-2xl text-xl leading-[1.4] font-noto-kufi-arabic">
               تحت رعاية صاحب السمو الملكي الأمير تركي الفيصل بن عبد العزيز آل
@@ -39,25 +30,47 @@ const ChairmanBlock = ({ className = "" }) => {
             <div className="xl:max-w-1/2 md:max-w-4/9 sm:max-w-1/2 max-w-2/3 w-full flex items-center justify-center">
               <LogoCentered className="" />
             </div>
-            <div className="flex flex-col sm:flex-row justify-between sm:items-end items-center sm:text-base text-sm w-full md:gap-7.5 gap-3">
-              <div className="">
-                <p className="sm:text-xl text-base">Under the patronage of</p>
-                <div className="xl:text-[2rem] lg:text-xl sm:text-2xl text-xl font-bold font-droid-bold mb-2.5">HRH Prince Turki Al-Faisal bin Abdulaziz Al Saud</div>
-                <div>
-                  Chairman of the Board of Directors of the King Faisal Center
-                  for Research and Islamic Studies
+
+            <div className="w-full">
+              <p className="sm:text-xl text-base">Under the patronage of</p>
+              <div className="xl:text-[2rem] lg:text-xl sm:text-2xl text-xl font-bold font-droid-bold mb-2.5">
+                HRH Prince Turki Al-Faisal bin Abdulaziz Al Saud
+              </div>
+              <div className="2xl:text-xl lg:text-lg text-base">
+                Chairman of the Board of Directors of the King Faisal Center for
+                Research and Islamic Studies
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-between sm:items-stretch items-center w-full 2xl:gap-30 xl:gap-20 lg:gap-10 md:gap-10 gap-3">
+              <div className="max-w-full w-fit flex-2/3  3xl:text-5xl xl:text-4xl lg:text-3xl md:text-2xl xs:text-3xl text-xl leading-[1] h-inherit font-semibold bg-gradient-to-r from-primary/50 to-secondary/50 px-5.5 rounded-lg text-nowrap flex items-center justify-between space-y-1">
+                <div className="w-full text-center sm:py-0 py-5">
+                  <span>10 - 11 November </span>
+                  <span className="text-secondary font-droid-bold">2025</span>
                 </div>
               </div>
-              <div className="rounded-lg overflow-hidden max-w-2/3 sm:max-w-full">
+              <div className="rounded-lg flex-1/3 flex items-center justify-center bg-white overflow-hidden max-w-2/3 lg:max-w-auto w-full">
                 <Image
                   alt="alfaisal-logo"
-                  width={338}
-                  height={115}
-                  className="w-full sm:w-auto"
+                  width={253}
+                  height={86}
+                  className="w-full sm:w-full h-auto"
                   src={"/logo_secondary_new.png"}
                 />
               </div>
             </div>
+          </div>
+          <div
+            className="relative aspect-[418/628] max-h-[628px] h-full flex-1 w-full max-w-9/10 sm:max-w-1/2 lg:max-w-auto "
+            data-aos="flip-left"
+          >
+            <div className="absolute w-full h-full bg-gradient-to-b from-primary to-secondary rounded-2xl lg:top-2.5 top-5 left-2 lg:left-5"></div>
+            <Image
+              width={418}
+              height={628}
+              className="relative w-full h-full rounded-2xl overflow-hidden lg:right-0 right-2 lg:bottom-2.5"
+              alt="app-preview"
+              src={"/images/chairman.png"}
+            />
           </div>
         </div>
       </div>
