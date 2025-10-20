@@ -270,7 +270,7 @@ const AboutInfo = ({ className = "", isHome }) => {
           <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.25  border-t border-[#D7D7D7] pt-6 ">
             <div className="flex flex-col justify-center px-2.5">
 
-              <h4 className="text-tertiary font-azonix text-lg 2xl:text-2xl 3xl:text-3xl">
+              <h4 className="text-tertiary font-azonix text-lg 2xl:text-2xl">
                 Why Attend?
               </h4>
             </div>
