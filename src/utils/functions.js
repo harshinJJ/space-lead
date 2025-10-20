@@ -537,7 +537,25 @@ export function formatPhoneNum(countryCode, phoneNumber) {
   return `${countryCode}${cleanNumber}`;
 }
 
-
 export function getFullfilled(result) {
   return result.status === "fulfilled" ? result.value?.data ?? [] : [];
+}
+
+export function formatTimeTo12Hour(timeStr) {
+  if (!timeStr) return "";
+
+  // Normalize: ensure we only have HH:MM:SS or HH:MM
+  const parts = timeStr.split(":");
+  if (parts.length < 2) return timeStr; // invalid format
+
+  const [hoursStr, minutesStr] = parts;
+  let hours = parseInt(hoursStr, 10);
+  const minutes = parseInt(minutesStr, 10);
+
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12; // convert to 12-hour format
+
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")} ${ampm}`;
 }

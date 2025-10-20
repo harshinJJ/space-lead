@@ -25,6 +25,7 @@ const ChairmanBlock = ({ className = "" }) => {
           <div className="hidden lg:flex lg:absolute rounded-lg flex-1/3 items-center justify-center bg-white overflow-hidden max-w-2/3 lg:max-w-[150px] w-full top-0 left-0">
             <Image
               alt="alfaisal-logo"
+              priority={true}
               width={253}
               height={86}
               className="w-full sm:w-full h-auto"
@@ -43,6 +44,7 @@ const ChairmanBlock = ({ className = "" }) => {
               <div className="lg:hidden rounded-lg flex-1/3 flex items-center justify-center bg-white overflow-hidden max-w-2/3 lg:max-w-[150px] w-full top-0 left-0">
                 <Image
                   alt="alfaisal-logo"
+                  priority={true}
                   width={253}
                   height={86}
                   className="w-full sm:w-full h-auto"
@@ -60,7 +62,8 @@ const ChairmanBlock = ({ className = "" }) => {
               width={418}
               height={628}
               className="relative w-fit h-full rounded-2xl overflow-hidden lg:right-0 right-2 lg:bottom-2.5"
-              alt="app-preview"
+              alt="chairman"
+              priority={true}
               src={"/images/chairman.png"}
             />
           </div>

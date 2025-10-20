@@ -14,14 +14,14 @@ const SpeakerCard = ({
   hoverable = true,
   showOverlay = true,
 }) => {
-  const hoverName = (
-    speaker?.name || `${speaker.firstname} ${speaker.lastname}`
-  )
-    ?.split(".")
-    .pop()
-    .trim()
-    .split(" ")
-    .shift();
+  // const hoverName = (
+  //   speaker?.name || `${speaker.firstname} ${speaker.lastname}`
+  // )
+  //   ?.split(".")
+  //   .pop()
+  //   .trim()
+  //   .split(" ")
+  //   .shift();
   // const showOverlay = () => Math.random() < 0.5;
   return (
     <div
@@ -65,7 +65,7 @@ const SpeakerCard = ({
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </div>
         <h3
-          className={`text-secondary text-sm leading-[1.8] line-clamp-2 text-center`}
+          className={`text-secondary text-sm leading-[1.4] line-clamp-2 text-center`}
         >
           {speaker?.designation}
         </h3>

@@ -5,7 +5,7 @@ import { LogoBg } from "@/data/icons";
 
 const allowedSessionTypes = ["conference", "workshop"];
 
-export default async function StudentRegistration({ params }) {
+export default async function MainRegistration({ params }) {
   const { id } = await params;
   const passTypes = await PublicServices.getRegisterPassInfo(
     new URLSearchParams({ workshop_type: id && id == "workshop" })

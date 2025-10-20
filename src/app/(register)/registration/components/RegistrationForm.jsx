@@ -19,6 +19,7 @@ import SessionTypeSelector from "./SessionTypeSelector";
 import ReCAPTCHA from "react-google-recaptcha";
 import { CheckIcon } from "@/data/icons";
 import { TextOverlay } from "@/components/common/ComingSoonOverlay";
+import WorkshopCard from "./WorkshopCard";
 
 // import FileUplodCroper from "@/components/formInputs/FileUploader";
 const FileUplodCroper = dynamic(
@@ -114,7 +115,6 @@ export default function RegistrationForm({
       : session?.ticket_visitor_type == "15"
       ? "professional_amount"
       : "price_amount";
-  console.log("asdasdjajsds", session);
   return (
     <section ref={containerRef}>
       {success ? (
@@ -148,7 +148,7 @@ export default function RegistrationForm({
             <p className="uppercase md:text-lg text-base text-center">
               Please enter your information
             </p>
-            <div className="flex flex-col lg:flex-row gap-5 xl:gap-10 2xl:gap-22.5 w-full  text-black bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25">
+            <div className={`flex flex-col lg:flex-row ${session?.workshop?.length>0?"gap-5":"gap-5 xl:gap-10 2xl:gap-22.5 "} w-full  text-black bg-white rounded-3xl p-5 lg:px-5 xl:px-14 lg:pt-6 lg:pb-12.25`}>
               <div className="flex-1">
                 <div className="bg-white/10  text-black-b2 rounded-xl mb-4">
                   <p className="font-light text-sm text-[#31313B] mb-1">
@@ -433,7 +433,7 @@ export default function RegistrationForm({
                         <div className="border-1 border-black/20 rounded-2xl w-full">
                           <div
                             ref={setRef("workshops")}
-                            className="w-full grid grid-cols-1 sm:grid-cols-2 items-stretch p-2.5 gap-2.5"
+                            className="w-full grid grid-cols-1 items-stretch p-2.5 gap-2.5"
                           >
                             {session?.workshop?.map((workshop, i) => {
                               const isSelected = formData?.workshops?.some(
@@ -445,10 +445,10 @@ export default function RegistrationForm({
                               return (
                                 <label
                                   key={i}
-                                  className={` relative text-sm flex min-h-[4em] items-start lg:gap-2.5 gap-1 cursor-pointer h-inherit rounded-lg  ${
+                                  className={` relative text-sm flex min-h-[4em] items-start lg:gap-2.5 gap-1 cursor-pointer h-inherit rounded-xl  ${
                                     isSelected
-                                      ? "bg-gradient-to-r from-[#9066b7] to-tertiary from-30% to-90% p-3.25"
-                                      : "border-1 border-secondary p-3"
+                                      ? "bg-gradient-to-r from-indigo to-[#59396F]  p-3.25"
+                                      : " p-3.25 bg-gradient-to-r from-[#F5E6FF] to-[#E5E5E5] "
                                   } ${
                                     isSubmitting ? "!cursor-not-allowed" : ""
                                   }`}
@@ -471,7 +471,8 @@ export default function RegistrationForm({
                                       <CheckIcon className="w-full h-full" />
                                     </span>
                                   )}
-                                  <div className={`flex select-none text-black peer-checked:!text-white  items-center justify-between w-full h-full ms-2 gap-2 overflow-hidden ${isSoldOut ? "opacity-70" : ""}`}>
+                                  <WorkshopCard currency={session?.currency_name} price={workshop[priceKey]} workshop={workshop} isActive={isSelected}/>
+                                  {/* <div className={`flex select-none text-black peer-checked:!text-white  items-center justify-between w-full h-full ms-2 gap-2 overflow-hidden ${isSoldOut ? "opacity-70" : ""}`}>
                                     <span className=" leading-[1] flex-2 break-words text-wrap font-semibold">
                                       {workshop?.display_title ||
                                         workshop?.session_title}{" "}
@@ -482,11 +483,11 @@ export default function RegistrationForm({
                                         {workshop[priceKey] || 0}
                                       </span>
                                     ) : null}
-                                  </div>
+                                  </div> */}
                                   {isSoldOut && (
                                     <TextOverlay
-                                      containerClass="rounded-lg !backdrop-blur-[0.5px]"
-                                      className=" w-full h-full !bg-gray-400/50 from-[#9066b7]/50 to-tertiary/50 from-30% to-90%  !text-black font-droid-bold rounded-lg cursor-not-allowed"
+                                      containerClass="rounded-lg !backdrop-blur-[1px]  cursor-not-allowed"
+                                      className=" bg-white !text-[#111111CC] lext-lg opacity-90 md:text-xl xl:text-2xl py-2.5 px-11 cursor-not-allowed"
                                       text="Sold out"
                                     />
                                   )}

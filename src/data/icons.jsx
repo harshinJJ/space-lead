@@ -1796,3 +1796,36 @@ export const DownloadIcon = ({ size = 24, className = "" }) => (
     </g>
   </svg>
 );
+
+export const ClockIcon = ({ size = 24, className = "" }) => (
+  <svg
+    width={size}
+    height={size}
+    className={className}
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M7.54457 14.7696C11.5345 14.7696 14.7688 11.5352 14.7688 7.54537C14.7688 3.55552 11.5345 0.321106 7.54457 0.321106C3.55473 0.321106 0.320312 3.55552 0.320312 7.54537C0.320312 11.5352 3.55473 14.7696 7.54457 14.7696Z"
+      stroke="currentColor"
+      strokeWidth="0.642157"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.54492 2.72925V7.54542"
+      stroke="currentColor"
+      strokeWidth="0.642157"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10.9484 10.9488L7.54492 7.54541"
+      stroke="currentColor"
+      strokeWidth="0.642157"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
