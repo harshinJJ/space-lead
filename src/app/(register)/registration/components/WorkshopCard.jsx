@@ -6,24 +6,6 @@ import format from "date-fns/format";
 import Image from "next/image";
 import React from "react";
 
-export const speakerList = [
-  {
-    name: "Dr. Maha Bint ",
-    title: "Chairperson",
-    image: "/images/speakers/speaker1.png",
-  },
-  {
-    name: "Prof. Charles Elachi",
-    title: "President",
-    image: "/images/speakers/speaker2.png",
-  },
-  {
-    name: "Dr. Majid AlBahkali",
-    title: "General Manager",
-    image: "/images/speakers/speaker3.png",
-  },
-];
-
 function timeFormat(start, end) {
   if (!start && !end) return;
   if (!end) {

@@ -19,7 +19,7 @@ const TestimonialsSlider = () => {
       name: "Anjelina Watson",
       role: "Business Expert",
       rating: 4.7,
-      img: "/images/speaker2.png",
+      img: "/images/speakers/speaker2.png",
       feedback:
         "Completely procrastinate inexpensive leadership before Seamlessly innovate state of the functionalities through the art infomediaries. Assertively recapitulate resource network competitive internal",
     },
@@ -27,7 +27,7 @@ const TestimonialsSlider = () => {
       name: "John Smith",
       role: "Marketing Head",
       rating: 5,
-      img: "/images/speaker1.png",
+      img: "/images/speakers/speaker1.png",
       feedback:
         "Outstanding event management! The level of detail and care taken in execution was truly impressive. Highly recommend.",
     },
@@ -35,7 +35,7 @@ const TestimonialsSlider = () => {
       name: "Sophia Lee",
       role: "Entrepreneur",
       rating: 4.8,
-      img: "/images/speaker3.png",
+      img: "/images/speakers/speaker3.png",
       feedback:
         "A great networking platform with insightful sessions. Looking forward to more events like this!",
     },

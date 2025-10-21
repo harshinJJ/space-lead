@@ -1,7 +1,7 @@
 import { smartTrim } from "@/utils/functions";
 import React, { useState } from "react";
 
-const FormInput = ({ className = "", onFocus, onBlur, onChange,disabled, ...props }) => {
+const FormInput = ({ className = "", onFocus, onBlur, onChange,disabled,maxLength=100, ...props }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ const FormInput = ({ className = "", onFocus, onBlur, onChange,disabled, ...prop
         }
         focus:outline-none focus:ring-0
         text-[#31313B] ${className}`}
-      maxLength={50}
+      maxLength={maxLength}
       onFocus={(e) => {
         setIsFocused(true);
         onFocus?.(e);

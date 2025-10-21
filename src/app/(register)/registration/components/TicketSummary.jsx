@@ -36,9 +36,9 @@ const TicketSummary = ({
         </div>
         {workshops?.length > 0 && (
           <div className="">
-            <span className="text-sm">WORKSHOPS</span>
+            <span className="text-sm mb-2">WORKSHOPS</span>
             {workshops?.map((workshop, i) => (
-              <div className="flex justify-between items-center mb-2" key={i}>
+              <div className="flex justify-between items-center" key={i}>
                 <span className="text-sm">
                   {workshop?.display_title || workshop?.session_title}
                 </span>
@@ -56,7 +56,7 @@ const TicketSummary = ({
             ))}
           </div>
         )}
-        <div className=" text-black-b2">
+        <div className="mt-2 text-black-b2">
           <div className=" mb-2.75">{name}</div>
           <div className="">{EVENT_INFO.startDateLabel}</div>
           <div className="">{EVENT_INFO.eventTimeLabel}</div>

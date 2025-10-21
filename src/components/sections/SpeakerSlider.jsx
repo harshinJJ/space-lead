@@ -22,62 +22,6 @@ import { RowStagger } from "@/utils/animations/CardStagger";
 //   "Ilithra Velon",
 // ];
 
-const cards = [
-  {
-    name: "Rochelle Fernandez",
-    title: "Learn about no-code tools",
-    type: "Live Event",
-    btn: "Event Details",
-    color: "#DF91F2",
-    image: "/images/speakers/speaker1.png",
-    program: "Live Event",
-  },
-  {
-    name: "Regina Phalange",
-    title: "Nail your interviews",
-    type: "Live Event",
-    btn: "Event Details",
-    color: "#4DE3ED",
-    image: "/images/speakers/speaker2.png",
-    program: "Live Event",
-  },
-  {
-    name: "Shawn Frost",
-    title: "Nail your  interviews",
-    type: "Live Event",
-    btn: "Event Details",
-    color: "#91F2A6",
-    image: "/images/speakers/speaker3.png",
-    program: "Live Event",
-  },
-  {
-    name: "Rochelle Fernandez",
-    title: "Learn about no-code tools",
-    type: "Live Event",
-    btn: "Event Details",
-    color: "#DF91F2",
-    image: "/images/speakers/speaker1.png",
-    program: "Live Event",
-  },
-  {
-    name: "Regina Phalange",
-    title: "Nail your interviews",
-    type: "Live Event",
-    btn: "Event Details",
-    color: "#4DE3ED",
-    image: "/images/speakers/speaker2.png",
-    program: "Live Event",
-  },
-  {
-    name: "Shawn Frost",
-    title: "Nail your  interviews",
-    type: "Live Event",
-    btn: "Event Details",
-    color: "#91F2A6",
-    image: "/images/speakers/speaker3.png",
-    program: "Live Event",
-  },
-];
 
 const colors = ["#DF91F2", "#4DE3ED", "#91F2A6"];
 

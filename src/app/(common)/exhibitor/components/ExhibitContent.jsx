@@ -8,7 +8,7 @@ const ExhibitContent = () => (
         {/* <Image
         width={657}
         height={299}
-          src="/images/why_exhibit_img.png"
+          src="/images/backgrounds/posters/why_exhibit_img.webp"
           alt="Why Exhibit"
           className="object-cover w-full h-auto"
         /> */}

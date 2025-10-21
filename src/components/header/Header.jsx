@@ -62,13 +62,13 @@ const DownloadButton = ({ onClick }) => {
         <span>Download the App</span>
       </PrimaryButton>
       <Modal
-        className="!p-0 rounded-3xl !bg-transparent"
+        className="!p-0 rounded-3xl !bg-transparent max-w-full xs:max-w-3/4"
         btnClassName="!text-black bg-white aspect-square h-auto w-fit p-2.5 rounded-full flex items-center justify-center text-5xl !-top-4 !-right-4"
         isOpen={show}
         onClose={() => setShow(false)}
       >
         <section
-          className={`bg-indigo rounded-3xl overflow-hidden  max-h-[70vh] h-full md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
+          className={`bg-indigo rounded-3xl  max-h-[70vh] h-full overflow-auto md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
         >
           <div className="container-fluid mx-auto w-full flex flex-col  items-center justify-center gap-10">
             <h3 className=" text-xl text-start leading-[1.2] font-bold font-azonix text-white">
@@ -82,9 +82,7 @@ const DownloadButton = ({ onClick }) => {
                 className="relative rounded-sm overflow-hidden disabled:!cursor-default"
               >
                 <GooglePlayButton className="w-full" />
-                {!EVENT_INFO.playStore && (
-                <ComingSoonOverlay/>
-                )}
+                {!EVENT_INFO.playStore && <ComingSoonOverlay />}
               </button>
               <button
                 onClick={() => handleClick(EVENT_INFO.appStore)}
@@ -92,12 +90,46 @@ const DownloadButton = ({ onClick }) => {
                 className="relative rounded-sm overflow-hidden disabled:!cursor-default"
               >
                 <AppStoreButton className="w-full" />
-                {!EVENT_INFO.appStore && (
-                <ComingSoonOverlay/>
-                )}
+                {!EVENT_INFO.appStore && <ComingSoonOverlay />}
               </button>
             </div>
           </div>
+          <section
+            className={` rounded-3xl h-full md:p-5 py-2 bg-[top_center] bg-cover bg-no-repeat`}
+          >
+            {/* Title */}
+
+            {/* Content Box */}
+            <div className="w-full h-full overflow-y-auto max-w-xl bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg border border-white/20 space-y-8">
+              {/* How to Use */}
+              <div>
+                <h4 className="text-lg md:text-xl font-semibold mb-3 text-white underline underline-offset-4 decoration-white/40">
+                  How to Use:
+                </h4>
+                <ul className="list-decimal list-inside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
+                  <li>Register for the event.</li>
+                  <li>Download the app from your respective store.</li>
+                  <li>Log in using your registered email ID.</li>
+                </ul>
+              </div>
+
+              {/* Features */}
+              <div>
+                <h4 className="text-lg md:text-xl font-semibold mb-3 text-white underline underline-offset-4 decoration-white/40">
+                  Features:
+                </h4>
+                <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
+                  <li>Event details and agenda</li>
+                  <li>Explore speakers, exhibitors, and sponsors</li>
+                  <li>View the floor map and gallery</li>
+                  <li>Connect with attendees and join the chat community</li>
+                  <li>Access your digital badge</li>
+                  <li>Manage your profile with ease</li>
+                  <li>Stay updated with notifications</li>
+                </ul>
+              </div>
+            </div>
+          </section>
         </section>
       </Modal>
     </>
