@@ -17,10 +17,10 @@ const PassSelectionCard = ({
     gradient === "primary"
       ? "bg-gradient-to-b text-primary from-primary/46 to-[#2E1D3975]"
       : "bg-gradient-to-b text-secondary from-secondary/46 to-[#2A5A5975]";
-  return (
-    url?<Link
-    disabled={true}
-      href={url||"#"}
+  return url ? (
+    <Link
+      disabled={true}
+      href={url || "#"}
       className={`relative overflow-hidden flex w-full md:w-fit flex-col border-1 border-white backdrop-blur-[1.85px] items-center justify-center ${gradientBg} rounded-4xl shadow-lg py-13.5 md:px-22 px-10 w-fit cursor-pointer hover:scale-105 transition-transform duration-200`}
       // onClick={onClick}
     >
@@ -51,15 +51,25 @@ const PassSelectionCard = ({
           {eventType}
         </div>
       </div>
+      {type == "Workshops " && (
+        <span className="text-center leading-[1.5] text-white mt-1">
+          Includes the conference <br />
+          and exhibition area
+        </span>
+      )}
     </Link>
-    :
+  ) : (
     <button
-    disabled={disabled}
-      className={`relative overflow-hidden flex w-full md:w-fit flex-col border-1 border-white backdrop-blur-[1.85px] items-center justify-center ${gradientBg} rounded-4xl shadow-lg py-13.5 md:px-22 px-10 w-fit  ${disabled?"":"hover:scale-105"} disabled:!cursor-not-allowed transition-transform duration-200`}
+      disabled={disabled}
+      className={`relative overflow-hidden flex w-full md:w-fit flex-col border-1 border-white backdrop-blur-[1.85px] items-center justify-center ${gradientBg} rounded-4xl shadow-lg py-13.5 md:px-22 px-10 w-fit  ${
+        disabled ? "" : "hover:scale-105"
+      } disabled:!cursor-not-allowed transition-transform duration-200`}
       // onClick={onClick}
       {...(onClick && !disabled ? { onClick: onClick } : {})}
     >
-      {disabled && <div className="absolute inset-0 bg-black/40 z-10 rounded-4xl"></div>}
+      {disabled && (
+        <div className="absolute inset-0 bg-black/40 z-10 rounded-4xl"></div>
+      )}
       {tag && (
         <div
           style={{ width: `${tag.length}em` }}
