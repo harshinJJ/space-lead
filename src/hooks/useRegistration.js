@@ -277,7 +277,6 @@ const useRegistration = ({ session, isWorkshop = false }) => {
       RegistrationServices.createFormData(formData)
         .then((res) => {
           if (SUCCESS_CODES.includes(res.status) && res.data) {
-            formik.setSubmitting(false);
             if (
               res?.data?.redirect_type == "payment" &&
               res.data?.payment_url
@@ -292,10 +291,13 @@ const useRegistration = ({ session, isWorkshop = false }) => {
               // window?.scrollTo({ top: 0, behavior: "smooth" });
               // containerRef.current?.scrollIntoView({ behavior: "smooth" });
               setTimeout(
-                () =>
-                  containerRef.current?.scrollIntoView({ behavior: "smooth" }),
+                () =>{
+                  containerRef.current?.scrollIntoView({ behavior: "smooth" });
+                  formik.setSubmitting(false)
+                },
                 100
               );
+              return;
             }
           } else {
             if (
@@ -336,7 +338,6 @@ const useRegistration = ({ session, isWorkshop = false }) => {
           formik.setSubmitting(false);
         });
     }
-    formik.setSubmitting(false);
   };
 
   // abandoned register
