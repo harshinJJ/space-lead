@@ -9,13 +9,13 @@ import Image from "next/image";
 const platformList = [
   {
     platform: "linkedin",
-    label: "@spaceleadau",
+    label: "@alfaisal-university",
     icon:<LinkedInIcon size={24}/>,
     url: EVENT_INFO.socials.linkedin,
   },
   {
     platform: "twitter",
-    label: "@spaceleadau",
+    label: "@SpaceLead_AU",
     icon:<TwitterIcon size={24}/>,
     url: EVENT_INFO.socials.twitter,
   },
