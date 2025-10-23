@@ -21,7 +21,7 @@ const EVENT_INFO = {
     facebook: "#",
     linkedin:
       "https://www.linkedin.com/school/alfaisal-university/?viewAsMember=true",
-    twitter: "https://x.com/SpaceLeadAU",
+    twitter: "https://x.com/SpaceLead_AU",
   },
   email: "spacelead@alfaisal.edu",
   organizer: "Alfaisal Edu",
