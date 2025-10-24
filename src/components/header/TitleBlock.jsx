@@ -119,7 +119,7 @@ const TitleBlock = ({ title,pathname }) => {
               {title}
             </h4>
             <div className="flex flex-col lg:flex-row xl:gap-x-10 gap-2 gap-y-4">
-              <div className="flex items-center py-1 xl:px-4.5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
+              <div className="flex items-center py-1 xl:ps-2.5 xl:pe-5 px-2 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7 w-full lg:w-fit">
                 <div className="flex items-center justify-center">
                   {tags[0].icon}
                 </div>
