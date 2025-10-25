@@ -7,11 +7,11 @@ import EVENT_INFO from "@/data/eventInfo";
 
 
 const sortBytime = (sessions = []) => {
-  const sorted = [...sessions].sort((a, b) => {
-    const timeA = a.start_tm.split(":").map(Number);
-    const timeB = b.start_tm.split(":").map(Number);
-    const minutesA = timeA[0] * 60 + timeA[1];
-    const minutesB = timeB[0] * 60 + timeB[1];
+  const sorted = [...sessions]?.sort((a, b) => {
+    const timeA = a?.start_tm?.split(":")?.map(Number);
+    const timeB = b?.start_tm?.split(":")?.map(Number);
+    const minutesA = timeA&&timeA[0] * 60 + timeA[1];
+    const minutesB = timeB&&timeB[0] * 60 + timeB[1];
     return minutesA - minutesB;
   });
   return sorted;
