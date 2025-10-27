@@ -2,16 +2,22 @@
 
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import PrimaryButton from '@/components/buttons/PrimaryButton';
+import { DownloadIcon } from '@/data/icons';
 
 
 export default function InvoiceDownloadButton({
   invoiceData,
 }) {
   const hiddenDivRef = useRef(null);
+  const [loading,setLoading]=useState(false)
+
+  useEffect(()=>{handleDownload()},[])
 
   const handleDownload = async () => {
   if (!hiddenDivRef.current) return;
+      setLoading(true);
 
   // Show the hidden div for rendering
   hiddenDivRef.current.style.display = 'block';
@@ -49,15 +55,21 @@ export default function InvoiceDownloadButton({
     pdf.addImage(imgData, 'PNG', x, 0, imgWidth, imgHeight);
 
     // Save PDF
-    pdf.save(`invoice-${invoiceData.invoice?.number || invoiceData.invoiceId || 'download'}.pdf`);
+    pdf.save(`Space-Lead-${invoiceData.invoiceId || 'download'}.pdf`);
   } catch (error) {
     console.error('PDF generation failed:', error);
+    
   } finally {
     // Hide the div again
+    
     if (hiddenDivRef.current) {
       hiddenDivRef.current.style.display = 'none';
     }
-  }
+    setLoading(false);
+
+    setTimeout(() => {
+      window.close();
+    }, 100);  }
 };
 
   // const handleDownload = async () => {
@@ -96,12 +108,24 @@ export default function InvoiceDownloadButton({
   // This ensures proper image loading and avoids XSS issues
   return (
     <>
-      <button
-        onClick={handleDownload}
-        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-      >
-        Download PDF
-      </button>
+    <PrimaryButton
+      onClick={handleDownload}
+      disabled={loading}
+      className={`flex items-center gap-2 px-6 py-3 text-white rounded-lg transition-all shadow-md hover:shadow-lg ${
+        loading ? "bg-gray-400 cursor-not-allowed" : ""
+      }`}
+      //   style={
+      //     !loading
+      //       ? {
+      //           background: "linear-gradient(135deg, #7f529f 0%, #5ac0be 100%)",
+      //         }
+      //       : {}
+      //   }
+    >
+      <DownloadIcon size={18} />
+      <span>{loading ? "Preparing your PDF..." : "Download Invoice"}</span>
+    </PrimaryButton>
+
 
       {/* Hidden printable invoice */}
       <div
@@ -120,7 +144,7 @@ export default function InvoiceDownloadButton({
       >
         <div className="invoice-header" style={{ backgroundColor: '#023c3b', padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h4 style={{ color: '#fff', margin: 0, fontSize: '30px' }}>
-            {invoiceData.invoice?.title || 'TAX INVOICE / ﻓﺎﺗﻮرة ﺿﺮﻳﺒﻴﺔ'}
+            TAX INVOICE / <span style={{top:"8px"}}>ﻓﺎﺗﻮرة ﺿﺮﻳﺒﻴﺔ</span>
           </h4>
           {invoiceData.company?.logo && (
             <img
@@ -133,7 +157,7 @@ export default function InvoiceDownloadButton({
         </div>
 
         <div className="invoice-content" style={{ padding: '20px', backgroundColor: '#fdffff' }}>
-          <h4 style={{ fontSize: '23px', margin: '10px 0',textAlign:"center" }}>Bill To / فاتورة إلى</h4>
+          <h4 style={{ fontSize: '23px', margin: '10px 0',textAlign:"center",lineHeight:"1" }}>Bill To /<span style={{top:"5px"}}>فاتورة إلى</span> </h4>
           <div className="invoice-details" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '20px' }}>
             <div style={{ width: '40%', fontSize: '16px', textAlign: 'left' }}>
               <div style={{ margin: '5px 0' }}>{invoiceData.bill_to?.name}</div>
@@ -142,16 +166,16 @@ export default function InvoiceDownloadButton({
             </div>
             <div style={{ width: '60%', fontSize: '16px', textAlign: 'right' }}>
               <div style={{ margin: '5px 0' }}>
-                <strong>Invoice# / رقم الفاتورة:</strong> {invoiceData.invoice?.number}
+                <strong>Invoice# / <span style={{top:"5px"}}>رقم الفاتورة</span>:</strong> {invoiceData.invoice?.number}
+              </div>
+              <div style={{ margin: '5px 0',display:"flex",justifyContent:"end" }}>
+                <strong>Invoice Date / <span style={{top:"5px"}}>تاريخ الفاتورة</span>:</strong> {invoiceData.invoice?.date}
+              </div>
+              <div style={{ margin: '5px 0',display:"flex",justifyContent:"end" }}>
+                <strong>Ticket ID / <span style={{top:"5px"}}> رقم التذكرة</span>:</strong> {invoiceData.invoice?.ticket_id}
               </div>
               <div style={{ margin: '5px 0' }}>
-                <strong>Invoice Date / تاريخ الفاتورة:</strong> {invoiceData.invoice?.date}
-              </div>
-              <div style={{ margin: '5px 0' }}>
-                <strong>Ticket ID / رقم التذكرة:</strong> {invoiceData.invoice?.ticket_id}
-              </div>
-              <div style={{ margin: '5px 0' }}>
-                <strong>Transaction ID / مرجع السداد:</strong> 
+                <strong>Transaction ID / <span style={{top:"5px"}}>مرجع السداد</span>:</strong> 
               </div>
             </div>
           </div>
@@ -221,28 +245,28 @@ export default function InvoiceDownloadButton({
             )}
             <div style={{ width: invoiceData.qr_code ? '70%' : '100%', textAlign: 'right' }}>
               <div style={{ margin: '8px 0', fontWeight: 600 }}>
-                <strong>Subtotal / الاجمالي قبل الضريبة :</strong>
+                <strong>Subtotal / <span style={{top:"5px"}}>الاجمالي قبل الضريبة </span>:</strong>
                 <span style={{ display: 'inline-block', minWidth: '120px', textAlign: 'right', float: 'right' }}>
                   {invoiceData.totals?.subtotal?.toFixed(2)} {invoiceData.totals?.currency}
                 </span>
                 <div style={{ clear: 'both' }}></div>
               </div>
               <div style={{ margin: '8px 0', fontWeight: 600 }}>
-                <strong>15% VAT Amount / مبلغ الضريبة :</strong>
+                <strong>15% VAT Amount / <span style={{top:"5px"}}>مبلغ الضريبة </span>:</strong>
                 <span style={{ display: 'inline-block', minWidth: '120px', textAlign: 'right', float: 'right' }}>
                   {invoiceData.totals?.vat_amount?.toFixed(2)} {invoiceData.totals?.currency}
                 </span>
                 <div style={{ clear: 'both' }}></div>
               </div>
               <div style={{ margin: '8px 0', fontWeight: 600 }}>
-                <strong>Total Payable / الاجمالي المستحق :</strong>
+                <strong>Total Payable / <span style={{top:"5px"}}>الاجمالي المستحق </span>:</strong>
                 <span style={{ display: 'inline-block', minWidth: '120px', textAlign: 'right', float: 'right' }}>
                   {invoiceData.totals?.total?.toFixed(2)} {invoiceData.totals?.currency}
                 </span>
                 <div style={{ clear: 'both' }}></div>
               </div>
               <div style={{ margin: '8px 0', fontWeight: 600 }}>
-                <strong>Paid / المدفوع :</strong>
+                <strong>Paid / <span style={{top:"5px"}}>المدفوع </span>:</strong>
                 <span style={{ display: 'inline-block', minWidth: '120px', textAlign: 'right', float: 'right' }}>
                   {invoiceData.totals?.paid?.toFixed(2)} {invoiceData.totals?.currency}
                 </span>
