@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { CircularLink } from "../buttons/CircularButton";
 import Link from "next/link";
 import { SecondaryLink } from "../buttons/SecondaryButton";
@@ -13,7 +13,9 @@ const SpeakerCard = ({
   className = "",
   hoverable = true,
   showOverlay = true,
+  groupId,
 }) => {
+  const infoRef = useRef(null);
   // const hoverName = (
   //   speaker?.name || `${speaker.firstname} ${speaker.lastname}`
   // )
@@ -23,12 +25,41 @@ const SpeakerCard = ({
   //   .split(" ")
   //   .shift();
   // const showOverlay = () => Math.random() < 0.5;
+    useEffect(() => {
+    if (!groupId) return; // only run if grouped
+
+    const container = document.querySelectorAll(`.speaker-info[data-group='${groupId}']`);
+    let maxHeight = 0;
+
+    // find tallest
+    container.forEach((el) => {
+      el.style.height = "auto";
+      if (el.offsetHeight > maxHeight) maxHeight = el.offsetHeight;
+    });
+
+    // apply tallest height to all in same group
+    container.forEach((el) => (el.style.height = `${maxHeight}px`));
+
+    // reapply on resize
+    const handleResize = () => {
+      let newMax = 0;
+      container.forEach((el) => {
+        el.style.height = "auto";
+        if (el.offsetHeight > newMax) newMax = el.offsetHeight;
+      });
+      container.forEach((el) => (el.style.height = `${newMax}px`));
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [groupId, speaker]);
+
   return (
     <div
       {...(selectAction ? { onClick: () => selectAction(speaker) } : {})}
       className={` ${selectAction ? "cursor-pointer" : ""} ${
         hoverable ? "//group" : ""
-      } relative w-[fit] h-auto aspect-[331/488] rounded-2xl border-1 border-secondary overflow-hidden bg-[#232323] flex flex-col justify-end  ${className}`}
+      } relative w-[fit] h-full  rounded-2xl border-1 border-secondary overflow-hidden bg-[#232323] flex flex-col justify-end  ${className}`}
     >
       {/* Speaker image */}
       <div className="relative transition-all duration-700 origin-bottom-center grow flex-1 flex items-end justify-center">
@@ -58,14 +89,16 @@ const SpeakerCard = ({
         </div>
       </div>
 
-      <div className=" bg-white relative py-4 px-6 min-h-27 ">
+      <div 
+        ref={infoRef}
+        data-group={groupId} className="speaker-info bg-white relative py-4 px-6 min-h-27 ">
         <div
           className={`text-black font-bold font-gilroy-bold text-lg leading-[1.5] text-center`}
         >
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </div>
         <h3
-          className={`text-secondary text-sm leading-[1.4] line-clamp-2 text-center`}
+          className={`text-[#139691] font-semibold text-sm leading-[1.4] text-center`}
         >
           {speaker?.designation}
         </h3>

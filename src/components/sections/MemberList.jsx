@@ -1,8 +1,12 @@
+"use client"
 import React from "react";
 import { PrimaryLink } from "../buttons/PrimaryButton";
 import { CircularLink } from "../buttons/CircularButton";
 import SpeakerCard from "../cards/SpeakerCard";
 import { HorizontalCardStagger } from "@/utils/animations/CardStagger";
+import { useRouter } from "next/navigation";
+
+import gsap from "gsap";
 
 const MemberList = ({
   speakers = [],
@@ -12,15 +16,33 @@ const MemberList = ({
   title,
   label,
   theme = "light",
-  selectAction,
+  // selectAction,
   className = "",
   cardSize = "lg",
+  hasCardNav = false,
+  cardNavBaseURL = "/speakers",
+  validateNavKey,
 }) => {
+  const router=useRouter();
   const containerClass =
     cardSize == "sm"
       ? "!flex flex-wrap justify-center  [&>div]:p-2.5 [&>div]:sm:flex-1/5 [&>div]:w-full [&>div]:sm:w-auto [&>div]:sm:max-w-1/2 [&>div]:md:max-w-1/4 [&>div]:lg:max-w-1/5"
-      // : " gap-6 sm:grid-cols-2 lg:grid-cols-4";
-      : " !flex flex-wrap justify-center  [&>div]:p-2.5 [&>div]:lg:flex-1/3 [&>div]:xl:flex-1/4  [&>div]:sm:flex-1/2  [&>div]:w-full [&>div]:sm:w-full [&>div]:sm:max-w-1/2 [&>div]:lg:max-w-1/3 [&>div]:xl:max-w-1/4";
+      : // : " gap-6 sm:grid-cols-2 lg:grid-cols-4";
+        " !flex flex-wrap justify-center  [&>div]:p-2.5 [&>div]:lg:flex-1/3 [&>div]:xl:flex-1/4  [&>div]:sm:flex-1/2  [&>div]:w-full [&>div]:sm:w-full [&>div]:sm:max-w-1/2 [&>div]:lg:max-w-1/3 [&>div]:xl:max-w-1/4";
+
+  const selectAction = (id) => {
+    if (hasCardNav) {
+      gsap.to("#transition-overlay", {
+        x: "0%",
+        duration: 0,
+        immediateRender: true,
+        ease: "power2.in",
+        onComplete: () => {
+          router.push(`${cardNavBaseURL}/${id}`);
+        },
+      });
+    }
+  };
   return (
     speakers.length > 0 && (
       <section className={`bg-[#EDF0FE] py-20 ${className}`}>
@@ -68,8 +90,12 @@ const MemberList = ({
               className="card"
             >
               <SpeakerCard
+                groupId={title?.split(" ").join("")}
                 speaker={speaker}
-                selectAction={selectAction}
+                // selectAction={selectAction}
+                  {...(hasCardNav && (!validateNavKey || (validateNavKey && speaker?.[validateNavKey]))
+                  ? { selectAction: () => selectAction(speaker.id) }
+                  : {})}
                 textSize={cardSize}
               />
             </div>

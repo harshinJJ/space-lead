@@ -532,3 +532,11 @@ button {
 .PhoneInputInput:disabled{
   cursor: not-allowed;
 }
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+.animate-twinkle {
+  animation: twinkle 3s infinite ease-in-out;
+}

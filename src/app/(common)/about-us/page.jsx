@@ -68,6 +68,9 @@ const About = async () => {
         label={"Visionaries Behind Space Lead’25"}
         speakers={steering}
         cardSize="sm"
+        hasCardNav={true}
+        cardNavBaseURL="/commitee"
+        validateNavKey="description"
       />
       <section className="relative bg-transparent bg-cover bg-[center]">
         <video
@@ -85,6 +88,9 @@ const About = async () => {
           className="bg-transparent"
           title={"Scientific Committee  "}
           speakers={scientific}
+          hasCardNav={true}
+          cardNavBaseURL="/commitee"
+          validateNavKey="description"
           theme="dark"
           cardSize="lg"
         />

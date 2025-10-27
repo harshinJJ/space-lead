@@ -44,6 +44,7 @@ const MemberSlider = ({
   cardNavBaseURL = "/speakers",
   loop = false,
   autoplay = false,
+  validateNavKey,
 }) => {
   const router = useRouter();
   const prevRef = useRef(null);
@@ -135,7 +136,8 @@ const MemberSlider = ({
               >
                 <SpeakerCard
                   speaker={speaker}
-                  {...(hasCardNav
+                  groupId={title?.split(" ").join("")}
+                  {...(hasCardNav && (!validateNavKey || (validateNavKey && speaker?.[validateNavKey]))
                     ? { selectAction: () => selectAction(speaker.id) }
                     : {})}
                   textSize={cardSize}
