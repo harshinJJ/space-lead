@@ -6,6 +6,7 @@ import { LogoBg, LogoIcon } from "@/data/icons";
 import { format } from "date-fns";
 import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import SomethingWentWrong from "@/components/common/SomethingWentWrong";
+import InvoiceDownloadButton from "../components/InvoiceDownloadButton";
 
 const CheckIcon = ({ size = 20, className = "" }) => (
   <svg
@@ -140,15 +141,16 @@ const Page = async ({ params }) => {
         <div className="container-fluid mx-auto max-w-5xl">
           {/* Download Button */}
           <div className="mb-6 flex justify-end">
-            <DownloadButton
+            {/* <DownloadButton
               invoice={invoiceData}
               invoiceId={invoiceRes?.invoice_id}
-            />
+            /> */}
+            <InvoiceDownloadButton invoiceData={invoiceData} invoiceId={invoiceData?.invoiceId} />
           </div>
 
           {/* <Preview/> */}
           {/* Invoice Container */}
-          <div className="bg-white w-full max-w-6xl mx-auto shadow-xl overflow-hidden text-sm xs:text-base md:text-lg">
+          <div id="invoice-preview-container" className="bg-white w-full max-w-6xl mx-auto shadow-xl overflow-hidden text-sm xs:text-base md:text-lg">
             {/* Header */}
             <div className="flex justify-between items-center bg-[#023c3b] text-white px-6 py-4">
               <h1 className="md:text-2xl xl:text-3xl text-lg font-bold">

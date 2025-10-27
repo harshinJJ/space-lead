@@ -19,6 +19,8 @@
     "gsap": "^3.13.0",
     "heic2any": "^0.0.4",
     "html-react-parser": "^5.2.6",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "next": "15.4.6",
     "qrcode": "^1.5.4",
     "react": "19.1.0",
