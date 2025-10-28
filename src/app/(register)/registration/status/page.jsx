@@ -9,7 +9,7 @@ export default async function RegistrationStatus({ params, searchParams }) {
     ? await PublicServices.getRegisterStatus(uid).then((res) => res.data || {})
     : null;
 
-    console.log("asdhjasd",response);
+  
   return (
     <main>
       <section className="relative overflow-hidden  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">

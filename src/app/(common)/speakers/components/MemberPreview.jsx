@@ -10,7 +10,6 @@ import Image from "next/image";
 const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
   const [activeTab, setActiveTab] = useState(0);
 
-  console.log("asdasd", activeSpeaker);
   return (
     <>
       {activeSpeaker?.id && (

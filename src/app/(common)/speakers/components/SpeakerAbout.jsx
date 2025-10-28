@@ -11,6 +11,12 @@ const SpeakerAbout = ({ speaker }) => {
           // <p>{speaker.description}</p>
           speaker?.description&&parse(speaker?.description)
         )}
+
+        {(!speaker?.description&&!speaker?.facts) && (
+          <p className="text-center md:py-45 ">
+            No additional information available at the moment.
+          </p>
+        )}
       </div>
 
       {speaker?.facts&&<div className="mt-4">
