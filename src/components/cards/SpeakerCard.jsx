@@ -97,7 +97,7 @@ const SpeakerCard = ({
         className="speaker-info bg-white relative py-4 px-6 min-h-27 "
       >
         <div
-          className={`text-black font-bold font-gilroy-bold leading-[1.5] text-center 2xl:text-base 3xl:text-base xl:text-[0.9375rem] lg:text-sm md:text-base sm:text-sm xs:text-base text-sm`}
+          className={`text-black font-bold font-gilroy-bold leading-[1.5] text-center ${textSize=="sm"?"text-sm":"2xl:text-sm 3xl:text-sm xl:sm lg:text-sm md:text-sm sm:text-sm xs:text-base"}  text-sm`}
         >
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </div>

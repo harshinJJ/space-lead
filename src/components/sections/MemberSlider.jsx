@@ -136,11 +136,12 @@ const MemberSlider = ({
               >
                 <SpeakerCard
                   speaker={speaker}
+                  
                   groupId={title?.split(" ").join("")}
                   {...(hasCardNav && (!validateNavKey || (validateNavKey && speaker?.[validateNavKey]))
                     ? { selectAction: () => selectAction(speaker.id) }
                     : {})}
-                  textSize={cardSize}
+                  textSize={"sm"}
                 />
               </SwiperSlide>
             ))}
