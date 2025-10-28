@@ -10,6 +10,7 @@ import Image from "next/image";
 const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
   const [activeTab, setActiveTab] = useState(0);
 
+  console.log("asdasd", activeSpeaker);
   return (
     <>
       {activeSpeaker?.id && (
@@ -48,14 +49,22 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
                   />
                 </div>
                 <h3
-                  className={`text-white font-semibold text-2xl leading-[1.5] text-center`}
+                  className={`text-white font-semibold  leading-[1.5] text-center 3xl:text-xl 2xl:text-base xl:text-sm lg:text-base md:text-xl sm:text-base xs:text-lg text-sm`}
                 >
                   {activeSpeaker?.name ||
                     `${activeSpeaker.firstname} ${activeSpeaker.lastname}`}
                 </h3>
-                <p className="text-white text-center text-sm">
+                {/* <p className="text-white text-center text-sm">
                   {activeSpeaker?.designation}
-                </p>
+                </p> */}
+                {activeSpeaker?.designation && (
+                  <pre
+                    className="text-white font-[inherit] sm:text-sm text-xs text-center whitespace-pre-wrap"
+                    dangerouslySetInnerHTML={{
+                      __html: activeSpeaker?.designation,
+                    }}
+                  />
+                )}
               </div>
             </div>
             {activeSpeaker && (

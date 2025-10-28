@@ -25,10 +25,12 @@ const SpeakerCard = ({
   //   .split(" ")
   //   .shift();
   // const showOverlay = () => Math.random() < 0.5;
-    useEffect(() => {
+  useEffect(() => {
     if (!groupId) return; // only run if grouped
 
-    const container = document.querySelectorAll(`.speaker-info[data-group='${groupId}']`);
+    const container = document.querySelectorAll(
+      `.speaker-info[data-group='${groupId}']`
+    );
     let maxHeight = 0;
 
     // find tallest
@@ -89,19 +91,30 @@ const SpeakerCard = ({
         </div>
       </div>
 
-      <div 
+      <div
         ref={infoRef}
-        data-group={groupId} className="speaker-info bg-white relative py-4 px-6 min-h-27 ">
+        data-group={groupId}
+        className="speaker-info bg-white relative py-4 px-6 min-h-27 "
+      >
         <div
-          className={`text-black font-bold font-gilroy-bold text-lg leading-[1.5] text-center`}
+          className={`text-black font-bold font-gilroy-bold leading-[1.5] text-center 2xl:text-base 3xl:text-base xl:text-[0.9375rem] lg:text-sm md:text-base sm:text-sm xs:text-base text-sm`}
         >
           {speaker?.name || `${speaker.firstname} ${speaker.lastname}`}
         </div>
-        <h3
+        {/* <h3
           className={`text-[#139691] font-semibold text-sm leading-[1.4] text-center`}
-        >
+          >
           {speaker?.designation}
-        </h3>
+        </h3> */}
+
+        {speaker?.designation && (
+          <pre
+          className={`text-[#139691] font-semibold 2xl:text-sm text-xs leading-[1.4] text-center font-[inherit] whitespace-pre-wrap`}
+            dangerouslySetInnerHTML={{
+              __html: speaker?.designation,
+            }}
+          />
+        )}
       </div>
     </div>
   );

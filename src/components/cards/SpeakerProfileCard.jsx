@@ -22,16 +22,25 @@ const SpeakerProfileCard = ({
     >
       <div className=" 2xl:py-4 py-2 3xl:px-6 xl:px-4 px-1">
         <h3
-          className={`text-black line-clamp-3 font-semibold 2xl:text-base 3xl:text-lg xl:text-lg lg:text-base md:text-lg sm:text-base leading-[1.5] text-center`}
+          className={`text-black line-clamp-3 font-semibold 2xl:text-sm 3xl:text-base xl:text-[0.9375rem] lg:text-sm md:text-base sm:text-sm xs:text-base text-sm leading-[1.5] text-center`}
         >
           {name}
         </h3>
-        {speaker?.description_ar && (
+        {/* {speaker?.description_ar && (
           <p
             className={`text-[#272727] text-sm 3xl:leading-[1.8] line-clamp-2 text-center`}
           >
             {speaker?.description_ar}
           </p>
+        )} */}
+
+        {speaker?.description_ar && (
+          <pre
+          className={`text-[#272727] text-sm 3xl:leading-[1.8] text-center font-[inherit] whitespace-pre-wrap`}
+            dangerouslySetInnerHTML={{
+              __html: speaker?.description_ar,
+            }}
+          />
         )}
       </div>
       {/* Speaker image */}

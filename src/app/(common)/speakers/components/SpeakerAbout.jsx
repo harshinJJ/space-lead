@@ -4,7 +4,7 @@ import parse from "html-react-parser"
 const SpeakerAbout = ({ speaker }) => {
   return (
     <div className="text-[#737373] mt-2.5">
-      <div className="[&>p]:leading-[1.6] space-y-8 text-lg">
+      <div className="[&>p]:leading-[1.6] space-y-8 xl:text-lg md:text-base text-sm">
         {speaker?.description instanceof Array ? (
           speaker.description.map((para, index) => <p key={index}>{para}</p>)
         ) : (

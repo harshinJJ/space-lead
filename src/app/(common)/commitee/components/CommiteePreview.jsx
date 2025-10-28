@@ -34,19 +34,28 @@ const CommiteePreview = ({ data }) => {
                   />
                 </div>
                 <h3
-                  className={`text-white font-semibold text-2xl leading-[1.5] text-center`}
+                  className={`text-white font-semibold  leading-[1.5] text-center 3xl:text-xl 2xl:text-base xl:text-sm lg:text-base md:text-xl sm:text-base xs:text-lg text-sm`}
                 >
                   {data?.name || `${data.firstname} ${data.lastname}`}
                 </h3>
-                <p className="text-white text-center text-sm">
+                {/* <p className="text-white text-center text-sm">
                   {data?.designation}
-                </p>
+                </p> */}
+
+                {data?.designation && (
+                  <pre
+                    className="text-white font-[inherit] sm:text-sm text-xs text-center whitespace-pre-wrap"
+                    dangerouslySetInnerHTML={{
+                      __html: data?.designation,
+                    }}
+                  />
+                )}
               </div>
             </div>
             {data && (
               <div className="flex-3/4 w-full mb-5">
                 <div className="text-[#737373] mt-2.5">
-                  <div className="[&>p]:leading-[1.6] space-y-8 text-lg">
+                  <div className="[&>p]:leading-[1.6] space-y-8 xl:text-lg md:text-base text-sm">
                     {data?.description instanceof Array
                       ? data.description.map((para, index) => (
                           <p key={index}>{para}</p>
@@ -54,7 +63,11 @@ const CommiteePreview = ({ data }) => {
                       : // <p>{data.description}</p>
                         data?.description && parse(data?.description)}
                   </div>
-                  {!data?.description && <p className="text-center md:py-45 ">No additional information available at the moment.</p>}
+                  {!data?.description && (
+                    <p className="text-center md:py-45 ">
+                      No additional information available at the moment.
+                    </p>
+                  )}
                 </div>
                 {/* <div className="hidden lg:block border-b lg:w-6/10 lg:mt-6 border-[#D7D7D7]" /> */}
               </div>

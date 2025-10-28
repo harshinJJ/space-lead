@@ -57,16 +57,17 @@ const SpeakerGroup = ({
             )}
           </div>
           {/* Speaker Cards */}
-          <HorizontalCardStagger
+          <div
             cardPerRow={4}
+            
             className={`container-fluid mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 2xl:grid-cols-4 lg:grid-cols-3`}
           >
             {speakers.map((speaker, index) => (
-              <div key={index} className="card">
+              <div data-aos="fade-up" data-aos-once="true" key={index} className="card">
                 <SpeakerProfileCard cardStyle={cardStyle} speaker={speaker} />
               </div>
             ))}
-          </HorizontalCardStagger>
+          </div>
         </div>
       </section>
     )
