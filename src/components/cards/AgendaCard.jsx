@@ -218,7 +218,7 @@ const AgendaCard = ({
                 <span>{location}</span>
               </div>
             )} */}
-            {event?.session_type_details?.name?.trim() && (
+            {/* {event?.session_type_details?.name?.trim() && (
               <div className="flex items-start gap-3 md:gap-5">
                 <div className="mt-1 md:mt-1.5 ">
                   <svg
@@ -246,8 +246,8 @@ const AgendaCard = ({
 
                 <span>{event?.session_type_details?.name}</span>
               </div>
-            )}
-            {/* {theme?.trim() && (
+            )} */}
+            {theme?.trim() && (
               <div className="flex items-start gap-3 md:gap-5">
                 <div className="mt-1 md:mt-1.5 ">
                   <svg
@@ -265,7 +265,7 @@ const AgendaCard = ({
 
                 <span>{theme}</span>
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
@@ -355,7 +355,7 @@ const AgendaCard = ({
                 <span>{location}</span>
               </div>
             )} */}
-            {event?.session_type_details?.name?.trim() && (
+            {/* {event?.session_type_details?.name?.trim() && (
               <div className="flex items-start gap-3 md:gap-5">
                 <div className="mt-1 md:mt-1.5 ">
                   <svg
@@ -383,8 +383,8 @@ const AgendaCard = ({
 
                 <span>{event?.session_type_details?.name}</span>
               </div>
-            )}
-            {/* {theme?.trim() && (
+            )} */}
+            {theme?.trim() && (
               <div className="flex items-start gap-3 md:gap-5">
                 <div className="mt-1 md:mt-1.5 ">
                   <svg
@@ -401,7 +401,7 @@ const AgendaCard = ({
                 </div>
                 <span>{theme}</span>
               </div>
-            )} */}
+            )}
           </div>
         </div>
         <p className="mt-5 lg:max-w-17/20">{description}</p>
