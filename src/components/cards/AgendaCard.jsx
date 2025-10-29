@@ -35,7 +35,7 @@ export function formatEventDate(event) {
     return `${format(startDate, "hh:mm a")} To ${format(
       endDate,
       "hh:mm a"
-    )} - ${format(baseDate, "dd MMM yyyy")}`;
+    )} - `;
   }
 
   // If only start is valid
@@ -48,10 +48,11 @@ export function formatEventDate(event) {
 
   // If only end is valid
   if (endDate && isValid(endDate)) {
-    return `${format(endDate, "hh:mm a")} - ${format(baseDate, "dd MMM yyyy")}`;
+    return `${format(endDate, "hh:mm a")} - `;
   }
 
-  return format(baseDate, "dd MMM yyyy");
+  // return format(baseDate, "dd MMM yyyy");
+  return null;
 }
 function getEventDateRange(event) {
   if (!event?.event_day) return null;
@@ -137,8 +138,8 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
           <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">{title}</h3>
           <div className="flex flex-col gap-1 text-white md:text-lg text-base">
             {eventDate?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 ">
                   <svg
                     width="16"
                     height="16"
@@ -152,8 +153,10 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                     />
                   </svg>
                 </div>
+                <div className="flex flex-wrap gap-1">
 
-                <span>{eventDate}</span>
+                <span>{eventDate}</span><span>{event?.event_day&&format(new Date(event.event_day),"dd MMM yyyy")}</span>
+                </div>
               </div>
             )}
             {location?.trim() && (
@@ -241,12 +244,12 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
         }`}
       /> */}
       <div className="flex-1">
-        <div className="grid xl:grid-cols-2 lg:max-w-9/10 gap-y-5">
+        <div className="grid xl:grid-cols-2 2xl:max-w-9/10 gap-y-5">
           <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">{title}</h3>
           <div className={`flex flex-col gap-1 md:text-lg text-base ${isSpeakerView?"text-black":"text-secondary"}`}>
             {eventDate?.trim() && (
               <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+                <div className="mt-1 ">
                   <svg
                     width="16"
                     height="16"
@@ -260,7 +263,8 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                     />
                   </svg>
                 </div>
-                <span>{eventDate}</span>
+                <div className="flex flex-wrap gap-1">
+                <span>{eventDate}</span><span>{event?.event_day&&format(new Date(event.event_day),"dd MMM yyyy")}</span></div>
               </div>
             )}
             {location?.trim() && (

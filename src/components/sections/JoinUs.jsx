@@ -56,7 +56,7 @@ const JoinUs = ({
           >
             {title && (
               <h2
-                className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-white leading-[1] text-center font-medium max-w-[80%]`}
+                className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-white leading-[1.5] text-center font-medium max-w-[80%]`}
               >
                 {title}
               </h2>

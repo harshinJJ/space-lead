@@ -47,14 +47,14 @@ const SpeakerGroup = ({
                 {title}
               </h2>
             )}
-            {label && (
+            {/* {label && (
               <p
                 data-aos="fade-up"
                 className="font-azonix 2xl:text-3xl lg:text-2xl text-lg"
               >
                 {label}
               </p>
-            )}
+            )} */}
           </div>
           {/* Speaker Cards */}
           <div

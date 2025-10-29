@@ -26,7 +26,7 @@ const AppPreview = ({ className = "" }) => {
     <section
       className={`bg-indigo py-10 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat ${className}`}
     >
-      <div className="container-fluid mx-auto w-full px-5 sm:px-0 flex flex-col sm:flex-row items-center justify-center gap-20">
+      <div className="container-fluid mx-auto w-full px-5 sm:px-0 flex flex-col sm:flex-row items-center justify-center 2xl:gap-20 gap-10">
         <div className="flex flex-col lg:gap-10 gap-5">
           <p
             data-aos="fade-up"
@@ -37,10 +37,10 @@ const AppPreview = ({ className = "" }) => {
           <h3
             data-aos="fade-up"
             data-aos-once="true"
-            className="xl:text-5xl md:text-4xl text-2xl font-azonix text-start leading-[1.5] font-bold  text-white"
+            className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-azonix text-start leading-[1.5] font-bold  text-white"
           >
-            Everything Space Lead ‘25,
-            <br className="2xl:block hidden" /> at your fingertips
+            Everything <span className="text-nowrap whitespace-nowrap">Space Lead ‘25</span>
+            <br className="2xl:block " /> at your fingertips
           </h3>
           <div className="flex sm:flex-row flex-col items-center md:gap-7.5 gap-4 md:max-w-2/3">
             <button

@@ -6,12 +6,12 @@ const dataList = [
   {
     title: "Conference Space",
     description:
-      "Opening ceremonies, keynotes, sessions/talks, and thought-provoking panel discussions",
+      "Opening ceremonies, keynotes, sessions, and thought-provoking panel discussions that connect science, innovation, and policy.",
   },
   {
     title: "Exposition Space",
     description:
-      "A vibrant hub featuring the exhibition hall, innovation art gallery, and the Youth Astronauts Zone",
+      "A dynamic hub featuring exhibitions, demos, and showcases — spotlighting real-world innovation and discovery, where research, technology, and industry converge, turning vision into experience.",
   },
   // {
   //   title: "Experience Space",
@@ -21,7 +21,7 @@ const dataList = [
   {
     title: "Mastery Space",
     description:
-      "An arena for deep-dive learning through workshops and roundtable discussions",
+      "An arena for deep-dive learning through hands-on workshops, expert roundtables, and collaborative sessions.",
   },
 ];
 
@@ -42,9 +42,9 @@ const TheSpaces = ({ title, description, className = "" }) => {
           )}
           {/* {description && <p className="text-secondary font-azonix text-center lg:max-w-[50%]">{description}</p>} */}
           <p className="text-secondary xl:text-base text-sm font-azonix text-center ">
-            Discover Space Lead, Explore the Four{" "}
+            Discover Space Lead, Explore the three{" "}
             <br className="hidden md:block" /> immersive spaces designed to
-            engage, inspire, and transform.
+            engage, inspire, and transform
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6 2xl:gap-x-16 2xl:gap-y-11.5 gap-5 justify-items-center w-full">
@@ -52,7 +52,7 @@ const TheSpaces = ({ title, description, className = "" }) => {
     <div
       key={i}
       data-aos={i % 2 == 0 ? "fade-right" : "fade-left"}
-      className={`bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex flex-col md:flex-row items-center gap-5 w-full 3xl:px-38 2xl:px-15 ${
+      className={`bg-gradient-to-r from-[#D018B8]/0 to-[#D018B8]/6 p-5.5 flex flex-col md:flex-row items-center gap-5 w-full 3xl:px-20 2xl:px-15 ${
         // If it's the last item AND it's in an even index (meaning it starts a new row and is alone)
         i === dataList.length - 1 && i % 2 === 0
           ? 'lg:col-span-2 mx-auto lg:max-w-[calc(50%-2rem)]' // Span full width and center

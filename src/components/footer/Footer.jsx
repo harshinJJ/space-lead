@@ -90,18 +90,18 @@ const MobileApp = ({ onClick }) => {
         Mobile App
       </div>
       <Modal
-        className="!p-0 rounded-3xl !bg-transparent max-w-full xs:max-w-3/4"
+        className="!p-0 rounded-3xl !bg-transparent max-w-full lg:max-w-[50%] xl:max-w-[40%] xs:max-w-3/4"
         btnClassName="!text-black bg-white aspect-square h-auto w-fit p-2.5 rounded-full flex items-center justify-center text-5xl !-top-4 !-right-4"
         isOpen={show}
         onClose={() => setShow(false)}
       >
         <section
-          className={`bg-indigo rounded-3xl overflow-auto  max-h-[70vh] h-full md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
+          className={`bg-indigo rounded-3xl  max-h-[70vh] h-full overflow-auto md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
         >
           <div className="container-fluid mx-auto w-full flex flex-col  items-center justify-center gap-10">
-            <h3 className=" text-xl text-start leading-[1.2] font-bold font-azonix text-white">
-              Everything Space Lead ‘25,
-              <br className="2xl:block hidden" /> at your fingertips
+            <h3 className=" text-xl text-start leading-[1.5] font-bold font-azonix text-white">
+              Everything <span className="text-nowrap whitespace-nowrap">Space Lead ‘25</span>
+              <br className="" /> at your fingertips
             </h3>
             <div className="flex flex-col  gap-4 ">
               <button
@@ -122,14 +122,13 @@ const MobileApp = ({ onClick }) => {
               </button>
             </div>
           </div>
-
           <section
-            className={` rounded-3xl h-full md:p-5 py-2 bg-[top_center] bg-cover bg-no-repeat`}
+            className={` rounded-3xl h-full mx-auto md:p-5 py-2 bg-[top_center] bg-cover bg-no-repeat`}
           >
             {/* Title */}
 
             {/* Content Box */}
-            <div className="w-full h-full overflow-y-auto max-w-xl bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg border border-white/20 space-y-8">
+            <div className="w-full h-full mx-auto overflow-y-auto max-w-xl bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-lg border border-white/20 space-y-8">
               {/* How to Use */}
               <div>
                 <h4 className="text-lg md:text-xl font-semibold mb-3 text-white underline underline-offset-4 decoration-white/40">

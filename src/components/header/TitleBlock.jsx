@@ -69,9 +69,10 @@ const TitleBlock = ({ title,pathname }) => {
   return (
     <section
       id="home-banner"
-      className="relative bg-indigo bg-[top_center] bg-cover bg-no-repeat py-9 xl:pt-38 pt-30 text-white"
+      // className="relative bg-indigo bg-[top_center] bg-cover bg-no-repeat py-9 xl:pt-38 pt-30 text-white"
+      className="relative xl:!bg-[#1b373f]/98 bg-[top_center] bg-cover bg-no-repeat py-9 xl:pt-23 pt-10 text-white"
     >
-      <Image quality={80} fill src={"/images/backgrounds/title_block_bg.jpg"} alt="title-bg" className="absolute absolute-center object-cover object-center w-full h-full"/>
+      {/* <Image quality={80} fill src={"/images/backgrounds/title_block_bg.jpg"} alt="title-bg" className="absolute absolute-center object-cover object-center w-full h-full"/>
       <div className="absolute z-1 inset-0 [background:linear-gradient(216.76deg,rgba(0,0,0,0.35)_22%,rgba(19,31,84,0.42)_97%),rgba(26,29,39,0.2)] "></div>
       <div className="container-fluid z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
@@ -108,32 +109,8 @@ const TitleBlock = ({ title,pathname }) => {
             </div>
           </div>
           <TimerBlock eventDate={EVENT_INFO.startDateTime} />
-          {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
-            <div className="flex w-full md:w-auto flex-col gap-6.5">
-              <div className="">
-                <div className=" w-full md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#90D3D012] to-white/7">
-                  Time is running out Book your ticket.
-                </div>
-              </div>
-              <div className="flex lg:flex-row items-stretch gap-3 2xl:gap-10">
-                {Object.entries(remainingTime).map(([key, value]) => (
-                  <div
-                    key={key}
-                    className="flex-1 w-full h-full 2xl:min-w-25 flex items-center flex-col justify-center aspect-square w-fill rounded-full bg-white/3"
-                  >
-                    <h5 className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
-                      {String(value).padStart(2, "0")}
-                    </h5>
-                    <p className="text-xs lg:text-sm 2xl:text-lg capitalize">
-                      {key}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div> */}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -109,7 +109,7 @@ const About = async () => {
         <TheSpaces
           title={"The Spaces"}
           description={
-            "Discover Space Lead, Explore the Four immersive spaces designed to engage, inspire, and transform."
+            "DISCOVER SPACE LEAD. EXPLORE THE THREE IMMERSIVE SPACES DESIGNED TO ENGAGE, INSPIRE, AND TRANSFORM"
           }
         />
       </section>

@@ -1,5 +1,6 @@
 "use client";
 import EVENT_INFO from "@/data/eventInfo";
+import Link from "@/utils/CustomLink";
 import React, { useEffect, useState } from "react";
 
 const isEventActive = (date) => {
@@ -53,9 +54,9 @@ export const HomeTimer = ({ eventDate = EVENT_INFO.startDateTime }) => {
           </div>
         ))}
       </div>
-      <div className=" w-full text-sm xs:text-base text-[#90D3D0] md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]">
+      <Link href={"/registration"} className=" w-full text-sm xs:text-base text-[#90D3D0] md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]">
         Time is running out register now.
-      </div>
+      </Link>
     </div>:null
   );
 };
@@ -91,7 +92,7 @@ const TimerBlock = ({ eventDate = EVENT_INFO.startDateTime, theme = "default" })
     <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
       <div className="flex w-full md:w-auto flex-col gap-6.5">
         <div className="">
-          <div
+          <Link href={"/registration"}
             className={` w-full  md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r ${
               theme == "register"
                 ? "from-secondary to-primary text-white"
@@ -99,7 +100,7 @@ const TimerBlock = ({ eventDate = EVENT_INFO.startDateTime, theme = "default" })
             }`}
           >
             Time is running out register now.
-          </div>
+          </Link>
         </div>
         <div className="grid grid-cols-4 justify-items-center items-stretch gap-3 2xl:gap-10">
           {Object.entries(remainingTime).map(([key, value]) => (

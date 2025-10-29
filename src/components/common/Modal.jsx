@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const SIZE_CLASSES = {
-  sm: "md:max-w-2/5 lg:max-w-1/5 max-w-3/4",
-  md: "md:max-w-2/3 xl:max-w-1/3 lg:max-w-2/5 max-w-3/4",
+  sm: "md:max-w-2/5 lg:max-w-1/5 xl:max-w-1/5 2xl:max-w-1/5 3xl:max-w-1/5 max-w-3/4",
+  md: "md:max-w-2/3 xl:max-w-1/3  2xl:max-w-1/3  3xl:max-w-1/3 lg:max-w-2/5 max-w-3/4",
   lg: "max-w-full",
 };
 

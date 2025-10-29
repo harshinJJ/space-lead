@@ -5,11 +5,11 @@ import Link from "@/utils/CustomLink";
 
 const AboutInfo = ({ className = "", isHome }) => {
   const data = {
-    title: "Space Lead 25",
+    title: "Space Lead ‘25",
     description: `${
       isHome
-        ? "“The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. "
-        : "“The Space Lead’25 in Riyadh is a pioneering global conference uniting aerospace engineers, space medicine professionals, scientists, researchers, policymakers, industry leaders, and students. Over two immersive days, delegates will engage in thought-provoking discussions, collaborative exchanges, and strategic networking sessions that shape the future of space exploration and its impact on humanity"
+        ? "The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. "
+        : "The Space Lead’25 in Riyadh is a pioneering global conference uniting aerospace engineers, space medicine professionals, scientists, researchers, policymakers, industry leaders, and students. Over two immersive days, delegates will engage in thought-provoking discussions, collaborative exchanges, and strategic networking sessions that shape the future of space exploration and its impact on humanity"
     }`,
     vision: [
       {
