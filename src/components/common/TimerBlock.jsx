@@ -1,7 +1,15 @@
 "use client";
+import EVENT_INFO from "@/data/eventInfo";
 import React, { useEffect, useState } from "react";
 
-export const HomeTimer = ({ eventDate = "2025-11-09" }) => {
+const isEventActive = (date) => {
+  const currentDate = new Date();
+  // const eventDate = new Date("2025-11-11T15:59:59");
+  const eventDate = new Date(date);
+  return currentDate < eventDate;
+};
+
+export const HomeTimer = ({ eventDate = EVENT_INFO.startDateTime }) => {
   const calculateRemainingTime = () => {
     const now = new Date();
     const event = new Date(eventDate);
@@ -28,8 +36,10 @@ export const HomeTimer = ({ eventDate = "2025-11-09" }) => {
     return () => clearInterval(timer);
   }, [eventDate]);
 
+  const isActive = isEventActive(eventDate)
+
   return (
-    <div className="w-full flex flex-col gap-7.5 justify-center items-center font-gilroy-med">
+    isActive?<div className="w-full flex flex-col gap-7.5 justify-center items-center font-gilroy-med">
       <div className="grid grid-cols-4 justify-items-center xs:gap-3 gap-2 2xl:gap-10">
         {Object.entries(remainingTime).map(([key, value]) => (
           <div
@@ -46,10 +56,10 @@ export const HomeTimer = ({ eventDate = "2025-11-09" }) => {
       <div className=" w-full text-sm xs:text-base text-[#90D3D0] md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]">
         Time is running out register now.
       </div>
-    </div>
+    </div>:null
   );
 };
-const TimerBlock = ({ eventDate = "2025-11-09",theme="default" }) => {
+const TimerBlock = ({ eventDate = EVENT_INFO.startDateTime, theme = "default" }) => {
   const calculateRemainingTime = () => {
     const now = new Date();
     const event = new Date(eventDate);
@@ -76,11 +86,18 @@ const TimerBlock = ({ eventDate = "2025-11-09",theme="default" }) => {
     return () => clearInterval(timer);
   }, [eventDate]);
 
-  return (
+  const isActive = isEventActive(eventDate)
+  return (isActive?
     <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
       <div className="flex w-full md:w-auto flex-col gap-6.5">
         <div className="">
-          <div className={` w-full  md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r ${theme=="register"?"from-secondary to-primary text-white":"from-[#1F273F] via-[#3D4762] to-[#432F5F] text-[#90D3D0]"}`}>
+          <div
+            className={` w-full  md:w-fit flex items-center gap-2 py-4.5 px-5.5 rounded-full bg-linear-to-r ${
+              theme == "register"
+                ? "from-secondary to-primary text-white"
+                : "from-[#1F273F] via-[#3D4762] to-[#432F5F] text-[#90D3D0]"
+            }`}
+          >
             Time is running out register now.
           </div>
         </div>
@@ -98,7 +115,7 @@ const TimerBlock = ({ eventDate = "2025-11-09",theme="default" }) => {
           ))}
         </div>
       </div>
-    </div>
+    </div>:null
   );
 };
 

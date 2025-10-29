@@ -103,13 +103,13 @@ const HomeBanner = ({ sponsors = [] }) => {
             data-aos-delay="100"
             className="-translate-y-1/8"
           >
-            <TimerBlock eventDate={EVENT_INFO.startDate} />
+            <TimerBlock eventDate={EVENT_INFO.startDateTime} />
           </div>
           <PrimaryLink
             href="/agenda"
             data-aos="fade-up"
             data-aos-delay="150"
-            className="gap-1 px-7 text-lg py-3 w-fit leading-[100%]"
+            className="gap-1 px-7 text-lg py-3 w-fit leading-[100%] mt-4"
           >
             <span>Explore Agenda</span>
           </PrimaryLink>

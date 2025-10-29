@@ -1,6 +1,7 @@
 const EVENT_INFO = {
   title: "SPACE LEAD'25",
   startDate: "2025-11-10",
+  startDateTime:"2025-11-10T09:59:59+03:00",
   endDate: "2025-11-11",
   dateLabel: "Nov 10, 11 - 2025",
   bannerDateLabel: "10, 11 November 2025",

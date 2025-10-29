@@ -105,7 +105,7 @@ const RegisterTitleBlock = ({ title }) => {
               </a>
             </div>
           </div>
-          <TimerBlock theme="register" eventDate={EVENT_INFO.startDate} />
+          <TimerBlock theme="register" eventDate={EVENT_INFO.startDateTime} />
         </div>
       </div>
     </section>

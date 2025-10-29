@@ -69,48 +69,14 @@ const TitleBlock = ({ title,pathname }) => {
   return (
     <section
       id="home-banner"
-      className="relative bg-indigo bg-[top_center] bg-cover bg-no-repeat py-9 pt-38 text-white"
+      className="relative bg-indigo bg-[top_center] bg-cover bg-no-repeat py-9 xl:pt-38 pt-30 text-white"
     >
       <Image quality={80} fill src={"/images/backgrounds/title_block_bg.jpg"} alt="title-bg" className="absolute absolute-center object-cover object-center w-full h-full"/>
       <div className="absolute z-1 inset-0 [background:linear-gradient(216.76deg,rgba(0,0,0,0.35)_22%,rgba(19,31,84,0.42)_97%),rgba(26,29,39,0.2)] "></div>
       <div className="container-fluid z-10 relative mx-auto px-5 sm:px-0">
         <div className="flex flex-col md:flex-row gap-9 items-end justify-between">
-          <div className="w-full flex flex-col gap-5 md:max-w-[50%] font-gilroy-med">
-            {/* <PrimaryLink href="/registration" className="gap-1 px-5 py-3.5 w-fit text-[1.375rem] !rounded-3xl leading-[100%] btn-gradient-secondary ">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19.8272 4.66663H8.16053C3.6922 4.66663 2.44387 5.73996 2.33887 9.91663C4.59053 9.91663 6.41053 11.7483 6.41053 14C6.41053 16.2516 4.59053 18.0716 2.33887 18.0833C2.44387 22.26 3.6922 23.3333 8.16053 23.3333H19.8272C24.4939 23.3333 25.6606 22.1666 25.6606 17.5V10.5C25.6606 5.83329 24.4939 4.66663 19.8272 4.66663Z"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10.4922 4.66663V8.74996"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10.4922 19.25V23.3333"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M17.529 10.8849L18.2524 12.3432C18.3224 12.4832 18.4624 12.5882 18.614 12.6116L20.224 12.8449C20.6207 12.9032 20.784 13.3932 20.4924 13.6732L19.3257 14.8049C19.209 14.9099 19.1624 15.0732 19.1857 15.2366L19.4657 16.8349C19.5357 17.2316 19.1157 17.5349 18.7657 17.3482L17.3307 16.5899C17.1907 16.5199 17.0157 16.5199 16.8757 16.5899L15.4407 17.3482C15.079 17.5349 14.6707 17.2316 14.7407 16.8349L15.0207 15.2366C15.044 15.0732 14.9974 14.9216 14.8807 14.8049L13.7257 13.6732C13.434 13.3932 13.5974 12.9032 13.994 12.8449L15.604 12.6116C15.7674 12.5882 15.8957 12.4949 15.9657 12.3432L16.6774 10.8849C16.8407 10.5232 17.354 10.5232 17.529 10.8849Z"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Register Now
-            </PrimaryLink> */}
+          <div className={`w-full flex flex-col gap-5 md:max-w-[50%] font-gilroy-med ${pathname!="/media"?"xl:mt-5 ":""}`}>
+
             {pathname=="/media"&&<PrimaryLink href="#" className="gap-1 px-5 py-3.5 w-fit text-[1.375rem] !rounded-3xl leading-[100%] btn-gradient-secondary ">
 
               Download Media Kit
@@ -141,7 +107,7 @@ const TitleBlock = ({ title,pathname }) => {
               </a>
             </div>
           </div>
-          <TimerBlock eventDate={EVENT_INFO.startDate} />
+          <TimerBlock eventDate={EVENT_INFO.startDateTime} />
           {/* <div className="w-full flex justify-center sm:justify-end items-end font-gilroy-med">
             <div className="flex w-full md:w-auto flex-col gap-6.5">
               <div className="">
