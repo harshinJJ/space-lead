@@ -36,7 +36,7 @@ export default function EventAgenda({
           <p className="uppercase xl:text-lg text-sm font-azonix w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
             {label}
           </p>
-          <h2 className=" font-azonix text-2xl md:text-4xl 3xl:text-5xl xl:text-[2.6875rem] font-bold">
+          <h2 className=" font-azonix text-2xl md:text-4xl 3xl:text-5xl xl:text-[2.6875rem] font-bold leading-[1.3]">
             {title}
           </h2>
         </div>

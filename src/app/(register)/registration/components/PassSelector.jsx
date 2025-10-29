@@ -1,6 +1,7 @@
 import React from "react";
 import PassSelectionCard from "./PassSelectionCard";
 import { LogoBg } from "@/data/icons";
+import { CenteredLogo } from "@/data/icons/LogoCenteredIcon";
 
 const icons = {
   student: (
@@ -79,15 +80,15 @@ const BgOverlay = () => {
 
 export default function PassSelector() {
   return (
-    <section className="relative bg-indigo overflow-hidden   bg-cover bg-no-repeat bg-[center_top] lg:py-50 md:py-20 py-25 xl:pb-56.25">
+    <section className="relative bg-indigo overflow-hidden   bg-cover bg-no-repeat bg-[center_top] lg:pb-30 xl:pt-10 py-25 xl:pb-56.25">
       {/* <Image alt="register-bg" src={"/images/backgrounds/register_bg.png"} fill className="object-cover object-[center_top] w-full h-full" /> */}
       {/* <BgOverlay /> */}
-      <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
-      <div className="container-fluid mx-auto flex flex-col items-center justify-center px-5 lg:!max-w-2/3">
-        <h2 className="xl:text-5xl sm:text-3xl xs:text-2xl text-lg font-azonix text-white xl:mb-15 lg:mb-10 mb-5 tracking-wide text-center ">
+      <CenteredLogo size={1728} className="absolute w-full text-primary/5 max-w-9/10 lg:max-w-3/4  mx-auto h-auto left-0 right-0 xl:top-40 sm:top-45 " />
+      <div className="container-fluid mx-auto flex flex-col items-center justify-center px-5 lg:!max-w-2/3 xl:!max-w-3/4">
+        <h2 className="xl:text-5xl sm:text-3xl xs:text-2xl text-lg font-azonix text-white xl:mb-15 lg:mb-10 mb-5 tracking-wide leading-[1.3] text-center ">
         Secure your place at the <br className="hidden xs:block" /> frontier of discovery
       </h2>
-        <div className="flex flex-col md:flex-row xl:gap-15 lg:gap-10 gap-5 w-full justify-center">
+        <div className="flex flex-col md:flex-row xl:gap-15 lg:gap-10 gap-5 w-full md:w-auto justify-center">
           <PassSelectionCard
             type="Conference "
             icon={icons.student}

@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 import SomethingWentWrong from "@/components/common/SomethingWentWrong";
 import InvoiceDownloadButton from "../components/InvoiceDownloadButton";
+import { CenteredLogo } from "@/data/icons/LogoCenteredIcon";
 
 const CheckIcon = ({ size = 20, className = "" }) => (
   <svg
@@ -137,7 +138,7 @@ const Page = async ({ params }) => {
   return (
     <main>
       <section className="relative overflow-hidden  text-black py-10  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
-        <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
+      <CenteredLogo size={1728} className="absolute w-full text-primary/5 max-w-9/10 lg:max-w-3/4  mx-auto h-auto left-0 right-0 xl:top-40 sm:top-45 " />
         <div className="container-fluid mx-auto max-w-5xl">
           {/* Download Button */}
           <div className="mb-6 flex justify-end">

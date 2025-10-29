@@ -1,12 +1,13 @@
 import { LogoBg } from '@/data/icons'
 import React from 'react'
 import { PrimaryLink } from '../buttons/PrimaryButton'
+import { CenteredLogo } from '@/data/icons/LogoCenteredIcon'
 
 const SomethingWentWrong = ({url="/"}) => {
   return (
          <main>
            <section className="relative  text-white py-20 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
-             <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
+      <CenteredLogo size={1728} className="absolute w-full text-primary/5 max-w-9/10 lg:max-w-3/4  mx-auto h-auto left-0 right-0 xl:top-40 sm:top-45 " />
              <div className="relative flex flex-col items-center justify-center bg-white rounded-xl shadow-lg p-8 py-14.5 w-full max-w-[44rem] mx-auto mt-12">
                {/* Error Icon */}
                <div className="bg-[#E84C4C1F] rounded-full p-3 mb-4">

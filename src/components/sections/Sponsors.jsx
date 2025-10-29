@@ -98,6 +98,7 @@ export const SponsorList = ({
   label,
 }) => {
   const show = showSlides && sponsors.some((item) => item.logo);
+  console.log("object",sponsors)
   return sponsors?.length > 0 ? (
     <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
       {/* Left & right edge gradients */}
@@ -160,8 +161,9 @@ export const SponsorList = ({
                   sponsor.logo && (
                     <div
                       key={idx}
-                      className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                      className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-col justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
                     >
+                      {sponsor?.sponsor_category_name&&<div className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)] text-center capitalize">{sponsor?.sponsor_category_name}</div>}
                       <Image
                         width={150}
                         height={40}
@@ -179,7 +181,7 @@ export const SponsorList = ({
                   sponsor.logo && (
                     <div
                       key={`duplicate-${idx}`}
-                      className={`box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300 
+                      className={`box-border flex flex-col justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300 
                          ${sponsors.length <= 1 ? "hidden" : ""}
                          ${sponsors.length <= 2 ? "sm:hidden" : ""}
                           ${sponsors.length <= 3 ? "lg:hidden" : ""}
@@ -187,6 +189,8 @@ export const SponsorList = ({
                           ${sponsors.length <= 5 ? "2xl:hidden" : ""} 
                         `}
                     >
+                                            {sponsor?.sponsor_category_name&&<div className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)] text-center capitalize">{sponsor?.sponsor_category_name}</div>}
+
                       <Image
                         width={150}
                         height={40}
@@ -215,8 +219,10 @@ export const SponsorList = ({
                     sponsor.logo && (
                       <div
                         key={idx}
-                        className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-row justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                        className="w-[50vw] md:w-[calc(100vw/3)] lg:w-[calc(100vw/4)] xl:w-[calc(100vw/5)] 2xl:w-[calc(100vw/5)] 3xl:w-[calc(100vw/6)] max-w-[248px] box-border flex flex-col justify-center items-center p-[26px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
                       >
+                                              {sponsor?.sponsor_category_name&&<div className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)] text-center capitalize">{sponsor?.sponsor_category_name}</div>}
+
                         <Image
                           width={150}
                           height={40}
@@ -233,8 +239,10 @@ export const SponsorList = ({
                     sponsor.logo && (
                       <div
                         key={`duplicate-${idx}`}
-                        className="box-border flex flex-row justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
+                        className="box-border flex flex-col justify-center items-center p-[26px] md:w-[248px] h-[86.96px] bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.98,0,0)] flex-none order-0 self-stretch grow-0 hover:scale-[1.2] transition-transform duration-300"
                       >
+                                              {sponsor?.sponsor_category_name&&<div className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)] text-center capitalize">{sponsor?.sponsor_category_name}</div>}
+
                         <Image
                           width={150}
                           height={40}
@@ -332,7 +340,9 @@ export const SponsorScroll = ({ sponsors = [] }) => {
     >
       {sponsors.map((sponsor, idx) => (
         <SwiperSlide className="3xl:!w-[248px] !transition-all !duration-500 hover:scale-[1.2]" key={idx}>
-          <div className="box-border flex flex-row justify-center items-center p-[26px] md:w-[247px] h-[86.96px] text-black bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
+          <div className="box-border flex flex-col justify-center items-center p-[26px] md:w-[247px] h-[86.96px] text-black bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
+                                                        {sponsor?.sponsor_category_name&&<div className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)] text-center capitalize">{sponsor?.sponsor_category_name}</div>}
+
             <Image
               width={150}
               height={40}

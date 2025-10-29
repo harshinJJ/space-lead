@@ -24,10 +24,10 @@ export default async function Exhibitor() {
   return (
     <main>
       <ExhibitorBlock exhibitors={exhibitors} />
-      <FullImageBlock url="/images/event_floor_map_new.png" title="Find Us" />
+      <FullImageBlock className="pb-0 lg:pb-0" url="/images/event_floor_map_new.png" title="Find Us" />
       <JoinUs
         title="Where visibility becomes opportunity"
-        description={"Be seen. Be heard. Be part of Space Lead ’25.”"}
+        description={"Be seen • Be heard • Be part of Space Lead ’25"}
         navLinks={[
           {
             label: "Become an Exhibitor  ",

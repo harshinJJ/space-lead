@@ -18,7 +18,7 @@ const JoinUs = ({
   return (
     <section className={`bg-indigo py-20 px-5 ${className}`}>
       <div className="container-fluid  mx-auto xl:!px-15">
-        <div className="relative w-full h-full  text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 py-10 lg:py-30 lg:pb-20 rounded-2xl overflow-hidden">
+        <div className="relative w-full h-full  text-[1.13rem] flex-3 flex flex-col gap-3 md:gap-7.5 px-5 py-10 lg:py-20  rounded-2xl overflow-hidden">
           {imageURL ? (
             <>
               <Image
@@ -52,11 +52,12 @@ const JoinUs = ({
 
           <div
             data-aos="fade-up"
+            data-aos-once="true"
             className={`relative flex flex-col items-center sm:justify-between  md:justify-center `}
           >
             {title && (
               <h2
-                className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-white leading-[1.5] text-center font-medium max-w-[80%]`}
+                className={`xl:text-5xl md:text-4xl text-2xl font-azonix text-white leading-[1.3] text-center font-medium max-w-[80%]`}
               >
                 {title}
               </h2>
@@ -71,6 +72,7 @@ const JoinUs = ({
             {/* {showViewAll && ( */}
             <div
               data-aos="fade-right"
+              data-aos-once="true"
               className="mt-15 flex flex-col md:flex-row items-center justify-center lg:gap-10 gap-5"
             >
               {navLinks?.map((link, i) => (

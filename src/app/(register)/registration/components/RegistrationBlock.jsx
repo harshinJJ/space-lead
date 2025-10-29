@@ -8,6 +8,7 @@ import SuccessModal from "./SuccessModal";
 import Image from "next/image";
 import { LogoBg } from "@/data/icons";
 import ClosedModal from "./ClosedModal";
+import { CenteredLogo } from "@/data/icons/LogoCenteredIcon";
 
 const sessionLists = [
   {
@@ -62,9 +63,9 @@ export default function RegistrationBlock({
   const [eventActive, setEventActive] = useState(isEventActive());
 
   return (
-    <section className="relative overflow-hidden  text-white py-25 2xl:py-36  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
+    <section className="relative overflow-hidden  text-white py-25 2xl:pb-36 xl:pt-10  bg-indigo bg-cover bg-[center_top] bg-no-repeat">
       {/* <BgOverlay/> */}
-      <LogoBg className="absolute w-full h-auto left-0 right-0 top-25" />
+      <CenteredLogo size={1728} className="absolute w-full text-primary/5 max-w-9/10 lg:max-w-3/4  mx-auto h-auto left-0 right-0 xl:top-40 sm:top-45 " />
 
       {eventActive ? (
         <RegistrationForm

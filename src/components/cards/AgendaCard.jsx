@@ -32,10 +32,7 @@ export function formatEventDate(event) {
 
   // If both start and end are valid
   if (startDate && isValid(startDate) && endDate && isValid(endDate)) {
-    return `${format(startDate, "hh:mm a")} To ${format(
-      endDate,
-      "hh:mm a"
-    )} - `;
+    return `${format(startDate, "hh:mm a")} To ${format(endDate, "hh:mm a")}`;
   }
 
   // If only start is valid
@@ -48,7 +45,7 @@ export function formatEventDate(event) {
 
   // If only end is valid
   if (endDate && isValid(endDate)) {
-    return `${format(endDate, "hh:mm a")} - `;
+    return `${format(endDate, "hh:mm a")}`;
   }
 
   // return format(baseDate, "dd MMM yyyy");
@@ -97,7 +94,12 @@ function getEventDateRange(event) {
     endDate,
   };
 }
-const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerView=false }) => {
+const AgendaCard = ({
+  event,
+  containerClass,
+  showAddtoCalender = true,
+  isSpeakerView = false,
+}) => {
   const eventDate = formatEventDate(event);
   const title = event?.title;
   const description = event?.session_description || event?.description;
@@ -125,17 +127,34 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
       )}`
     : "#";
 
+  const isNote =
+    event?.session_type_details?.name?.toLowerCase() == "welcome note";
+
   const miscSession =
     event?.session_type_details?.name == "Break" ||
     event?.session_type_details?.name == "Lunch" ||
     event?.session_type_details?.name == "Dinner";
-  return miscSession ? (
+  return isNote ? (
+    <div
+      className={`bg-primary rounded-4xl  px-8.5 py-5 flex flex-col lg:flex-row items-start justify-between gap-6 ${containerClass}`}
+    >
+      <div className="flex-1 w-full">
+        <div className="flex w-full flex-col md:flex-row items-center justify-center gap-10">
+          <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">
+            {title}
+          </h3>
+        </div>
+      </div>
+    </div>
+  ) : miscSession ? (
     <div
       className={`bg-secondary rounded-4xl  px-8.5 py-5 flex flex-col lg:flex-row items-start justify-between gap-6 ${containerClass}`}
     >
       <div className="flex-1 w-full">
         <div className="flex w-full flex-col md:flex-row items-center justify-center gap-10">
-          <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">{title}</h3>
+          <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">
+            {title}
+          </h3>
           <div className="flex flex-col gap-1 text-white md:text-lg text-base">
             {eventDate?.trim() && (
               <div className="flex items-start gap-3 md:gap-5">
@@ -149,19 +168,40 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                   >
                     <path
                       d="M6.5 0.469727C5.67057 0.469727 4.8877 0.626302 4.15137 0.939453C3.41504 1.2526 2.77393 1.68213 2.22803 2.22803C1.68213 2.77393 1.2526 3.41504 0.939453 4.15137C0.626302 4.8877 0.469727 5.67057 0.469727 6.5C0.469727 7.32943 0.626302 8.1123 0.939453 8.84863C1.2526 9.58496 1.68213 10.2261 2.22803 10.772C2.77393 11.3179 3.41504 11.7474 4.15137 12.0605C4.8877 12.3737 5.67057 12.5303 6.5 12.5303C7.32943 12.5303 8.1123 12.3737 8.84863 12.0605C9.58496 11.7474 10.2261 11.3179 10.772 10.772C11.3179 10.2261 11.7474 9.58496 12.0605 8.84863C12.3737 8.1123 12.5303 7.32943 12.5303 6.5C12.5303 5.67057 12.3737 4.8877 12.0605 4.15137C11.7474 3.41504 11.3179 2.77393 10.772 2.22803C10.2261 1.68213 9.58496 1.2526 8.84863 0.939453C8.1123 0.626302 7.32943 0.469727 6.5 0.469727ZM9.28027 7.42676H6.5C6.44076 7.42676 6.38151 7.41618 6.32227 7.39502C6.26302 7.37386 6.21224 7.33789 6.16992 7.28711C6.1276 7.24479 6.09375 7.19613 6.06836 7.14111C6.04297 7.0861 6.03027 7.02897 6.03027 6.96973V2.78027C6.03027 2.72103 6.04297 2.6639 6.06836 2.60889C6.09375 2.55387 6.1276 2.50521 6.16992 2.46289C6.21224 2.41211 6.26302 2.37614 6.32227 2.35498C6.38151 2.33382 6.44076 2.32324 6.5 2.32324C6.55924 2.32324 6.61849 2.33382 6.67773 2.35498C6.73698 2.37614 6.78776 2.41211 6.83008 2.46289C6.8724 2.50521 6.90625 2.55387 6.93164 2.60889C6.95703 2.6639 6.96973 2.72103 6.96973 2.78027V6.5H9.28027C9.34798 6.5 9.40934 6.5127 9.46436 6.53809C9.51937 6.56348 9.56803 6.59733 9.61035 6.63965C9.65267 6.68197 9.68652 6.73063 9.71191 6.78564C9.7373 6.84066 9.75 6.90202 9.75 6.96973C9.75 7.02897 9.7373 7.0861 9.71191 7.14111C9.68652 7.19613 9.65267 7.24479 9.61035 7.28711C9.56803 7.33789 9.51937 7.37386 9.46436 7.39502C9.40934 7.41618 9.34798 7.42676 9.28027 7.42676Z"
-                      fill="#ffffff"
+                      fill="currentColor"
                     />
                   </svg>
                 </div>
                 <div className="flex flex-wrap gap-1">
-
-                <span>{eventDate}</span><span>{event?.event_day&&format(new Date(event.event_day),"dd MMM yyyy")}</span>
+                  <span>{eventDate}</span>
                 </div>
               </div>
             )}
-            {location?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+            {event?.event_day?.trim() && (
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
+                  <svg
+                    fill="currentColor"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    enableBackground="new 0 0 24 24"
+                  >
+                    <path d="M2,19c0,1.7,1.3,3,3,3h14c1.7,0,3-1.3,3-3v-8H2V19z M19,4h-2V3c0-0.6-0.4-1-1-1s-1,0.4-1,1v1H9V3c0-0.6-0.4-1-1-1S7,2.4,7,3v1H5C3.3,4,2,5.3,2,7v2h20V7C22,5.3,20.7,4,19,4z" />
+                  </svg>
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  <span>
+                    {event?.event_day &&
+                      format(new Date(event.event_day), "dd MMM yyyy")}
+                  </span>
+                </div>
+              </div>
+            )}
+            {/* {location?.trim() && (
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
                   <svg
                     width="16"
                     height="16"
@@ -177,10 +217,10 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                 </div>
                 <span>{location}</span>
               </div>
-            )}
+            )} */}
             {event?.session_type_details?.name?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
                   <svg
                     width="16"
                     height="16"
@@ -207,9 +247,9 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                 <span>{event?.session_type_details?.name}</span>
               </div>
             )}
-            {theme?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+            {/* {theme?.trim() && (
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
                   <svg
                     width="16"
                     height="16"
@@ -225,7 +265,7 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
 
                 <span>{theme}</span>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
@@ -245,11 +285,17 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
       /> */}
       <div className="flex-1">
         <div className="grid xl:grid-cols-2 2xl:max-w-9/10 gap-y-5">
-          <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">{title}</h3>
-          <div className={`flex flex-col gap-1 md:text-lg text-base ${isSpeakerView?"text-black":"text-secondary"}`}>
+          <h3 className="text-2xl lg:max-w-3/4 leading-[1.2] md:leading-[1.35]">
+            {title}
+          </h3>
+          <div
+            className={`flex flex-col gap-1 md:text-lg text-base ${
+              isSpeakerView ? "text-black" : "text-secondary"
+            }`}
+          >
             {eventDate?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 ">
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
                   <svg
                     width="16"
                     height="16"
@@ -264,12 +310,35 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                   </svg>
                 </div>
                 <div className="flex flex-wrap gap-1">
-                <span>{eventDate}</span><span>{event?.event_day&&format(new Date(event.event_day),"dd MMM yyyy")}</span></div>
+                  <span>{eventDate}</span>
+                </div>
               </div>
             )}
-            {location?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+            {event?.event_day?.trim() && (
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
+                  <svg
+                    fill="currentColor"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    enableBackground="new 0 0 24 24"
+                  >
+                    <path d="M2,19c0,1.7,1.3,3,3,3h14c1.7,0,3-1.3,3-3v-8H2V19z M19,4h-2V3c0-0.6-0.4-1-1-1s-1,0.4-1,1v1H9V3c0-0.6-0.4-1-1-1S7,2.4,7,3v1H5C3.3,4,2,5.3,2,7v2h20V7C22,5.3,20.7,4,19,4z" />
+                  </svg>
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  <span>
+                    {event?.event_day &&
+                      format(new Date(event.event_day), "dd MMM yyyy")}
+                  </span>
+                </div>
+              </div>
+            )}
+            {/* {location?.trim() && (
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
                   <svg
                     width="16"
                     height="16"
@@ -285,10 +354,10 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                 </div>
                 <span>{location}</span>
               </div>
-            )}
+            )} */}
             {event?.session_type_details?.name?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
                   <svg
                     width="16"
                     height="16"
@@ -315,9 +384,9 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                 <span>{event?.session_type_details?.name}</span>
               </div>
             )}
-            {theme?.trim() && (
-              <div className="flex items-start md:items-center gap-3 md:gap-5">
-                <div className="mt-1 md:mt-0">
+            {/* {theme?.trim() && (
+              <div className="flex items-start gap-3 md:gap-5">
+                <div className="mt-1 md:mt-1.5 ">
                   <svg
                     width="16"
                     height="16"
@@ -332,17 +401,27 @@ const AgendaCard = ({ event, containerClass, showAddtoCalender = true,isSpeakerV
                 </div>
                 <span>{theme}</span>
               </div>
-            )}
+            )} */}
           </div>
         </div>
         <p className="mt-5 lg:max-w-17/20">{description}</p>
       </div>
       {showAddtoCalender && !miscSession && (
         <div className="bg-gradient-to-r from-white  to-indigo rounded-full flex items-center gap-3 py-1.5 px-3.5">
-          <a aria-label="add-to-calendar-outlook" href={outlookUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            aria-label="add-to-calendar-outlook"
+            href={outlookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <OutlookIcon />
           </a>
-          <a aria-label="add-to-calendar-google" href={googleUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            aria-label="add-to-calendar-google"
+            href={googleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <GoogleIcon />
           </a>
           <span>Add to my calender</span>

@@ -21,7 +21,7 @@ const PassSelectionCard = ({
     <Link
       disabled={true}
       href={url || "#"}
-      className={`relative overflow-hidden flex w-full md:w-fit flex-col border-1 border-white backdrop-blur-[1.85px] items-center justify-center ${gradientBg} rounded-4xl shadow-lg py-13.5 md:px-22 px-10 w-fit cursor-pointer hover:scale-105 transition-transform duration-200`}
+      className={`relative flex-1 overflow-hidden flex w-full md:w-fit flex-col border-1 border-white backdrop-blur-[1.85px] items-center justify-start ${gradientBg} rounded-4xl shadow-lg py-13.5 md:px-22 px-10 w-fit cursor-pointer hover:scale-105 transition-transform duration-200`}
       // onClick={onClick}
     >
       {tag && (
@@ -52,7 +52,7 @@ const PassSelectionCard = ({
         </div>
       </div>
       {type == "Workshops " && (
-        <span className="text-center leading-[1.5] text-white mt-1">
+        <span className="text-center leading-[1.5] text-white whitespace-nowrap mt-8">
           Includes the conference <br />
           and exhibition area
         </span>
