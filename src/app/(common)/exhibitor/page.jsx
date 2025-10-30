@@ -23,6 +23,7 @@ export default async function Exhibitor() {
   });
   return (
     <main>
+      <ExhibitorBlock exhibitors={exhibitors} />
       <FullImageBlock className="pb-0 lg:pb-0" url="/images/event_floor_map_new.png" title="Find Us" />
       <JoinUs
         title="Where visibility becomes opportunity"
@@ -44,7 +45,6 @@ export default async function Exhibitor() {
         imageURL={"/images/backgrounds/exhibitor_connect_bg.jpg"}
         overlay="indigo"
       />
-      <ExhibitorBlock exhibitors={exhibitors} />
       {/* <Marquee /> */}
     </main>
   );
