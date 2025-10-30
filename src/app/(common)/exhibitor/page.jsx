@@ -31,7 +31,7 @@ export default async function Exhibitor() {
         navLinks={[
           {
             label: "Become an Exhibitor  ",
-            url: "/registration",
+            url: "/contact-us",
             arrowDirection: "right",
           },
           {

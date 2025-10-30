@@ -71,7 +71,7 @@ export default async function Sponsors() {
         navLinks={[
           {
             label: "Become a Sponsor",
-            url: "/registration",
+            url: "/contact-us",
             arrowDirection: "right",
           },
           {

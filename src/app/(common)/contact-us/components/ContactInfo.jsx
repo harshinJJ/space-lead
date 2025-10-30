@@ -26,7 +26,7 @@ const ContactInfo = () => {
               TO ASSIST YOU
             </h3> */}
             </div>
-            <div className="flex flex-col md:flex-row gap-5 2xl:text-[1.375rem]  text-lg">
+            <div className="flex flex-col md:flex-row gap-y-5 3xl:gap-5 2xl:text-[1.375rem]  text-lg">
               {/* Email */}
               <div className="p-8 ps-0 pb-0 flex flex-col gap-6 w-full min-w-3/5">
                 <p className="text-secondary relative  after:block after:w-7 after:h-[3px] after:bg-black after:mt-5">
@@ -38,7 +38,7 @@ const ContactInfo = () => {
                 </p>
               </div>
               {/* Number */}
-              <div className="p-8 ps-0 2xl:ps-8 flex flex-col gap-6 w-full">
+              <div className="p-8 ps-0 3xl:ps-8 flex flex-col gap-6 w-full">
                 <p className="text-secondary relative  after:block after:w-7 after:h-[3px] after:bg-black after:mt-5">
                   Number
                 </p>
@@ -47,7 +47,7 @@ const ContactInfo = () => {
             </div>
           </div>
           {/* Right Side */}
-          <div className="flex-1 w-full flex items-center justify-center xl:justify-end relative px-0 xl:max-w-1/2 2xl:max-w-full">
+          <div className="flex-1 w-full flex items-center justify-center xl:justify-end relative px-0 xl:max-w-1/2 3xl:max-w-full">
             {/* Logo and Conference text */}
             <svg
               width="773"
