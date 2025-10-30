@@ -2,7 +2,7 @@ import React from "react";
 import DotPattern from "../patterns/DotPattern";
 import SemiCirclePattern from "../patterns/SemiCirclePattern";
 import Link from "@/utils/CustomLink";
-import { CollaborationIcon, ImpactLogo, InnovationIcon, KnowledgeIcon } from "@/data/icons/AboutIcons";
+import { CollaborationIcon, HealthIcon, ImpactLogo, InnovationIcon, KnowledgeIcon, SpaceIcon } from "@/data/icons/AboutIcons";
 
 const AboutInfo = ({ className = "", isHome }) => {
   const data = {
@@ -18,50 +18,12 @@ Space Lead ’25 explores two interconnected frontiers defining the future of he
     }`,
     vision: [
       {
-        icon: (
-          <svg
-            width="44"
-            height="44"
-            viewBox="0 0 44 44"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M29.5 9.00673C27.2936 7.73046 24.7321 7 22 7C13.7157 7 7 13.7157 7 22C7 24.3995 7.56343 26.6674 8.56519 28.6787C8.83141 29.2132 8.92001 29.8241 8.76568 30.4009L7.87227 33.7401C7.48443 35.1895 8.81051 36.5155 10.26 36.1278L13.5991 35.2344C14.1759 35.08 14.7868 35.1686 15.3213 35.4347C17.3326 36.4366 19.6005 37 22 37C30.2842 37 37 30.2842 37 22C37 19.2679 36.2695 16.7063 34.9933 14.5"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            <path
-              d="M16 22H16.0135M21.9865 22H22M27.9865 22H28"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        ),
+        icon: <HealthIcon size={44}/>,
         // label:"Core Themes:<br/> Human Health Off-Planet | Space & Advanced Engineering",
         label:"Human Health Off-Planet — Challenges & Breakthroughs",
       },
       {
-        icon: (
-          <svg
-            width="28"
-            height="38"
-            viewBox="0 0 28 38"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M26.5 15.625C26.5 22.4596 20.9036 28 14 28M14 28C7.09643 28 1.5 22.4596 1.5 15.625M14 28V37M14 37H4.90909M14 37H23.0909M14 21.25C10.862 21.25 8.31818 18.7316 8.31818 15.625V6.625C8.31818 3.5184 10.862 1 14 1C17.138 1 19.6818 3.5184 19.6818 6.625V15.625C19.6818 18.7316 17.138 21.25 14 21.25Z"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        ),
+        icon:<SpaceIcon size={44}/>,
         // label:"Across 2 Days We Cover:<br/> Keynotes, Workshops, Panels, Exhibitions",
         label:"Space & Advanced Engineering — Innovation for Earth and Beyond",
       },
@@ -181,7 +143,7 @@ Space Lead ’25 explores two interconnected frontiers defining the future of he
                 className="flex flex-1 flex-col xs:flex-row items-center gap-2 xl:gap-6"
                 key={i}
               >
-                <div className="bg-secondary aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-16.5 3xl:min-w-18.5 rounded-full flex items-center justify-center">
+                <div className="bg-secondary text-white aspect-square min-w-18.5 lg:min-w-15 2xl:min-w-16.5 3xl:min-w-18.5 rounded-full flex items-center justify-center">
                   <div className="lg:scale-75 xl:scale-90 3xl:scale-100">
                     {vision.icon}
                   </div>
