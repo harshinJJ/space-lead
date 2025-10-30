@@ -130,10 +130,10 @@ const HowToUse = () => {
                 <h4 className="text-lg md:text-xl font-semibold mb-3 text-white underline underline-offset-4 decoration-white/40">
                   How to Use:
                 </h4>
-                <ul className="list-decimal list-inside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
-                  <li>Register for the event.</li>
-                  <li>Download the app from your respective store.</li>
-                  <li>Log in using your registered email ID.</li>
+                <ul className="list-disc list-outside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
+                  <li>Register for the event</li>
+                  <li>Download the app from your respective store</li>
+                  <li>Log in using your registered email ID</li>
                 </ul>
               </div>
 
@@ -142,7 +142,7 @@ const HowToUse = () => {
                 <h4 className="text-lg md:text-xl font-semibold mb-3 text-white underline underline-offset-4 decoration-white/40">
                   Features:
                 </h4>
-                <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
+                <ul className="list-disc list-outside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
                   <li>Event details and agenda</li>
                   <li>Explore speakers, exhibitors, and sponsors</li>
                   <li>View the floor map and gallery</li>

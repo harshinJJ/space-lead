@@ -9,6 +9,7 @@ import PressRelease from "@/components/sections/PressRelease";
 import ConnectWithUs from "@/components/sections/ConnectWithUs";
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/data/icons";
 import EVENT_INFO from "@/data/eventInfo";
+import { PrimaryLink } from "@/components/buttons/PrimaryButton";
 
 const MediaTabs = ({ gallery = [], updates = [] }) => {
   // const videoRef = useRef();
@@ -35,7 +36,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
   // };
   return (
     <section className={` bg-white bg-[top_center] bg-cover `}>
-      <div className="container-fluid mx-auto px-5 sm:px-0  pt-20 xl:pt-32.5 pb-20 xl:pb-33">
+      <div className="container-fluid mx-auto px-5 sm:px-0  pt-5 xl:pt-10 pb-20 xl:pb-33">
         <DotPattern className="absolute top-13.5 right-0" />
         <div className="xl:px-15.75">
           {/* {activeVideo && (
@@ -158,6 +159,11 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
               </div>
             )}
           </div>
+          {/* <div className="flex items-center pt-10 justify-center">
+          <PrimaryLink href="#" className="gap-1 px-5 py-3.5 w-fit text-[1.375rem] !rounded-3xl leading-[100%] btn-gradient-secondary ">
+
+              Download Media Kit
+            </PrimaryLink></div> */}
         </div>
         <PressRelease updates={updates} />
       </div>

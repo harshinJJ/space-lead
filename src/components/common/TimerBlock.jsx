@@ -45,7 +45,7 @@ export const HomeTimer = ({ eventDate = EVENT_INFO.startDateTime }) => {
         {Object.entries(remainingTime).map(([key, value]) => (
           <div
             key={key}
-            className="flex-1 w-full h-auto 2xl:min-w-25 flex items-center flex-col justify-center aspect-square p-2 xs:p-3.75 w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
+            className="flex-1 w-full h-auto 2xl:min-w-26.5 2xl:min-h-26.5 flex items-center flex-col justify-center aspect-square p-2 xs:p-3.75 w-fill rounded-full bg-linear-to-r from-[#1F273F] via-[#3D4762] to-[#432F5F]"
           >
             <p className=" text-2xl lg:text-3xl 2xl:text-5xl leading-[100%] text-[#90D3D0]">
               {String(value).padStart(2, "0")}

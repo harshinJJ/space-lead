@@ -2,14 +2,19 @@ import React from "react";
 import DotPattern from "../patterns/DotPattern";
 import SemiCirclePattern from "../patterns/SemiCirclePattern";
 import Link from "@/utils/CustomLink";
+import { CollaborationIcon, ImpactLogo, InnovationIcon, KnowledgeIcon } from "@/data/icons/AboutIcons";
 
 const AboutInfo = ({ className = "", isHome }) => {
   const data = {
     title: "Space Lead ‘25",
     description: `${
       isHome
-        ? "The Space Lead’25 in Riyadh is a pioneering global conference bringing together the brightest minds in space science, engineering, and human health. "
-        : "The Space Lead’25 in Riyadh is a pioneering global conference uniting aerospace engineers, space medicine professionals, scientists, researchers, policymakers, industry leaders, and students. Over two immersive days, delegates will engage in thought-provoking discussions, collaborative exchanges, and strategic networking sessions that shape the future of space exploration and its impact on humanity"
+        ? `Space Lead ’25 is a pioneering global conference powered by Alfaisal University, uniting the brightest minds in space science, advanced engineering, and human health. Over two immersive days, delegates will explore how innovation beyond Earth transforms life on it — through keynotes, panels, and workshops that make discovery visible, curiosity actionable, and collaboration inevitable. <br/><br/> Core Themes:`
+        :`A pioneering global conference <strong>powered by Alfaisal University</strong> in Riyadh, bringing together the brightest minds in space science, advanced engineering, and human health.
+<br/><br/>
+Over two immersive days, the conference will offer thought-provoking discussions, collaborative workshops, and strategic networking sessions driving innovation, fostering collaborative, and translating ideas into impact  — <strong>making discovery visible, curiosity actionable, and collaboraation inevitable.</strong><br/><br/>
+
+Space Lead ’25 explores two interconnected frontiers defining the future of headth and engineering in space:`
     }`,
     vision: [
       {
@@ -36,8 +41,8 @@ const AboutInfo = ({ className = "", isHome }) => {
             />
           </svg>
         ),
-        label:
-          "Conference Themes:<br/> Human Health Off-Planet | Space & Advanced Engineering",
+        // label:"Core Themes:<br/> Human Health Off-Planet | Space & Advanced Engineering",
+        label:"Human Health Off-Planet — Challenges & Breakthroughs",
       },
       {
         icon: (
@@ -57,101 +62,30 @@ const AboutInfo = ({ className = "", isHome }) => {
             />
           </svg>
         ),
-        label:
-          "Across 2 Days We Cover:<br/> Keynotes, Workshops, Panels, Exhibitions",
+        // label:"Across 2 Days We Cover:<br/> Keynotes, Workshops, Panels, Exhibitions",
+        label:"Space & Advanced Engineering — Innovation for Earth and Beyond",
       },
     ],
     features: [
       {
-        icon: (
-          <svg
-            width="42"
-            height="42"
-            viewBox="0 0 42 42"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M33.0001 36.36C31.2691 36.36 29.8391 35.044 29.6591 33.36H21.0001C20.8011 33.36 20.6401 33.199 20.6401 33V21.36H12.3411C12.1611 23.044 10.7311 24.36 9.00014 24.36C7.14714 24.36 5.64014 22.852 5.64014 21C5.64014 19.148 7.14714 17.64 9.00014 17.64C10.7311 17.64 12.1611 18.956 12.3411 20.64H20.6401V9.00001C20.6401 8.80101 20.8011 8.64001 21.0001 8.64001H29.6591C29.8391 6.95601 31.2681 5.64001 33.0001 5.64001C34.8531 5.64001 36.3601 7.14701 36.3601 9.00001C36.3601 10.853 34.8531 12.36 33.0001 12.36C31.2691 12.36 29.8391 11.044 29.6591 9.36001H21.3601V20.64H29.6591C29.8391 18.956 31.2681 17.64 33.0001 17.64C34.8531 17.64 36.3601 19.147 36.3601 21C36.3601 22.853 34.8521 24.36 33.0001 24.36C31.2691 24.36 29.8391 23.044 29.6591 21.36H21.3601V32.64H29.6591C29.8391 30.956 31.2681 29.64 33.0001 29.64C34.8531 29.64 36.3601 31.148 36.3601 33C36.3601 34.852 34.8531 36.36 33.0001 36.36ZM33.0001 30.36C31.5441 30.36 30.3601 31.544 30.3601 33C30.3601 34.456 31.5441 35.64 33.0001 35.64C34.4561 35.64 35.6401 34.456 35.6401 33C35.6401 31.544 34.4561 30.36 33.0001 30.36ZM33.0001 18.36C31.5441 18.36 30.3601 19.545 30.3601 21C30.3601 22.456 31.5441 23.64 33.0001 23.64C34.4561 23.64 35.6401 22.456 35.6401 21C35.6401 19.544 34.4561 18.36 33.0001 18.36ZM9.00014 18.36C7.54414 18.36 6.36014 19.545 6.36014 21C6.36014 22.456 7.54514 23.64 9.00014 23.64C10.4551 23.64 11.6401 22.456 11.6401 21C11.6401 19.544 10.4561 18.36 9.00014 18.36ZM33.0001 6.36001C31.5441 6.36001 30.3601 7.54501 30.3601 9.00001C30.3601 10.455 31.5441 11.64 33.0001 11.64C34.4561 11.64 35.6401 10.456 35.6401 9.00001C35.6401 7.54401 34.4561 6.36001 33.0001 6.36001Z"
-              fill="currentColor"
-            />
-          </svg>
-        ),
-        title: "Networking",
-        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        icon: <CollaborationIcon size={42}/>,
+        title: "Collaboration",
+        description: `Meet and connect with global experts driving the next space frontier`,
       },
       {
-        icon: (
-          <svg
-            width="34"
-            height="34"
-            viewBox="0 0 34 34"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clipPath="url(#clip0_67_3055)">
-              <path
-                d="M16.8996 10.2116C17.7228 8.8483 18.1346 8.16663 18.75 8.16663C19.3654 8.16663 19.7772 8.8483 20.6004 10.2116L20.8134 10.5644C21.0474 10.9518 21.1644 11.1455 21.3468 11.2733C21.5292 11.4011 21.7564 11.4486 22.2106 11.5435L22.6243 11.6298C24.2232 11.9638 25.0225 12.1307 25.2126 12.6953C25.4029 13.2599 24.8579 13.848 23.768 15.0246L23.4859 15.329C23.1762 15.6633 23.0213 15.8304 22.9518 16.0373C22.8821 16.2441 22.9055 16.467 22.9523 16.9131L22.9948 17.3193C23.1596 18.8889 23.2422 19.6739 22.7441 20.0228C22.2462 20.3717 21.4977 20.0535 20.0008 19.4174L19.6135 19.2527C19.1881 19.0719 18.9754 18.9815 18.75 18.9815C18.5246 18.9815 18.3119 19.0719 17.8865 19.2527L17.4992 19.4174C16.0023 20.0535 15.2538 20.3717 14.7558 20.0228C14.2579 19.6739 14.3403 18.8889 14.5051 17.3193L14.5477 16.9131C14.5946 16.467 14.618 16.2441 14.5483 16.0373C14.4786 15.8304 14.3238 15.6633 14.0141 15.329L13.7321 15.0246C12.6421 13.848 12.0971 13.2599 12.2873 12.6953C12.4775 12.1307 13.2769 11.9638 14.8757 11.6298L15.2893 11.5435C15.7436 11.4486 15.9708 11.4011 16.1533 11.2733C16.3356 11.1455 16.4526 10.9518 16.6866 10.5644L16.8996 10.2116Z"
-                stroke="currentColor"
-              />
-              <path
-                d="M4.25 13.2125C4.25 8.25618 4.25 5.77806 4.83725 4.94436C5.42449 4.11066 7.76294 3.31306 12.4399 1.71785L13.3309 1.41394C15.7689 0.582398 16.9878 0.166626 18.25 0.166626C19.5122 0.166626 20.7311 0.582398 23.1691 1.41394L24.0602 1.71785C28.7371 3.31306 31.0756 4.11066 31.6628 4.94436C32.25 5.77806 32.25 8.25618 32.25 13.2125C32.25 13.961 32.25 14.7729 32.25 15.6533C32.25 19.5359 30.9483 22.5306 29.1389 24.818M4.54997 18.7666C5.88374 25.4291 11.3689 28.8616 14.9811 30.4339C16.1033 30.9223 16.6644 31.1666 18.25 31.1666C19.8356 31.1666 20.3967 30.9223 21.5188 30.4339C22.4183 30.0424 23.4337 29.5357 24.4722 28.8925"
-                stroke="currentColor"
-                strokeLinecap="round"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_67_3055">
-                <rect width="34" height="34" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        ),
-        title: "Experience",
-        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        icon: <InnovationIcon size={42}/>,
+        title: "Innovation",
+        description: `Explore technologies, systems, and discoveries reshaping life beyond Earth`,
       },
       {
-        icon: (
-          <svg
-            width="41"
-            height="42"
-            viewBox="0 0 41 42"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M33 17.625C33 24.4596 27.4036 30 20.5 30M20.5 30C13.5964 30 8 24.4596 8 17.625M20.5 30V39M20.5 39H11.4091M20.5 39H29.5909M20.5 23.25C17.362 23.25 14.8182 20.7316 14.8182 17.625V8.625C14.8182 5.5184 17.362 3 20.5 3C23.638 3 26.1818 5.5184 26.1818 8.625V17.625C26.1818 20.7316 23.638 23.25 20.5 23.25Z"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        ),
-        title: "Great Speakers",
-        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        icon: <KnowledgeIcon size={42}/>,
+        title: "Knowledge",
+        description: `Gain insights from researchers, engineers, and thought leaders shaping the future`,
       },
       {
-        icon: (
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M27.5 14C27.5 18.1421 24.1421 21.5 20 21.5C15.8579 21.5 12.5 18.1421 12.5 14C12.5 9.85787 15.8579 6.5 20 6.5C24.1421 6.5 27.5 9.85787 27.5 14Z"
-              stroke="currentColor"
-            />
-            <path
-              d="M6.5 33.5C7.93592 28.8856 11.63 27.5 20 27.5C28.37 27.5 32.064 28.8856 33.5 33.5"
-              stroke="currentColor"
-              strokeLinecap="round"
-            />
-          </svg>
-        ),
-        title: "New People",
-        // description: `Dolor sit amet consectetur elit sed do eiusmod tempor`,
+        icon: <ImpactLogo size={44}/>,
+        title: "Impact",
+        description: `Be part of the conversations and actions advancing discovery for generations to come`,
       },
       // {
       //   icon: (
@@ -190,7 +124,7 @@ const AboutInfo = ({ className = "", isHome }) => {
         >
           <video
             // className=" object-cover aspect-[483/613] h-auto w-[90%] xs:w-[70%] md:w-full md:max-w-1/2 lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
-            className=" object-cover aspect-[423/526] h-auto w-[90%] xs:w-[70%] md:w-full   lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
+            className=" object-cover aspect-[423/526] max-h-[536px] h-auto w-[90%] xs:w-[70%] md:w-full   lg:max-w-full [transform:rotateY(180deg)] rounded-4xl"
             src="/images/about_section_img.mp4"
             poster="/images/backgrounds/posters/about_section_img.webp"
             alt=""
@@ -239,9 +173,7 @@ const AboutInfo = ({ className = "", isHome }) => {
             </h3>
           )}
           {data?.description && (
-            <p className={`text-[#737373] xl:max-w-[92%] ${isHome? "3xl:text-2xl lg:text-xl" : "lg:text-lg"} text-base`}>
-              {data.description}
-            </p>
+            <p dangerouslySetInnerHTML={{__html:data?.description}} className={`text-[#737373] xl:max-w-[92%]  xl:text-xl lg:text-xl text-base`}/>
           )}
           <div className="flex xl:items-center justify-between xl:flex-row flex-col gap-5 lg:gap-10 2xl:gap-18 3xl:gap-21.25 py-5 lg:py-0">
             {data.vision.map((vision, i) => (

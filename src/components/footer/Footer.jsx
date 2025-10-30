@@ -134,10 +134,10 @@ const MobileApp = ({ onClick }) => {
                 <h4 className="text-lg md:text-xl font-semibold mb-3 text-white underline underline-offset-4 decoration-white/40">
                   How to Use:
                 </h4>
-                <ul className="list-decimal list-inside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
-                  <li>Register for the event.</li>
-                  <li>Download the app from your respective store.</li>
-                  <li>Log in using your registered email ID.</li>
+                <ul className="list-disc list-outside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
+                  <li>Register for the event</li>
+                  <li>Download the app from your respective store</li>
+                  <li>Log in using your registered email ID</li>
                 </ul>
               </div>
 
@@ -146,7 +146,7 @@ const MobileApp = ({ onClick }) => {
                 <h4 className="text-lg md:text-xl font-semibold mb-3 text-white underline underline-offset-4 decoration-white/40">
                   Features:
                 </h4>
-                <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
+                <ul className="list-disc list-outside space-y-2 text-sm md:text-base text-gray-100 leading-relaxed">
                   <li>Event details and agenda</li>
                   <li>Explore speakers, exhibitors, and sponsors</li>
                   <li>View the floor map and gallery</li>
@@ -284,13 +284,13 @@ const Footer = () => {
       {/* <BgOverlay /> */}
       <nav
         aria-label="Footer Navigation"
-        className="container-fluid  mx-auto px-5 lg:px-16 pt-8"
+        className="container-fluid  mx-auto px-5 lg:px-0 pt-8"
       >
         {/* <section className=" relative border-b border-[#CCCCCC33] flex items-center justify-between py-3.5">
           <Image width={132} height={60} src="/logo.png" alt="logo" />
         </section> */}
         <section className="relative py-10 border-b border-[#CCCCCC33] grid md:grid-cols-3 grid-cols-1 gap-y-12">
-          <ScrollTop className="absolute xl:top-10 xl:-right-4 mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0 xl:translate-x-[100%] animate-float" />
+          <ScrollTop className="absolute xl:top-10  mx-auto -top-3.5 left-0 right-0 xl:left-[unset] xl:mx-0 transform -translate-y-[70%] xl:translate-y-0  animate-float" />
           <div
             data-aos="fade-up"
             data-aos-once="true"

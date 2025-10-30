@@ -3,6 +3,7 @@ import React from "react";
 const ExhibitorCard = ({
   email,
   name,
+  image,
   boothNumber,
   isActive = true,
   index,
@@ -11,6 +12,7 @@ const ExhibitorCard = ({
     <div
       data-aos="fade-up"
       {...(index ? { "data-aos-delay": index * 100 } : {})}
+      data-aos-once="true"
       className="relative bg-[#F2F5FE] card  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-start"
     >
       <div className="flex items-end mb-2 gap-2.5">
@@ -189,9 +191,12 @@ const ExhibitorCard = ({
           B{boothNumber}
         </span>
       </div>
-      <span className="text-[#111111CC] 2xl:text-[1.75rem] text-xl mt-2.5">
+      {image&&<span className="text-[#111111CC] 2xl:text-[1.75rem] text-xl mt-2.5 flex items-center justify-center">
+        <img className="max-h-15" src={image} alt={name||"exhibitor"}/>
+      </span>}
+      {name&&<span className="text-[#111111CC] 2xl:text-[1.75rem] text-xl mt-2.5">
         {name}
-      </span>
+      </span>}
       {email && (
         <div className="flex items-center gap-4 mt-3.75">
           <svg
