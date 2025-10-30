@@ -68,7 +68,7 @@ const DownloadButton = ({ onClick }) => {
         onClose={() => setShow(false)}
       >
         <section
-          className={`bg-indigo rounded-3xl  max-h-[70vh] h-full overflow-auto md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
+          className={`bg-indigo rounded-3xl  max-h-[70vh] h-full overflow-auto custom-scroll md:p-10 p-5 bg-[url('/images/backgrounds/app_preview_bg.png')] bg-[top_center] bg-cover bg-no-repeat `}
         >
           <div className="container-fluid mx-auto w-full flex flex-col  items-center justify-center gap-10">
             <h3 className=" text-xl text-start leading-[1.5] font-bold font-azonix text-white">

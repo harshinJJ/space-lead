@@ -30,8 +30,8 @@ const EVENT_INFO = {
   address: "Alfaisal University, Riyadh- KSA",
   fullAddress: "Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
   mapLink: "https://maps.app.goo.gl/UmrCYw9Got63qjtN7",
-  appStore: "",
-  playStore: "",
+  appStore: "https://apps.apple.com/in/app/spacelead/id6753983953",
+  playStore: "https://play.google.com/store/apps/details?id=com.spacelead.visitor&hl=en",
 };
 
 export default EVENT_INFO;

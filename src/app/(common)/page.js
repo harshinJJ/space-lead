@@ -81,7 +81,7 @@ export default async function Home() {
         exhibitors={exhibitors}
         showNavButton={true}
         navLabel="Become an Exhibitor"
-        navLink="/registration"
+        navLink="/exhibitor"
       />
       <PressRelease updates={liveUpdates.slice(0,2)} showNavButton={true} />
       <AppPreview />
