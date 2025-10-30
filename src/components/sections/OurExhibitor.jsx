@@ -73,6 +73,7 @@ const OurExhibitor = ({
             <ExhibitorCard
               key={i}
               index={i}
+              image={item?.photo}
               boothNumber={item.booth_details?.number}
               name={item?.company_name || item?.name}
               email={item?.email}

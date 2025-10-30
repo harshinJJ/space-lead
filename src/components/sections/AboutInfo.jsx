@@ -161,7 +161,7 @@ Space Lead ’25 explores two interconnected frontiers defining the future of he
               </div>
             ))}
           </div>
-          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.25  border-t border-[#D7D7D7] pt-6 ">
+          {!isHome&&<div className="hidden lg:grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3.25  border-t border-[#D7D7D7] pt-6 ">
             <div className="flex flex-col justify-center px-2.5">
 
               <h4 className="text-tertiary font-azonix text-lg 2xl:text-2xl">
@@ -189,10 +189,10 @@ Space Lead ’25 explores two interconnected frontiers defining the future of he
                 </div>
               </div>
             ))}
-          </div>
+          </div>}
         </div>
       </div>
-      <div className="relative px-10 pb-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t lg:border-t-0 border-[#D7D7D7] pt-6 ">
+      {!isHome&&<div className="relative px-10 pb-10 sm:px-0  container mt-10  mx-auto 2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 md:max-w-[90%]  border-t lg:border-t-0 border-[#D7D7D7] pt-6 ">
         <div className="lg:hidden flex flex-col justify-center px-2.5 py-2">
           {/* <p className="text-secondary font-azonix uppercase text-xs leading-[2.5rem]">
             Features
@@ -220,7 +220,7 @@ Space Lead ’25 explores two interconnected frontiers defining the future of he
             </div>
           </div>
         ))}
-      </div>
+      </div>}
     </section>
   );
 };

@@ -84,7 +84,7 @@ const Page = async ({ params }) => {
   const invoiceData = {
     company: {
       name: EVENT_INFO.title,
-      logo: "/logo.png",
+      logo: "/full_logo.png",
     },
     invoiceId: invoiceRes?.invoice_id,
     invoice: {
@@ -199,6 +199,14 @@ const Page = async ({ params }) => {
                       </span>
                     </div>
                     <span>{invoiceData?.invoice?.date}</span>
+                  </div>
+                   <div className="flex justify-between lg:justify-end">
+                    <div>
+                      <span className="font-bold font-droid-bold">
+                        VAT:
+                      </span>
+                    </div>
+                    <span>310147785500003</span>
                   </div>
                   <div className="flex justify-between lg:justify-end">
                     <div>

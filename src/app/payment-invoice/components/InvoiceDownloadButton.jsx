@@ -172,6 +172,9 @@ export default function InvoiceDownloadButton({
                 <strong>Invoice Date / <span style={{top:"5px"}}>تاريخ الفاتورة</span>:</strong> {invoiceData.invoice?.date}
               </div>
               <div style={{ margin: '5px 0',display:"flex",justifyContent:"end" }}>
+                <strong>VAT:</strong> 310147785500003
+              </div>
+              <div style={{ margin: '5px 0',display:"flex",justifyContent:"end" }}>
                 <strong>Ticket ID / <span style={{top:"5px"}}> رقم التذكرة</span>:</strong> {invoiceData.invoice?.ticket_id}
               </div>
               <div style={{ margin: '5px 0' }}>

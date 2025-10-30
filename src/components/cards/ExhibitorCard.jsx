@@ -13,9 +13,9 @@ const ExhibitorCard = ({
       data-aos="fade-up"
       {...(index ? { "data-aos-delay": index * 100 } : {})}
       data-aos-once="true"
-      className="relative bg-[#F2F5FE] card  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-start"
+      className="relative bg-[#F2F5FE] card  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-center"
     >
-      <div className="flex items-end mb-2 gap-2.5">
+      {/* <div className="flex items-end mb-2 gap-2.5">
         <svg
           width="29"
           height="30"
@@ -190,7 +190,7 @@ const ExhibitorCard = ({
         <span className=" text-primary leading-[0.8] 2xl:text-[2rem] text-2xl">
           B{boothNumber}
         </span>
-      </div>
+      </div> */}
       {image&&<span className="text-[#111111CC] 2xl:text-[1.75rem] text-xl mt-2.5 flex items-center justify-center">
         <img className="max-h-15" src={image} alt={name||"exhibitor"}/>
       </span>}
@@ -221,13 +221,13 @@ const ExhibitorCard = ({
           }
         </div>
       )}
-      {!isActive && (
+      {/* {!isActive && (
         <div className="absolute h-full w-full backdrop-blur-[2.65px] top-0 left-0 rounded-[1.25rem] flex items-center justify-center">
           <div className="py-2.5 px-11.5 rounded-full  bg-white text-[#111111CC] 2xl:text-[1.75rem] md:text-2x text-lg">
             Coming Soon
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

@@ -31,7 +31,7 @@ export default async function Home() {
       <HomeBanner sponsors={sponsors} banner={"/images/banner_title.png"} />
       <ChairmanBlock className="pb-0 lg:pb-0"/>
       <AboutInfo
-        className="2xl:pb-0 lg:pb-15 md:pb-10 xs:pb-5 "
+        className="2xl:pb-0 xl:pb-30 lg:pb-20 md:pb-15 xs:pb-5 pb-5"
         isHome={true}
       />
       <section className="z-1 relative bg-transparent bg-cover bg-[top_center]">
@@ -83,7 +83,7 @@ export default async function Home() {
         navLabel="Become an Exhibitor"
         navLink="/registration"
       />
-      <PressRelease updates={liveUpdates} showNavButton={true} />
+      <PressRelease updates={liveUpdates.slice(0,2)} showNavButton={true} />
       <AppPreview />
     </main>
   );

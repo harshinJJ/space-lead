@@ -153,11 +153,13 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="flex items-center justify-center w-full py-20 text-2xl">
-                No data found
-              </div>
-            )}
+            ) : null
+            // (
+            //   <div className="flex items-center justify-center w-full py-20 text-2xl">
+            //     No data found
+            //   </div>
+            // )
+            }
           </div>
           {/* <div className="flex items-center pt-10 justify-center">
           <PrimaryLink href="#" className="gap-1 px-5 py-3.5 w-fit text-[1.375rem] !rounded-3xl leading-[100%] btn-gradient-secondary ">
