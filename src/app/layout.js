@@ -1,4 +1,4 @@
-import { Orbitron,Noto_Kufi_Arabic } from "next/font/google";
+import { Orbitron,Noto_Kufi_Arabic,Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
@@ -19,6 +19,11 @@ const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ["arabic"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "SpaceLead",
   description: "INTERNATIONAL AEROSPACE MEDICINE CONFERENCE 2025",
@@ -35,7 +40,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body id="" className={`${orbitron.variable} ${notoKufiArabic.variable} antialiased`}>
+      <body id="" className={`${orbitron.variable} ${notoKufiArabic.variable} ${spaceGrotesk.variable} antialiased`}>
         {/* Transition overlay */}
 
         <PageLoader />

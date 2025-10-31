@@ -5,9 +5,9 @@
   --foreground: #171717;
   --primary-color: #7f529f;
   --secondary-color: #5ac0be;
-  --tertiary-color: #131f54;
+  --tertiary-color: #263469;
   --color-black-b2: #000000b2;
-  --color-indigo: #1c192d;
+  --color-indigo: #1b192d;
 }
 
 @font-face {
@@ -74,6 +74,7 @@
   --font-gilroy-black: "Gilroy-Black", sans-serif;
   --font-orbitron: var(--font-orbitron);
   --font-noto-kufi-arabic: var(--font-noto-kufi-arabic);
+  --font-space-grotesk: var(--font-space-grotesk);
 
   --text-xxs: 0.625rem; /* 10px */
 

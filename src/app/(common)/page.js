@@ -7,6 +7,7 @@ import OurExhibitor from "@/components/sections/OurExhibitor";
 import PressRelease from "@/components/sections/PressRelease";
 import AppPreview from "@/components/sections/AppPreview";
 import ChairmanBlock from "@/components/sections/ChairmanBlock";
+import Hackathon from "@/components/sections/Hackathon";
 
 function getFullfilled(result) {
   return result.status === "fulfilled" ? result.value?.data ?? [] : [];
@@ -40,12 +41,12 @@ export default async function Home() {
           playsInline
           loop
           muted
-          className="absolute absolute-center w-full h-full object-cover"
+          className="absolute absolute-center w-full h-auto object-cover max-h-full"
           src="/images/backgrounds/commitee_members_bg.mp4"
           poster="/images/backgrounds/posters/commitee_members_bg_poster.webp"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black to-indigo opacity-20 w-full h-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-indigo/80 to-40% to-indigo w-full h-full"></div>
         <div
           className={`container-fluid z-1 relative mx-auto w-full ${
             speakers?.length > 0 ? "pt-5 lg:pt-9.5" : "py-5"
@@ -76,6 +77,7 @@ export default async function Home() {
           autoplay={true}
           loop={true}
         />
+        <Hackathon/>
       </section>
       <OurExhibitor
         exhibitors={exhibitors}
