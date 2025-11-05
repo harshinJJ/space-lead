@@ -66,7 +66,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
             <div className="relative flex-1 w-full lg:w-auto flex xl:text-2xl lg:text-lg  gap-x-3 2xl:gap-9 items-center xl:items-start justify-start overflow-auto  overflow-x-auto scrollbar-hide hide-scrollbar gap-5 i mb-10">
               <button
                 onClick={() => setActive(null)}
-                className={`cursor-pointer min-w-31.25 bg-secondary font-medium rounded-full px-8 py-2.75 ${
+                className={`cursor-pointer xl:min-w-31.25 min-w-30 bg-secondary font-medium rounded-full xl:px-8 lg:px-6 px-8 py-2.75 ${
                   !active ? "text-[#00504E]" : "text-white "
                 }`}
               >
@@ -76,7 +76,7 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                 <button
                   key={tab.dateKey}
                   onClick={() => handleActive(tab.dateKey)}
-                  className={`cursor-pointer min-w-31.25 rounded-full bg-secondary font-medium px-8 py-2.75 ${
+                  className={`cursor-pointer xl:min-w-31.25 min-w-30 rounded-full bg-secondary font-medium xl:px-8 lg:px-6 px-8 py-2.75 ${
                     active == tab.dateKey ? "text-[#00504E]" : "text-white "
                   }`}
                 >
@@ -84,81 +84,106 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                 </button>
               ))}
             </div>
-            <div className="relative px-8 py-2.75  bg-secondary font-medium rounded-full flex text-sm md:text-lg  items-center justify-start gap-5 i mb-10">
-              <div className="flex items-center">Connect with us :</div>
-              <div className="flex items-center gap-4">
-                <a aria-label="social-link-twitter" href={EVENT_INFO.socials.twitter} target="_blank">
-                  <TwitterIcon />
-                </a>
-                <a aria-label="social-link-instagram" href={EVENT_INFO.socials.instagram} target="_blank">
-                  <InstagramIcon />
-                </a>
-                <a aria-label="social-link-linkedin" href={EVENT_INFO.socials.linkedin} target="_blank">
-                  <LinkedInIcon />
-                </a>
+            <div className="flex sm:items-stretch items-center gap-2 gap-y-5 mb-10 sm:flex-row flex-col-reverse">
+              <PrimaryLink
+                href="#"
+                className="gap-1 px-5 py-3.5 w-fit 2xl:text-[1.375rem] xl:text-xl lg:text-base !rounded-3xl leading-[100%] btn-gradient-secondary "
+              >
+                Download Media Kit
+              </PrimaryLink>
+              <div className="relative px-8 py-2.75  bg-secondary font-medium rounded-full flex text-sm md:text-lg  items-center justify-start gap-5 i ">
+                <div className="flex items-center">Connect with us :</div>
+                <div className="flex items-center gap-4">
+                  <a
+                    aria-label="social-link-twitter"
+                    href={EVENT_INFO.socials.twitter}
+                    target="_blank"
+                  >
+                    <TwitterIcon />
+                  </a>
+                  <a
+                    aria-label="social-link-instagram"
+                    href={EVENT_INFO.socials.instagram}
+                    target="_blank"
+                  >
+                    <InstagramIcon />
+                  </a>
+                  <a
+                    aria-label="social-link-linkedin"
+                    href={EVENT_INFO.socials.linkedin}
+                    target="_blank"
+                  >
+                    <LinkedInIcon />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
           <div ref={fancyboxRef}>
-            {filteredList?.length > 0 ? (
-              <div className="grid xl:grid-cols-4 md:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-6">
-                {filteredList.map((media, i) => (
-                  <div
-                    key={i}
-                    data-aos="fade-up"
-                    data-aos-once="true"
-                    className="relative aspect-[335/226] cursor-pointer card "
-                  >
-                    {media.media_type == "video" ? (
-                      <a
-                        data-fancybox="gallery"
-                        href={media.video || "#"}
-                        className="w-full h-full"
-                        // onClick={() => handleVideo(media.video)}
-                      >
-                        <video
-                          src={media.video}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          poster={media?.thumbnail}
-                          className="object-cover h-full w-full bg-black/20"
-                        />
-                        <div className="z-1 absolute-center max-w-17 max-h-17 m-auto rounded-full absolute transition-all duration-300 bg-secondary hover:bg-[#34706f] aspect-square flex items-center justify-center p-5 w-fit">
-                          <svg
-                            width="27"
-                            height="26"
-                            viewBox="0 0 27 26"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M19.4317 14.1266L9.11833 20.1066C8.65611 20.3955 8.20833 20.41 7.775 20.15C7.34167 19.89 7.125 19.5 7.125 18.98V7.01998C7.125 6.49998 7.34167 6.10998 7.775 5.84998C8.20833 5.58998 8.65611 5.60442 9.11833 5.89331L19.4317 11.8733C19.8939 12.1044 20.125 12.48 20.125 13C20.125 13.52 19.8939 13.8955 19.4317 14.1266Z"
-                              fill="white"
-                            />
-                          </svg>
-                        </div>
-                      </a>
-                    ) : (
-                      <a aria-label={`gallery_image_${i}`} data-fancybox="gallery" href={media.image || "#"}>
-                        <Image
-                          src={media?.image}
-                          alt={media?.alt || "gallery_image_" + media?.id}
-                          className="object-cover"
-                          fill
-                        />
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ) : null
-            // (
-            //   <div className="flex items-center justify-center w-full py-20 text-2xl">
-            //     No data found
-            //   </div>
-            // )
+            {
+              filteredList?.length > 0 ? (
+                <div className="grid xl:grid-cols-4 md:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-6">
+                  {filteredList.map((media, i) => (
+                    <div
+                      key={i}
+                      data-aos="fade-up"
+                      data-aos-once="true"
+                      className="relative aspect-[335/226] cursor-pointer card "
+                    >
+                      {media.media_type == "video" ? (
+                        <a
+                          data-fancybox="gallery"
+                          href={media.video || "#"}
+                          className="w-full h-full"
+                          // onClick={() => handleVideo(media.video)}
+                        >
+                          <video
+                            src={media.video}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            poster={media?.thumbnail}
+                            className="object-cover h-full w-full bg-black/20"
+                          />
+                          <div className="z-1 absolute-center max-w-17 max-h-17 m-auto rounded-full absolute transition-all duration-300 bg-secondary hover:bg-[#34706f] aspect-square flex items-center justify-center p-5 w-fit">
+                            <svg
+                              width="27"
+                              height="26"
+                              viewBox="0 0 27 26"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19.4317 14.1266L9.11833 20.1066C8.65611 20.3955 8.20833 20.41 7.775 20.15C7.34167 19.89 7.125 19.5 7.125 18.98V7.01998C7.125 6.49998 7.34167 6.10998 7.775 5.84998C8.20833 5.58998 8.65611 5.60442 9.11833 5.89331L19.4317 11.8733C19.8939 12.1044 20.125 12.48 20.125 13C20.125 13.52 19.8939 13.8955 19.4317 14.1266Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </div>
+                        </a>
+                      ) : (
+                        <a
+                          aria-label={`gallery_image_${i}`}
+                          data-fancybox="gallery"
+                          href={media.image || "#"}
+                        >
+                          <Image
+                            src={media?.image}
+                            alt={media?.alt || "gallery_image_" + media?.id}
+                            className="object-cover"
+                            fill
+                          />
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : null
+              // (
+              //   <div className="flex items-center justify-center w-full py-20 text-2xl">
+              //     No data found
+              //   </div>
+              // )
             }
           </div>
           {/* <div className="flex items-center pt-10 justify-center">

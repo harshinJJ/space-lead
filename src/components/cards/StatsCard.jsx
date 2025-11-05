@@ -21,9 +21,9 @@ gsap.registerPlugin(ScrollTrigger);
 //   { label: "Nationalities ", value: "50+" },
 // ];
 const staticStats = [
-  { label: "Speakers", value: "40+" },
+  { label: "Speakers", value: "50+" },
   { label: "Countries", value: "10+" },
-  { label: "Topics", value: "30+" },
+  { label: "Topics", value: "35+" },
   { label: "Attendees", value: "1000" },
 ];
 

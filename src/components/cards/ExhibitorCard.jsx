@@ -13,7 +13,7 @@ const ExhibitorCard = ({
       data-aos="fade-up"
       {...(index ? { "data-aos-delay": index * 100 } : {})}
       data-aos-once="true"
-      className="relative bg-[#F2F5FE] card  border-2 border-white rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-center"
+      className="relative bg-white card  border-2 border-[#F2F5FE] rounded-[1.25rem] shadow-md p-5.5 pb-8 w-full flex flex-col items-center"
     >
       {/* <div className="flex items-end mb-2 gap-2.5">
         <svg

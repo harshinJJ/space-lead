@@ -98,7 +98,7 @@ export const SponsorList = ({
   label,
 }) => {
   const show = showSlides && sponsors.some((item) => item.logo);
-  console.log("object",sponsors)
+
   return sponsors?.length > 0 ? (
     <section className="w-full relative py-12 lg:py-20 bg-[url('/images/backgrounds/sponsorlist_bg.png')]">
       {/* Left & right edge gradients */}
