@@ -319,7 +319,7 @@ export const SponsorScroll = ({ sponsors = [] }) => {
       // centeredSlides={true}
       slidesPerView={2}
       freeMode={true}
-      wrapperClass={` !w-full !py-3 !ps-2.5 !items-stretch 
+      wrapperClass={` !w-full !py-3 !ps-2.5 
           swiper-wrapper
           ${sponsors?.length <= 2 ? "sm:!flex sm:!justify-center" : ""}
           ${sponsors?.length <= 3 ? "md:!flex md:!justify-center" : ""}
@@ -345,25 +345,25 @@ export const SponsorScroll = ({ sponsors = [] }) => {
       preventClicksPropagation={false}
     >
       {sponsors.map((sponsor, idx) => (
-        <SwiperSlide className="3xl:!w-[248px] !h-auto !transition-all !duration-500 hover:scale-[1.1]" key={idx}>
-          <div className="box-border h-full flex flex-col justify-start items-center p-[26px] md:w-[247px] max-h-[248px] text-black bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
+        <SwiperSlide className="3xl:!w-[248px] !transition-all !duration-500 hover:scale-[1.1]" key={idx}>
+          <div className="box-border h-[86.96px] flex flex-col justify-center items-center p-[26px] md:w-[247px] text-black bg-white rounded-[20px] [transform:matrix(1,0,0.26,0.97,0,0)] flex-none order-0 self-stretch grow-0">
                                                         {sponsor?.sponsor_category_name&&<div className="max-h-10 w-full object-contain [transform:matrix(1,0,-0.26,1.03,0,0)] text-center capitalize">{sponsor?.sponsor_category_name}</div>}
-                                                        <div className="flex items-center h-full w-full justify-center">
+                                                        
 
             <Image
               width={150}
               height={40}
               src={sponsor.logo}
               alt={sponsor.company_name || "sponsor_logo"}
-              className="h-auto w-full object-contain before:text-black [transform:matrix(1,0,-0.26,1.03,0,0)]"
-            /></div>
+              className="max-h-10 w-full object-contain before:text-black [transform:matrix(1,0,-0.26,1.03,0,0)]"
+            />
           </div>
         </SwiperSlide>
       ))}
-      <SwiperSlide className="3xl:!max-w-[248px]  !h-auto">
+      <SwiperSlide className="3xl:!max-w-[248px] ">
         <Link
           href={"/sponsors"}
-          className="box-border flex flex-row justify-center gap-4 items-center max-h-[248px] h-full"
+          className="box-border flex flex-row justify-center gap-4 items-center h-[86.96px]"
         >
           <span>View All Sponsors</span>
           <svg
