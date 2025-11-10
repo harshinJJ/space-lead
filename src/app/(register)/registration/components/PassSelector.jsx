@@ -99,10 +99,10 @@ export default function PassSelector() {
             gradient="primary"
             type="Workshops "
             icon={icons.professional}
-            tag=" Limited Availability "
+            tag=" Sold Out "
             eventType="paid"
-            // disabled={true}
-            url={"/registration/workshop"}
+            disabled={true}
+            // url={"/registration/workshop"}
           />
         </div>
       </div>
