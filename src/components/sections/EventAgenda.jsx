@@ -5,13 +5,12 @@ import SpeakerTag from "../cards/SpeakerTag";
 import AgendaCard from "../cards/AgendaCard";
 import EVENT_INFO from "@/data/eventInfo";
 
-
 const sortBytime = (sessions = []) => {
   const sorted = [...sessions]?.sort((a, b) => {
     const timeA = a?.start_tm?.split(":")?.map(Number);
     const timeB = b?.start_tm?.split(":")?.map(Number);
-    const minutesA = timeA&&timeA[0] * 60 + timeA[1];
-    const minutesB = timeB&&timeB[0] * 60 + timeB[1];
+    const minutesA = timeA && timeA[0] * 60 + timeA[1];
+    const minutesB = timeB && timeB[0] * 60 + timeB[1];
     return minutesA - minutesB;
   });
   return sorted;
@@ -25,8 +24,9 @@ export default function EventAgenda({
   showViewAll = false,
 }) {
   const [activeDay, setActiveDay] = useState(EVENT_INFO.dayList[0].dateKey);
-    const filteredEvents = sortBytime(
-    dataList.filter((data) => data.event_day == activeDay)
+
+  const filteredEvents = sortBytime(
+    dataList.filter((data) => data.date == activeDay)
   );
 
   return (
@@ -36,7 +36,10 @@ export default function EventAgenda({
           <p className="uppercase xl:text-lg text-sm font-azonix w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
             {label}
           </p>
-          <h2 className=" font-azonix text-xl xs:text-3xl sm:text-4xl md:text-4xl 3xl:text-5xl xl:text-[2.6875rem] font-bold leading-[1.3]" dangerouslySetInnerHTML={{__html:title}} />
+          <h2
+            className=" font-azonix text-xl xs:text-3xl sm:text-4xl md:text-4xl 3xl:text-5xl xl:text-[2.6875rem] font-bold leading-[1.3]"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         </div>
 
         {/* Tabs */}
@@ -52,7 +55,7 @@ export default function EventAgenda({
               }`}
             >
               <span className="block lg:text-sm xl:text-base 2xl:text-lg">
-                {day.label}
+                {day.day}
               </span>
               <span className="block text-xs lg:text-[0.625rem] xl:text-sm">
                 {day.date}
@@ -79,9 +82,10 @@ export default function EventAgenda({
                   <SpeakerTag
                     url={`/speakers/${speaker.id}`}
                     key={i}
-                    image={speaker.profile_pic}
-                    name={`${speaker.firstname} ${speaker.lastname}`}
-                    role={speaker.designation}
+                    image={speaker?.profile_pic || speaker?.photo}
+                    // name={`${speaker.firstname} ${speaker.lastname}`}
+                    name={speaker.name}
+                    role={speaker.bio}
                   />
                 ))}
               </div>
