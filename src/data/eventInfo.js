@@ -1,7 +1,7 @@
 const EVENT_INFO = {
   title: "SPACE LEAD'25",
   startDate: "2025-11-10",
-  startDateTime:"2025-11-10T09:59:59+03:00",
+  startDateTime: "2025-11-10T09:59:59+03:00",
   endDate: "2025-11-11",
   dateLabel: "Nov 10, 11 - 2025",
   bannerDateLabel: "10, 11 November 2025",
@@ -31,7 +31,8 @@ const EVENT_INFO = {
   fullAddress: "Alfaisal University, Riyadh- Kingdom of Saudi Arabia",
   mapLink: "https://maps.app.goo.gl/UmrCYw9Got63qjtN7",
   appStore: "https://apps.apple.com/in/app/spacelead/id6753983953",
-  playStore: "https://play.google.com/store/apps/details?id=com.spacelead.visitor&hl=en",
+  playStore:
+    "https://play.google.com/store/apps/details?id=com.spacelead.visitor&hl=en",
 };
 
 export default EVENT_INFO;

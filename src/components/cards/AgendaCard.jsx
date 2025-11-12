@@ -4,73 +4,67 @@ import Image from "next/image";
 import React from "react";
 
 export function formatEventDate(event) {
-  if (!event?.event_day) return "";
+  if (!event?.date) return "";
 
-  const baseDate = parse(event.event_day, "yyyy-MM-dd", new Date());
+  // Parse base date (yyyy-MM-dd)
+  const baseDate = parse(event.date, "yyyy-MM-dd", new Date());
   if (!isValid(baseDate)) return "";
 
-  const startDate = event.start_tm
+  // Parse start and end times if present
+  const startDate = event.start_time
     ? parse(
-        `${event.event_day} ${event.start_tm}`,
+        `${event.date} ${event.start_time}`,
         "yyyy-MM-dd HH:mm:ss",
         new Date()
       )
     : null;
 
-  const endDate = event.end_tm
+  const endDate = event.end_time
     ? parse(
-        `${event.event_day} ${event.end_tm}`,
+        `${event.date} ${event.end_time}`,
         "yyyy-MM-dd HH:mm:ss",
         new Date()
       )
     : null;
 
-  // If only date is available
-  if (!startDate && !endDate) {
-    return format(baseDate, "dd MMM yyyy");
-  }
-
-  // If both start and end are valid
+  // Case 2: Both start and end time available
   if (startDate && isValid(startDate) && endDate && isValid(endDate)) {
-    return `${format(startDate, "hh:mm a")} To ${format(endDate, "hh:mm a")}`;
+    return `${format(startDate, "h:mm a")} To ${format(endDate, "h:mm a")}`;
   }
 
-  // If only start is valid
+  // Case 3: Only start time
   if (startDate && isValid(startDate)) {
-    return `${format(startDate, "hh:mm a")} - ${format(
-      baseDate,
-      "dd MMM yyyy"
-    )}`;
+    return `${format(startDate, "h:mm a")}`;
   }
 
-  // If only end is valid
+  // Case 4: Only end time
   if (endDate && isValid(endDate)) {
-    return `${format(endDate, "hh:mm a")}`;
+    return `${format(endDate, "h:mm a")}`;
   }
 
-  // return format(baseDate, "dd MMM yyyy");
-  return null;
+  // Default fallback
+  return format(baseDate, "dd MMM yyyy");
 }
 function getEventDateRange(event) {
-  if (!event?.event_day) return null;
+  if (!event?.date) return null;
 
   let startDate, endDate;
 
-  if (event.start_tm && event.end_tm) {
+  if (event.start_tm && event.end_time) {
     // If event has time → normal event
     startDate = parse(
-      `${event.event_day} ${event.start_tm}`,
+      `${event.date} ${event.start_time}`,
       "yyyy-MM-dd HH:mm:ss",
       new Date()
     );
     endDate = parse(
-      `${event.event_day} ${event.end_tm}`,
+      `${event.date} ${event.end_time}`,
       "yyyy-MM-dd HH:mm:ss",
       new Date()
     );
   } else {
     // If no time → treat as all-day event
-    startDate = parse(event.event_day, "yyyy-MM-dd", new Date());
+    startDate = parse(event.date, "yyyy-MM-dd", new Date());
     endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + 1); // all-day runs until next day
   }
@@ -102,9 +96,9 @@ const AgendaCard = ({
 }) => {
   const eventDate = formatEventDate(event);
   const title = event?.title;
-  const description = event?.session_description || event?.description;
-  const location = event?.hall_name;
-  const theme = event?.agenda_topic;
+  const description = event?.description || event?.session_description;
+  const location = event?.location;
+  const theme = event?.theme;
 
   const dateRange = getEventDateRange(event);
   const googleUrl = dateRange
@@ -177,7 +171,7 @@ const AgendaCard = ({
                 </div>
               </div>
             )}
-            {event?.event_day?.trim() && (
+            {event?.date?.trim() && (
               <div className="flex items-start gap-3 md:gap-5">
                 <div className="mt-1 md:mt-1.5 ">
                   <svg
@@ -193,8 +187,7 @@ const AgendaCard = ({
                 </div>
                 <div className="flex flex-wrap gap-1">
                   <span>
-                    {event?.event_day &&
-                      format(new Date(event.event_day), "dd MMM yyyy")}
+                    {event?.date && format(new Date(event.date), "dd MMM yyyy")}
                   </span>
                 </div>
               </div>
@@ -314,7 +307,7 @@ const AgendaCard = ({
                 </div>
               </div>
             )}
-            {event?.event_day?.trim() && (
+            {event?.date?.trim() && (
               <div className="flex items-start gap-3 md:gap-5">
                 <div className="mt-1 md:mt-1.5 ">
                   <svg
@@ -330,8 +323,7 @@ const AgendaCard = ({
                 </div>
                 <div className="flex flex-wrap gap-1">
                   <span>
-                    {event?.event_day &&
-                      format(new Date(event.event_day), "dd MMM yyyy")}
+                    {event?.date && format(new Date(event.date), "dd MMM yyyy")}
                   </span>
                 </div>
               </div>
@@ -404,7 +396,10 @@ const AgendaCard = ({
             )}
           </div>
         </div>
-        <p className="mt-5 lg:max-w-17/20">{description}</p>
+        <p
+          className="mt-5 lg:max-w-17/20"
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></p>
       </div>
       {showAddtoCalender && !miscSession && (
         <div className="bg-gradient-to-r from-white  to-indigo rounded-full flex items-center gap-3 py-1.5 px-3.5">
