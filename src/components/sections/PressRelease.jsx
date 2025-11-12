@@ -48,6 +48,14 @@ const PressRelease = ({
   navLink = "/media",
   linkType = "internal",
 }) => {
+  const validUrl = (url) => {
+    try {
+      new URL(url);
+      return url;
+    } catch (_) {
+      return "";
+    }
+  };
   return updates?.length > 0 ? (
     <section className={`bg-white py-10  ${className}`}>
       <div className="container-fluid mx-auto w-full px-5 sm:px-0 ">
@@ -68,7 +76,7 @@ const PressRelease = ({
               item.publish_date && format(new Date(item.publish_date), "MMMM");
             const day =
               item.publish_date && format(new Date(item.publish_date), "dd");
-            const externalLink = item?.external_link ?? null;
+            const externalLink = validUrl(item?.external_link) ?? null;
             const descRTL = item?.description_ar?.length > 0 ? true : false;
             const titleRTL = item?.title_ar?.length > 0 ? true : false;
             const description = item?.description_ar || item?.description;
