@@ -130,15 +130,15 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                       data-aos-once="true"
                       className="relative aspect-[335/226] cursor-pointer card "
                     >
-                      {media.media_type == "video" ? (
+                      {media.file_type == "video" ? (
                         <a
                           data-fancybox="gallery"
-                          href={media.video || "#"}
+                          href={media.video_url || "#"}
                           className="w-full h-full"
                           // onClick={() => handleVideo(media.video)}
                         >
                           <video
-                            src={media.video}
+                            src={media.video_url}
                             autoPlay
                             muted
                             loop
@@ -165,10 +165,10 @@ const MediaTabs = ({ gallery = [], updates = [] }) => {
                         <a
                           aria-label={`gallery_image_${i}`}
                           data-fancybox="gallery"
-                          href={media.image || "#"}
+                          href={media.file_url || "#"}
                         >
                           <Image
-                            src={media?.image}
+                            src={media?.file_url}
                             alt={media?.alt || "gallery_image_" + media?.id}
                             className="object-cover"
                             fill

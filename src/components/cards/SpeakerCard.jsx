@@ -96,15 +96,17 @@ const SpeakerCard = ({
         data-group={groupId}
         className="speaker-info bg-white relative py-4 px-6 min-h-27 "
       >
-            <div
-  className={`text-black font-bold font-gilroy-bold leading-[1.5] text-center ${
-    textSize == "sm"
-      ? "text-sm"
-      : "2xl:text-sm 3xl:text-sm xl:sm lg:text-sm md:text-sm sm:text-sm xs:text-base"
-  } text-sm whitespace-pre-line`}
->
-  {(speaker?.name || `${speaker.firstname} ${speaker.lastname}`).replace(/\/n/g, '\n')}
-</div>
+        <div
+          className={`text-black font-bold font-gilroy-bold leading-[1.5] text-center ${
+            textSize == "sm"
+              ? "text-sm"
+              : "2xl:text-sm 3xl:text-sm xl:sm lg:text-sm md:text-sm sm:text-sm xs:text-base"
+          } text-sm whitespace-pre-line`}
+        >
+          {(
+            speaker?.name || `${speaker.firstname} ${speaker.lastname}`
+          ).replace(/\/n/g, "\n")}
+        </div>
         {/* <h3
           className={`text-[#139691] font-semibold text-sm leading-[1.4] text-center`}
           >
@@ -113,7 +115,7 @@ const SpeakerCard = ({
 
         {speaker?.designation && (
           <pre
-          className={`text-[#139691] font-semibold 2xl:text-sm text-xs leading-[1.4] text-center font-[inherit] whitespace-pre-wrap`}
+            className={`text-[#139691] font-semibold 2xl:text-sm text-xs leading-[1.4] text-center font-[inherit] whitespace-pre-wrap`}
             dangerouslySetInnerHTML={{
               __html: speaker?.designation,
             }}

@@ -73,12 +73,12 @@ const OurExhibitor = ({
             <ExhibitorCard
               key={i}
               index={i}
-              image={item?.photo}
-              boothNumber={item.booth_details?.number}
+              image={item?.photo || item?.profile_pic}
+              boothNumber={item.booth?.booth_number}
               name={item?.company_name || item?.name}
               email={item?.email}
               // isActive={item.is_active}
-              isActive={item?.booth_details?.active_status}
+              isActive={item?.booth?.is_available}
             />
           ))}
         </div>

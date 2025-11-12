@@ -57,7 +57,6 @@ export default async function Sponsors() {
     PublicServices.getSponsors(params),
   ]);
   const sponsors = getFullfilled(sponsorsRes);
-
   sponsors.sort((a, b) => {
     if (a.order === null) return 1; // put nulls last
     if (b.order === null) return -1;
@@ -78,7 +77,10 @@ export default async function Sponsors() {
             label: "Download Booklet ",
             url: "/assets/documents/Space%20Lead%2025%20Participation%20and%20Exhibition%20Brochure%20.pdf",
             arrowDirection: "bottom",
-            additionaProps: { download: "Space Lead 25 Participation and Exhibition Brochure.pdf" },
+            additionaProps: {
+              download:
+                "Space Lead 25 Participation and Exhibition Brochure.pdf",
+            },
             type: "external",
           },
         ]}

@@ -23,8 +23,9 @@ const About = async () => {
   // ];
 
   const scientific = (
-    commitee.find((item) => item?.name?.toLowerCase().includes("scientific"))
-      ?.staff_members || []
+    commitee.filter((item) =>
+      item?.category?.title?.toLowerCase().includes("scientific")
+    ) || []
   ).sort((a, b) => {
     if (a.order === null) return 1; // put nulls last
     if (b.order === null) return -1;
@@ -32,8 +33,9 @@ const About = async () => {
   });
 
   const steering = (
-    commitee.find((item) => item?.name?.toLowerCase()?.includes("steering"))
-      ?.staff_members || []
+    commitee.filter((item) =>
+      item?.category?.title?.toLowerCase()?.includes("steering")
+    ) || []
   ).sort((a, b) => {
     if (a.order === null) return 1; // put nulls last
     if (b.order === null) return -1;

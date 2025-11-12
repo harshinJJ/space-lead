@@ -34,11 +34,11 @@ const SpeakerProfileCard = ({
           </p>
         )} */}
 
-        {speaker?.description_ar && (
+        {speaker?.bio && (
           <pre
           className={`text-[#272727] text-sm 3xl:leading-[1.8] text-center font-[inherit] whitespace-pre-wrap`}
             dangerouslySetInnerHTML={{
-              __html: speaker?.description_ar,
+              __html: speaker?.bio,
             }}
           />
         )}
@@ -50,7 +50,7 @@ const SpeakerProfileCard = ({
             fill
             priority={true}
             src={
-              speaker?.profile_pic ||
+              speaker?.photo ||
               speaker?.image ||
               "/images/user_placeholder_new.png"
             }

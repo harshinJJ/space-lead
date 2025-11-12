@@ -48,7 +48,6 @@ const PressRelease = ({
   navLink = "/media",
   linkType = "internal",
 }) => {
-  
   return updates?.length > 0 ? (
     <section className={`bg-white py-10  ${className}`}>
       <div className="container-fluid mx-auto w-full px-5 sm:px-0 ">
@@ -65,12 +64,14 @@ const PressRelease = ({
 
         <div className="grid grid-cols-1 xl:grid-cols-2 lg:gap-7.5 gap-5 justify-items-center w-full">
           {updates.map((item, i) => {
-            const month = item.date && format(new Date(item.date), "MMMM");
-            const day = item.date && format(new Date(item.date), "dd");
+            const month =
+              item.publish_date && format(new Date(item.publish_date), "MMMM");
+            const day =
+              item.publish_date && format(new Date(item.publish_date), "dd");
             const externalLink = item?.external_link ?? null;
-            const descRTL = item?.description_ar?.length>0?true:false;
-            const titleRTL = item?.title_ar?.length>0?true:false;
-            const description = item?.description_ar || item?.description;
+            const descRTL = item?.description_ar?.length > 0 ? true : false;
+            const titleRTL = item?.title_ar?.length > 0 ? true : false;
+            const description = item?.description || item?.description;
             const title = item?.title_ar || item?.title;
             return externalLink ? (
               <div
@@ -99,10 +100,16 @@ const PressRelease = ({
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 xl:gap-4 flex-1">
-                    <h4 dir={titleRTL ? "rtl" : "ltr"} className="2xl:text-2xl text-[#121416] font-semibold text-start">
+                    <h4
+                      dir={titleRTL ? "rtl" : "ltr"}
+                      className="2xl:text-2xl text-[#121416] font-semibold text-start"
+                    >
                       {title}
                     </h4>
-                    <p dir={descRTL ? "rtl" : "ltr"} className="2xl:text-xl text-[#6C757D] text-start">
+                    <p
+                      dir={descRTL ? "rtl" : "ltr"}
+                      className="2xl:text-xl text-[#6C757D] text-start"
+                    >
                       {description}
                     </p>
                   </div>
@@ -129,14 +136,20 @@ const PressRelease = ({
                     {day}
                   </div>
                 </div>
-                  <div className="flex flex-col gap-2 xl:gap-4 flex-1">
-                    <h4 dir={titleRTL ? "rtl" : "ltr"} className="2xl:text-2xl text-[#121416] font-semibold text-start">
-                      {title}
-                    </h4>
-                    <p dir={descRTL ? "rtl" : "ltr"} className="2xl:text-xl text-[#6C757D] text-start">
-                      {description}
-                    </p>
-                  </div>
+                <div className="flex flex-col gap-2 xl:gap-4 flex-1">
+                  <h4
+                    dir={titleRTL ? "rtl" : "ltr"}
+                    className="2xl:text-2xl text-[#121416] font-semibold text-start"
+                  >
+                    {title}
+                  </h4>
+                  <p
+                    dir={descRTL ? "rtl" : "ltr"}
+                    className="2xl:text-xl text-[#6C757D] text-start"
+                  >
+                    {description}
+                  </p>
+                </div>
               </div>
             );
           })}

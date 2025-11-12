@@ -85,7 +85,7 @@ const MemberPreview = ({ speakerList = [], activeSpeaker }) => {
                 </div>
                 {activeTab === 0 && <SpeakerAbout speaker={activeSpeaker} />}
                 {activeTab === 1 && (
-                  <SpeakerAgenda agenda={activeSpeaker?.agenda_sessions} />
+                  <SpeakerAgenda agenda={activeSpeaker?.agendas} />
                 )}
                 {/* <div className="hidden lg:block border-b lg:w-6/10 lg:mt-6 border-[#D7D7D7]" /> */}
               </div>

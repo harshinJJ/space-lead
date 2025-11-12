@@ -20,16 +20,16 @@ export default async function Speakers() {
   // ];
   const spaceSpeakers = (
     speakers.filter((speaker) =>
-      speaker.category_name?.toLowerCase().includes("space")
+      speaker.category?.title?.toLowerCase().includes("space")
     ) || []
-  ).sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
+  ).sort((a, b) => a.name?.localeCompare(b.name || ""));
 
   const healthSpeakers = (
     speakers.filter((speaker) =>
-      speaker.category_name?.toLowerCase().includes("health")
+      speaker.category?.title?.toLowerCase().includes("health")
     ) || []
-  ).sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
-  
+  ).sort((a, b) => a.name?.localeCompare(b.name || ""));
+
   return (
     <main>
       <SpeakerGroup

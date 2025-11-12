@@ -20,21 +20,25 @@ export default async function Home() {
       PublicServices.getLiveUpdates(),
       PublicServices.getExhibitors(),
     ]);
-  const speakers = getFullfilled(speakersRes)?.sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
+  const speakers = getFullfilled(speakersRes)?.sort((a, b) =>
+    a.name?.localeCompare(b.name || "")
+  );
   const sponsors = getFullfilled(sponsorsRes)?.sort((a, b) => {
     if (a.order === null) return 1; // put nulls last
     if (b.order === null) return -1;
-    return a.order - b.order});
+    return a.order - b.order;
+  });
   const liveUpdates = getFullfilled(liveUpdateRes);
   const exhibitors = getFullfilled(exhibitorRes);
+
   return (
     <main>
       <HomeBanner sponsors={sponsors} banner={"/images/banner_title.png"} />
-      <ChairmanBlock className="pb-0 lg:pb-0"/>
+      {/* <ChairmanBlock className="pb-0 lg:pb-0"/>
       <AboutInfo
         className="2xl:pb-0 xl:pb-30 lg:pb-20 md:pb-15 xs:pb-5 pb-5"
         isHome={true}
-      />
+      /> */}
       <section className="z-1 relative bg-transparent bg-cover bg-[top_center]">
         <video
           autoPlay
@@ -77,7 +81,7 @@ export default async function Home() {
           autoplay={true}
           loop={true}
         />
-        <Hackathon/>
+        <Hackathon />
       </section>
       <OurExhibitor
         exhibitors={exhibitors}

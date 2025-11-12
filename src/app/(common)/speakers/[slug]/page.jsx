@@ -21,6 +21,7 @@ export default async function Speakers({ params,...props }) {
   ]);
   const activeSpeaker = getFullfilled(speaker);
   const speakers = getFullfilled(speakersRes).filter(item=>item?.id!=activeSpeaker?.id)?.sort((a, b) => a.firstname?.localeCompare(b.firstname || ""));
+  console.log("speaker",activeSpeaker)
 
   return (
     <main>
