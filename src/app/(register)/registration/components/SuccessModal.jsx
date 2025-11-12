@@ -58,7 +58,7 @@ const SuccessModal = ({ onContinue, status, ticketUrl, uid, invoiceId }) => {
       immediateRender: true,
       ease: "power2.in",
       onComplete: () => {
-        router.push("/registration"); // navigate after cover
+        router.push("/"); // navigate after cover
       },
     });
     // }

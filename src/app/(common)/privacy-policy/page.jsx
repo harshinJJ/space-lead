@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
     <main>
       <TextBlock
         title="Privacy Policy"
-        description={`<span class="font-bold font-droid-bold">Alfaisal University</span> (“we,” “our,” or “us”) is committed to protecting the privacy of all visitors and participants of <span class="font-bold font-droid-bold">Space Lead’25</span>, accessible via <a target="_blank" href="/registration">https://spaceleadconference.alfaisal.edu/registration</a>. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit or interact with our event microsite.`}
+        description={`<span class="font-bold font-droid-bold">Alfaisal University</span> (“we,” “our,” or “us”) is committed to protecting the privacy of all visitors and participants of <span class="font-bold font-droid-bold">Space Lead’25</span>, accessible via <a target="_blank" href="/">https://spaceleadconference.alfaisal.edu/</a>. This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit or interact with our event microsite.`}
         points={points}
       />
     </main>

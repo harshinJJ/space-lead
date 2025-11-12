@@ -9,7 +9,7 @@ export default function CommonLayout({ children }) {
       {children}
       <Footer />
 
-      <RegisterBtn href="/registration" className="btn-gradient-secondary gap-2 xl:text-3xl md:text-2xl text-xl  !px-5 ">
+      {/* <RegisterBtn href="/registration" className="btn-gradient-secondary gap-2 xl:text-3xl md:text-2xl text-xl  !px-5 ">
         <svg
           width="30"
           height="30"
@@ -44,7 +44,7 @@ export default function CommonLayout({ children }) {
           />
         </svg>
         <span>Register Now</span>
-      </RegisterBtn>
+      </RegisterBtn> */}
     </>
   );
 }

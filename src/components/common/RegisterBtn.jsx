@@ -4,7 +4,7 @@ import { PrimaryLink } from "../buttons/PrimaryButton";
 const RegisterBtn = ({
   children,
   className = "",
-  href = "/registration",
+  href = "/",
   ...props
 }) => {
   return (

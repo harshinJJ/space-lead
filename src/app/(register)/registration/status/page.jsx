@@ -59,7 +59,7 @@ export default async function RegistrationStatus({ params, searchParams }) {
 
             {/* Action Button */}
             <PrimaryLink
-              href="/registration"
+              href="/"
               className="uppercase py-2.5 px-10 mt-4 font-semibold bg-[#E84C4C] hover:bg-[#d23c3c]"
             >
               Go Back

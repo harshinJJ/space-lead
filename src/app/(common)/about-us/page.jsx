@@ -119,11 +119,11 @@ const About = async () => {
           "Join global pioneers, innovators, and leaders in shaping tomorrow’s health and engineering advancements beyond Earth."
         }
         navLinks={[
-          {
-            label: "Register Now ",
-            url: "/registration",
-            arrowDirection: "right",
-          },
+          // {
+          //   label: "Register Now ",
+          //   url: "/registration",
+          //   arrowDirection: "right",
+          // },
           {
             label: "Explore Agenda ",
             url: "/agenda",

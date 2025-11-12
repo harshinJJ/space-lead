@@ -148,7 +148,7 @@ const Header = ({ showTitleBlock = true, className = "" }) => {
     { title: "Speakers", url: "/speakers", type: "link" },
     { title: "Sponsorship", url: "/sponsors", type: "link" },
     { title: "Exhibition", url: "/exhibitor", type: "link" },
-    { title: "Registration", url: "/registration", type: "link" },
+    // { title: "Registration", url: "/registration", type: "link" },
     { title: "Media", url: "/media", type: "link" },
     // { title: "Contact Us", url: "/contact-us", type: "link" },
     // {

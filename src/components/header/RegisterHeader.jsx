@@ -114,9 +114,9 @@ const RegisterHeader = () => {
     { title: "Speakers", url: "/speakers", type: "link" },
     { title: "Sponsorship", url: "/sponsors", type: "link" },
     { title: "Exhibition", url: "/exhibitor", type: "link" },
-    { title: "Registration", url: "/registration", type: "link" },
+    // { title: "Registration", url: "/registration", type: "link" },
     { title: "Media", url: "/media", type: "link" },
-    { title: "Download the App", url: "#", Component: RegisterBtn },
+    // { title: "Download the App", url: "#", Component: RegisterBtn },
   ];
 
   const pageLinks = [

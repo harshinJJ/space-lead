@@ -167,7 +167,7 @@ const MobileApp = ({ onClick }) => {
 const Footer = () => {
   const quickLinks = [
     { title: "Home", url: "/" },
-    { title: "Registration", url: "/registration" },
+    // { title: "Registration", url: "/registration" },
     { title: "Media", url: "/media" },
     { title: "About Us", url: "/about-us" },
     { title: "Mobile App", url: "#", Component: MobileApp },
