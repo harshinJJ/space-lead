@@ -71,7 +71,7 @@ const PressRelease = ({
             const externalLink = item?.external_link ?? null;
             const descRTL = item?.description_ar?.length > 0 ? true : false;
             const titleRTL = item?.title_ar?.length > 0 ? true : false;
-            const description = item?.description || item?.description;
+            const description = item?.description_ar || item?.description;
             const title = item?.title_ar || item?.title;
             return externalLink ? (
               <div

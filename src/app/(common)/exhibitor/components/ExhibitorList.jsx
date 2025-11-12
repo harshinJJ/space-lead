@@ -24,7 +24,7 @@ const ExhibitorList = ({ exhibitors = [], label, title = "All Exhibitor" }) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
       {exhibitors.map((item, i) => (
         <ExhibitorCard
-          image={item?.photo || item?.profile_pic}
+          image={item?.logo_url}
           key={i}
           boothNumber={item.booth?.booth_number}
           isActive={item?.booth?.is_available}
