@@ -24,6 +24,11 @@ const nextConfig = {
         hostname: new URL(process.env.NEXT_PUBLIC_BASE_URL).hostname,
         pathname: "/**",
       },
+      {
+        protocol: "http",
+        hostname: "154.53.46.133",
+        pathname: "/**",
+      },
     ],
   },
 };
