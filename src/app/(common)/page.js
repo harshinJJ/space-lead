@@ -34,11 +34,11 @@ export default async function Home() {
   return (
     <main>
       <HomeBanner sponsors={sponsors} banner={"/images/banner_title.png"} />
-      {/* <ChairmanBlock className="pb-0 lg:pb-0"/>
+      <ChairmanBlock className="pb-0 lg:pb-0" />
       <AboutInfo
         className="2xl:pb-0 xl:pb-30 lg:pb-20 md:pb-15 xs:pb-5 pb-5"
         isHome={true}
-      /> */}
+      />
       <section className="z-1 relative bg-transparent bg-cover bg-[top_center]">
         <video
           autoPlay
