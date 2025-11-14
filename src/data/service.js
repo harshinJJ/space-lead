@@ -14,7 +14,7 @@ const SERVICE = {
     MEDIA: "/api/medias",
   },
   CONTACT: {
-    SUBMIT: "/microsite/v2/get-in-touch/",
+    SUBMIT: "/api/mail-send",
   },
   REGISTER: {
     PASS: "/microsite/v2/event-tickets",

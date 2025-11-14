@@ -117,46 +117,13 @@ const useContactForm = () => {
   const onSubmitRegistration = useDebounce(handleFormSubmit, 300);
 
   const onContactSubmit = async (values) => {
-    let captchaToken;
-    let recaptchaVersion;
-    if (!showV2) {
-      captchaToken = await executeRecaptcha("registration");
-      recaptchaVersion = "v3";
-    } else {
-      captchaToken = recaptchaToken;
-      recaptchaVersion = "v2";
-    }
-    if (!captchaToken) {
-      if (!showV2) {
-        setShowV2(true);
-      }
-      scrollToField("recaptcha");
-      toast.error("Recaptcha verification failed. Please try again.", {
-        id: "contact-toast",
-      });
-      formik.setSubmitting(false);
-      return;
-    }
-
     const payload = {
-      form_data: { ...values },
-      recaptcha_token: captchaToken,
-      recaptcha_type: recaptchaVersion,
+      ...values,
+      name: values.firstname,
+      phone: values.phoneNumber,
+      subject: "Contact Inquiry",
     };
-    const phone = separatePhoneNumber(values.phoneNumber);
-
-    // payload.form_data.mobile = phone.nationalNumber;
-    // payload.form_data.country_code = phone.countryCode;
-
-    payload.form_data.mobile = phone.nationalNumber;
-    payload.form_data.country_code = phone.countryCode;
-
-    delete payload.form_data.phoneNumber;
-
-    const formData = new FormData();
-    formData.append("payload", JSON.stringify(payload));
-
-    RegistrationServices.submitContactForm(formData)
+    RegistrationServices.submitContactForm(payload)
       .then((res) => {
         if (SUCCESS_CODES.includes(res.status) && res.data) {
           setShowSuccess(true);
